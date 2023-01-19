@@ -2,6 +2,7 @@
   text-align: center;
 }
 .App {
+  display: flex;
   width: 100vw;
   min-height: 100vh;
 }
@@ -32,6 +33,12 @@
   flex-direction: row;
   z-index: 1;
   position: relative;
+}
+.Modal{
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  z-index: 99;
 }
 .App .PopUps {
   width: 100%;
