@@ -1,8 +1,16 @@
+<<<<<<< HEAD:LBM-Client/src/components/Dashboards/FinancialMarket/Row.jsx
 import React, { useState } from "react";
 import "./FinancialMarket.scss";
 import BTC from "./assets/BTC.svg";
 import LTC from "./assets/LTC.svg";
 import ETH from "./assets/ETH.svg";
+=======
+import { useState } from "react";
+import "./Deposit.scss";
+import BTC from "./assets/BTC.svg"
+import LTC from "./assets/LTC.svg"
+import ETH from "./assets/ETH.svg"
+>>>>>>> 6eb8b60 (User Info-responsive):LBM-Client/src/components/Dashboards/Deposit/Row.jsx
 
 export default function Row({ img, name, amount, value }) {
   const [render, setRender] = useState(value);

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useState } from "react";
+<<<<<<< HEAD:LBM-Client/src/components/Dashboards/FinancialMarket/FinancialMarket.jsx
 import "./FinancialMarket.scss";
 import data from "./data.json";
 import Row from "./Row";
@@ -7,6 +8,13 @@ import Row from "./Row";
 export default function FinancialMarket() {
   const [info, setInfo] = useState();
   const [search, setSearch] = useState("");
+=======
+import "./Deposit.scss";
+import data from "./data.json"
+import Row from "./Row";
+
+export default function Deposit() {
+>>>>>>> 6eb8b60 (User Info-responsive):LBM-Client/src/components/Dashboards/Deposit/Deposit.jsx
 
   useEffect(() => {
     setInfo(data);
