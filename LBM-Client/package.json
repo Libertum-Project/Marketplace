@@ -9,13 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-<<<<<<< HEAD
     "@astar-network/astar-api": "^0.1.12",
     "@emotion/react": "^11.10.5",
     "@polkadot/api": "^9.11.3",
     "@polkadot/rpc-provider": "^9.11.3",
-=======
->>>>>>> refs/remotes/origin/Network
     "@rainbow-me/rainbowkit": "^0.8.1",
     "@reduxjs/toolkit": "^1.9.1",
     "@web3-react/core": "^6.1.9",
