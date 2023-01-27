@@ -11,11 +11,8 @@ import Properties from './Properties';
 import CardPreview from './CardPreview';
 import { motion } from 'framer-motion';
 import RealEstateDetail from '../RealEstateDetail';
-import { MdOutlineFilterList } from 'react-icons/md';
-import { IoIosArrowUp, IoIosArrowDown, IoIosArrowBack } from 'react-icons/io';
-import { GoSettings } from 'react-icons/go';
 // db es una ase de datos falsa, para poder renderizar las lands con sus imagenes y numeros, esto deberia cambiar mas adelante, pero sirve para maquetar los componentes
-import db from '../RealEstates/fakedb/db.json';
+import db from '../RealEstates/fakedb/db.json'
 const variants = {
 	open: { opacity: 1 },
 	closed: { opacity: 0, display: 'none' },
@@ -27,16 +24,16 @@ function RealEstates() {
 	//Utiliza useLocacion para saber en el path que estoy parado y poder hacer un ternario para saber que renderizar
 	const location = useLocation();
 	//Utiliza useNavigate para el boton de vuelta atras que se renderiza en la ruta /realestaes/:id, en el navbar
-	const navigate = useNavigate();
+	const navigate = useNavigate()
 	//'ascendant' es un estado booleano para el manejo de un boton que aparece en el navbar que sirve para ordenar por precio (mayor a menos y viceversa) las lands
 	const [ascendant, setAscendant] = useState(true);
 	//'status', 'price', 'properties', son estados booleanos que utiliza para saber cuando renderizar los componentes del mismo nombre (<Status /> <Price /> <Properties />)
 	const [status, setStatus] = useState(false);
 	const [price, setPrice] = useState(false);
 	const [properties, setProperties] = useState(false);
-	//'fiveColumn' es otro estado booleando que se utiliza para:
+	//'fiveColumn' es otro estado booleando que se utiliza para: 
 	//-Toggle, para manejar el estilo grid que renderiza las cards de las lands (tambien se pasar por props su setState)
-	//-Al tag <section>, aqui se usa para el manejo de las clases de css por medio de un ternario
+	//-Al tag <section>, aqui se usa para el manejo de las clases de css por medio de un ternario 
 	//-por ultimo se lo pasa por propiedad al componente <CardPreview /> para el manejo de estilos en su respectivo componente
 	const [fiveColumn, setFiveColumn] = useState(false);
 	return (
@@ -46,19 +43,13 @@ function RealEstates() {
 				<nav>
 					{/* utilizo location en un ternario, en '/realestate' no deberia renderizarse el boton de volver atras */}
 					{location.pathname === '/realestate' ? null : (
-						<button
-							id="goBack"
-							className="button__realEstate"
-							onClick={() => navigate('/realestate')}
-						>
-							<IoIosArrowBack className='icon' />
-						</button>
+							<button className="filters" onClick={() => navigate('/realestate')}>
+								<img src={arrow} alt="Back" className="goBack" />
+							</button>
 					)}
-					<button id="filters" className="button__realEstate">
-						Filters &nbsp;&nbsp;&nbsp;<GoSettings className="display icon" />
-					</button>
-					<button id="refresh" className="button__realEstate">
-						<SlRefresh className='icon' />
+					<button className="isNotAButton">Filters</button>
+					<button className="filters">
+						<SlRefresh />
 					</button>
 					<div className="inputWrapper">
 						<input
@@ -83,35 +74,29 @@ function RealEstates() {
 					{/* Este es el boton que ordena por precio como se dijo mas arriba en los estados */}
 					<button
 						id="order"
-						className="button__realEstate"
+						className={ascendant ? null : 'highToLow'}
 						onClick={() => setAscendant(!ascendant)}
 					>
 						Price: {ascendant ? 'low to high' : 'high to low'}
-						{ascendant ? (
-							<IoIosArrowDown className="icon" />
-						) : (
-							<IoIosArrowUp className="icon" />
-						)}
-					</button>
-					<button id="menu" className="button__realEstate display">
-						<MdOutlineFilterList className='icon' />
+						<img src={arrow} alt="Arrow" />
 					</button>
 					{/* Nuevamente usa location en un ternario, debe renderizarse el toggle en la ruta /realestate, ya que en 'realestate/:id no se muestra el grid con las lands para ordenar*/}
 					{location.pathname === '/realestate' ? (
 						//aqui le pasamos el estado de fiveColumn como se dijo anteriormente (ir a la parte de estados, esta explicado)
 						<Toggle setFiveColumn={setFiveColumn} fiveColumn={fiveColumn} />
 					) : null}
-				</nav>
+
+				</nav> 
 				{/* Aqui se usa location nuevamente, este es el cambio mas grande que depende del path, en '/realestate' se renderiza el div de clase "wrapperAsideSection", que como dice el nombre, en su interior tiene dos tags un <aside> y un <section> en el <aside> se encuentran los botones de Status, Price y Properties. En el <section> se encuentra la grilla donde se muetran las cards de las lands. */}
 				{location.pathname === '/realestate' ? (
 					<div className="wrapperAsideSection">
 						<aside className="asideFilters">
 							{/* Los botones Status, Price y Properties, solo setean los estados del mismo nombre para renderizar, o dejar de hacerlo, los componentes <Status/>, <Price /> y <Properties />. Como se ve, debajo de cada boton, hay un <motion> esto envuelve al componente que renderiza y le da una animacion cuando se renderiza */}
 							<button
-								className={`buttonAsideFilter`}
+								className={`buttonAsideFilter ${status ? 'isActive' : null}`}
 								onClick={() => setStatus(!status)}
 							>
-								Status {status ? <IoIosArrowUp /> : <IoIosArrowDown />}
+								Status <img src={arrow} alt="Arrow" />
 							</button>
 							<motion.nav
 								animate={status ? 'open' : 'closed'}
@@ -120,10 +105,10 @@ function RealEstates() {
 								{status ? <Status /> : null}
 							</motion.nav>
 							<button
-								className={`buttonAsideFilter`}
+								className={`buttonAsideFilter ${price ? 'isActive' : null}`}
 								onClick={() => setPrice(!price)}
 							>
-								Price {price ? <IoIosArrowUp /> : <IoIosArrowDown />}
+								Price <img src={arrow} alt="Arrow" />
 							</button>
 							<motion.div
 								animate={price ? 'open' : 'closed'}
@@ -132,10 +117,12 @@ function RealEstates() {
 								{price ? <Price /> : null}
 							</motion.div>
 							<button
-								className={`buttonAsideFilter`}
+								className={`buttonAsideFilter ${
+									properties ? 'isActive' : null
+								}`}
 								onClick={() => setProperties(!properties)}
 							>
-								Properties {properties ? <IoIosArrowUp /> : <IoIosArrowDown />}
+								Properties <img src={arrow} alt="Arrow" />
 							</button>
 							<motion.div
 								animate={properties ? 'open' : 'closed'}
@@ -145,7 +132,7 @@ function RealEstates() {
 							</motion.div>
 						</aside>
 						<section
-							//Utiliza nuevamente el estado fiveColumn para el manejo de la grilla
+						//Utiliza nuevamente el estado fiveColumn para el manejo de la grilla 
 							className={`${
 								fiveColumn
 									? 'previewEstatesFiveColums'
@@ -156,6 +143,7 @@ function RealEstates() {
 							{db.map((land) => (
 								<Link to={`/realestate/${land.number}`} key={land.id}>
 									<CardPreview
+										
 										image={land.image}
 										number={land.number}
 										fiveColumn={fiveColumn}
@@ -164,10 +152,10 @@ function RealEstates() {
 							))}
 						</section>
 					</div>
-				) : //En la ruta '/realestate/:id' se renderiza el componente <RealEstateDetal/> que es donde se encuentra el detalle de la land.
-				<RealEstateDetail />
-				// null
-				}
+				) : (
+				//En la ruta '/realestate/:id' se renderiza el componente <RealEstateDetal/> que es donde se encuentra el detalle de la land.
+					<RealEstateDetail />
+				)}
 			</div>
 		</div>
 	);

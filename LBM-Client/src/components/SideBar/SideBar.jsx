@@ -23,7 +23,6 @@ function SideBar() {
   const [buttonsContainer, setButtonsContainer] = useState(
     style.ButtonsContainer
   );
-
   return (
     <div className={container}>
       <div className={style.FlexContainer}>
@@ -59,21 +58,30 @@ function SideBar() {
               <p>Dashboard</p>
             </div>
           </NavLink>
-          <NavLink to={"./vaults"}>
-            <div
-              className={
-                selectedIcon === "OrdersIcon" && Icons === style.Icons
-                  ? style.IconSelected
-                  : Icons
-              }
-              onClick={() => dispatch(selectedIcon("OrdersIcon"))}
-            >
-              <OrdersIcon
-                selected={selectedIcon === "OrdersIcon" ? true : false}
-              />
-              <p>Vaults</p>
-            </div>
-          </NavLink>
+          <div
+            className={
+              selectedIcon === "OrdersIcon" && Icons === style.Icons
+                ? style.IconSelected
+                : Icons
+            }
+            onClick={() => dispatch(setSelectedIcon("OrdersIcon"))}
+          >
+            <NavLink to={"./vaults"}>
+              <div
+                className={
+                  selectedIcon === "OrdersIcon" && Icons === style.Icons
+                    ? style.IconSelected
+                    : Icons
+                }
+                onClick={() => dispatch(selectedIcon("OrdersIcon"))}
+              >
+                <OrdersIcon
+                  selected={selectedIcon === "OrdersIcon" ? true : false}
+                />
+                <p>Vaults</p>
+              </div>
+            </NavLink>
+          </div>
           <NavLink to={"./realestate"}>
             <div
               className={
@@ -86,22 +94,7 @@ function SideBar() {
               <Layer1Icon
                 selected={selectedIcon === "Layer1Icon" ? true : false}
               />
-              <p>Real Estate</p>
-            </div>
-          </NavLink>
-          <NavLink to={"./launchpad"}>
-            <div
-              className={
-                selectedIcon === "Launchpad" && Icons === style.Icons
-                  ? style.IconSelected
-                  : Icons
-              }
-              onClick={() => dispatch(setSelectedIcon("Launchpad"))}
-            >
-              <Layer1Icon
-                selected={selectedIcon === "Launchpad" ? true : false}
-              />
-              <p>Launchpad</p>
+              <p>Real State</p>
             </div>
           </NavLink>
           <div

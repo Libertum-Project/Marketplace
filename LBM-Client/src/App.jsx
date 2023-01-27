@@ -24,7 +24,6 @@ import WarningBuilding from "./components/WarningBuilding";
 import SideBarMobile from "./components/SideBar/mobile/SideBarMobile";
 import CoomingSoon from "./components/ComingSoon/ComingSoon";
 import Launchpad from "./components/Launchpad/Launchpad";
-import ProductPage from "./components/Launchpad/ProductPage/ProductPage";
 function App() {
   const [stateModal, setStateModal] = useState(false);
   const { selectedIcon, walletPopUp } = useSelector(
@@ -87,16 +86,7 @@ function App() {
             path={"/launchpad"}
             element={
               <div className="Page">
-                <Launchpad />
-              </div>
-            }
-          />
-
-          <Route
-            path={"/product"}
-            element={
-              <div className="Page">
-                <ProductPage />
+                <Launchpad/>
               </div>
             }
           />

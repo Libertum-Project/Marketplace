@@ -5,7 +5,7 @@ import './index.scss';
 import { SlRefresh } from 'react-icons/sl';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { FiShare, FiEye } from 'react-icons/fi';
-import { BsArrowUpRight, BsThreeDots } from 'react-icons/bs';
+import { BsArrowUpRight } from 'react-icons/bs';
 import db from '../RealEstates/fakedb/db.json';
 import CardPreview from '../RealEstates/CardPreview';
 import { Link } from 'react-router-dom';
@@ -27,12 +27,17 @@ function RealEstateDetail() {
 	};
 	return (
 		<div className="realEstateDetail">
-			<Modal
-				number={land.number}
-				isOpen={isOpenModal}
-				closeModal={closeModal}
-			/>
-
+			<motion.div
+				animate={isOpenModal ? 'open' : 'closed'}
+				variants={variants}
+				transition={{ duration: 0.1 }}
+			>
+				<Modal
+					number={land.number}
+					isOpen={isOpenModal}
+					closeModal={closeModal}
+				/>
+			</motion.div>
 			<section className="section">
 				<figure className="section__figure">
 					<img src={land.image} alt="Land" className="section__image" />
@@ -88,10 +93,7 @@ function RealEstateDetail() {
 					</div>
 				</figure>
 				<aside className="aside">
-					<h1
-						id="land"
-						className="aside__text aside__text--bold aside__text--large "
-					>
+					<h1 className="aside__text aside__text--bold aside__text--large ">
 						Land #{land.number}
 					</h1>
 					<section className="aside__section">
@@ -99,7 +101,7 @@ function RealEstateDetail() {
 							<img src={logo} alt="Logo" />
 						</figure>
 						<div className="aside__div">
-							<small className="aside__text aside__text--gray aside__text--semibold display--none">
+							<small className="aside__text aside__text--gray aside__text--semibold">
 								Current owner
 							</small>
 							<h4 className="aside__text aside__text--bold">Libertum</h4>
@@ -126,10 +128,6 @@ function RealEstateDetail() {
 									Refresh
 								</span>
 							</div>
-							<button className="config">
-								{' '}
-								<BsThreeDots className="icon" />{' '}
-							</button>
 						</div>
 					</div>
 					<div className="cardBid">
