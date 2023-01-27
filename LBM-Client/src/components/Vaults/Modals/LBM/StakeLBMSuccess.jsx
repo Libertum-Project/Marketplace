@@ -2,7 +2,7 @@ import React from "react";
 import "./StakeLBMSuccess.scss";
 import LBM from "../../assets/LBM-icon.svg";
 import ok from "../../assets/Ok-tick.svg";
-import close from "../../assets/Close-icon.svg";
+import { BsX } from "react-icons/bs";
 
 function StakeLBMSuccess({ states, setStateModals }) {
   function changeState() {
@@ -13,12 +13,9 @@ function StakeLBMSuccess({ states, setStateModals }) {
     <div className={states.lbmsuccess ? "lbmsuccess-modal" : "modals-off"}>
       <div className="modal">
         <div className="top-modal">
-          <img
-            src={close}
-            alt="cross"
-            onClick={changeState}
-            className="close"
-          />
+          <div onClick={changeState}>
+            <BsX className="close" />
+          </div>
           <img src={ok} alt="ok icon" />
         </div>
         <div className="mid-modal">

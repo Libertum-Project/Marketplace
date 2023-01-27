@@ -58,30 +58,22 @@ function SideBar() {
               <p>Dashboard</p>
             </div>
           </NavLink>
-          <div
-            className={
-              selectedIcon === "OrdersIcon" && Icons === style.Icons
-                ? style.IconSelected
-                : Icons
-            }
-            onClick={() => dispatch(setSelectedIcon("OrdersIcon"))}
-          >
-            <NavLink to={"./vaults"}>
-              <div
-                className={
-                  selectedIcon === "OrdersIcon" && Icons === style.Icons
-                    ? style.IconSelected
-                    : Icons
-                }
-                onClick={() => dispatch(selectedIcon("OrdersIcon"))}
-              >
-                <OrdersIcon
-                  selected={selectedIcon === "OrdersIcon" ? true : false}
-                />
-                <p>Vaults</p>
-              </div>
-            </NavLink>
-          </div>
+          <NavLink to={"./vaults"}>
+            <div
+              className={
+                selectedIcon === "OrdersIcon" && Icons === style.Icons
+                  ? style.IconSelected
+                  : Icons
+              }
+              onClick={() => dispatch(selectedIcon("OrdersIcon"))}
+            >
+              <OrdersIcon
+                selected={selectedIcon === "OrdersIcon" ? true : false}
+              />
+              <p>Vaults</p>
+            </div>
+          </NavLink>
+
           <NavLink to={"./realestate"}>
             <div
               className={
