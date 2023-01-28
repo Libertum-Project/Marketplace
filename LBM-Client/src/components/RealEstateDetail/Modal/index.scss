@@ -34,9 +34,9 @@
 	position: relative;
 	backdrop-filter: blur(4px);
 	-webkit-backdrop-filter: blur(4px);
-	box-shadow: 10px 10px 48px -18px rgba(0,0,0,0.75);
-    -webkit-box-shadow: 10px 10px 48px -18px rgba(0,0,0,0.75);
-    -moz-box-shadow: 10px 10px 48px -18px rgba(0,0,0,0.75);
+	box-shadow: 10px 10px 48px -18px rgba(0, 0, 0, 0.75);
+	-webkit-box-shadow: 10px 10px 48px -18px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 10px 10px 48px -18px rgba(0, 0, 0, 0.75);
 	bottom: 1%;
 	transition: bottom 0.25s;
 	.closeButton {
@@ -173,4 +173,3 @@
 	align-items: center;
 	transition: bottom 0.25s;
 }
-
