@@ -203,6 +203,9 @@
   -ms-flex-pack: center;
   justify-content: center;
 }
+// .chat {
+//   color: rgb(72, 179, 67)
+// }
 
 .button,
 .button2 {
@@ -221,6 +224,8 @@
   justify-content: center;
   gap: 10px;
   cursor: pointer;
+  color: rgb(72, 179, 67);
+  
 }
 
 .button svg {
@@ -253,7 +258,7 @@
 .button:hover,
 .button2:hover,
 .user svg:hover {
-  color: #f7931a;
+  color: rgb(72, 179, 67);
 }
 
 .buttons2 {
@@ -290,7 +295,7 @@
 .languageButton:hover {
   svg,
   p {
-    color: #f7931a;
+    color: rgb(72, 179, 67);
   }
 }
 
@@ -366,7 +371,7 @@
 }
 
 .hamburger:hover {
-  color: #f7931a;
+  color: rgb(72, 179, 67);
 }
 
 .userImage {
