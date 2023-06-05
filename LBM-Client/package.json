@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@astar-network/astar-api": "^0.1.12",
-    "@auth0/auth0-react": "^2.1.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@formspree/react": "^2.4.1",

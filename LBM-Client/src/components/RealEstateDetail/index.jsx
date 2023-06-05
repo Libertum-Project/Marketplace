@@ -1,7 +1,5 @@
 import css from "./index.module.scss";
-import { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
 import db from "../RealEstates/fakedb/db.json";
 import heartMobile from "../../assets/heart--movile.svg";
 import shareIcon from "../../assets/share.svg";
@@ -21,18 +19,7 @@ const Index = () => {
   const number = useParams();
   const land = db.find((item) => item.number === number.id);
 
-  const { isAuthenticated, isLoading } = useAuth0();
-
-  useEffect(() => {
-    if (!isLoading) {
-      if (!isAuthenticated) {
-        navigate("/");
-      }
-    }
-  }, [navigate, isAuthenticated, isLoading]);
-
   return (
-    !isLoading &&
     <div className={css.details}>
       <img src={land.image} alt="Land" className={css.detailsImage} />
       <div className={css.navMobile}>
