@@ -4,7 +4,7 @@
 .services_items {
   display: flex;
   justify-content: center;
-  margin-top: 90px;
+  margin-top: 30px;
   margin-bottom: 200px;
   animation-name: inOpacity;
   animation-duration: 1s;
@@ -23,7 +23,7 @@
         font-weight: 700;
         font-size: 34px;
         line-height: 64px;
-        color: #222222af;
+        // color: #222222af;
       }
       p {
         font-family: "Raleway";
@@ -31,7 +31,7 @@
         font-weight: 400;
         font-size: 16px;
         line-height: 24px;
-        color: #222222b3;
+        // color: #222222b3;
       }
     }
     .services_quad {
@@ -53,7 +53,7 @@
           font-weight: 900;
           font-size: 24px;
           line-height: 32px;
-          color: #656565;
+          // color: #656565;
         }
         p {
           font-family: "Inter";
@@ -62,7 +62,7 @@
           font-size: 16px;
           line-height: 26px;
           width: 220px;
-          color: #949494;
+          // color: #949494;
           opacity: 0.7;
         }
         &:hover {

@@ -37,13 +37,13 @@
       font-weight: 400;
       font-size: 24px;
       line-height: 38px;
-      width: 470px;
+      width: 570px;
       // height: 114px;
       // margin: top 1px;
     }
     .home_links {
       width: max-content;
-      margin-top: 10px;
+      margin-top: 0px;
       
       display: flex;
       gap: 18px;
@@ -94,7 +94,7 @@
   }
 }
 
-@media screen and (max-width: 1240px) {
+@media screen and (max-width: 1640px) {
   .home_items {
     .home_section {
       display: flex;
