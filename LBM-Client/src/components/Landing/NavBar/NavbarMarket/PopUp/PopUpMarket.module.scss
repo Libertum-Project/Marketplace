@@ -1,8 +1,9 @@
 .Container{
     width: 640px;
-    height: 350px;
+    height: 200px;
     display: flex;
     align-items: center;
+    
     justify-content: center;
     position: fixed;
     background: #FFFFFF;
@@ -14,7 +15,7 @@
 
 .flexContainer{
     width: 90%;
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(2, 48%);
     grid-auto-rows: 70px;
     gap: 2.5em;
@@ -34,6 +35,7 @@
     gap:1em;
     height: 70px;
     grid-row-start: 3;
+    
 }
 
 .buttonMore{
