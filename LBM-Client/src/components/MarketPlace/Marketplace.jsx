@@ -8,6 +8,8 @@ import image from "./assets/Image2.png";
 import CardImages from "./CardImages/CardImages";
 // import Slide from "./Slide";
 
+import Footer from "../RealEstates/Footer/Footer";
+
 function Marketplace() {
   return (
     <div className="marketplace-container">
@@ -51,6 +53,7 @@ function Marketplace() {
           })}
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
