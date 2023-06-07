@@ -1,10 +1,11 @@
 import React from "react";
 import { Slide } from "react-awesome-reveal";
-
+import { Link } from "react-router-dom";
 import mkt from "./assets/mkt.svg";
 import launchpad from "./assets/launchpad.svg";
 import loans from "./assets/loans.svg";
 import "./Services.scss";
+
 
 export default function Services() {
   return (
@@ -25,14 +26,17 @@ export default function Services() {
         </Slide>
         <div className="services_quad">
           <Slide direction={"left"} triggerOnce={"true"}>
+            <Link to={'/comingsoon'}> 
             <div className="services-quad_item">
               <img src={loans} />
               <h3>Decentralized Finance Loans</h3>
               <p>The ability to passively earn interest through DeFi 2.0 loans. Our proposition broadens the horizon of credit markets, connecting the real estate, and secondary market with Defi solutions</p>
               <div></div>
             </div>
+            </Link>
           </Slide>
           <Slide direction={"up"} triggerOnce={"true"}>
+          <Link to={'/comingsoon'}> 
             <div className="services-quad_item">
               <img src={mkt} />
               <h3>
@@ -40,21 +44,26 @@ export default function Services() {
               </h3>
               <p>
                 One of the first real estate marketplaces where you can buy, sell, trade and
-                invest in crypto or fiat-currency backed by real estate collatoral
+                invest in crypto or fiat-currency backed by real estate collateral
               </p>
               <div></div>
             </div>
+            </Link>
           </Slide>
           <Slide direction={"right"} triggerOnce={"true"}>
+          <Link to={'/comingsoon'}> 
             <div className="services-quad_item">
               <img src={launchpad} />
               <h3>Crypto Currency Launchpad</h3>
               <p>
                 Libertum Project invites real estate owners, syndicates, individuals and startups that want a solid experience in
                 the DeFi world are looking for liquidity
+                
               </p>
               <div></div>
+              <br />
             </div>
+            </Link>
           </Slide>
         </div>
       </section>

@@ -4,6 +4,10 @@ import "./Marketplace.scss";
 //import image from "./assets/image.png";
 import ModalFilter from "./ModalFilter/ModalFilter";
 import Classes from "./Classes/Classes";
+import image from "./assets/Image2.png";
+import CardImages from "./CardImages/CardImages";
+// import Slide from "./Slide";
+
 import Footer from "../RealEstates/Footer/Footer";
 
 function Marketplace() {
@@ -31,7 +35,7 @@ function Marketplace() {
           {[...Array(20)].map(() => {
             return (
               <div className="marketplace-card">
-                {/* <img src={image} /> */}
+                <CardImages />
                 <div className="marketplace-card-details">
                   <div className="marketplace-card-text">
                     <h1>Groveland, California</h1>

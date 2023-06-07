@@ -18,22 +18,24 @@ export default function Home() {
               Interest
             </h1>
             <p>
-              DeFi platform for a fluid and all inclusive economy; Real Estate
-              Investing made simple, accessible to everyone, anywhere and at
-              anytime
+              DeFi platform for a fluid and all inclusive economy.
+            </p> 
+             <p> 
+              Real Estate Investing made simple and accessible, anywhere and at
+              anytime.
             </p>
           </div>
           <div className="home_links">
             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 1 }}>
-              <a href="/realestate" className="launchapp">
+              <a href="/marketplace" className="launchapp">
                 <span>Launch App</span> <img src={launchapp} />
               </a>
             </motion.div>
-            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 1 }}>
+            {/* <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 1 }}>
               <a href="/swap" className="token">
                 Add Libertum Token
               </a>
-            </motion.div>
+            </motion.div> */}
           </div>
         </div>
       </section>
