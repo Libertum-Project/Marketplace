@@ -4,10 +4,11 @@ import heartIconMobile from "../../assets/heart--movile.svg";
 import heartIconPc from "../../assets/heart--pc.svg";
 import { Link } from "react-router-dom";
 
+
 const CardPreviewDetails = (props) => {
   return (
     <div className={css.card}>
-      <Link to={`/marketplace/${props.number}`}>
+      <Link to={`/realestate/${props.number}`}>
         <img src={props.image} alt="Land" className={css.landImage}/>
       </Link>
       <div className={css.info}>

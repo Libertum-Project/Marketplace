@@ -25,10 +25,6 @@ function MobileCarousel({ slides }) {
   return (
     <>
       <Carousel
-        style={{
-          width: "100%",
-          height: "100%",
-        }}
         defaultControlsConfig={{
           nextButtonStyle: {
             display: "none",
@@ -40,7 +36,7 @@ function MobileCarousel({ slides }) {
           pagingDotsStyle: {
             width: "7px",
             height: "7px",
-            fill: "#48b343",
+            fill: "#F7931A",
             scale: "1.2",
             borderRadius: "50%",
             paddingLeft: "5px",
