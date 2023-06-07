@@ -10,7 +10,7 @@ const index = () => {
     <div className={css.container}>
       <Classes />
       <div className={css.filtersContainer}>
-        <h2>Dubai</h2>
+        <h2></h2>
         <div className={css.filters}>
           <div className={css.filtersSelect}>
             <select>
