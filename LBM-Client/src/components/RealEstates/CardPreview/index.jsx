@@ -7,29 +7,32 @@ import { Link } from "react-router-dom";
 const index = (props) => {
   return (
     <div className={css.card}>
-      <Link className={css.link} to={`/realestate/${props.number}`}>
+      <Link className={css.link} to={`/marketplace/${props.number}`}>
         <img src={props.image} alt="" />
       </Link>
       <div className={css.info}>
         <div className={css.title}>
-          <h3>Bordeaux Getaway</h3>
-          <p>{props.type} in Bordeaux</p>
+          <h3>{props.address}</h3>
+          <p>{props.location}</p>
         </div>
 
         <div className={css.description}>
           <p>
-            {props.guests} guests · {props.type} · {props.rooms} ·{" "}
-            {props.amenities}
+            Pasive Income per Token: {props.PIT}
+            <br />
+            Proyected Rental Yield: {props.PRY}
+            <br />
+            Property Tokenised: {props.tokenised}
           </p>
         </div>
         <div className={css.rating}>
-          <img src={starICon} alt="" />
-          <p>{props.review}</p>
-          <span>({props.totalReviews} Reviews)</span>
+          <p>NFT Price:  <span>{props.NFTPrice}</span>    ·   </p> 
+          <p>Available NFTs:<span>{props.AvailablesNFT}</span> </p> 
+         
         </div>
       </div>
       <div className={css.price}>
-        <p>Min. Investment</p>
+        <p>Property Value: </p>
         <i>${props.price}</i>
       </div>
       <i className={css.heartIconMobile}>

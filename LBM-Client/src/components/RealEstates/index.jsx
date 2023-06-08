@@ -39,6 +39,15 @@ const index = () => {
                 rooms={land.rooms}
                 guests={land.guests}
                 type={land.type}
+                address={land.address}
+                location ={land.location}
+                PIT={land.PIT}
+                PRY={land.PRY}
+                tokenised ={land.Tokenised}
+                NFTPrice = {land.NFTPrice}
+                AvailablesNFT = {land.AvailablesNFT}
+
+
               />
             ))
           : null}
