@@ -1,15 +1,12 @@
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import style from "./NavbarMarket.module.scss";
 import { useSelector } from "react-redux";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { useAuth0 } from "@auth0/auth0-react";
 import { NavLink } from "react-router-dom";
-import CustomConnectButtom from "../../../SideBar/CustomConnectButtom";
 import {
   IoChevronDownOutline,
   IoGlobeOutline,
   IoPerson,
-  IoMenuOutline,
-  IoCloseOutline,
 } from "react-icons/io5";
 import PopUpMarket from "./PopUp/PopUpMarket";
 import PopUpUser from "./PopUp/PopUpUser";
@@ -17,16 +14,26 @@ import { useAccountModal } from "@rainbow-me/rainbowkit";
 import PopUpLanguage from "./PopUp/PopUpLanguage";
 import MobileMenu from "./MobileMenu/MobileMenu";
 import { Divide as Hamburger } from "hamburger-react";
+import closeIcon from "../../../../assets/close.svg";
+import copyIcon from "../../../../assets/Copy.svg";
+import logoutIcon from "../../../../assets/Logout.svg";
 
 function NavbarMarket() {
+  const { logout, user } = useAuth0();
   const { openAccountModal } = useAccountModal();
   const [active, setActive] = useState(false);
   const { currency } = useSelector((state) => state.reducerCompleto);
   const [activeMenu, setActiveMenu] = useState(false);
   const [activeMenuMobile, setActiveMenuMobile] = useState(false);
   const [activeLanguage, setActiveLanguage] = useState(false);
-  const [activeIcon, setActiveIcon] = useState(false);
   const screenWidth = window.innerWidth || document.body.clientWidth;
+  const [userModal, setUserModal] = useState(false);
+
+  const handleUserModal = () => {
+    if (userModal) setUserModal(false);
+    if (!userModal) setUserModal(true);
+  };
+  console.log(userModal);
 
   useEffect(() => {
     document.addEventListener("click", (e) => {
@@ -76,8 +83,8 @@ function NavbarMarket() {
                 <IoChevronDownOutline />
               </div>
               <p>ABOUT US</p>
-              <NavLink to ="/support">
-              <p>SUPPORT</p>
+              <NavLink to="/support">
+                <p>SUPPORT</p>
               </NavLink>
             </div>
             <div className={style.buttons2}>
@@ -93,12 +100,64 @@ function NavbarMarket() {
                 {activeLanguage ? <PopUpLanguage data-language /> : null}
               </div>
               <div className={openAccountModal ? style.user : style.user1}>
-                <div
-                  data-dropdown-menu
-                  className={style.hamburger}
-                  onClick={() => setActiveMenu(!activeMenu)}
-                >
-                  <Hamburger size={18} toggled={activeMenu} />
+                <div className={style.hamburgerContainer}>
+                  <div
+                    data-dropdown-menu
+                    className={style.hamburger}
+                    onClick={() => setActiveMenu(!activeMenu)}
+                  >
+                    <Hamburger size={18} toggled={activeMenu} />
+                  </div>
+                  {user ? (
+                    <div className={style["notification-badge"]}>
+                      <img
+                        src={user.picture}
+                        alt={user.name}
+                        className={style.userImage}
+                        onClick={handleUserModal}
+                      />
+                    </div>
+                  ) : null}
+                  {userModal && (
+                    <div className={style.userModal}>
+                      <div className={style["userModal-content"]}>
+                        <div className={style["userModal-header"]}>
+                          <span
+                            className={style["userModal-close"]}
+                            onClick={handleUserModal}
+                          >
+                            <img src={closeIcon} alt="Close" />
+                          </span>
+                          <h2>Profile</h2>
+                        </div>
+
+                        <div className={style["userModal-body"]}>
+                          <img src={user.picture} alt="user" />
+                          <h4>{user.name}</h4>
+                          <p>Record of all transactions of the last 30 days</p>
+                          <div className={style["userModal-btn"]}>
+                            <button>
+                              <img src={copyIcon} alt="Copy" />
+                              <p>Copy Address</p>
+                            </button>
+
+                            <button
+                              onClick={() =>
+                                logout({
+                                  logoutParams: {
+                                    returnTo: window.location.origin,
+                                  },
+                                })
+                              }
+                            >
+                              <img src={logoutIcon} alt="logout" />
+                              <p>Disconnect</p>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
                 {openAccountModal && (
                   <div onClick={openAccountModal} className={style.account}>
@@ -141,6 +200,57 @@ function NavbarMarket() {
               </div>
             )}
           </div>
+          {user ? (
+            <div className={style["notification-badge"]}>
+              <img
+                src={user.picture}
+                alt={user.name}
+                className={style.userImage}
+                onClick={handleUserModal}
+              />
+            </div>
+          ) : null}
+          {userModal && (
+            <div className={style.userModal}>
+              <div className={style["userModal-content"]}>
+                <div className={style["userModal-header"]}>
+                  <span
+                    className={style["userModal-close"]}
+                    onClick={handleUserModal}
+                  >
+                    <img src={closeIcon} alt="Close" />
+                  </span>
+                  <h2>Profile</h2>
+                </div>
+
+                <div className={style["userModal-body"]}>
+                  <img src={user.picture} alt="user" />
+                  <h4>{user.name}</h4>
+                  <p>Record of all transactions of the last 30 days</p>
+                  <div className={style["userModal-btn"]}>
+                    <button>
+                      <img src={copyIcon} alt="Copy" />
+                      <p>Copy Address</p>
+                    </button>
+
+                    <button
+                      onClick={() =>
+                        logout({
+                          logoutParams: {
+                            returnTo: window.location.origin,
+                          },
+                        })
+                      }
+                    >
+                      <img src={logoutIcon} alt="logout" />
+                      <p>Disconnect</p>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
           {activeMenuMobile ? <MobileMenu data-menumobile /> : null}
         </div>
       )}

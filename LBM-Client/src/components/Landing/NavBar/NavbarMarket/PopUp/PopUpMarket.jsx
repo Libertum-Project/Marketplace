@@ -28,12 +28,12 @@ function PopUpMarket() {
           </div>
           <div className={style.text}>
             <div className={style.title}>
-              <h1>Marketplace</h1> <IoArrowForward />
+              <h1>Products</h1> <IoArrowForward />
             </div>
             <p>Buying and selling houses has never been so easy</p>
           </div>
         </a>
-        <div className={style.buttonSoon}>
+        {/* <div className={style.buttonSoon}>
           <div className={style.icon}>
             <BsFileEarmarkPlus />
           </div>
@@ -43,19 +43,19 @@ function PopUpMarket() {
             </div>
             <p>New things are coming</p>
           </div>
-        </div>
+        </div> */}
         <a href="/IREO" className={style.button}>
           <div className={style.icon}>
             <TbVector />
           </div>
           <div className={style.text}>
             <div className={style.title}>
-              <h1>IREO</h1> <IoArrowForward />
+              <h1>Property Market</h1> <IoArrowForward />
             </div>
             <p>Join and be part of the new real estate projects</p>
           </div>
         </a>
-        <a href="/launchpad" className={style.button2}>
+        {/* <a href="/launchpad" className={style.button2}>
           <div className={style.icon}>
             <IoRocketSharp />
           </div>
@@ -65,7 +65,7 @@ function PopUpMarket() {
             </div>
             <p>Drive high-value web3 projects</p>
           </div>
-        </a>
+        </a> */}
 
         <a className={style.buttonMore}>
           <div className={style.icon}>

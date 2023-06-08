@@ -166,6 +166,7 @@ function App() {
           {/* Dentro de este Route van todas las cosas que tengan sidebar */}
         </Route>
         <Route path="/swap" element={<CoomingSoon />} />
+        <Route path="/comingsoon" element={<CoomingSoon />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/support" element={<SupportCenter />} />
         <Route path="/detail/:id" element={<DetailSupport />} />
