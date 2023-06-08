@@ -30,6 +30,10 @@ const index = () => {
           ? db.map((land) => (
               <CardPreview
                 image={land.image}
+                image2={land.image2}
+                image3={land.image3}
+                image4={land.image4}
+                image5={land.image5}
                 key={land.number}
                 number={land.number}
                 price={land.price}

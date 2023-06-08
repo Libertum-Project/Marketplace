@@ -99,21 +99,21 @@ function App() {
             }
           />
           <Route
-            path={"/realestate/:id"}
+            path={"/marketplace/:id"}
             element={
               <div className="Page">
                 <RealEstateDetail />
               </div>
             }
           />
-          <Route
+          {/* <Route
             path={"/marketplace/:id"}
             element={
               <div className="Page" style={{ flexDirection: "column" }}>
                 <Details />
               </div>
             }
-          />
+          /> */}
           {/* <Route
             path={"/launchpad"}
             element={

@@ -32,7 +32,7 @@ import { info, column, dataReducer, columnsReducer } from "./data.js";
 import Slider from "../../../helpers/Silder";
 import Footer from "../../RealEstates/Footer/Footer";
 
-export default function Details() {
+export default function Details(props) {
   const width = window.innerWidth;
   const breakpoint = 540;
   const [data, setData] = useState(info);
@@ -99,7 +99,7 @@ export default function Details() {
         <div className="detailsHeader">
           <div className="detailsTitle">
             <div className="groupTitle">
-              <h1>Bordeax Getaway</h1>
+              <h1>{props.address}</h1>
               <img src={avatar} alt="avatar pic" className="avatarMobile" />
             </div>
             <div className="detailsSubtitle">
@@ -141,10 +141,10 @@ export default function Details() {
             <img src={image3} alt="other image" className="item three" />
             <img src={image4} alt="other image" className="items four" />
             <img src={image5} alt="other image" className="items five" />
-            <button className="showPhotosBtn" onClick={openGallery}>
+            {/* <button className="showPhotosBtn" onClick={openGallery}>
               <img src={iconPic} alt="four squares" />
               <h1>Show all photos</h1>
-            </button>
+            </button> */}
           </div>
         </div>
 

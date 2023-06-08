@@ -22,7 +22,7 @@ const Index = () => {
   return (
     <div className={css.details}>
       <img src={land.image} alt="Land" className={css.detailsImage} />
-      <div className={css.navMobile}>
+      <div className={css.navMobile}> 
         <img
           src={backIcon}
           alt="back icon"
@@ -41,15 +41,10 @@ const Index = () => {
       </div>
 
       <header className={css.header}>
-        <h2>Bordeaux Getaway</h2>
+        <h2>{land.location}</h2>
         <div className={css.headerText}>
-          <p>Bordeaux, Dubai</p>
-          <i>
-            <b>{land.review}</b>
-            <img src={starIcon} alt="Star" />
-          </i>
-
-          <div className={css.headerBtns}>
+          <p>{land.address}</p>
+        <div className={css.headerBtns}>
             <img src={sharePC} alt="share" />
             <img src={save} alt="save" />
           </div>
@@ -60,37 +55,32 @@ const Index = () => {
       <section className={css.mosaic}>
         <img src={land.image} alt="" />
         <div className={css.otherImages}>
-          <img src={land.image} alt="Land" />
-          <img src={land.image} alt="Land" />
-          <img src={land.image} alt="Land" />
-          <img src={land.image} alt="Land" />
+          <img src={land.image2} alt="Land" />
+          <img src={land.image3} alt="Land" />
+          <img src={land.image4} alt="Land" />
+          <img src={land.image5} alt="Land" />
         </div>
-        <img src={showAll} alt="btn" className={css.showAll} />
+        
       </section>
 
       <div className={css.info}>
         <h2>Entire rental unit hosted by Ghazal</h2>
-        <div className={css.features}>
-          <p>
-            {land.guests} guests · {land.rooms}
-          </p>
-        </div>
+       
         <p className={css.description}>
           Come and stay in this superb duplex T2, in the heart of the historic
           center of Bordeaux. Spacious and bright, in a real Bordeaux building
           in exposed stone, you will enjoy all the charms of the city thanks to
           its ideal location. Close to many shops, bars and restaurants, you can
           access the apartment by tram A and C and bus routes 27 and 44. <br />{" "}
-          ...
+         
         </p>
-        <p className={css.showMore}>
-          Show more <img src={right} alt="right" />
-        </p>
+        
       </div>
 
       <div className={css.filtersContainer}>
-        <h2>Tokenization Part</h2>
-        <div className={css.filters}>
+        <h2>ABOUT THE PROPERTY</h2>
+        {/* <div className={css.filters}>
+        
           <div className={css.filtersSelect}>
             <select>
               <option hidden value="">
@@ -101,27 +91,49 @@ const Index = () => {
             </select>
           </div>
           <ModalFilter />
+        </div> */}
+      </div>
+      <div>
+      <div>
+          <details>
+           
+           <summary>Details</summary>
+            <p>About the property:</p> {land.amenities}
+            <p>Address: </p> {land.address}
+            <p>Occupancy Status</p>
+            <p>Location</p>            
+          </details>
+
+          <details>
+            <summary>Financials</summary>
+            <p>Market value of the property:</p> {land.price}
+            <p>Property Tokenised:</p> {land.Tokenised}
+            <p>Rental Yield</p> {land.PRY}
+            <p>F-NFT available</p> {land.AvailablesNFT}
+            <p>Passive Income per token</p> {land.PIT}
+            <p>Passive Income Calculator</p>
+            <p>Number of Token to be purchased</p>
+            <p>Monthly Passive Income - Calculator</p>
+            <p>Annual Passive Income - Calculator</p>
+            <p>Curren Emission Level</p>
+            <p>Expected Emission level post sustainability</p>
+            {/* Agrega más información relevante aquí */}
+          </details>
+
+          <details>
+            <summary>Documents</summary>
+            <p>Property Insurance Document</p> 
+            <p>Charge Document </p>                  
+          </details>
+
+          <details>
+            <summary>Buying Process</summary>
+              
+          </details>
+
         </div>
       </div>
-      <section className={css.relatedLands}>
-        {db.length
-          ? db.map((land) => (
-              <CardPreview
-                image={land.image}
-                key={land.number}
-                number={land.number}
-                price={land.price}
-                review={land.review}
-                totalReviews={land.totalreviews}
-                amenities={land.amenities}
-                rooms={land.rooms}
-                guests={land.guests}
-                type={land.type}
-              />
-            ))
-          : null}
-      </section>
-
+    
       <Footer />
     </div>
   );
