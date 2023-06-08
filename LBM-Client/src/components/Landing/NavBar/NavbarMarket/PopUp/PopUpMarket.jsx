@@ -28,29 +28,29 @@ function PopUpMarket() {
           </div>
           <div className={style.text}>
             <div className={style.title}>
-              <h1>Products</h1> <IoArrowForward />
+              <h1>Property Marketplace</h1> <IoArrowForward />
             </div>
             <p>Buying and selling houses has never been so easy</p>
           </div>
         </a>
-        {/* <div className={style.buttonSoon}>
+        <div className={style.buttonSoon}>
           <div className={style.icon}>
             <BsFileEarmarkPlus />
           </div>
           <div className={style.text}>
             <div className={style.title}>
-              <h1>Coming Soon</h1> <IoArrowForward />
+              <h1>Decentralised Loans</h1> <IoArrowForward />
             </div>
-            <p>New things are coming</p>
+            <p>The ability to passively earn interest through DeFi 2.0 loans</p>
           </div>
-        </div> */}
+        </div>
         <a href="/IREO" className={style.button}>
           <div className={style.icon}>
             <TbVector />
           </div>
           <div className={style.text}>
             <div className={style.title}>
-              <h1>Property Market</h1> <IoArrowForward />
+              <h1>LaunchPad</h1> <IoArrowForward />
             </div>
             <p>Join and be part of the new real estate projects</p>
           </div>

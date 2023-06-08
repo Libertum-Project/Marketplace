@@ -91,7 +91,7 @@ function App() {
             }
           />
           <Route
-            path={"/realestate"}
+            path={"/marketplace"}
             element={
               <div className="Page">
                 <RealEstates />
@@ -99,21 +99,21 @@ function App() {
             }
           />
           <Route
-            path={"/realestate/:id"}
+            path={"/marketplace/:id"}
             element={
               <div className="Page">
                 <RealEstateDetail />
               </div>
             }
           />
-          <Route
+          {/* <Route
             path={"/marketplace/:id"}
             element={
               <div className="Page" style={{ flexDirection: "column" }}>
                 <Details />
               </div>
             }
-          />
+          /> */}
           {/* <Route
             path={"/launchpad"}
             element={
@@ -154,14 +154,14 @@ function App() {
               </div>
             }
           />
-          <Route
-            path="/marketplace"
+          {/* <Route
+            path="/realestate"
             element={
               <div className="Page">
                 <Marketplace />
               </div>
             }
-          />
+          /> */}
 
           {/* Dentro de este Route van todas las cosas que tengan sidebar */}
         </Route>

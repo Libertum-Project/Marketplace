@@ -9,7 +9,7 @@ export default function Home() {
   const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
 
   const handleLogin = () => {
-    const redirectUri = `${window.location.origin}/realestate/`;
+    const redirectUri = `${window.location.origin}/marketplace/`;
     loginWithRedirect({
       redirectUri: redirectUri,
     });
