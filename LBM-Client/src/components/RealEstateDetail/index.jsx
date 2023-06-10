@@ -13,6 +13,9 @@ import showAll from "../../assets/showAll.svg";
 import ModalFilter from "../MarketPlace/ModalFilter/ModalFilter.jsx";
 import CardPreview from "./CardPreviewDetails.jsx";
 import Footer from "../RealEstates/Footer/Footer.jsx";
+import Aboutproperty from "./Aboutproperty";
+import Buy from "./Buy";
+
 
 const Index = () => {
   const navigate = useNavigate();
@@ -79,62 +82,19 @@ const Index = () => {
 
       <div className={css.filtersContainer}>
         <h2>ABOUT THE PROPERTY</h2>
-        {/* <div className={css.filters}>
-        
-          <div className={css.filtersSelect}>
-            <select>
-              <option hidden value="">
-                Status
-              </option>
-              <option className={css.option}>Buy now</option>
-              <option>Not for sale</option>
-            </select>
-          </div>
-          <ModalFilter />
-        </div> */}
       </div>
-      <div>
-      <div>
-          <details>
-           
-           <summary>Details</summary>
-            <p>About the property:</p> {land.amenities}
-            <p>Address: </p> {land.address}
-            <p>Occupancy Status</p>
-            <p>Location</p>            
-          </details>
 
-          <details>
-            <summary>Financials</summary>
-            <p>Market value of the property:</p> {land.price}
-            <p>Property Tokenised:</p> {land.Tokenised}
-            <p>Rental Yield</p> {land.PRY}
-            <p>F-NFT available</p> {land.AvailablesNFT}
-            <p>Passive Income per token</p> {land.PIT}
-            <p>Passive Income Calculator</p>
-            <p>Number of Token to be purchased</p>
-            <p>Monthly Passive Income - Calculator</p>
-            <p>Annual Passive Income - Calculator</p>
-            <p>Curren Emission Level</p>
-            <p>Expected Emission level post sustainability</p>
-            {/* Agrega más información relevante aquí */}
-          </details>
-
-          <details>
-            <summary>Documents</summary>
-            <p>Property Insurance Document</p> 
-            <p>Charge Document </p>                  
-          </details>
-
-          <details>
-            <summary>Buying Process</summary>
-              
-          </details>
-
-        </div>
+      <div className="flex w-full ">
+        <Aboutproperty />        
+        <Buy/>
       </div>
-    
-      <Footer />
+
+      <div> 
+      </div>
+
+    <Footer />
+
+      
     </div>
   );
 };
