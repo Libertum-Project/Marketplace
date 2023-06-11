@@ -1,22 +1,30 @@
-const Buy = () => {
+import { Link } from "react-router-dom";
 
-    return (
+const Buy = (props) => {
+  const { image, number, address, location, PIT, PRY, AvailablesNFT } = props;
 
-        <div className="ml-3">
-            <div className="card card-compact w-96 bg-base-100 shadow-xl">
-            <figure><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cmVhbCUyMGVzdGF0ZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80" alt="Shoes" /></figure>
-            <div className="card-body">
-                <h2 className="card-title"></h2>
-                <p>Projected Annual Return: 12.34%</p>
-                <p>Projected Rental Yield: 15.6% </p>                
-
-                <div className="card-actions justify-end">
-                <button className="btn btn-primary mb-4">Buy Now</button>
-                </div>
-            </div>
-            </div>
-
+  return (
+    <div className="ml-3">
+      <div className="card card-compact w-96 bg-base-100 shadow-xl">
+        <figure>
+          <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cmVhbCUyMGVzdGF0ZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80" alt="Shoes" />
+        </figure>
+        <div className="card-body">
+          <h2 className="card-title">{address} - {location}</h2>
+          <p>Passive Income Per Token: {PIT}</p>
+          <p>Projected Rental Yield: ${PRY}</p>
+          <p>Avaliables NFT: {AvailablesNFT}</p>
+          <div className="card-actions justify-end">
+            <Link
+              to={`/marketplace/buy/${number}`}
+            >
+              <button className="btn btn-primary mb-4">Buy Now</button>
+            </Link>
+          </div>
         </div>
-    )}
+      </div>
+    </div>
+  );
+};
 
-export default Buy; 
+export default Buy;

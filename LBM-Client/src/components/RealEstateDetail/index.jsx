@@ -81,12 +81,30 @@ const Index = () => {
       </div>
 
       <div className={css.filtersContainer}>
-        <h2>ABOUT THE PROPERTY</h2>
+        <h2>ABOUT THE PROPERTY</h2>        
       </div>
 
       <div className="flex w-full ">
-        <Aboutproperty />        
-        <Buy/>
+        <Aboutproperty 
+        
+        
+        />        
+       
+       
+        <Buy
+          id = {land.id} 
+          image = {land.image}
+          number = {land.number}                
+          value={land.price}
+          Tokenised={land.Tokenised}
+          PRY={land.PRY}
+          AvailablesNFT={land.AvailablesNFT}
+          PIT={land.PIT}
+          address={land.address}
+          location={land.location}
+          NFTPrice = {land.NFTPrice}
+          />
+
       </div>
 
       <div> 

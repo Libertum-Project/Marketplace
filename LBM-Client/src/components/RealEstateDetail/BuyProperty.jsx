@@ -1,29 +1,71 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import db from "../RealEstates/fakedb/db.json";
 
 const BuyProperty = () => {
+  const { number } = useParams();
+  const land = db.find((item) => item.number === number);
+
   const [rangeValue, setRangeValue] = useState(40);
+  const [paymentMethod, setPaymentMethod] = useState('');
 
   const handleRangeChange = (event) => {
     setRangeValue(event.target.value);
   };
 
+  const priceNFT = parseInt(land.NFTPrice);
+  const totalPrice = rangeValue * priceNFT;
+
+  const handlePaymentMethodChange = (event) => {
+    setPaymentMethod(event.target.value);
+  };
+
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row">
-        <img className="w-[50%]" src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cmVhbCUyMGVzdGF0ZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80" />
-        <div>
-          <h1 className="text-5xl font-bold">St. Louis 384 - Virginia</h1>
-          <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+        <div >
+          <h1 className="text-5xl font-bold mt-10">{land.address} | {land.location}</h1>
+          {/* <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p> */}
+
+          <div className='w-96 mt-5 ml-52'>
+
+          <p className='text-left mb-2'>Property token quantity: </p>
           <input
             type="range"
             min="0"
             max="100"
             value={rangeValue}
-            className="range"
+            className="range w-96"
             onChange={handleRangeChange}
           />
-          <p>Buy <span className='font-extrabold'>{rangeValue}  </span> NFT</p>
-          <button className="btn btn-primary mt-3">Buy Now!</button>
+          <p>Buy <span className='font-extrabold'>{rangeValue}  </span> NFT  at  ${priceNFT} per NFT</p>
+           
+          {/* <p>Total Price: $ {totalPrice}</p>  */}
+
+
+          <p className='mt-8 text-left mb-2'>Payment Method: </p>
+          <select className="select select-primary w-full max-w-x" onChange={handlePaymentMethodChange}>
+            <option value="metamask">Metamask</option>
+            <option value="bank-transfer">Bank Transfer</option>
+            <option value="other">Other</option>
+          </select>
+
+          <p className='mt-8 text-left mb-2'>Payment Currency: </p>
+          <select className="select select-primary w-full max-w-x" onChange={handlePaymentMethodChange}>
+            <option value="metamask">USDC</option>            
+            <option value="other">Other</option>
+          </select>
+
+          <p className=' mt-8 text-justify'>Platform fee: $0.0</p>
+          <p className='text-left'>Processing fee: $0. 001 USDC</p>
+          </div>
+
+
+          <button className='uppercase text-2xl bg-primary rounded-full ml-52
+           h-12 w-96 mt-4 flex items-center justify-center '>Total: $ {totalPrice}</button>  
+
+
         </div>
       </div>
     </div>

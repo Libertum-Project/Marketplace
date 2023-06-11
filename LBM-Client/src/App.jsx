@@ -107,14 +107,11 @@ function App() {
               </div>
             }
           />
-                    <Route
-            path={"/marketplace/buy/:id"}
-            element={
-              <div className="Page">
-                <BuyProperty />
-              </div>
-            }
+          <Route 
+          path="/marketplace/buy/:number" 
+          element={<BuyProperty />} 
           />
+
           {/* <Route
             path={"/marketplace/:id"}
             element={
