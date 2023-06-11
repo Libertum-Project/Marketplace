@@ -22,14 +22,14 @@ import Vaults from "./components/Vaults/Vaults";
 import RealEstateDetail from "./components/RealEstateDetail/index";
 import SideBarMobile from "./components/SideBar/mobile/SideBarMobile";
 import CoomingSoon from "./components/ComingSoon/ComingSoon";
-import Launchpad from "./components/Launchpad/Launchpad";
-import ProductPage from "./components/Launchpad/ProductPage/ProductPage";
+//import Launchpad from "./components/Launchpad/Launchpad";
+//import ProductPage from "./components/Launchpad/ProductPage/ProductPage";
 import GovernanceDetails from "./components/Governance/GovernanceDetails/GovernanceDetails";
 import Marketplace from "./components/MarketPlace/Marketplace";
 import Details from "./components/MarketPlace/Details/Details";
 import NavbarMarket from "./components/Landing/NavBar/NavbarMarket/NavbarMarket";
 import { useModal } from "./helpers/useModal/useModal";
-import WarningBuilding from "./components/WarningBuilding";
+//import WarningBuilding from "./components/WarningBuilding";
 import AdminMenu from "./components/Admin/AdminMenu/AdminMenu";
 import { useAccount } from "wagmi";
 import { getAdminByWallet, getUnapprovedProjects } from "../redux/actions";
@@ -37,6 +37,11 @@ import { setIsAdmin } from "../redux/reducer";
 import ChatBot from "./components/ChatBot/ChatBot"
 import Recommendations from "./components/ChatBot/Recommendations";
 import { useMediaQuery } from 'react-responsive';
+import SupportCenter from "./components/SupportCenter/SupportCenter";
+import DetailSupport from "./components/DetailSupport/DetailSupport";
+import Cards from "../src/components/Cards/Cards";
+import IDO from "./components/IDO/IDO";
+
 function App() {
   const dispatch = useDispatch();
   const [stateModal, setStateModal] = useState(false);
@@ -51,7 +56,7 @@ function App() {
       {/* <div className="bgImage">
         <img src="./icons/Background.svg" />
       </div> */}
-      <WarningBuilding isOpen={isOpenModal} closeModal={closeModal} />
+      {/* <WarningBuilding isOpen={isOpenModal} closeModal={closeModal} /> */}
       <Modals state={stateModal} setStateModal={setStateModal} />
 
       <div className="SideBar">
@@ -90,7 +95,7 @@ function App() {
             }
           />
           <Route
-            path={"/realestate"}
+            path={"/marketplace"}
             element={
               <div className="Page">
                 <RealEstates />
@@ -98,14 +103,14 @@ function App() {
             }
           />
           <Route
-            path={"/realestate/:id"}
+            path={"/marketplace/:id"}
             element={
               <div className="Page">
-                <RealEstates />
+                <RealEstateDetail />
               </div>
             }
           />
-          <Route
+          {/* <Route
             path={"/marketplace/:id"}
             element={
               <div className="Page" style={{ flexDirection: "column" }}>
@@ -125,13 +130,16 @@ function App() {
             }
           />
           <Route
+
+          /> */}
+          {/* <Route
             path={"/launchpad"}
             element={
               <div className="Page">
-                <Launchpad />
+                <IDO />
               </div>
             }
-          />
+          /> */}
           <Route
             path="/governance"
             element={
@@ -148,14 +156,14 @@ function App() {
               </div>
             }
           />
-          <Route
+          {/* <Route
             path={"/product"}
             element={
               <div className="Page">
                 <ProductPage />
               </div>
             }
-          />
+          /> */}
           <Route
             path={"/admin"}
             element={
@@ -164,21 +172,27 @@ function App() {
               </div>
             }
           />
-          <Route
-            path="/marketplace"
+          {/* <Route
+            path="/realestate"
             element={
               <div className="Page">
                 <Marketplace />
               </div>
             }
-          />
+          /> */}
+
           {/* Dentro de este Route van todas las cosas que tengan sidebar */}
         </Route>
         <Route path="/swap" element={<CoomingSoon />} />
+        <Route path="/comingsoon" element={<CoomingSoon />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/support" element={<SupportCenter />} />
+        <Route path="/detail/:id" element={<DetailSupport />} />
+        <Route path="/cards" element={<Cards />} />
       </Routes>
     </div>
   );
 }
+//Check
 
 export default App;

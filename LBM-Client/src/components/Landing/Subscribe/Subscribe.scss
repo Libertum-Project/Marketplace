@@ -3,9 +3,9 @@
 
 .subscribe_items {
   display: flex;
-  height: 500px;
+  height: 300px;
   justify-content: center;
-  align-items: center;
+  align-items: top;
   animation-name: inOpacity;
   animation-duration: 1s;
   animation-fill-mode: both;
