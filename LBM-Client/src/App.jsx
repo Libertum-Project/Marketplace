@@ -37,6 +37,7 @@ import { setIsAdmin } from "../redux/reducer";
 import SupportCenter from "./components/SupportCenter/SupportCenter";
 import DetailSupport from "./components/DetailSupport/DetailSupport";
 import Cards from "../src/components/Cards/Cards";
+import BuyProperty from "./components/RealEstateDetail/BuyProperty";
 
 import IDO from "./components/IDO/IDO";
 function App() {
@@ -103,6 +104,14 @@ function App() {
             element={
               <div className="Page">
                 <RealEstateDetail />
+              </div>
+            }
+          />
+                    <Route
+            path={"/marketplace/buy/:id"}
+            element={
+              <div className="Page">
+                <BuyProperty />
               </div>
             }
           />
