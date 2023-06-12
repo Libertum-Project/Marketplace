@@ -34,12 +34,13 @@ import AdminMenu from "./components/Admin/AdminMenu/AdminMenu";
 import { useAccount } from "wagmi";
 import { getAdminByWallet, getUnapprovedProjects } from "../redux/actions";
 import { setIsAdmin } from "../redux/reducer";
-import ChatBot from "./components/ChatBot/ChatBot"
+import ChatBot from "./components/ChatBot/ChatBot";
 import Recommendations from "./components/ChatBot/Recommendations";
-import { useMediaQuery } from 'react-responsive';
+import { useMediaQuery } from "react-responsive";
 import SupportCenter from "./components/SupportCenter/SupportCenter";
 import DetailSupport from "./components/DetailSupport/DetailSupport";
 import Cards from "../src/components/Cards/Cards";
+import BuyProperty from "./components/RealEstateDetail/BuyProperty";
 import IDO from "./components/IDO/IDO";
 
 function App() {
@@ -110,6 +111,8 @@ function App() {
               </div>
             }
           />
+          <Route path="/marketplace/buy/:number" element={<BuyProperty />} />
+
           {/* <Route
             path={"/marketplace/:id"}
             element={
@@ -118,20 +121,19 @@ function App() {
               </div>
             }
           />
-            <Route
+
+           */}
+          <Route
             path={"/chatbot"}
             element={
-              <div className="conteinerChatBot"
-              style={{ display: "flex"}}
-              >
+              <div className="conteinerChatBot" style={{ display: "flex" }}>
                 <ChatBot />
-                <Recommendations/>
+                <Recommendations />
               </div>
             }
           />
-          <Route
+          <Route />
 
-          /> */}
           {/* <Route
             path={"/launchpad"}
             element={
