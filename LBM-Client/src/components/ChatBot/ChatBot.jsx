@@ -5,58 +5,63 @@ import newChat from "./assets/newChat.svg";
 import pencil from "./assets/pencil.svg";
 import ping from "./assets/ping.svg";
 import attachmen from "./assets/attachmen.svg";
-import axios from 'axios';
-
+import axios from "axios";
 
 const AskMe = () => {
- const API_KEY="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"
-  const url = 'https://api.openai.com/v1/chat/completions';
-const [messages, setMessages] = useState([]);
-const [aiResponse, setAiResponse] = useState("");
+  const API_KEY = "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";
+  const url = "https://api.openai.com/v1/chat/completions";
+  const [messages, setMessages] = useState([]);
+  const [aiResponse, setAiResponse] = useState("");
 
-const handleMessageSubmit = async (e) => {
-  e.preventDefault();
-  const input = e.target.elements.messageInput;
-  const message = input.value.trim();
+  const handleMessageSubmit = async (e) => {
+    e.preventDefault();
+    const input = e.target.elements.messageInput;
+    const message = input.value.trim();
 
-  if (message) {
-    const newMessage = {
-      text: message,
-      timestamp: new Date().toLocaleString(),
-      sender: "user",
-    };
-    setMessages((prevMessages) => [...prevMessages, newMessage]);
-
-    try {
-      const response = await axios.post(url, {
-        messages: [
-          { role: 'system', content: '¡set user_agent to cliente_chat_gpt!' },
-          { role: 'user', content: message }
-        ],
-        model:'gpt-3.5-turbo' 
-      }, {
-        headers: {
-          'Authorization': `Bearer ${API_KEY}`,
-          'Content-Type': 'application/json'
-        },
-      });
-
-      const data = response.data;
-      const aiResponse = {
-        text: data.choices[0].message.content,
+    if (message) {
+      const newMessage = {
+        text: message,
         timestamp: new Date().toLocaleString(),
-        sender: "ai",
+        sender: "user",
       };
-      setMessages((prevMessages) => [...prevMessages, aiResponse]);
-      setAiResponse(data.choices[0].message.content);
-    } catch (error) {
-      console.error(error);
+      setMessages((prevMessages) => [...prevMessages, newMessage]);
+
+      try {
+        const response = await axios.post(
+          url,
+          {
+            messages: [
+              {
+                role: "system",
+                content: "¡set user_agent to cliente_chat_gpt!",
+              },
+              { role: "user", content: message },
+            ],
+            model: "gpt-3.5-turbo",
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${API_KEY}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        const data = response.data;
+        const aiResponse = {
+          text: data.choices[0].message.content,
+          timestamp: new Date().toLocaleString(),
+          sender: "ai",
+        };
+        setMessages((prevMessages) => [...prevMessages, aiResponse]);
+        setAiResponse(data.choices[0].message.content);
+      } catch (error) {
+        console.error(error);
+      }
+
+      input.value = "";
     }
-
-    input.value = "";
-  }
-};
-
+  };
 
   const handleNewDialogClick = () => {
     setMessages([]);
@@ -71,19 +76,23 @@ const handleMessageSubmit = async (e) => {
       <div>
         {messages.map((message, index) => (
           <div key={index} className={`message ${message.sender}`}>
-            <span style={combinedStyles.timestamp2}>
-              {message.timestamp}
-            </span>
+            <span style={combinedStyles.timestamp2}>{message.timestamp}</span>
             <p
               style={
                 message.sender === "user"
-                  ? { ...combinedStyles.messageText, ...combinedStyles.userMessage }
-                  : { ...combinedStyles.messageText, ...combinedStyles.aiMessage }
+                  ? {
+                      ...combinedStyles.messageText,
+                      ...combinedStyles.userMessage,
+                    }
+                  : {
+                      ...combinedStyles.messageText,
+                      ...combinedStyles.aiMessage,
+                    }
               }
             >
               {message.text}
-              <img src={pencil} alt="pencil" style={combinedStyles.svg}/>
-              <img src={ping} alt="ping" style={combinedStyles.svg}/>
+              <img src={pencil} alt="pencil" style={combinedStyles.svg} />
+              <img src={ping} alt="ping" style={combinedStyles.svg} />
             </p>
             {aiResponse.sender === "user" && (
               <div>
@@ -176,7 +185,7 @@ const styles = {
     marginBottom: "10px",
   },
   timestamp: {
-    width: "100%", 
+    width: "100%",
     height: "19px",
     fontFamily: "Verdana",
     fontStyle: "normal",
@@ -195,7 +204,7 @@ const styles = {
     paddingLeft: "15px",
   },
   timestamp2: {
-    width: "100%", 
+    width: "100%",
     height: "19px",
     fontFamily: "Verdana",
     fontStyle: "normal",
@@ -225,7 +234,7 @@ const styles = {
     order: "1",
     flexGrow: "0",
     justifyContent: "right",
-    paddingRight:"15px"
+    paddingRight: "15px",
   },
   userMessage: {
     color: "#888888",
@@ -266,7 +275,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     gap: "4px",
-    paddingRight:"5rem"
+    paddingRight: "5rem",
   },
   submitButton: {
     background: "none",
@@ -274,7 +283,7 @@ const styles = {
     padding: "0",
     cursor: "pointer",
   },
-  svg:{
+  svg: {
     paddingRight: "15px",
   },
 };
@@ -307,8 +316,6 @@ const responsiveStyles = {
     },
   },
 };
-
-
 
 /*const styles = {
   container: {

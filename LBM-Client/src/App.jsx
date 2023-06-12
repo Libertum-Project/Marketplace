@@ -110,7 +110,7 @@ function App() {
               </div>
             }
           />
-          {/* <Route
+          <Route
             path={"/marketplace/:id"}
             element={
               <div className="Page" style={{ flexDirection: "column" }}>
@@ -131,7 +131,8 @@ function App() {
           />
           <Route
 
-          /> */}
+          />
+
           {/* <Route
             path={"/launchpad"}
             element={
