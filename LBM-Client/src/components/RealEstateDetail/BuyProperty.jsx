@@ -48,7 +48,7 @@ const BuyProperty = () => {
           <select className="select select-primary w-full max-w-x" onChange={handlePaymentMethodChange}>
             <option value="metamask">Metamask</option>
             <option value="bank-transfer">Bank Transfer</option>
-            <option value="other">Other</option>
+            <option value="other">Credit Card</option>
           </select>
 
           <p className='mt-8 text-left mb-2'>Payment Currency: </p>

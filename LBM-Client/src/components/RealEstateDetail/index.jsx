@@ -68,24 +68,42 @@ const Index = () => {
 
       <div className={css.info}>
         <h2>Entire rental unit hosted by Ghazal</h2>
+
+        
+          
        
-        {/* <p className={css.description}>
+       <p className=" text-xl text-left mt-3 mb-[-1rem]">ABOUT THE PROPERTY</p>
+        <p className={css.description}>
+          
           Come and stay in this superb duplex T2, in the heart of the historic
           center of Bordeaux. Spacious and bright, in a real Bordeaux building
           in exposed stone, you will enjoy all the charms of the city thanks to
           its ideal location. Close to many shops, bars and restaurants, you can
           access the apartment by tram A and C and bus routes 27 and 44. <br />{" "}
-         
-        </p> */}
+          
+        </p>
+        
         
       </div>
 
-      <div>
-        <h2 className=" text-3xl text-left mt-[-2rem]">ABOUT THE PROPERTY</h2>        
-      </div>
+     
 
       <div className="flex w-full ">
         <Aboutproperty 
+        id = {land.id} 
+        image = {land.image}
+        number = {land.number}                
+        value={land.price}
+        Tokenised={land.Tokenised}
+        PRY={land.PRY}
+        AvailablesNFT={land.AvailablesNFT}
+        PIT={land.PIT}
+        address={land.address}
+        location={land.location}
+        NFTPrice = {land.NFTPrice} 
+        amenities = {land.amenities}      
+        rooms = {land.rooms}
+        guests = {land.guests}
         
         
         />        
