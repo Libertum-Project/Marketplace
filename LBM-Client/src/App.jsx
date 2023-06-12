@@ -34,12 +34,15 @@ import AdminMenu from "./components/Admin/AdminMenu/AdminMenu";
 import { useAccount } from "wagmi";
 import { getAdminByWallet, getUnapprovedProjects } from "../redux/actions";
 import { setIsAdmin } from "../redux/reducer";
+import ChatBot from "./components/ChatBot/ChatBot"
+import Recommendations from "./components/ChatBot/Recommendations";
+import { useMediaQuery } from 'react-responsive';
 import SupportCenter from "./components/SupportCenter/SupportCenter";
 import DetailSupport from "./components/DetailSupport/DetailSupport";
 import Cards from "../src/components/Cards/Cards";
 import BuyProperty from "./components/RealEstateDetail/BuyProperty";
-
 import IDO from "./components/IDO/IDO";
+
 function App() {
   const dispatch = useDispatch();
   const [stateModal, setStateModal] = useState(false);
@@ -48,6 +51,7 @@ function App() {
   const { selectedIcon, walletPopUp, adminWallet, isAdmin } = useSelector(
     (state) => state.reducerCompleto
   );
+  const isMobile = useMediaQuery({ maxWidth: 768 });
   const AppLayout = () => (
     <>
       {/* <div className="bgImage">
@@ -119,7 +123,22 @@ function App() {
                 <Details />
               </div>
             }
-          /> */}
+          />
+            <Route
+            path={"/chatbot"}
+            element={
+              <div className="conteinerChatBot"
+              style={{ display: "flex"}}
+              >
+                <ChatBot />
+                <Recommendations/>
+              </div>
+            }
+          />
+          <Route
+
+          />
+
           {/* <Route
             path={"/launchpad"}
             element={
