@@ -9,54 +9,68 @@ import axios from 'axios';
 
 
 const AskMe = () => {
- const API_KEY="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"
+  const API_KEY = "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";
   const url = 'https://api.openai.com/v1/chat/completions';
-const [messages, setMessages] = useState([]);
-const [aiResponse, setAiResponse] = useState("");
+  const [messages, setMessages] = useState([]);
+  const [aiResponse, setAiResponse] = useState("");
 
-const handleMessageSubmit = async (e) => {
-  e.preventDefault();
-  const input = e.target.elements.messageInput;
-  const message = input.value.trim();
+  const expectedKeywords = ["keyword1", "keyword2", "keyword3"];
 
-  if (message) {
-    const newMessage = {
-      text: message,
-      timestamp: new Date().toLocaleString(),
-      sender: "user",
-    };
-    setMessages((prevMessages) => [...prevMessages, newMessage]);
+  const handleMessageSubmit = async (e) => {
+    e.preventDefault();
+    const input = e.target.elements.messageInput;
+    const message = input.value.trim();
 
-    try {
-      const response = await axios.post(url, {
-        messages: [
-          { role: 'system', content: '¡set user_agent to cliente_chat_gpt!' },
-          { role: 'user', content: message }
-        ],
-        model:'gpt-3.5-turbo' 
-      }, {
-        headers: {
-          'Authorization': `Bearer ${API_KEY}`,
-          'Content-Type': 'application/json'
-        },
-      });
+    if (message) {
+      const containsKeyword = expectedKeywords.some(keyword =>
+        message.toLowerCase().includes(keyword.toLowerCase())
+      );
 
-      const data = response.data;
-      const aiResponse = {
-        text: data.choices[0].message.content,
-        timestamp: new Date().toLocaleString(),
-        sender: "ai",
-      };
-      setMessages((prevMessages) => [...prevMessages, aiResponse]);
-      setAiResponse(data.choices[0].message.content);
-    } catch (error) {
-      console.error(error);
+      if (containsKeyword) {
+        const newMessage = {
+          text: message,
+          timestamp: new Date().toLocaleString(),
+          sender: "user",
+        };
+        setMessages((prevMessages) => [...prevMessages, newMessage]);
+
+        try {
+          const response = await axios.post(url, {
+            messages: [
+              { role: 'system', content: '¡set user_agent to cliente_chat_gpt!' },
+              { role: 'user', content: message }
+            ],
+            model:'gpt-3.5-turbo' 
+          }, {
+            headers: {
+              'Authorization': `Bearer ${API_KEY}`,
+              'Content-Type': 'application/json'
+            },
+          });
+
+          const data = response.data;
+          const aiResponse = {
+            text: data.choices[0].message.content,
+            timestamp: new Date().toLocaleString(),
+            sender: "ai",
+          };
+          setMessages((prevMessages) => [...prevMessages, aiResponse]);
+          setAiResponse(data.choices[0].message.content);
+        } catch (error) {
+          console.error(error);
+        }
+      } else {
+        const invalidResponse = {
+          text: "The message is not valid. It must contain at least one keyword.",
+          timestamp: new Date().toLocaleString(),
+          sender: "system",
+        };
+        setMessages((prevMessages) => [...prevMessages, invalidResponse]);
+      }
+
+      input.value = "";
     }
-
-    input.value = "";
-  }
-};
-
+  };
 
   const handleNewDialogClick = () => {
     setMessages([]);
