@@ -40,6 +40,7 @@ import { useMediaQuery } from 'react-responsive';
 import SupportCenter from "./components/SupportCenter/SupportCenter";
 import DetailSupport from "./components/DetailSupport/DetailSupport";
 import Cards from "../src/components/Cards/Cards";
+import BuyProperty from "./components/RealEstateDetail/BuyProperty";
 import IDO from "./components/IDO/IDO";
 
 function App() {
@@ -110,7 +111,12 @@ function App() {
               </div>
             }
           />
-          <Route
+          <Route 
+          path="/marketplace/buy/:number" 
+          element={<BuyProperty />} 
+          />
+
+          {/* <Route
             path={"/marketplace/:id"}
             element={
               <div className="Page" style={{ flexDirection: "column" }}>
