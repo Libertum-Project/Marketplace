@@ -25,7 +25,7 @@ const index = () => {
       <div className={css.container}>
         <Classes />
         <div className={css.filtersContainer}>
-          <h2>Dubai</h2>
+          <h2></h2>
           <div className={css.filters}>
             <div className={css.filtersSelect}>
               <select>
@@ -45,6 +45,10 @@ const index = () => {
             ? db.map((land) => (
                 <CardPreview
                   image={land.image}
+                  image2={land.image2}
+                  image3={land.image3}
+                  image4={land.image4}
+                  image5={land.image5}
                   key={land.number}
                   number={land.number}
                   price={land.price}
@@ -54,6 +58,13 @@ const index = () => {
                   rooms={land.rooms}
                   guests={land.guests}
                   type={land.type}
+                  address={land.address}
+                  location={land.location}
+                  PIT={land.PIT}
+                  PRY={land.PRY}
+                  tokenised={land.Tokenised}
+                  NFTPrice={land.NFTPrice}
+                  AvailablesNFT={land.AvailablesNFT}
                 />
               ))
             : null}

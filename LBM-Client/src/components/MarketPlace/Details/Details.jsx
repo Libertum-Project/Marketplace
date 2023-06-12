@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState, useMemo } from "react";
-import "./Details.scss";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
+import "./Details.scss";
 import star from "../assets/yellowStar.svg";
 import share from "../assets/share.svg";
 import whiteShare from "../assets/whiteShare.svg";
@@ -28,12 +28,13 @@ import Carousel from "./Carousel";
 import { useParams } from "react-router-dom";
 import img1 from "../assets/ImageCar.png";
 import img2 from "../assets/ImageCar2.png";
+import Classes from "../Classes/Classes";
 import MobileCarousel from "./MobileCarousel";
 import { info, column, dataReducer, columnsReducer } from "./data.js";
 import Slider from "../../../helpers/Silder";
 import Footer from "../../RealEstates/Footer/Footer";
 
-export default function Details() {
+export default function Details(props) {
   const navigate = useNavigate();
   const { isAuthenticated, isLoading } = useAuth0();
 
@@ -87,7 +88,9 @@ export default function Details() {
     !isLoading && (
       <div className="details">
         <Modal isOpen={isOpenModal} closeModal={closeModal} number={id} />
-
+        <div className="detailClasses">
+          <Classes />
+        </div>
         <div className="mobileUpperControls">
           <a href="/marketplace">
             <img src={goBack} alt="go back" />
@@ -110,7 +113,7 @@ export default function Details() {
           <div className="detailsHeader">
             <div className="detailsTitle">
               <div className="groupTitle">
-                <h1>Bordeax Getaway</h1>
+                <h1>{props.address}</h1>
                 <img src={avatar} alt="avatar pic" className="avatarMobile" />
               </div>
               <div className="detailsSubtitle">
@@ -152,10 +155,10 @@ export default function Details() {
               <img src={image3} alt="other image" className="item three" />
               <img src={image4} alt="other image" className="items four" />
               <img src={image5} alt="other image" className="items five" />
-              <button className="showPhotosBtn" onClick={openGallery}>
-                <img src={iconPic} alt="four squares" />
-                <h1>Show all photos</h1>
-              </button>
+              {/* <button className="showPhotosBtn" onClick={openGallery}>
+              <img src={iconPic} alt="four squares" />
+              <h1>Show all photos</h1>
+            </button> */}
             </div>
           </div>
 
