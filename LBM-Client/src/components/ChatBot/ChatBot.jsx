@@ -8,7 +8,7 @@ import attachmen from "./assets/attachmen.svg";
 import axios from "axios";
 
 const AskMe = () => {
-  const API_KEY = "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";
+  const API_KEY =import.meta.env.VITE_GPT_KEY
   const url = "https://api.openai.com/v1/chat/completions";
   const [messages, setMessages] = useState([]);
   const [aiResponse, setAiResponse] = useState("");
