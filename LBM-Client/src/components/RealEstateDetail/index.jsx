@@ -22,9 +22,6 @@ const Index = () => {
   const number = useParams();
   const land = db.find((item) => item.number === number.id);
 
-
-
-  
     const [sticky, setSticky] = useState(false);
   
     useEffect(() => {

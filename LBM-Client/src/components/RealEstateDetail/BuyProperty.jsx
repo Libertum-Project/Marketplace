@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, Link, useParams } from 'react-router-dom';
-// esta es la base de datos falsa  
-import db from "../RealEstates/fakedb/db.json"; 
-
+import db from "../RealEstates/fakedb/db.json";
 import BankTransfer from './BankTransfer';
 import CreditCard from './CreditCard';
+import ConnectWallet from '../ConnectWallet/ConnectWallet';
+import { useWeb3React } from '@web3-react/core';
+
 
 const BuyProperty = () => {
   const { number } = useParams();
@@ -12,6 +13,10 @@ const BuyProperty = () => {
 
   const [rangeValue, setRangeValue] = useState(40);
   const [paymentMethod, setPaymentMethod] = useState('');
+  // const [isConnected, setIsConnected] = useState(false);
+
+  const { active } = useWeb3React(); // Obtener el estado de la conexión a MetaMask
+
 
   useEffect(() => {
     if (paymentMethod === "bank-transfer") {
@@ -20,11 +25,14 @@ const BuyProperty = () => {
     if (paymentMethod === "credit-card") {
       window.my_modal_4.showModal();
     }
-    if (paymentMethod === "metamask") {
+    if (paymentMethod === "metamask" && !active) { // Verificar si el método de pago es "Metamask" y no está conectado
       window.my_modal_5.showModal();
     }
-  }, [paymentMethod]);
+  }, [paymentMethod, active]);
 
+  // useEffect(() => {
+  //   setIsConnected(active); // Establecer el estado isConnected según el estado de la conexión a MetaMask
+  // }, [active]);
 
   const handleRangeChange = (event) => {
     setRangeValue(event.target.value);
@@ -32,19 +40,20 @@ const BuyProperty = () => {
 
   const priceNFT = parseInt(land.NFTPrice);
   const totalPrice = rangeValue * priceNFT;
-
-  const availables = land.AvailablesNFT
+  const availables = land.AvailablesNFT;
 
   const handlePaymentMethodChange = (event) => {
     setPaymentMethod(event.target.value);
   };
 
-
+  // const handleConnectWallet = () => {
+  //   setIsConnected(true);
+  // };
 
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row">
-        <div >
+        <div>
           <h1 className="text-5xl font-bold mt-10">{land.address} | {land.location}</h1>
           {/* <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p> */}
 
@@ -65,6 +74,7 @@ const BuyProperty = () => {
           {/* -----------------------------PAYMENT METHOD---------------------------------- */}                     
           <p className='mt-8 text-left mb-2'>Payment Method: </p>
           <select className="select select-primary w-full max-w-x" onChange={handlePaymentMethodChange}>
+            <option value="chose">Select payment method</option>
             <option value="metamask">Metamask</option>
             <option value="bank-transfer">Bank Transfer</option>
             <option value="credit-card">Credit Card</option>
@@ -80,7 +90,7 @@ const BuyProperty = () => {
           </dialog>
         </>
       )}
-      {paymentMethod === "credit-card" && (
+          {paymentMethod === "credit-card" && (
         <>
           
           <dialog id="my_modal_4" className="modal">
@@ -91,17 +101,25 @@ const BuyProperty = () => {
           </dialog>
         </>
       )}
-      {paymentMethod === "metamask" && (
-        <>
-          <dialog id="my_modal_5" className="modal">
-            <form method="dialog" className="modal-box">
-              <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-              <h3 className="font-bold text-lg">ESTE ES EL MODAL DE METAMASK</h3>
-              <p className="py-4">Press ESC key or click on ✕ button to close</p>
-            </form>
-          </dialog>
-        </>
-      )}
+         
+
+         {paymentMethod === "metamask" && (
+            <>
+              <dialog id="my_modal_5" className="modal">
+                <form method="dialog" className="modal-box">
+                  <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>             
+                  {active ? (
+                    <p>Already connected to MetaMask</p>
+                  ) : (
+                    <div>
+                     
+                    </div>
+                  )}
+                </form>
+              </dialog>
+            </>
+          )}
+      
 
         {/* -----------------------------PAYMENT CURRENCY---------------------------------- */}
           <p className='mt-8 text-left mb-2'>Payment Currency: </p>
