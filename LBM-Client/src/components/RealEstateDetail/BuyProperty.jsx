@@ -17,6 +17,8 @@ const BuyProperty = () => {
   const priceNFT = parseInt(land.NFTPrice);
   const totalPrice = rangeValue * priceNFT;
 
+  const availables = land.AvailablesNFT
+
   const handlePaymentMethodChange = (event) => {
     setPaymentMethod(event.target.value);
   };
@@ -34,7 +36,7 @@ const BuyProperty = () => {
           <input
             type="range"
             min="0"
-            max="100"
+            max={availables}
             value={rangeValue}
             className="range w-96"
             onChange={handleRangeChange}
@@ -61,9 +63,10 @@ const BuyProperty = () => {
           <p className='text-left'>Processing fee: $0. 001 USDC</p>
           </div>
 
-
           <button className='uppercase text-2xl bg-primary rounded-full ml-52
-           h-12 w-96 mt-4 flex items-center justify-center '>Total: $ {totalPrice}</button>  
+           h-12 w-96 mt-4 flex items-center justify-center '>Buy: $ {totalPrice}</button>  
+
+           {/* Agregar pop up que diga "congratulations, you just purchased this property property adrress" */}
 
 
         </div>

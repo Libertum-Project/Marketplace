@@ -58,7 +58,7 @@ const Aboutproperty = (props) => {
 
         {activeTab === 1 && (
           <div>        
-          <table className="table">
+          <table className="table mt-6">
             <tbody>
               {/* row 1 */}
               <tr>
@@ -73,7 +73,21 @@ const Aboutproperty = (props) => {
                       {/* row 3 */}
                       <tr>
                           <th>Adress: </th>
-                          <td>{address} | {location}</td>
+                          <td>{address} | {location}
+
+                          <div>
+                          <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3110.103122417797!2d-90.2111142248339!3d38.7842702533725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87df4f23d1cc64ad%3A0x37845d3643065482!2sCove%20Ln%2C%20Spanish%20Lake%2C%20MO%2063138%2C%20EE.%20UU.!5e0!3m2!1ses-419!2sar!4v1686662781964!5m2!1ses-419!2sar"
+                            width="400"
+                            height="250"
+                            style={{ border: '0' }}
+                            allowFullScreen
+                            loading="lazy"
+                            title="Map">
+                          </iframe>
+                          </div>
+                          
+                          </td>
                       </tr>
 
                       <tr>
@@ -109,7 +123,7 @@ const Aboutproperty = (props) => {
 
               <tr>
                 <th>Passive Income per token</th>
-                <td>{PIT} % </td> 
+                <td>{PIT} % / year </td> 
               </tr>
 
               <tr>
