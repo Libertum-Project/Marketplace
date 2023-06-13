@@ -15,40 +15,36 @@ const Recommendations = () => {
         <img src={threepoints} alt="threepoints" style={combinedStyles.threepoints} />
       </h2>
       <h1 style={combinedStyles.headerStyles}>
-        Lorem ipsum dolor sit amet consectetur. Adipiscing eget cursus sit
-        scelerisque mi feugiat cras lobortis leo.
+        Hi there 👋
+        How can we help?.
       </h1>
       <div style={combinedStyles.containerText}>
         <div style={combinedStyles.item}>
         <img src={apple} alt="apple" style={combinedStyles.svgs} />
-        <h1 style={combinedStyles.titleh1}>Lorem</h1>
+        <h1 style={combinedStyles.titleh1}>Us</h1>
         <p style={combinedStyles.p}>
-          Lorem ipsum dolor sit amet consectetur. Pulvinar habitant ut tempus
-          fusce risus.
+          What is EnvWise?.
         </p>
         </div>
         <div style={combinedStyles.item}>
         <img src={image} alt="image" style={combinedStyles.svgs} />
-        <h1 style={combinedStyles.titleh1}>Lorem</h1>
+        <h1 style={combinedStyles.titleh1}>Calculator</h1>
         <p style={combinedStyles.p}>
-            Lorem ipsum dolor sit amet consectetur. Vestibulum et cursus sed
-            vitae dignissim egestas.
+            How can I reduce my carbon footprint?.
           </p>
         </div>
         <div style={combinedStyles.item}>
         <img src={dobleT} alt="dobleT" style={combinedStyles.svgs}/>
-        <h1 style={combinedStyles.titleh1}>Lorem</h1>
+        <h1 style={combinedStyles.titleh1}>Ethereum</h1>
         <p style={combinedStyles.p}>
-            Lorem ipsum dolor sit amet consectetur. Feugiat aliquet justo nunc
-            sollicitudin.
+           How do I receive my rental income?.
           </p>
         </div>
         <div style={combinedStyles.item}>
         <img src={moon} alt="moon" style={combinedStyles.svgs}/>
-        <h1 style={combinedStyles.titleh1}>Lorem</h1>
+        <h1 style={combinedStyles.titleh1}>More</h1>
           <p style={combinedStyles.p}>
-            Lorem ipsum dolor sit amet consectetur. Quisque etiam vitae accumsan
-            dolor condimentum libero gravida tempus.
+            How to Sell and Buy Property Tokens on Envwise.
           </p>
         </div>
       </div>

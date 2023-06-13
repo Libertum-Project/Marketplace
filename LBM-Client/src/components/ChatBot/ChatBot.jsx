@@ -14,7 +14,7 @@ const AskMe = () => {
   const [messages, setMessages] = useState([]);
   const [aiResponse, setAiResponse] = useState("");
 
-  const expectedKeywords = ["keyword1", "keyword2", "keyword3"];
+  const expectedKeywords = ["green-tech", "smarter pathways", "greener properties", "Property", "learning management system", "zero-emission standards", "property tokenization system", "F-NFT", "sustainability", "renewable energy", "carbon footprint", "energy efficiency", "environmental impact", "green buildings", "sustainable development", "envwise", "rental", "income","tokens"];
 
   const handleMessageSubmit = async (e) => {
     e.preventDefault();
