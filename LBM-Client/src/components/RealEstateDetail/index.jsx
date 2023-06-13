@@ -15,12 +15,34 @@ import CardPreview from "./CardPreviewDetails.jsx";
 import Footer from "../RealEstates/Footer/Footer.jsx";
 import Aboutproperty from "./Aboutproperty";
 import Buy from "./Buy";
-
+import { useEffect, useState } from "react";
 
 const Index = () => {
   const navigate = useNavigate();
   const number = useParams();
   const land = db.find((item) => item.number === number.id);
+
+    const [sticky, setSticky] = useState(false);
+  
+    useEffect(() => {
+      const handleScroll = () => {
+        const scrollPosition = window.scrollY;
+        const threshold = 200; // Punto de desplazamiento donde se fija el componente
+  
+        if (scrollPosition > threshold) {
+          setSticky(true);
+        } else {
+          setSticky(false);
+        }
+      };
+      window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+      
 
   return (
     <div className={css.details}>
@@ -88,7 +110,9 @@ const Index = () => {
 
      
 
-      <div className="flex w-full ">
+      <div className="flex w-full  ">
+
+        <div className="flex-grow">
         <Aboutproperty 
         id = {land.id} 
         image = {land.image}
@@ -105,10 +129,10 @@ const Index = () => {
         rooms = {land.rooms}
         guests = {land.guests}
         
-        
-        />        
+        /> 
+        </div>       
        
-       <div className="fixed bottom-4 right-16">
+       <div className={`fixed bottom-[-16rem] right-16 ${sticky ? 'sticky' : ''}`}>
        
        <Buy
           id = {land.id} 
