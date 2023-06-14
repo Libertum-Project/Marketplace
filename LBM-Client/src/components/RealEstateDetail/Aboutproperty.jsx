@@ -174,11 +174,11 @@ const Aboutproperty = (props) => {
                   <tbody>
                     <tr>
                         <th>Current Emission</th>
-                        <td>30</td>
+                        <td>943 kWh per month</td>
                     </tr>
                     <tr>
                         <th>Expected Emission Level</th>
-                        <td>{value}</td>
+                        <td>456 kWh per month</td>
                     </tr>
             </tbody>
           </table>
