@@ -33,18 +33,21 @@ function PopUpMarket() {
             <p>Buying and selling houses has never been so easy</p>
           </div>
         </a>
-        <div className={style.buttonSoon}>
+
+        {/* <div className={style.buttonSoon}>
+        <a href="/comingsoon">
           <div className={style.icon}>
             <BsFileEarmarkPlus />
           </div>
           <div className={style.text}>
-            <div className={style.title}>
+            <div className={style.title}>             
               <h1>Decentralised Loans</h1> <IoArrowForward />
             </div>
             <p>The ability to passively earn interest through DeFi 2.0 loans</p>
           </div>
-        </div>
-        <a href="/IREO" className={style.button}>
+          </a>
+        </div> */}
+        <a href="/comingsoon" className={style.button}>
           <div className={style.icon}>
             <TbVector />
           </div>
@@ -55,17 +58,17 @@ function PopUpMarket() {
             <p>Join and be part of the new real estate projects</p>
           </div>
         </a>
-        {/* <a href="/launchpad" className={style.button2}>
+        <a href="/comingsoon" className={style.button2}>
           <div className={style.icon}>
             <IoRocketSharp />
           </div>
           <div className={style.text}>
             <div className={style.title}>
-              <h1>Launchpad</h1> <IoArrowForward />
+              <h1>Descentralised Loans</h1> <IoArrowForward />
             </div>
-            <p>Drive high-value web3 projects</p>
+            <p>he ability to passively earn interest through DeFi 2.0 loans</p>
           </div>
-        </a> */}
+        </a>
 
         <a className={style.buttonMore}>
           <div className={style.icon}>
