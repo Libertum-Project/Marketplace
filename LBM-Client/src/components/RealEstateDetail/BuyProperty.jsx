@@ -3,6 +3,8 @@ import { useLocation, Link, useParams } from 'react-router-dom';
 import db from "../RealEstates/fakedb/db.json";
 import BankTransfer from './BankTransfer';
 import CreditCard from './CreditCard';
+import ConnectWallet from '../ConnectWallet/ConnectWallet';
+import { useWeb3React } from '@web3-react/core';
 
 
 const BuyProperty = () => {
@@ -10,9 +12,11 @@ const BuyProperty = () => {
   const land = db.find((item) => item.number === number);
 
   const [rangeValue, setRangeValue] = useState(40);
-  const [paymentMethod, setPaymentMethod] = useState(''); 
+  const [paymentMethod, setPaymentMethod] = useState('');
+  // const [isConnected, setIsConnected] = useState(false);
 
   const { active } = useWeb3React(); // Obtener el estado de la conexión a MetaMask
+
 
   useEffect(() => {
     if (paymentMethod === "bank-transfer") {
@@ -26,6 +30,9 @@ const BuyProperty = () => {
     }
   }, [paymentMethod, active]);
 
+  // useEffect(() => {
+  //   setIsConnected(active); // Establecer el estado isConnected según el estado de la conexión a MetaMask
+  // }, [active]);
 
   const handleRangeChange = (event) => {
     setRangeValue(event.target.value);
@@ -39,7 +46,9 @@ const BuyProperty = () => {
     setPaymentMethod(event.target.value);
   };
 
-
+  // const handleConnectWallet = () => {
+  //   setIsConnected(true);
+  // };
 
   return (
     <div className="hero min-h-screen bg-base-200">
@@ -99,13 +108,7 @@ const BuyProperty = () => {
               <dialog id="my_modal_5" className="modal">
                 <form method="dialog" className="modal-box">
                   <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>             
-                  {active ? (
-                    <p>Already connected to MetaMask</p>
-                  ) : (
-                    <div>
-                     <p>You need to connect to MetaMask </p>
-                    </div>
-                  )}
+                  <p>Already conected to metamask</p>
                 </form>
               </dialog>
             </>
