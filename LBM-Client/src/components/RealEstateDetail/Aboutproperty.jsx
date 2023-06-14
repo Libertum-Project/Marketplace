@@ -15,7 +15,7 @@ const Aboutproperty = (props) => {
       setActiveTab(tabIndex);
     };
     
-    const passiveIncomePerYear = (PIT * rangeValue).toFixed(2);
+    const passiveIncomePerYear = ((PIT * rangeValue)/10).toFixed(2);
     const passiveIncomePerMonth = (passiveIncomePerYear / 12).toFixed(2);
 
     return (

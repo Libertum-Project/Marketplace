@@ -112,7 +112,7 @@ const BuyProperty = () => {
                     <p>Already connected to MetaMask</p>
                   ) : (
                     <div>
-                     
+                     <p>You need to connect to MetaMask </p>
                     </div>
                   )}
                 </form>
