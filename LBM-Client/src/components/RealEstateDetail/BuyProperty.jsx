@@ -4,7 +4,6 @@ import db from "../RealEstates/fakedb/db.json";
 import BankTransfer from './BankTransfer';
 import CreditCard from './CreditCard';
 import ConnectWallet from '../ConnectWallet/ConnectWallet';
-import { useWeb3React } from '@web3-react/core';
 
 
 const BuyProperty = () => {
@@ -15,7 +14,6 @@ const BuyProperty = () => {
   const [paymentMethod, setPaymentMethod] = useState('');
   // const [isConnected, setIsConnected] = useState(false);
 
-  const { active } = useWeb3React(); // Obtener el estado de la conexión a MetaMask
 
 
   useEffect(() => {
@@ -25,10 +23,10 @@ const BuyProperty = () => {
     if (paymentMethod === "credit-card") {
       window.my_modal_4.showModal();
     }
-    if (paymentMethod === "metamask" && !active) { // Verificar si el método de pago es "Metamask" y no está conectado
+    if (paymentMethod === "metamask") { // Verificar si el método de pago es "Metamask" y no está conectado
       window.my_modal_5.showModal();
     }
-  }, [paymentMethod, active]);
+  }, [paymentMethod]);
 
   // useEffect(() => {
   //   setIsConnected(active); // Establecer el estado isConnected según el estado de la conexión a MetaMask
