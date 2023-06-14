@@ -3,18 +3,16 @@ import { useLocation, Link, useParams } from 'react-router-dom';
 import db from "../RealEstates/fakedb/db.json";
 import BankTransfer from './BankTransfer';
 import CreditCard from './CreditCard';
-import ConnectWallet from '../ConnectWallet/ConnectWallet';
+
 
 const BuyProperty = () => {
   const { number } = useParams();
   const land = db.find((item) => item.number === number);
 
   const [rangeValue, setRangeValue] = useState(40);
-  const [paymentMethod, setPaymentMethod] = useState('');
-  // const [isConnected, setIsConnected] = useState(false);
+  const [paymentMethod, setPaymentMethod] = useState(''); 
 
   const { active } = useWeb3React(); // Obtener el estado de la conexión a MetaMask
-
 
   useEffect(() => {
     if (paymentMethod === "bank-transfer") {
@@ -28,9 +26,6 @@ const BuyProperty = () => {
     }
   }, [paymentMethod, active]);
 
-  // useEffect(() => {
-  //   setIsConnected(active); // Establecer el estado isConnected según el estado de la conexión a MetaMask
-  // }, [active]);
 
   const handleRangeChange = (event) => {
     setRangeValue(event.target.value);
@@ -44,9 +39,7 @@ const BuyProperty = () => {
     setPaymentMethod(event.target.value);
   };
 
-  // const handleConnectWallet = () => {
-  //   setIsConnected(true);
-  // };
+
 
   return (
     <div className="hero min-h-screen bg-base-200">
