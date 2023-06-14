@@ -4,8 +4,6 @@ import db from "../RealEstates/fakedb/db.json";
 import BankTransfer from './BankTransfer';
 import CreditCard from './CreditCard';
 import ConnectWallet from '../ConnectWallet/ConnectWallet';
-import { useWeb3React } from '@web3-react/core';
-
 
 const BuyProperty = () => {
   const { number } = useParams();
