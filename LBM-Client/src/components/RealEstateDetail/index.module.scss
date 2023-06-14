@@ -1,7 +1,6 @@
 .details {
   position: relative;
-  padding: 0rem 5rem 0rem 5rem;
-
+  padding: 0rem 5rem 6rem 5rem;
 
   .buy-container {
     position: fixed;
@@ -9,7 +8,6 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
-  
 }
 
 .detailsImage {
@@ -228,8 +226,6 @@
   z-index: 9999;
 }
 
-
-
 .tabs-container {
   display: flex;
   flex-direction: column;
@@ -259,7 +255,7 @@
 
 .container {
   margin-bottom: 4px;
-  border-bottom: 1px solid #C4C4C4;
+  border-bottom: 1px solid #c4c4c4;
   overflow: hidden;
 }
 
@@ -288,21 +284,6 @@
     border-color: #000000;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @media screen and (min-width: 740px) {
   .detailsImage,
@@ -354,7 +335,6 @@
   .mosaic img {
     flex: 1;
     max-width: 50%;
-    
   }
 
   .otherImages {
@@ -367,7 +347,6 @@
 
   .otherImages img {
     width: 150px;
-   
   }
 
   .showAll {
@@ -474,6 +453,3 @@
     margin: 0 auto;
   }
 }
-
-
-
