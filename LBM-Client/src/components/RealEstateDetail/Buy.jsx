@@ -7,7 +7,7 @@ const Buy = (props) => {
     <div className="ml-3">
       <div className="card card-compact w-96 bg-base-100 bg-opacity-80 shadow-xl">
         <figure>
-          <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cmVhbCUyMGVzdGF0ZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80" alt="Shoes" />
+          <img src={image} alt="image1" />
         </figure>
         <div className="card-body">
           <h2 className="card-title">{address} - {location}</h2>
