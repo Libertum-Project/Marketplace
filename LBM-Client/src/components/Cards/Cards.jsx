@@ -1,21 +1,15 @@
 import React from 'react';
 import styles from '../Cards/Cards.module.scss';
 import cardsData from '../Cards/cards.json';
-import NavBar from '../Landing/NavBar/NavBar';
-import Footer from '../Landing/Footer/Footer';
 import SearchBar from '../SearchBar/SearchBar';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-
 
 const Cards = () => {
 
   const [filteredCards, setFilteredCards] = useState([]);
     return (      
     <div className={styles.supcontainer}>
-     <nav>
-        <NavBar />
-      </nav>
       <div className={styles.content}>
         <h1 className={styles.h1}>Support Center</h1>
         <span>
@@ -57,9 +51,6 @@ const Cards = () => {
           </div>
         ))}
       </div>
-      <footer>
-        <Footer />
-      </footer>
        </div>
     );
   };

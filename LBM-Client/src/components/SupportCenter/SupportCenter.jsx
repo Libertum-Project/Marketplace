@@ -1,6 +1,4 @@
 import React from "react";
-import NavBar from "../Landing/NavBar/NavBar";
-import Footer from "../Landing/Footer/Footer";
 import styles from "./SupportCenter.module.scss";
 import {Link} from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
@@ -11,9 +9,6 @@ export default function SupportCenter() {
 
   return (
     <div className={styles.supcontainer}>
-      <nav>
-        <NavBar />
-      </nav>
       <div className={styles.content}>
         <h1 className={styles.h1}>Support Center</h1>
         <span>
@@ -38,9 +33,6 @@ export default function SupportCenter() {
         </div>
        
       </div>
-      <footer>
-        <Footer />
-      </footer>
     </div>
   );
 }

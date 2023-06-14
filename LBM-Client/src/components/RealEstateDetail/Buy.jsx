@@ -18,7 +18,7 @@ const Buy = (props) => {
             <Link
               to={`/marketplace/buy/${number}`}
             >
-              <button className="btn btn-wide bg-orange-500 mb-4 flex items-center justify-center">Buy Now</button>
+              <button className="btn content-center btn-wide bg-primary flex items-center justify-center">Buy Now</button>
             </Link>
           </div>
         </div>
