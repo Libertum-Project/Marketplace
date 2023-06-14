@@ -63,7 +63,7 @@ const CreditCard = () => {
 
           
           <div className="card-actions justify-end">         
-            <button className="btn bg-orange-500" onClick={()=>window.my_modal_3.showModal()}>Add Credit Card</button>
+            <button className="btn bg-primary content-center" onClick={()=>window.my_modal_3.showModal()}>Add Credit Card</button>
             <dialog id="my_modal_3" className="modal">
               <form method="dialog" className="modal-box">
                 <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>

@@ -10,8 +10,8 @@ const BankTransfer = () => {
             <h2 className="card-title">Add bank account</h2>
             <p>This will add an bank account (ACH) to your saved payment methods</p>
             <div className="card-actions justify-end mt-8">
-            <button className="btn bg-orange-500">Accept</button>  {/* this should redirect to another site in order to add a bank account */}            
-            <button className="btn bg-orange-300">Go Back</button>
+            <button className="btn bg-primary content-center">Accept</button>  {/* this should redirect to another site in order to add a bank account */}            
+            <button className="btn bg-primary content-center">Go Back</button>
             </div>
         </div>
         </div>

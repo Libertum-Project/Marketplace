@@ -42,6 +42,7 @@ import DetailSupport from "./components/DetailSupport/DetailSupport";
 import Cards from "../src/components/Cards/Cards";
 import BuyProperty from "./components/RealEstateDetail/BuyProperty";
 import IDO from "./components/IDO/IDO";
+import Footer from "./components/RealEstates/Footer/Footer.jsx";
 
 function App() {
   const dispatch = useDispatch();
@@ -166,6 +167,9 @@ function App() {
               </div>
             }
           />
+          <Route path="/support" element={<SupportCenter />} />
+          <Route path="/detail/:id" element={<DetailSupport />} />
+          <Route path="/cards" element={<Cards />} />
           {/* <Route
             path="/realestate"
             element={
@@ -180,10 +184,8 @@ function App() {
         <Route path="/swap" element={<CoomingSoon />} />
         <Route path="/comingsoon" element={<CoomingSoon />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="/support" element={<SupportCenter />} />
-        <Route path="/detail/:id" element={<DetailSupport />} />
-        <Route path="/cards" element={<Cards />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
