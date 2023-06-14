@@ -20,8 +20,64 @@
     "PRY": 11.18,
     "Tokenised": 48,
     "NFTPrice": 8,
-    "AvailablesNFT": 1200
+    "AvailablesNFT": 1200,
+    "map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3110.103122417797!2d-90.2111142248339!3d38.7842702533725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87df4f23d1cc64ad%3A0x37845d3643065482!2sCove%20Ln%2C%20Spanish%20Lake%2C%20MO%2063138%2C%20EE.%20UU.!5e0!3m2!1ses-419!2sar!4v1686662781964!5m2!1ses-419!2sar",
+    "description": "Come and stay in this superb duplex T2, in the heart of the historic center of Bordeaux. Spacious and bright, in a real Bordeaux building in exposed stone, you will enjoy all the harms of the city thanks to its ideal location. Close to many shops, bars and restaurants, you can    access the apartment by tram A and C and bus routes 27 and 44"
+    },
+  {
+    "id": "380",
+    "image": "/public/images/foto1.jpg",
+    "image2": "/public/images/foto2.jpg",
+    "image3": "/public/images/foto3.jpg",
+    "image4": "/public/images/foto4.jpg",
+    "image5": "/public/images/foto5.jpg",
+    "number": "380",
+    "price": 1012960,
+    "review": "",
+    "totalreviews": null,
+    "amenities": "kitchen",
+    "rooms": "3",
+    "guests": "",
+    "type": "Entire",
+    "address": "21 High St",
+    "location": "Grays RM17 6NB, United Kingdom",
+    "PIT": 3,
+    "PRY": null,
+    "Tokenised": 40,
+    "NFTPrice": 63.36,
+    "AvailablesNFT": 6400,
+    "map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2484.952346587928!2d0.3231098!3d51.477388999999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8b70156422e1b%3A0x4589b3bd45b5cfda!2s21%20High%20St%2C%20Grays%20RM17%206NB%2C%20Reino%20Unido!5e0!3m2!1ses-419!2sar!4v1686767840529!5m2!1ses-419!2sa",
+    "description": "The property is of solid brick construction and sit beneath butterfly main roofs, with a central valley, served by replacement interlocking concrete roof tiles. Parapet front walls mask the main roof elevations from the roadside. The front elevations are served by a plate glass shop frontage to the High Street with inset doors and traditional shop fascias over. ",
+    "more": "Mortgage / Bank Owned: $ 443.485",
+    "more2": "Is currently utilising a rear secure storage area which appears to be accessed from the shopping centre which sits to the immediate rear and now, effectively, adjoins the extended subject premises. There is additional production space to the first floor together with ancillary office, staff welfare and storage accommodation. The property benefits from internal, 5 person maximum, lift access from ground to first floor level. The front shop fit out is fairly typical with suspended ceilings and inset lighting. It is also served by air handling units providing both space heating and cooling. Further air handling units are located within the principle first floor accommodation. The various floor and wall coverings throughout are appropriate considering the premises' use. The rear commercial bakery is fully fitted out with uPVC lined walls and commercial floor coverings. Free standing ovens, commercial catering equipment, preparation tables and cold stores further serve the current bakery operation. The property is served by DDA compliant male/female WC's and basic kitchenette facilities. The ancillary accommodation serving the property is considered appropriate and fitted out accordingly with good natural light to the various work and office areas. The property appears to benefit from demised rear parking accessed again via the shopping centre service yard"
   },
+  {
+    "id": "450",
+    "image": "/public/images/foto3.jpg",
+    "image2": "/public/images/foto2.jpg",
+    "image3": "/public/images/foto1.jpg",
+    "image4": "/public/images/foto4.jpg",
+    "image5": "/public/images/foto5.jpg",
+    "number": "550",
+    "price": null,
+    "review": "",
+    "totalreviews": null,
+    "amenities": "",
+    "rooms": "",
+    "guests": "",
+    "type": "",
+    "address": "23 High St",
+    "location": "Grays RM17 6NB, United Kingdom",
+    "PIT": 3,
+    "PRY": null,
+    "Tokenised": 40,
+    "NFTPrice": 63.36,
+    "AvailablesNFT": 6400,
+    "map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2484.9514742025513!2d0.3207240759388657!3d51.477405012894955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8b703dbc3c76f%3A0x1abdbf588181a26b!2s23%20High%20St%2C%20Grays%20RM17%206NB%2C%20Reino%20Unido!5e0!3m2!1ses-419!2sar!4v1686770687331!5m2!1ses-419!2sar",
+    "description": "The property is of solid brick construction and sit beneath butterfly main roofs, with a central valley, served by replacement interlocking concrete roof tiles. Parapet front walls mask the main roof elevations from the roadside. The front elevations are served by a plate glass shop frontage to the High Street with inset doors and traditional shop fascias over. ",
+    "more": "Mortgage / Bank Owned: $ 443.485"
+  },
+    
   {
     "id": "2",
     "image": "https://images.unsplash.com/photo-1592595896551-12b371d546d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
@@ -39,7 +95,9 @@
     "PRY": "11.18%",
     "Tokenised": "56%",
     "NFTPrice": "55.59",
-    "AvailablesNFT": 1400
+    "AvailablesNFT": 1400,
+    "map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3110.103122417797!2d-90.2111142248339!3d38.7842702533725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87df4f23d1cc64ad%3A0x37845d3643065482!2sCove%20Ln%2C%20Spanish%20Lake%2C%20MO%2063138%2C%20EE.%20UU.!5e0!3m2!1ses-419!2sar!4v1686662781964!5m2!1ses-419!2sar",
+    "description": "Come and stay in this superb duplex T2, in the heart of the historic center of Bordeaux. Spacious and bright, in a real Bordeaux building in exposed stone, you will enjoy all the harms of the city thanks to its ideal location. Close to many shops, bars and restaurants, you can    access the apartment by tram A and C and bus routes 27 and 44"
   },
   {
     "id": "3",
@@ -58,7 +116,9 @@
     "PRY": "11.18%",
     "Tokenised": "56%",
     "NFTPrice": "55.59",
-    "AvailablesNFT": 1400
+    "AvailablesNFT": 1400,
+    "map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3110.103122417797!2d-90.2111142248339!3d38.7842702533725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87df4f23d1cc64ad%3A0x37845d3643065482!2sCove%20Ln%2C%20Spanish%20Lake%2C%20MO%2063138%2C%20EE.%20UU.!5e0!3m2!1ses-419!2sar!4v1686662781964!5m2!1ses-419!2sar",
+    "description": "Come and stay in this superb duplex T2, in the heart of the historic center of Bordeaux. Spacious and bright, in a real Bordeaux building in exposed stone, you will enjoy all the harms of the city thanks to its ideal location. Close to many shops, bars and restaurants, you can    access the apartment by tram A and C and bus routes 27 and 44"
   },
   {
     "id": "4",
@@ -73,11 +133,13 @@
     "type": "Entire Home",
     "address": "102 Cove Lane",
     "location": "St Louis · MO 63128",
-    "PIT": "6.21 / year",
-    "PRY": "11.18%",
-    "Tokenised": "56%",
-    "NFTPrice": "55.59",
-    "AvailablesNFT": 1400
+    "PIT": 6.21,
+    "PRY": "11.18",
+    "Tokenised": 6,
+    "NFTPrice": 55.59,
+    "AvailablesNFT": 1400,
+    "map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3110.103122417797!2d-90.2111142248339!3d38.7842702533725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87df4f23d1cc64ad%3A0x37845d3643065482!2sCove%20Ln%2C%20Spanish%20Lake%2C%20MO%2063138%2C%20EE.%20UU.!5e0!3m2!1ses-419!2sar!4v1686662781964!5m2!1ses-419!2sar",
+    "description": "Come and stay in this superb duplex T2, in the heart of the historic center of Bordeaux. Spacious and bright, in a real Bordeaux building in exposed stone, you will enjoy all the harms of the city thanks to its ideal location. Close to many shops, bars and restaurants, you can    access the apartment by tram A and C and bus routes 27 and 44"
   },
   {
     "id": "5",
