@@ -123,15 +123,7 @@ function App() {
           />
 
            */}
-          <Route
-            path={"/chatbot"}
-            element={
-              <div className="conteinerChatBot" style={{ display: "flex" }}>
-                <ChatBot />
-                <Recommendations />
-              </div>
-            }
-          />
+          <Route path={"/chatbot"} element={<ChatBot />} />
           <Route />
 
           {/* <Route

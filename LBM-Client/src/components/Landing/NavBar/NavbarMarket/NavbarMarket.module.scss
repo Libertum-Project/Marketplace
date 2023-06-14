@@ -54,6 +54,7 @@
   width: 118px;
   height: 118px;
   border-radius: 100%;
+  display: inline;
 }
 
 .userModal-body h4,
@@ -118,7 +119,8 @@
 
 .userImage {
   border-radius: 100%;
-  width: 100%;
+  width: 65px;
+  
   position: relative;
 }
 
@@ -126,6 +128,7 @@
 .notification-badge {
   position: relative;
   display: inline-block;
+  box-sizing:content-box !important;
 }
 
 .notification-badge::after {
@@ -357,8 +360,7 @@
   border-radius: 29px;
   display: flex;
   justify-content: center;
-  min-width: 5rem;
-  padding: 0 0.5rem;
+  min-width: 6rem;
 }
 
 .hamburger {

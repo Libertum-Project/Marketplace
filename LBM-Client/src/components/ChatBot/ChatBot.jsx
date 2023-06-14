@@ -5,16 +5,160 @@ import newChat from "./assets/newChat.svg";
 import pencil from "./assets/pencil.svg";
 import ping from "./assets/ping.svg";
 import attachmen from "./assets/attachmen.svg";
-import axios from 'axios';
-
+import ChatGreenIcon from "./assets/chatGreenIcon.svg";
+import sparkles from "./assets/sparkles.svg";
+import axios from "axios";
+import css from "./Chatbot.module.css";
 
 const AskMe = () => {
   const API_KEY = import.meta.env.VITE_GPT_KEY;
-  const url = 'https://api.openai.com/v1/chat/completions';
+  const url = "https://api.openai.com/v1/chat/completions";
   const [messages, setMessages] = useState([]);
   const [aiResponse, setAiResponse] = useState("");
 
-  const expectedKeywords = ["keyword1", "keyword2", "keyword3"];
+  const expectedKeywords = [
+    "investment property",
+    "real estate investment",
+    "buying property",
+    "invest in property uk",
+    "to invest in real estate",
+    "investment property for sale",
+    "commercial property investment",
+    "real estate 101",
+    "real estate investing for beginners",
+    "property investment for beginners",
+    "buying rental property",
+    "property investment company",
+    "real estate fund",
+    "digital real estate",
+    "real estate crowdfunding",
+    "best investment properties",
+    "property crowdfunding",
+    "rental property investment",
+    "invest in land",
+    "house investment",
+    "investment homes",
+    "commercial real estate investing",
+    "property investment strategy",
+    "building a property portfolio",
+    "real estate how to make money",
+    "real estate investment company",
+    "rental properties for sale",
+    "real estate investment strategies",
+    "property investment funds",
+    "real estate crowdfunding uk",
+    "real estate how to start",
+    "real estate stocks",
+    "buying real estate",
+    "real estate for beginners",
+    "property investment opportunities",
+    "investors buying homes",
+    "residential property investment",
+    "best areas to invest in property",
+    "property investment funds uk",
+    "property crowdfunding uk",
+    "real estate blockchain",
+    "making money in real estate",
+    "property investors near me",
+    "buying property in canada",
+    "find investment properties",
+    "property development investment",
+    "investment property advice",
+    "real estate funds uk",
+    "property investment uk for beginners",
+    "best real estate investments",
+    "investing in real estate with no money",
+    "good real estate investments",
+    "reit property",
+    "buying property in usa",
+    "real estate tokenization",
+    "real estate portfolio",
+    "real estate investment group",
+    "types of property investment",
+    "real estate investing 101",
+    "reit investing for beginners",
+    "best uk reits",
+    "invest in property shares",
+    "commercial property funds",
+    "crowdfunding property investment",
+    "property investment opportunities uk",
+    "real estate assets",
+    "reit real estate",
+    "real estate investment opportunities",
+    "real estate investing canada",
+    "investment property for sale near me",
+    "real estate strategies",
+    "learn real estate",
+    "real estate investment usa",
+    "property investment group",
+    "property invest usa",
+    "property portfolio example",
+    "best property funds",
+    "return on investment property",
+    "nft real estate",
+    "tokenized real estate",
+    "invest in real estate online",
+    "fractional ownership real estate",
+    "owning rental property",
+    "fractional investment",
+    "property stocks",
+    "property investment meaning",
+    "purchase commercial property",
+    "starting a property portfolio",
+    "best rental property websites",
+    "residential investment property for sale",
+    "property investment software",
+    "investment property portfolio",
+    "buying a house as an investment",
+    "realestate share price",
+    "investing in rental property for beginners",
+    "best place to invest in real estate",
+    "best real estate stocks",
+    "top reits",
+    "real estate rental property",
+    "owning property",
+    "property development and investment",
+    "real estate fund management software",
+    "best way to invest in property",
+    "cash flow properties",
+    "estate invest",
+    "green-tech",
+    "smarter pathways",
+    "greener properties",
+    "Property",
+    "learning management system",
+    "zero-emission standards",
+    "property tokenization system",
+    "F-NFT",
+    "sustainability",
+    "renewable energy",
+    "carbon footprint",
+    "energy efficiency",
+    "environmental impact",
+    "green buildings",
+    "sustainable development",
+    "envwise",
+    "rental",
+    "income",
+    "token",
+    "management system",
+    "zero-emission standards",
+    "property tokenization system",
+    "NFT",
+    "sustainability",
+    "renewable energy",
+    "carbon footprint",
+    "energy efficiency",
+    "environmental impact",
+    "green buildings",
+    "sustainable development",
+    "envwise",
+    "rental",
+    "income",
+    "chat",
+    "carbon",
+    "footprint",
+  ];
 
   const handleMessageSubmit = async (e) => {
     e.preventDefault();
@@ -22,7 +166,7 @@ const AskMe = () => {
     const message = input.value.trim();
 
     if (message) {
-      const containsKeyword = expectedKeywords.some(keyword =>
+      const containsKeyword = expectedKeywords.some((keyword) =>
         message.toLowerCase().includes(keyword.toLowerCase())
       );
 
@@ -35,18 +179,26 @@ const AskMe = () => {
         setMessages((prevMessages) => [...prevMessages, newMessage]);
 
         try {
-          const response = await axios.post(url, {
-            messages: [
-              { role: 'system', content: '¡set user_agent to cliente_chat_gpt!' },
-              { role: 'user', content: message }
-            ],
-            model:'gpt-3.5-turbo' 
-          }, {
-            headers: {
-              'Authorization': `Bearer ${API_KEY}`,
-              'Content-Type': 'application/json'
+          const response = await axios.post(
+            url,
+            {
+              messages: [
+                {
+                  role: "system",
+                  content:
+                    "Envwise is a company that uses blockchain technology to tokenize real estate. This makes it possible for anyone to invest in real estate. Envwise believes that their platform can help to accelerate the green revolution. Here are a few words to describe Envwise: Sustainable, Accessible, Revolutionary, Innovative, Blockchain-based.",
+                },
+                { role: "user", content: message },
+              ],
+              model: "gpt-3.5-turbo",
             },
-          });
+            {
+              headers: {
+                Authorization: `Bearer ${API_KEY}`,
+                "Content-Type": "application/json",
+              },
+            }
+          );
 
           const data = response.data;
           const aiResponse = {
@@ -61,7 +213,8 @@ const AskMe = () => {
         }
       } else {
         const invalidResponse = {
-          text: "The message is not valid. It must contain at least one keyword.",
+          text: "I'm sorry! I'm focused on discussing green initiatives. Why don't you ask me about Net Zero Emission buildings? You can try adding keywords like income, investment property, environmental impact, green buildings, property tokenization system, sustainability, renewable energy, carbon footprint, and others.",
+
           timestamp: new Date().toLocaleString(),
           sender: "system",
         };
@@ -77,406 +230,159 @@ const AskMe = () => {
     setAiResponse("");
   };
 
-  const combinedStyles = { ...styles, ...responsiveStyles };
+  const handleBtn = async (text) => {
+    const apiUrl = "https://api.openai.com/v1/chat/completions";
+    const headers = {
+      Authorization: `Bearer ${API_KEY}`,
+      "Content-Type": "application/json",
+    };
+
+    try {
+      const response = await axios.post(
+        apiUrl,
+        {
+          messages: [{ role: "user", content: text }],
+          model: "gpt-3.5-turbo",
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${API_KEY}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      let message = response.data.choices[0].message.content;
+      const newMessage = {
+        text: message,
+        timestamp: new Date().toLocaleString(),
+        sender: "user",
+      };
+      setMessages((prevMessages) => [...prevMessages, newMessage]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
-    <div style={combinedStyles.container}>
-      <h1 style={combinedStyles.title}>AskMe</h1>
-      <div>
+    <div className={css.chatbot__container}>
+      <div className={css.chatbot}>
+        <h2>AskMe</h2>
         {messages.map((message, index) => (
-          <div key={index} className={`message ${message.sender}`}>
-            <span style={combinedStyles.timestamp2}>
-              {message.timestamp}
-            </span>
-            <p
-              style={
-                message.sender === "user"
-                  ? { ...combinedStyles.messageText, ...combinedStyles.userMessage }
-                  : { ...combinedStyles.messageText, ...combinedStyles.aiMessage }
-              }
-            >
-              {message.text}
-              <img src={pencil} alt="pencil" style={combinedStyles.svg}/>
-              <img src={ping} alt="ping" style={combinedStyles.svg}/>
-            </p>
+          <div key={index} className={css.chatbot__output}>
+            <div className={css.question}>
+              <span>
+                <img src={ChatGreenIcon} alt="Green icon" />
+                {message.timestamp}
+              </span>
+              <p>{message.text}</p>
+            </div>
             {aiResponse.sender === "user" && (
-              <div>
-                <div style={combinedStyles.timestamp}>
+              <div className={css.answer}>
+                <div>
                   <img src={chatGPT} alt="chatGPT" />
-                  <span className="timestamp" style={combinedStyles.time}>
-                    {message.timestamp}
-                  </span>
+                  <span className="timestamp">{message.timestamp}</span>
                 </div>
-                <p style={combinedStyles.aiMessage}>{aiResponse}</p>
+                <p>{aiResponse}</p>
               </div>
             )}
           </div>
         ))}
-        <div style={combinedStyles.newDialogButton}>
-          <button onClick={handleNewDialogClick}>
+
+        <div className={css.chatbot__inputContainer}>
+          <button
+            onClick={handleNewDialogClick}
+            className={css.chatbot__cleanBtn}
+          >
             <img src={newChat} alt="newChat" />
-            New dialog
+            <p>New dialog</p>
           </button>
-        </div>
-        <form onSubmit={handleMessageSubmit}>
-          <div style={combinedStyles.inputContainer}>
+          <form onSubmit={handleMessageSubmit} className={css.chatbot__form}>
             <img src={attachmen} alt="attachmen" />
             <input
-              style={combinedStyles.form}
               type="text"
               name="messageInput"
               placeholder="Send me a message"
             />
-            <button type="submit" style={combinedStyles.submitButton}>
+            <button type="submit">
               <img src={arrow} alt="arrow" />
             </button>
+          </form>
+        </div>
+      </div>
+      <div className={css.chatbot__recommendations}>
+        <h2>Recommendations</h2>
+        <div className={css.recommendations__body}>
+          <h3>
+            Welcome to our EnvwiseAI. Try some of the examples below to help you
+            reduce your carbon footprint and make the world a better place.
+          </h3>
+
+          <div className={css.buttonsContainer}>
+            <div className={css.button__row}>
+              <div
+                onClick={() =>
+                  handleBtn(
+                    "short and easy response - Where can I apply for carbon reduction grants in europe?"
+                  )
+                }
+              >
+                <i>
+                  <img src={sparkles} alt="Sparkles" />
+                </i>
+                <h4>Green Grants</h4>
+                <p>
+                  Where can I apply for carbon reduction grants in my local
+                  area?
+                </p>
+              </div>
+              <div
+                onClick={() =>
+                  handleBtn(
+                    "Short and Easy response - Create a roadmap for me to create a Net Zero Emission building"
+                  )
+                }
+              >
+                <i>
+                  <img src={sparkles} alt="Sparkles" />
+                </i>
+                <h4>Green Journey</h4>
+                <p>
+                  Create a roadmap for me to create a Net Zero Emission building
+                </p>
+              </div>
+            </div>
+
+            <div className={css.button__row}>
+              <div onClick={() => handleBtn("Green funding")}>
+                <i>
+                  <img src={sparkles} alt="Sparkles" />
+                </i>
+                <h4>Green Funding</h4>
+                <p>Insert the link to the property listing</p>
+              </div>
+              <div
+                onClick={() =>
+                  handleBtn(
+                    " Easy response - Can you recommend some consultants to help me reduce my carbon footprint"
+                  )
+                }
+              >
+                <i>
+                  <img src={sparkles} alt="Sparkles" />
+                </i>
+                <h4>Green Support</h4>
+                <p>
+                  Can you recommend some consultants to help me reduce my carbon
+                  footprint?.
+                </p>
+              </div>
+            </div>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );
 };
 
 export default AskMe;
-
-const styles = {
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    background: "#F7F9FB",
-    borderRadius: "16px",
-    // minWidth: "646px",
-    maxWidth: "646px",
-    minHeight: "698px",
-    justifyContent: "space-between",
-    padding: "20px",
-  },
-  title: {
-    // width: "58px",
-    height: "20px",
-    fontFamily: "Verdana",
-    fontStyle: "normal",
-    fontWeight: "700",
-    fontSize: "14px",
-    lineHeight: "20px",
-    display: "flex",
-    alignItems: "center",
-    fontFeatureSettings: `'ss01' on, 'cv01' on, 'cv11' on`,
-    color: "#1C1C1C",
-    flex: "none",
-    order: "0",
-    flexGrow: "0",
-  },
-  form: {
-    boxSizing: "border-box",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "flex-start",
-    padding: "12px 16px",
-    gap: "10px",
-    width: "100%",
-    height: "44px",
-    border: "1px solid #E7E7E7",
-    borderRadius: "8px",
-    flex: "none",
-    order: "0",
-    flexGrow: "0",
-    background: "#F7F9FB",
-  },
-  newDialogButton: {
-    display: "flex",
-    justifyContent: "flex-end",
-    marginBottom: "10px",
-  },
-  timestamp: {
-    width: "100%", 
-    height: "19px",
-    fontFamily: "Verdana",
-    fontStyle: "normal",
-    fontWeight: "400",
-    fontSize: "16px",
-    lineHeight: "19px",
-    display: "flex",
-    alignItems: "center",
-    textAlign: "right",
-    color: "#888888",
-    flex: "none",
-    order: "1",
-    flexGrow: "0",
-  },
-  time: {
-    paddingLeft: "15px",
-  },
-  timestamp2: {
-    width: "100%", 
-    height: "19px",
-    fontFamily: "Verdana",
-    fontStyle: "normal",
-    fontWeight: "400",
-    fontSize: "16px",
-    lineHeight: "19px",
-    display: "flex",
-    alignItems: "center",
-    textAlign: "right",
-    color: "#888888",
-    flex: "none",
-    order: "1",
-    flexGrow: "0",
-    justifyContent: "right",
-  },
-  messageText: {
-    fontFamily: "Verdana",
-    fontStyle: "normal",
-    fontWeight: "400",
-    fontSize: "16px",
-    lineHeight: "19px",
-    display: "flex",
-    alignItems: "center",
-    textAlign: "right",
-    color: "#888888",
-    flex: "none",
-    order: "1",
-    flexGrow: "0",
-    justifyContent: "right",
-    paddingRight:"15px"
-  },
-  userMessage: {
-    color: "#888888",
-  },
-  aiMessage: {
-    width: "100%",
-    height: "110px",
-    fontFamily: "Verdana",
-    fontStyle: "normal",
-    fontWeight: "400",
-    fontSize: "18px",
-    lineHeight: "22px",
-    display: "flex",
-    alignItems: "center",
-    color: "#000000",
-    flex: "none",
-    order: "1",
-    flexGrow: "0",
-    textAlign: "left",
-  },
-  aiTimestamp: {
-    width: "100%",
-    height: "27px",
-    fontFamily: "Verdana",
-    fontStyle: "normal",
-    fontWeight: "400",
-    fontSize: "14px",
-    lineHeight: "17px",
-    display: "flex",
-    alignItems: "center",
-    textAlign: "right",
-    color: "#000000",
-    flex: "none",
-    order: "0",
-    flexGrow: "0",
-  },
-  inputContainer: {
-    display: "flex",
-    alignItems: "center",
-    gap: "4px",
-    paddingRight:"5rem"
-  },
-  submitButton: {
-    background: "none",
-    border: "none",
-    padding: "0",
-    cursor: "pointer",
-  },
-  svg:{
-    paddingRight: "15px",
-  },
-};
-
-const responsiveStyles = {
-  "@media (max-width: 768px)": {
-    container: {
-      flexDirection: "column",
-      padding: "10px",
-      gap: "16px",
-      width: "100%",
-      minWidth: "340px",
-      maxWidth: "100%",
-      minHeight: "340px",
-    },
-    headerStyles: {
-      width: "100%",
-      fontSize: "28px",
-      lineHeight: "36px",
-    },
-    aiMessage: {
-      height: "auto",
-    },
-    aiTimestamp: {
-      textAlign: "left",
-    },
-    messageText: {
-      textAlign: "left",
-      paddingRight: "0",
-    },
-  },
-};
-
-
-
-/*const styles = {
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    padding: "20px 10px",
-    gap: "32px", 
-    position: "absolute",
-    left: "10px",
-    top: "0px",
-    background: "#F7F9FB",
-    borderRadius: "16px",
-    maxWidth: "100%", 
-  },
-  title: {
-    width: "58px",
-    height: "20px",
-    fontFamily: "Verdana",
-    fontStyle: "normal",
-    fontWeight: "700",
-    fontSize: "14px",
-    lineHeight: "20px",
-    display: "flex",
-    alignItems: "center",
-    fontFeatureSettings: `'ss01' on, 'cv01' on, 'cv11' on`,
-    color: "#1C1C1C",
-    flex: "none",
-    order: "0",
-    flexGrow: "0",
-    maxWidth: "100%",
-  },
-  form: {
-    boxSizing: "border-box",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "flex-start",
-    padding: "12px 16px",
-    gap: "10px",
-    width: "100%",
-    height: "44px",
-    border: "1px solid #E7E7E7",
-    borderRadius: "8px",
-    flex: "none",
-    order: "0",
-    flexGrow: "0",
-  },
-  newDialogButton: {
-    display: "flex",
-    justifyContent: "flex-end",
-    marginBottom: "10px",
-    maxWidth: "100%", 
-  },
-  timestamp: {
-    width: "100%",
-    height: "19px",
-    fontFamily: "Verdana",
-    fontStyle: "normal",
-    fontWeight: "400",
-    fontSize: "16px",
-    lineHeight: "19px",
-    display: "flex",
-    alignItems: "center",
-    textAlign: "right",
-    color: "#888888",
-    flex: "none",
-    order: "1",
-    flexGrow: "0",
-  },
-  time: {
-    paddingLeft: "15px",
-  },
-  timestamp2: {
-    width: "100%", 
-    height: "19px",
-    fontFamily: "Verdana",
-    fontStyle: "normal",
-    fontWeight: "400",
-    fontSize: "16px",
-    lineHeight: "19px",
-    display: "flex",
-    alignItems: "center",
-    textAlign: "right",
-    color: "#888888",
-    flex: "none",
-    order: "1",
-    flexGrow: "0",
-    justifyContent: "right",
-  },
-  messageText: {
-    fontFamily: "Verdana",
-    fontStyle: "normal",
-    fontWeight: "400",
-    fontSize: "16px",
-    lineHeight: "19px",
-    display: "flex",
-    alignItems: "center",
-    textAlign: "right",
-    color: "#888888",
-    flex: "none",
-    order: "1",
-    flexGrow: "0",
-    justifyContent: "right",
-    paddingRight: "15px",
-    maxWidth: "100%",
-  },
-  userMessage: {
-    color: "#888888",
-  },
-  aiMessage: {
-    width: "100%", 
-    height: "110px",
-    fontFamily: "Verdana",
-    fontStyle: "normal",
-    fontWeight: "400",
-    fontSize: "18px",
-    lineHeight: "22px",
-    display: "flex",
-    alignItems: "center",
-    color: "#000000",
-    flex: "none",
-    order: "1",
-    flexGrow: "0",
-  },
-  aiTimestamp: {
-    width: "100%",
-    height: "27px",
-    fontFamily: "Verdana",
-    fontStyle: "normal",
-    fontWeight: "400",
-    fontSize: "14px",
-    lineHeight: "17px",
-    display: "flex",
-    alignItems: "center",
-    textAlign: "right",
-    color: "#000000",
-    flex: "none",
-    order: "0",
-    flexGrow: "0",
-  },
-  inputContainer: {
-    display: "flex",
-    alignItems: "center",
-    gap: "8px",
-    maxWidth: "100%", 
-  },
-  submitButton: {
-    background: "none",
-    border: "none",
-    padding: "0",
-    cursor: "pointer",
-  },
-  svg: {
-    paddingRight: "15px",
-  },
-};
-*/
