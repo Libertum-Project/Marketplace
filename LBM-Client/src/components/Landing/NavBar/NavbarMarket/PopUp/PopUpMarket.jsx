@@ -23,7 +23,7 @@ function PopUpMarket() {
   return (
     <div className={style.Container} data-dropdown>
       <div className={style.flexContainer}>
-        <Link to="/marketplace" className={style.button}>
+        <Link to="/comingsoon" className={style.button}>
           <div className={style.icon}>
             <IoGridOutline />
           </div>

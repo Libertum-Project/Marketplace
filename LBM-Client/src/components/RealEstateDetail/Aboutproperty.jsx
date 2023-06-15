@@ -1,4 +1,10 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import plano1 from "./documents/plano1.pdf"
+import plano2 from "./documents/plano2.pdf"
+import document1 from "./documents/Register1.pdf"
+import document2 from "./documents/Register2.pdf"
+
 
 const Aboutproperty = (props) => {
     const { more, map, image, number, address, location, PIT, PRY, AvailablesNFT, amenities, rooms, guests, value, Tokenised, NFTPrice } = props;
@@ -169,10 +175,61 @@ const Aboutproperty = (props) => {
         )}
 
         {activeTab === 3 && (
-          <div className="mt-8">
-            {/* Contenido de la pestaña 3 */}
-            <p>Property Insurance Document</p>
-            <p>Charge Document</p>
+          <div className="flex justify-center mt-5">      
+            <ul className="steps steps-vertical">
+              <li className="link link-hover mt-3">
+              <Link
+                  to={plano1}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download="plano1.pdf"                  
+                >
+                  Download Blueprint 1 
+                </Link>
+                
+                </li>
+              <li className="link link-hover mt-3">
+              <Link
+                  to={plano2}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download="plano1.pdf"                  
+                >
+                  Download Blueprint 2 
+                </Link>
+
+              </li>
+              <li className="link link-hover mt-3">
+              <Link
+                  to={document1}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download="plano1.pdf"                  
+                >
+                  Download Title 21 High Street 
+                </Link>
+               </li>
+              <li className="link link-hover mt-3">
+                <Link
+                  to={document2}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download="plano1.pdf"                  
+                >
+                  Download Title 23 High Street 
+                </Link>
+                </li>
+            </ul>            
+
+                
+
+                
+
+                
+
+                
+            
+           
           </div>
         )}
 
@@ -195,8 +252,8 @@ const Aboutproperty = (props) => {
         {activeTab === 5 && (
                 <div className="mt-8">
                   {/* Contenido de la pestaña 3 */}
-                  <p>Property Insurance Document</p>
-                  <p>Charge Document</p>
+                  
+                  <p>Charge document</p>
                 </div>
               )}
 
@@ -207,3 +264,32 @@ const Aboutproperty = (props) => {
 
 
 export default Aboutproperty; 
+
+
+
+{/* <table className="table mt-[-2rem]">
+<tbody >              
+  <tr>
+    <th>Blueprints</th>
+    <td> 
+      <a href="https://drive.google.com/file/d/1Faf1XiLZIBtm2vXzyiIj0M7PSgpChzDn/view?usp=sharing" target="_blank"> Blueprint 1 </a>
+      <br /> 
+      <br />                 
+      <a href="https://drive.google.com/file/d/1nry8wOF_xb0iV3uIq52csaDexg95wF4i/view?usp=sharing" target="_blank">Blueprint 2 </a>                
+    </td>
+  </tr >
+
+  <tr>
+    <th >Other documents </th>
+    <td>  
+      <a href="https://drive.google.com/file/d/1OKBJ1dKgZEd8ZBse8AI9d3h0zt6RDZv9/view?usp=sharing" target="_blank" >Title 21 High Street</a>
+<br />
+<br />
+
+      <a href="https://drive.google.com/file/d/1bKvMVhea7gxi8VKusIFNroWqMzfzeTHr/view?usp=sharing" target="_blank" >Title 23 High Street</a>
+      
+      </td>
+  </tr>
+  
+  </tbody>
+</table> */}
