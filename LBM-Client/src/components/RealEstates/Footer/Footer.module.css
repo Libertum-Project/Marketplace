@@ -60,6 +60,10 @@
   color: #222222;
 }
 
+.navigation a:hover {
+  transition: all ease-in .2s;
+  color: var(--Libertum-color);
+}
 .socialmedia {
   display: flex;
   gap: 1.2rem;
