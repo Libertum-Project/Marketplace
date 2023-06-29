@@ -43,6 +43,7 @@ import Cards from "../src/components/Cards/Cards";
 import BuyProperty from "./components/RealEstateDetail/BuyProperty";
 import IDO from "./components/IDO/IDO";
 import Footer from "./components/RealEstates/Footer/Footer.jsx";
+import CreateProperty from "./components/CreateProperty/CreateProperty";
 
 function App() {
   const dispatch = useDispatch();
@@ -167,6 +168,9 @@ function App() {
               </div>
             }
           />
+
+          <Route path={"/create"} element={<CreateProperty />} />
+
           <Route path="/support" element={<SupportCenter />} />
           <Route path="/detail/:id" element={<DetailSupport />} />
           <Route path="/cards" element={<Cards />} />
