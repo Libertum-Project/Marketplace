@@ -61,6 +61,17 @@ const FinancialForm = ({ handleSubmit, onBack }) => {
             <input type="number" />
           </div>
         </div>
+
+        <div className={css.inputContainer}>
+          <div>
+            <label>Monthly Capital Repayment Amount</label>
+            <input type="number" />
+          </div>
+          <div>
+            <label>Capital Payment Duration</label>
+            <input type="number" />
+          </div>
+        </div>
       </div>
 
       <button className={css.nextBtn}>Submit</button>
