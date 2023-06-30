@@ -46,7 +46,6 @@ function NavbarMarket() {
     if (userModal) setUserModal(false);
     if (!userModal) setUserModal(true);
   };
-  console.log(userModal);
 
   useEffect(() => {
     document.addEventListener("click", (e) => {
@@ -183,7 +182,9 @@ function NavbarMarket() {
                     <IoPerson />
                   </div>
                 )}
-                {activeMenu ? <PopUpUser data-menu /> : null}
+                {activeMenu ? (
+                  <PopUpUser data-menu setActiveMenu={setActiveMenu} />
+                ) : null}
               </div>
             </div>
           </div>
@@ -283,4 +284,4 @@ function NavbarMarket() {
   );
 }
 
-export default NavbarMarket;
+export default NavbarMarket
