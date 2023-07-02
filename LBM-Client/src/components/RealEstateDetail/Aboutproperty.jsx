@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import plano1 from "./documents/plano1.pdf"
 import plano2 from "./documents/plano2.pdf"
 import document1 from "./documents/Register1.pdf"
 import document2 from "./documents/Register2.pdf"
+import  style  from "./Aboutproperty.module.scss"
 
 
 const Aboutproperty = (props) => {
-    const { more, map, image, number, address, location, PIT, PRY, AvailablesNFT, amenities, rooms, guests, value, Tokenised, NFTPrice } = props;
+    const { more, map, image, number, address, location, PIT, PRY, AvailablesNFT, amenities, rooms, guests, value, Tokenised, NFTPrice, description } = props;
     
     const [rangeValue, setRangeValue] = useState(40);
 
@@ -24,37 +25,72 @@ const Aboutproperty = (props) => {
     const passiveIncomePerYear = ((PIT * rangeValue)/10).toFixed(2);
     const passiveIncomePerMonth = (passiveIncomePerYear / 12).toFixed(2);
 
-    return (
-        <div className="w-[50rem]">
 
-          <div>
-            <div className="tabs">
+    const [sticky, setSticky] = useState(false);
+
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const threshold = 200; // Punto de desplazamiento donde se fija el componente
+      const column2 = document.querySelector('.column-2');
+    
+      if (scrollPosition > threshold) {
+        column2.style.position = 'fixed';
+        column2.style.top = '50px'; // Ajusta la posición verticalmente según tus necesidades
+        column2.style.left = '20px'; // Ajusta la posición horizontalmente según tus necesidades
+      } else {
+        column2.style.position = 'static';
+      }
+    };
+    
+    useEffect(() => {
+      window.addEventListener("scroll", handleScroll);
+    
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }, []);
+    
+
+    return (
+        <div className={style.container}>
+
+          <div className={style.column-1}>
+
+            <div >
+
+            <p className={style.about}>ABOUT THE PROPERTY</p>
+            <p className={style.description}>{description} </p>
+
+            </div>
+          
+
+            <div className={style.buttons}>
               <button
-                className={`tab ${activeTab === 1 ? 'tab-active' : ''}`}
+                className={`${style.tab} ${activeTab === 1 ? style.tabActive : ''}`}
                 onClick={() => handleTabClick(1)}
               >
                 Details
               </button>
               <button
-                className={`tab ${activeTab === 2 ? 'tab-active' : ''}`}
+                className={`${style.tab} ${activeTab === 2 ? style.tabActive : ''}`}
                 onClick={() => handleTabClick(2)}
               >
                 Financials
               </button>
               <button
-                className={`tab ${activeTab === 3 ? 'tab-active' : ''}`}
+                className={`${style.tab} ${activeTab === 3 ? style.tabActive : ''}`}
                 onClick={() => handleTabClick(3)}
               >
                 Documents
               </button>
               <button
-                className={`tab ${activeTab === 4 ? 'tab-active' : ''}`}
+                className={`${style.tab} ${activeTab === 4 ? style.tabActive : ''}`}
                 onClick={() => handleTabClick(4)}
               >
                 Carbon Emissions
               </button>
               <button
-                className={`tab ${activeTab === 5 ? 'tab-active' : ''}`}
+                className={`${style.tab} ${activeTab === 5 ? style.tabActive : ''}`}
                 onClick={() => handleTabClick(5)}
               >
                 Buying Process
@@ -62,27 +98,45 @@ const Aboutproperty = (props) => {
               
             </div>
 
+        {/* --------------------------------DETAILS --------------------------------- */}
         {activeTab === 1 && (
-          <div>        
-          <table className="table mt-6">
-            <tbody>
-              {/* row 1 */}
-              <tr>
-                <th>Amenities </th>
-                <td>{amenities}</td>
-              </tr>
-              {/* row 2 */}
-              <tr >
-                <th>Rooms</th>
-                <td>{rooms}</td>
-              </tr>
-                      {/* row 3 */}
-                      <tr>
-                          <th>Adress: </th>
-                          <td>{address} | {location}
+          <div>
+            <div className={style.table}>
+                  <div className={style.row}>
+                    <div className={style.cell}>
+                      <span className={style.label}>Amenities:</span>
+                    </div>
+                    <div className={style.cell}>
+                      <span className={style.descriptiontable}>{amenities}</span>
+                    </div>
+                  </div>
+                  <div className={style.row}>
+                    <div className={style.cell}>
+                      <span className={style.label}>Rooms:</span>
+                    </div>
+                    <div className={style.cell}>
+                      <span className={style.descriptiontable}>{rooms}</span>
+                    </div>
+                  </div>
 
-                          <div>
-                          <iframe
+
+                  
+                  <div className={style.row}>
+                    <div className={style.cell}>
+                      <span className={style.label}>Occupancy Status:</span>
+                    </div>
+                    <div className={style.cell}>
+                    <span className={style.descriptiontable}>Free</span>
+                    </div>
+                  </div>
+
+                  <div className={style.row}>
+                    <div className={style.cell}>
+                      <span className={style.label}>Address:</span>
+                    </div>
+                    <div className={style.cell}>
+                    <span className={style.descriptiontable}>{address}</span>
+                    <iframe
                             src={map}
                             width="400"
                             height="250"
@@ -91,25 +145,19 @@ const Aboutproperty = (props) => {
                             loading="lazy"
                             title="Map">
                           </iframe>
-                          </div>
-                          
-                          </td>
-                      </tr>
-
-                      <tr>
-                          <th>Ocuppancy Status: </th>
-                          <td>Free</td>
-                      </tr>
-
-                      <tr>
-                          <th>More</th>
-                          <td>{more}</td>
-                      </tr>
-
-                      
-                      </tbody>
-                  </table>
+                    </div>
+                  </div>
             
+                  <div className={style.row}>
+                    <div className={style.cell}>
+                      <span className={style.label}>More:</span>
+                    </div>
+                    <div className={style.cell}>
+                    <span className={style.descriptiontable}>{more}</span>
+                    </div>
+                  </div>
+            </div>
+
           </div>
         )}
 
@@ -259,6 +307,39 @@ const Aboutproperty = (props) => {
 
 
           </div>
+
+
+          
+
+          {/* -------------------- BUY MODULE -------------------- */}
+          <div
+          className={`style.column-2 ${sticky ? "sticky" : ""}`}
+        >
+            <div className="card card-compact w-96 bg-base-100 bg-opacity-80 shadow-xl">
+            <figure>
+              <img src={image} alt="image1" />
+            </figure>
+            <div className="card-body">
+              <h2 className="card-title">{address} - {location}</h2>
+              <p>Passive Income Per Token: {PIT}</p>
+              <p>Projected Rental Yield: ${PRY}</p>
+              <p>Avaliables NFT: {AvailablesNFT}</p>
+              <div className="card-actions justify-center">
+                <Link
+                  to={`/marketplace/buy/${number}`}
+                >
+                  <button className="btn content-center btn-wide bg-primary flex items-center justify-center">Buy Now</button>
+                </Link>
+              </div>
+            </div>
+            </div>
+          </div>
+      
+
+
+
+
+
         </div>     
     )};
 

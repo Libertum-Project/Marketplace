@@ -128,8 +128,12 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding: 1rem;
+  padding: -1rem;
   padding-top: 0;
+  position: relative;
+  width: auto;   
+  margin: 0 1rem;
+
 }
 
 .info h2 {
@@ -220,6 +224,7 @@
 
 .mosaic {
   display: none;
+  
 }
 
 .linked {
@@ -342,7 +347,7 @@
     gap: 0.5rem;
     flex-wrap: wrap;
     flex-flow: wrap;
-    flex: 1;
+    flex: 1;   
   }
 
   .otherImages img {

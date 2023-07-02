@@ -12,7 +12,7 @@ import sharePC from "../../assets/share--pc.svg";
 import save from "../../assets/save.svg";
 import showAll from "../../assets/showAll.svg";
 import ModalFilter from "../MarketPlace/ModalFilter/ModalFilter.jsx";
-import CardPreview from "./CardPreviewDetails.jsx";
+
 import Aboutproperty from "./Aboutproperty";
 import Buy from "./Buy";
 import Loading from "../Loading/Loading";
@@ -40,25 +40,7 @@ const Index = () => {
     }
   }, [navigate, isAuthenticated, isLoading]);
 
-  const [sticky, setSticky] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const threshold = 200; // Punto de desplazamiento donde se fija el componente
-
-      if (scrollPosition > threshold) {
-        setSticky(true);
-      } else {
-        setSticky(false);
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   return !isLoading && isAuthenticated ? (
     <div className={css.details}>
@@ -105,15 +87,10 @@ const Index = () => {
 
       <div className={css.info}>
         <h2>Entire rental unit hosted by Ghazal</h2>
-
-        <p className=" text-xl text-left mt-3 mb-[-1rem]">ABOUT THE PROPERTY</p>
-        <p className={css.description}>
-          {land.description} <br />{" "}
-        </p>
       </div>
 
-      <div className="flex w-full  ">
-        <div className="flex-grow">
+      <div className={css.info}>
+       
           <Aboutproperty
             id={land.id}
             image={land.image}
@@ -131,10 +108,11 @@ const Index = () => {
             guests={land.guests}
             map={land.map}
             more={land.more}
+            description= {land.description}
           />
-        </div>
+        
 
-        <div
+        {/* <div
           className={`fixed bottom-[-16rem] right-16 ${sticky ? "sticky" : ""}`}
         >
           <Buy
@@ -150,7 +128,7 @@ const Index = () => {
             location={land.location}
             NFTPrice={land.NFTPrice}
           />
-        </div>
+        </div> */}
       </div>
     </div>
   ) : <Loading />

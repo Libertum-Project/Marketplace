@@ -1,3 +1,8 @@
+// Variables
+$primary-color: rgb(217, 161, 31);
+$secondary-color:  #5c6068; 
+$font-size-base: 16px;
+
 .container{
   display: flex;
   width: 1076px;
@@ -94,7 +99,7 @@ flex-shrink: 0;
   position: relative;
   width: 162px;
   height: 10px;
-  background-color: rgb(217, 161, 31);
+  background-color: $primary-color;
   border-radius: 2em;
   overflow: hidden;
   
@@ -236,7 +241,7 @@ font-weight: 500;
 display: flex;
 justify-content: left;
 align-self: stretch;
-color: var(--gray-500, #6B7280);
+color: var(--gray-500, $secondary-color);
 
 /* text-sm/Regular */
 font-size: 14px;
@@ -328,7 +333,7 @@ line-height: 20px;
   font-size: 16px;
   line-height: 17px;
   margin: 0;
-  color: #f7931a;
+  color: $primary-color;
   text-align: left;
 }
 
@@ -365,14 +370,4 @@ line-height: 20px;
 //     width: 100%;
 //   }
 // }
-
-
-
-
-// ----------------------------- TABLET ----------------------------------------
-
-
-
-
-// ------------------------------MOBILE ---------------------------------------
 
