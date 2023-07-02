@@ -5,6 +5,7 @@ import plano2 from "./documents/plano2.pdf"
 import document1 from "./documents/Register1.pdf"
 import document2 from "./documents/Register2.pdf"
 import  style  from "./Aboutproperty.module.scss"
+import { BsDownload } from "react-icons/bs"
 
 
 const Aboutproperty = (props) => {
@@ -83,12 +84,12 @@ const Aboutproperty = (props) => {
               >
                 Documents
               </button>
-              <button
+              {/* <button
                 className={`${style.tab} ${activeTab === 4 ? style.tabActive : ''}`}
                 onClick={() => handleTabClick(4)}
               >
                 Carbon Emissions
-              </button>
+              </button> */}
               <button
                 className={`${style.tab} ${activeTab === 5 ? style.tabActive : ''}`}
                 onClick={() => handleTabClick(5)}
@@ -161,124 +162,211 @@ const Aboutproperty = (props) => {
           </div>
         )}
 
+        {/* ----------------------------- FINANCIALS ------------------------- */}
+
         {activeTab === 2 && (
-          <div>          
-            <table className="table mt-6">
-            <tbody>
-              <tr>
-                <th>Market value of the property</th>
-                <td> $ {value}</td>
-              </tr>
-              <tr>
-                <th>Percent of property tokenised</th>
-                <td>{Tokenised} %</td>
-              </tr>
-              <tr>
-                <th>Rental yield</th>
-                <td>{PRY} % </td>
-              </tr>
-              <tr>
-                <th>Number of F-NFT available:</th>
-                <td>{AvailablesNFT}</td>
-              </tr>
+           <div>
+           <div className={style.table}>
+                 <div className={style.row}>
+                   <div className={style.cell}>
+                     <span className={style.label}>Market value of the property</span>
+                   </div>
+                   <div className={style.cell}>
+                     <span className={style.descriptiontable}> $ {value}</span>
+                   </div>
+                 </div>
 
-              <tr>
-                <th>Passive Income per token</th>
-                <td>{PIT} % / year </td> 
-              </tr>
+                 <div className={style.row}>
+                   <div className={style.cell}>
+                     <span className={style.label}>Funded</span>
+                   </div>
+                   <div className={style.cell}>
+                     <span className={style.descriptiontable}>.... % </span>
+                   </div>
+                 </div>
 
-              <tr>
-                <th>Number of tokens to be purchased:</th>
-                <td>
-                <input
-                  type="range"
-                  min="0"
-                  max={AvailablesNFT}
-                  value={rangeValue}
-                  className="range w-96 "
-                  onChange={handleRangeChange}
-                  /><span  className="tooltip tooltip-open tooltip-right mb-3" data-tip={rangeValue}></span>
+                 <div className={style.row}>
+                   <div className={style.cell}>
+                     <span className={style.label}>Rental Yield</span>
+                   </div>
+                   <div className={style.cell}>
+                     <span className={style.descriptiontable}>{PRY} %</span>
+                   </div>
+                 </div>
+
+                 <div className={style.row}>
+                   <div className={style.cell}>
+                     <span className={style.label}>Number of F-NFT available</span>
+                   </div>
+                   <div className={style.cell}>
+                     <span className={style.descriptiontable}>{AvailablesNFT}</span>
+                   </div>
+                 </div>
+
+                 <div className={style.row}>
+                   <div className={style.cell}>
+                     <span className={style.label}>Passive Income per token</span>
+                   </div>
+                   <div className={style.cell}>
+                     <span className={style.descriptiontable}>{PIT} % / year</span>
+                   </div>
+                 </div>
+                 
+                 <div className={style.row}>
+                   <div className={style.cell}>
+                     <span className={style.label}>Number of tokens to be purchased:</span>
+                   </div>
+                   <div className={style.cell}>
+                   <input
+                    type="range"
+                    min="0"
+                    max={AvailablesNFT}
+                    value={rangeValue}
+                    className="range w-96 "
+                    onChange={handleRangeChange}
+                    />
+                   </div>
+                 </div>
+
+           
+                 <div className={style.row}>
+                   <div className={style.cell}>
+                     <span className={style.label}>Invesment:</span>
+                   </div>
+                   <div className={style.cell}>
+                   <span className={style.descriptiontable}>........</span>
+                   </div>
+                 </div>
+
+                 <div className={style.row}>
+                   <div className={style.cell}>
+                     <span className={style.label}>Passive Income per month:</span>
+                   </div>
+                   <div className={style.cell}>
+                   <span className={style.descriptiontable}>GRAPHIC</span>
+                   </div>
+                 </div>
+
+                 <div className={style.row}>
+                   <div className={style.cell}>
+                     <span className={style.label}>Anual Passive Income:</span>
+                   </div>
+                   <div className={style.cell}>
+                   <span className={style.descriptiontable}>........</span>
+                   </div>
+                 </div>
+
+           </div>
+
+         </div>
+
+
+    
+          //       <th>Percent of property tokenised</th>
+          //       <td>{Tokenised} %</td>
+          //     </tr>
+          //     <tr>
+          //       <th>Rental yield</th>
+          //       <td>{PRY} % </td>
+          //     </tr>
+          //     <tr>
+          //       <th>Number of F-NFT available:</th>
+          //       <td>{AvailablesNFT}</td>
+          //     </tr>
+
+          //     <tr>
+          //       <th>Passive Income per token</th>
+          //       <td>{PIT} % / year </td> 
+          //     </tr>
+
+          //     <tr>
+          //       <th>Number of tokens to be purchased:</th>
+          //       <td>
+          //       <input
+          //         type="range"
+          //         min="0"
+          //         max={AvailablesNFT}
+          //         value={rangeValue}
+          //         className="range w-96 "
+          //         onChange={handleRangeChange}
+          //         /><span  className="tooltip tooltip-open tooltip-right mb-3" data-tip={rangeValue}></span>
                   
-                  </td> {/* Placeholder for the value */}
-                  </tr>
+          //         </td> {/* Placeholder for the value */}
+          //         </tr>
   
-              <tr>
-              <th className=" text-base">Annual Passive Income</th>
-              <td>$ {passiveIncomePerYear}</td> {/* Placeholder for the value */}
-              </tr>
+          //     <tr>
+          //     <th className=" text-base">Annual Passive Income</th>
+          //     <td>$ {passiveIncomePerYear}</td> {/* Placeholder for the value */}
+          //     </tr>
 
-              <tr>
-                <th className=" text-base">Monthly Passive Income</th>
-                <td>$ {passiveIncomePerMonth}</td> {/* Placeholder for the value */}
-              </tr>  
-              </tbody>
+          //     <tr>
+          //       <th className=" text-base">Monthly Passive Income</th>
+          //       <td>$ {passiveIncomePerMonth}</td> {/* Placeholder for the value */}
+          //     </tr>  
+          //     </tbody>
 
-              <tr>
-                <th className="text-orange-400 text-lg uppercase">Total Cost:</th>
-                <td className=" font-bold">$ {rangeValue * NFTPrice  }</td> {/* Placeholder for the value */}
-              </tr>
+          //     <tr>
+          //       <th className="text-orange-400 text-lg uppercase">Total Cost:</th>
+          //       <td className=" font-bold">$ {rangeValue * NFTPrice  }</td> {/* Placeholder for the value */}
+          //     </tr>
 
-            </table>
-          </div>
+          //   </table>
+          // </div>
         )}
 
+
+      {/* ------------------------------ DOCUMENTS ---------------------- */}
         {activeTab === 3 && (
-          <div className="flex justify-center mt-5">      
-            <ul className="steps steps-vertical">
-              <li className="link link-hover mt-3">
-              <Link
-                  to={plano1}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  download="plano1.pdf"                  
-                >
-                  Download Blueprint 1 
-                </Link>
-                
-                </li>
-              <li className="link link-hover mt-3">
-              <Link
-                  to={plano2}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  download="plano1.pdf"                  
-                >
-                  Download Blueprint 2 
-                </Link>
 
-              </li>
-              <li className="link link-hover mt-3">
-              <Link
-                  to={document1}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  download="plano1.pdf"                  
-                >
-                  Download Title 21 High Street 
-                </Link>
-               </li>
-              <li className="link link-hover mt-3">
-                <Link
-                  to={document2}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  download="plano1.pdf"                  
-                >
-                  Download Title 23 High Street 
-                </Link>
-                </li>
-            </ul>            
+          <div>  
 
-                
+            <Link
+             to={plano1}
+             target="_blank"
+             rel="noopener noreferrer"
+             download="plano1.pdf"                  
+           >
+            <p className={style.download}>            
+                 
+              <span style={{ display: 'inline-flex', alignItems: 'center', marginRight: '5px', borderRadius: '50%', backgroundColor: '#F7931A',    padding: '5px'}}>
+                <BsDownload />              
+              </span>
+              Download <b>Blueprint</b>
+            </p>
+            </Link>
 
-                
+            <Link
+             to={document1}
+             target="_blank"
+             rel="noopener noreferrer"
+             download="plano1.pdf"                  
+           >
+            <p className={style.download}>
+            <span style={{ display: 'inline-flex', alignItems: 'center', marginRight: '5px', borderRadius: '50%', backgroundColor: '#F7931A',    padding: '5px'}}>
+                <BsDownload />
+              </span>
+              Download <b>Title</b></p>
 
-                
+              </Link>
 
-                
-            
-           
+            <Link
+             to={document2}
+             target="_blank"
+             rel="noopener noreferrer"
+             download="plano1.pdf"                  
+           >
+            <p className={style.download}
+            >
+            <span style={{ display: 'inline-flex', alignItems: 'center', marginRight: '5px', borderRadius: '50%', backgroundColor: '#F7931A',    padding: '5px'}}>
+                <BsDownload />
+              </span>
+              Download <b>Smart Contract</b></p>
+
+            </Link>
+
           </div>
+         
+          
         )}
 
         {activeTab === 4 && (                

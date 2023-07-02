@@ -150,11 +150,18 @@ text-align: left;
   justify-content: center;
   flex-shrink: 0;
   text-align: left;
+  margin-left: 1rem;
 }
 
 .map {
-  width: 100%;
+  width: 90%;
   height: 300px;
+  margin-top: 1rem;
+}
+
+.download {
+  align-items: left;
+  text-align: left;
   margin-top: 1rem;
 }
 
