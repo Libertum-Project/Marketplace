@@ -6,6 +6,8 @@ import document1 from "./documents/Register1.pdf"
 import document2 from "./documents/Register2.pdf"
 import  style  from "./Aboutproperty.module.scss"
 import { BsDownload } from "react-icons/bs"
+import { FaBath, FaBed, FaWifi, FaParking   } from "react-icons/fa";
+
 
 
 const Aboutproperty = (props) => {
@@ -27,29 +29,6 @@ const Aboutproperty = (props) => {
     const passiveIncomePerMonth = (passiveIncomePerYear / 12).toFixed(2);
 
 
-    const [sticky, setSticky] = useState(false);
-
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const threshold = 200; // Punto de desplazamiento donde se fija el componente
-      const column2 = document.querySelector('.column-2');
-    
-      if (scrollPosition > threshold) {
-        column2.style.position = 'fixed';
-        column2.style.top = '50px'; // Ajusta la posición verticalmente según tus necesidades
-        column2.style.left = '20px'; // Ajusta la posición horizontalmente según tus necesidades
-      } else {
-        column2.style.position = 'static';
-      }
-    };
-    
-    useEffect(() => {
-      window.addEventListener("scroll", handleScroll);
-    
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
-    }, []);
     
 
     return (
@@ -59,7 +38,28 @@ const Aboutproperty = (props) => {
 
             <div >
 
-            <p className={style.about}>ABOUT THE PROPERTY</p>
+            <p className={style.about}>ABOUT THE PROPERTY</p>            
+            
+            <div className={style.iconsbig}>
+         
+            <div>
+                  <span><FaBath /></span>
+                  <p>2 bath</p>
+                </div>
+                <div>
+                  <span><FaBed /></span>
+                  <p>3 rooms</p>
+                </div>
+                <div>
+                  <span><FaWifi /></span>
+                  <p>Free Wifi</p>
+                </div>
+                <div>
+                  <span><FaParking /></span>
+                  <p>Parking</p>
+                </div>                        
+            </div>
+
             <p className={style.description}>{description} </p>
 
             </div>
@@ -401,18 +401,36 @@ const Aboutproperty = (props) => {
 
           {/* -------------------- BUY MODULE -------------------- */}
           <div
-          className={`style.column-2 ${sticky ? "sticky" : ""}`}
-        >
-            <div className="card card-compact w-96 bg-base-100 bg-opacity-80 shadow-xl">
-            <figure>
-              <img src={image} alt="image1" />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title">{address} - {location}</h2>
+          className={style.column-2}        >          
+            <div className={style.buycontainer}>
+              <span>{location} | {address} </span>
+            
+              <div className={style.icons}>
+                <div>
+                  <span><FaBath /></span>
+                  <p>2 bath</p>
+                </div>
+                <div>
+                  <span><FaBed /></span>
+                  <p>3 rooms</p>
+                </div>
+                <div>
+                  <span><FaWifi /></span>
+                  <p>Free Wifi</p>
+                </div>
+                <div>
+                  <span><FaParking /></span>
+                  <p>Parking</p>
+                </div>
+              </div>
+
+
+            <div className={style.cardbody}>
+              
               <p>Passive Income Per Token: {PIT}</p>
               <p>Projected Rental Yield: ${PRY}</p>
               <p>Avaliables NFT: {AvailablesNFT}</p>
-              <div className="card-actions justify-center">
+              <div className={style.cardbutton}>
                 <Link
                   to={`/marketplace/buy/${number}`}
                 >
@@ -421,6 +439,7 @@ const Aboutproperty = (props) => {
               </div>
             </div>
             </div>
+
           </div>
       
 
@@ -434,31 +453,3 @@ const Aboutproperty = (props) => {
 
 export default Aboutproperty; 
 
-
-
-{/* <table className="table mt-[-2rem]">
-<tbody >              
-  <tr>
-    <th>Blueprints</th>
-    <td> 
-      <a href="https://drive.google.com/file/d/1Faf1XiLZIBtm2vXzyiIj0M7PSgpChzDn/view?usp=sharing" target="_blank"> Blueprint 1 </a>
-      <br /> 
-      <br />                 
-      <a href="https://drive.google.com/file/d/1nry8wOF_xb0iV3uIq52csaDexg95wF4i/view?usp=sharing" target="_blank">Blueprint 2 </a>                
-    </td>
-  </tr >
-
-  <tr>
-    <th >Other documents </th>
-    <td>  
-      <a href="https://drive.google.com/file/d/1OKBJ1dKgZEd8ZBse8AI9d3h0zt6RDZv9/view?usp=sharing" target="_blank" >Title 21 High Street</a>
-<br />
-<br />
-
-      <a href="https://drive.google.com/file/d/1bKvMVhea7gxi8VKusIFNroWqMzfzeTHr/view?usp=sharing" target="_blank" >Title 23 High Street</a>
-      
-      </td>
-  </tr>
-  
-  </tbody>
-</table> */}

@@ -277,6 +277,10 @@
     width: 22rem;
    
   }
+
+  .modal{
+    background-color: green;
+  }
   
   @media (min-width: 720px) {
     .createForm__inputs .inputContainer {

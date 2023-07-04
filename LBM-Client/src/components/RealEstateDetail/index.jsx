@@ -42,6 +42,33 @@ const Index = () => {
 
 
 
+  
+
+  const [sticky, setSticky] = useState(false);
+
+  const handleScroll = () => {
+    const scrollPosition = window.scrollY;
+    const threshold = 800; // Punto de desplazamiento donde se fija el componente
+
+    if (scrollPosition > threshold) {
+      setSticky(true);
+    } else {
+      setSticky(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+
+
+
+
   return !isLoading && isAuthenticated ? (
     <div className={css.details}>
       <img src={land.image} alt="Land" className={css.detailsImage} />
@@ -85,9 +112,6 @@ const Index = () => {
         </div>
       </section>
 
-      <div className={css.info}>
-        <h2>Entire rental unit hosted by Ghazal</h2>
-      </div>
 
       <div className={css.info}>
        
