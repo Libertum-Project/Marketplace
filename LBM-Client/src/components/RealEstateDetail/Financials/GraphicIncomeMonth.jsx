@@ -22,55 +22,70 @@ ChartJS.register(
     Filler
 );
 
-// const { number } = useParams();
-// const land = db.find((item) => item.number === number);
 
 
-var beneficios = [72, 56, 20, 36, 80, 40, 30, -20, 25, 30, 12, 60];
+var meses = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+];
 
-var meses = ["January",
-"February",
-"March",
-"April",
-"May",
-"June",
-"July",
-"August",
-"September",
-"October",
-"November",
-"December",];
+export default function GraphicIncomeMonth({ passiveIncomePerMonth }) {
+
+     const passiveIncome = [];
+        for (let i = 1; i <= 12; i++) {
+        passiveIncome.push(passiveIncomePerMonth * i);
+        }
+       
+var maxIncome = Math.max(...passiveIncome);
 
 var misoptions = {
-    responsive : true,
-    animation : true,
-    plugins : {
-        legend : {
-            display : false
-        }
+    responsive: true,
+    animation: true,
+    plugins: {
+        legend: {
+            display: false
+        },
+        tooltips: {
+            callbacks: {
+              label: function (context) {
+                var value = context.parsed.y;
+                return "$" + value.toFixed(2); // Mostrar el valor con 2 decimales
+              }
+            }
+          }
     },
-    scales : {
-        y : {
-            min : -25,
-            max : 100
+    scales: {
+        y: {
+            min: 0,
+            max: maxIncome + 10000
         },
         x: {
-            ticks: { color: '#F7931A'}
+            ticks: { color: '#F7931A' }
         }
     }
 };
 
-var midata = {
-    labels: meses,
-    datasets: [
-        {
-            label: 'Beneficios',
-            data: beneficios,
-            backgroundColor: '#F7931A',
-        }
-    ]
-};
 
-export default function GraphicIncomeMonth() {
-    return <Bar data={midata} options={misoptions} />
+    var midata = {
+        labels: meses,
+        datasets: [
+            {
+                label: 'Accumulated Passive Income Per Month',
+                data: passiveIncome,
+                backgroundColor: '#F7931A',
+            }
+        ]
+    };
+
+    return <Bar data={midata} options={misoptions} />;
 }

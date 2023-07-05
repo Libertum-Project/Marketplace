@@ -1,5 +1,6 @@
 import  style  from "../Aboutproperty.module.scss"
 import GraphicIncomeMonth from "./GraphicIncomeMonth";
+
 import { useState } from "react";
 
 const Financials = ({number, PRY, value, AvailablesNFT, NFTPrice}) => {
@@ -12,8 +13,10 @@ const Financials = ({number, PRY, value, AvailablesNFT, NFTPrice}) => {
     
     const investment = NFTPrice * rangeValue;
     const passiveincometoken = (((investment * PRY)/100) / rangeValue).toFixed(2)
-    const passiveIncomePerYear = ((investment*PRY)/100).toFixed(2);
+    const passiveIncomePerYear = ((investment*PRY)).toFixed(2);
     const passiveIncomePerMonth = (passiveIncomePerYear / 12).toFixed(2);
+    console.log(passiveIncomePerMonth)
+ 
 
 return (
     <div className={style.table}>
@@ -66,15 +69,19 @@ return (
                    <div className={style.cell}>
                      <span className={style.label}>Number of tokens to be purchased:</span>
                    </div>
-                   <div className={style.cell}>
+
+                   <div className="px-4">
                    <input
                     type="range"
                     min="0"
                     max={AvailablesNFT}
-                    value={rangeValue}
-                    // className="range w-96 "
+                    step="1"
+                    value={rangeValue}                    
                     onChange={handleRangeChange}
-                    />
+                    // className={style.tokensbar}
+                    // className={style.range}
+                    className="range range-warning w-full"                   
+                     />
                    </div>
                  </div>
 
@@ -84,18 +91,30 @@ return (
                      <span className={style.label}>Invesment:</span>
                    </div>
                    <div className={style.cell}>
-                   <span className={style.descriptiontable}>........</span>
+                   <span className={style.descriptiontable}>$ {investment}</span>
                    </div>
                  </div>
 
                  <div className={style.row}>
                    <div className={style.cell}>
-                     <span className={style.label}>Passive Income per month:</span>
+                     <span className={style.label}>Passive Income per Month:</span>
                    </div>
                    <div className={style.cell}>
-                   <span className={style.descriptiontable}>GRAPHIC</span>
+                   <span className={style.descriptiontable}></span>
+                   </div>
+                 </div>
 
-                   <GraphicIncomeMonth />
+                 <div className={style.row}>
+                   <div className={style.cell}>
+                     <span className={style.label}></span>  
+                   </div>
+                   <div className={style.cell}>
+                   <GraphicIncomeMonth 
+                      passiveIncomePerMonth={passiveIncomePerMonth}                
+                   />  
+                   <span className={style.descriptiontablemonth}>
+                   <p><i>ACCUMULATIVE PASSIVE INCOME PER MONTH</i></p>
+                  </span>
 
                    </div>
                  </div>
@@ -105,7 +124,7 @@ return (
                      <span className={style.label}>Anual Passive Income:</span>
                    </div>
                    <div className={style.cell}>
-                   <span className={style.descriptiontable}>........</span>
+                   <span className={style.descriptiontable}>$ {passiveIncomePerYear}</span>
                    </div>
                  </div>
 

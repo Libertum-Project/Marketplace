@@ -2,6 +2,7 @@
 $primary-color: #F7931A;
 $secondary-color:  #5c6068; 
 $font-size-base: 16px;
+$--bc: #F7931A;
 
 .container {
   position: relative;  
@@ -135,12 +136,12 @@ text-align: left;
 }
 
 .label {
-  color: #000;
+ 
   font-size: 1rem;
   font-family: Inter;
   font-weight: 700;
   line-height: 1.5rem;
-  color: var(--black, #000);
+  // color: var(--black, #000);
   font-size: 1rem;
   font-family: Inter;
   line-height: 1.5rem;
@@ -175,6 +176,147 @@ text-align: left;
   text-align: left;
   margin-top: 1rem;
 }
+
+
+
+
+/* YourStyles.scss */
+
+.tokensbar {
+  width: 100%;
+  height: 20px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 5px;
+  background-color: #ccc; /* Barra gris */
+  position: relative;
+
+  &::before {
+    content: attr(value); /* Muestra el valor actual */
+    position: absolute;
+    top: 50%;
+    left: 105%;
+    transform: translate(-50%, -50%);
+    color: rgb(72, 72, 72);
+    background-color: #5c606846;
+    width: 3rem;
+    text-align: center;
+    border-radius: 10%;
+
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    // background-color: #4CAF50; /* Color verde */
+    transition: width 0.3s ease-in-out; /* Transición suave al llenarse */
+  }
+
+  &::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #de5458; /* Color verde */
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  &::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background-color: #4CAF50; /* Color verde */
+    border-radius: 50%;
+    cursor: pointer;
+  }
+}
+
+
+
+
+.range {
+    height: 1.5rem/* 24px */;
+    width: 100%;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    --range-shdw: var(--bc);
+    // --range-shdw: $primary-color !important;
+    overflow: hidden;
+    background-color: transparent;
+    border-radius: var(--rounded-box, 1rem);
+}
+.range:focus {
+    outline: none;
+}
+.range:focus-visible::-webkit-slider-thumb {
+    --focus-shadow: 0 0 0 6px hsl(var(--b1)) inset, 0 0 0 2rem hsl(var(--range-shdw)) inset;
+}
+.range:focus-visible::-moz-range-thumb {
+    --focus-shadow: 0 0 0 6px hsl(var(--b1)) inset, 0 0 0 2rem hsl(var(--range-shdw)) inset;
+}
+.range::-webkit-slider-runnable-track {
+    height: 0.5rem/* 8px */;
+    width: 100%;
+    background-color: hsl(var(--bc) / 0.1);
+    border-radius: var(--rounded-box, 1rem);
+}
+.range::-moz-range-track {
+    height: 0.5rem/* 8px */;
+    width: 100%;
+    background-color: hsl(var(--bc) / 0.1);
+    border-radius: var(--rounded-box, 1rem);
+}
+.range::-webkit-slider-thumb {
+    position: relative;
+    height: 1.5rem/* 24px */;
+    width: 1.5rem/* 24px */;
+    border-style: none;
+    --tw-bg-opacity: 1;
+    background-color: hsl(var(--b1) / var(--tw-bg-opacity));
+    border-radius: var(--rounded-box, 1rem);
+    appearance: none;
+    -webkit-appearance: none;
+    top: 50%;
+    color: hsl(var(--range-shdw));
+    transform: translateY(-50%);
+    --filler-size: 100rem/* 1600px */;
+    --filler-offset: 0.6rem/* 9.6px */;
+    box-shadow: 0 0 0 3px hsl(var(--range-shdw)) inset, var(--focus-shadow, 0 0),
+      calc(var(--filler-size) * -1 - var(--filler-offset)) 0 0 var(--filler-size);
+}
+.range::-moz-range-thumb {
+    position: relative;
+    height: 1.5rem/* 24px */;
+    width: 1.5rem/* 24px */;
+    border-style: none;
+    --tw-bg-opacity: 1;
+    background-color: hsl(var(--b1) / var(--tw-bg-opacity));
+    border-radius: var(--rounded-box, 1rem);
+    top: 50%;
+    color: hsl(var(--range-shdw));
+    --filler-size: 100rem/* 1600px */;
+    --filler-offset: 0.5rem/* 8px */;
+    box-shadow: 0 0 0 3px hsl(var(--range-shdw)) inset, var(--focus-shadow, 0 0),
+      calc(var(--filler-size) * -1 - var(--filler-offset)) 0 0 var(--filler-size);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // ----------------------------- BUY MODULE ------------------------------
 
