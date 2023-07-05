@@ -43,28 +43,17 @@ const Index = () => {
 
 
   
-
-  const [sticky, setSticky] = useState(false);
-
-  const handleScroll = () => {
-    const scrollPosition = window.scrollY;
-    const threshold = 800; // Punto de desplazamiento donde se fija el componente
-
-    if (scrollPosition > threshold) {
-      setSticky(true);
-    } else {
-      setSticky(false);
-    }
-  };
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      setIsScrolled(scrollTop > 0);
     };
-  }, []);
 
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
 
 
@@ -136,9 +125,7 @@ const Index = () => {
           />
         
 
-        {/* <div
-          className={`fixed bottom-[-16rem] right-16 ${sticky ? "sticky" : ""}`}
-        >
+        <div className={isScrolled ? css.buycontainer : ''}>
           <Buy
             id={land.id}
             image={land.image}
@@ -152,7 +139,7 @@ const Index = () => {
             location={land.location}
             NFTPrice={land.NFTPrice}
           />
-        </div> */}
+        </div>
       </div>
     </div>
   ) : <Loading />

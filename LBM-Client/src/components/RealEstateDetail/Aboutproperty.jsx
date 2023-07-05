@@ -167,7 +167,7 @@ const Aboutproperty = (props) => {
           </div>          
 
           {/* -------------------- BUY MODULE -------------------- */}
-          <div
+          {/* <div
           className={style.column-2}        >          
             <div className={style.buycontainer}>
               <span>{location} | {address} </span>
@@ -207,7 +207,7 @@ const Aboutproperty = (props) => {
             </div>
             </div>
 
-          </div>
+          </div> */}
       
 
 

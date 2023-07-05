@@ -22,21 +22,8 @@ $--bc: #F7931A;
 
 .column-2 {
   flex-basis: 30%;
+  
   // Ajusta la posición horizontalmente según tus necesidades
-}
-
-.sticky {  
-  flex-basis: 30%;
-  position: sticky;
-  top: 50px; // Ajusta la posición verticalmente según tus necesidades
-  left: 20px; // Ajusta la posición horizontalmente según tus necesidades
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  z-index: 999;
 }
 
 
