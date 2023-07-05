@@ -23,10 +23,11 @@ const Financials = ({number, PRY, value, AvailablesNFT, NFTPrice}) => {
  
 
 return (
+  <div>
     <div className={style.table}>
                  <div className={style.row}>
                    <div className={style.cell}>
-                     <span className={style.label}>Market value of the property</span>
+                     <span className={style.label}>Market value of the property:</span>
                    </div>
                    <div className={style.cell}>
                      <span className={style.descriptiontable}> $ {value}</span>
@@ -35,7 +36,7 @@ return (
 
                  <div className={style.row}>
                    <div className={style.cell}>
-                     <span className={style.label}>Funded</span>
+                     <span className={style.label}>Funded:</span>
                    </div>
                    <div className={style.cell} >                   
                       <div className={style.barra}>
@@ -54,7 +55,7 @@ return (
 
                  <div className={style.row}>
                    <div className={style.cell}>
-                     <span className={style.label}>Rental Yield</span>
+                     <span className={style.label}>Rental Yield:</span>
                    </div>
                    <div className={style.cell}>
                      <span className={style.descriptiontable}>{PRY} %</span>
@@ -63,7 +64,7 @@ return (
 
                  <div className={style.row}>
                    <div className={style.cell}>
-                     <span className={style.label}>Number of F-NFT available</span>
+                     <span className={style.label}>Number of Tokens available:</span>
                    </div>
                    <div className={style.cell}>
                      <span className={style.descriptiontable}>{AvailablesNFT}</span>
@@ -72,7 +73,7 @@ return (
 
                  <div className={style.row}>
                    <div className={style.cell}>
-                     <span className={style.label}>Passive Income per token</span>
+                     <span className={style.label}>Passive Income per token:</span>
                    </div>
                    <div className={style.cell}>
                      <span className={style.descriptiontable}>{passiveincometoken}</span>
@@ -110,7 +111,18 @@ return (
                      <span className={style.label}>Invesment:</span>
                    </div>
                    <div className={style.cell}>
-                   <span className={style.descriptiontable}>$ {investment}</span>
+                   <span className={style.descriptiontabledif}>$ {investment}</span>
+                   </div>
+                 </div>
+
+
+
+                 <div className={style.row}>
+                   <div className={style.cell}>
+                     <span className={style.label}>Anual Passive Income:</span>
+                   </div>
+                   <div className={style.cell}>
+                   <span className={style.descriptiontabledif}>$ {passiveIncomePerYear}</span>
                    </div>
                  </div>
 
@@ -119,43 +131,38 @@ return (
                      <span className={style.label}>Passive Income per Month:</span>
                    </div>
                    <div className={style.cell}>
-                   <span className={style.descriptiontable}></span>
+                   <span className={style.descriptiontabledif}>$ {passiveIncomePerMonth}</span>
                    </div>
-                 </div>
+                 </div>                 
 
-                 <div className={style.row}>
-                   <div className={style.cell}>
-                     <span className={style.label}></span>  
-                   </div>
-                   <div className={style.cell}>
-                   <GraphicIncomeMonth 
+           </div>
+
+
+           <div className={style.graphics}>
+
+           <div className={style.graphic1}>
+                 <GraphicIncomeMonth 
                       passiveIncomePerMonth={passiveIncomePerMonth}                
                    />  
                    <span className={style.descriptiontablemonth}>
                    <p><i>ACCUMULATIVE PASSIVE INCOME PER MONTH</i></p>
                   </span>
-
-                   </div>
                  </div>
+         <div>
+                <TableIncome 
+                   passiveIncomePerYear={passiveIncomePerYear}
+                   investment={investment}
+                   /> 
+                  <span className={style.descriptiontablemonth}>
+                   <p><i>ACCUMULATIVE PASSIVE INCOME IN YEARS</i></p>
+                  </span>
+         </div>
 
-                 <div className={style.row}>
-                   <div className={style.cell}>
-                     <span className={style.label}>Anual Passive Income:</span>
-                   </div>
-                   <div className={style.cell}>
-                   <span className={style.descriptiontable}>$ {passiveIncomePerYear}</span>
-                   </div>
-                 </div>
 
-                 <div className={style.row}>
-                   <div className={style.cell}>
-                     <span className={style.label}>Table:</span>
-                   </div>
-                   <div className={style.cell}>
-                   <TableIncome /> 
-                   </div>
-                 </div>
 
+
+           </div>
+           
            </div>
 )}; 
 
