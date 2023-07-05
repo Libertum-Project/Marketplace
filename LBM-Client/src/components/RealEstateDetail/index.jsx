@@ -48,7 +48,7 @@ const Index = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      setIsScrolled(scrollTop > 0);
+      setIsScrolled(scrollTop > 120);
     };
 
     window.addEventListener('scroll', handleScroll);

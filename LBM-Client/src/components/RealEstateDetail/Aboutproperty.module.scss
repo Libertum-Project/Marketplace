@@ -353,23 +353,29 @@ input[type="range"]::-ms-track {
 // }
 
 .buycontainer{
-
-  position: relative;
-  // top: 10rem; // Ajusta la posición verticalmente según tus necesidades
-  // right: 8rem; 
+    position: relative; 
   border-radius: 1rem;
   width: 24rem;
-  background-color: rgba(237, 237, 232, 0.218);
-  opacity: 0.8;
+  height: 24rem;
+  background-color: rgb(255, 255, 255);
+  // opacity: 0.8;
   box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.302);
   padding: 2rem 0.3rem;
   font-size: 0.875rem/* 14px */;
   line-height: 1.25rem/* 20px */;
-  // max-height: calc(100vh - 10rem - 5rem); /* Resta la altura del encabezado y el pie de página */
-  // overflow-y: hidden; /* Añade desplazamiento vertical si el contenido supera la altura máxima */
 }
 .buycontainer figure{
 border-radius: 1rem;
+}
+
+.buycontainer h1{
+  margin-bottom: 20px;
+  color: #000;
+  text-align: center;
+  font-size: 1.375rem;
+  font-family: Inter;
+  font-weight: 600;
+  margin-bottom: 2rem;
 }
 
 .buycontainer span {
@@ -384,9 +390,7 @@ border-radius: 1rem;
 
 .cardbody{
   display: flex;
-  display: flex;
   flex: 1 1 auto;
-  flex-direction: column;
   flex-direction: column;
   padding: 2rem;
   gap: 0.5rem/* 8px */;
@@ -410,14 +414,14 @@ font-weight: 500;
   margin-bottom: 0.25rem/* 4px */;
 }
 
-.cardbutton{
-  display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    gap: 0.5rem/* 8px */;
-    justify-content: center;
-    margin-top: 2rem;
-}
+// .cardbutton{
+//   display: flex;
+//     flex-wrap: wrap;
+//     align-items: flex-start;
+//     gap: 0.5rem/* 8px */;
+//     justify-content: center;
+//     margin-top: 2rem;
+// }
 
 .icons {
   display: flex;
@@ -473,81 +477,21 @@ font-weight: 500;
 
 .button{
   display: inline-flex;
-  flex-shrink: 0;
+  background-color: $primary-color;  
   cursor: pointer;
-  user-select: none;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   border-color: transparent;
-  border-color: hsl(var(--b2) / var(--tw-border-opacity));
-  text-align: center;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-duration: 200ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: var(--rounded-btn, 0.5rem);
+  text-align: center;   
   height: 3rem/* 48px */;
   padding-left: 1rem/* 16px */;
-  padding-right: 1rem/* 16px */;
-  font-size: 0.875rem/* 14px */;
-  line-height: 1.25rem/* 20px */;
-  line-height: 1em;
-  min-height: 3rem/* 48px */;
-  gap: 0.5rem/* 8px */;
-  font-weight: 600;
-  text-decoration-line: none;
-  text-decoration-line: none;
-  border-width: var(--border-btn, 1px);
-  animation: button-pop var(--animation-btn, 0.25s) ease-out;
-  text-transform: var(--btn-text-case, uppercase);
-  --tw-border-opacity: 1;
-  --tw-bg-opacity: 1;
-  background-color: hsl(var(--b2) / var(--tw-bg-opacity));
-  --tw-text-opacity: 1;
-  color: hsl(var(--bc) / var(--tw-text-opacity));
-  outline-color: hsl(var(--bc) / 1);
-}
-.btn-disabled,
-.btn[disabled],
-.btn:disabled {
-  pointer-events: none;
-  --tw-border-opacity: 0;
-  background-color: hsl(var(--n) / var(--tw-bg-opacity));
-  --tw-bg-opacity: 0.2;
-  color: hsl(var(--bc) / var(--tw-text-opacity));
-  --tw-text-opacity: 0.2;
-}
-.btn-disabled,
-.btn[disabled],
-.btn:disabled {
-  pointer-events: none;
-  --tw-border-opacity: 0;
-  background-color: hsl(var(--n) / var(--tw-bg-opacity));
-  --tw-bg-opacity: 0.2;
-  color: hsl(var(--bc) / var(--tw-text-opacity));
-  --tw-text-opacity: 0.2;
-}
-.btn-group > input[type="radio"].btn {
-  appearance: none;
-}
-.btn-group > input[type="radio"].btn:before {
-  content: attr(data-title);
-}
-.btn:is(input[type="checkbox"]),
-.btn:is(input[type="radio"]) {
-  appearance: none;
-}
-.btn:is(input[type="checkbox"]),
-.btn:is(input[type="radio"]) {
-  appearance: none;
-}
-.btn:is(input[type="checkbox"]):after,
-.btn:is(input[type="radio"]):after {
-  --tw-content: attr(aria-label);
-  content: var(--tw-content);
-}
-.btn:is(input[type="checkbox"]):after,
-.btn:is(input[type="radio"]):after {
-  --tw-content: attr(aria-label);
-  content: var(--tw-content);
+  padding-right: 1rem/* 16px */;  
+  min-height: 3rem/* 48px */;  
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #FFF;
+  text-align: center;
+  font-size: 1.125rem;
+  width: 21rem ;
+  
 }

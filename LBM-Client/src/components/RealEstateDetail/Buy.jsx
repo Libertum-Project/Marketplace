@@ -9,7 +9,7 @@ const Buy = (props) => {
            <div
           className={style.column-2}        >          
             <div className={style.buycontainer}>
-              <span>{location} | {address} </span>
+              <h1>{location} | {address} </h1>
             
               <div className={style.icons}>
                 <div>
@@ -33,14 +33,14 @@ const Buy = (props) => {
 
             <div className={style.cardbody}>
               
-              <p>Passive Income Per Token: {PIT}</p>
-              <p>Projected Rental Yield: ${PRY}</p>
-              <p>Avaliables NFT: {AvailablesNFT}</p>
+              <p><b>Passive Income Per Token:</b> {PIT}</p>
+              <p><b>Projected Rental Yield:</b> ${PRY}</p>
+              <p><b>Avaliables NFT:</b> {AvailablesNFT}</p>
               <div className={style.cardbutton}>
                 <Link
                   to={`/marketplace/buy/${number}`}
                 >
-                  <button className="btn content-center btn-wide bg-primary flex items-center justify-center">Buy Now</button>
+                  <button className={style.button}>Invest Now! </button>
                 </Link>
               </div>
             </div>
