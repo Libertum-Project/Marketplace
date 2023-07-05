@@ -1,5 +1,6 @@
 import  style  from "../Aboutproperty.module.scss"
 import GraphicIncomeMonth from "./GraphicIncomeMonth";
+import TableIncome from "./TableIncome";
 
 import { useState } from "react";
 
@@ -10,6 +11,9 @@ const Financials = ({number, PRY, value, AvailablesNFT, NFTPrice}) => {
     const handleRangeChange = (event) => {
         setRangeValue(event.target.value);
       };
+
+      const thumbPosition = (rangeValue - 0) / (100 - 0);
+
     
     const investment = NFTPrice * rangeValue;
     const passiveincometoken = (((investment * PRY)/100) / rangeValue).toFixed(2)
@@ -33,9 +37,19 @@ return (
                    <div className={style.cell}>
                      <span className={style.label}>Funded</span>
                    </div>
-                   <div className={style.cell}>
-                     <span className={style.descriptiontable}>.... % </span>
-                   </div>
+                   <div className={style.cell} >                   
+                      <div className={style.barra}>
+                      <progress
+                        type="progress"
+                        min="0"
+                        max="100"
+                        step="1"
+                        value="40"   
+                        oninput="rangevalue.value=value"
+                        className=""/>                 
+                          <output id="rangevalue"> 40 % </output>
+                      </div>
+                  </div>
                  </div>
 
                  <div className={style.row}>
@@ -70,20 +84,25 @@ return (
                      <span className={style.label}>Number of tokens to be purchased:</span>
                    </div>
 
-                   <div className="px-4">
-                   <input
-                    type="range"
-                    min="0"
-                    max={AvailablesNFT}
-                    step="1"
-                    value={rangeValue}                    
-                    onChange={handleRangeChange}
-                    // className={style.tokensbar}
-                    // className={style.range}
-                    className="range range-warning w-full"                   
-                     />
+                   <div className={style.cell} >                   
+                      <div className={style.barra}>
+                      <input
+                        type="range"
+                        min="1"
+                        max={AvailablesNFT}
+                        step="1"
+                        value={rangeValue}                    
+                        onChange={handleRangeChange}
+                        // className={style.tokensbar}
+                        // className={style.range}
+                        // className="range range-warning w-full"  
+                        onInput={() => {}}/>                 
+                          <output id="rangevalue">{rangeValue} TOKENS</output>
+                      </div>
+                  </div>
                    </div>
-                 </div>
+
+
 
            
                  <div className={style.row}>
@@ -125,6 +144,15 @@ return (
                    </div>
                    <div className={style.cell}>
                    <span className={style.descriptiontable}>$ {passiveIncomePerYear}</span>
+                   </div>
+                 </div>
+
+                 <div className={style.row}>
+                   <div className={style.cell}>
+                     <span className={style.label}>Table:</span>
+                   </div>
+                   <div className={style.cell}>
+                   <TableIncome /> 
                    </div>
                  </div>
 
