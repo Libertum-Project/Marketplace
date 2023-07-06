@@ -26,6 +26,8 @@ $font-size-base: 16px;
     max-width: 1020px;
     padding: 1rem;
   }
+
+  
 }
 
 .content{
@@ -49,6 +51,9 @@ flex-shrink: 0;
   gap: 32px;
   max-width: 450px;
   
+}
+@media screen and (min-width: 1400px){
+  width: 1000px;
 }
 }
 
@@ -294,6 +299,10 @@ line-height: 20px;
     max-width: 768px;
     width: 100%;
    }
+
+   @media screen and (min-width: 1400px){
+    width: 1000px;
+  }
 }
 
 

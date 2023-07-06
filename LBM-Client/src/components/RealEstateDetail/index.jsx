@@ -90,6 +90,7 @@ const Index = () => {
         </div>
         <img src={avatar} alt="Person" className={css.avatar} />
       </header>
+      
 
       <section className={css.mosaic}>
         <img src={land.image} alt="" />
@@ -101,9 +102,11 @@ const Index = () => {
         </div>
       </section>
 
+      
+
 
       <div className={css.info}>
-       
+             
           <Aboutproperty
             id={land.id}
             image={land.image}

@@ -1,4 +1,3 @@
-import css from "./index.module.scss";
 import style from "./indexnew.module.scss"
 import starIcon from "../../../assets/star.svg";
 import heartIconMobile from "../../../assets/heart--movile.svg";
@@ -15,7 +14,7 @@ const Index = (props) => {
   return (
     <div className={style.container}>
       <div className={style.imageContainer}>
-        <Link className={css.link} to={`/marketplace/${number}`}>        
+        <Link  to={`/marketplace/${number}`}>        
           <img src={image} alt="image of the property" />        
         </Link>
         <div className={style.funded}>

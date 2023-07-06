@@ -32,10 +32,15 @@ const Buy = (props) => {
 
 
             <div className={style.cardbody}>
-              
+
+              <div className={style.cardtext}>
               <p><b>Passive Income Per Token:</b> {PIT}</p>
               <p><b>Projected Rental Yield:</b> ${PRY}</p>
-              <p><b>Avaliables NFT:</b> {AvailablesNFT}</p>
+              <p><b>Tokens Availables:</b> {AvailablesNFT}</p>
+
+              </div>
+              
+
               <div className={style.cardbutton}>
                 <Link
                   to={`/marketplace/buy/${number}`}

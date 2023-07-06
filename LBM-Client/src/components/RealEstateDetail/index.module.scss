@@ -2,14 +2,47 @@
   position: relative;
   padding: 0rem 5rem 6rem 5rem;
 
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    /* Estilos para tablets */
+    padding: 0rem;
+  }
+
+  @media screen and (max-width: 767px) {
+    /* Estilos para dispositivos móviles */
+    padding: 0rem;
+
+  }
   
 }
 .buycontainer {
     position: fixed;
-    top: 48%;
+    top: 40%;
     left: 80%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); //NOTEBOOK
+
+  @media screen and (min-width: 1400px){ //PC GRANDE
+      top: 50%;
+      left: 73%
+    }
+    @media screen and (min-width: 768px) and (max-width: 1023px) {
+      /* Estilos para tablets */
+     position: fixed;
+     top: 80%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+    }
+  
+    @media screen and (max-width: 767px) {
+      /* Estilos para dispositivos móviles */
+      position: fixed;
+      top: 80%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+   
   }
+
+ 
 
 .detailsImage {
   width: 100%;
