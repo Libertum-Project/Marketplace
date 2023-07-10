@@ -1,7 +1,7 @@
 const CreditCard = () => {
   return (
     <>
-      <div className="card w-[26rem] mx-auto">
+      <div className="card w-[26rem] mx-auto max-h-[30rem] overflow-scroll">
         <div className="card-body text-center text-black">
           <h2 className="card-title">Add a new credit card</h2>
           <p className="text-left mb-6">This will add a new card to your saved payment methods</p>
@@ -62,7 +62,7 @@ const CreditCard = () => {
           </div>
 
           
-          <div className="card-actions justify-end">         
+          {/* <div className="card-actions justify-end">         
             <button className="btn bg-primary content-center" onClick={()=>window.my_modal_3.showModal()}>Add Credit Card</button>
             <dialog id="my_modal_3" className="modal">
               <form method="dialog" className="modal-box">
@@ -70,7 +70,7 @@ const CreditCard = () => {
                 <h3 className="font-bold text-lg">Credit Card added successfully</h3>                
               </form>
             </dialog>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
