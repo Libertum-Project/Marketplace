@@ -40,7 +40,7 @@ import { useMediaQuery } from "react-responsive";
 import SupportCenter from "./components/SupportCenter/SupportCenter";
 import DetailSupport from "./components/DetailSupport/DetailSupport";
 import Cards from "../src/components/Cards/Cards";
-import BuyProperty from "./components/RealEstateDetail/BuyProperty";
+// import BuyProperty from "./components/RealEstateDetail/BuyProperty";
 import IDO from "./components/IDO/IDO";
 import Footer from "./components/RealEstates/Footer/Footer.jsx";
 import CreateProperty from "./components/CreateProperty/CreateProperty";
@@ -113,7 +113,7 @@ function App() {
               </div>
             }
           />
-          <Route path="/marketplace/buy/:number" element={<BuyProperty />} />
+          {/* <Route path="/marketplace/buy/:number" element={<BuyProperty />} /> */}
 
           {/* <Route
             path={"/marketplace/:id"}
