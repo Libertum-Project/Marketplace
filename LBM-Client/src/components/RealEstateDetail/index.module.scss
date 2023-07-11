@@ -2,13 +2,54 @@
   position: relative;
   padding: 0rem 5rem 6rem 5rem;
 
-  .buy-container {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    /* Estilos para tablets */
+    padding: 0rem;
+  }
+
+  @media screen and (max-width: 767px) {
+    /* Estilos para dispositivos móviles */
+    padding: 0rem;
+
+  }
+  
+}
+.details img {
+  @media screen and (max-width: 767px) {
+    /* Estilos para dispositivos móviles */
+    margin-bottom: 1rem;
+
   }
 }
+.buycontainer {
+    position: fixed;
+    top: 40%;
+    left: 80%;
+    transform: translate(-50%, -50%); //NOTEBOOK
+
+  @media screen and (min-width: 1400px){ //PC GRANDE
+      top: 50%;
+      left: 73%
+    }
+    @media screen and (min-width: 768px) and (max-width: 1023px) {
+      /* Estilos para tablets */
+     position: fixed;
+     top: 80%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+    }
+  
+    @media screen and (max-width: 767px) {
+      /* Estilos para dispositivos móviles */
+      position: fixed;
+      top: 80%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+   
+  }
+
+ 
 
 .detailsImage {
   width: 100%;
@@ -74,6 +115,10 @@
   padding-bottom: 0.5rem;
   gap: 0.5rem;
   position: relative;
+
+  @media screen and (max-width: 767px) {
+    margin-bottom: .5rem;
+  }
 }
 
 .header h2 {
@@ -128,8 +173,12 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding: 1rem;
+  padding: -1rem;
   padding-top: 0;
+  position: relative;
+  width: auto;   
+  margin: 0 1rem;
+
 }
 
 .info h2 {
@@ -220,6 +269,7 @@
 
 .mosaic {
   display: none;
+  
 }
 
 .linked {
@@ -330,11 +380,14 @@
     border-radius: 12px;
     margin: 0 1rem;
     overflow: hidden;
+    border-radius: 2rem;
   }
 
   .mosaic img {
     flex: 1;
     max-width: 50%;
+    min-height: 100%;
+    object-fit: cover;
   }
 
   .otherImages {
@@ -342,7 +395,9 @@
     gap: 0.5rem;
     flex-wrap: wrap;
     flex-flow: wrap;
-    flex: 1;
+    flex: 1;   
+    min-height: 100%;
+    // border-radius: 50%;
   }
 
   .otherImages img {
