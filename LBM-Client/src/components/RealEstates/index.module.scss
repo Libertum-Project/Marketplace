@@ -79,9 +79,11 @@ $filters: (
 }
 
 .filters select {
+
   @each $property, $value in $filters {
     #{$property}: $value;
   }
+
 
   @media (max-width: 720px){
     width: 100%;
