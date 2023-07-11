@@ -7,6 +7,7 @@
   background-repeat: no-repeat;
   background-position: center center;
   height: 100vh;
+
   
   .home_section {
     text-align: start;
@@ -94,7 +95,7 @@
   }
 }
 
-@media screen and (max-width: 1640px) {
+@media screen and (max-width: 2640px) {
   .home_items {
     .home_section {
       display: flex;

@@ -1,6 +1,13 @@
-@media screen and (max-width: 1240px) {
+.divider-container {
+  display: flex;
+  justify-content: center;
+}
+
+.divider {
+ @media screen and (max-width: 1240px) {
   .divider {
     max-width: 800px;
+    justify-self: center;
   }
 }
 @media screen and (max-width: 800px) {
@@ -9,3 +16,12 @@
     filter: saturate(1);
   }
 }
+
+@media  (min-width: 1800px) {
+  .divider {
+  display: none;
+  }
+}
+}
+
+

@@ -38,8 +38,7 @@ const index = () => {
   return !isLoading && isAuthenticated ? (
     <div className={css.container}>
       <Classes />
-      <div className={css.filtersContainer}>
-       
+      <div className={css.filtersContainer}>       
         <div className={css.filters}>
           <div className={css.filtersSelect}>
             <select>
