@@ -51,7 +51,21 @@ const index = () => {
             </select>
           </div>
 
-          <div className={css.sliderContainer}>
+          <div className={css.filtersSelect}>
+            <select>
+              <option hidden value="">
+                Rental Yield
+              </option>
+              <option className={css.option}>Up to 5 %</option>
+              <option>5 % to 10 %</option>
+              <option>10 % to 25 %</option>
+              <option>25 % to 50 %</option>
+              <option>50 % & above</option>
+            </select>
+          </div>
+          
+
+          {/* <div className={css.sliderContainer}>
         <label htmlFor="rentalYieldSlider">Projected Rental Yield: {rentalYield}%</label>
         <input
           type="range"
@@ -61,7 +75,7 @@ const index = () => {
           value={rentalYield}
           onChange={handleRentalYieldChange}
         />
-      </div>
+      </div> */}
 
           <div className={css.filtersSelect}>
             <select>
@@ -71,6 +85,18 @@ const index = () => {
               <option className={css.option}>USA</option>
               <option>UK</option>
             </select>
+          </div>
+
+          <div className={css.filterbuttons}>
+            <button> 
+              all 
+            </button> |
+            <button> 
+              New 
+            </button>|
+            <button> 
+              Upcoming 
+            </button>
           </div>
 
           {/* <ModalFilter /> */}

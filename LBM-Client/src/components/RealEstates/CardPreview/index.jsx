@@ -72,15 +72,12 @@ const Index = (props) => {
 
           <div className={style.nfts}>
           <p>NFT Price: <span>{NFTPrice}</span> ·</p>
-          <p>Available NFTs:<span>{AvailablesNFT}</span></p>   
-          
-
-          </div>
-      
-            <div className={style.price}>
+          <p>Available NFTs:<span>{AvailablesNFT}</span></p>
+          </div>      
+          <div className={style.price}>
                     <p>Property Value:</p>
                     <i>${price}</i>
-            </div> 
+          </div> 
           </div>
 
 

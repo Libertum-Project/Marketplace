@@ -1,3 +1,27 @@
+$primary-color: var(--Libertum-color);
+$secondary-color:  #5c6068; 
+$libertum-lighter: var(--LibertumColorlighter);
+$font-size-base: 16px;
+$filters: (
+  display: flex,
+  align-items: center,
+  background: #f7931a,
+  padding: 11px 24px,
+  border-radius: 9999px,
+  gap: 12px,
+  cursor: pointer,
+  font-family: "Inter",
+  font-style: normal,
+  font-weight: 500,
+  font-size: 14px,
+  line-height: 18px,
+  color: #fcfcfd,
+  min-height: 45px
+  // max-width: 226px,
+  // max-height:50px
+);
+
+
 .container {
   width: 100%;
   padding-bottom: 6rem;
@@ -16,6 +40,13 @@
 .filtersContainer {
   display: flex;
   flex-direction: column !important;
+  justify-content: center;
+  align-items: center;
+  // background-color: var(--LibertumColorlighter);
+  // height: fit-content;
+  // width: fit-content;
+  margin-bottom:3rem;
+  margin-bottom:3rem;
 }
 
 
@@ -28,8 +59,9 @@
   justify-content: center;
   justify-items: center;
   height: auto;
-  width: 100%;
+  width:80%;
   padding: 2rem 0;
+  height: 45px;
 
   @media (max-width: 720px){
     flex-direction: column;
@@ -39,23 +71,19 @@
 }
 
 
+
+
 .filtersSelect {
   flex: 1;
   width: 200px;
 }
 
 .filters select {
-  background-color: transparent;
-  border-radius: 12px;
-  border: 1px solid #e6e8ec;
-  color: #23262f;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  height: 40px;
-  line-height: 21px;
-  width: 60%;
-  padding: 0 1rem;
+
+  @each $property, $value in $filters {
+    #{$property}: $value;
+  }
+
 
   @media (max-width: 720px){
     width: 100%;
@@ -63,9 +91,15 @@
     
 }
 
+.filters select:hover{
+  font-size: 16px;
+  color: #5c6068;
+}
+
 .filters select:focus {
   outline: none;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  
 }
 
 .filters option {
@@ -73,6 +107,45 @@
   box-shadow: 0px 8px 16px -8px rgba(15, 15, 15, 0.4);
   border-radius: 12px;
   font-family: var(--EnvwiseFont);
+}
+
+.filterbuttons{
+  // box-shadow: 0px 5px 10px -5px rgba(15, 15, 15, 0.4);
+
+  display: flex;
+  align-items: center;
+  height: 45px;
+  width: 300px;
+  gap: 0.3rem;
+
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  background: #f7931a;
+  // padding: 11px 24px;
+  border-radius: 9999px;
+  // gap: 12px;
+  cursor: pointer;
+  height: 40px;
+  width: 350px;
+  
+  @each $property, $value in $filters {
+    #{$property}: $value;
+  }
+  
+
+  
+}
+.filterbuttons button{
+  text-transform: uppercase;
+  // border-left: .2px #23262f solid;
+  // border-radius: 0%;
+  // height: 40px;
+}
+
+.filterbuttons button:hover{
+  font-size: 16px;
+  color: #5c6068;
 }
 
 .sliderContainer{
@@ -87,11 +160,15 @@
   font-family: var(--EnvwiseFont);
   font-size: 14px;
   font-style: normal;
-  font-weight: 500;
-  height: 40px;
+  font-weight: 400;
+  height: 60px;
   line-height: 21px;
   width: fit-content;
   padding: 0 1rem;
+
+  @each $property, $value in $filters {
+    #{$property}: $value;
+  }
 }
 
 // .sliderContainer input[type="range"]::-webkit-slider-thumb {
@@ -126,5 +203,7 @@
 
   .container section {
     padding-inline: clamp(4rem, 12vw, 17.5rem);
+    // padding-inline: 4rem;
+    width: auto;
   }
 }
