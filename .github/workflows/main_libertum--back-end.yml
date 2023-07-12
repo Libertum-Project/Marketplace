@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'Libertum--back-end'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_44BF014B7DF9413EB9E5E20CD292220C }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_151686F0F9F24E02884D5B0DD9E063AA }}
           package: .
