@@ -45,6 +45,7 @@ import BuyProperty from "./components/RealEstateDetail/Buying/BuyProperty"
 import IDO from "./components/IDO/IDO";
 import Footer from "./components/RealEstates/Footer/Footer.jsx";
 import CreateProperty from "./components/CreateProperty/CreateProperty";
+import UserDashboard from "./components/UserDashboard/UserDashboard";
 
 function App() {
   const dispatch = useDispatch();
@@ -153,6 +154,16 @@ function App() {
               </div>
             }
           />
+
+        <Route
+            path={"/userdash"}
+            element={
+              <div className="Page">
+                <UserDashboard />
+              </div>
+            }
+          />
+
           {/* <Route
             path={"/product"}
             element={
