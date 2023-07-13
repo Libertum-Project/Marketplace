@@ -65,7 +65,7 @@ $filters: (
   justify-content: center;
   justify-items: center;
   height: auto;
-  width:80%;
+  width:85%;
   padding: 2rem 0;
   height: 45px;
 
@@ -108,7 +108,7 @@ $filters: (
 
 .filters select:focus {
   outline: none;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 3px rgba(229, 228, 228, 0.2);
   
 }
 
@@ -117,6 +117,7 @@ $filters: (
   box-shadow: 0px 8px 16px -8px rgba(15, 15, 15, 0.4);
   border-radius: 12px;
   font-family: var(--EnvwiseFont);
+  color: #e6e8ec;
 }
 
 .filterbuttons{
@@ -152,6 +153,8 @@ display: none;
 }
 .filterbuttons button{
   text-transform: uppercase;
+  background-color: transparent;
+  border-color: transparent;
   // border-left: .2px #23262f solid;
   // border-radius: 0%;
   // height: 40px;
