@@ -1,0 +1,223 @@
+$greycolor: #F4F8EE;
+$primarycolor: var(--Libertum-color);
+
+$bigbutton: (
+    width: 11.49588rem,
+    height: 12.5rem,
+    flex-shrink: 0,
+    border-radius: 1rem,    
+    display: flex,
+    flex-direction: column,
+    justify-content: space-between,
+);
+$texto-button: (
+  color: var(--0-c-0507, #0C0507),
+  font-family: Inter,
+  font-size: 0.875rem,
+  font-style: normal,
+  font-weight: 400,
+  line-height: 1.5rem,
+  text-transform: capitalize,
+  text-align: left,
+  margin-top: 1rem,
+  margin-left: 0.9rem
+);
+
+$buttonh2: (
+    color: var(--0-c-0507, #0C0507),
+    font-family: Inter,
+    font-size: 1.5rem,
+    font-style: normal,
+    font-weight: 500,
+    line-height: 2.125rem,
+    text-align: left,
+    margin-bottom: 2rem,
+    margin-left: 0.9rem,
+    margin-top: auto, /* Añade esta línea */
+);
+
+
+
+.mainContainer{
+    display: flex;
+    width: 100%;
+    height: 300px;
+    justify-content: space-around;
+    align-items: center;
+    flex-shrink: 0;
+    padding: 3rem;
+}
+
+.mainContainer section{
+    flex: 1;
+}
+
+.section1{
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // width: 50%;
+    height: 200px;
+    flex-shrink: 0;
+    border-radius: 16px;
+    background: $greycolor;
+}
+
+.section1 h2{
+    width: 238.565px;
+    color: var(--0-c-0507, #0C0507);
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-top: 40px;
+    margin-left: 30px ;
+    text-align: left;
+}
+
+.section1 button{
+    display: flex;
+    padding: 0.5rem 1rem;
+    // justify-content: center;
+    // align-items: center;
+    gap: 0.625rem;
+    border-radius: 0.625rem;
+    background: $primarycolor;    
+    color: #F4F8EE;
+    justify-self: flex-start;
+    margin-bottom: 2.56em;
+    margin-left: 30px;
+    margin-top:1.25rem ;    
+}
+
+.section1 img{
+    width: 23.71606rem;
+    height: 13.88294rem;
+    flex-shrink: 0;
+    margin-right: 30px;
+    margin-bottom: 1.2rem;
+}
+
+
+.section2{
+    display: flex;
+    // width: 50%;
+    height: 17.5625rem;
+    // padding: 1.25rem 0rem 1.25rem 3.4375rem;
+    
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.875rem;
+    flex-shrink: 0;
+
+
+}
+
+.analizefinances{
+    display: flex;
+    width: 34.62694rem;
+    align-items: center;
+    gap: 0.875rem;
+    justify-content: space-around;
+
+
+    h3{
+        display: flex;
+        width: 15.753rem;
+        height: 1.21669rem;
+        flex-direction: column;
+        justify-content: center;
+        color: var(--0-c-0507, #0C0507);
+        font-family: Inter;
+        font-size: 1.125rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        text-transform: capitalize;
+    
+    }
+
+    button {
+        color: var(--0-c-0507, #0C0507);
+        text-align: center;
+        font-family: Inter;
+        font-size: 0.75rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: .2rem; /* 183.333% */
+        text-transform: capitalize;
+        border-radius: 0.625rem;
+        background: rgba(12, 5, 7, 0.05);
+        max-height: .2rem;
+
+}
+}
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+    width: 34.62694rem;
+    // height: 12.5rem;
+    flex-shrink: 0;
+    gap: 0.3rem;
+}
+
+.button1{
+    background: var(--a-7-e-0-da, #A7E0DA);
+    @each $property, $value in $bigbutton {
+        #{$property}: $value;
+      }
+
+      p {
+        @each $property, $value in $texto-button {
+            #{$property}: $value;
+          }
+}
+    h2 {
+        @each $property, $value in $buttonh2 {
+            #{$property}: $value;
+          }
+    } 
+}
+
+
+.button2{
+    background: var(--e-1-f-8-ff, #E1F8FF);
+    @each $property, $value in $bigbutton {
+        #{$property}: $value;
+      }
+
+      p {
+        @each $property, $value in $texto-button {
+            #{$property}: $value;
+          }
+}
+    h2 {
+        @each $property, $value in $buttonh2 {
+            #{$property}: $value;
+          }
+    } 
+}
+
+.button3{
+    background: var(--fbebb-8, #FBEBB8);
+    @each $property, $value in $bigbutton {
+        #{$property}: $value;
+      }
+
+      p {
+        @each $property, $value in $texto-button {
+            #{$property}: $value;
+          }
+}
+    h2 {
+        @each $property, $value in $buttonh2 {
+            #{$property}: $value;
+          }
+    } 
+}
+
+
