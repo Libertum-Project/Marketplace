@@ -1,18 +1,27 @@
 import style from "./Frame1.module.scss"; 
 import house from "./house.png"
-import { Link } from "react-router-dom"
 import { BiExpand } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
 
 const Frame1 = () => { 
+
+  const navigate = useNavigate()
+
+  const handleListClick = () => {
+      navigate('/create');        
+    };
+
+  const handleSeeClick = () => {
+    navigate('/userdash/myproperties')
+  }
+
+
     return(
             <div className={style.mainContainer}>
               <section className={style.section1}>
                 <div>
-                  <h2>Tokenize your property</h2>
-                  <Link to={'/create'}>                   
-                  <button>List Now</button>
-                  </Link>
-                  
+                  <h2>Tokenize your property</h2>                                    
+                  <button onClick={handleListClick}>List Now</button>   
                 </div>
                 <img src={house} alt="house image" />
               </section>
@@ -21,12 +30,9 @@ const Frame1 = () => {
               <section className={style.section2}>
                 <div className={style.analizefinances}>
                   <h3>Analyze Your Finances</h3>
-                  <Link to={'/userdash/myproperties'}> {/* AGREGAR ACA EL LINK A YOUR PROPERTIES!  */}
-                    <button>See Your Properties ⠿</button>
-                  </Link>
-                  <Link> {/* AGREGAR ACA EL LINK A PAY DEBT!  */}
+                    <button onClick={handleSeeClick}>See Your Properties ⠿</button>                  
                   <button>Pay Debt</button>   
-                  </Link>               
+                          
                 </div>
 
                 <div className={style.buttons}>
