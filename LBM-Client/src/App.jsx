@@ -42,11 +42,13 @@ import DetailSupport from "./components/DetailSupport/DetailSupport";
 import Cards from "../src/components/Cards/Cards";
 // import BuyProperty from "../components/RealEstateDetail/BuyProperty";
 import BuyProperty from "./components/RealEstateDetail/Buying/BuyProperty"
+import SellProperty from "./components/Userproperties/Card/Sell/BuyProperty";
 import IDO from "./components/IDO/IDO";
 import Footer from "./components/RealEstates/Footer/Footer.jsx";
 import CreateProperty from "./components/CreateProperty/CreateProperty";
 import UserDashboard from "./components/UserDashboard/UserDashboard";
 import UserProperties from "./components/Userproperties/Userproperties";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -172,6 +174,21 @@ function App() {
               </div>
             }
           />
+          
+          <Route
+            path={"/userdash/myproperties/:id"}
+            element={
+              <div className="Page">
+                <RealEstateDetail />
+              </div>
+            }
+          />
+
+            <Route 
+            path="/userdash/myproperties/sell/:number" 
+            element={<SellProperty />} 
+            />
+
 
           {/* <Route
             path={"/product"}
