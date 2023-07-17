@@ -9,7 +9,7 @@ const Frame1 = () => {
               <section className={style.section1}>
                 <div>
                   <h2>Tokenize your property</h2>
-                  <Link> {/* AGREGAR ACA EL LINK A LIST PROPERTY!  */}                  
+                  <Link to={'/create'}>                   
                   <button>List Now</button>
                   </Link>
                   
@@ -21,7 +21,7 @@ const Frame1 = () => {
               <section className={style.section2}>
                 <div className={style.analizefinances}>
                   <h3>Analyze Your Finances</h3>
-                  <Link> {/* AGREGAR ACA EL LINK A YOUR PROPERTIES!  */}
+                  <Link to={'/userdash/myproperties'}> {/* AGREGAR ACA EL LINK A YOUR PROPERTIES!  */}
                     <button>See Your Properties ⠿</button>
                   </Link>
                   <Link> {/* AGREGAR ACA EL LINK A PAY DEBT!  */}

@@ -46,6 +46,7 @@ import IDO from "./components/IDO/IDO";
 import Footer from "./components/RealEstates/Footer/Footer.jsx";
 import CreateProperty from "./components/CreateProperty/CreateProperty";
 import UserDashboard from "./components/UserDashboard/UserDashboard";
+import UserProperties from "./components/Userproperties/Userproperties";
 
 function App() {
   const dispatch = useDispatch();
@@ -160,6 +161,14 @@ function App() {
             element={
               <div className="Page">
                 <UserDashboard />
+              </div>
+            }
+          />
+                  <Route
+            path={"/userdash/myproperties"}
+            element={
+              <div className="Page">
+                <UserProperties />
               </div>
             }
           />
