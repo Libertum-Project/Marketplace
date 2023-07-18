@@ -1,18 +1,25 @@
+import React, { useState } from "react";
 import Frame1 from "./Frame1/Frame1";
 import Frame2 from "./Frame2/Frame2";
 import ReportofProperties from "./Reportofproperties";
-
+import Modal from "./Modal";
 
 const UserDashboard = () => {
-return(
+  const [showModal, setShowModal] = useState(true); // Inicialmente mostrar el modal
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  return (
     <div>
-    <Frame1 />
+      {showModal && <Modal onClose={handleCloseModal} />}
 
-    <Frame2 />
-
-    <ReportofProperties />
-    
+      <Frame1 />
+      <Frame2 />
+      <ReportofProperties />
     </div>
-)};
+  );
+};
 
-export default UserDashboard; 
+export default UserDashboard;
