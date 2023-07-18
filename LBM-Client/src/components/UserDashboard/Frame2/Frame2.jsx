@@ -2,6 +2,14 @@ import style  from "./Frame2.module.scss";
 
 const Frame2 = () => {    
     
+const handleSeeMapClick = () => {
+    alert("Soon you can see here in a map all your properties")
+}
+
+const handleWithdrawClick = () => {
+    alert("Soon you will be able to withdraw your earnings here")
+}
+
     return(
         <div className={style.mainContainer}>
         <section className={style.section1}>
@@ -9,7 +17,7 @@ const Frame2 = () => {
                 <h3>Earning Analysis</h3> 
                 <h4 type='text'> Jan, 2022 ▾ </h4>
                 {/* aca se va a usar una biblioteca de react llamada datepicker para podre mosrar calendario y que el usuario pueda elegir otra fecha */}
-                <button>Withdraw Earnings</button>              
+                <button onClick={handleWithdrawClick}>Withdraw Earnings</button>              
             </div>
 
             <div className={style.chartsection}>
@@ -51,7 +59,7 @@ const Frame2 = () => {
         <section className={style.section2}>
             <div className={style.seefraction}> 
                 <h3>See Your Fractionalizations</h3>                 
-                <button>See Group ⠿ </button>              
+                <button onClick={handleSeeMapClick}>See Group ⠿ </button>              
             </div>
 
             <div className={style.mapframe}>

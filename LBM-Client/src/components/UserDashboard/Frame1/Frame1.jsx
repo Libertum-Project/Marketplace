@@ -15,13 +15,20 @@ const Frame1 = () => {
     navigate('/userdash/myproperties')
   }
 
+  const handleListUSERClick = () => {
+    window.open('https://docs.google.com/forms/d/e/1FAIpQLSd8HkLol829WO2hii1aem2H1_VNXWY6-1J_kqQAQclMPwo2MA/viewform?pli=1', '_blank');
+  }
+  
+  
+
 
     return(
             <div className={style.mainContainer}>
               <section className={style.section1}>
                 <div>
                   <h2>Tokenize your property</h2>                                    
-                  <button onClick={handleListClick}>List Now</button>   
+                  {/* <button onClick={handleListClick}>List Now</button>    */}
+                  <button onClick={handleListUSERClick}>List now!</button>
                 </div>
                 <img src={house} alt="house image" />
               </section>
