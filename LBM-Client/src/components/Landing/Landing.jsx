@@ -12,11 +12,17 @@ export default function Landing() {
     <div>
       <Home />
       <Protocol />
-      <img src={divider} className="divider" />
+      <div className="divider-container">
+        <img src={divider} className="divider" />
+      </div>
       <Services />
-      <img src={divider} className="divider" />
+      <div className="divider-container">
+        <img src={divider} className="divider" />
+      </div>
       <Value />
-      <img src={divider} className="divider" />
+      <div className="divider-container">
+        <img src={divider} className="divider" />
+      </div>
       <Subscribe />
     </div>
   );

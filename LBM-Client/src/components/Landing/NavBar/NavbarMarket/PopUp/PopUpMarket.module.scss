@@ -116,7 +116,7 @@ color: #5B5B5B;
         margin-top: 1em;
         margin-bottom: 1em;
         box-shadow: none;
-    }
+            }
 }
 
 @media screen and (max-width: 500px) {
@@ -131,7 +131,7 @@ color: #5B5B5B;
     .flexContainer{
         width: 100%;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         column-gap: 0em;
         align-items: center;
         justify-content: center;
@@ -145,8 +145,8 @@ color: #5B5B5B;
         height: 70px;
     }
     .button, .button2, .buttonMore{
-        width: 25%;
-        height: 25%;
+        width: 80%;
+        height: 50%;
         flex-direction: column;
         align-items: center;
         justify-content: center;

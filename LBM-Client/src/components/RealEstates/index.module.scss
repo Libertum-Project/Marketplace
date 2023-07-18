@@ -1,72 +1,215 @@
+$primary-color: var(--Libertum-color);
+$secondary-color:  #5c6068; 
+$libertum-lighter: var(--LibertumColorlighter);
+$font-size-base: 16px;
+$filters: (
+  display: flex,
+  align-items: center,
+  background: #f7931a,
+  padding: 11px 24px,
+  border-radius: 9999px,
+  gap: 12px,
+  cursor: pointer,
+  font-family: "Inter",
+  font-style: normal,
+  font-weight: 500,
+  font-size: 14px,
+  line-height: 18px,
+  color: #fcfcfd,
+  min-height: 45px
+  // max-width: 226px,
+  // max-height:50px
+);
+
+
 .container {
   width: 100%;
-  font-family: Inter;
-  margin-bottom: 6rem;
+  padding-bottom: 6rem;
+  // justify-content: center;
+  // align-items: center;
 }
 
-.container h2 {
-  color: #515562;
-  text-align: left;
-  font-family: Inter;
-  padding: 0 1.2rem;
+// .container h2 {
+//   color: #515562;
+//   text-align: left;
+//   font-family: var(--EnvwiseFont);
+
+//   padding: 0 1.2rem;
+// }
+
+.filtersContainer {
+  display: flex;
+  flex-direction: column !important;
+  justify-content: center;
+  align-items: center;
+  // background-color: var(--LibertumColorlighter);
+  // height: fit-content;
+  // width: fit-content;
+  margin-top:3rem;
+  margin-bottom:3rem;
+
+  @media (max-width: 720px){
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+  
 }
+
 
 .filters {
   display: flex;
-  padding: 0 1.2rem;
+  // padding: 0 1.2rem;
+ 
   gap: 1rem;
   align-items: center;
-  justify-content: space-between;
-  margin: 2rem 0;
+  justify-content: center;
+  justify-items: center;
+  height: auto;
+  width:85%;
+  padding: 2rem 0;
+  height: 45px;
+
+  @media (max-width: 720px){
+    flex-direction: column;
+    height: 150px;
+    margin: 0;
+    gap: 1px;
+  }
+    
+  
 }
+
+
+
 
 .filtersSelect {
   flex: 1;
+  width: 200px;
 }
 
 .filters select {
-  background-color: transparent;
-  border-radius: 12px;
-  border: 1px solid #e6e8ec;
-  color: #23262f;
-  font-family: Inter;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  height: 40px;
-  line-height: 21px;
-  width: 100%;
-  padding: 0 1rem;
+
+  @each $property, $value in $filters {
+    #{$property}: $value;
+    // gap: 1px;
+  }
+
+
+  @media (max-width: 720px){
+    width: 100%;
+  }
+    
+}
+
+.filters select:hover{
+  font-size: 16px;
+  color: #5c6068;
 }
 
 .filters select:focus {
   outline: none;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 3px rgba(229, 228, 228, 0.2);
+  
 }
 
 .filters option {
   outline: none;
   box-shadow: 0px 8px 16px -8px rgba(15, 15, 15, 0.4);
   border-radius: 12px;
-  font-family: Inter;
+  font-family: var(--EnvwiseFont);
+  color: #e6e8ec;
 }
 
-@media (min-width: 730px) {
-  .filtersContainer {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+.filterbuttons{
+  // box-shadow: 0px 5px 10px -5px rgba(15, 15, 15, 0.4);
+
+  display: flex;
+  align-items: center;
+  height: 45px;
+  width: 300px;
+  gap: 0.3rem;
+
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  background: #f7931a;
+  // padding: 11px 24px;
+  border-radius: 9999px;
+  // gap: 12px;
+  cursor: pointer;
+  height: 40px;
+  width: 350px;
+  
+  @each $property, $value in $filters {
+    #{$property}: $value;
   }
 
-  .filtersSelect {
-    width: 180px;
+  @media (max-width: 720px){
+display: none;
   }
+  
 
-  .filters {
-    gap: 1.5rem;
+  
+}
+.filterbuttons button{
+  text-transform: uppercase;
+  background-color: transparent;
+  border-color: transparent;
+  // border-left: .2px #23262f solid;
+  // border-radius: 0%;
+  // height: 40px;
+}
+
+.filterbuttons button:hover{
+  font-size: 16px;
+  color: #5c6068;
+}
+
+.sliderContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: transparent;
+  border-radius: 12px;
+  border: 1px solid #e6e8ec;
+  color: #23262f;
+  font-family: var(--EnvwiseFont);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  height: 60px;
+  line-height: 21px;
+  width: fit-content;
+  padding: 0 1rem;
+
+  @each $property, $value in $filters {
+    #{$property}: $value;
   }
 }
+
+// .sliderContainer input[type="range"]::-webkit-slider-thumb {
+//   background-color: rgb(88, 93, 88); /* Cambia "blue" al color deseado */
+//   border: .2px solid blue;
+// }
+
+// @media (min-width: 730px) {
+
+//   .filtersContainer {
+//     align-items: center;
+//     display: flex;
+//     justify-content: space-between;
+//     width: 100%;
+//   }
+
+//   .filtersSelect {
+//     width: 180px;
+//   }
+
+//   .filters {
+//     gap: 1.5rem;
+//   }
+// }
 
 @media (min-width: 1250px) {
   .filtersContainer {
@@ -77,5 +220,7 @@
 
   .container section {
     padding-inline: clamp(4rem, 12vw, 17.5rem);
+    // padding-inline: 4rem;
+    width: auto;
   }
 }

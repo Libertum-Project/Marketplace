@@ -118,7 +118,6 @@
         align-items: center;
         .services-quad_item {
           height: 300px;
-
         }
       }
     }
@@ -127,6 +126,11 @@
 
 @media screen and (max-width: 845px) {
   .services_items {
+    margin-bottom: 2rem;
+    .services_quad{
+      gap: 4rem;
+    }
+
     .services_section {
       height: auto;
       .services_text {

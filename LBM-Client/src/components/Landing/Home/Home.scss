@@ -7,6 +7,7 @@
   background-repeat: no-repeat;
   background-position: center center;
   height: 100vh;
+
   
   .home_section {
     text-align: start;
@@ -94,7 +95,7 @@
   }
 }
 
-@media screen and (max-width: 1640px) {
+@media screen and (max-width: 2640px) {
   .home_items {
     .home_section {
       display: flex;
@@ -108,6 +109,7 @@
       .home_links {
         margin: 0 auto;
         margin-top: 60px;
+        margin-bottom: 60px;
         
       }
     }
@@ -119,6 +121,7 @@
     background-image: url("./assets/background-responsive.svg");
     height: 100vh;
     .home_section {
+      margin-bottom: 1rem;
       .home_text {
         width: 315px;
         h1 {

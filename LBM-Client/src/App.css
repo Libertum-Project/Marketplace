@@ -29,7 +29,7 @@
 }
 .Page {
   width: 100%;
-  display: flex;
+  /* display: flex; */
   margin-top: 5em;
   flex-direction: row;
   /* z-index: 1; */
