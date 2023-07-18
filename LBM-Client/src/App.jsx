@@ -118,7 +118,19 @@ function App() {
               </div>
             }
           />
-          <Route path="/marketplace/buy/:number" element={<BuyProperty />} />
+          <Route 
+          path="/marketplace/buy/:number" 
+          element={<BuyProperty />} 
+          />
+
+          <Route 
+          path="/peertopeer" 
+          element={
+          <div className="Page">
+          <Marketplace />
+          </div>
+        } 
+          />
 
           {/* <Route
             path={"/marketplace/:id"}
