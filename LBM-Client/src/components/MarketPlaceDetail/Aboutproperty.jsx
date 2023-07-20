@@ -5,6 +5,7 @@ import { FaBath, FaBed, FaWifi, FaParking   } from "react-icons/fa";
 import Details from "./Details";
 import Financials from "./Financials/Financials";
 import Documents from "./documents/Documents";
+import Offers from "./Offers";
 
 import Buy from "./Buy";
 import Icons from "./Buying/Icons"
@@ -58,6 +59,9 @@ const Aboutproperty = (props) => {
 
             </div>
           
+          <div>
+            <Offers />
+          </div>
 
             <div className={style.buttons}>
               <button
