@@ -19,12 +19,30 @@ import Loading from "../Loading/Loading";
 import { useEffect, useState } from "react";
 
 const MarketPlaceDetail = () => {
-
+  const navigate = useNavigate();
   const number = useParams();
   const land = db.find((item) => item.number === number.id);
 
-  const { isLoading } = useAuth0();
+  const { isAuthenticated, isLoading, loginWithRedirect } = useAuth0();
 
+  const handleLogin = () => {
+    const redirectUri = `${window.location.origin}/marketplace/`;
+    loginWithRedirect({
+      redirectUri: redirectUri,
+    });
+  };
+
+  useEffect(() => {
+    if (!isLoading) {
+      if (!isAuthenticated) {
+        handleLogin();
+      }
+    }
+  }, [navigate, isAuthenticated, isLoading]);
+
+
+
+  
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -40,8 +58,11 @@ const MarketPlaceDetail = () => {
 
 
 
-  return !isLoading ? (
+  return !isLoading && isAuthenticated ? (
     <div className={css.details}>
+   
+
+
       <header className={css.header}>
         <h2>{land.address}</h2>
         <div className={css.headerText}>
