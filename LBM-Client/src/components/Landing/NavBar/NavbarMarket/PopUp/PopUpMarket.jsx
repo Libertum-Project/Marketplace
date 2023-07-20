@@ -56,7 +56,7 @@ function PopUpMarket() {
             <div className={style.title}>
               <h1>Peer to Peer Market</h1> <IoArrowForward />
             </div>
-            <p>Join and be part of the new real estate projects</p>
+            <p>Be part of the real estate revolution</p>
           </div>
         </a>
         {/* <a href="/comingsoon" className={style.button2}>
@@ -71,7 +71,7 @@ function PopUpMarket() {
           </div>
         </a> */}
 
-        <a className={style.buttonMore}>
+        {/* <a className={style.buttonMore}>
           <div className={style.icon}>
             <IoChevronDownOutline />
           </div>
@@ -80,7 +80,7 @@ function PopUpMarket() {
               <h1>More</h1> <IoArrowForward />
             </div>
           </div>
-        </a>
+        </a> */}
       </div>
     </div>
   );
