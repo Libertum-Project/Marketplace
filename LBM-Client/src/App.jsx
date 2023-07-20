@@ -48,6 +48,7 @@ import Footer from "./components/RealEstates/Footer/Footer.jsx";
 import CreateProperty from "./components/CreateProperty/CreateProperty";
 import UserDashboard from "./components/UserDashboard/UserDashboard";
 import UserProperties from "./components/Userproperties/Userproperties";
+import MarketPlaceDetail from "./components/MarketPlaceDetail";
 
 
 function App() {
@@ -130,6 +131,11 @@ function App() {
           <Marketplace />
           </div>
         } 
+          />
+          
+          <Route
+          path="/peertopeer/:id"
+          element={<MarketPlaceDetail/>}
           />
 
           {/* <Route

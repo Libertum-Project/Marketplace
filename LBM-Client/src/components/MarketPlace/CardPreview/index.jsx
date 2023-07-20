@@ -16,7 +16,7 @@ const CardMarket = (props) => {
 
 
       <div className={style.imageContainer}>
-        <Link  to={`/marketplace/${number}`}>        
+        <Link  to={`/peertopeer/${number}`}>        
           <img src={image} alt="image of the property" />        
         </Link>
         {/* <div className={style.funded}>

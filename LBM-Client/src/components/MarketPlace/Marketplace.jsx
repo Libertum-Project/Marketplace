@@ -1,6 +1,5 @@
 import React from "react";
 import Classes from "./Classes/Classes";
-import CardImages from "./CardImages/CardImages";
 import CardMarket from "./CardPreview";
 import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
