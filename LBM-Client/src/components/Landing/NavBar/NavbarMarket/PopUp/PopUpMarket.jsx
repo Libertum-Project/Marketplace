@@ -23,7 +23,7 @@ function PopUpMarket() {
   return (
     <div className={style.Container} data-dropdown>
       <div className={style.flexContainer}>
-        <Link to="/comingsoon" className={style.button}>
+        <Link to="/marketplace" className={style.button}>
           <div className={style.icon}>
             <IoGridOutline />
           </div>
@@ -48,18 +48,18 @@ function PopUpMarket() {
           </div>
           </a>
         </div> */}
-        <a href="/comingsoon" className={style.button}>
+        <a href="/peertopeer" className={style.button}>
           <div className={style.icon}>
             <TbVector />
           </div>
           <div className={style.text}>
             <div className={style.title}>
-              <h1>LaunchPad</h1> <IoArrowForward />
+              <h1>Peer to Peer Market</h1> <IoArrowForward />
             </div>
-            <p>Join and be part of the new real estate projects</p>
+            <p>Be part of the real estate revolution</p>
           </div>
         </a>
-        <a href="/comingsoon" className={style.button2}>
+        {/* <a href="/comingsoon" className={style.button2}>
           <div className={style.icon}>
             <IoRocketSharp />
           </div>
@@ -69,9 +69,9 @@ function PopUpMarket() {
             </div>
             <p>he ability to passively earn interest through DeFi 2.0 loans</p>
           </div>
-        </a>
+        </a> */}
 
-        <a className={style.buttonMore}>
+        {/* <a className={style.buttonMore}>
           <div className={style.icon}>
             <IoChevronDownOutline />
           </div>
@@ -80,7 +80,7 @@ function PopUpMarket() {
               <h1>More</h1> <IoArrowForward />
             </div>
           </div>
-        </a>
+        </a> */}
       </div>
     </div>
   );
