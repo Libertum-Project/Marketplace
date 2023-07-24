@@ -1,8 +1,10 @@
 import BarChart from "./GraphicUsers";
 import LineChart from "./GraphicTransactions";
-import css from "./Frame3.module.scss"
+import css from "./Frame3.module.scss";
+import { Link } from 'react-router-dom'
+
+
 const Frame3 = () => {
-    
     return(
         <div className={css.mainContainer}>
             <section className={css.usersContainer}>
@@ -12,7 +14,10 @@ const Frame3 = () => {
 
                 <div className={css.userstext}>
                     <h2>Users</h2>
+                    <Link to='/admin-allusers'>
                     <button>All Users</button>
+                    </Link>
+                    
                 </div>
             </section>
 
