@@ -48,7 +48,11 @@ import Footer from "./components/RealEstates/Footer/Footer.jsx";
 import CreateProperty from "./components/CreateProperty/CreateProperty";
 import UserDashboard from "./components/UserDashboard/UserDashboard";
 import UserProperties from "./components/Userproperties/Userproperties";
+
 import MarketPlaceDetail from "./components/MarketPlaceDetail";
+
+import AdminDash from "./components/AdminDashboard/AdminDash";
+
 
 
 function App() {
@@ -206,6 +210,16 @@ function App() {
             path="/userdash/myproperties/sell/:number" 
             element={<SellProperty />} 
             />
+
+
+        <Route 
+          path="/admindashboard" 
+          element={
+          <div className="Page">
+          <AdminDash />
+          </div>
+        } 
+          />
 
 
           {/* <Route
