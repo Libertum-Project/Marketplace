@@ -49,6 +49,7 @@ import CreateProperty from "./components/CreateProperty/CreateProperty";
 import UserDashboard from "./components/UserDashboard/UserDashboard";
 import UserProperties from "./components/Userproperties/Userproperties";
 import AdminDash from "./components/AdminDashboard/AdminDash";
+import UsersTable from "./components/AdminDashboard/UsersTable/UsersTable";
 
 
 function App() {
@@ -212,6 +213,16 @@ function App() {
         } 
           />
 
+        <Route 
+          path="/admin-allusers" 
+          element={
+          <div className="Page">
+          <UsersTable />
+          </div>
+        } 
+          />
+
+      
 
           {/* <Route
             path={"/product"}

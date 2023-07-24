@@ -1,5 +1,5 @@
 import DataTable from 'react-data-table-component';   
-import css from './TableAdmins.module.scss';
+import css from './TableUsers.module.scss';
 
 const customStyles = {
     headRow: {
@@ -45,8 +45,8 @@ const columns = [
     },
     
     {
-        name: 'Remove',
-        selector: row => row.status,
+        name: 'View contracts',
+        selector: row => row.contract,
         cell: row => (
             <div
               style={{
@@ -67,28 +67,45 @@ const data = [
         id: 1,
         user: 'Alan',
         mail: "allena@gmail.com",
-        status: "remove"
+        status: "contract"
     },
     {
         id: 2,
         user: 'Guillermo',
         mail: "guillermo@gmail.com",
-        status: "remove"
+        status: "contract"
     },
-    // {
-    //     id: 3,
-    //     user: 'Allena',
-    //     mail: "allena@gmail.com",
-    //     status: "remove"
-    // },
-
+    {
+        id:3,
+        user: 'Maria',
+        mail: "guillermo@gmail.com",
+        status: "contract"
+    },
+    {
+        id: 4,
+        user: 'Pedro',
+        mail: "guillermo@gmail.com",
+        status: "contract"
+    },
+    {
+        id: 5,
+        user: 'Laura',
+        mail: "guillermo@gmail.com",
+        status: "contract"
+    },
+    {
+        id: 6,
+        user: 'Paula',
+        mail: "guillermo@gmail.com",
+        status: "contract"
+    },
 ]
 
-const Admins = () => {
+const Users = () => {
     return (
         <div className={css.container}>
         <div className={css.table}>
-        <h3>Admins</h3>
+        <h3></h3>
         <DataTable
             columns={columns}
             data={data}
@@ -102,4 +119,4 @@ const Admins = () => {
     );
 };
 
-export default Admins; 
+export default Users; 
