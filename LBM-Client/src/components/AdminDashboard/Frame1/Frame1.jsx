@@ -11,7 +11,7 @@ const Frame1 = () => {
 
             <section className={css.section2}>
                 <h2>Admin Wallet</h2>
-                <button>Conect | Access</button>                       
+                <button>Access</button>                       
             </section>
 
             
