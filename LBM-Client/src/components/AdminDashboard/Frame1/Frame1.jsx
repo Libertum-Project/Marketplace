@@ -1,4 +1,5 @@
-import css from "./Frame1.module.scss"
+import css from "./Frame1.module.scss";
+import { Link } from "react-router-dom";
 
 const Frame1 = () => {
     return(
@@ -6,7 +7,10 @@ const Frame1 = () => {
 
             <section className={css.section1}>
                 <h2> Upload Property</h2>
+                <Link to='/create'>
                 <button>List Now!</button>
+                </Link>
+                
             </section>
 
             <section className={css.section2}>

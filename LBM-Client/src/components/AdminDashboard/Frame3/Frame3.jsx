@@ -26,8 +26,15 @@ const Frame3 = () => {
 
                 <div className={css.transactionstext}>
                     <h2>Transactions overview</h2>
+                    <Link to="/admin-properties">
                     <button>All properties</button>
+                    </Link>
+
+                    <Link to="/admin-transactions">
                     <button>All transactions</button>
+                    </Link>
+                    
+                    
                 </div>
 
                 <div className={css.transactionschart}>
