@@ -51,10 +51,10 @@ const InfoClasses =
             'name': 'Agriculture',
             'img': Vineyards
         }, 
-        {
-            'name': 'Help Ukraine',
-            'img': Isolated
-        },
+        // {
+        //     'name': 'Help Ukraine',
+        //     'img': Isolated
+        // },
 
         {
             'name': 'Popular',
@@ -84,10 +84,10 @@ const InfoClasses =
             'name': 'Department',
             'img': Department
         }, 
-        {
-            'name': 'mansions',
-            'img': Mansions
-        }, 
+        // {
+        //     'name': 'mansions',
+        //     'img': Mansions
+        // }, 
         // {
         //     'name': 'Tropical',
         //     'img': Tropical
@@ -117,41 +117,41 @@ const InfoClasses =
         //     'img': Luxury
         // }, 
 
-        // {
-        //     'name': 'Boat Houses',
-        //     'img': Floating
-        // }, 
         {
-            'name': 'Amazing Pools',
-            'img': AmazingPools
-        },
-
-        {
-            'name': 'lakefront',
-            'img': Lakefronts
-        }, 
-         {
-            'name': 'farms',
-            'img': Farms
-        }, {
             'name': 'Boat Houses',
-            'img': Lake
-        }, {
-            'name': 'Golf',
-            'img': Golf
-        }, {
-            'name': 'historic houses',
-            'img': Historic
-        }, {
-            'name': 'stables',
-            'img': Stables
-        }, {
-            'name': 'towers',
-            'img': Towers
-        }, {
-            'name': 'adapted',
-            'img': Adapted
-        },
+            'img': Floating
+        }, 
+        // {
+        //     'name': 'Amazing Pools',
+        //     'img': AmazingPools
+        // },
+
+        // {
+        //     'name': 'lakefront',
+        //     'img': Lakefronts
+        // }, 
+        //  {
+        //     'name': 'farms',
+        //     'img': Farms
+        // }, {
+        //     'name': 'Boat Houses',
+        //     'img': Lake
+        // }, {
+        //     'name': 'Golf',
+        //     'img': Golf
+        // }, {
+        //     'name': 'historic houses',
+        //     'img': Historic
+        // }, {
+        //     'name': 'stables',
+        //     'img': Stables
+        // }, {
+        //     'name': 'towers',
+        //     'img': Towers
+        // }, {
+        //     'name': 'adapted',
+        //     'img': Adapted
+        // },
     ]
 
 
