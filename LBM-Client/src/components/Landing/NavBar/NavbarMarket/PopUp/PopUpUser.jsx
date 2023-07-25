@@ -122,11 +122,11 @@ function PopUpUser({ setActiveMenu }) {
             <a>FAQ</a>
             {admin ? (
               <Link
-                to="./create"
+                to="./admindashboard"
                 className={style.formBtn}
                 onClick={() => setActiveMenu(false)}
               >
-                Post your property
+                Admin Dashboard
               </Link>
             ) : null}
             {isAdmin ? <a href="/admin">Admin menu</a> : null}
