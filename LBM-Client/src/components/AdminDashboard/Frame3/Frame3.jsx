@@ -30,9 +30,9 @@ const Frame3 = () => {
                     <button>All properties</button>
                     </Link>
 
-                    <Link to="/admin-transactions">
+                    {/* <Link to="/admin-transactions">
                     <button>All transactions</button>
-                    </Link>
+                    </Link> */}
                     
                     
                 </div>
