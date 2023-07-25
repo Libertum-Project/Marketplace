@@ -50,6 +50,8 @@ import UserDashboard from "./components/UserDashboard/UserDashboard";
 import UserProperties from "./components/Userproperties/Userproperties";
 import AdminDash from "./components/AdminDashboard/AdminDash";
 import UsersTable from "./components/AdminDashboard/UsersTable/UsersTable";
+import Transactions from "./components/AdminDashboard/Transactions/Trasactions";
+import Properties from "./components/AdminDashboard/Properties/Properties";
 
 
 function App() {
@@ -218,6 +220,24 @@ function App() {
           element={
           <div className="Page">
           <UsersTable />
+          </div>
+        } 
+          />
+
+      <Route 
+          path="/admin-properties" 
+          element={
+          <div className="Page">
+          <Properties />
+          </div>
+        } 
+          />
+
+      <Route 
+          path="/admin-transactions" 
+          element={
+          <div className="Page">
+          <Transactions />
           </div>
         } 
           />
