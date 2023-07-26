@@ -85,6 +85,10 @@ const PropertyForm = ({
       errors.Expected_Emission_Level = "Expected Emission Level is required";
     }
 
+    if(images.length < 5 ){
+      errors.ExpectedImages = "Please upload at least 5 images";
+    }
+
     setFormErrors(errors);
 
     return Object.keys(errors).length === 0;
@@ -131,10 +135,8 @@ const PropertyForm = ({
             >
               <option value="">Select</option>
               <option value="green">Green / Sustainable</option>
-              <option value="high-yield">High Yield</option>
-              <option value="build-ukraine">
-                Help Build Ukraine Properties
-              </option>
+              {/* <option value="high-yield">High Yield</option> */}
+              {/* <option value="build-ukraine">Help Build Ukraine Properties </option> */}
               <option value="commercial">Commercial</option>
               <option value="residential">Residential</option>
               <option value="hotels">Hotels</option>
@@ -295,7 +297,7 @@ const PropertyForm = ({
 
         <div className={css.inputContainer}>
           <div>
-            <label>Current Emission</label>
+            <label>Current CO2 Emission</label>
             <input
               type="number"
               value={propertyData.featureData.Current_Emission}
@@ -303,12 +305,12 @@ const PropertyForm = ({
                 onChange("Current_Emission", e.target.value);
               }}
             />
-            {formErrors.Current_Emission && (
+            {/* {formErrors.Current_Emission && (
               <p className={css.error}>{formErrors.Current_Emission}</p>
-            )}
+            )} */}
           </div>
           <div>
-            <label>Expected Emission Level</label>
+            <label>Expected CO2 Emission Level</label>
             <input
               type="number"
               value={propertyData.featureData.Expected_Emission_Level}
@@ -316,9 +318,9 @@ const PropertyForm = ({
                 onChange("Expected_Emission_Level", e.target.value);
               }}
             />
-            {formErrors.Expected_Emission_Level && (
+            {/* {formErrors.Expected_Emission_Level && (
               <p className={css.error}>{formErrors.Expected_Emission_Level}</p>
-            )}
+            )} */}
           </div>
         </div>
         <UploadImages
@@ -326,6 +328,9 @@ const PropertyForm = ({
           setImages={setImages}
           images={images}
         />
+        {formErrors.ExpectedImages && (
+              <p className={css.error}>{formErrors.ExpectedImages}</p>
+            )}
       </div>
 
       <button
