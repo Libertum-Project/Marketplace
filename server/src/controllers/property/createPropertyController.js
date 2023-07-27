@@ -1,5 +1,6 @@
 const { Property, Owner, Financial, Feature } = require("../../db");
 
+const { createSmartContractProperty } =  require("../../smartcontracts/smartContractsFunctions");
 async function createProperty(propertyData) {
   const { ownerData, featureData, financialData } = propertyData;
 
@@ -49,6 +50,8 @@ async function createProperty(propertyData) {
     if (!property) {
       throw new Error("Failed to create property");
     }
+
+    createSmartContractProperty(propertyData, property.ID_Property)
 
     return property;
   } catch (error) {
