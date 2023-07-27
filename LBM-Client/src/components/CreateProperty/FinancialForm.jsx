@@ -133,8 +133,8 @@ const FinancialForm = ({ handleSubmit, onBack, onChange, propertyData }) => {
               }}
             >
               <option value="">Select</option>
-              <option value="passive-income">Passive Income Only</option>
-              <option value="Capital-return">
+              <option value="passiveIncome">Passive Income Only</option>
+              <option value="capitalRepayment">
                 Passive Income + Capital Return
               </option>
             </select>

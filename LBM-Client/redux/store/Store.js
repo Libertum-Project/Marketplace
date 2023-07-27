@@ -4,9 +4,13 @@ import { combineReducers, applyMiddleware } from "redux";
 import { persistReducer, persistStore } from "redux-persist";
 import reducerAll from "../reducer/index";
 import storage from "redux-persist/lib/storage";
+import propertyReducer from '../features/propertySlice';
+import userReducer from "../features/userSlice";
 
 const reducers = combineReducers({
   reducerCompleto: reducerAll,
+  property: propertyReducer,
+  user: userReducer,
 });
 
 const persistConfig = {
