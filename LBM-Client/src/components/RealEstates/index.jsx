@@ -1,3 +1,5 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchFilteredProperties } from '../../../redux/features/propertySlice';
 import Classes from "../MarketPlace/Classes/Classes.jsx";
 import ModalFilter from "../MarketPlace/ModalFilter/ModalFilter.jsx";
 import css from "./index.module.scss";
@@ -11,6 +13,11 @@ import Loading from "../Loading/Loading.jsx";
 const index = () => {
   const navigate = useNavigate();
   const { isAuthenticated, isLoading, loginWithRedirect } = useAuth0();
+  const dispatch = useDispatch();
+  const filteredProperties = useSelector(
+    (state) => state.property.filteredProperties
+  );
+  console.log(filteredProperties) 
 
   const handleLogin = () => {
     const redirectUri = `${window.location.origin}/marketplace/`;
@@ -33,6 +40,12 @@ const index = () => {
   const handleRentalYieldChange = (event) => {
     setRentalYield(Number(event.target.value));
   };
+
+ useEffect(() => {
+    const filters = 'financeType=&rentalYield=5-10&location=';
+    dispatch(fetchFilteredProperties(filters));
+  }, [dispatch]);
+
 
   
   return !isLoading && isAuthenticated ? (
