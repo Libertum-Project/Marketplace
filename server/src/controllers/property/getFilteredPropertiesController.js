@@ -1,4 +1,5 @@
 const { Property, Owner, Financial, Feature } = require("../../db");
+const { Op } = require("sequelize");
 
 async function getFilteredProperties(financeType, rentalYield, location) {
   try {
@@ -10,7 +11,10 @@ async function getFilteredProperties(financeType, rentalYield, location) {
     }
 
     if (rentalYield) {
-      filterFinancialOptions["Rental_yield"] = rentalYield;
+      const [minRentalYield, maxRentalYield] = rentalYield.split("-");
+      filterFinancialOptions["Rental_yield"] = {
+        [Op.between]: [minRentalYield, maxRentalYield],
+      };
     }
 
     if (location) {
@@ -28,8 +32,8 @@ async function getFilteredProperties(financeType, rentalYield, location) {
         },
         {
           model: Feature,
-          where: filterFeatureOptions
-        }
+          where: filterFeatureOptions,
+        },
       ],
     });
 
