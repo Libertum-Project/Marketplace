@@ -2,13 +2,17 @@ import css from "./CreateProperty.module.css";
 import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { createProperty } from "../../../redux/features/propertySlice";
 import Loading from "../Loading/Loading.jsx";
 import OwnerForm from "./OwnerForm";
 import PropertyForm from "./PropertyForm";
 import FinancialForm from "./FinancialForm";
-const serverURL = import.meta.env.VITE_SERVER_URL;
 
 const CreateProperty = () => {
+  const dispatch = useDispatch();
+  const status = useSelector((state) => state.property.status);
+  console.log(status);
   const [currentForm, setCurrentForm] = useState(1);
   const [images, setImages] = useState([]);
   const [ownerData, setOwnerData] = useState({
@@ -39,7 +43,7 @@ const CreateProperty = () => {
     Rooms: "",
     Occupancy_Status: "",
     Link_Image: images,
-    Link_Document: "",
+    Link_Document: "http://example.com/document.pdf",
     Current_Emission: "",
     Expected_Emission_Level: "",
     More: "",
@@ -141,23 +145,11 @@ const CreateProperty = () => {
   }, [navigate, isAuthenticated, isLoading, admin]);
 
   const handleSubmit = async () => {
-    try {
-      const response = await fetch(serverURL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(property),
-      });
-
-      if (response.ok) {
-        alert("Request sent successfully!");
-        console.log(property);
-      } else {
-        alert("Error sending the request.");
-      }
-    } catch (error) {
-      console.error("Error:", error);
+    dispatch(createProperty(property));
+    if (status === "succeeded") {
+      alert("Request sent successfully!");
+      navigate("/marketplace/");
+    } else if (status === "failed") {
       alert("Error sending the request.");
     }
   };
