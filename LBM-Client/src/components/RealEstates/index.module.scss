@@ -5,7 +5,7 @@ $font-size-base: 16px;
 $filters: (
   display: flex,
   align-items: center,
-  // background: ,
+  background: transparent,
   // border: 1px solid #f7931a,
   border: 1px solid transparent,
   // padding: 11px 24px,
@@ -50,6 +50,7 @@ $filters: (
   // width: fit-content;
   margin-top:1.5rem;
   margin-bottom:3rem;
+  
 
   @media (max-width: 720px){
     margin-bottom: 10px;
@@ -72,9 +73,13 @@ $filters: (
   justify-content: center;
   justify-items: center;
   height: auto;
-  width:85%;
-  padding: 2rem 0;
+  width:100%;
+  // padding: 2rem 0;
   height: 45px;
+  // background-color: #9193950f;
+  // border-radius: 12px;
+  // padding: 1.5rem;
+  
 
   @media (max-width: 720px){
     flex-direction: column;
