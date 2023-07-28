@@ -4,7 +4,8 @@ import { Link as Scroll } from "react-scroll";
 import { Link } from "react-router-dom";
 
 // import logo from "../assets/logo.svg";
-// import logo  from "./LibertumColor.png";
+import logo  from "../assets/LibertumColor.png";
+
 
 import cross from "./assets/cross.svg";
 import home from "./assets/home.svg";
@@ -24,7 +25,8 @@ export default function NavBar() {
       <Slide direction={"down"} delay={-300}>
         <nav className="nav_items">
           {/* <img src={logo} className="logo" /> */}
-          <img src="./LibertumColor.png" alt="Libertum Logo"  className="logo"/>
+          {/* <img src="./LibertumColor.png" alt="Libertum Logo"  className="logo" loading="lazy"/> */}
+          <img src={logo} alt="Libertum Logo"  className="logo"/>
 
           <ul className="menu_items">
             <li className="menu-li_items">
