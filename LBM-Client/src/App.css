@@ -30,7 +30,7 @@
 .Page {
   width: 100%;
   /* display: flex; */
-  margin-top: 5em;
+  margin-top: 6em;
   flex-direction: row;
   /* z-index: 1; */
   position: relative;
@@ -69,7 +69,7 @@ gap: 2.5rem;
 }
 @media screen and (max-width: 900px) {
   .Page {
-    margin-top: 5em;
+    margin-top: 8em;
   }
   .App {
     width: 100vw;

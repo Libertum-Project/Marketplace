@@ -81,17 +81,18 @@ function NavbarMarket() {
       {screenWidth > 600 ? (
         <div className={style.container}>
           <div className={style.flexContainer}>
-            <a href="/" className={style.icon}>
+            {/* <a href="/" className={style.icon}>
               <img src="../icons/Logo.svg"></img>
               <img src="../icons/Logo Cherryswap.svg"></img>
-            </a>
+            </a> */}
+            <img src="./LibertumColor.png" alt="Libertum Logo" width="80px" />
             <div className={style.buttons}>
               <div
                 data-dropdown-button
                 onClick={() => setActive(!active)}
                 className={active ? style.button2 : style.button}
               >
-                <p>PRODUCTS</p>
+                <p>BUY AND SELL</p>
                 <IoChevronDownOutline />
               </div>
               <p>ABOUT US</p>
@@ -210,9 +211,12 @@ function NavbarMarket() {
                 data-dropdown-menumobile
               />
             </div>
-            <a href="/" className={openAccountModal ? style.icon : style.icon2}>
+            {/* <a href="/" className={openAccountModal ? style.icon : style.icon2}>
               <img src="../icons/Logo.svg"></img>
               <img src="../icons/Logo Cherryswap.svg"></img>
+            </a> */}
+            <a href="/">
+            <img src="./LibertumColor.png" alt="Libertum Logo" width="80px" />
             </a>
             {openAccountModal && (
               <div onClick={openAccountModal} className={style.accountIcon}>

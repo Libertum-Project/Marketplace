@@ -6,7 +6,7 @@ const Modal = ({ onClose }) => {
   return (
     <div className={styles['modal-container']}>
       <div className={styles['modal-content']}>
-        <p>From 'Products' you can access the marketplace!</p>
+        <p>From 'Buy and Sell' you can access the marketplace!</p>
         <button onClick={onClose}>Ok</button>
       </div>
     </div>

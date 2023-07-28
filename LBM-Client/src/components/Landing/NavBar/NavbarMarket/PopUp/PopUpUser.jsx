@@ -113,6 +113,9 @@ function PopUpUser({ setActiveMenu }) {
                 <p onClick={() => dispatch(setCurrency(p))}>{p}</p>
               ))}
             </div>
+            <Link to="/userdash">
+            <p className={style.mydashboard}>My dashboard</p>
+            </Link>
             <div className={style.ConnectButtom}>
               <CustomConnectButtom />
             </div>

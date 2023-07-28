@@ -144,7 +144,7 @@
 
 .container {
   width: 100%;
-  height: 5em;
+  height: 8em;
   background-color: white;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -190,6 +190,7 @@
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
+  max-height: 80px;
 }
 
 .buttons {
