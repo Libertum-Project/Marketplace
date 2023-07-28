@@ -5,8 +5,10 @@ $font-size-base: 16px;
 $filters: (
   display: flex,
   align-items: center,
-  background: #f7931a,
-  padding: 11px 24px,
+  // background: ,
+  // border: 1px solid #f7931a,
+  border: 1px solid transparent,
+  // padding: 11px 24px,
   border-radius: 9999px,
   gap: 12px,
   cursor: pointer,
@@ -15,8 +17,9 @@ $filters: (
   font-weight: 500,
   font-size: 14px,
   line-height: 18px,
-  color: #fcfcfd,
-  min-height: 45px
+  color: #5c6068,
+  min-height: 45px,
+  // min-width: 5px,
   // max-width: 226px,
   // max-height:50px
 );
@@ -45,21 +48,25 @@ $filters: (
   // background-color: var(--LibertumColorlighter);
   // height: fit-content;
   // width: fit-content;
-  margin-top:3rem;
+  margin-top:1.5rem;
   margin-bottom:3rem;
 
   @media (max-width: 720px){
     margin-bottom: 10px;
-    margin-top: 10px;
+    margin-top: 50px;
   }
   
 }
 
+.divider{
+  @media (max-width: 720px){
+   display: none;
+  }
+}
 
 .filters {
   display: flex;
   // padding: 0 1.2rem;
- 
   gap: 1rem;
   align-items: center;
   justify-content: center;
@@ -117,7 +124,8 @@ $filters: (
   box-shadow: 0px 8px 16px -8px rgba(15, 15, 15, 0.4);
   border-radius: 12px;
   font-family: var(--EnvwiseFont);
-  color: #e6e8ec;
+  color: #9e9e9e;
+  font-size: 14px;
 }
 
 .filterbuttons{
@@ -128,21 +136,21 @@ $filters: (
   height: 45px;
   width: 300px;
   gap: 0.3rem;
-
-  border-radius: 12px;
-  display: flex;
+  //   display: flex;
   align-items: center;
-  background: #f7931a;
+  background: transparent;
+  border: solid 1px $secondary-color;
   // padding: 11px 24px;
-  border-radius: 9999px;
+  border-radius: 12px;
   // gap: 12px;
   cursor: pointer;
   height: 40px;
   width: 350px;
+  color: $secondary-color;
   
-  @each $property, $value in $filters {
-    #{$property}: $value;
-  }
+  // @each $property, $value in $filters {
+  //   #{$property}: $value;
+  // }
 
   @media (max-width: 720px){
 display: none;
@@ -162,8 +170,28 @@ display: none;
 
 .filterbuttons button:hover{
   font-size: 16px;
-  color: #5c6068;
+  color: $primary-color;
 }
+
+.clean{
+  border: 1px solid #f7931a;
+  border-radius: 12px;
+  width: 100px; /* Ancho determinado del icono */
+  height: 100%; /* Alto determinado del icono */
+  background-color: #f7931a; /* Color del fondo igual al color del borde */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white; /* Color del icono en blanco */
+
+ 
+    @media (max-width: 720px){
+      width: 80px; 
+      height: 50%; 
+      margin-top: .5rem;
+    }
+}
+
 
 .sliderContainer{
   display: flex;

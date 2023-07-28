@@ -39,6 +39,14 @@ export const fetchFilteredProperties = createAsyncThunk(
   }
 );
 
+export const fetchAllProperties = createAsyncThunk(
+  "property/fetchAllProperties",
+  async () => {
+    const response = await fetch(propertyURL);
+    return await response.json();
+  }
+);
+
 const propertySlice = createSlice({
   name: "property",
   initialState,
