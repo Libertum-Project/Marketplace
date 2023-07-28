@@ -91,9 +91,7 @@ const OwnerForm = ({ handleSubmit, onNext, onChange, propertyData }) => {
             <input
               type="text"
               value={propertyData.ownerData.Firstname}
-              onChange={(e) => {
-                onChange("Firstname", e.target.value.trim());
-              }}
+              disabled
             />
             {formErrors.Firstname && (
               <p className={css.error}>{formErrors.Firstname}</p>
@@ -104,9 +102,7 @@ const OwnerForm = ({ handleSubmit, onNext, onChange, propertyData }) => {
             <input
               type="text"
               value={propertyData.ownerData.Surname}
-              onChange={(e) => {
-                onChange("Surname", e.target.value.trim());
-              }}
+              disabled
             />
             {formErrors.Surname && (
               <p className={css.error}>{formErrors.Surname}</p>
@@ -120,9 +116,7 @@ const OwnerForm = ({ handleSubmit, onNext, onChange, propertyData }) => {
             <input
               type="Email"
               value={propertyData.ownerData.Mail}
-              onChange={(e) => {
-                onChange("Mail", e.target.value);
-              }}
+              disabled
             />
             {formErrors.Mail && <p className={css.error}>{formErrors.Mail}</p>}
           </div>
