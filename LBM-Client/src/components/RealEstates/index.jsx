@@ -80,11 +80,11 @@ useEffect(() => {
 }, [dispatch]);
 
 useEffect(() => {
-  // Construir la cadena de filtros según los filtros seleccionados
+  // Use effect para filtrado
   const { rentalYield, location, financeType } = selectedFilters;
   const filters = `financeType=${financeType}&rentalYield=${rentalYield}&location=${location}`;
 
-  // Obtener las propiedades filtradas cuando cambie alguno de los filtros
+  //Se modifica y obtiene las propiedades filtradas cuando cambie alguno de los filtros
   dispatch(fetchFilteredProperties(filters));
 }, [dispatch, selectedFilters]);
 
@@ -95,29 +95,35 @@ useEffect(() => {
       <div className={css.filtersContainer}>       
         <div className={css.filters}>
 
-
+{/* Filtro de Rental Yield */}
         <select value={selectedFilters.rentalYield} onChange={(e) => handleFilterChange("rentalYield", e.target.value)}>
         <option hidden value="">Rental Yield </option>
         <option value="0-5">Up to 5%</option>
         <option value="5-10">% 5 al 10</option>
         <option value="10-25">% 10 al 25</option>
-        {/* Agrega otras opciones para diferentes rangos */}
+        
       </select>
         <p className={css.divider}> | </p>
-      {/* Filtro de Location */}
+{/* Filtro de Location */}
       <select value={selectedFilters.location} onChange={(e) => handleFilterChange("location", e.target.value)}>
         <option hidden value="">Location</option>
-        <option value="USA">USA</option>
-        <option value="UK">UK</option>
+
+        <option value="Arg">Argentina</option>
+        <option value="Br">Brazil</option>
+        <option value="Col">Colombia</option>
+        <option value="Ire">Ireland</option>
+        <option value="It">Italy</option>
+        <option value="Sp">Spain</option>
+        <option value="USA">United States of America</option>
+        <option value="UK">United Kingdom</option>
         {/* Agrega otras opciones de ubicación */}
       </select>
         <p className={css.divider}> | </p>
-      {/* Filtro de Finance Type */}
+{/* Filtro de Finance Type */}
       <select value={selectedFilters.financeType} onChange={(e) => handleFilterChange("financeType", e.target.value)}>
         <option hidden value="">Finance Type</option>
         <option value="Passive Income Only">Passive Income Only</option>
-        <option value="Capital Rep. + Passive Income">Capital Rep. + Passive Income</option>
-        {/* Agrega otras opciones de tipo de financiamiento */}
+        <option value="Capital Rep. + Passive Income">Capital Rep. + Passive Income</option>       
       </select>
 
           <div className={css.filterbuttons}>
@@ -134,7 +140,7 @@ useEffect(() => {
 
        {/* Botón para remover los filtros */}
        <button onClick={handleRemoveFilters} className={css.clean}><FiRefreshCcw /></button>
-          {/* <ModalFilter /> */}
+  
         </div>
       </div>
 
@@ -198,7 +204,12 @@ useEffect(() => {
                 capital={property.Financial.Capital_payment_duration}
               />
             ))
-          : null}
+          : 
+          <div className={css.error}>
+          <p> Sorry, it seems that there are no properties available with these requirements. Please try again with different requirements.</p>
+          <button onClick={handleRemoveFilters}>See all properties</button>
+          </div>
+          }
       </section>
     </div>
   ) : (

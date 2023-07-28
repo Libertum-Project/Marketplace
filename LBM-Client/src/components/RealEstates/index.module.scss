@@ -257,3 +257,29 @@ display: none;
     width: auto;
   }
 }
+
+.error{
+  justify-content: center;
+  
+  p{
+    color: $secondary-color
+  }
+
+  button{
+    border: 1px solid $primary-color;
+    border-radius: 12px;
+    margin-top: 1rem;
+    color: $secondary-color;
+
+    &:hover{
+      border: 1px solid $primary-color;
+      background-color: $primary-color;
+    }
+    
+  }
+
+  @media (max-width: 720px){
+
+    margin-top: 4rem;
+  }
+}
