@@ -50,6 +50,13 @@ $buttonh2: (
     padding: 4rem;
     gap: 3rem;
     margin-bottom: 2rem;
+    margin-top: 7rem;
+
+    @media (max-width: 720px){
+
+       display: block;
+       height: fit-content;
+      }
    
 }
 
@@ -80,6 +87,13 @@ $buttonh2: (
     margin-top: 40px;
     margin-left: 30px ;
     text-align: left;
+
+    // @media (max-width: 720px){
+
+    //     margin-left: 0;
+    //     text-align: center;
+
+    //    }
 }
 
 .section1 button{
@@ -103,6 +117,11 @@ $buttonh2: (
     flex-shrink: 0;
     margin-right: 0px;
     margin-bottom: 1.2rem;
+
+    @media (max-width: 720px){
+
+        display:none;
+       }
 }
 
 
@@ -118,6 +137,12 @@ $buttonh2: (
     gap: 0.875rem;
     flex-shrink: 0;
 
+    @media (max-width: 720px){
+
+        display: block;
+        height: fit-content;
+       }
+
 
 }
 
@@ -128,7 +153,6 @@ $buttonh2: (
     align-items: center;
     gap: 0.875rem;
     justify-content: space-between;
-
 
     h3{
         display: flex;
@@ -144,6 +168,15 @@ $buttonh2: (
         font-weight: 700;
         line-height: normal;
         text-transform: capitalize;
+
+        @media (max-width: 720px){
+
+            text-align: center;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            margin-left: 0;
+            width: 100%;
+           }
     
     }
 
@@ -161,6 +194,16 @@ $buttonh2: (
         max-height: .2rem;
 
 }
+
+@media (max-width: 720px){
+
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    justify-content: center;
+    gap: .5rem;
+    margin-bottom: .5rem;
+   }
 }
 
 .buttons{
@@ -171,6 +214,12 @@ $buttonh2: (
     // height: 12.5rem;
     flex-shrink: 0;
     gap: 0.3rem;
+
+    @media (max-width: 720px){
+
+        display: block;
+        height: fit-content;
+       }
 }
 
 .button1{
