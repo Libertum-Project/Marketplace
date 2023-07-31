@@ -17,6 +17,7 @@ import { Divide as Hamburger } from "hamburger-react";
 import closeIcon from "../../../../assets/close.svg";
 import copyIcon from "../../../../assets/Copy.svg";
 import logoutIcon from "../../../../assets/Logout.svg";
+import  logo  from "../../../../../public/LibertumColor.png"
 
 function NavbarMarket() {
   const { logout, user } = useAuth0();
@@ -85,7 +86,7 @@ function NavbarMarket() {
               <img src="../icons/Logo.svg"></img>
               <img src="../icons/Logo Cherryswap.svg"></img>
             </a> */}
-            <img src="./LibertumColor.png" alt="Libertum Logo" width="80px" />
+            <img src={logo} alt="Libertum Logo" width="80px" />
             <div className={style.buttons}>
               <div
                 data-dropdown-button
