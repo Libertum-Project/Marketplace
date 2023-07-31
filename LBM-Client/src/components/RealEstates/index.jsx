@@ -115,8 +115,7 @@ useEffect(() => {
         <option value="It">Italy</option>
         <option value="Sp">Spain</option>
         <option value="USA">United States of America</option>
-        <option value="UK">United Kingdom</option>
-        {/* Agrega otras opciones de ubicación */}
+        <option value="UK">United Kingdom</option>        
       </select>
         <p className={css.divider}> | </p>
 {/* Filtro de Finance Type */}
@@ -180,7 +179,7 @@ useEffect(() => {
           ? filteredProperties.map((property) => (
               <CardPreview
                 key={property.ID_Property}
-                // key={property.number}
+                id={property.ID_Property}
                 image={property.Feature.Link_Image[0]}                
                 image2={property.Feature.Link_Image[1]} 
                 image3={property.Feature.Link_Image[2]} 

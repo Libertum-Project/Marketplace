@@ -2,17 +2,8 @@ import css from "./index.module.scss";
 import { useParams, useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import db from "../RealEstates/fakedb/db.json";
-import heartMobile from "../../assets/heart--movile.svg";
-import shareIcon from "../../assets/share.svg";
-import backIcon from "../../assets/vector.svg";
-import starIcon from "../../assets/star.svg";
-import avatar from "../../assets/avatar.svg";
-import right from "../../assets/right.svg";
-import sharePC from "../../assets/share--pc.svg";
-import save from "../../assets/save.svg";
-import showAll from "../../assets/showAll.svg";
-import ModalFilter from "../MarketPlace/ModalFilter/ModalFilter.jsx";
-
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchFilteredProperties, fetchAllProperties } from '../../../redux/features/propertySlice';
 import Aboutproperty from "./Aboutproperty";
 import Buy from "./Buy";
 import Loading from "../Loading/Loading";
@@ -20,8 +11,15 @@ import { useEffect, useState } from "react";
 
 const Index = () => {
   const navigate = useNavigate();
-  const number = useParams();
-  const land = db.find((item) => item.number === number.id);
+
+  const { id } = useParams();
+  const properties = useSelector((state) => state.property.filteredProperties);
+
+  // Convertir el valor de 'id' a un número
+  const propertyId = parseInt(id);
+
+  // Buscar la propiedad que coincide con el ID_Property
+  const property = properties.find((property) => property.ID_Property === propertyId);
 
   const { isAuthenticated, isLoading, loginWithRedirect } = useAuth0();
 
@@ -39,8 +37,6 @@ const Index = () => {
       }
     }
   }, [navigate, isAuthenticated, isLoading]);
-
-
 
   
   const [isScrolled, setIsScrolled] = useState(false);
@@ -64,9 +60,9 @@ const Index = () => {
 
 
       <header className={css.header}>
-        <h2>{land.address}</h2>
+        <h2>{property.Feature.Address}</h2>
         <div className={css.headerText}>
-          <p>{land.location}</p>
+          <p>{property.Feature.City}</p>
           {/* <div className={css.headerBtns}>
             <img src={sharePC} alt="share" />
             <img src={save} alt="save" />
@@ -75,7 +71,7 @@ const Index = () => {
         {/* <img src={avatar} alt="Person" className={css.avatar} /> */}
       </header>
       
-      <img src={land.image} alt="Land" className={css.detailsImage} />
+      <img src={property.Feature.Link_Image[0]} alt="Land" className={css.detailsImage} />
       {/* <div className={css.navMobile}>
         <img
           src={backIcon}
@@ -95,12 +91,12 @@ const Index = () => {
       </div> */}
 
       <section className={css.mosaic}>
-        <img src={land.image} alt="" />
+        <img src={property.Feature.Link_Image[0]} alt="" />
         <div className={css.otherImages}>
-          <img src={land.image2} alt="Land" />
-          <img src={land.image3} alt="Land" />
-          <img src={land.image4} alt="Land" />
-          <img src={land.image5} alt="Land" />
+          <img src={property.Feature.Link_Image[0]} alt="Land" />
+          <img src={property.Feature.Link_Image[0]} alt="Land" />
+          <img src={property.Feature.Link_Image[0]} alt="Land" />
+          <img src={property.Feature.Link_Image[0]} alt="Land" />
         </div>
       </section>
 
@@ -110,40 +106,41 @@ const Index = () => {
       <div className={css.info}>
              
           <Aboutproperty
-            id={land.id}
-            image={land.image}
-            number={land.number}
-            value={land.price}
-            Tokenised={land.Tokenised}
-            PRY={land.PRY}
-            AvailablesNFT={land.AvailablesNFT}
-            PIT={land.PIT}
-            address={land.address}
-            location={land.location}
-            NFTPrice={land.NFTPrice}
-            amenities={land.amenities}
-            rooms={land.rooms}
-            guests={land.guests}
-            map={land.map}
-            more={land.more}
-            description= {land.description}
-            capital={land.capital}
+            id={property.ID_Property}
+            image={property.Feature.Link_Image[0]}            
+            value={property.Financial.Market_value_of_the_property}
+            Tokenised={property.Financial.Percent_of_property_tokenized}
+            PRY={property.Financial.Rental_yield}
+            AvailablesNFT={property.Financial.Number_of_tokens_available}
+            capital={property.Financial.Capital_payment_duration}            
+            PIT={property.Financial.Passive_Income_per_token}
+            address={property.Feature.Address}
+            location={property.Feature.City}
+            NFTPrice={property.Financial.Token_Price}
+            amenities={property.Feature.Amenities}
+            rooms={property.Feature.Rooms}
+            guests={property.guests}
+            // map={land.map}
+            more={property.More}
+            description={property.Feature.Description}
+           
           />
         
 
         <div className={isScrolled ? css.buycontainer : ''}>
           <Buy
-            id={land.id}
-            image={land.image}
-            number={land.number}
-            value={land.price}
-            Tokenised={land.Tokenised}
-            PRY={land.PRY}
-            AvailablesNFT={land.AvailablesNFT}
-            PIT={land.PIT}
-            address={land.address}
-            location={land.location}
-            NFTPrice={land.NFTPrice}
+            id={property.ID_Property}
+            image={property.Feature.Link_Image[0]}            
+            value={property.Financial.Market_value_of_the_property}
+            type={property.Feature.type}
+            address={property.Feature.Address}
+            location={property.Feature.City}
+            PIT={property.Financial.Passive_Income_per_token}
+            PRY={property.Financial.Rental_yield}
+            tokenised={property.Financial.Percent_of_property_tokenized}
+            NFTPrice={property.Financial.Token_Price}
+            AvailablesNFT={property.Financial.Number_of_tokens_available}
+            capital={property.Financial.Capital_payment_duration}
           />
         </div>
       </div>
