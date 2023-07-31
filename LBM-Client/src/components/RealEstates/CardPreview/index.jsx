@@ -7,14 +7,12 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 const Index = (props) => {
-  const { number, image, address, location, PIT, PRY, tokenised, NFTPrice, AvailablesNFT, price, capital } = props;
-
-
- 
+  const { id, address, image, location, PIT, PRY, tokenised, NFTPrice, AvailablesNFT, price, capital } = props;
+console.log(id)
   return (
     <div className={style.container}>
       <div className={style.imageContainer}>
-        <Link  to={`/marketplace/${number}`}>        
+        <Link  to={`/marketplace/${id}`}>        
           <img src={image} alt="image of the property" />        
         </Link>
         <div className={style.funded}>
