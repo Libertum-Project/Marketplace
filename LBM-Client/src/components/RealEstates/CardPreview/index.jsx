@@ -1,14 +1,60 @@
 import style from "./indexnew.module.scss"
-import starIcon from "../../../assets/star.svg";
-import heartIconMobile from "../../../assets/heart--movile.svg";
-import heartIconPc from "../../../assets/heart--pc.svg";
 import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState} from "react";
+import { useDispatch, useSelector} from "react-redux";
+import { saveProperty, deleteProperty } from "../../../../redux/features/userSlice";
+import { useAuth0 } from "@auth0/auth0-react";
+
 
 const Index = (props) => {
   const { id, address, image, location, PIT, PRY, tokenised, NFTPrice, AvailablesNFT, price, capital } = props;
-console.log(id)
+  const { user } = useAuth0();
+
+  const [propertySaved, setPropertySaved] = useState(false);
+
+  const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.user.currentUser);
+
+  console.log('CURRENT USER:', currentUser);
+  console.log('PROPERTY TO SAVE:', id);
+
+  const handleSaveProperty = () => {
+    const userId = currentUser.ID_user;
+    const propertyId = id;
+  
+    if (userId && propertyId) {
+      if (propertySaved) {
+        // Si la propiedad ya está guardada, entonces queremos eliminarla
+        // Puedes llamar a una nueva acción "deleteProperty" o algo similar
+        // para eliminar la propiedad del servidor y actualizar el estado de Redux
+        dispatch(deleteProperty(propertyId)); // Asegúrate de implementar la acción "deleteProperty" en el slice correspondiente
+        setPropertySaved(false);
+      } else {
+        // Si la propiedad no está guardada, entonces queremos guardarla
+        const propertyData = {
+          userId,
+          propertyId,
+          address,
+          image,
+          location,
+          PIT,
+          PRY,
+          tokenised,
+          NFTPrice,
+          AvailablesNFT,
+          price,
+          capital,
+        };
+        dispatch(saveProperty(propertyData)); // Esto guardará la propiedad en el servidor y actualizará el estado de Redux
+        setPropertySaved(true);
+      }
+    } else {
+      console.error("No se pudo obtener userId o propertyId");
+    }
+  };
+
+
   return (
     <div className={style.container}>
       <div className={style.imageContainer}>
@@ -48,6 +94,10 @@ console.log(id)
             </svg>
             <p>PASSIVE INCOME</p>
             </div>   */}
+
+            <div className={style.saveIcon} onClick={() => handleSaveProperty()}>
+              {propertySaved ? <BsBookmarkFill /> : <BsBookmark />}
+            </div>
 
             <div className={style.saveIcon}>
             <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
