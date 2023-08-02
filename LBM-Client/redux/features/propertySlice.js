@@ -76,7 +76,8 @@ const propertySlice = createSlice({
       .addCase(fetchFilteredProperties.fulfilled, (state, action) => {
         commonFulfilledAction(state, action);
         state.filteredProperties = action.payload;
-        console.log(action.payload)
+      
+        
       });
   },
 });
