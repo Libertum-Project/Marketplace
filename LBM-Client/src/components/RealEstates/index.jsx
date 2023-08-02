@@ -218,12 +218,26 @@ const fakeProperty2 = {
 };
 
 const fakeProperties = [fakeProperty1, fakeProperty2];
+
 const addFakeProperties = (properties) => {
-  const fakeProperties = [fakeProperty1, fakeProperty2];
-  return [...properties, ...fakeProperties];
+  // Filtrar las propiedades falsas antes de agregarlas
+  const filteredFakeProperties = fakeProperties.filter((property) => {
+    // Aplicar los mismos filtros que se aplican a las propiedades reales
+    const { rentalYield, location, financeType } = selectedFilters;
+    if (
+      (!rentalYield || (property.Financial.Rental_yield >= parseFloat(rentalYield.split("-")[0]) && property.Financial.Rental_yield <= parseFloat(rentalYield.split("-")[1]))) &&
+      (!location || property.Feature.Country === location) &&
+      (!financeType || property.Financial.Investment_type === financeType)
+    ) {
+      return true;
+    }
+    return false;
+  });
+
+  return [...filteredFakeProperties, ...properties];
 };
 
-
+//-----------------''AGREGAR DOS PROPIEDADES FALSAS ---------------------- FAKE PROPERTIES -----------------------------
 
 
 
@@ -283,36 +297,6 @@ const addFakeProperties = (properties) => {
         </div>
       </div>
 
-      {/* <section>
-        {db.length
-          ? db.map((land) => (
-              <CardPreview
-                image={land.image}
-                image2={land.image2}
-                image3={land.image3}
-                image4={land.image4}
-                image5={land.image5}
-                key={land.number}
-                number={land.number}
-                price={land.price}
-                review={land.review}
-                totalReviews={land.totalreviews}
-                amenities={land.amenities}
-                rooms={land.rooms}
-                guests={land.guests}
-                type={land.type}
-                address={land.address}
-                location={land.location}
-                PIT={land.PIT}
-                PRY={land.PRY}
-                tokenised={land.Tokenised}
-                NFTPrice={land.NFTPrice}
-                AvailablesNFT={land.AvailablesNFT}
-                capital={land.capital}
-              />
-            ))
-          : null}
-      </section> */}
 
 <section>
         {
@@ -321,8 +305,9 @@ const addFakeProperties = (properties) => {
 
         //    ? filteredProperties.map((property) => (
 
-         fakeProperties.length ?
-          addFakeProperties(filteredProperties).map((property) => (
+        fakeProperties.length || filteredProperties.length ? (
+          addFakeProperties(filteredProperties).length ? (
+            addFakeProperties(filteredProperties).map((property) => (
 
               <CardPreview
                 key={property.ID_Property}
@@ -349,13 +334,25 @@ const addFakeProperties = (properties) => {
                 AvailablesNFT={property.Financial.Number_of_tokens_available}
                 capital={property.Financial.Capital_payment_duration}
               />
-            ))
-          : 
+            ))           
+          ) : (
+            <div className={css.error}>
+              <p>
+                Sorry, it seems that there are no properties available with these
+                requirements. Please try again with different requirements.
+              </p>
+              <button onClick={handleRemoveFilters}>See all properties</button>
+            </div>
+          )
+        ) : (
           <div className={css.error}>
-          <p> Sorry, it seems that there are no properties available with these requirements. Please try again with different requirements.</p>
-          <button onClick={handleRemoveFilters}>See all properties</button>
+            <p>
+              Sorry, it seems that there are no properties available with these
+              requirements. Please try again with different requirements.
+            </p>
+            <button onClick={handleRemoveFilters}>See all properties</button>
           </div>
-          }
+        )}
       </section>
     </div>
   ) : (
