@@ -217,7 +217,7 @@ const fakeProperty2 = {
   }
 };
 
-
+const fakeProperties = [fakeProperty1, fakeProperty2];
 const addFakeProperties = (properties) => {
   const fakeProperties = [fakeProperty1, fakeProperty2];
   return [...properties, ...fakeProperties];
@@ -315,11 +315,15 @@ const addFakeProperties = (properties) => {
       </section> */}
 
 <section>
-        {filteredProperties.length
+        {
+        
+        // filteredProperties.length
 
-          // ? filteredProperties.map((property) => (
+        //    ? filteredProperties.map((property) => (
 
-          ? addFakeProperties(filteredProperties).map((property) => (
+         fakeProperties.length ?
+          addFakeProperties(filteredProperties).map((property) => (
+
               <CardPreview
                 key={property.ID_Property}
                 id={property.ID_Property}
