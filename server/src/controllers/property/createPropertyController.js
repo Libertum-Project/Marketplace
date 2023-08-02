@@ -1,6 +1,8 @@
 const { Property, Owner, Financial, Feature } = require("../../db");
 
-const { createSmartContractProperty } =  require("../../smartcontracts/smartContractsFunctions");
+const {
+  createSmartContractProperty,
+} = require("../../smartcontracts/smartContractsFunctions");
 async function createProperty(propertyData) {
   const { ownerData, featureData, financialData } = propertyData;
 
@@ -26,7 +28,12 @@ async function createProperty(propertyData) {
       throw new Error("Feature data is incomplete");
     }
 
-    const owner = await Owner.create(ownerData);
+    const existingOwner = await Owner.findOne({
+      where: { Firstname: ownerData.Firstname, Mail: ownerData.Mail },
+    });
+
+    const owner = existingOwner || (await Owner.create(ownerData));
+
     if (!owner) {
       throw new Error("Failed to create owner");
     }
@@ -51,7 +58,7 @@ async function createProperty(propertyData) {
       throw new Error("Failed to create property");
     }
 
-    createSmartContractProperty(propertyData, property.ID_Property)
+    createSmartContractProperty(propertyData, property.ID_Property);
 
     return property;
   } catch (error) {
