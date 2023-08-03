@@ -12,7 +12,7 @@
 
   .logo {
     padding: 0px;
-    height: 36px;
+    height: 90px;
     cursor: pointer;
     z-index: 1;
   }
@@ -144,9 +144,13 @@
       display: flex;
     }
     .logo {
-      height: 26px;
-      padding: 0px;
+      // // height: 80px;
+      // padding: 0px;
+      // margin-left: 21px;
       margin-left: 21px;
+      // width: 94px;
+      height: 82px;
+      margin-top: 3rem;
     }
   }
   .responsive-nav_items {
@@ -166,9 +170,13 @@
       margin-right: 38px;
     }
     .logo {
+      // margin-left: 21px;
+      // // width: 94px;
+      // // height: 26px;
       margin-left: 21px;
-      width: 94px;
-      height: 26px;
+      // width: 94px;
+      height: 82px;
+      margin-top: 3rem;
     }
   }
   .responsive-nav_items {
@@ -195,9 +203,13 @@
       display: flex;
     }
     .logo {
-      height: 26px;
-      padding: 0px;
+      // height: 26px;
+      // padding: 0px;
+      // margin-left: 21px;
       margin-left: 21px;
+      // width: 94px;
+      height: 82px;
+      margin-top: 3rem;
     }
   }
   .responsive-nav_items {
@@ -218,8 +230,9 @@
     }
     .logo {
       margin-left: 21px;
-      width: 94px;
-      height: 26px;
+      // width: 94px;
+      height: 82px;
+      margin-top: 3rem;
     }
   }
   .responsive-nav_items {

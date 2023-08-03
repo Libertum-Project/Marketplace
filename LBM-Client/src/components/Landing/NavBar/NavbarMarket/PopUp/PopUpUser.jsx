@@ -48,8 +48,8 @@ function PopUpUser({ setActiveMenu }) {
     admin = import.meta.env.VITE_ADMIN_DEV2;
   if (user?.sub === import.meta.env.VITE_ADMIN_ALAN)
     admin = import.meta.env.VITE_ADMIN_ALAN;
-  if (user?.sub === import.meta.env.VITE_ADMIN_LUIS)
-    admin = import.meta.env.VITE_ADMIN_LUIS;
+  if (user?.sub === import.meta.env.VITE_ADMIN_GABRIEL)
+    admin = import.meta.env.VITE_ADMIN_GABRIEL;
   if (user?.sub === import.meta.env.VITE_ADMIN_JAVVAD)
     admin = import.meta.env.VITE_ADMIN_JAVVAD;
 
@@ -73,7 +73,7 @@ function PopUpUser({ setActiveMenu }) {
               </Link>
             ) : null}
             <a href="/contact">Contacts</a>
-            
+
             <a>Notifications</a>
             <a>FAQ</a>
             {isAdmin ? <a href="/admin">Admin menu</a> : null}
@@ -113,6 +113,9 @@ function PopUpUser({ setActiveMenu }) {
                 <p onClick={() => dispatch(setCurrency(p))}>{p}</p>
               ))}
             </div>
+            <Link to="/userdash">
+              <p className={style.mydashboard}>My dashboard</p>
+            </Link>
             <div className={style.ConnectButtom}>
               <CustomConnectButtom />
             </div>
@@ -121,10 +124,10 @@ function PopUpUser({ setActiveMenu }) {
           <div className={style.buttons}>
             <a>Notifications</a>
             <a>FAQ</a>
-            <Link to="/userdash">
-            <p className={style.mydashboard}>My dashboard</p>
+            <Link to="/userdash" onClick={() => setActiveMenu(false)}>
+              <p className={style.mydashboard}>My dashboard</p>
             </Link>
-            
+
             {admin ? (
               <Link
                 to="./admindashboard"

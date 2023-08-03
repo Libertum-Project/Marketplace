@@ -16,14 +16,14 @@ import { useAccount } from "wagmi";
 import { Wallet } from "ethers";
 import { useDispatch } from "react-redux";
 
-function PopUpMarket() {
+function PopUpMarket({setActive}) {
   const { address } = useAccount();
   const dispatch = useDispatch();
 
   return (
     <div className={style.Container} data-dropdown>
       <div className={style.flexContainer}>
-        <Link to="/marketplace" className={style.button}>
+        <Link to="/marketplace" className={style.button} onClick={() => setActive(false)}>
           <div className={style.icon}>
             <IoGridOutline />
           </div>

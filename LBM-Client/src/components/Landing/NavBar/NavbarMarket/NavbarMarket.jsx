@@ -17,6 +17,7 @@ import { Divide as Hamburger } from "hamburger-react";
 import closeIcon from "../../../../assets/close.svg";
 import copyIcon from "../../../../assets/Copy.svg";
 import logoutIcon from "../../../../assets/Logout.svg";
+import  logo  from "../../../../../public/LibertumColor.png"
 
 function NavbarMarket() {
   const { logout, user } = useAuth0();
@@ -37,8 +38,8 @@ function NavbarMarket() {
     admin = import.meta.env.VITE_ADMIN_DEV2;
   if (user?.sub === import.meta.env.VITE_ADMIN_ALAN)
     admin = import.meta.env.VITE_ADMIN_ALAN;
-  if (user?.sub === import.meta.env.VITE_ADMIN_LUIS)
-    admin = import.meta.env.VITE_ADMIN_LUIS;
+  if (user?.sub === import.meta.env.VITE_ADMIN_GABRIEL)
+    admin = import.meta.env.VITE_ADMIN_GABRIEL;
   if (user?.sub === import.meta.env.VITE_ADMIN_JAVVAD)
     admin = import.meta.env.VITE_ADMIN_JAVVAD;
 
@@ -81,17 +82,18 @@ function NavbarMarket() {
       {screenWidth > 600 ? (
         <div className={style.container}>
           <div className={style.flexContainer}>
-            <a href="/" className={style.icon}>
+            {/* <a href="/" className={style.icon}>
               <img src="../icons/Logo.svg"></img>
               <img src="../icons/Logo Cherryswap.svg"></img>
-            </a>
+            </a> */}
+            <img src={logo} alt="Libertum Logo" width="80px" />
             <div className={style.buttons}>
               <div
                 data-dropdown-button
                 onClick={() => setActive(!active)}
                 className={active ? style.button2 : style.button}
               >
-                <p>PRODUCTS</p>
+                <p>BUY AND SELL</p>
                 <IoChevronDownOutline />
               </div>
               <p>ABOUT US</p>
@@ -188,7 +190,7 @@ function NavbarMarket() {
               </div>
             </div>
           </div>
-          {active ? <PopUpMarket data-dropdown /> : null}
+          {active ? <PopUpMarket setActive={setActive} data-dropdown /> : null}
         </div>
       ) : (
         <div className={style.container}>
@@ -210,9 +212,12 @@ function NavbarMarket() {
                 data-dropdown-menumobile
               />
             </div>
-            <a href="/" className={openAccountModal ? style.icon : style.icon2}>
+            {/* <a href="/" className={openAccountModal ? style.icon : style.icon2}>
               <img src="../icons/Logo.svg"></img>
               <img src="../icons/Logo Cherryswap.svg"></img>
+            </a> */}
+            <a href="/">
+            <img src="./LibertumColor.png" alt="Libertum Logo" width="80px" />
             </a>
             {openAccountModal && (
               <div onClick={openAccountModal} className={style.accountIcon}>

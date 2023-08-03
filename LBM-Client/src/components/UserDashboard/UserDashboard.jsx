@@ -12,6 +12,7 @@ const UserDashboard = () => {
   const dispatch = useDispatch();
   const allUsers = useSelector((state) => state.user.allUsers);
   const currentUser = useSelector((state) => state.user.currentUser);
+
   console.log(currentUser)
   console.log(allUsers)
 
@@ -21,6 +22,11 @@ const UserDashboard = () => {
       redirectUri: redirectUri,
     });
   };
+
+
+
+  
+
 
   useEffect(() => {
     if (!isLoading) {
@@ -48,7 +54,15 @@ const UserDashboard = () => {
     <div>
       {showModal && <Modal onClose={handleCloseModal} />}
 
-      <Frame1 />
+      <Frame1 
+      // user ={currentUser.ID_user}
+      // email={currentUser.email}
+      // name ={currentUser.name}
+      // investedProperties = {currentUser.investedProperties}
+      // publishedProperties = {currentUser.publishedProperties}
+      // savedProperties = {currentUser.savedProperties}
+      // transactions ={currentUser.transactions}
+      />
       <Frame2 />
       <ReportofProperties />
     </div>

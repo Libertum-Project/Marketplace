@@ -2,7 +2,19 @@ import db from "./fakedb/db.json";
 import Card from "./Card/Card";
 import css from "./Userproperties.module.scss"
 
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllUsers, fetchCurrentUser } from "../../../redux/features/userSlice";
+
+
+
 const UserProperties = () => {
+
+
+  const { isAuthenticated, isLoading, loginWithRedirect, user } = useAuth0();
+  const dispatch = useDispatch();
+  const allUsers = useSelector((state) => state.user.allUsers);
+  const currentUser = useSelector((state) => state.user.currentUser);
+
   return (
     <div className={css.container}>
       <div className={css.header}>
