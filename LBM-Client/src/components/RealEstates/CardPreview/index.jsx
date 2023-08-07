@@ -5,10 +5,13 @@ import { useState} from "react";
 import { useDispatch, useSelector} from "react-redux";
 import { saveProperty, deleteProperty } from "../../../../redux/features/userSlice";
 import { useAuth0 } from "@auth0/auth0-react";
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 
 const Index = (props) => {
-  const { id, address, image, location, PIT, PRY, tokenised, NFTPrice, AvailablesNFT, price, capital } = props;
+  const { id, address, image, image2, image3, image4, image5, location, PIT, PRY, tokenised, NFTPrice, AvailablesNFT, price, capital } = props;
   const { user } = useAuth0();
 
   const [propertySaved, setPropertySaved] = useState(false);
@@ -51,12 +54,39 @@ const Index = (props) => {
   };
 
 
+  // ---------------- IMAGES CARROUSEL -------------------------------
+  const images = [image, image2, image3, image4, image5];
+
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    // Puedes agregar más opciones aquí según tus necesidades
+  };
+
+
   return (
     <div className={style.container}>
+
       <div className={style.imageContainer}>
-        <Link  to={`/marketplace/${id}`}>        
+        {/* <Link  to={`/marketplace/${id}`}>        
           <img src={image} alt="image of the property" />        
+        </Link> */}
+
+          <Slider {...sliderSettings}>
+    {images.map((img, index) => (
+      <div key={index}>
+        <Link to={`/marketplace/${id}`}>
+          <img src={img} alt={`Image ${index}`} />
         </Link>
+      </div>
+    ))}
+  </Slider>
+
+
+
         <div className={style.funded}>
           <div className={style.informacion}>
             <div className={style.progressBar}></div>
@@ -69,6 +99,7 @@ const Index = (props) => {
                   : null }
 
       </div>
+      
         <div className={style.content}>
           <div className={style.header}>
             <div className={style.titleSubtitle}>
@@ -108,6 +139,8 @@ const Index = (props) => {
           </div> 
           </div>     
        </div>
+
+       
       </div>
    
   )}
