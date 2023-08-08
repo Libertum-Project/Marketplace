@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-const propertyURL = "http://localhost:7689/properties";
+const serverURL = import.meta.env.VITE_SERVER_URL;
+const propertyURL = `${serverURL}properties`
 
 const initialState = {
   filters: {
