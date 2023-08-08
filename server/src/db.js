@@ -3,13 +3,34 @@ const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
 
+const host = process.env.HOST;
+const port = process.env.PORT;
+const database = process.env.DATABASE;
+const username = "envwiseAzureDB@libertum--db";
+const password = process.env.PASSWORD;
+
+const sequelize = new Sequelize(database, username, password, {
+  host: host,
+  port: port,
+  dialect: "postgres",
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
+  },
+  logging: false,
+  native: false,
+});
+
+/*
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
   host: process.env.PGHOST,
   dialect: "postgres",
   logging: false,
   native: false,
 });
-/*
+
 const { AZURE_POSTGRESQL_HOST, AZURE_POSTGRESQL_PORT, AZURE_POSTGRESQL_DATABASE, AZURE_POSTGRESQL_USER, AZURE_POSTGRESQL_PASSWORD, AZURE_POSTGRESQL_SSL } = process.env;
 
 const sequelize = new Sequelize({
@@ -83,7 +104,7 @@ Transaction.belongsTo(User, {
 
 Transaction.belongsTo(Property, {
   foreignKey: "ID_Property",
-  as: "property", 
+  as: "property",
 });
 
 Property.hasMany(Transaction, {

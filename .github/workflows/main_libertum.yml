@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Node.js app to Azure Web App - Libertum--back-end
+name: Build and deploy Node.js app to Azure Web App - Libertum
 
 on:
   push:
@@ -25,7 +25,6 @@ jobs:
         working-directory: ./server
         run: |
           npm install
-          npm run build --if-present
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
@@ -50,7 +49,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'Libertum--back-end'
+          app-name: 'Libertum'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FDB7D2CA5DFE474699B1E43DDD8E04CA }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0413E35C947A483DB6AC1D7C3670AFB0 }}
           package: .
