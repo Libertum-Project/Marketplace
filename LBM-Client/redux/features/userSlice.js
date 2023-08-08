@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-const userURL = "http://localhost:7689/user";
+const serverURL = import.meta.env.VITE_SERVER_URL;
+const userURL = `${serverURL}user`
 
 const initialState = {
   currentUser: {
