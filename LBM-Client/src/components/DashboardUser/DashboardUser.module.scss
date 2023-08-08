@@ -1,0 +1,89 @@
+.dashboard-user {
+    display: flex;
+    margin-top: 20rem;
+  
+    .sidebar {
+      width: 250px;
+      background-color: #f0f0f0;
+      padding: 20px;
+      
+      a {
+        display: block;
+        margin-bottom: 10px;
+        color: #333;
+        text-decoration: none;
+        transition: background-color 0.3s;
+        
+        &:hover {
+          background-color: #e0e0e0;
+        }
+      }
+      
+      /* Estilos para enlaces activos */
+      .active {
+        background-color: #007bff;
+        color: white;
+      }
+    }
+
+    .helpbox{
+        border-radius: 0.9375rem;
+        background: var(--teal-teal-300, #4FD1C5);
+        padding: 1rem;
+        gap: 1rem;
+
+        h3{
+            display: flex;
+            flex-direction: column;
+            justify-content: left;
+            flex-shrink: 0;
+            color: var(--black-amp-white-white, #FFF);
+            font-family: Inter;
+            font-size: 0.875rem;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 140%; /* 1.225rem */
+        }
+
+        p{
+            color: var(--black-amp-white-white, #FFF);
+            font-family: Inter;
+            font-size: 0.875rem;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 140%; /* 1.225rem */
+            color: var(--black-amp-white-white, #FFF);
+            font-family: Inter;
+            font-size: 0.75rem;
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        button{
+            display: flex;
+            margin-top: 1rem;
+            width: 100%;
+            // height: 2.1975rem;
+            padding: 0rem 0.5rem;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+            border-radius: 0.75rem;
+            background: var(--black-amp-white-white, #FFF);
+                 color: var(--gray-gray-700, #2D3748);
+                text-align: center;
+                font-family: Inter;
+                font-size: 0.725rem;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 150%; /* 0.9375rem */
+        }
+    }
+  
+    .content {
+      flex: 1;
+      padding: 20px;
+      background-color: #fff;
+    }
+  }
+  
