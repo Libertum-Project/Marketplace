@@ -30,6 +30,7 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
   logging: false,
   native: false,
 });
+
 const { AZURE_POSTGRESQL_HOST, AZURE_POSTGRESQL_PORT, AZURE_POSTGRESQL_DATABASE, AZURE_POSTGRESQL_USER, AZURE_POSTGRESQL_PASSWORD, AZURE_POSTGRESQL_SSL } = process.env;
 
 const sequelize = new Sequelize({
