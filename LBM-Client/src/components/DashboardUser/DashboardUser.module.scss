@@ -1,30 +1,89 @@
+$primary-color: var(--Libertum-color);
+$blue-color: var(--LibertumBlue);
+$secondary-color:  #5c6068; 
+$font-size-base: 16px;
+$--bc: var(--Libertum-color);
+
 .dashboard-user {
     display: flex;
-    margin-top: 20rem;
+    margin-top: 6rem;
+    padding: 2rem;
   
     .sidebar {
-      width: 250px;
-      background-color: #f0f0f0;
-      padding: 20px;
+        // width: 150px;
+        // background-color: #f0f0f0;
+        padding: 20px;     
+        margin: 0;  
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+
       
-      a {
-        display: block;
-        margin-bottom: 10px;
-        color: #333;
-        text-decoration: none;
-        transition: background-color 0.3s;
-        
-        &:hover {
-          background-color: #e0e0e0;
+        @media screen and (max-width: 767px) {
+          /* Estilos para dispositivos móviles */
+        //   width: 350px;
+        //   flex-direction: column;   
+        //   align-items: center;
         }
+      
+            
+      .tab {
+          position: relative;
+          display: table-column;
+          cursor: pointer;
+          color: var(--gray-gray-400, #A0AEC0);
+            font-family: Montserrat;
+            font-size: 0.75rem;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 150%; /* 1.125rem */
+          font-size: 15px;
+          width: fit-content;
+          height: fit-content;
+          padding: 0;
+          margin-left: 1rem;
+          text-transform: uppercase;
+          margin-top: 1.5rem;
+          margin-bottom: 1rem;
+      
+      }
+      .tab:hover{
+        border-bottom: 2px solid $blue-color;
+        border-radius: 0; 
       }
       
-      /* Estilos para enlaces activos */
-      .active {
-        background-color: #007bff;
-        color: white;
+      .tabActive{
+        border-radius: 0.9375rem;
+        width: 12rem;
+        height: 3.4295rem;
+        background: var(--black-amp-white-white, #FFF);
+        box-shadow: 0px 3.500000238418579px 5.500000476837158px 0px rgba(0, 0, 0, 0.02);
+        color: var(--gray-gray-700, #2D3748);
+        background-color: #f0f0f0;
+        font-family: Montserrat;
+        font-size: 0.75rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 150%; /* 1.125rem */
       }
-    }
+      
+      .tabActive:hover{
+        border-radius: 0.9375rem;
+        width: 12rem;
+        height: 3.4295rem;
+        background: var(--black-amp-white-white, #FFF);
+        box-shadow: 0px 3.500000238418579px 5.500000476837158px 0px rgba(0, 0, 0, 0.02);
+        color: var(--gray-gray-700, #2D3748);
+        background-color: #f0f0f0;
+        font-family: Montserrat;
+        font-size: 0.75rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 150%; /* 1.125rem */
+      }
+      
+      
+         }
 
     .helpbox{
         border-radius: 0.9375rem;
@@ -82,7 +141,6 @@
   
     .content {
       flex: 1;
-      padding: 20px;
       background-color: #fff;
     }
   }
