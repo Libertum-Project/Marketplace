@@ -9,6 +9,9 @@ module.exports = (sequelize) => {
         primaryKey: true,
         autoIncrement: true,
       },
+      Address:{
+        type: DataTypes.STRING,
+      },
       ID_owner: {
         type: DataTypes.INTEGER,
         references: {

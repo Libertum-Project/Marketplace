@@ -9,6 +9,15 @@ const database = process.env.DATABASE;
 const username = "envwiseAzureDB@libertum--db";
 const password = process.env.PASSWORD;
 
+const sequelize = new Sequelize('libertum', 'postgres', 'contra445', {
+  host: 'localhost',
+  port: 5432,
+  dialect: "postgres",
+  logging: false,
+  native: false,
+});
+
+/*
 const sequelize = new Sequelize(database, username, password, {
   host: host,
   port: port,
@@ -23,7 +32,6 @@ const sequelize = new Sequelize(database, username, password, {
   native: false,
 });
 
-/*
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
   host: process.env.PGHOST,
   dialect: "postgres",

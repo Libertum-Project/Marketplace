@@ -3,6 +3,8 @@ const {
   getSigner,
 } = require("./contractConfig");
 
+const paymentTokenAddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
+
 async function createPassiveIncomeProperty(propertyData, propertyID) {
   try {
     const { financialData } = propertyData;
@@ -12,9 +14,9 @@ async function createPassiveIncomeProperty(propertyData, propertyID) {
     const pricePerToken = financialData.Token_Price;
     const collateralizedValue = totalSupply * pricePerToken;
     const interestRate = financialData.Rental_yield;
-    const paymentTokenAddress = "0xdac17f958d2ee523a2206206994597c13d831ec7";
     const signer = await getSigner();
-    return await propertyFactoryAndBankContract
+
+    const transaction = await propertyFactoryAndBankContract
       .connect(signer)
       .newPassiveIncomeProperty(
         name,
@@ -25,6 +27,9 @@ async function createPassiveIncomeProperty(propertyData, propertyID) {
         interestRate,
         paymentTokenAddress
       );
+    const receipt = await transaction.wait();
+    const logs = receipt.logs;
+    return logs[0].address;
   } catch (error) {
     console.error("Error occurred:", error);
   }
