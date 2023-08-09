@@ -1,8 +1,13 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState, useEffect } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllUsers, fetchCurrentUser } from "../../../redux/features/userSlice";
 import { NavLink, Route, Routes, Outlet } from 'react-router-dom';
 import DashboardContent from './Dashboard/Dashboard';
+import Finances from "./Finances/Finances";
+import MyProperties from "./MyProperties/MyProperties";
 import styles from './DashboardUser.module.scss';
+
 
 function DashboardUser() {
 
@@ -11,6 +16,41 @@ function DashboardUser() {
     const handleTabClick = (tabIndex) => {
       setActiveTab(tabIndex);
     };
+
+    const { isAuthenticated, isLoading, loginWithRedirect, user } = useAuth0();
+
+  const dispatch = useDispatch();
+  const allUsers = useSelector((state) => state.user.allUsers);
+  const currentUser = useSelector((state) => state.user.currentUser);
+
+  console.log(currentUser)
+  console.log(allUsers)
+
+  const handleLogin = () => {
+    const redirectUri = `${window.location.origin}/userdash/`;
+    loginWithRedirect({
+      redirectUri: redirectUri,
+    });
+  };
+
+
+
+  useEffect(() => {
+    if (!isLoading) {
+      if (!isAuthenticated) {
+        handleLogin();
+      }
+      if (user?.name && user?.email) {
+        dispatch(fetchAllUsers());
+        dispatch(fetchCurrentUser({
+          email: user.email,
+          name: user.name
+        }))
+      }
+    }
+  }, [isAuthenticated, isLoading]);
+
+
 
 
   return (
@@ -39,7 +79,7 @@ function DashboardUser() {
 
               <button
                 className={`${styles.tab} ${activeTab === 4 ? styles.tabActive : ''}`}
-                onClick={() => handleTabClick(3)}
+                onClick={() => handleTabClick(4)}
               >
                 My Investments
               </button>
@@ -52,8 +92,8 @@ function DashboardUser() {
               </button>
 
               <button
-                className={`${styles.tab} ${activeTab === 5 ? styles.tabActive : ''}`}
-                onClick={() => handleTabClick(5)}
+                className={`${styles.tab} ${activeTab === 6 ? styles.tabActive : ''}`}
+                onClick={() => handleTabClick(6)}
               >
                 Profile
               </button>
@@ -67,31 +107,24 @@ function DashboardUser() {
 
       </div>
 
-      {activeTab === 1 && (
-          <div>
-            <DashboardContent />
-          </div>
-        )}
+        {activeTab === 1 && (
+            <div>
+                <DashboardContent />
+            </div>
+            )}
 
+        {activeTab === 2 && (
+                <div>
+                    <Finances />
+                </div>
+                )}
 
-        {/* <NavLink to="/mydashboard/dashboard" activeClassName="active">Dashboard</NavLink>
-        <NavLink to="/mydashboard/finances" activeClassName="active">Finances</NavLink>
-        <NavLink to="/mydashboard/properties" activeClassName="active">My Properties</NavLink>
-        <NavLink to="/mydashboard/investments" activeClassName="active">My Investments</NavLink>
-        <NavLink to="/mydashboard/saved" activeClassName="active">Saved Properties</NavLink>
-        <NavLink to="/mydashboard/profile" activeClassName="active">Profile</NavLink> */}
+        {activeTab === 3 && (
+                <div>
+                    <MyProperties />
+                </div>
+                )}
 
-
-
-
-      
-      <div className="content">
-        <Routes>
-          <Route path="/mydashboard/dashboard" element={<DashboardContent />} />
-          <Route path="/mydashboard/finances" element={<UserProfile />} />
-          {/* ...otros contenidos */}
-        </Routes>
-      </div>
     </div>
   );
 }
