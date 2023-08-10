@@ -1,12 +1,24 @@
-const { User, Property } = require("../../db");
+const { User, Property, Owner, Feature, Financial } = require("../../db");
 
 async function getPropertiesUser(userId, type) {
   try {
     const user = await User.findByPk(userId, {
       include: [
-        { model: Property, as: "savedProperties" },
-        { model: Property, as: "publishedProperties" },
-        { model: Property, as: "investedProperties" },
+        {
+          model: Property,
+          as: "savedProperties",
+          include: [Owner, Feature, Financial],
+        },
+        {
+          model: Property,
+          as: "publishedProperties",
+          include: [Owner, Feature, Financial],
+        },
+        {
+          model: Property,
+          as: "investedProperties",
+          include: [Owner, Feature, Financial],
+        },
       ],
     });
 
@@ -31,7 +43,7 @@ async function getPropertiesUser(userId, type) {
 
     return properties;
   } catch (error) {
-    console.error(error)
+    console.error(error);
     throw new Error("Failed to fetch properties for the user.");
   }
 }
