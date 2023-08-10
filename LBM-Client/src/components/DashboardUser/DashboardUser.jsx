@@ -7,7 +7,7 @@ import DashboardContent from './Dashboard/Dashboard';
 import Finances from "./Finances/Finances";
 import MyProperties from "./MyProperties/MyProperties";
 import MyProfile from "./Profile/MyProfile";
-import savedProperties from "./SavedProperties/SavedProperties";
+import SavedProperties from "./SavedProperties/SavedProperties";
 import MyInvestments from "./MyInvestments/MyInvestments";
 
 import styles from './DashboardUser.module.scss';
@@ -149,15 +149,15 @@ function DashboardUser() {
                 </div>
                 )}
 
-        {activeTab === 4 && (
+        {activeTab === 5 && (
                 <div>
-                    <savedProperties 
+                    <SavedProperties 
                      saved = {currentUserInfo.savedProperties}
                     />
                 </div>
                 )}
 
-        {activeTab === 4 && (
+        {activeTab === 6 && (
                 <div>
                     <MyProfile 
                      name = {currentUserInfo.name}

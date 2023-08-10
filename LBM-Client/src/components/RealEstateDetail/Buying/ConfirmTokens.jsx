@@ -1,7 +1,5 @@
 import css from "./BuyProperty.module.css";
 import ProgressBar from "../../CreateProperty/ProgressBar";
-import { useParams } from "react-router-dom"; 
-import db from "../../RealEstates/fakedb/db.json";
 import Icons from "./Icons";
 import { useState } from "react";
 
@@ -31,6 +29,7 @@ const ConfirmTokens = ({ handleSubmit, onNext,
 
       console.log("Form submitted!");
       console.log("Form data:", formData);
+      onNext()
     };
 
     
@@ -75,7 +74,9 @@ const ConfirmTokens = ({ handleSubmit, onNext,
 
       </div>
 
-      <button className={css.nextBtn} onClick={onNext}>
+      <button className={css.nextBtn}  onClick={(event) => {
+          handleFormSubmit(event);
+        }} type="submit">
         Next
       </button>
     </form>

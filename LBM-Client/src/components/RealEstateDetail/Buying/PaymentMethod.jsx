@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
-import db from '../../RealEstates/fakedb/db.json';
 import css from './BuyProperty.module.css';
 import ProgressBar from '../../CreateProperty/ProgressBar';
 import backBtn from '../../../assets/back_btn.svg';
@@ -17,7 +15,12 @@ const PaymentMethod = ({ handleSubmit, onNext, onBack,
 
 
   const [selectedMethod, setSelectedMethod] = useState('');
+  const [selectedCurrency, setSelectedCurrency] = useState(''); 
+
   const [showModal, setShowModal] = useState(false);
+
+  const [errorMessage, setErrorMessage] = useState('');
+
 
   const handlePaymentMethod = (method) => {
     setSelectedMethod(method);
@@ -30,6 +33,14 @@ const PaymentMethod = ({ handleSubmit, onNext, onBack,
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
+    if (!selectedMethod) {      
+      setErrorMessage('Please select a payment method.');
+      return;
+    }
+    if (!selectedCurrency) {      
+      setErrorMessage('Please select a payment currency.');
+      return;
+    }
     const data = {
       method: selectedMethod,
       currency: selectedCurrency,
@@ -37,6 +48,7 @@ const PaymentMethod = ({ handleSubmit, onNext, onBack,
     handleSubmit(data);
   };
 
+  
   return (
     <>
       <form className={css.createForm} onSubmit={handleFormSubmit}>
@@ -64,22 +76,29 @@ const PaymentMethod = ({ handleSubmit, onNext, onBack,
                 <option value="Banktransfer">Bank Transfer</option>
                 <option value="CreditCard">Credit Card</option>
               </select>
+              
+
             </div>
           </div>
 
           <div className={css.inputContainer}>
             <div>
               <label>Payment Currency</label>
-
-              <select defaultValue="selected">
-                <option value="selected" disabled>
+              <select
+                value={selectedCurrency} // Agrega esto para vincular el valor del estado
+                onChange={(e) => setSelectedCurrency(e.target.value)} // Agrega esto para manejar el cambio de valor
+              >
+                <option value="" disabled>
                   Select
                 </option>
                 <option value="USDT">USDT</option>
+                {/* Agrega otras opciones de moneda aquí si es necesario */}
+                
+
               </select>
             </div>
           </div>
-        </div>
+          </div>
 
         {showModal && (
           <div className={css.modalContainer}>
@@ -106,8 +125,11 @@ const PaymentMethod = ({ handleSubmit, onNext, onBack,
             </div>
           </div>
         )}
-
-        <button className={css.nextBtn} onClick={onNext}>
+        
+        {errorMessage && <p className={css.errorMessage}>{errorMessage}</p>}
+        <button className={css.nextBtn}  onClick={(event) => {
+          handleFormSubmit(event);
+        }} type="submit">
           Next
         </button>
       </form>

@@ -388,6 +388,12 @@
     margin-top: 1rem;
   }
 
+  .errorMessage {
+    color: red;
+    font-size: 14px;
+    margin-top: 8px;
+  }
+  
 
   
 
