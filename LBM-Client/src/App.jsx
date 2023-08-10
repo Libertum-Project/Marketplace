@@ -124,7 +124,7 @@ function App() {
             }
           />
           <Route 
-          path="/marketplace/buy/:number" 
+          path="/marketplace/buy/:id" 
           element={<BuyProperty />} 
           />
 

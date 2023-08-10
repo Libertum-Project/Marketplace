@@ -7,10 +7,12 @@ import Icons from "./Icons";
 import { useState } from "react";
 import { useEffect } from "react";
 
-const ConfirmInvestment = ({ handleSubmit, onBack, formData }) => {
-  const { number } = useParams();
-  const land = db.find((item) => item.number === number);
-  console.log(formData)
+const ConfirmInvestment = ({ handleSubmit, onBack, formData, 
+  address, 
+  location,
+  NFTPrice, 
+  value
+}) => {
 
   const [subtotal, setSubtotal] = useState(0);
 
@@ -20,12 +22,12 @@ const ConfirmInvestment = ({ handleSubmit, onBack, formData }) => {
       const { tokensData } = formData;
       const { rangeValue } = tokensData;
 
-      const calculatedSubtotal = rangeValue * land.NFTPrice;
+      const calculatedSubtotal = rangeValue * NFTPrice;
       setSubtotal(calculatedSubtotal);
     };
 
     calculateSubtotal();
-  }, [formData, land.NFTPrice]);
+  }, [formData, NFTPrice]);
 
   return (
     <form className={css.createForm} onSubmit={handleSubmit}>
@@ -38,7 +40,7 @@ const ConfirmInvestment = ({ handleSubmit, onBack, formData }) => {
       <ProgressBar step={"3"} />
 
       <h1>
-         {land.address} | {land.location}             
+         {address} | {location}             
       </h1>          
       <Icons /> 
 
@@ -47,7 +49,7 @@ const ConfirmInvestment = ({ handleSubmit, onBack, formData }) => {
       <div className={css.box}>
         <div>
           <label><b>Value of the Property:</b></label>
-          <span>${land.price}</span>
+          <span>${value}</span>
         </div>
         <div>
           <label><b>Tokens to be Purchased:</b></label>

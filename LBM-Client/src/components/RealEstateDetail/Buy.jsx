@@ -3,7 +3,7 @@ import style from "./Aboutproperty.module.scss";
 import { FaBath, FaBed, FaWifi, FaParking   } from "react-icons/fa";
 
 const Buy = (props) => {
-  const { image, number, address, location, PIT, PRY, AvailablesNFT } = props;
+  const { image, id, address, location, PIT, PRY, AvailablesNFT } = props;
 
   return (
            <div
@@ -43,7 +43,7 @@ const Buy = (props) => {
 
               <div className={style.cardbutton}>
                 <Link
-                  to={`/marketplace/buy/${number}`}
+                  to={`/marketplace/buy/${id}`}
                 >
                   <button className={style.button}>Invest Now! </button>
                 </Link>
