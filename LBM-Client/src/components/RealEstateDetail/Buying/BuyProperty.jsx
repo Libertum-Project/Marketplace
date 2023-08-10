@@ -234,6 +234,11 @@ const BuyProperty = () => {
     console.log(data);
   };
 
+  
+
+
+  
+
   const handleBack = () => {
     // Retroceder al formulario anterior
     setCurrentForm(currentForm - 1);

@@ -1,33 +1,39 @@
 import css from "./BuyProperty.module.css";
 import ProgressBar from "../../CreateProperty/ProgressBar";
 import backBtn from '../../../assets/back_btn.svg';
-import { useParams } from "react-router-dom"; 
-import db from "../../RealEstates/fakedb/db.json";
 import Icons from "./Icons";
 import { useState } from "react";
 import { useEffect } from "react";
 
-const ConfirmInvestment = ({ handleSubmit, onBack, formData, 
+const ConfirmInvestment = ({ 
+  handleSubmit, 
+  onBack, 
+  formData, 
+  isValid,
+  errorMessage,
   address, 
   location,
   NFTPrice, 
   value
 }) => {
 
-  const [subtotal, setSubtotal] = useState(0);
+  const [subtotal, setSubtotal] = useState(0); //Estadp para ver el subtotal sin los impuestos
+ 
 
   // Actualiza el subtotal cuando se recibe el formData
   useEffect(() => {
     const calculateSubtotal = () => {
-      const { tokensData } = formData;
+      const  tokensData  = formData.tokensData;
       const { rangeValue } = tokensData;
 
       const calculatedSubtotal = rangeValue * NFTPrice;
       setSubtotal(calculatedSubtotal);
     };
-
+    console.log(formData)
     calculateSubtotal();
   }, [formData, NFTPrice]);
+
+  
 
   return (
     <form className={css.createForm} onSubmit={handleSubmit}>
@@ -76,7 +82,13 @@ const ConfirmInvestment = ({ handleSubmit, onBack, formData,
         </div>
       </div>
 
-      <button className={css.nextBtn}>Invest Now!</button>
+      <button 
+      className={css.nextBtn}        
+      onClick={(data) => {handleSubmit(data)}} 
+      type="submit"
+      >        
+        Invest Now!      
+      </button>
     </form>
   );
 };
