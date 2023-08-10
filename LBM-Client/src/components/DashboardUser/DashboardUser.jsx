@@ -162,6 +162,7 @@ function DashboardUser() {
                     <MyProfile 
                      name = {currentUserInfo.name}
                      id = {currentUserInfo.key}
+                     email={currentUserInfo.email}
                     />
                 </div>
                 )}

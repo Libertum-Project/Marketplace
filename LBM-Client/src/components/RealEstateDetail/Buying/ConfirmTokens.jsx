@@ -6,10 +6,15 @@ import Icons from "./Icons";
 import { useState } from "react";
 
 
-const ConfirmTokens = ({ handleSubmit, onNext }) => {
+const ConfirmTokens = ({ handleSubmit, onNext, 
 
-    const { number } = useParams();
-    const land = db.find((item) => item.number === number);
+  address, 
+  location,  
+  AvailablesNFT,  
+  NFTPrice, 
+
+}) => {
+
     
     const handleRangeChange = (event) => {
         setRangeValue(event.target.value);
@@ -37,7 +42,7 @@ const ConfirmTokens = ({ handleSubmit, onNext }) => {
       <ProgressBar step="1" />
 
       <h1> 
-         {land.address} | {land.location}             
+         {address} | {location}             
       </h1>          
       <Icons /> 
 
@@ -49,20 +54,20 @@ const ConfirmTokens = ({ handleSubmit, onNext }) => {
             <input
               type="number"
               min="0"
-              max={land.AvailablesNFT}
+              max={AvailablesNFT}
               value={rangeValue}             
               onChange={handleRangeChange}
             />
             <p>
               <span> <b>{rangeValue} </b></span> NFT at <b>$
-              {land.NFTPrice}</b> per NFT
+              {NFTPrice}</b> per NFT
             </p>
           </div>
         </div>
 
         <div className={css.inputContainer}>
           <div className={css.subtotal}>
-            <h2> <b> SUBTOTAL:</b> $  {rangeValue * land.NFTPrice}</h2>
+            <h2> <b> SUBTOTAL:</b> $  {rangeValue * NFTPrice}</h2>
           
           </div>
         </div>

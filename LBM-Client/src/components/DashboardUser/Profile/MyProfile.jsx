@@ -1,4 +1,4 @@
-const MyProfile = () => {
+const MyProfile = ({name, id, email}) => {
     return(
         <div>
 

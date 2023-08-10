@@ -8,9 +8,13 @@ import Icons from './Icons';
 import BankTransfer from './BankTransfer';
 import CreditCard from './CreditCard';
 
-const PaymentMethod = ({ handleSubmit, onNext, onBack }) => {
-  const { number } = useParams();
-  const land = db.find((item) => item.number === number);
+const PaymentMethod = ({ handleSubmit, onNext, onBack, 
+
+  address, 
+  location, 
+  
+}) => {
+
 
   const [selectedMethod, setSelectedMethod] = useState('');
   const [showModal, setShowModal] = useState(false);
@@ -44,7 +48,7 @@ const PaymentMethod = ({ handleSubmit, onNext, onBack }) => {
         </div>
         <ProgressBar step={'2'} />
         <h1>
-          {land.address} | {land.location}
+          {address} | {location}
         </h1>
         <Icons />
 

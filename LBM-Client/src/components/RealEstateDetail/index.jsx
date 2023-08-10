@@ -14,6 +14,7 @@ const Index = () => {
 
   const { id } = useParams();
   const properties = useSelector((state) => state.property.filteredProperties);
+  
 
   // Convertir el valor de 'id' a un número
   const propertyId = parseInt(id);
@@ -164,7 +165,7 @@ const Index = () => {
   // Find the property that matches the propertyId
   const property = propertyId && allProperties.find((property) => property.ID_Property === propertyId);
 
-
+console.log("proerty" + property.Feature.Address)
 // -----------------------------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------------------------
@@ -280,6 +281,7 @@ const Index = () => {
         <div className={isScrolled ? css.buycontainer : ''}>
           <Buy
             id={property.ID_Property}
+            number={property.ID_Property}
             image={property.Feature.Link_Image[0]}            
             value={property.Financial.Market_value_of_the_property}
             type={property.Feature.type}
