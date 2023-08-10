@@ -5,12 +5,22 @@ const {
   createPassiveIncomeProperty,
 } = require("./contracts/propertyFactoryAndBank/createPassiveIncomeProperty");
 
-function createSmartContractProperty(propertyData, propertyID) {
+const { mintCapitalRepaymentToken } = require('./contracts/capitalRepaymentProperty/mintToken');
+
+async function createSmartContractProperty(propertyData, propertyID) {
   if (propertyData.financialData.Investment_type === "capitalRepayment") {
-    createCapitalRepaymentProperty(propertyData, propertyID);
+    return await createCapitalRepaymentProperty(propertyData, propertyID);
   } else if (propertyData.financialData.Investment_type === "passiveIncome") {
-    createPassiveIncomeProperty(propertyData, propertyID);
+    return await createPassiveIncomeProperty(propertyData, propertyID);
   }
 }
 
-module.exports = { createSmartContractProperty };
+async function mintToken(userPrivateKey, propertyAddress, quantity, propertyType) {
+  if (propertyType === 'capitalRepayment') {
+    await mintCapitalRepaymentToken(userPrivateKey, propertyAddress, quantity);
+  } else if (propertyType === 'passiveIncome') {
+
+  }
+}
+
+module.exports = { createSmartContractProperty, mintToken };

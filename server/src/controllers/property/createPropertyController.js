@@ -58,7 +58,12 @@ async function createProperty(propertyData) {
       throw new Error("Failed to create property");
     }
 
-    createSmartContractProperty(propertyData, property.ID_Property);
+    const address = await createSmartContractProperty(
+      propertyData,
+      property.ID_Property
+    );
+    property.Address = address;
+    await property.save();
 
     return property;
   } catch (error) {

@@ -4,9 +4,9 @@ const {
 
 async function updateUserHandler(req, res) {
   const { userId, saved, invested, published } = req.query;
-
+  const { quantity } = req.body;
   try {
-    const updatedUser = await updateUser(userId, saved, invested, published);
+    const updatedUser = await updateUser(userId, saved, invested, published, quantity);
 
     res.status(202).send(updatedUser);
   } catch (error) {
