@@ -26,7 +26,7 @@ const Aboutproperty = (props) => {
     return (
         <div className={style.container}>
 
-          <div className={style.column-1}>
+          <div className={style.column1}>
 
             <div >
 
