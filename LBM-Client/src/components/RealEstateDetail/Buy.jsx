@@ -7,7 +7,7 @@ const Buy = (props) => {
 
   return (
            <div
-          className={style.column-2}        >          
+          className={style.column2}        >          
             <div className={style.buycontainer}>
               <h1>{location} | {address} </h1>
             
