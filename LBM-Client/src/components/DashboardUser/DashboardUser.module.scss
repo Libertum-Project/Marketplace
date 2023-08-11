@@ -1,0 +1,147 @@
+$primary-color: var(--Libertum-color);
+$blue-color: var(--LibertumBlue);
+$secondary-color:  #5c6068; 
+$font-size-base: 16px;
+$--bc: var(--Libertum-color);
+
+.dashboard-user {
+    display: flex;
+    margin-top: 6rem;
+    padding: 2rem;
+  
+    .sidebar {
+        // width: 150px;
+        // background-color: #f0f0f0;
+        padding: 20px;     
+        margin: 0;  
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+
+      
+        @media screen and (max-width: 767px) {
+          /* Estilos para dispositivos móviles */
+        //   width: 350px;
+        //   flex-direction: column;   
+        //   align-items: center;
+        }
+      
+            
+      .tab {
+          position: relative;
+          display: table-column;
+          cursor: pointer;
+          color: var(--gray-gray-400, #A0AEC0);
+            font-family: Montserrat;
+            font-size: 0.75rem;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 150%; /* 1.125rem */
+          font-size: 15px;
+          width: fit-content;
+          height: fit-content;
+          padding: 0;
+          margin-left: 1rem;
+          text-transform: uppercase;
+          margin-top: 1.5rem;
+          margin-bottom: 1rem;
+      
+      }
+      .tab:hover{
+        border-bottom: 2px solid $blue-color;
+        border-radius: 0; 
+      }
+      
+      .tabActive{
+        border-radius: 0.9375rem;
+        width: 12rem;
+        height: 3.4295rem;
+        background: var(--black-amp-white-white, #FFF);
+        box-shadow: 0px 3.500000238418579px 5.500000476837158px 0px rgba(0, 0, 0, 0.02);
+        color: var(--gray-gray-700, #2D3748);
+        background-color: #f0f0f0;
+        font-family: Montserrat;
+        font-size: 0.75rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 150%; /* 1.125rem */
+      }
+      
+      .tabActive:hover{
+        border-radius: 0.9375rem;
+        width: 12rem;
+        height: 3.4295rem;
+        background: var(--black-amp-white-white, #FFF);
+        box-shadow: 0px 3.500000238418579px 5.500000476837158px 0px rgba(0, 0, 0, 0.02);
+        color: var(--gray-gray-700, #2D3748);
+        background-color: #f0f0f0;
+        font-family: Montserrat;
+        font-size: 0.75rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 150%; /* 1.125rem */
+      }
+      
+      
+         }
+
+    .helpbox{
+        border-radius: 0.9375rem;
+        background: var(--teal-teal-300, #4FD1C5);
+        padding: 1rem;
+        gap: 1rem;
+
+        h3{
+            display: flex;
+            flex-direction: column;
+            justify-content: left;
+            flex-shrink: 0;
+            color: var(--black-amp-white-white, #FFF);
+            font-family: Inter;
+            font-size: 0.875rem;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 140%; /* 1.225rem */
+        }
+
+        p{
+            color: var(--black-amp-white-white, #FFF);
+            font-family: Inter;
+            font-size: 0.875rem;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 140%; /* 1.225rem */
+            color: var(--black-amp-white-white, #FFF);
+            font-family: Inter;
+            font-size: 0.75rem;
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        button{
+            display: flex;
+            margin-top: 1rem;
+            width: 100%;
+            // height: 2.1975rem;
+            padding: 0rem 0.5rem;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+            border-radius: 0.75rem;
+            background: var(--black-amp-white-white, #FFF);
+                 color: var(--gray-gray-700, #2D3748);
+                text-align: center;
+                font-family: Inter;
+                font-size: 0.725rem;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 150%; /* 0.9375rem */
+        }
+    }
+  
+    .content {
+      flex: 1;
+      background-color: #fff;
+    }
+  }
+  

@@ -1,18 +1,18 @@
 const { ethers } = require("ethers");
 
-async function mintCapitalRepaymentToken(userPrivateKey, propertyAddress, quantity) {
-  const capitalRepaymentPropertyABI =
-    require("../../ABI/CapitalRepaymentProperty.json").abi;
-  const capitalRepaymentPropertyAddress = propertyAddress
+async function mintPassiveIncomeToken(userPrivateKey, propertyAddress, quantity) {
+  const passiveIncomePropertyABI =
+    require("../../ABI/PassiveIncomeProperty.json").abi;
+  const passiveIncomePropertyAddress = propertyAddress
 
   const provider = new ethers.JsonRpcProvider();
 
   const privateKey = userPrivateKey
   const wallet = new ethers.Wallet(privateKey, provider);
 
-  const capitalRepaymentPropertyContract = new ethers.Contract(
-    capitalRepaymentPropertyAddress,
-    capitalRepaymentPropertyABI,
+  const passiveIncomePropertyContract = new ethers.Contract(
+    passiveIncomePropertyAddress,
+    passiveIncomePropertyABI,
     wallet
   );
 
@@ -32,15 +32,15 @@ async function mintCapitalRepaymentToken(userPrivateKey, propertyAddress, quanti
 
   const approveTransaction = await usdtTokenContract
     .connect(wallet)
-    .approve(capitalRepaymentPropertyAddress, ethers.parseUnits("1000000", 6), {
+    .approve(passiveIncomePropertyAddress, ethers.parseUnits("1000000", 6), {
       nonce: nonce + 1,
     });
   approveTransaction.wait();
 
-  const mintTransaction = await capitalRepaymentPropertyContract.mint(quantity, {
+  const mintTransaction = await passiveIncomePropertyContract.mint(quantity, {
     nonce: nonce + 2,
   });
   mintTransaction.wait();
 }
 
-module.exports = { mintCapitalRepaymentToken };
+module.exports = { mintPassiveIncomeToken };

@@ -1,15 +1,18 @@
 import css from "./BuyProperty.module.css";
 import ProgressBar from "../../CreateProperty/ProgressBar";
-import { useParams } from "react-router-dom"; 
-import db from "../../RealEstates/fakedb/db.json";
 import Icons from "./Icons";
 import { useState } from "react";
 
 
-const ConfirmTokens = ({ handleSubmit, onNext }) => {
+const ConfirmTokens = ({ handleSubmit, onNext, 
 
-    const { number } = useParams();
-    const land = db.find((item) => item.number === number);
+  address, 
+  location,  
+  AvailablesNFT,  
+  NFTPrice, 
+
+}) => {
+
     
     const handleRangeChange = (event) => {
         setRangeValue(event.target.value);
@@ -26,6 +29,7 @@ const ConfirmTokens = ({ handleSubmit, onNext }) => {
 
       console.log("Form submitted!");
       console.log("Form data:", formData);
+      onNext()
     };
 
     
@@ -37,7 +41,7 @@ const ConfirmTokens = ({ handleSubmit, onNext }) => {
       <ProgressBar step="1" />
 
       <h1> 
-         {land.address} | {land.location}             
+         {address} | {location}             
       </h1>          
       <Icons /> 
 
@@ -49,20 +53,20 @@ const ConfirmTokens = ({ handleSubmit, onNext }) => {
             <input
               type="number"
               min="0"
-              max={land.AvailablesNFT}
+              max={AvailablesNFT}
               value={rangeValue}             
               onChange={handleRangeChange}
             />
             <p>
               <span> <b>{rangeValue} </b></span> NFT at <b>$
-              {land.NFTPrice}</b> per NFT
+              {NFTPrice}</b> per NFT
             </p>
           </div>
         </div>
 
         <div className={css.inputContainer}>
           <div className={css.subtotal}>
-            <h2> <b> SUBTOTAL:</b> $  {rangeValue * land.NFTPrice}</h2>
+            <h2> <b> SUBTOTAL:</b> $  {rangeValue * NFTPrice}</h2>
           
           </div>
         </div>
@@ -70,7 +74,9 @@ const ConfirmTokens = ({ handleSubmit, onNext }) => {
 
       </div>
 
-      <button className={css.nextBtn} onClick={onNext}>
+      <button className={css.nextBtn}  onClick={(event) => {
+          handleFormSubmit(event);
+        }} type="submit">
         Next
       </button>
     </form>

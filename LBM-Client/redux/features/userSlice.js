@@ -1,12 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const serverURL = import.meta.env.VITE_SERVER_URL;
-const userURL = `${serverURL}user`
+//const serverURL = import.meta.env.VITE_TEST_SERVER;
+const userURL = `${serverURL}user`;
 
 const initialState = {
   currentUser: {
-    savedProperties: [], 
-  },  
+    savedProperties: [],
+  },
   allUsers: [],
   status: "idle",
   error: undefined,
@@ -40,23 +41,42 @@ export const saveProperty = createAsyncThunk(
     try {
       const userId = getState().user.currentUser.ID_user;
       const propertyId = propertyData.propertyId;
-      const response = await fetch(`${userURL}/update?userId=${userId}&saved=${propertyId}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(propertyData),
-      });
+      const response = await fetch(
+        `${userURL}/update?userId=${userId}&saved=${propertyId}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(propertyData),
+        }
+      );
       if (!response.ok) {
         throw new Error("Failed to save property on the server");
       }
       return propertyData;
-    } catch (error) {     
+    } catch (error) {
       console.error("Error saving property:", error.message);
       throw error;
     }
   }
 );
+
+export const buyToken = createAsyncThunk("put/buyToken", async ({ userId, propertyId, quantity }) => {
+  const body = { quantity }
+  const response = await fetch(
+    `${userURL}/update?userId=${userId}&invested=${propertyId}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    }
+  );
+
+  return await response.json();
+});
 
 // export const deleteProperty = createAsyncThunk(
 //   "user/deleteProperty",
@@ -86,9 +106,10 @@ export const deleteProperty = createAsyncThunk(
   async (propertyId, { getState }) => {
     try {
       const userId = getState().user.currentUser.ID_user;
-      const updatedProperties = getState().user.currentUser.savedProperties.filter(
-        (property) => property.propertyId !== propertyId
-      );
+      const updatedProperties =
+        getState().user.currentUser.savedProperties.filter(
+          (property) => property.propertyId !== propertyId
+        );
       const response = await fetch(`${userURL}/update?userId=${userId}`, {
         method: "POST",
         headers: {
@@ -108,8 +129,6 @@ export const deleteProperty = createAsyncThunk(
     }
   }
 );
-
-
 
 const userSlice = createSlice({
   name: "user",
@@ -142,18 +161,19 @@ const userSlice = createSlice({
         state.currentUser = action.payload;
       })
 
-      .addCase(saveProperty.pending, commonPendingAction)      
+      .addCase(saveProperty.pending, commonPendingAction)
       .addCase(saveProperty.rejected, commonRejectedAction)
       .addCase(saveProperty.fulfilled, commonFulfilledAction)
 
-      .addCase(deleteProperty.pending, commonPendingAction)      
+      .addCase(deleteProperty.pending, commonPendingAction)
       .addCase(deleteProperty.rejected, commonRejectedAction)
       .addCase(deleteProperty.fulfilled, (state, action) => {
         commonFulfilledAction(state, action);
-      state.currentUser.savedProperties = state.currentUser.savedProperties.filter(
-        (property) => property.propertyId !== action.payload
-      );
-    })
+        state.currentUser.savedProperties =
+          state.currentUser.savedProperties.filter(
+            (property) => property.propertyId !== action.payload
+          );
+      });
   },
 });
 
@@ -164,5 +184,3 @@ export const selectCurrentUser = (state) => state.user.currentUser;
 // } = userSlice.actions;
 
 export default userSlice.reducer;
-
-

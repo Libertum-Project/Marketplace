@@ -14,6 +14,7 @@ const Index = () => {
 
   const { id } = useParams();
   const properties = useSelector((state) => state.property.filteredProperties);
+  
 
   // Convertir el valor de 'id' a un número
   const propertyId = parseInt(id);
@@ -142,11 +143,11 @@ const Index = () => {
       "Rooms": 2,
       "Occupancy_Status": "Vacant",
       "Link_Image": [
-        "https://drive.google.com/uc?export=view&id=1gqCs1_iHbLcESR09t1YgDNt4ItTjmm6y",
-        "https://drive.google.com/uc?export=view&id=1mywxUkorxzbZC6b_WHzS75m4F6rAcDBo",
-        "https://drive.google.com/uc?export=view&id=1hdjoLNQGwvUXrNY8zkh9u62-xz1Imfun",
-        "https://drive.google.com/uc?export=view&id=1J0pkS6r_EoTCcLkaHiv4SxJfGL1_1y1I",
-        "https://drive.google.com/uc?export=view&id=1mywxUkorxzbZC6b_WHzS75m4F6rAcDBo" ],
+        "https://drive.google.com/uc?export=view&id=18nXp9-SILNFZYZwIdt-ssjMmezi3UZCL",
+        "https://drive.google.com/uc?export=view&id=1h89yTCsMebAhQwdGX1AYa9bRmufsitBW",
+        "https://drive.google.com/uc?export=view&id=16UaurYw3twqOiG1Gts1N2NqImiFzhimW",      
+        "https://drive.google.com/uc?export=view&id=16UaurYw3twqOiG1Gts1N2NqImiFzhimW", 
+        "https://drive.google.com/uc?export=view&id=1h89yTCsMebAhQwdGX1AYa9bRmufsitBW",],
       "Link_Document": "http://example.com/document.pdf",
       "Current_Emission": "120.00",
       "Expected_Emission_Level": "100.00",
@@ -164,7 +165,7 @@ const Index = () => {
   // Find the property that matches the propertyId
   const property = propertyId && allProperties.find((property) => property.ID_Property === propertyId);
 
-
+console.log("proerty" + property.Feature.Address)
 // -----------------------------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------------------------
@@ -241,7 +242,7 @@ const Index = () => {
       </div> */}
 
       <section className={css.mosaic}>
-        <img src={property.Feature.Link_Image[0]} alt="" />
+        <img src={property.Feature.Link_Image[0]} alt="Lalaland" />
         <div className={css.otherImages}>
           <img src={property.Feature.Link_Image[1]} alt="Land" />
           <img src={property.Feature.Link_Image[2]} alt="Land" />
@@ -280,6 +281,7 @@ const Index = () => {
         <div className={isScrolled ? css.buycontainer : ''}>
           <Buy
             id={property.ID_Property}
+            number={property.ID_Property}
             image={property.Feature.Link_Image[0]}            
             value={property.Financial.Market_value_of_the_property}
             type={property.Feature.type}
