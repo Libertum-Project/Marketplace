@@ -18,13 +18,13 @@ async function updateUser(userId, saved, invested, published, quantity) {
     if (saved) {
       await user.addSavedProperties(saved);
     } else if (invested) {
-      await user.addInvestedProperties(invested);
       const userPrivateKey = user.privateKey;
       const property = await Property.findByPk(invested, {include: [Financial]});
-      const propertyType = property.dataValues.Financial.dataValues.Investment_type;
+      const propertyType = property.Financial.Investment_type;
       const propertyAddress = property.Address;
 
       await mintToken(userPrivateKey, propertyAddress, quantity, propertyType)
+      await user.addInvestedProperties(invested);
     } else if (published) {
       await user.addPublishedProperties(published);
     } else {
