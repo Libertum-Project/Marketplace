@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const serverURL = import.meta.env.VITE_SERVER_URL;
+//const serverURL = import.meta.env.VITE_TEST_SERVER;
 const propertyURL = `${serverURL}properties`
 
 const initialState = {

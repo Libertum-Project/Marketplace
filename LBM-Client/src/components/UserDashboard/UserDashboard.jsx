@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAllUsers, fetchCurrentUser } from "../../../redux/features/userSlice";
+import { fetchAllUsers, fetchCurrentUser, buyToken } from "../../../redux/features/userSlice";
 import Frame1 from "./Frame1/Frame1";
 import Frame2 from "./Frame2/Frame2";
 import ReportofProperties from "./Reportofproperties";
@@ -13,8 +13,6 @@ const UserDashboard = () => {
   const allUsers = useSelector((state) => state.user.allUsers);
   const currentUser = useSelector((state) => state.user.currentUser);
 
-  console.log(currentUser)
-  console.log(allUsers)
 
   const handleLogin = () => {
     const redirectUri = `${window.location.origin}/userdash/`;
@@ -22,11 +20,6 @@ const UserDashboard = () => {
       redirectUri: redirectUri,
     });
   };
-
-
-
-  
-
 
   useEffect(() => {
     if (!isLoading) {
@@ -39,6 +32,8 @@ const UserDashboard = () => {
           email: user.email,
           name: user.name
         }))
+        dispatch(buyToken({ userId: '2', propertyId: '2', quantity: '1' }));
+
       }
     }
   }, [isAuthenticated, isLoading]);

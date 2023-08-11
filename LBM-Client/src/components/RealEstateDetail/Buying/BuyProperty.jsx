@@ -284,7 +284,7 @@ const BuyProperty = () => {
       address={property.Feature.Address}
       location={property.Feature.City}
       NFTPrice={property.Financial.Token_Price}
-      
+      propertyId = {propertyId}
       />
     )}
   </div>

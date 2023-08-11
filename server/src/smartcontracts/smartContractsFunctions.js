@@ -6,6 +6,7 @@ const {
 } = require("./contracts/propertyFactoryAndBank/createPassiveIncomeProperty");
 
 const { mintCapitalRepaymentToken } = require('./contracts/capitalRepaymentProperty/mintToken');
+const { mintPassiveIncomeToken } = require('./contracts/passiveIncomeProperty/mintToken')
 
 async function createSmartContractProperty(propertyData, propertyID) {
   if (propertyData.financialData.Investment_type === "capitalRepayment") {
@@ -19,7 +20,7 @@ async function mintToken(userPrivateKey, propertyAddress, quantity, propertyType
   if (propertyType === 'capitalRepayment') {
     await mintCapitalRepaymentToken(userPrivateKey, propertyAddress, quantity);
   } else if (propertyType === 'passiveIncome') {
-
+    await mintPassiveIncomeToken(userPrivateKey, propertyAddress, quantity);
   }
 }
 
