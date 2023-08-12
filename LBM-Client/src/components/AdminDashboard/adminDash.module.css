@@ -1,0 +1,41 @@
+.properties_container {
+  margin: 4rem 0;
+  padding: 0 4rem;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 100%;
+  gap: 2rem;
+}
+
+.property {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 2rem;
+}
+
+.property button {
+  border: 1px solid orange;
+  padding: .5rem;
+  font-size: 13px;
+
+}
+.property .disable{
+  background-color: #808080;
+  color: white;
+  cursor: not-allowed;
+}
+
+.property p {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.property span {
+  font-size: 13px;
+      font-weight: 400;
+
+}

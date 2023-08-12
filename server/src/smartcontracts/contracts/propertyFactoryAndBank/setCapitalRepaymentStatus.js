@@ -1,17 +1,17 @@
 const { propertyFactoryAndBankContract, getSigner } = require("./contractConfig");
 
-async function setActiveCapitalRepayment() {
+async function setActiveCapitalRepayment(propertyAddress) {
   const signer = await getSigner();
   return await propertyFactoryAndBankContract
     .connect(signer)
-    .setActiveCapitalRepayment("0xa16E02E87b7454126E5E10d957A927A7F5B5d2be");
+    .setActiveCapitalRepayment(propertyAddress);
 }
 
-async function setInactiveCapitalRepayment() {
+async function setInactiveCapitalRepayment(propertyAddress) {
   const signer = await getSigner();
   return await propertyFactoryAndBankContract
     .connect(signer)
-    .setInactiveCapitalRepayment("0xa16E02E87b7454126E5E10d957A927A7F5B5d2be");
+    .setInactiveCapitalRepayment(propertyAddress);
 }
 
 module.exports = { setActiveCapitalRepayment, setInactiveCapitalRepayment };
