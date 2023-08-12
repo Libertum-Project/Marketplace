@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const serverURL = import.meta.env.VITE_SERVER_URL;
 //const serverURL = import.meta.env.VITE_TEST_SERVER;
-const propertyURL = `${serverURL}properties`
+const propertyURL = `${serverURL}properties`;
 
 const initialState = {
   filters: {
@@ -11,6 +11,7 @@ const initialState = {
     location: "",
   },
   filteredProperties: [],
+  allProperies: [],
   search: "",
   notFound: false,
   status: "idle",
@@ -34,7 +35,6 @@ export const createProperty = createAsyncThunk(
 export const fetchFilteredProperties = createAsyncThunk(
   "filter/fetchFilteredProperties",
   async (filters) => {
-    console.log(filters)
     const newUrl = `${propertyURL}/filter?${filters}`;
     const response = await fetch(newUrl);
     return await response.json();
@@ -45,6 +45,22 @@ export const fetchAllProperties = createAsyncThunk(
   "property/fetchAllProperties",
   async () => {
     const response = await fetch(propertyURL);
+    return await response.json();
+  }
+);
+
+export const setPropertyStatus = createAsyncThunk(
+  "property/setPropertyStatus",
+  async ({ propertyId, isActive }) => {
+    const body = { propertyId, isActive };
+    console.log(body)
+    const response = await fetch(`${propertyURL}/status`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
     return await response.json();
   }
 );
@@ -78,8 +94,13 @@ const propertySlice = createSlice({
       .addCase(fetchFilteredProperties.fulfilled, (state, action) => {
         commonFulfilledAction(state, action);
         state.filteredProperties = action.payload;
-      
-        
+      })
+
+      .addCase(fetchAllProperties.pending, commonPendingAction)
+      .addCase(fetchAllProperties.rejected, commonRejectedAction)
+      .addCase(fetchAllProperties.fulfilled, (state, action) => {
+        commonFulfilledAction(state, action);
+        state.allProperies = action.payload;
       });
   },
 });
