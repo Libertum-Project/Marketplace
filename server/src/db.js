@@ -33,8 +33,8 @@ const sequelize = new Sequelize('libertum', 'postgres', 'contra445', {
   logging: false,
   native: false,
 });
-*/
 
+*/
 const basename = path.basename(__filename);
 
 const modelDefiners = [];

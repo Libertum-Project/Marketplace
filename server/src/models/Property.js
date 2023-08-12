@@ -12,6 +12,10 @@ module.exports = (sequelize) => {
       Address:{
         type: DataTypes.STRING,
       },
+      IsActive: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
       ID_owner: {
         type: DataTypes.INTEGER,
         references: {
