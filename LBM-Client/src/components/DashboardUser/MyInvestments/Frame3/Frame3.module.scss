@@ -5,13 +5,16 @@ $primarycolor: var(--Libertum-color);
   display: flex;
   justify-content: center;
   padding: 1rem;
-  gap: 1rem;
-  width: 71rem;
+  gap: 2rem;
+  width: 65rem;
 
-//   @media (max-width: 720px) {
-//     flex-direction: column;
-//     align-items: stretch;
-//   }
+  @media (max-width: 720px) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+    @media (min-width: 1600px) {
+      width: 90rem;
+    }
 }
 
 .mainContainer section{
@@ -37,7 +40,8 @@ $primarycolor: var(--Libertum-color);
   line-height: 140%; /* 1.575rem */
   // max-width: 23rem;
   width: 100%; 
-  text-align: left;
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
 .barGraph {
@@ -69,6 +73,8 @@ $primarycolor: var(--Libertum-color);
     line-height: 140%; /* 1.575rem */
     // max-width: 23rem;
     width: 100%; 
+    text-align: center;
+    margin-bottom: 1rem;
   }
 
   button {

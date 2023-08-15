@@ -1,5 +1,6 @@
 import DataTable from 'react-data-table-component';   
 import css from './TableUsers.module.scss';
+import { Link } from 'react-router-dom';
 
 const customStyles = {
     headRow: {
@@ -29,9 +30,8 @@ const customStyles = {
 
 const columns = [
     {
-        name: 'Property ID',
+        name: 'ID',
         selector: row => row.propertyID,
-
     },
     {
         name: 'Address',
@@ -49,23 +49,31 @@ const columns = [
         name: "Return of Investment",
         selector: row => row.return
     },
-   
+    {
+        name: "Purchase date",
+        selector: row => row.datepurchase
+    },
+    {
+        name: "Claimable From",
+        selector: row => row.dateclaming
+    },
     {
         name: 'Claim Earnings',
         selector: row => row.claim,
         cell: row => (
-            <div
-              style={{
-                backgroundColor: 'gray', //color de fondo 
-                borderRadius: '4px', //borde redondeado
-                color: 'white', // color del texto 
-                padding: '8px', //espaciado interno 
-                
-              }}
-            >
-              {row.claim}
-            </div>
-    
+            <Link to={`http:/localhost:3001/${row.propertyID}`}>
+                <button
+                style={{
+                    backgroundColor: 'gray', //color de fondo 
+                    borderRadius: '4px', //borde redondeado
+                    color: 'white', // color del texto 
+                    padding: '8px', //espaciado interno 
+                    
+                }}
+                >
+                {row.claim}
+                </button>
+            </Link>
            ) }]
 
 const data = [
@@ -76,31 +84,52 @@ const data = [
         tokens: 25,
         tokenprice: "$50",
         return: "$45",
+        datepurchase:"12/07/23",
+        dateclaming:"12/08/23",         
         claim: "CLAIM",
 
     },
     {
         id: 2,
-        propertyID:"#8549",
+        propertyID:"#489",
         address: "21 st.",
         tokens: 25,
         tokenprice: "$50",
-        return: "$32",
+        return: "$45",
+        datepurchase:"05/07/23",
+        dateclaming:"05/08/23",         
         claim: "CLAIM",
         
     },
     
 ]
 
-const Users = () => {
+const Investments = ({transactions}) => {
+
+//DESCOMENTAR ESTO PARA QUE SE MUESTRE LAS TRANSACCIONES QUE SE REALIZARON, LAS PROPIEDDADES. 
+    // const transactionData = transactions.map((transaction) => ({
+    //     id: transaction.Transaction_ID,
+    //     propertyID: `#${transaction.property.ID_Property}`,
+    //     address: transaction.property.address,
+    //     tokens: transaction.Token_quantity,
+    //     tokenprice: `$${transaction.Price}`,
+    //     return: `$${transaction.Return_of_Investment}`,
+    //     datepurchase: transaction.Transaction_Date,
+    //     dateclaming: transaction.Claimable_From,
+    //     claim: transaction.Claim,
+    //   }));
+
     return (
         <div className={css.container}>
         <div className={css.table}>
-        <h3></h3>
+        <h3>My Investments</h3>
         <DataTable
             columns={columns}
             data={data}
-            customStyles={customStyles}
+            // DESCOMENTAR ESTO Y COMENTAR 'DATA' ARRIBA PARA QUE MUESRE LOS DATOS REALES DE LAS PROPIEDADES EN LAS Q SE INVIRTIÓ
+            // data={transactionData}
+
+            
             
         />
         </div>
@@ -110,4 +139,4 @@ const Users = () => {
     );
 };
 
-export default Users; 
+export default Investments; 
