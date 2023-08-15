@@ -11,6 +11,7 @@ import SavedProperties from "./SavedProperties/SavedProperties";
 import MyInvestments from "./MyInvestments/MyInvestments";
 
 import styles from './DashboardUser.module.scss';
+import { current } from "@reduxjs/toolkit";
 
 
 function DashboardUser() {
@@ -26,12 +27,6 @@ function DashboardUser() {
   const dispatch = useDispatch();
   const allUsers = useSelector((state) => state.user.allUsers);
   const currentUser = useSelector((state) => state.user.currentUser);
-
-  // Buscar el usuario actual en la lista de todos los usuarios
-  const currentUserInfo = allUsers.find(user => user.ID_user === currentUser.ID_user);
-
-  // Ahora currentUserInfo contiene la información del usuario actual
-  console.log(currentUserInfo);
 
   console.log(currentUser)
   console.log(allUsers)
@@ -74,12 +69,12 @@ function DashboardUser() {
               >
                 Dashboard
               </button>
-              <button
+              {/* <button
                 className={`${styles.tab} ${activeTab === 2 ? styles.tabActive : ''}`}
                 onClick={() => handleTabClick(2)}
               >
                 Financials
-              </button>
+              </button> */}
               <button
                 className={`${styles.tab} ${activeTab === 3 ? styles.tabActive : ''}`}
                 onClick={() => handleTabClick(3)}
@@ -120,7 +115,7 @@ function DashboardUser() {
         {activeTab === 1 && (
             <div>
                 <DashboardContent 
-                name = {currentUserInfo.name}
+                name = {currentUser.name}
                 />
             </div>
             )}
@@ -134,25 +129,29 @@ function DashboardUser() {
         {activeTab === 3 && (
                 <div>
                     <MyProperties 
-                    name = {currentUserInfo.name}
-                    id = {currentUserInfo.key}
-                    transactions = {currentUserInfo.transactions}
-                   
-                    properties = {currentUserInfo.publishedProperties}
+                    name = {currentUser.name}
+                    id = {currentUser.ID_user}
+                    transactions = {currentUser.transactions}                   
+                    properties = {currentUser.publishedProperties}
                     />
                 </div>
                 )}
 
         {activeTab === 4 && (
                 <div>
-                    <MyInvestments />
+                    <MyInvestments 
+                    name = {currentUser.name}
+                    id = {currentUser.ID_user}
+                    transactions = {currentUser.transactions}
+                    investemnts = {currentUser.investedProperties}
+                    />
                 </div>
                 )}
 
         {activeTab === 5 && (
                 <div>
                     <SavedProperties 
-                     saved = {currentUserInfo.savedProperties}
+                     saved = {currentUser.savedProperties}
                     />
                 </div>
                 )}

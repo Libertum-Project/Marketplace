@@ -124,7 +124,7 @@ function PopUpUser({ setActiveMenu }) {
           <div className={style.buttons}>
             <a>Notifications</a>
             <a>FAQ</a>
-            <Link to="/userdash" onClick={() => setActiveMenu(false)}>
+            <Link to="/mydashboard" onClick={() => setActiveMenu(false)}>
               <p className={style.mydashboard}>My dashboard</p>
             </Link>
 
