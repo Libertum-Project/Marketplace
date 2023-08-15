@@ -1,6 +1,6 @@
 import Frame3 from "./Frame3/Frame3";
-import Table from "./UsersTable/Table"
 import css from "./MyInvestments.module.scss"
+import Investments from "./UsersTable/Table";
 
 const MyInvestments = ({name, id, transactions, investments}) => {
 
@@ -12,7 +12,9 @@ const MyInvestments = ({name, id, transactions, investments}) => {
                 <Frame3 />
             </div>
             <div className="">
-                <Table />
+                <Investments 
+                transactions = {transactions}
+                />
             </div>
                 </div>
         </div>

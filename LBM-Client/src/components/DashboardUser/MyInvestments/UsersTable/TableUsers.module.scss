@@ -1,6 +1,6 @@
 .container{
     display: flex;
-    width: 71rem;
+    width: 65rem;
     // height: 17rem;
     justify-content: space-between;
     align-items: center;
@@ -11,6 +11,10 @@
     padding-right: 1rem;
     margin-bottom: 3rem;
     margin-top: 3rem;
+
+      @media (min-width: 1600px) {
+        width: 90rem;
+  }
 }
 
 
@@ -36,7 +40,7 @@
     padding-left: 1rem;
     padding-top: 1.5rem;
     color: var(--0-c-0507, #0C0507);
-    font-family: Inter;
+    font-family: Montserrat;    
     font-size: 1.125rem;
     font-style: normal;
     font-weight: 700;
