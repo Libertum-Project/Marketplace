@@ -8,12 +8,15 @@ const customStyles = {
         fontFamily: 'Inter',
         fontSize: '0.875rem',
         fontWeight: 700,
-        textTransform: 'capitalize'
+        textTransform: 'capitalize',
+        with: 'fit-content',
+        whiteSpace: 'normal', // Permite que el contenido de la fila de encabezado se ajuste en múltiples líneas
+        lineHeight: '1.2', // Altura de línea para mejorar la legibilidad
       }
     },
     conditionalCellStyles: [
         {
-          when: row => row.selector === 'status',
+          when: row => row.selector === 'claim',
           style: {
             borderRadius: '4px',
             backgroundColor: 'blue', // Aquí puedes cambiar el color de fondo deseado
@@ -26,38 +29,41 @@ const customStyles = {
 
 const columns = [
     {
-        name: 'user',
-        selector: row => row.user,
-        
-        
+        name: 'Property ID',
+        selector: row => row.propertyID,
+
     },
     {
-        name: 'Mail address',
-        selector: row => row.mail,
+        name: 'Address',
+        selector: row => row.address,
     },
     {
-        name: "",
-        selector: row => row.empty
+        name: "Tokens purchased",
+        selector: row => row.tokens
     },
     {
-        name: "",
-        selector: row => row.empty
+        name: "Price for token",
+        selector: row => row.tokenprice
     },
-    
     {
-        name: 'View contracts',
-        selector: row => row.contract,
+        name: "Return of Investment",
+        selector: row => row.return
+    },
+   
+    {
+        name: 'Claim Earnings',
+        selector: row => row.claim,
         cell: row => (
             <div
               style={{
-                backgroundColor: 'gray', // Cambia el color de fondo deseado
-                borderRadius: '4px', // Añade el borde redondeado
-                color: 'white', // Cambia el color del texto deseado
-                padding: '8px', // Ajusta el espaciado interno según sea necesario
+                backgroundColor: 'gray', //color de fondo 
+                borderRadius: '4px', //borde redondeado
+                color: 'white', // color del texto 
+                padding: '8px', //espaciado interno 
                 
               }}
             >
-              {row.status}
+              {row.claim}
             </div>
     
            ) }]
@@ -65,40 +71,25 @@ const columns = [
 const data = [
     {
         id: 1,
-        user: 'Alan',
-        mail: "allena@gmail.com",
-        status: "contract"
+        propertyID:"#489",
+        address: "21 st.",
+        tokens: 25,
+        tokenprice: "$50",
+        return: "$45",
+        claim: "CLAIM",
+
     },
     {
         id: 2,
-        user: 'Guillermo',
-        mail: "guillermo@gmail.com",
-        status: "contract"
+        propertyID:"#8549",
+        address: "21 st.",
+        tokens: 25,
+        tokenprice: "$50",
+        return: "$32",
+        claim: "CLAIM",
+        
     },
-    {
-        id:3,
-        user: 'Maria',
-        mail: "guillermo@gmail.com",
-        status: "contract"
-    },
-    {
-        id: 4,
-        user: 'Pedro',
-        mail: "guillermo@gmail.com",
-        status: "contract"
-    },
-    {
-        id: 5,
-        user: 'Laura',
-        mail: "guillermo@gmail.com",
-        status: "contract"
-    },
-    {
-        id: 6,
-        user: 'Paula',
-        mail: "guillermo@gmail.com",
-        status: "contract"
-    },
+    
 ]
 
 const Users = () => {
