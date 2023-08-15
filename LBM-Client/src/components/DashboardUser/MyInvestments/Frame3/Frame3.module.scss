@@ -3,11 +3,10 @@ $primarycolor: var(--Libertum-color);
 
 .mainContainer {
   display: flex;
- justify-content: center;
- width: 100%;
+  justify-content: center;
   padding: 1rem;
   gap: 1rem;
- 
+  width: 71rem;
 
 //   @media (max-width: 720px) {
 //     flex-direction: column;
@@ -22,15 +21,24 @@ $primarycolor: var(--Libertum-color);
     
 }
 .barsContainer {
-  flex: 1;
   width: 100%;
   border-radius: 16px;
-  padding: 2rem;
+  // padding: 2rem;
   box-sizing: border-box;
   
 }
 
-.barsText {}
+.barsText {
+  color: var(--gray-gray-700, #2D3748);
+  font-family: Montserrat;    
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%; /* 1.575rem */
+  // max-width: 23rem;
+  width: 100%; 
+  text-align: left;
+}
 
 .barGraph {
   width: 100%;
@@ -39,12 +47,12 @@ $primarycolor: var(--Libertum-color);
 }
 
 .transactions {
-  flex: 1;
+  // flex: 1;
   width: 100%;
   display: flex;
   flex-direction: column;
   border-radius: 16px;
-  padding: 2rem;
+  // padding: 2rem;
   box-sizing: border-box;
 }
 
@@ -54,13 +62,13 @@ $primarycolor: var(--Libertum-color);
   align-items: center;
   h2 {
     color: var(--gray-gray-700, #2D3748);
-    font-family: Inter;
+    font-family: Montserrat;    
     font-size: 1.125rem;
     font-style: normal;
     font-weight: 700;
     line-height: 140%; /* 1.575rem */
-    max-width: 23rem;
-    width: 100%; /* Added width to ensure the content doesn't overflow */
+    // max-width: 23rem;
+    width: 100%; 
   }
 
   button {

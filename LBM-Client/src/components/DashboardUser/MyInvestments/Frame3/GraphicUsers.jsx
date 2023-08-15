@@ -4,7 +4,7 @@ const data = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
     datasets: [
       {
-        label: 'Number of Users',
+        label: 'Total income per token',
         data: [50, 100, 70, 80, 75, 80, 110, 120, 100, 120, 150, 160],
         backgroundColor: 'white', // Orange background
         borderColor: 'white', // White lines

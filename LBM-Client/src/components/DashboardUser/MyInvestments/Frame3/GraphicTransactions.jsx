@@ -16,8 +16,8 @@ const data = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
   datasets: [
     {
-      label: 'Sales',
-      data: [50, 60, 70, 65, 75, 80,98,62,70,85,71,98],
+      label: 'Token value',
+      data: [50, 60, 70, 65, 75, 50,98,62,70,85,71,98],
       borderColor:  'rgba(255, 165, 0, 0.5)', // Cambia el color de la línea a gris
       fill: true, // Cambia el área debajo de la línea a un fondo relleno
       backgroundColor: 'rgba(255, 165, 0, 0.5)', // Establece el color del fondo del área

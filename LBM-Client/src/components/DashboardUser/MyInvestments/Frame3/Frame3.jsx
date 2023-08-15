@@ -7,6 +7,7 @@ import css from "./Frame3.module.scss";
 const Frame3 = () => {
     return(
         <div className={css.mainContainer}>
+            
             <section className={css.barsContainer}>
                 <div className={css.barsText}>
                     <h2>Total Income from Tokens</h2>                    
@@ -18,7 +19,7 @@ const Frame3 = () => {
 
             <section className={css.transactions}>
                 <div className={css.transactionstext}>
-                    <h2>Transactions overview</h2>                    
+                    <h2>Token value</h2>                    
                 </div>
                 <div className={css.transactionschart}>
                     <LineChart />
