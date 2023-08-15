@@ -106,7 +106,7 @@ const data = [
 
 const Investments = ({transactions}) => {
 
-//DESCOMENTAR ESTO PARA QUE SE MUESTRE LAS TRANSACCIONES QUE SE REALIZARON, LAS PROPIEDDADES. 
+    // ⚠️ DESCOMENTAR ESTO PARA QUE SE MUESTRE LAS TRANSACCIONES QUE SE REALIZARON, LAS PROPIEDDADES. 
     // const transactionData = transactions.map((transaction) => ({
     //     id: transaction.Transaction_ID,
     //     propertyID: `#${transaction.property.ID_Property}`,
@@ -126,8 +126,8 @@ const Investments = ({transactions}) => {
         <DataTable
             columns={columns}
             data={data}
-            // DESCOMENTAR ESTO Y COMENTAR 'DATA' ARRIBA PARA QUE MUESRE LOS DATOS REALES DE LAS PROPIEDADES EN LAS Q SE INVIRTIÓ
-            // data={transactionData}
+             // ⚠️ DESCOMENTAR ESTO ⬇️  Y COMENTAR 'DATA'⬆️ ARRIBA PARA QUE MUESRE LOS DATOS REALES DE LAS PROPIEDADES EN LAS Q SE INVIRTIÓ
+            //  data={transactionData}
 
             
             
