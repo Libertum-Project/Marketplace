@@ -1,13 +1,17 @@
 const { ethers } = require("ethers");
 
-async function mintPassiveIncomeToken(userPrivateKey, propertyAddress, quantity) {
+async function mintPassiveIncomeToken(
+  userPrivateKey,
+  propertyAddress,
+  quantity
+) {
   const passiveIncomePropertyABI =
     require("../../ABI/PassiveIncomeProperty.json").abi;
-  const passiveIncomePropertyAddress = propertyAddress
+  const passiveIncomePropertyAddress = propertyAddress;
 
   const provider = new ethers.JsonRpcProvider();
 
-  const privateKey = userPrivateKey
+  const privateKey = userPrivateKey;
   const wallet = new ethers.Wallet(privateKey, provider);
 
   const passiveIncomePropertyContract = new ethers.Contract(
@@ -30,9 +34,12 @@ async function mintPassiveIncomeToken(userPrivateKey, propertyAddress, quantity)
     .faucet(100_000, { nonce });
   faucetTransaction.wait();
 
+  const pricePerToken = await passiveIncomePropertyContract.pricePerToken();
+  const price = BigInt(quantity) * BigInt(pricePerToken) * BigInt(10 ** 6);
+
   const approveTransaction = await usdtTokenContract
     .connect(wallet)
-    .approve(passiveIncomePropertyAddress, ethers.parseUnits("1000000", 6), {
+    .approve(passiveIncomePropertyAddress, price, {
       nonce: nonce + 1,
     });
   approveTransaction.wait();
