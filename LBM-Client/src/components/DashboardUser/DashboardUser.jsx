@@ -159,9 +159,9 @@ function DashboardUser() {
         {activeTab === 6 && (
                 <div>
                     <MyProfile 
-                     name = {currentUserInfo.name}
-                     id = {currentUserInfo.key}
-                     email={currentUserInfo.email}
+                     name = {currentUser.name}
+                     id = {currentUser.key}
+                     email={currentUser.email}
                     />
                 </div>
                 )}
