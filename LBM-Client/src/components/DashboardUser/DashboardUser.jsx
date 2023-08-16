@@ -10,6 +10,18 @@ import MyProfile from "./Profile/MyProfile";
 import SavedProperties from "./SavedProperties/SavedProperties";
 import MyInvestments from "./MyInvestments/MyInvestments";
 
+import dashboardimage from "./assets/dashboardInactive.svg";
+import dashboardimageActive from "./assets/dashboardActive.svg"
+import investmentsimage from "./assets/investmentsInactive.svg";
+import investmentsimageActive from "./assets/investmentsActive.svg";
+import propertiesimage from "./assets/propertiesInactive.svg";
+import propertiesimageActive from "./assets/propertiesActive.svg";
+import savedimage from "./assets/savedInactive.svg";
+import savedimageActive from "./assets/savedActive.svg";
+import profileimage from "./assets/profileInactive.svg";
+import profileimageActive from "./assets/profileActive.svg"
+
+
 import styles from './DashboardUser.module.scss';
 import { current } from "@reduxjs/toolkit";
 
@@ -67,7 +79,20 @@ function DashboardUser() {
                 className={`${styles.tab} ${activeTab === 1 ? styles.tabActive : ''}`}
                 onClick={() => handleTabClick(1)}
               >
-                Dashboard
+                <div className={styles.tabContent}>
+                      {activeTab === 1 ? (
+                        <>
+                          <img src={dashboardimageActive} alt="" className={styles.imageActive} />
+                          <p>Dashboard</p>
+                        </>
+                      ) : (
+                        <>
+                          {/* SVG 1 (Imagen normal) */}
+                          <img src={dashboardimage} alt="" className={styles.image} />
+                          <p>Dashboard</p>
+                        </>
+                      )}
+                    </div>
               </button>
               {/* <button
                 className={`${styles.tab} ${activeTab === 2 ? styles.tabActive : ''}`}
@@ -79,28 +104,78 @@ function DashboardUser() {
                 className={`${styles.tab} ${activeTab === 3 ? styles.tabActive : ''}`}
                 onClick={() => handleTabClick(3)}
               >
-                My Properties
+                
+                <div className={styles.tabContent}>
+                  {activeTab === 3 ? (
+                    <>
+                      <img src={propertiesimageActive} alt="" className={styles.imageActive} />
+                      <p>My Properties</p>
+                    </>
+                  ) : (
+                    <>
+                      
+                      <img src={propertiesimage} alt="" className={styles.image} />
+                      <p>My Properties</p>
+                    </>
+                  )}
+                </div>
               </button>
 
               <button
                 className={`${styles.tab} ${activeTab === 4 ? styles.tabActive : ''}`}
                 onClick={() => handleTabClick(4)}
               >
-                My Investments
+                <div className={styles.tabContent}>
+                  {activeTab === 4 ? (
+                    <>
+                      <img src={investmentsimageActive} alt="" className={styles.imageActive} />
+                      <p>my Investments</p>
+                    </>
+                  ) : (
+                    <>
+                      <img src={investmentsimage} alt="" className={styles.image} />
+                      <p>my Investments</p>
+                    </>
+                  )}
+                </div>
               </button>
 
               <button
                 className={`${styles.tab} ${activeTab === 5 ? styles.tabActive : ''}`}
                 onClick={() => handleTabClick(5)}
               >
-                Saved Properties
+                 <div className={styles.tabContent}>
+                  {activeTab === 5 ? (
+                    <>
+                      <img src={savedimageActive} alt="" className={styles.imageActive} />
+                      <p>Saved properties</p>
+                    </>
+                  ) : (
+                    <>
+                      <img src={savedimage} alt="" className={styles.image} />
+                      <p>Saved</p>
+                    </>
+                  )}
+                </div>
               </button>
 
               <button
                 className={`${styles.tab} ${activeTab === 6 ? styles.tabActive : ''}`}
                 onClick={() => handleTabClick(6)}
               >
-                Profile
+                <div className={styles.tabContent}>
+                    {activeTab === 6 ? (
+                      <>
+                        <img src={profileimageActive} alt="" className={styles.imageActive} />
+                        <p>my Profile</p>
+                      </>
+                    ) : (
+                      <>
+                        <img src={profileimage} alt="" className={styles.image} />
+                        <p>my Profile</p>
+                      </>
+                    )}
+                  </div>
               </button>
               
 

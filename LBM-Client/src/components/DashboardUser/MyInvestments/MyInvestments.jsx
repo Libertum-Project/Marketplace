@@ -7,8 +7,8 @@ const MyInvestments = ({name, id, transactions, investments}) => {
     return(
         <div>
             
-        <div className={css.container}>
-            <div className={css.frame}>
+        <div >
+            <div >
                 <Frame3 />
             </div>
             <div className="">

@@ -47,7 +47,7 @@ $buttonh2: (
     font-style: normal;
     font-weight: 700;
     line-height: 140%; /* 1.225rem */
-    // margin-bottom: 2rem;
+    margin-bottom: .4rem;
 }
 
 .mainContainer{
@@ -63,8 +63,11 @@ $buttonh2: (
 
     @media (max-width: 720px){
 
-       display: block;
+       display: flex;
        height: fit-content;
+       flex-direction: column;
+       padding: 0;
+       max-width: 19rem;
       }
    
 }
@@ -153,6 +156,7 @@ $buttonh2: (
             display:none;
            }
 }
+        
 }
 
 
@@ -311,6 +315,8 @@ $buttonh2: (
             margin-top:1.25rem ;    
 
         }
+
+    
     }
 
     
@@ -327,6 +333,11 @@ $buttonh2: (
             display:none;
            }
 }
+
+@media (max-width: 720px){
+    
+    display:none;
+   }
 }
 
 
