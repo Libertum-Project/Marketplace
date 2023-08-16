@@ -48,7 +48,9 @@ $buttonh2: (
     font-weight: 700;
     line-height: 140%; /* 1.225rem */
     margin-bottom: .4rem;
+
 }
+
 
 .mainContainer{
     display: flex;
@@ -334,10 +336,13 @@ $buttonh2: (
            }
 }
 
+
+
 @media (max-width: 720px){
     
     display:none;
    }
+
 }
 
 

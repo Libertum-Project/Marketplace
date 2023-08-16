@@ -11,6 +11,7 @@ $primarycolor: var(--Libertum-color);
   @media (max-width: 720px) {
     flex-direction: column;
     align-items: stretch;
+    width: 20rem;
   }
     @media (min-width: 1600px) {
       width: 90rem;

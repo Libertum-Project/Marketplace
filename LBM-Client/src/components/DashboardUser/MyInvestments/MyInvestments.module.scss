@@ -10,4 +10,8 @@
     padding: 1rem;
     gap: 1rem;
 
+    @media (max-width: 720px){
+    
+        width: 20rem;
+       }
 }

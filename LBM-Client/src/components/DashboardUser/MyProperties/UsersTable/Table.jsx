@@ -122,7 +122,7 @@ const Properties = ({transactions}) => {
     return (
         <div className={css.container}>
         <div className={css.table}>
-        <h3>My Investments</h3>
+        <h3>My Properties</h3>
         <DataTable
             columns={columns}
             data={data}

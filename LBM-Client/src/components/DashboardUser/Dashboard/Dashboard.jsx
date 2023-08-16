@@ -26,7 +26,7 @@ return(
     <div>
 
         <div className={style.welcome}>
-            <p>Welcome {name}! </p>
+            <p>Welcome {name}! </p>          
         </div>
 
         <div>
