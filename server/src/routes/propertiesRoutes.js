@@ -15,6 +15,7 @@ const {
 const {
   claimMonthlyPaymentHandler,
 } = require("../handlers/property/claimMonthlyPaymentHandler");
+const {withdrawHandler} = require("../handlers/property/withdrawHandler.js");
 
 const propertyRouter = Router();
 
@@ -23,5 +24,6 @@ propertyRouter.post("/", createPropertyHandler);
 propertyRouter.get("/filter", getFilteredPropertiesHandler);
 propertyRouter.post("/status", setPropertyStatusHandler);
 propertyRouter.post("/claim", claimMonthlyPaymentHandler);
+propertyRouter.post("/withdraw", withdrawHandler);
 
 module.exports = propertyRouter;

@@ -27,6 +27,7 @@ const AdminDash = () => {
     await dispatch(setPropertyStatus({ propertyId, isActive }));
     dispatch(fetchAllProperties());
   };
+  console.log(allProperties.length > 0)
 
   return (
     <div>
