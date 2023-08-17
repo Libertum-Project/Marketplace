@@ -30,10 +30,6 @@ const customStyles = {
 
 const columns = [
     {
-        name: 'ID',
-        selector: row => row.propertyID,
-    },
-    {
         name: 'Address',
         selector: row => row.address,
     },
@@ -53,10 +49,10 @@ const columns = [
         name: "Purchase date",
         selector: row => row.datepurchase
     },
-    {
-        name: "Claimable From",
-        selector: row => row.dateclaming
-    },
+    // {
+    //     name: "Claimable From",
+    //     selector: row => row.dateclaming
+    // },
     {
         name: 'Claim Earnings',
         selector: row => row.claim,
@@ -76,67 +72,70 @@ const columns = [
             </Link>
            ) }]
 
-const data = [
-    {
-        id: 1,
-        propertyID:"#489",
-        address: "21 st.",
-        tokens: 25,
-        tokenprice: "$50",
-        return: "$45",
-        datepurchase:"12/07/23",
-        dateclaming:"12/08/23",         
-        claim: "CLAIM",
 
-    },
-    {
-        id: 2,
-        propertyID:"#489",
-        address: "21 st.",
-        tokens: 25,
-        tokenprice: "$50",
-        return: "$45",
-        datepurchase:"05/07/23",
-        dateclaming:"05/08/23",         
-        claim: "CLAIM",
+const Investments = ({ investments, transactions }) => {
+
+    //❗⬇️ ACA ESTA EL BOTON QUE MANDA LA INFO!!!⬇ 
+    const handleClaimClick = (addressID, tokens, type) => {
+        console.log('Address ID:', addressID);
+        console.log('Tokens:', tokens);
+        console.log('Type:', type);
+      };
+      
+    const combinedData = investments.map((investment, index) => {
+        const currentDate = new Date();
         
-    },
-    
-]
-
-const Investments = ({transactions}) => {
-
-    // ⚠️ DESCOMENTAR ESTO PARA QUE SE MUESTRE LAS TRANSACCIONES QUE SE REALIZARON, LAS PROPIEDDADES. 
-    // const transactionData = transactions.map((transaction) => ({
-    //     id: transaction.Transaction_ID,
-    //     propertyID: `#${transaction.property.ID_Property}`,
-    //     address: transaction.property.address,
-    //     tokens: transaction.Token_quantity,
-    //     tokenprice: `$${transaction.Price}`,
-    //     return: `$${transaction.Return_of_Investment}`,
-    //     datepurchase: transaction.Transaction_Date,
-    //     dateclaming: transaction.Claimable_From,
-    //     claim: transaction.Claim,
-    //   }));
-
+        const purchaseDate = new Date(transactions[index].createdAt);
+        
+        const claimableDate = new Date(purchaseDate);
+        claimableDate.setDate(claimableDate.getDate() + 30);
+        
+        const formattedPurchaseDate =
+          ('0' + (purchaseDate.getMonth() + 1)).slice(-2) +
+          '/' +
+          ('0' + purchaseDate.getDate()).slice(-2) +
+          '/' +
+          purchaseDate
+            .getFullYear()
+            .toString()
+            .slice(-2);
+      
+        return {
+          idProperty: `#${investment.ID_Property}`,
+          addressID: investment.Address,
+          address: investment.Feature.Address,
+          tokens: transactions[index].Token_quantity,
+          tokenprice: `$${transactions[index].Price}`,
+          return: `$${transactions[index].Return_of_Investment}`,
+          datepurchase: formattedPurchaseDate,        
+          claim: (
+            <button
+              disabled={currentDate < claimableDate}
+              onClick={() =>
+                handleClaimClick(
+                  investment.addressID,
+                  transactions[index].Token_quantity,
+                  investment.Feature.Type
+                )
+              }
+            >
+              Claim
+            </button>
+          ),
+        };
+      });
+  
     return (
-        <div className={css.container}>
+      <div className={css.container}>
         <div className={css.table}>
-        <h3>My Investments</h3>
-        <DataTable
+          <h3>My Investments</h3>
+          <DataTable
             columns={columns}
-            data={data}
-             // ⚠️ DESCOMENTAR ESTO ⬇️  Y COMENTAR 'DATA'⬆️ ARRIBA PARA QUE MUESRE LOS DATOS REALES DE LAS PROPIEDADES EN LAS Q SE INVIRTIÓ
-            //  data={transactionData}
-
-            
-            
-        />
+            data={combinedData}
+          />
         </div>
-        </div>
-
-
+      </div>
     );
-};
-
-export default Investments; 
+  };
+  
+  export default Investments;

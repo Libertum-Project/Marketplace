@@ -241,7 +241,8 @@ function DashboardUser() {
             name={currentUser.name}
             id={currentUser.ID_user}
             transactions={currentUser.transactions}
-            investemnts={currentUser.investedProperties}
+            investments={currentUser.investedProperties}
+            
           />
         </div>
       )}
