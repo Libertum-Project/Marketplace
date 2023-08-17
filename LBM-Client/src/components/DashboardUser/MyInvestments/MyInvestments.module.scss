@@ -1,3 +1,6 @@
+$greycolor: #F4F8EE;
+$primarycolor: var(--Libertum-color);
+
 .container {
     display: flex;
     flex-direction: column;
@@ -25,4 +28,37 @@
 
         width: 35rem;
        }
+}
+
+.alertNoInvestment{
+    width: 50rem;
+    justify-content: start;
+    
+    p{
+        font-family: montserrat;
+        font-size: 1.5rem;
+        text-align: left;
+    }
+
+    button{
+        display: flex;
+        padding: 0.5rem 1rem;
+        text-align: center;
+        font-family: Montserrat;
+        font-size: 0.875rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 1.5rem; /* 171.429% */
+        letter-spacing: 0.00875rem;
+        // justify-content: center;
+        // align-items: center;
+        gap: 0.625rem;
+        border-radius: 0.625rem;
+        background: $primarycolor;    
+        color: #F4F8EE;
+        justify-self: flex-start;
+        
+        // margin-left: 30px;
+        margin-top:1.25rem ;    
+    }
 }
