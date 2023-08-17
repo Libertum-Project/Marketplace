@@ -3,14 +3,14 @@ const {
   getSigner,
 } = require("./contractConfig");
 
-async function withdrawFromCapitalRepayment(propertyAddress, userAddress) {
+async function withdrawFromPassiveIncome(propertyAddress, userAddress) {
   const signer = await getSigner();
 
   return await propertyFactoryAndBankContract
     .connect(signer)
-    .withdrawFromCapitalRepaymentProperty(propertyAddress, userAddress);
+    .withdrawFromPassiveIncomeProperty(propertyAddress, userAddress);
 }
 
 module.exports = {
-  withdrawFromCapitalRepayment,
+  withdrawFromPassiveIncome,
 };

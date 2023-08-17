@@ -29,6 +29,9 @@ const {
   claimPassiveIncomeProperty,
 } = require("./contracts/propertyFactoryAndBank/claimPassiveIncomeProperty");
 
+const { withdrawFromCapitalRepayment } = require('./contracts/propertyFactoryAndBank/withdrawCapitalRepayment');
+const { withdrawFromPassiveIncome } = require('./contracts/propertyFactoryAndBank/withdrawPassiveIncome');
+
 async function createSmartContractProperty(propertyData, propertyID) {
   if (propertyData.financialData.Investment_type === "capitalRepayment") {
     return await createCapitalRepaymentProperty(propertyData, propertyID);
@@ -74,9 +77,18 @@ async function claimMonthlyPayment(propertyAddress, propertyType, quantity) {
   }
 }
 
+async function withdraw(propertyAddress, userAddress, propertyType) {
+  if (propertyType === "capitalRepayment") {
+    await withdrawFromCapitalRepayment(propertyAddress, userAddress)
+  } else if (propertyType === "passiveIncome") {
+    await withdrawFromPassiveIncome(propertyAddress, userAddress)
+  }
+}
+
 module.exports = {
   createSmartContractProperty,
   mintToken,
   setPropertyStatusSmartContracts,
   claimMonthlyPayment,
+  withdraw,
 };
