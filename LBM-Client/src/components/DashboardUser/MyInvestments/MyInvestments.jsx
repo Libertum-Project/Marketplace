@@ -19,6 +19,7 @@ const MyInvestments = ({ name, id, transactions, investments }) => {
           </div>
         </div>
       );
+      
     }
   
     return (
