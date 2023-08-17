@@ -4,16 +4,20 @@ import Investments from "./UsersTable/Table";
 
 const MyInvestments = ({name, id, transactions, investments}) => {
 
+
+    console.log("user name " + name) 
+    
     return(
         <div>
-            
+           
         <div >
             <div >
                 <Frame3 />
             </div>
             <div className="">
                 <Investments 
-                transactions = {transactions}
+                investments = { investments }
+                transactions = { transactions }
                 />
             </div>
                 </div>
