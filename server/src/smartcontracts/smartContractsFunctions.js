@@ -18,10 +18,16 @@ const {
 } = require("./contracts/propertyFactoryAndBank/setCapitalRepaymentStatus");
 
 const {
-    setActivePassiveIncome,
-    setInactivePassiveIncome,
+  setActivePassiveIncome,
+  setInactivePassiveIncome,
 } = require("./contracts/propertyFactoryAndBank/setPassiveIncomeStatus");
 
+const {
+  claimCapitalRepaymentProperty,
+} = require("./contracts/propertyFactoryAndBank/claimCapitalRepaymentProperty");
+const {
+  claimPassiveIncomeProperty,
+} = require("./contracts/propertyFactoryAndBank/claimPassiveIncomeProperty");
 
 async function createSmartContractProperty(propertyData, propertyID) {
   if (propertyData.financialData.Investment_type === "capitalRepayment") {
@@ -44,7 +50,11 @@ async function mintToken(
   }
 }
 
-async function setPropertyStatusSmartContracts(propertyAddress, propertyType, status) {
+async function setPropertyStatusSmartContracts(
+  propertyAddress,
+  propertyType,
+  status
+) {
   if (propertyType === "capitalRepayment" && status === true) {
     await setActiveCapitalRepayment(propertyAddress);
   } else if (propertyType === "capitalRepayment" && status === false) {
@@ -56,4 +66,17 @@ async function setPropertyStatusSmartContracts(propertyAddress, propertyType, st
   }
 }
 
-module.exports = { createSmartContractProperty, mintToken, setPropertyStatusSmartContracts };
+async function claimMonthlyPayment(propertyAddress, propertyType, quantity) {
+  if (propertyType === "capitalRepayment") {
+    await claimCapitalRepaymentProperty(propertyAddress, quantity);
+  } else if (propertyType === "passiveIncome") {
+    await claimPassiveIncomeProperty(propertyAddress, quantity);
+  }
+}
+
+module.exports = {
+  createSmartContractProperty,
+  mintToken,
+  setPropertyStatusSmartContracts,
+  claimMonthlyPayment,
+};

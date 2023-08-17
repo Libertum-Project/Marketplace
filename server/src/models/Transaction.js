@@ -9,9 +9,6 @@ module.exports = (sequelize) => {
         primaryKey: true,
         autoIncrement: true,
       },
-      Transaction_Date: {
-        type: DataTypes.DATE,
-      },
       Token_quantity: {
         type: DataTypes.INTEGER,
       },
@@ -33,7 +30,7 @@ module.exports = (sequelize) => {
     },
     {
       tableName: "Transaction",
-      timestamps: false,
+      timestamps: true,
     }
   );
 };
