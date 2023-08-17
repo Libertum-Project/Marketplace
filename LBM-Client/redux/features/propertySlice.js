@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-const serverURL = import.meta.env.VITE_SERVER_URL;
-//const serverURL = import.meta.env.VITE_TEST_SERVER;
+//const serverURL = import.meta.env.VITE_SERVER_URL;
+const serverURL = import.meta.env.VITE_TEST_SERVER;
 const propertyURL = `${serverURL}properties`;
 
 const initialState = {
@@ -53,8 +53,37 @@ export const setPropertyStatus = createAsyncThunk(
   "property/setPropertyStatus",
   async ({ propertyId, isActive }) => {
     const body = { propertyId, isActive };
-    console.log(body)
     const response = await fetch(`${propertyURL}/status`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+    return await response.json();
+  }
+);
+
+export const claimMonthlyPayment = createAsyncThunk(
+  "property/claimMonthlyPayment",
+  async ({ propertyAddress, quantity, propertyType }) => {
+    const body = { propertyAddress, quantity, propertyType };
+    const response = await fetch(`${propertyURL}/claim`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+    return await response.json();
+  }
+);
+
+export const withdrawFunds = createAsyncThunk(
+  "property/withdrawFunds",
+  async ({ propertyAddress, userAddress, propertyType }) => {
+    const body = { propertyAddress, userAddress, propertyType };
+    const response = await fetch(`${propertyURL}/withdraw`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

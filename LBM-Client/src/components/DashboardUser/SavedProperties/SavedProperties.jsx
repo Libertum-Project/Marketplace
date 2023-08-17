@@ -6,20 +6,14 @@ const SavedProperties = ({saved}) => {
     
     return (
         <div>
-
+<h2>We are working on this! 
+    <br />
+    Thanks for your patience! </h2>
 
 
 <div className={css.header}>
-        <h2>Your Properties</h2>
-        <div>
-          <select>
-            <option value="">Select an option</option>
-            <option value="my_properties">My Properties</option>
-            <option value="investments">Investments</option>
-            <option value="saved_properties">Saved Properties</option>
-          </select>
-          {/* <p>Selected option: {selectedOption}</p> */}
-      </div>
+        
+
       </div>
 
       {/* <div className={css.cards}>

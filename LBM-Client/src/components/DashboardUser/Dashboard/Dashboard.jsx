@@ -26,7 +26,7 @@ return(
     <div>
 
         <div className={style.welcome}>
-            <p>Welcome {name}! </p>
+            <p>Welcome {name}! </p>          
         </div>
 
         <div>
@@ -35,7 +35,7 @@ return(
                     <div>
                     <h2>Tokenize your property</h2>         
                     <p>Here you will have access to a form to upload all the information about your property. 
-                    We will contact you shortly to finish with the tokenization process.</p>                           
+                    </p>                           
                     {/* <button onClick={handleListClick}>List Now</button>    */}
                     <button onClick={handleListUSERClick}>List now!</button>
                     </div>

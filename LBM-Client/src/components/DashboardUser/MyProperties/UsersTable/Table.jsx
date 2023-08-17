@@ -104,7 +104,7 @@ const data = [
     
 ]
 
-const Investments = ({transactions}) => {
+const Properties = ({transactions}) => {
 
     // ⚠️ DESCOMENTAR ESTO PARA QUE SE MUESTRE LAS TRANSACCIONES QUE SE REALIZARON, LAS PROPIEDDADES. 
     // const transactionData = transactions.map((transaction) => ({
@@ -122,7 +122,7 @@ const Investments = ({transactions}) => {
     return (
         <div className={css.container}>
         <div className={css.table}>
-        <h3>My Investments</h3>
+        <h3>My Properties</h3>
         <DataTable
             columns={columns}
             data={data}
@@ -139,4 +139,4 @@ const Investments = ({transactions}) => {
     );
 };
 
-export default Investments; 
+export default Properties; 

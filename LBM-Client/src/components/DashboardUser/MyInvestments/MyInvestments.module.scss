@@ -1,13 +1,28 @@
 .container {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 110%;
     // min-width: 70rem;
     // height: 17rem;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     flex-shrink: 0;
     padding: 1rem;
     gap: 1rem;
 
+    @media (max-width: 720px){
+    
+        width: 15rem;
+       }
+
+    @media (min-width: 721px) and (max-width: 1024px) {    
+        flex-direction: column; 
+        align-items: center;  
+        padding: 0.5rem; 
+        width: 35rem; 
+      }
+       @media (max-width: 920px){
+
+        width: 35rem;
+       }
 }

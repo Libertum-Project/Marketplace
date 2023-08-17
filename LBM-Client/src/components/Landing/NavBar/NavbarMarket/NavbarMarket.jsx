@@ -93,7 +93,7 @@ function NavbarMarket() {
                 onClick={() => setActive(!active)}
                 className={active ? style.button2 : style.button}
               >
-                <p>BUY AND SELL</p>
+                <p>MARKETPLACES</p>
                 <IoChevronDownOutline />
               </div>
               <p>ABOUT US</p>

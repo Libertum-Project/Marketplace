@@ -47,8 +47,10 @@ $buttonh2: (
     font-style: normal;
     font-weight: 700;
     line-height: 140%; /* 1.225rem */
-    // margin-bottom: 2rem;
+    margin-bottom: .4rem;
+
 }
+
 
 .mainContainer{
     display: flex;
@@ -63,9 +65,21 @@ $buttonh2: (
 
     @media (max-width: 720px){
 
-       display: block;
+       display: flex;
        height: fit-content;
+       flex-direction: column;
+       padding: 0;
+       max-width: 19rem;
       }
+
+      @media (max-width: 920px){
+
+        display: flex;
+        height: fit-content;
+        flex-direction: column;
+        padding: 0;
+        max-width: 19rem;
+       }
    
 }
 
@@ -153,6 +167,7 @@ $buttonh2: (
             display:none;
            }
 }
+        
 }
 
 
@@ -166,7 +181,7 @@ $buttonh2: (
     flex-shrink: 0;
     border-radius: 16px;
     background: $greycolor;
-    // padding: 2rem;
+    padding: 2rem;
 
 
     h2{
@@ -179,6 +194,7 @@ $buttonh2: (
         line-height: 150%; /* 1.5rem */
         text-transform: uppercase;
         margin-bottom: 1rem;
+        text-align: left;
     
         // @media (max-width: 720px){
     
@@ -310,6 +326,8 @@ $buttonh2: (
             margin-top:1.25rem ;    
 
         }
+
+    
     }
 
     
@@ -326,6 +344,14 @@ $buttonh2: (
             display:none;
            }
 }
+
+
+
+@media (max-width: 920px){
+    
+    display:none;
+   }
+
 }
 
 
