@@ -8,6 +8,7 @@ $--bc: var(--Libertum-color);
     display: flex;
     margin-top: 6rem;
     padding: 2rem;
+    width: 100%;
   
     .sidebar {
         // width: 150px;
@@ -141,7 +142,7 @@ $--bc: var(--Libertum-color);
   
     .content {
       flex: 1;
-      background-color: #fff;
+      
     }
   }
   

@@ -30,9 +30,12 @@ async function mintCapitalRepaymentToken(userPrivateKey, propertyAddress, quanti
     .faucet(100_000, { nonce });
   faucetTransaction.wait();
 
+  const pricePerToken = await capitalRepaymentPropertyContract.pricePerToken();
+  const price = BigInt(quantity) * BigInt(pricePerToken) * BigInt(10 ** 6);
+
   const approveTransaction = await usdtTokenContract
     .connect(wallet)
-    .approve(capitalRepaymentPropertyAddress, ethers.parseUnits("1000000", 6), {
+    .approve(capitalRepaymentPropertyAddress, price, {
       nonce: nonce + 1,
     });
   approveTransaction.wait();
