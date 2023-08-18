@@ -14,8 +14,8 @@ const handleListClick = () => {
     navigate('/create');        
   };
 
-const handleSeeClick = () => {
-  navigate('/userdash/myproperties')
+const handlemarket = () => {
+  navigate('/marketplace')
 }
 
 const handleListUSERClick = () => {
@@ -53,7 +53,7 @@ return(
                         <br />
                         Start investing now, start earning now.</p>                           
                         {/* <button onClick={handleListClick}>List Now</button>    */}
-                        <button onClick={handleListUSERClick}>Go now!</button>
+                        <button onClick={handlemarket}>Go now!</button>
                     </div>
                     
                     
