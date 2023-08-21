@@ -7,7 +7,7 @@ import grafico2 from "./grafico2.png"
 
 
 
-const DashboardContent = ({name}) => {
+const DashboardContent = ({name, id}) => {
     const navigate = useNavigate()
 
 const handleListClick = () => {
@@ -26,7 +26,7 @@ return(
     <div>
 
         <div className={style.welcome}>
-            <p>Welcome {name}! </p>          
+            <p>Welcome {name}! </p>  
         </div>
 
         <div>
