@@ -1,4 +1,4 @@
-const { Property, Owner, Financial, Feature } = require("../../db");
+const { Property, Owner, Financial, Feature, User } = require("../../db");
 
 const {
   createSmartContractProperty,
@@ -33,8 +33,9 @@ async function createProperty(propertyData) {
     });
 
     const owner = existingOwner || (await Owner.create(ownerData));
+    const user = await User.findByPk(ownerData.UserID);
 
-    if (!owner) {
+    if (!user || !owner) {
       throw new Error("Failed to create owner");
     }
 
@@ -53,6 +54,9 @@ async function createProperty(propertyData) {
       ID_Financials: financial.ID_Financial,
       ID_Features: feature.ID_Feature,
     });
+
+    const propertyID = property.ID_Property;
+    await user.addPublishedProperties(propertyID);
 
     if (!property) {
       throw new Error("Failed to create property");

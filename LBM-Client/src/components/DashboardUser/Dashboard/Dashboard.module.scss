@@ -69,17 +69,16 @@ $buttonh2: (
        height: fit-content;
        flex-direction: column;
        padding: 0;
-       max-width: 19rem;
+       width: 19rem;
       }
 
-      @media (max-width: 920px){
-
-        display: flex;
+      @media (min-width: 721px) and (max-width: 1024px) {    
         height: fit-content;
         flex-direction: column;
-        padding: 0;
-        max-width: 19rem;
-       }
+        width: 35rem; 
+      }
+
+
    
 }
 
@@ -96,7 +95,7 @@ $buttonh2: (
     display: flex;
     justify-content: space-between;
     align-items: center;
-    // width: 50%;
+    width: 100%;
     // height: 17rem;
     flex-shrink: 0;
     border-radius: 16px;
@@ -167,7 +166,7 @@ $buttonh2: (
             display:none;
            }
 }
-        
+ 
 }
 
 

@@ -104,7 +104,7 @@ const data = [
     
 ]
 
-const Properties = ({transactions}) => {
+const Properties = ({}) => {
 
     // ⚠️ DESCOMENTAR ESTO PARA QUE SE MUESTRE LAS TRANSACCIONES QUE SE REALIZARON, LAS PROPIEDDADES. 
     // const transactionData = transactions.map((transaction) => ({

@@ -1,7 +1,7 @@
 const { User, Property, Transaction, Financial } = require("../../db.js");
 const { mintToken } = require("../../smartcontracts/smartContractsFunctions");
 
-async function updateUser(userId, saved, invested, published, quantity) {
+async function updateUser(userId, saved, invested, quantity) {
   try {
     const user = await User.findByPk(userId, {
       include: [
@@ -34,8 +34,7 @@ async function updateUser(userId, saved, invested, published, quantity) {
     });
 
       await user.addInvestedProperties(invested);
-    } else if (published) {
-      await user.addPublishedProperties(published);
+  
     } else {
       throw new Error(
         "Invalid property type. Please specify 'saved', 'invested', or 'published'."
