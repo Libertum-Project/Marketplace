@@ -172,24 +172,8 @@ console.log("proerty" + property.Feature.Address)
 // -----------------------------------------------------------------------------------------------------------------------
 
 
-  const { isAuthenticated, isLoading, loginWithRedirect } = useAuth0();
+  const { isLoading } = useAuth0();
 
-  const handleLogin = () => {
-    const redirectUri = `${window.location.origin}/marketplace/`;
-    loginWithRedirect({
-      redirectUri: redirectUri,
-    });
-  };
-
-  useEffect(() => {
-    if (!isLoading) {
-      if (!isAuthenticated) {
-        handleLogin();
-      }
-    }
-  }, [navigate, isAuthenticated, isLoading]);
-
-  
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -205,7 +189,7 @@ console.log("proerty" + property.Feature.Address)
 
 
 
-  return !isLoading && isAuthenticated ? (
+  return !isLoading ? (
     <div className={css.details}>
    
 

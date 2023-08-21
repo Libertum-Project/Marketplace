@@ -5,7 +5,7 @@ import {
   fetchAllUsers,
   fetchCurrentUser,
 } from "../../../redux/features/userSlice";
-import {  
+import {
   claimMonthlyPayment,
   withdrawFunds,
 } from "../../../redux/features/propertySlice";
@@ -30,6 +30,7 @@ import profileimageActive from "./assets/profileActive.svg";
 
 import styles from "./DashboardUser.module.scss";
 import { current } from "@reduxjs/toolkit";
+import Loading from "../Loading/Loading";
 
 function DashboardUser() {
   const [activeTab, setActiveTab] = useState(1);
@@ -48,7 +49,7 @@ function DashboardUser() {
   console.log(allUsers);
 
   const handleLogin = () => {
-    const redirectUri = `${window.location.origin}/userdash/`;
+    const redirectUri = `${window.location.origin}/mydashboard/`;
     loginWithRedirect({
       redirectUri: redirectUri,
     });
@@ -81,7 +82,7 @@ function DashboardUser() {
     }
   }, [isAuthenticated, isLoading]);
 
-  return (
+  return !isLoading && isAuthenticated ? (
     <div className={styles["dashboard-user"]}>
       <div className={styles.sidebar}>
         <button
@@ -208,16 +209,13 @@ function DashboardUser() {
         <div className={styles.helpbox}>
           <h3>Need help?</h3>
           <p>Please check out our docs</p>
-          <button>WHITEPAPER</button>          
+          <button>WHITEPAPER</button>
         </div>
       </div>
 
       {activeTab === 1 && (
         <div>
-          <DashboardContent 
-          name={currentUser.name} 
-          id = {currentUser.ID_user}
-          />
+          <DashboardContent name={currentUser.name} id={currentUser.ID_user} />
         </div>
       )}
 
@@ -232,7 +230,7 @@ function DashboardUser() {
           <MyProperties
             name={currentUser.name}
             id={currentUser.ID_user}
-            email = {currentUser.email}
+            email={currentUser.email}
             transactions={currentUser.transactions}
             publishedProperties={currentUser.publishedProperties}
             investments={currentUser.investedProperties}
@@ -247,7 +245,6 @@ function DashboardUser() {
             id={currentUser.ID_user}
             transactions={currentUser.transactions}
             investments={currentUser.investedProperties}
-            
           />
         </div>
       )}
@@ -268,6 +265,8 @@ function DashboardUser() {
         </div>
       )}
     </div>
+  ) : (
+    <Loading />
   );
 }
 

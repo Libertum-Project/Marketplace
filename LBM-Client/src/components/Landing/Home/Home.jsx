@@ -1,20 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { useAuth0 } from "@auth0/auth0-react";
+import { Link } from "react-router-dom";
 import launchapp from "./assets/launchapp.svg";
 import NavBar from "../NavBar/NavBar";
 import "./Home.scss";
 
 export default function Home() {
-  const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
-
-  const handleLogin = () => {
-    const redirectUri = `${window.location.origin}/userdash/`;
-    loginWithRedirect({
-      redirectUri: redirectUri,
-    });
-  };
-
   return (
     <main className="home_items" name="home">
       <NavBar />
@@ -33,9 +24,11 @@ export default function Home() {
           </div>
           <div className="home_links">
             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 1 }}>
-              <a className="launchapp" onClick={handleLogin}>
-                <span>Start Earning!</span> <img src={launchapp} />
-              </a>
+              <Link to={"./marketplace"}>
+                <a className="launchapp">
+                  <span>Start Earning!</span> <img src={launchapp} />
+                </a>
+              </Link>
             </motion.div>
             {/* <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 1 }}>
               <a href="/swap" className="token">
