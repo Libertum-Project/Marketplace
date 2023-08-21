@@ -5,7 +5,7 @@ import {
   fetchAllUsers,
   fetchCurrentUser,
 } from "../../../redux/features/userSlice";
-import {
+import {  
   claimMonthlyPayment,
   withdrawFunds,
 } from "../../../redux/features/propertySlice";
@@ -208,13 +208,16 @@ function DashboardUser() {
         <div className={styles.helpbox}>
           <h3>Need help?</h3>
           <p>Please check out our docs</p>
-          <button>WHITEPAPER</button>
+          <button>WHITEPAPER</button>          
         </div>
       </div>
 
       {activeTab === 1 && (
         <div>
-          <DashboardContent name={currentUser.name} />
+          <DashboardContent 
+          name={currentUser.name} 
+          id = {currentUser.ID_user}
+          />
         </div>
       )}
 
@@ -229,6 +232,7 @@ function DashboardUser() {
           <MyProperties
             name={currentUser.name}
             id={currentUser.ID_user}
+            email = {currentUser.email}
             transactions={currentUser.transactions}
             publishedProperties={currentUser.publishedProperties}
             investments={currentUser.investedProperties}

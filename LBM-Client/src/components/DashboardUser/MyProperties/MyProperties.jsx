@@ -4,7 +4,7 @@ import Properties from "./UsersTable/Table";
 import css from "./MyProperties.module.scss";
 import { Link } from "react-router-dom";
 
-const MyProperties = ({name, transactions, investments, publishedProperties}) => {
+const MyProperties = ({name, transactions, investments, publishedProperties, email}) => {
 
   console.log(publishedProperties)
   
