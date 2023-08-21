@@ -13,27 +13,12 @@ import { FiRefreshCcw } from 'react-icons/fi'
 
 const index = () => {
   const navigate = useNavigate();
-  const { isAuthenticated, isLoading, loginWithRedirect } = useAuth0();
+  const { isLoading } = useAuth0();
   // const dispatch = useDispatch();
   // const filteredProperties = useSelector(
   //   (state) => state.property.filteredProperties
   // );
   // console.log(filteredProperties) 
-
-  const handleLogin = () => {
-    const redirectUri = `${window.location.origin}/marketplace/`;
-    loginWithRedirect({
-      redirectUri: redirectUri,
-    });
-  };
-
-  useEffect(() => {
-    if (!isLoading) {
-      if (!isAuthenticated) {
-        handleLogin();
-      }
-    }
-  }, [navigate, isAuthenticated, isLoading]);
 
 
   const [rentalYield, setRentalYield] = useState(0); // Estado para almacenar el valor del filtrado
@@ -244,7 +229,7 @@ const addFakeProperties = (properties) => {
 
 
 
-  return !isLoading && isAuthenticated ? (
+  return !isLoading ? (
     <div className={css.container}>
       <Classes />
       <div className={css.filtersContainer}>       
