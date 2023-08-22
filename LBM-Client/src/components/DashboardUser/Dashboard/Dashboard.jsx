@@ -7,7 +7,7 @@ import grafico2 from "./grafico2.png"
 
 
 
-const DashboardContent = ({name, id}) => {
+const DashboardContent = ({name, id, handleClickInvestments, handleClickProperties }) => {
     const navigate = useNavigate()
 
 const handleListClick = () => {
@@ -72,7 +72,7 @@ return(
                         </section>
 
                         <section>
-                        <button onClick={handleListUSERClick}>My Investments</button>
+                        <button onClick={handleClickInvestments}>My Investments</button>
                         </section>
                     </div>
                     
@@ -84,12 +84,12 @@ return(
                     <img src={grafico2} alt="house image" />
                     <div> 
                         <section>
-                            <h2>My Income</h2>         
-                            <p>See your income month by month</p>  
+                            <h2>My Properties</h2>         
+                            <p>See your income for your properties month by month</p>  
                         </section>
 
                         <section>
-                        <button onClick={handleListUSERClick}>My Income</button>
+                        <button onClick={handleClickProperties}>My Income</button>
                         </section>
                     </div>
                     
