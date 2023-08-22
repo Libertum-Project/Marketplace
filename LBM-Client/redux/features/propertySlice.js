@@ -53,7 +53,7 @@ export const setPropertyStatus = createAsyncThunk(
   "property/setPropertyStatus",
   async ({ propertyId, isActive }) => {
     const body = { propertyId, isActive };
-    const response = await fetch(`${propertyURL}/status`, {
+    const response = await fetch(`${propertyURL}/status`, {    
       method: "POST",
       headers: {
         "Content-Type": "application/json",

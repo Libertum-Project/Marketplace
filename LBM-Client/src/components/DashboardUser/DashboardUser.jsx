@@ -82,6 +82,14 @@ function DashboardUser() {
     }
   }, [isAuthenticated, isLoading]);
 
+  const handleClickProperties = () =>{
+    setActiveTab(3);
+  };
+
+  const handleClickInvestments = () => {
+    setActiveTab(4);
+  };
+
   return !isLoading && isAuthenticated ? (
     <div className={styles["dashboard-user"]}>
       <div className={styles.sidebar}>
@@ -215,7 +223,12 @@ function DashboardUser() {
 
       {activeTab === 1 && (
         <div>
-          <DashboardContent name={currentUser.name} id={currentUser.ID_user} />
+          <DashboardContent 
+          name={currentUser.name} 
+          id={currentUser.ID_user} 
+          handleClickInvestments = {handleClickInvestments}
+          handleClickProperties = {handleClickProperties}
+          />
         </div>
       )}
 
@@ -234,6 +247,7 @@ function DashboardUser() {
             transactions={currentUser.transactions}
             publishedProperties={currentUser.publishedProperties}
             investments={currentUser.investedProperties}
+            
           />
         </div>
       )}
