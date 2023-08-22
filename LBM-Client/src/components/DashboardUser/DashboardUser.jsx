@@ -83,6 +83,8 @@ function DashboardUser() {
   }, [isAuthenticated, isLoading]);
 
   const handleClickProperties = () =>{
+    console.log("handleClickProperties");
+
     setActiveTab(3);
   };
 
