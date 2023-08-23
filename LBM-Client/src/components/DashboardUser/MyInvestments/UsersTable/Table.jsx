@@ -2,7 +2,8 @@ import DataTable from "react-data-table-component";
 import css from "./TableUsers.module.scss";
 import { Link } from "react-router-dom";
 import { claimMonthlyPayment } from "../../../../../redux/features/propertySlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
 
 const customStyles = {
   headRow: {
@@ -76,7 +77,8 @@ const columns = [
 
 const Investments = ({ investments, transactions }) => {
   const dispatch = useDispatch();
-
+  const claimError = useSelector((state) => state.property.error);
+  const [error, setError] = useState(claimError);
   //❗⬇️ ACA ESTA EL BOTON QUE MANDA LA INFO!!!⬇
   const handleClaimClick = (event, address, tokens, type) => {
     event.preventDefault();
@@ -88,7 +90,11 @@ const Investments = ({ investments, transactions }) => {
     const quantity = tokens;
     const propertyType = type;
 
-    dispatch(claimMonthlyPayment({ propertyAddress, quantity, propertyType }));
+    dispatch(
+      claimMonthlyPayment({ propertyAddress, quantity, propertyType })
+    ).then(() => {
+      console.log(error);
+    });
   };
 
   const combinedData = investments.map((investment, index) => {
@@ -105,7 +111,6 @@ const Investments = ({ investments, transactions }) => {
       ("0" + purchaseDate.getDate()).slice(-2) +
       "/" +
       purchaseDate.getFullYear().toString().slice(-2);
-
 
     return {
       idProperty: `#${investment.ID_Property}`,
