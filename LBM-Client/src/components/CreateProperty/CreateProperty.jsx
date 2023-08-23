@@ -10,13 +10,14 @@ import PropertyForm from "./PropertyForm";
 import FinancialForm from "./FinancialForm";
 
 const CreateProperty = () => {
-    const currentUser = useSelector((state) => state.user.currentUser);
+  const currentUser = useSelector((state) => state.user.currentUser);
   const [firstname, surname] = currentUser.name.split(" ");
   const dispatch = useDispatch();
   const status = useSelector((state) => state.property.status);
   const [currentForm, setCurrentForm] = useState(1);
   const [images, setImages] = useState([]);
   const [ownerData, setOwnerData] = useState({
+    UserID: currentUser.ID_user,
     Firstname: firstname,
     Surname: surname,
     Address: "",

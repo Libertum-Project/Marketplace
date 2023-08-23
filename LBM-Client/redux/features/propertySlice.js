@@ -75,7 +75,7 @@ export const claimMonthlyPayment = createAsyncThunk(
       },
       body: JSON.stringify(body),
     });
-    return await response.json();
+    return await response.json()
   }
 );
 
@@ -111,7 +111,6 @@ const propertySlice = createSlice({
     };
     const commonRejectedAction = (state, action) => {
       state.status = "failed";
-      state.error = action.error.message;
     };
     builder
       .addCase(createProperty.pending, commonPendingAction)
@@ -130,6 +129,11 @@ const propertySlice = createSlice({
       .addCase(fetchAllProperties.fulfilled, (state, action) => {
         commonFulfilledAction(state, action);
         state.allProperies = action.payload;
+      })
+      .addCase(claimMonthlyPayment.pending, commonPendingAction)
+      .addCase(claimMonthlyPayment.rejected, commonRejectedAction)
+      .addCase(claimMonthlyPayment.fulfilled, (state, action) => {
+        state.error = action.payload[0]
       });
   },
 });
