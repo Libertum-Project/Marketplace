@@ -7,15 +7,20 @@
   background-repeat: no-repeat;
   background-position: center center;
   height: 100vh;
+  justify-content: center;
+  align-content: center;
 
   
   .home_section {
-    text-align: start;
+    text-align: center;
     max-width: 1183px;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    margin-top: 70px;
+    justify-content: center;
+    align-content: center;
+    height: 100vh;
+    // margin-top: 70px;
     animation-name: inOpacity;
     animation-duration: 2s;
     animation-fill-mode: both;

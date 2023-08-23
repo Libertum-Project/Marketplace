@@ -1,6 +1,6 @@
 $greycolor: #F4F8EE;
 $primarycolor: var(--Libertum-color);
-
+$secondarycolor: var(--LibertumBlue);
 .timerCointainer {
   display: flex;
   flex-direction: column;
@@ -17,16 +17,26 @@ $primarycolor: var(--Libertum-color);
   h2{
     font-family: montserrat;
     font-weight: 600;
-    font-size: 40px;
+    font-size: 35px;
     margin-bottom: 1rem;
     text-transform: uppercase;
+
+    .span1{
+      color: $primarycolor;
+      margin-left: .8rem;
+      margin-right: .8rem;
+    }
+
+    .span2{
+      color: $secondarycolor; 
+    }
   }
-  p{
-    font-family: montserrat;
-    font-weight: 400;
-    color: $primarycolor;
+  // p{
+  //   font-family: montserrat;
+  //   font-weight: 400;
+  //   color: $primarycolor;
     
-  }
+  // }
   margin-bottom: 2rem;
   
 }
