@@ -1,10 +1,13 @@
-import Investments from "../MyInvestments/UsersTable/Table";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Frame3 from "./Frame3/Frame3";
 import Properties from "./UsersTable/Table";
 import css from "./MyProperties.module.scss";
 import { Link } from "react-router-dom";
+import { withdrawFunds } from "../../../../redux/features/propertySlice";
 
 const MyProperties = ({name, transactions, investments, publishedProperties, email}) => {
+
 
   console.log(publishedProperties)
   
@@ -36,7 +39,7 @@ const MyProperties = ({name, transactions, investments, publishedProperties, ema
         publishedProperties={publishedProperties}
         />
       </div>
-          
+
     </>
 )
 };
