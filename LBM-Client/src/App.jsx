@@ -53,6 +53,7 @@ import UsersTable from "./components/AdminDashboard/UsersTable/UsersTable";
 import Transactions from "./components/AdminDashboard/Transactions/Trasactions";
 import Properties from "./components/AdminDashboard/Properties/Properties";
 import DashboardUser from "./components/DashboardUser/DashboardUser";
+import CoinPage from "./components/Coin/Coin";
 
 
 function App() {
@@ -279,6 +280,15 @@ function App() {
           /> */}
 
           <Route path={"/mydashboard/*"} element= {<DashboardUser />} />
+
+          <Route
+            path={"/coinrelease"}
+            element={
+              <div className="Page">
+                <CoinPage />
+              </div>
+            }
+          />
 
           {/* Dentro de este Route van todas las cosas que tengan sidebar */}
         </Route>

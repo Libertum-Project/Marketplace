@@ -3,6 +3,16 @@
   justify-content: center;
 }
 
+.timer{
+  display: flex;
+  justify-content: center;
+}
+
+.timer-text{
+  font-size: 30px;
+  margin-top: 3rem;
+}
+
 .divider {
  @media screen and (max-width: 1240px) {
   .divider {
