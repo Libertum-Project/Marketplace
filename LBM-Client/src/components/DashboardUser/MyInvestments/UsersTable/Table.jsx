@@ -34,7 +34,7 @@ const columns = [
         <button
           style={{
             backgroundColor: "gray", //color de fondo
-            borderRadius: "5px", //borde redondeado
+            borderRadius: "px", //borde redondeado
             color: "white", // color del texto
             padding: "8px", //espaciado interno            
           }}

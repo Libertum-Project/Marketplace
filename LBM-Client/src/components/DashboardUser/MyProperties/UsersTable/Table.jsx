@@ -131,10 +131,14 @@ const Properties = ({transactions, publishedProperties}) => {
         <DataTable
             columns={columns}     
              data={properties}
-
-            
-            
         />
+        {error && (
+                <p className={css.error}>
+                  {error === "Claim error"
+                    ? "You cannot claim your earnings yet. You must wait at least 30 days."
+                    : "An error occurred. Please try again later."}
+                </p>
+              )}
         </div>
         </div>
 
