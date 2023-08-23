@@ -3,8 +3,19 @@ const Header = () => {
   return (
      <div className={css.timerHeader}>
        
-        <h2> LBM Coin</h2>
-        <p>Get ready to the LBM Coin release!</p>
+        <h2> 
+          Get ready for the 
+          <span className={css.span1}> 
+           LBM  
+          </span> 
+          <span className={css.span2} >
+          Coin
+          </span> 
+          <span className={css.span1}>
+            release!
+          </span>         
+        </h2>
+        {/* <p></p> */}
       </div> 
       )
 }; 
