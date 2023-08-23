@@ -33,6 +33,7 @@ const MyProperties = ({name, transactions, investments, publishedProperties, ema
         <Properties 
         investments={investments} 
         transactions={transactions}
+        publishedProperties={publishedProperties}
         />
       </div>
           

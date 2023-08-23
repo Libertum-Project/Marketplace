@@ -52,7 +52,7 @@ b h1 {
   line-height: 1.1;
 }
 
-button {
+/* button {
   border-radius: 16px;
   border: 0px solid transparent;
   padding: 20px;
@@ -61,7 +61,7 @@ button {
   font-family: inherit;
   background-color: transparent;
   cursor: pointer;
-}
+} */
 
 button:hover {
   border-color: #646cff;

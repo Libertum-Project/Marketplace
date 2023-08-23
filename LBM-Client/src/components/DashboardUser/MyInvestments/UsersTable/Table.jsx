@@ -5,31 +5,6 @@ import { claimMonthlyPayment } from "../../../../../redux/features/propertySlice
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 
-const customStyles = {
-  headRow: {
-    style: {
-      color: "var(--0-c-0507, #0C0507)",
-      fontFamily: "Inter",
-      fontSize: "0.875rem",
-      fontWeight: 700,
-      textTransform: "capitalize",
-      with: "fit-content",
-      whiteSpace: "normal", // Permite que el contenido de la fila de encabezado se ajuste en múltiples líneas
-      lineHeight: "1.2", // Altura de línea para mejorar la legibilidad
-    },
-  },
-  conditionalCellStyles: [
-    {
-      when: (row) => row.selector === "claim",
-      style: {
-        borderRadius: "4px",
-        backgroundColor: "blue", // Aquí puedes cambiar el color de fondo deseado
-        color: "white", // Aquí puedes cambiar el color del texto deseado
-      },
-    },
-  ],
-};
-
 const columns = [
   {
     name: "Address",
@@ -51,10 +26,6 @@ const columns = [
     name: "Purchase date",
     selector: (row) => row.datepurchase,
   },
-  // {
-  //     name: "Claimable From",
-  //     selector: row => row.dateclaming
-  // },
   {
     name: "Claim Earnings",
     selector: (row) => row.claim,
@@ -63,9 +34,9 @@ const columns = [
         <button
           style={{
             backgroundColor: "gray", //color de fondo
-            borderRadius: "4px", //borde redondeado
+            borderRadius: "5px", //borde redondeado
             color: "white", // color del texto
-            padding: "8px", //espaciado interno
+            padding: "8px", //espaciado interno            
           }}
         >
           {row.claim}
@@ -122,7 +93,7 @@ const Investments = ({ investments, transactions }) => {
       datepurchase: formattedPurchaseDate,
       claim: (
         <button
-          //   disabled={currentDate < claimableDate}
+          // disabled={currentDate < claimableDate}
           onClick={(event) =>
             handleClaimClick(
               event,
@@ -142,7 +113,19 @@ const Investments = ({ investments, transactions }) => {
     <div className={css.container}>
       <div className={css.table}>
         <h3>My Investments</h3>
-        <DataTable columns={columns} data={combinedData} />
+        <DataTable 
+          columns={columns} 
+          data={combinedData}           
+        />
+
+      {error && (
+                <p className={css.error}>
+                  {error === "Claim error"
+                    ? "You cannot claim your earnings yet. You must wait at least 30 days."
+                    : "An error occurred. Please try again later."}
+                </p>
+              )}
+
       </div>
     </div>
   );
