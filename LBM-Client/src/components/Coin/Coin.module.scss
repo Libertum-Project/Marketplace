@@ -11,6 +11,7 @@ $secondarycolor: var(--LibertumBlue);
   background-image: url("../../../public/icons/Background.svg");
   background-size: cover;
   background-repeat: no-repeat;
+
 }
 
 .timerHeader{
@@ -39,6 +40,14 @@ $secondarycolor: var(--LibertumBlue);
   // }
   margin-bottom: 2rem;
   
+  @media (max-width: 800px){
+      
+    gap: .8rem;
+    padding: 1rem;
+    width: 100%;
+    line-height: 1.2;
+    font-size: 25px;
+    }
 }
 
 .timer {
@@ -46,6 +55,7 @@ $secondarycolor: var(--LibertumBlue);
   align-items: center;
   font-family: Montserrat, sans-serif;
   gap: 3rem;
+  width: fit-content;
   // border: 1px solid $primarycolor;
   // border-radius: 1rem;
   padding: 3rem;
@@ -95,6 +105,12 @@ $secondarycolor: var(--LibertumBlue);
       margin: 0 2px;
     }
   }
+
+  @media (max-width: 800px){
+      
+      gap: .8rem;
+      padding: 1rem;
+      }
 }
 
 
@@ -139,5 +155,10 @@ $secondarycolor: var(--LibertumBlue);
       font-size: 10px;
       color: red;
     }
+
+    @media (max-width: 800px){
+      display: block;
+      gap: 1rem;
+      }
   }
 }

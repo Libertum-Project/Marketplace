@@ -50,6 +50,7 @@ export default function NavBar() {
                 Whitepaper
               </Link>
             </li>
+            
             <li className="menu-li_items">
               <Scroll
                 to="subscribe"
@@ -63,12 +64,11 @@ export default function NavBar() {
             
             <li className="menu-li_items">
               <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSd8HkLol829WO2hii1aem2H1_VNXWY6-1J_kqQAQclMPwo2MA/viewform"
-                target="_blank"
+                href="/marketplace"                
                 rel="noreferrer"
                 className="menu-a_items"
               >
-                List Property
+                Marketplace
               </a>
             </li>
 
