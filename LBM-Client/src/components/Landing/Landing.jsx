@@ -7,6 +7,7 @@ import Subscribe from "./Subscribe/Subscribe";
 import divider from "./assets/divider.png";
 import "./Landing.scss";
 import Timer from "../Coin/Timer";
+import Header from "../Coin/Header"
 import { Link } from "react-router-dom";
 
 import ContactForm from "../Landing/Subscribe/ContactForm";
@@ -40,20 +41,7 @@ export default function Landing() {
          <div className="timer-container">
           <div className="timer-content">
           <Link to="/coinrelease">
-            <div className="timer-text">
-              <h2> 
-              Get ready for the 
-              <span className="span1"> 
-              LBM  
-              </span> 
-              <span className="span2">
-              Coin
-              </span> 
-              <span className="span1">
-                release!
-              </span>         
-            </h2>
-            </div> 
+              <Header />
             <div className="timer">          
               <Timer />   
             </div>
@@ -66,42 +54,33 @@ export default function Landing() {
          </div>
        </div>
       )}
-    
-
-
-      <div className="timer-container">
-        <div className="timer-content">
-          <Link to="/coinrelease">
-            <div className="timer-text">
-            <h2> 
-              Get ready for the 
-              <span className="span1"> 
-              LBM  
-              </span> 
-              <span className="span2">
-              Coin
-              </span> 
-              <span className="span1">
-                release!
-              </span>         
-            </h2>
-            </div> 
-            <div className="timer">          
-              <Timer />   
-            </div>
-          </Link>
-          <div className="cs_form">
-              <ContactForm />
-          </div>
-        </div>
-      </div>
-
-
-      
-      <Protocol />
+          
+      <Protocol />      
       <div className="divider-container">
         <img src={divider} className="divider" />
       </div>
+      <div >
+         <div >
+          <div className="timer-container">
+            <div className="timer-content">
+            <Link to="/coinrelease">
+                <Header />
+              <div className="timer">          
+                <Timer />   
+              </div>
+            </Link>
+            <div className="cs_form">
+                <ContactForm />
+             </div>
+           </div>
+           </div>         
+         </div>
+       </div>
+       
+       <div className="divider-container">
+        <img src={divider} className="divider" />
+      </div>
+
       <Services />
       <div className="divider-container">
         <img src={divider} className="divider" />
