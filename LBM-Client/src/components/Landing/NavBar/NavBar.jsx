@@ -24,7 +24,7 @@ export default function NavBar() {
   };
 
 
-  const { isAuthenticated, isLoading, loginWithRedirect, user } = useAuth0();
+  const { isAuthenticated, isLoading, loginWithRedirect, user, logout } = useAuth0();
 
   const dispatch = useDispatch();
   const allUsers = useSelector((state) => state.user.allUsers);
@@ -34,20 +34,11 @@ export default function NavBar() {
   console.log(currentUser);
   console.log(allUsers);
 
-  const handleLogin = () => {
-    const redirectUri = `${window.location.origin}/mydashboard/`;
-    loginWithRedirect({
-      redirectUri: redirectUri,
-    });
-  };
 
 
   useEffect(() => {
-    if (!isLoading) {
-      if (!isAuthenticated) {
-        handleLogin();
-      }
-      if (user?.name && user?.email) {
+    if (isAuthenticated) {
+      if (!isLoading) {
         dispatch(fetchAllUsers());
         dispatch(
           fetchCurrentUser({
@@ -55,11 +46,10 @@ export default function NavBar() {
             name: user.name,
           })
         );
-
       }
     }
-  }, [isAuthenticated, isLoading]);
-
+  }, [ isAuthenticated]);
+  
 
   return (
     <>
@@ -101,7 +91,14 @@ export default function NavBar() {
           </li>
           <li className="menu-li_items">
           {isAuthenticated ? (
-            <a href="/logout" rel="noreferrer" className="sign-in">
+            <a rel="noreferrer" className="sign-in"  
+            onClick={() =>
+              logout({
+                logoutParams: {
+                  returnTo: window.location.origin,
+                },
+              })
+            }>
               Log Out
             </a>
           ) : (

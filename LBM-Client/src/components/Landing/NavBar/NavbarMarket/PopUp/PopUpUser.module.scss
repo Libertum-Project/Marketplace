@@ -9,16 +9,18 @@
   justify-content: center;
   width: 231px;
   position: fixed;
-  height: 262px;
+  height: fit-content;
   background: #ffffff;
   box-shadow: 0px 8px 16px -8px rgba(15, 15, 15, 0.4);
   border-radius: 12px;
   top: 5em;
+  // gap: 1rem;
 }
 
 .flexContainer {
   width: 80%;
   height: 100%;
+  padding: 1rem 0 1rem 0;
   display: flex;
   flex-direction: column;
   font-family: "Inter";
@@ -26,7 +28,7 @@
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
-  line-height: 0;
+  // line-height: 0;
   color: #777e90;
 }
 
@@ -35,8 +37,16 @@
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
-  height: 70%;
+  height: 100%;
+  margin-top: .5rem;
   left: 0;
+  cursor: pointer;
+}
+
+.login{
+  width: 100%;
+// color: ;
+  
 }
 
 .flexContainer p:hover {
@@ -89,6 +99,7 @@
     color: #777e90;
     text-decoration: none;
     margin-left: 2em;
+    
   }
 
   .dropdown,

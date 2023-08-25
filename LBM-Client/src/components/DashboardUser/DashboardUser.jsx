@@ -39,7 +39,7 @@ function DashboardUser() {
     setActiveTab(tabIndex);
   };
 
-  const { isAuthenticated, isLoading, loginWithRedirect, user } = useAuth0();
+  const { isAuthenticated, isLoading, loginWithRedirect, user, logout } = useAuth0();
 
   const dispatch = useDispatch();
   const allUsers = useSelector((state) => state.user.allUsers);
