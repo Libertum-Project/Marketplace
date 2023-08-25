@@ -15,19 +15,63 @@ import ContactForm from "../Landing/Subscribe/ContactForm";
 export default function Landing() {
 
   const [showModal, setShowModal] = useState(false);
+  const [currentSection, setCurrentSection] = useState(0);
 
-  useEffect(() => {
-    // Mostrar el modal después de unos segundos (por ejemplo, 3 segundos)
+  useEffect(() => {    
     const timer = setTimeout(() => {
       setShowModal(true);
-    }, 3000); // 3000 milisegundos = 3 segundos
-
-    return () => clearTimeout(timer); // Limpiar el temporizador si el componente se desmonta
+    }, 3000); // 3000 milisegundos = 3 segundoS
+    return () => clearTimeout(timer); 
   }, []);
 
   const closeModal = () => {
     setShowModal(false);
   };
+
+
+  const sections = [    
+    <div className="first-section">
+      <button onClick={() => setCurrentSection(1)} className="button1"> ❯ </button>
+      <div className="timer-container">
+          <div className="timer-content">
+          {/* <Link to="/coinrelease"> */}
+              <Header />
+              <div className="timer">          
+              <Timer />   
+            </div>
+          {/* </Link> */}
+      </div>
+      </div>      
+    </div>,
+
+    <div className="second-section"> 
+    <button onClick={() => setShowModal(false)} className="button1">x</button>     
+      <div className="timer-container">
+          <div className="timer-content">         
+          
+              <p> The <span>$ LMB</span> launch is coming 
+                  soon, and we're so excited to 
+                  share it with you! </p> 
+                 
+              <p> Stay tuned for 
+                  more details, and in the 
+                  meantime, be sure to <span className="span2">register 
+                  below </span> for all the latest updates.</p>
+            <div className="cs_form">
+              <ContactForm />
+          </div>
+          
+      </div>
+      </div>
+
+      
+    </div>,
+    // <div className="third-section">
+    //   {/* Content for the third section */}
+      
+    // </div>,
+  ];
+
 
   return (
     <div>
@@ -37,20 +81,9 @@ export default function Landing() {
       {showModal && (
          <div className='modal-container'>
          <div className='modal-content'>
-         <button className="button1" onClick={closeModal}>x</button>
-         <div className="timer-container">
-          <div className="timer-content">
-          <Link to="/coinrelease">
-              <Header />
-            <div className="timer">          
-              <Timer />   
-            </div>
-          </Link>
-          <div className="cs_form">
-              <ContactForm />
+          <div className="modal-section">
+            {sections[currentSection]}
           </div>
-        </div>
-      </div>         
          </div>
        </div>
       )}
@@ -59,16 +92,26 @@ export default function Landing() {
       <div className="divider-container">
         <img src={divider} className="divider" />
       </div>
+      
       <div >
          <div >
           <div className="timer-container">
             <div className="timer-content">
-            <Link to="/coinrelease">
+           
                 <Header />
               <div className="timer">          
                 <Timer />   
               </div>
-            </Link>
+
+              <p> The <span>$ LMB</span> launch is coming 
+                  soon, and we're so excited to 
+                  share it with you! </p> 
+                 
+              <p> Stay tuned for 
+                  more details, and in the 
+                  meantime, be sure to <span className="span2">register 
+                  below </span> for all the latest updates.</p>
+            
             <div className="cs_form">
                 <ContactForm />
              </div>
