@@ -83,9 +83,11 @@ $secondarycolor: var(--LibertumBlue);
       background: #f88612;
       box-shadow: 0px 10px 30px rgba(56, 29, 219, 0.2);
       border-radius: 15px;
-      padding: 14px 28px;
+      padding: 0px 28px;
       border: none;
       color: #ffffff;
+      justify-content: center;
+      align-content: center;
     }
     span {
       position: absolute;
@@ -106,33 +108,43 @@ $secondarycolor: var(--LibertumBlue);
 
 .modal-container {
   position: fixed;
-  top:10%;
-  left: 0;
+  position: fixed;
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.453); /* Fondo oscurecido semi-transparente */
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.418); 
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999; /* Asegura que el modal aparezca por encima de otros elementos */
+  z-index: 999;
 
   .modal-content {
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);    
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);   
+   
     
     .button1 {
       background-color: var(--Libertum-color);
       color: #fff;
-      padding: 10px 20px;
+      padding: 0px;
+      height: 3rem;
+      width: 3rem;
       border: none;
       border-radius: 9999px;    
       cursor: pointer;      
-      margin-left: 80%;      
+      margin-left: 70%;  
+      margin-top: 3rem;
+      text-align: center;
+      justify-content: center;
+      align-content: center;   
     }
   }
   @media (max-width: 800px){
-    top:0%;
+  
     }
 }
 
@@ -167,13 +179,4 @@ $secondarycolor: var(--LibertumBlue);
 }
 
 
-@media screen and (max-width: 800px) {
-  .timer-container {
-    max-width:800px;    
-  }
-
-  .timer{
-    max-width: 800px;
-  }
-}
 

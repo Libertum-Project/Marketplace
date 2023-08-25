@@ -13,13 +13,12 @@ export default function Home() {
         <div>
           <div className="home_text">
             <h1>
-              Tokenize Property, <span>Democratize Real Estate</span> and Earn
-              Interest
+              Transforming an Exclusive Market into an <span>Inclusive Opportunity </span>               
+              <span> for Everyone </span>
             </h1>
-            <p>DeFi platform for a fluid and all inclusive economy.</p>
+            <p>Transforming the Real Estate Industry by introducing an innovative equity ecosystem where everyone wins.</p>
             <p>
-              Real Estate Investing made simple and accessible, anywhere and at
-              anytime.
+              We solve the inherent limitations of traditional Real Estate investment.
             </p>
           </div>
           <div className="home_links">

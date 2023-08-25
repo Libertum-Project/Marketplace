@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
 
 .home_items {
   background-image: url("./assets/background-home.svg");
@@ -9,43 +8,54 @@
   height: 100vh;
   justify-content: center;
   align-content: center;
+   align-items: center;
 
   
   .home_section {
     text-align: center;
-    max-width: 1183px;
+    // max-width: 1183px;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
     justify-content: center;
     align-content: center;
-    height: 100vh;
+
     // margin-top: 70px;
     animation-name: inOpacity;
     animation-duration: 2s;
     animation-fill-mode: both;
     .home_text {
-      width: 570px;
+     width: 45rem;
+    //  gap: 3rem;
     }
     .home_text h1 {
       width: 100%;
-      height: 292px;
-      font-size: 60px;
-      font-weight: 700;
-      line-height: 72px;
+      // height: 292px;
+      font-size: 3.5rem;
+      font-weight: 600;
+      line-height: 4.5rem;
+      font-family: Montserrat;
+      margin-bottom: 1rem;
+      // text-transform: uppercase;
       span {
-        color: #f88612;
-      }
+        &:first-child {
+          color: var(--Libertum-color);
+        }
+    
+        &:last-child {
+          color: var(--LibertumBlue);
+        }
     }
+  }
     .home_text p {
-      font-family: "Raleway";
+      font-family: Montserrat;
       font-style: normal;
-      font-weight: 400;
-      font-size: 24px;
-      line-height: 38px;
-      width: 570px;
+      font-weight: 200;
+      font-size: 1.6rem;
+      line-height: 2.3rem;
+      // width: 570px;
       // height: 114px;
-      // margin: top 1px;
+      margin-top: 6rem;
     }
     .home_links {
       width: max-content;
@@ -59,9 +69,9 @@
         background-color: #f88612;
         padding: 14px 28px;
         color: #ffffff;
-        font-family: "Inter";
+        font-family: "Montserrat";
         font-style: normal;
-        font-weight: 700;
+        font-weight: 600;
         font-size: 16px;
         line-height: 19px;
         box-shadow: 0px 10px 30px rgba(56, 29, 219, 0.2);
@@ -79,7 +89,7 @@
         padding: 8px 16px;
         border: 1px solid #f88612;
         border-radius: 15px;
-        font-family: "Inter";
+        font-family: "Montserrat";
         font-style: normal;
         font-weight: 600;
         font-size: 14px;
@@ -121,12 +131,12 @@
   }
 }
 
-@media screen and (max-width: 570px) {
+@media screen and (max-width: 763px) {
   .home_items {
     background-image: url("./assets/background-responsive.svg");
-    height: 100vh;
+    height: fit-content;
     .home_section {
-      margin-bottom: 1rem;
+      // margin-bottom: 1rem;
       .home_text {
         width: 315px;
         h1 {
