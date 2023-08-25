@@ -8,6 +8,7 @@
   height: 100vh;
   justify-content: center;
   align-content: center;
+   align-items: center;
 
   
   .home_section {
@@ -18,7 +19,7 @@
     margin: 0 auto;
     justify-content: center;
     align-content: center;
-    height: 100vh;
+
     // margin-top: 70px;
     animation-name: inOpacity;
     animation-duration: 2s;
@@ -130,12 +131,12 @@
   }
 }
 
-@media screen and (max-width: 570px) {
+@media screen and (max-width: 763px) {
   .home_items {
     background-image: url("./assets/background-responsive.svg");
-    height: 100vh;
+    height: fit-content;
     .home_section {
-      margin-bottom: 1rem;
+      // margin-bottom: 1rem;
       .home_text {
         width: 315px;
         h1 {

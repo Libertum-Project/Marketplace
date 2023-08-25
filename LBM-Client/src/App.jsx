@@ -42,18 +42,16 @@ import DetailSupport from "./components/DetailSupport/DetailSupport";
 import Cards from "../src/components/Cards/Cards";
 // import BuyProperty from "../components/RealEstateDetail/BuyProperty";
 import BuyProperty from "./components/RealEstateDetail/Buying/BuyProperty"
-import SellProperty from "./components/Userproperties/Card/Sell/BuyProperty";
 import IDO from "./components/IDO/IDO";
 import Footer from "./components/RealEstates/Footer/Footer.jsx";
 import CreateProperty from "./components/CreateProperty/CreateProperty";
-import UserDashboard from "./components/UserDashboard/UserDashboard";
-import UserProperties from "./components/Userproperties/Userproperties";
 import AdminDash from "./components/AdminDashboard/AdminDash";
 import UsersTable from "./components/AdminDashboard/UsersTable/UsersTable";
 import Transactions from "./components/AdminDashboard/Transactions/Trasactions";
 import Properties from "./components/AdminDashboard/Properties/Properties";
 import DashboardUser from "./components/DashboardUser/DashboardUser";
 import CoinPage from "./components/Coin/Coin";
+import SignIn from "./components/SignIn/SignIn";
 
 
 function App() {
@@ -176,22 +174,22 @@ function App() {
             }
           />
 
-        <Route
+        {/* <Route
             path={"/userdash"}
             element={
               <div className="Page">
                 <UserDashboard />
               </div>
             }
-          />
-                  <Route
+          /> */}
+                  {/* <Route
             path={"/userdash/myproperties"}
             element={
               <div className="Page">
                 <UserProperties />
               </div>
             }
-          />
+          /> */}
           
           <Route
             path={"/userdash/myproperties/:id"}
@@ -202,10 +200,10 @@ function App() {
             }
           />
 
-            <Route 
+            {/* <Route 
             path="/userdash/myproperties/sell/:number" 
             element={<SellProperty />} 
-            />
+            /> */}
 
 
         <Route 
@@ -295,6 +293,7 @@ function App() {
         <Route path="/swap" element={<CoomingSoon />} />
         <Route path="/comingsoon" element={<CoomingSoon />} />
         <Route path="*" element={<NotFound />} />
+        {/* <Route path="/signin" element={<DashboardUser />} /> */}
       </Routes>
       <Footer />
     </div>
