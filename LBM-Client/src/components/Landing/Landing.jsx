@@ -34,12 +34,12 @@ export default function Landing() {
       <button onClick={() => setCurrentSection(1)} className="button1"> ❯ </button>
       <div className="timer-container">
           <div className="timer-content">
-          <Link to="/coinrelease">
+          {/* <Link to="/coinrelease"> */}
               <Header />
               <div className="timer">          
               <Timer />   
             </div>
-          </Link>
+          {/* </Link> */}
       </div>
       </div>      
     </div>,
@@ -47,9 +47,8 @@ export default function Landing() {
     <div className="second-section"> 
     <button onClick={() => setShowModal(false)} className="button1">x</button>     
       <div className="timer-container">
-          <div className="timer-content">
+          <div className="timer-content">         
           
-          <Link to="/coinrelease">
               <p> The <span>$ LMB</span> launch is coming 
                   soon, and we're so excited to 
                   share it with you! </p> 
@@ -61,7 +60,7 @@ export default function Landing() {
             <div className="cs_form">
               <ContactForm />
           </div>
-          </Link>
+          
       </div>
       </div>
 
@@ -82,26 +81,9 @@ export default function Landing() {
       {showModal && (
          <div className='modal-container'>
          <div className='modal-content'>
-         {/* <button className="button1" onClick={closeModal}>x</button> */}
-         {/* <div className="timer-container">
-          <div className="timer-content">
-          <Link to="/coinrelease">
-              <Header />
-            <div className="timer">          
-              <Timer />   
-            </div>
-          </Link>
-          <div className="cs_form">
-              <ContactForm />
-          </div>
-        </div>
-      </div>          */}
-
           <div className="modal-section">
             {sections[currentSection]}
           </div>
-
-
          </div>
        </div>
       )}
@@ -115,12 +97,21 @@ export default function Landing() {
          <div >
           <div className="timer-container">
             <div className="timer-content">
-            <Link to="/coinrelease">
+           
                 <Header />
               <div className="timer">          
                 <Timer />   
               </div>
-            </Link>
+
+              <p> The <span>$ LMB</span> launch is coming 
+                  soon, and we're so excited to 
+                  share it with you! </p> 
+                 
+              <p> Stay tuned for 
+                  more details, and in the 
+                  meantime, be sure to <span className="span2">register 
+                  below </span> for all the latest updates.</p>
+            
             <div className="cs_form">
                 <ContactForm />
              </div>
