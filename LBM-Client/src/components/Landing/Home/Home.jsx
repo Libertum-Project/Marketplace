@@ -18,7 +18,7 @@ export default function Home() {
             </h1>
             <p>Transforming the Real Estate Industry by introducing an innovative equity ecosystem where everyone wins.</p>
             <p>
-              We solve the inherent limitations of traditional Real Estate investment.
+              We solve the limitations of traditional Real Estate investment.
             </p>
           </div>
           <div className="home_links">
