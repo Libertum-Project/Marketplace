@@ -45,7 +45,7 @@ export default function ContactForm() {
             </motion.button>
           </form>
         ) : (
-          <Flip style={{ marginTop: "10px" }}>
+          <Flip style={{ marginTop: "0px" }}>
             <FaHourglassEnd size={28} color="gray" />;
           </Flip>
         )

@@ -1,10 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
 .nav_items {
   font-family: "Inter";
   max-width: 1183px;
-  height: 36px;
-  padding-top: 66px;
+  height: 7.2rem;
+  // padding-top: 66px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -37,6 +36,23 @@
         }
       }
     }
+    .sign-in{
+      
+      margin: 0 0 0 40px;
+      text-transform: uppercase;
+      text-decoration: none;
+      text-align: center;
+      font-size: 14px;
+      color: white;      
+      background-color:var(--Libertum-color) ;
+      border-radius: 999rem;
+      padding: .5rem 1.2rem .5rem 1.2rem;
+      &:hover {
+        background-color: var(--LibertumBlue);
+        cursor: pointer;
+      }
+    }
+    
   }
 
   .btn_menu {
@@ -61,54 +77,54 @@
   }
 }
 
-.responsive-nav_items {
-  font-family: "Inter";
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  height: -webkit-fill-available;
-  width: -webkit-fill-available;
-  animation-name: inCopacity;
-  animation-duration: 1.3s;
-  animation-fill-mode: both;
-  .responsive-menu_items {
-    list-style: none;
-    padding-left: 30px;
-    padding-top: 60px;
-    .responsive-menu-li_items {
-      cursor: pointer;
-      display: flex;
-      justify-content: flex-start;
-      text-decoration: none;
-      text-align: center;
-      padding: 12px;
-      padding-left: 3px;
-      width: 250px;
-      border-radius: 10px;
-      margin-top: 12px;
-      &:hover {
-        background-color: #3a3a3a11;
-      }
-    }
-    .responsive-menu-a_items {
-      color: #3a3a3a;
-      font-weight: 550;
-      padding-left: 15px;
-      font-size: 16px;
-      line-height: 20px;
-    }
-  }
-  .responsive-menu_networks {
-    display: flex;
-    justify-content: center;
-    position: relative;
-    top: 30%;
-    .responsive-menu-networks_a {
-      padding: 12px;
-      border-radius: 10px;
-    }
-  }
-}
+// .responsive-nav_items {
+//   font-family: Montserrat;
+//   display: flex;
+//   flex-direction: column;
+//   position: relative;
+//   height: -webkit-fill-available;
+//   width: -webkit-fill-available;
+//   animation-name: inCopacity;
+//   animation-duration: 1.3s;
+//   animation-fill-mode: both;
+//   .responsive-menu_items {
+//     list-style: none;
+//     padding-left: 30px;
+//     padding-top: 60px;
+//     .responsive-menu-li_items {
+//       cursor: pointer;
+//       display: flex;
+//       justify-content: flex-start;
+//       text-decoration: none;
+//       text-align: center;
+//       padding: 12px;
+//       padding-left: 3px;
+//       width: 250px;
+//       border-radius: 10px;
+//       margin-top: 12px;
+//       &:hover {
+//         background-color: #3a3a3a11;
+//       }
+//     }
+//     .responsive-menu-a_items {
+//       color: #3a3a3a;
+//       font-weight: 550;
+//       padding-left: 15px;
+//       font-size: 16px;
+//       line-height: 20px;
+//     }
+//   }
+//   .responsive-menu_networks {
+//     display: flex;
+//     justify-content: center;
+//     position: relative;
+//     top: 30%;
+//     .responsive-menu-networks_a {
+//       padding: 12px;
+//       border-radius: 10px;
+//     }
+//   }
+// }
 
 @keyframes inCopacity {
   0% {
@@ -143,15 +159,7 @@
     .hidden {
       display: flex;
     }
-    .logo {
-      // // height: 80px;
-      // padding: 0px;
-      // margin-left: 21px;
-      margin-left: 21px;
-      // width: 94px;
-      height: 82px;
-      margin-top: 3rem;
-    }
+
   }
   .responsive-nav_items {
     position: relative;
@@ -162,25 +170,9 @@
 @media screen and (max-width: 400px) {
   .nav_items {
     padding-top: 24px;
+    margin-bottom: 4.5rem;
     justify-content: space-between;
-    .btn_cross {
-      margin-right: 38px;
-    }
-    .btn_menu {
-      margin-right: 38px;
-    }
-    .logo {
-      // margin-left: 21px;
-      // // width: 94px;
-      // // height: 26px;
-      margin-left: 21px;
-      // width: 94px;
-      height: 82px;
-      margin-top: 3rem;
-    }
-  }
-  .responsive-nav_items {
-    height: 100vh;
+
   }
 }
 
@@ -191,51 +183,81 @@
     .menu_items {
       display: none;
     }
-    .btn_menu {
-      display: none;
-      margin-right: 50px;
-    }
-    .btn_cross {
-      display: flex;
-      margin-right: 50px;
-    }
+    
     .hidden {
       display: flex;
     }
-    .logo {
-      // height: 26px;
-      // padding: 0px;
-      // margin-left: 21px;
-      margin-left: 21px;
-      // width: 94px;
-      height: 82px;
-      margin-top: 3rem;
-    }
+
   }
-  .responsive-nav_items {
-    position: relative;
-    height: 100vh;
-  }
+
 }
 
 @media screen and (max-width: 400px) {
   .nav_items {
     padding-top: 24px;
     justify-content: space-between;
-    .btn_cross {
-      margin-right: 38px;
-    }
-    .btn_menu {
-      margin-right: 38px;
-    }
+
     .logo {
       margin-left: 21px;
-      // width: 94px;
-      height: 82px;
-      margin-top: 3rem;
+
     }
   }
-  .responsive-nav_items {
-    height: 100vh;
+
+}
+
+/* Estilos para el icono de hamburguesa */
+.mobile-menu-icon {
+  display: none;
+  cursor: pointer;  
+}
+
+.bar {
+  width: 2rem;
+  height: 3px;
+  background-color: #333;
+  margin: 8px 0;
+}
+
+/* Estilos para el menú desplegable en pantallas pequeñas */
+@media screen and (max-width: 768px) {
+  .logo{
+    margin: 0;
   }
+  .nav_items{
+    background-color:#fff;
+    height: 7rem;
+    padding: 1rem;
+
+  }
+  .mobile-menu-icon {
+    display: block; 
+    margin-right: 1rem; 
+    cursor: pointer;      
+  }
+  .mobile-menu-icon :hover{
+    transform: rotate(180);
+  }
+
+  .menu_items {
+    display: none;
+    flex-direction: column;
+    background-color: #fff;
+    position: absolute;    
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: fit-content;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .menu_items.active {
+    display: flex;
+    background-color: #fff;
+    height:fit-content;
+    padding: 1rem;
+    z-index: 999;
+    margin-top: 3rem;
+  }
+
+  /* Otros estilos según sea necesario */
 }
