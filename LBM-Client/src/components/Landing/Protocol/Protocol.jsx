@@ -3,25 +3,30 @@ import { Slide } from "react-awesome-reveal";
 
 import desktop from "./assets/desktop.png";
 import arrow from "./assets/arrow.svg";
+import criptoImage from "./assets/cripto.svg"
 import "./Protocol.scss";
 
-const firstParagraph =
-  "Real estate is the single biggest asset class that may be tokenized. Global real estate market size is worth around $369 trillion today and only 7% of this is available to retail investors. However, more than 80% of people believe real estate to be a good investment.";
-const secondParagraph =
-  "The Libertum Project democratizes the real estate investment market by allowing each and everyone to invest in tokenized property with crypto or fiat-currency. With tokenization, real estate assets can be represented as tokens on the blockchain that will become as efficient and inexpensive to issue, transfer and trade as other cryptocurrencies.";
-export default function Protocol() {
-  const [index, setIndex] = useState(1);
-  const [paragraph, setParagraph] = useState(firstParagraph);
+const content = [
+  {
+    title: "The libertum Opportunity",
+    paragraph: "Using the Libertum platform allows everyone to invest in premium real estate. Real estate is the single biggest asset class that anyone can digitally invest in.. The Global real estate market is worth $369 trillion...​"
+  },
+  {
+    title:  "The Libertum Reward",
+    paragraph: "Libertum allows everyone to earn a second income. There is no mortgage or large investment required, You simply sit back and enjoy the passive income your investments provide."
+  }
+]
 
-  const nextParagraph = () => {
-    if (paragraph === firstParagraph) {
-      setParagraph(secondParagraph);
-      index === 1 ? setIndex(2) : setIndex(1);
-    } else {
-      setParagraph(firstParagraph);
-      index === 1 ? setIndex(2) : setIndex(1);
-    }
-  };
+
+  export default function Protocol() {
+
+  const [index, setIndex] = useState(1);
+const { title, paragraph } = content[index];
+
+const nextContent = () => {
+  const nextIndex = (index + 1) % content.length;
+  setIndex(nextIndex);
+};
 
   return (
     <main className="protocol_items">
@@ -31,13 +36,13 @@ export default function Protocol() {
             <div>
               <div></div>
             </div>
-            <img alt="Launch App" src={desktop} />
+            <img alt="Launch App" src={criptoImage} />
           </div>
         </Slide>
         <Slide direction={"right"} triggerOnce={"true"}>
           <div className="protocol_text">
             <h2>
-              The <span>Libertum</span> Project
+              {title}
             </h2>
             <div className="protocol_slide">
               <p>{paragraph}</p>
@@ -45,10 +50,10 @@ export default function Protocol() {
                 <img
                   style={{ transform: "rotate(180deg)" }}
                   src={arrow}
-                  onClick={nextParagraph}
+                  onClick={nextContent}
                 />
-                <span>{index} / 2</span>
-                <img src={arrow} onClick={nextParagraph} />
+                <span>{index}</span>
+                <img src={arrow} onClick={nextContent} />
               </div>
             </div>
           </div>
