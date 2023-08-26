@@ -34,7 +34,7 @@ export default function ContactForm() {
             <input
               type="Email"
               name="Email"
-              placeholder="contact@libertum.io"
+              placeholder="earn@libertum.io"
             />
             <motion.button
               type="submit"
