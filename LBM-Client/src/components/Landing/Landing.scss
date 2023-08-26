@@ -13,12 +13,16 @@ $secondarycolor: var(--LibertumBlue);
   // min-height: 100vh;
   padding: 1rem;
 
+
   .timer-content{
   padding: 1rem;
   // border: 1px solid black;
   justify-self: center;
   width: fit-content;
   font-family: montserrat;
+  animation-name: inOpacity;
+  animation-duration: 1s;
+  animation-fill-mode: both;
   
   p{
     font-family: montserrat;
@@ -145,15 +149,20 @@ $secondarycolor: var(--LibertumBlue);
   justify-content: center;
   align-items: center;
   z-index: 999;
+  
 
 
   .modal-content {
-    background-color: #fff;
+    background-color: rgb(222, 234, 239);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
     align-items: center;
     justify-items: center;  
+    // background-image: url(./assets/coin.svg);
+    // background-repeat: no-repeat;
+    // background-size: cover;
+    
 
     display: flex;
     flex-direction: column;
@@ -184,6 +193,10 @@ $secondarycolor: var(--LibertumBlue);
   .modal-section {
     max-width: 42rem;
   }
+  
+}
+
+.coin{
   
 }
 

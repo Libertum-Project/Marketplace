@@ -9,7 +9,7 @@ import "./Landing.scss";
 import Timer from "../Coin/Timer";
 import Header from "../Coin/Header"
 import { Link } from "react-router-dom";
-
+import coinimage from "./assets/coin.svg"
 import ContactForm from "../Landing/Subscribe/ContactForm";
 
 export default function Landing() {
@@ -36,6 +36,7 @@ export default function Landing() {
           <div className="timer-content">
           {/* <Link to="/coinrelease"> */}
               <Header />
+              {/* <img src={coinimage} alt="" className="coin" /> */}
               <div className="timer">          
               <Timer />   
             </div>

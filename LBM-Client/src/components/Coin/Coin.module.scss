@@ -32,12 +32,7 @@ $secondarycolor: var(--LibertumBlue);
       color: $secondarycolor; 
     }
   }
-  // p{
-  //   font-family: montserrat;
-  //   font-weight: 400;
-  //   color: $primarycolor;
-    
-  // }
+
   margin-bottom: 2rem;
   
   @media (max-width: 800px){
@@ -51,18 +46,11 @@ $secondarycolor: var(--LibertumBlue);
 }
 
 .timer {
-  display: flex;
-  align-items: center;
+  display: flex; 
   font-family: Montserrat, sans-serif;
   gap: 3rem;
   width: fit-content;
-  // border: 1px solid $primarycolor;
-  // border-radius: 1rem;
   padding: 3rem;
-
-  // {
- // ACA AGREGAR LO RESPONSIVE! 
-  // }
 
   h2 {
     font-size: 24px;
@@ -81,13 +69,9 @@ $secondarycolor: var(--LibertumBlue);
     display: flex;
     align-items: center;
     flex-direction: column;
-    // p {
-    //   font-size: 18px;
-    //   margin: 0;
-    //   margin-right: 3px;
-    // }
+
     p:first-child {
-      font-size: 36px; /* Adjust size as needed */
+      font-size: 36px;
       margin: 0;
       margin-bottom: 5px;
       
