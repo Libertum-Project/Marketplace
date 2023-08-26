@@ -1,19 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Slide } from "react-awesome-reveal";
 
 import desktop from "./assets/desktop.png";
 import arrow from "./assets/arrow.svg";
-import criptoImage from "./assets/cripto.svg"
+import criptoImage from "./assets/cripto.svg";
+import personImage from "./assets/person.svg";
 import "./Protocol.scss";
 
 const content = [
   {
     title: "The libertum Opportunity",
-    paragraph: "Using the Libertum platform allows everyone to invest in premium real estate. Real estate is the single biggest asset class that anyone can digitally invest in.. The Global real estate market is worth $369 trillion...​"
+    paragraph: "Using the Libertum platform allows everyone to invest in premium real estate. Real estate is the single biggest asset class that anyone can digitally invest in.. The Global real estate market is worth $369 trillion...​",
+    imagen: personImage
   },
   {
     title:  "The Libertum Reward",
-    paragraph: "Libertum allows everyone to earn a second income. There is no mortgage or large investment required, You simply sit back and enjoy the passive income your investments provide."
+    paragraph: "Libertum allows everyone to earn a second income. There is no mortgage or large investment required, You simply sit back and enjoy the passive income your investments provide.",
+    imagen: criptoImage
   }
 ]
 
@@ -21,11 +24,47 @@ const content = [
   export default function Protocol() {
 
   const [index, setIndex] = useState(1);
-const { title, paragraph } = content[index];
+  const { title, paragraph, imagen } = content[index];
+  const intervalTime = 5000;
+  const [forward, setForward] = useState(true);
+
+// const nextContent = () => {
+//   const nextIndex = (index + 1) % content.length;
+//   setIndex(nextIndex);
+// };
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    if (forward) {
+      nextContent();
+    } else {
+      prevContent();
+    }
+  }, intervalTime);
+
+  return () => {
+    clearInterval(interval);
+  };
+}, [forward]);
 
 const nextContent = () => {
-  const nextIndex = (index + 1) % content.length;
-  setIndex(nextIndex);
+  const nextIndex = index + 1;
+  if (nextIndex >= content.length) {
+    setForward(false);
+    setIndex(content.length - 2);
+  } else {
+    setIndex(nextIndex);
+  }
+};
+
+const prevContent = () => {
+  const prevIndex = index - 1;
+  if (prevIndex < 0) {
+    setForward(true);
+    setIndex(1);
+  } else {
+    setIndex(prevIndex);
+  }
 };
 
   return (
@@ -36,7 +75,7 @@ const nextContent = () => {
             <div>
               <div></div>
             </div>
-            <img alt="Launch App" src={criptoImage} />
+            <img alt="Launch App" src={imagen} />
           </div>
         </Slide>
         <Slide direction={"right"} triggerOnce={"true"}>
@@ -52,7 +91,7 @@ const nextContent = () => {
                   src={arrow}
                   onClick={nextContent}
                 />
-                <span>{index}</span>
+                {/* <span>{index}</span> */}
                 <img src={arrow} onClick={nextContent} />
               </div>
             </div>
