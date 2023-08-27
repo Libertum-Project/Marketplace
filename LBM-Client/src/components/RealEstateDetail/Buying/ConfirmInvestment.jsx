@@ -98,6 +98,7 @@ const ConfirmInvestment = ({
           propertyId={propertyId}
           quantity={quantity}
           capitalRepaymentPropertyAddress={propertyAddress}
+          totalPrice={subtotal}
         />
       ) : (
         <MintPassiveIncomeProperty
@@ -105,6 +106,7 @@ const ConfirmInvestment = ({
           propertyId={propertyId}
           quantity={quantity}
           passiveIncomePropertyAddress={propertyAddress}
+          totalPrice={subtotal}
         />
       )}
     </form>

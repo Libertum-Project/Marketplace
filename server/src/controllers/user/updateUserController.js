@@ -1,6 +1,6 @@
 const { User, Property, Transaction, Financial } = require("../../db.js");
 
-async function updateUser(userId, saved, invested, quantity) {
+async function updateUser(userId, saved, invested, quantity, pricePerToken, totalPrice) {
   try {
     const user = await User.findByPk(userId, {
       include: [
@@ -19,6 +19,8 @@ async function updateUser(userId, saved, invested, quantity) {
     } else if (invested) {
       await Transaction.create({
         Token_quantity: quantity,
+        TotalPrice: totalPrice,
+        PricePerToken: pricePerToken,
         Payment_Method: "Metamask",
         Payment_Currency: "USDT",
         ID_User: userId,

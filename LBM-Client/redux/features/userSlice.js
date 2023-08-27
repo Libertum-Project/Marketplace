@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-const serverURL = import.meta.env.VITE_SERVER_URL;
-//const serverURL = import.meta.env.VITE_TEST_SERVER;
+//const serverURL = import.meta.env.VITE_SERVER_URL;
+const serverURL = import.meta.env.VITE_TEST_SERVER;
 const userURL = `${serverURL}user`;
 
 const initialState = {
@@ -62,8 +62,8 @@ export const saveProperty = createAsyncThunk(
   }
 );
 
-export const buyToken = createAsyncThunk("put/buyToken", async ({ userId, propertyId, quantity }) => {
-  const body = { quantity }
+export const buyToken = createAsyncThunk("put/buyToken", async ({ userId, propertyId, quantity, pricePerToken, totalPrice }) => {
+  const body = { quantity, pricePerToken, totalPrice }
   const response = await fetch(
     `${userURL}/update?userId=${userId}&invested=${propertyId}`,
     {

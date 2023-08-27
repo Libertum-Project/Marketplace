@@ -11,6 +11,7 @@ function MintPassiveIncomeProperty({
   userId,
   propertyId,
   quantity,
+  totalPrice,
 }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -37,8 +38,8 @@ function MintPassiveIncomeProperty({
         signer
       );
 
-      const pricePerToken = await passiveIncomePropertyContract.pricePerToken();
-      const price = BigInt(quantity) * BigInt(pricePerToken) * BigInt(10 ** 6);
+      const tokenPrice = await passiveIncomePropertyContract.pricePerToken();
+      const price = BigInt(quantity) * BigInt(tokenPrice) * BigInt(10 ** 6);
 
       const faucetTransaction = await usdtTokenContract
         .connect(signer)
@@ -57,11 +58,16 @@ function MintPassiveIncomeProperty({
         }
       );
       mintTransaction.wait();
+
+      const pricePerToken = Number(tokenPrice);
+
       dispatch(
         buyToken({
           userId,
           propertyId,
           quantity,
+          pricePerToken,
+          totalPrice,
         })
       );
       navigate("/mydashboard");

@@ -11,6 +11,7 @@ const password = process.env.PASSWORD;
 
 
 
+/*
 const sequelize = new Sequelize(database, username, password, {
   host: host,
   port: port,
@@ -25,7 +26,7 @@ const sequelize = new Sequelize(database, username, password, {
   native: false,
 });
 
-/*
+*/
 const sequelize = new Sequelize('libertum', 'postgres', 'contra445', {
   host: 'localhost',
   port: 5432,
@@ -34,7 +35,6 @@ const sequelize = new Sequelize('libertum', 'postgres', 'contra445', {
   native: false,
 });
 
-*/
 const basename = path.basename(__filename);
 
 const modelDefiners = [];

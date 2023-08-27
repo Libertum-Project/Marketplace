@@ -11,6 +11,7 @@ function MintCapitalRepaymentProperty({
   userId,
   propertyId,
   quantity,
+  totalPrice
 }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -37,9 +38,9 @@ function MintCapitalRepaymentProperty({
         signer
       );
 
-      const pricePerToken =
+      const tokenPrice =
         await capitalRepaymentPropertyContract.pricePerToken();
-      const price = BigInt(quantity) * BigInt(pricePerToken) * BigInt(10 ** 6);
+      const price = BigInt(quantity) * BigInt(tokenPrice) * BigInt(10 ** 6);
 
       const faucetTransaction = await usdtTokenContract
         .connect(signer)
@@ -58,11 +59,16 @@ function MintCapitalRepaymentProperty({
         }
       );
       mintTransaction.wait();
+
+      const pricePerToken = Number(tokenPrice);
+
       dispatch(
         buyToken({
           userId,
           propertyId,
           quantity,
+          pricePerToken,
+          totalPrice,
         })
       );
       navigate("/mydashboard");
