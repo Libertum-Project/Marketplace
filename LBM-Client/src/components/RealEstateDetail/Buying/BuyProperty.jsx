@@ -161,11 +161,6 @@ const BuyProperty = () => {
 
   // Find the property that matches the propertyId
   const property = propertyId && allProperties.find((property) => property.ID_Property === propertyId);
-  console.log(property)
- 
-  console.log('propertyId:', propertyId);
-  console.log('allProperties:', allProperties);
-
 // -----------------------------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------------------------
@@ -285,6 +280,7 @@ const BuyProperty = () => {
       location={property.Feature.City}
       NFTPrice={property.Financial.Token_Price}
       propertyId = {propertyId}
+      property = {property}
       />
     )}
   </div>
