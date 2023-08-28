@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Home from "./Home/Home";
 import Protocol from "./Protocol/Protocol";
-import Services from "./Services/Services";
 import Value from "./Value/Value";
 import Subscribe from "./Subscribe/Subscribe";
 import divider from "./assets/divider.png";
 import "./Landing.scss";
 import Timer from "../Coin/Timer";
 import Header from "../Coin/Header"
-import { Link } from "react-router-dom";
-import coinimage from "./assets/coin.svg"
 import ContactForm from "../Landing/Subscribe/ContactForm";
 import Servicesnew from "./Services/Servicesnew";
 
@@ -125,8 +122,6 @@ export default function Landing() {
        <div className="divider-container">
         <img src={divider} className="divider" />
       </div>
-
-      {/* <Services /> */}
 
       <Servicesnew />
       
