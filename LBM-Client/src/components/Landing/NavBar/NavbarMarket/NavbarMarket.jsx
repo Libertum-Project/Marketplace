@@ -86,7 +86,9 @@ function NavbarMarket() {
               <img src="../icons/Logo.svg"></img>
               <img src="../icons/Logo Cherryswap.svg"></img>
             </a> */}
-            <img src={logo} alt="Libertum Logo" width="80px" />
+            <a href="/">
+              <img src={logo} alt="Libertum Logo" width="80px" />
+            </a>
             <div className={style.buttons}>
               <div
                 data-dropdown-button

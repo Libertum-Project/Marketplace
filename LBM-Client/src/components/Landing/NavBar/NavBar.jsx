@@ -1,164 +1,114 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Slide } from "react-awesome-reveal";
 import { Link as Scroll } from "react-scroll";
 import { Link } from "react-router-dom";
-
-// import logo from "../assets/logo.svg";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchAllUsers,
+  fetchCurrentUser,
+} from "../../../../redux/features/userSlice";
 import logo  from "../assets/LibertumColor.png";
-
-
-import cross from "./assets/cross.svg";
-import home from "./assets/home.svg";
-import whitepaper from "./assets/whitepaper.svg";
-import contacts from "./assets/contacts.svg";
-import bepart from "./assets/bepart.svg";
 import pdf from "../assets/LBM-whitepaper.pdf";
 import { networks } from "../networks";
+
 import "./NavBar.scss";
 
+
 export default function NavBar() {
-  const [nav, setNav] = useState(false);
-  const handleClick = () => setNav(!nav);
+
+  const [mobileMenuActive, setMobileMenuActive] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setMobileMenuActive(!mobileMenuActive);
+  };
+
+
+  const { isAuthenticated, isLoading, loginWithRedirect, user, logout } = useAuth0();
+
+  const dispatch = useDispatch();
+  const allUsers = useSelector((state) => state.user.allUsers);
+  const currentUser = useSelector((state) => state.user.currentUser);
+
+
+  console.log(currentUser);
+  console.log(allUsers);
+
+
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      if (!isLoading) {
+        dispatch(fetchAllUsers());
+        dispatch(
+          fetchCurrentUser({
+            email: user.email,
+            name: user.name,
+          })
+        );
+      }
+    }
+  }, [ isAuthenticated]);
+  
 
   return (
     <>
-      <Slide direction={"down"} delay={-300}>
-        <nav className="nav_items">
-          {/* <img src={logo} className="logo" /> */}
-          {/* <img src="./LibertumColor.png" alt="Libertum Logo"  className="logo" loading="lazy"/> */}
-          <img src={logo} alt="Libertum Logo"  className="logo"/>
+       <nav className={`nav_items ${mobileMenuActive ? "active" : ""}`}>
+        <img src={logo} alt="Libertum Logo" className="logo" />
 
-          <ul className="menu_items">
-            <li className="menu-li_items">
-              <Scroll
-                to="home"
-                smooth={true}
-                duration={500}
-                className="menu-a_items"
-              >
-                Home
-              </Scroll>
-            </li>
-            <li className="menu-li_items">
-              <Link
-                to={pdf}
-                target="_blank"
-                rel="noopener noreferrer"
-                download="LBM-whitepaper.pdf"
-                className="menu-a_items"
-              >
-                Whitepaper
-              </Link>
-            </li>
-            <li className="menu-li_items">
-              <Scroll
-                to="subscribe"
-                smooth={true}
-                duration={1000}
-                className="menu-a_items"
-              >
-                Contact
-              </Scroll>
-            </li>
-            
-            <li className="menu-li_items">
-              <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSd8HkLol829WO2hii1aem2H1_VNXWY6-1J_kqQAQclMPwo2MA/viewform"
-                target="_blank"
-                rel="noreferrer"
-                className="menu-a_items"
-              >
-                List Property
-              </a>
-            </li>
+        <div className={`mobile-menu-icon ${mobileMenuActive ? "active" : ""}`} onClick={toggleMobileMenu}>
+          <div className="bar"></div>
+          <div className="bar"></div>
+          <div className="bar"></div>
+        </div>
 
-            <li className="menu-li_items">
-              <a
-                href="https://discord.com/invite/cAB2MKRw7b"
-                target="_blank"
-                rel="noreferrer"
-                className="menu-a_items"
-              >
-                Community
-              </a>
-            </li>
-          </ul>
-
-          {!nav ? (
-            <div onClick={handleClick} className="btn_menu">
-              Menu
-            </div>
+        <ul className={`menu_items ${mobileMenuActive ? "active" : ""}`}>
+          <li className="menu-li_items">
+            <Link to="home" smooth={true} duration={500} className="menu-a_items">
+              Home
+            </Link>
+          </li>
+          <li className="menu-li_items">
+            <a
+              href="/whitepaper.pdf" // Cambiar la ruta al PDF correcta!!
+              target="_blank"
+              rel="noopener noreferrer"
+              download="LBM-whitepaper.pdf"
+              className="menu-a_items"
+            >
+              Whitepaper
+            </a>
+          </li>
+          <li className="menu-li_items">
+            <Link to="subscribe" smooth={true} duration={1000} className="menu-a_items">
+              Contact
+            </Link>
+          </li>
+          <li className="menu-li_items">
+            <a href="/marketplace" rel="noreferrer" className="menu-a_items">
+              Marketplace
+            </a>
+          </li>
+          <li className="menu-li_items">
+          {isAuthenticated ? (
+            <a rel="noreferrer" className="sign-in"  
+            onClick={() =>
+              logout({
+                logoutParams: {
+                  returnTo: window.location.origin,
+                },
+              })
+            }>
+              Log Out
+            </a>
           ) : (
-            <div onClick={handleClick} className="btn_cross">
-              <img src={cross} />
-            </div>
+            <a href="/mydashboard" rel="noreferrer" className="sign-in">
+              Log In
+            </a>
           )}
-        </nav>
-      </Slide>
-      {nav ? (
-        <nav className="responsive-nav_items">
-          <ul className="responsive-menu_items">
-            <li className="responsive-menu-li_items">
-              <img src={home} />
-              <Scroll
-                to="home"
-                smooth={true}
-                duration={500}
-                className="responsive-menu-a_items"
-              >
-                Home
-              </Scroll>
-            </li>
-            <li className="responsive-menu-li_items">
-              <img src={whitepaper} />
-              <Link
-                to={pdf}
-                target="_blank"
-                rel="noopener noreferrer"
-                download="LBM-whitepaper.pdf"
-                className="responsive-menu-a_items"
-              >
-                Whitepaper
-              </Link>
-            </li>
-            <li className="responsive-menu-li_items">
-              <img src={contacts} />
-              <Scroll
-                to="subscribe"
-                smooth={true}
-                duration={1000}
-                className="responsive-menu-a_items"
-              >
-                Contacts
-              </Scroll>
-            </li>
-            <li className="responsive-menu-li_items">
-              <img src={bepart} />
-              <a
-                href="https://discord.com/invite/cAB2MKRw7b"
-                target="_blank"
-                rel="noreferrer"
-                className="responsive-menu-a_items"
-              >
-                Community
-              </a>
-            </li>
-          </ul>
-          <div className="responsive-menu_networks">
-            {networks.map(({ net, href }, index) => (
-              <a
-                key={index}
-                className="responsive-menu-networks_a"
-                href={href}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <img src={net} />
-              </a>
-            ))}
-          </div>
-        </nav>
-      ) : null}
+          </li>
+        </ul>
+      </nav>
     </>
   );
 }

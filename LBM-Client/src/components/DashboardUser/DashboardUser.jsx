@@ -5,10 +5,6 @@ import {
   fetchAllUsers,
   fetchCurrentUser,
 } from "../../../redux/features/userSlice";
-import {
-  claimMonthlyPayment,
-  withdrawFunds,
-} from "../../../redux/features/propertySlice";
 import { NavLink, Route, Routes, Outlet } from "react-router-dom";
 import DashboardContent from "./Dashboard/Dashboard";
 import Finances from "./Finances/Finances";
@@ -39,7 +35,8 @@ function DashboardUser() {
     setActiveTab(tabIndex);
   };
 
-  const { isAuthenticated, isLoading, loginWithRedirect, user } = useAuth0();
+  const { isAuthenticated, isLoading, loginWithRedirect, user, logout } =
+    useAuth0();
 
   const dispatch = useDispatch();
   const allUsers = useSelector((state) => state.user.allUsers);
@@ -68,19 +65,19 @@ function DashboardUser() {
             name: user.name,
           })
         );
-        /*
-        const propertyAddress = "0xB7A5bd0345EF1Cc5E66bf61BdeC17D2461fBd968";
-        const userAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
-        const quantity = 10;
-        const propertyType = "capitalRepayment";
-        dispatch(
-          claimMonthlyPayment({ propertyAddress, quantity, propertyType })
-        );
-        dispatch(withdrawFunds({ propertyAddress, userAddress, propertyType }));
-        */
       }
     }
   }, [isAuthenticated, isLoading]);
+
+  const handleClickProperties = () => {
+    console.log("handleClickProperties");
+
+    setActiveTab(3);
+  };
+
+  const handleClickInvestments = () => {
+    setActiveTab(4);
+  };
 
   return !isLoading && isAuthenticated ? (
     <div className={styles["dashboard-user"]}>
@@ -215,7 +212,12 @@ function DashboardUser() {
 
       {activeTab === 1 && (
         <div>
-          <DashboardContent name={currentUser.name} id={currentUser.ID_user} />
+          <DashboardContent
+            name={currentUser.name}
+            id={currentUser.ID_user}
+            handleClickInvestments={handleClickInvestments}
+            handleClickProperties={handleClickProperties}
+          />
         </div>
       )}
 

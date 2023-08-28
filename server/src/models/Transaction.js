@@ -12,8 +12,11 @@ module.exports = (sequelize) => {
       Token_quantity: {
         type: DataTypes.INTEGER,
       },
-      Price: {
+      TotalPrice: {
         type: DataTypes.DECIMAL(10, 2),
+      },
+      PricePerToken: {
+        type: DataTypes.DECIMAL(10, 2)
       },
       Payment_Method: {
         type: DataTypes.STRING(50),

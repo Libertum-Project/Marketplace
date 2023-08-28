@@ -62,8 +62,8 @@ export const saveProperty = createAsyncThunk(
   }
 );
 
-export const buyToken = createAsyncThunk("put/buyToken", async ({ userId, propertyId, quantity }) => {
-  const body = { quantity }
+export const buyToken = createAsyncThunk("put/buyToken", async ({ userId, propertyId, quantity, pricePerToken, totalPrice }) => {
+  const body = { quantity, pricePerToken, totalPrice }
   const response = await fetch(
     `${userURL}/update?userId=${userId}&invested=${propertyId}`,
     {

@@ -1,34 +1,9 @@
 import DataTable from "react-data-table-component";
+import ClaimMonthlyPayment from "../../../../smartContracts/components/ClaimMonthlyPayment";
 import css from "./TableUsers.module.scss";
 import { Link } from "react-router-dom";
-import { claimMonthlyPayment } from "../../../../../redux/features/propertySlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useState } from "react";
-
-const customStyles = {
-  headRow: {
-    style: {
-      color: "var(--0-c-0507, #0C0507)",
-      fontFamily: "Inter",
-      fontSize: "0.875rem",
-      fontWeight: 700,
-      textTransform: "capitalize",
-      with: "fit-content",
-      whiteSpace: "normal", // Permite que el contenido de la fila de encabezado se ajuste en múltiples líneas
-      lineHeight: "1.2", // Altura de línea para mejorar la legibilidad
-    },
-  },
-  conditionalCellStyles: [
-    {
-      when: (row) => row.selector === "claim",
-      style: {
-        borderRadius: "4px",
-        backgroundColor: "blue", // Aquí puedes cambiar el color de fondo deseado
-        color: "white", // Aquí puedes cambiar el color del texto deseado
-      },
-    },
-  ],
-};
 
 const columns = [
   {
@@ -51,66 +26,32 @@ const columns = [
     name: "Purchase date",
     selector: (row) => row.datepurchase,
   },
-  // {
-  //     name: "Claimable From",
-  //     selector: row => row.dateclaming
-  // },
   {
     name: "Claim Earnings",
     selector: (row) => row.claim,
-    cell: (row) => (
-      <Link to={`http:/localhost:3001/${row.propertyID}`}>
-        <button
-          style={{
-            backgroundColor: "gray", //color de fondo
-            borderRadius: "4px", //borde redondeado
-            color: "white", // color del texto
-            padding: "8px", //espaciado interno
-          }}
-        >
-          {row.claim}
-        </button>
-      </Link>
-    ),
+    cell: (row) => <button>{row.claim}</button>,
   },
 ];
-
 const Investments = ({ investments, transactions }) => {
-  const dispatch = useDispatch();
   const claimError = useSelector((state) => state.property.error);
   const [error, setError] = useState(claimError);
-  //❗⬇️ ACA ESTA EL BOTON QUE MANDA LA INFO!!!⬇
-  const handleClaimClick = (event, address, tokens, type) => {
-    event.preventDefault();
-    console.log("Address ID:", address);
-    console.log("Tokens:", tokens);
-    console.log("Type:", type);
-
-    const propertyAddress = address;
-    const quantity = tokens;
-    const propertyType = type;
-
-    dispatch(
-      claimMonthlyPayment({ propertyAddress, quantity, propertyType })
-    ).then(() => {
-      console.log(error);
-    });
-  };
 
   const combinedData = investments.map((investment, index) => {
     const currentDate = new Date();
-
     const purchaseDate = new Date(transactions[index].createdAt);
-
     const claimableDate = new Date(purchaseDate);
     claimableDate.setDate(claimableDate.getDate() + 30);
-
     const formattedPurchaseDate =
       ("0" + (purchaseDate.getMonth() + 1)).slice(-2) +
       "/" +
       ("0" + purchaseDate.getDate()).slice(-2) +
       "/" +
       purchaseDate.getFullYear().toString().slice(-2);
+
+    const canClaim = currentDate >= claimableDate;
+    const errorMessage = canClaim
+      ? null
+      : "Must wait at least 30 days to claim your earnings";
 
     return {
       idProperty: `#${investment.ID_Property}`,
@@ -121,19 +62,18 @@ const Investments = ({ investments, transactions }) => {
       return: `$${transactions[index].Return_of_Investment}`,
       datepurchase: formattedPurchaseDate,
       claim: (
-        <button
-          //   disabled={currentDate < claimableDate}
-          onClick={(event) =>
-            handleClaimClick(
-              event,
-              investment.Address,
-              transactions[index].Token_quantity,
-              investment.Financial.Investment_type
-            )
-          }
-        >
-          Claim
-        </button>
+        <div className={css.claim}>
+          <Link to={`http:/localhost:3001/${investment.ID_Property}`}>
+            <ClaimMonthlyPayment
+              propertyAddress={investment.Address}
+              quantity={transactions[index].Token_quantity}
+              propertyType={investment.Financial.Investment_type}
+            />
+          </Link>
+          <div>
+            {errorMessage && <p className={css.error}>{errorMessage}</p>}
+          </div>
+        </div>
       ),
     };
   });

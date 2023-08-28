@@ -64,21 +64,6 @@ export const setPropertyStatus = createAsyncThunk(
   }
 );
 
-export const claimMonthlyPayment = createAsyncThunk(
-  "property/claimMonthlyPayment",
-  async ({ propertyAddress, quantity, propertyType }) => {
-    const body = { propertyAddress, quantity, propertyType };
-    const response = await fetch(`${propertyURL}/claim`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
-    });
-    return await response.json()
-  }
-);
-
 export const withdrawFunds = createAsyncThunk(
   "property/withdrawFunds",
   async ({ propertyAddress, userAddress, propertyType }) => {
@@ -129,11 +114,6 @@ const propertySlice = createSlice({
       .addCase(fetchAllProperties.fulfilled, (state, action) => {
         commonFulfilledAction(state, action);
         state.allProperies = action.payload;
-      })
-      .addCase(claimMonthlyPayment.pending, commonPendingAction)
-      .addCase(claimMonthlyPayment.rejected, commonRejectedAction)
-      .addCase(claimMonthlyPayment.fulfilled, (state, action) => {
-        state.error = action.payload[0]
       });
   },
 });

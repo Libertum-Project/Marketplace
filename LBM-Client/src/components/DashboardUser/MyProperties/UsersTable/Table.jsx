@@ -1,32 +1,11 @@
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import DataTable from 'react-data-table-component';   
 import css from './TableUsers.module.scss';
 import { Link } from 'react-router-dom';
+import { withdrawFunds } from '../../../../../redux/features/propertySlice';
 
-const customStyles = {
-    headRow: {
-      style: {
-        color: 'var(--0-c-0507, #0C0507)',
-        fontFamily: 'Inter',
-        fontSize: '0.875rem',
-        fontWeight: 700,
-        textTransform: 'capitalize',
-        with: 'fit-content',
-        whiteSpace: 'normal', // Permite que el contenido de la fila de encabezado se ajuste en múltiples líneas
-        lineHeight: '1.2', // Altura de línea para mejorar la legibilidad
-      }
-    },
-    conditionalCellStyles: [
-        {
-          when: row => row.selector === 'claim',
-          style: {
-            borderRadius: '4px',
-            backgroundColor: 'blue', // Aquí puedes cambiar el color de fondo deseado
-            color: 'white', // Aquí puedes cambiar el color del texto deseado
-          }
-        }
-      ]
-  };
-  
+ 
 
 const columns = [
     {
@@ -38,100 +17,128 @@ const columns = [
         selector: row => row.address,
     },
     {
-        name: "Tokens purchased",
-        selector: row => row.tokens
+        name: "Property Type",
+        selector: row => row.type
     },
     {
-        name: "Price for token",
-        selector: row => row.tokenprice
+        name: "Available Tokens",
+        selector: row => row.tokensavailable
+    },
+    // {
+    //     name: "Tokens sold",
+    //     selector: row => row.tokenssold
+    // },
+    {
+        name: "Property Value",
+        selector: row => row.value
+    },
+
+    {
+        name: "Status",
+        selector: row => row.propertystatus
     },
     {
-        name: "Return of Investment",
-        selector: row => row.return
-    },
-    {
-        name: "Purchase date",
-        selector: row => row.datepurchase
-    },
-    {
-        name: "Claimable From",
-        selector: row => row.dateclaming
-    },
-    {
-        name: 'Claim Earnings',
-        selector: row => row.claim,
+        name: 'Transaction History',
+        selector: row => row.history,
         cell: row => (
-            <Link to={`http:/localhost:3001/${row.propertyID}`}>
+            <Link to="/comingsoon">
                 <button
                 style={{
-                    backgroundColor: 'gray', //color de fondo 
-                    borderRadius: '4px', //borde redondeado
-                    color: 'white', // color del texto 
-                    padding: '8px', //espaciado interno 
-                    
-                }}
-                >
-                {row.claim}
+                    backgroundColor: "gray", //color de fondo
+                    borderRadius: "5px", //borde redondeado
+                    color: "white", // color del texto
+                    padding: "8px", //espaciado interno            
+                  }}
+                  >
+                {row.history}
                 </button>
             </Link>
-           ) }]
-
-const data = [
-    {
-        id: 1,
-        propertyID:"#489",
-        address: "21 st.",
-        tokens: 25,
-        tokenprice: "$50",
-        return: "$45",
-        datepurchase:"12/07/23",
-        dateclaming:"12/08/23",         
-        claim: "CLAIM",
-
+           ) 
     },
     {
-        id: 2,
-        propertyID:"#489",
-        address: "21 st.",
-        tokens: 25,
-        tokenprice: "$50",
-        return: "$45",
-        datepurchase:"05/07/23",
-        dateclaming:"05/08/23",         
-        claim: "CLAIM",
-        
+        name: "Withdraw",
+        selector: row => row.withdrawFunds,
+        cell: row => (
+            <Link to={`http:/localhost:3001/${row.propertyID}`}>
+        <button
+          style={{
+            backgroundColor: "gray", //color de fondo
+            borderRadius: "5px", //borde redondeado
+            color: "white", // color del texto
+            padding: "8px", //espaciado interno            
+          }}
+        >
+          {row.withdrawFunds}
+        </button>
+      </Link>
+        )
     },
-    
 ]
 
-const Properties = ({}) => {
 
-    // ⚠️ DESCOMENTAR ESTO PARA QUE SE MUESTRE LAS TRANSACCIONES QUE SE REALIZARON, LAS PROPIEDDADES. 
-    // const transactionData = transactions.map((transaction) => ({
-    //     id: transaction.Transaction_ID,
-    //     propertyID: `#${transaction.property.ID_Property}`,
-    //     address: transaction.property.address,
-    //     tokens: transaction.Token_quantity,
-    //     tokenprice: `$${transaction.Price}`,
-    //     return: `$${transaction.Return_of_Investment}`,
-    //     datepurchase: transaction.Transaction_Date,
-    //     dateclaming: transaction.Claimable_From,
-    //     claim: transaction.Claim,
-    //   }));
+const Properties = ({transactions, publishedProperties}) => {   
+
+    
+    const dispatch = useDispatch();
+    const claimError = useSelector((state) =>state.property.error)
+    const [error, setError] = useState(claimError);
+
+    const handleClickWithdraw = (event, address, type) => {
+
+        const propertyType = type;
+        const propertyAddress = address;
+
+    event.preventDefault();
+    dispatch(
+        withdrawFunds({propertyAddress, propertyType})
+        .then(()=>{
+        console.log(error)
+        })
+    )
+    }
+
+
+    const properties = publishedProperties.map((property) => ({
+        id: property.ID_Property,
+        propertyID: property.ID_Property,
+        address: property.Feature.Address,
+        type: property.Feature.Type,
+        tokensavailable: property.Financial.Number_of_tokens_available,
+        // tokenssold: publishedProperties,        
+        value: property.Financial.Market_value_of_the_property,
+        propertystatus: property.Feature.Occupancy_Status,
+        history: "History",
+        withdrawFunds: (
+            <button
+                onClick={(event)=>
+                handleClickWithdraw(
+                    event,
+                    property.Feature.Address,
+                    property.Feature,Type
+                )}
+            >
+                Withdraw
+            </button>
+        )
+
+
+      }));
 
     return (
         <div className={css.container}>
         <div className={css.table}>
         <h3>My Properties</h3>
         <DataTable
-            columns={columns}
-            data={data}
-             // ⚠️ DESCOMENTAR ESTO ⬇️  Y COMENTAR 'DATA'⬆️ ARRIBA PARA QUE MUESRE LOS DATOS REALES DE LAS PROPIEDADES EN LAS Q SE INVIRTIÓ
-            //  data={transactionData}
-
-            
-            
+            columns={columns}     
+             data={properties}
         />
+        {error && (
+                <p className={css.error}>
+                  {error === "Claim error"
+                    ? "You cannot claim your earnings yet. You must wait at least 30 days."
+                    : "An error occurred. Please try again later."}
+                </p>
+              )}
         </div>
         </div>
 
