@@ -1,6 +1,7 @@
 import { Link as Scroll } from "react-scroll";
 import { Link } from "react-router-dom";
-import logo from "../../Landing/assets/logo.svg";
+// import logo from "../../Landing/assets/logo.svg";
+import logo  from "../../Landing/assets/LibertumColor.png";
 import css from "./Footer.module.css";
 import pdf from "../../Landing/assets/LBM-whitepaper.pdf";
 import { networks } from "../../Landing/networks";
@@ -11,8 +12,7 @@ const Footer = () => {
       <img src={logo} alt="Libertum" className={ css.image}/>
       <div className={css.text}>
         <p>
-          Libertum is a decentralized finance algorithmic money market protocol
-          that seeks to make DeFi adoption more friendly with real collaterals.
+        Libertum is a decentralized finance algorithmic market protocol that will make DeFi adoption make sense by introducing real collateral.
         </p>
         <i>© 2023 Libertum Protocol</i>
       </div>
@@ -28,7 +28,7 @@ const Footer = () => {
           >
             WHITEPAPER
           </Link>
-          <Link to="/">PRODUCT</Link>
+          {/* <Link to="/">PRODUCT</Link> */}
         
           <a
             href="https://discord.com/invite/cAB2MKRw7b"
@@ -37,6 +37,15 @@ const Footer = () => {
           >
             I WANT TO BE PART
           </a>
+
+          <a href="/marketplace" rel="noreferrer">
+              MARKETPLACE
+          </a>
+
+          <Link to="subscribe" smooth={true} duration={1000} className="menu-a_items">
+              CONTACT
+            </Link>
+
         </div>
         <div className={css.socialmedia}>
           {networks.map(({ net, href }, index) => (
