@@ -1,13 +1,11 @@
 const {
   propertyFactoryAndBankContract,
-  getSigner,
+  owner
 } = require("./contractConfig");
 
 async function withdrawFromCapitalRepayment(propertyAddress, userAddress) {
-  const signer = await getSigner();
-
   return await propertyFactoryAndBankContract
-    .connect(signer)
+    .connect(owner)
     .withdrawFromCapitalRepaymentProperty(propertyAddress, userAddress);
 }
 
