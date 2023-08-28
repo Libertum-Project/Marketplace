@@ -11,6 +11,7 @@ import Header from "../Coin/Header"
 import { Link } from "react-router-dom";
 import coinimage from "./assets/coin.svg"
 import ContactForm from "../Landing/Subscribe/ContactForm";
+import Servicesnew from "./Services/Servicesnew";
 
 export default function Landing() {
 
@@ -125,7 +126,10 @@ export default function Landing() {
         <img src={divider} className="divider" />
       </div>
 
-      <Services />
+      {/* <Services /> */}
+
+      <Servicesnew />
+      
       <div className="divider-container">
         <img src={divider} className="divider" />
       </div>
