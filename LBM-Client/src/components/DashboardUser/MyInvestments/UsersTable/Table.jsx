@@ -1,8 +1,8 @@
 import DataTable from "react-data-table-component";
+import ClaimMonthlyPayment from "../../../../smartContracts/components/ClaimMonthlyPayment";
 import css from "./TableUsers.module.scss";
 import { Link } from "react-router-dom";
-import { claimMonthlyPayment } from "../../../../../redux/features/propertySlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useState } from "react";
 
 const columns = [
@@ -29,27 +29,12 @@ const columns = [
   {
     name: "Claim Earnings",
     selector: (row) => row.claim,
-    cell: (row) => (     
-        <button>
-          {row.claim}
-        </button>
-    ),
+    cell: (row) => <button>{row.claim}</button>,
   },
 ];
 const Investments = ({ investments, transactions }) => {
-  const dispatch = useDispatch();
   const claimError = useSelector((state) => state.property.error);
   const [error, setError] = useState(claimError);
-
-  const handleClaimClick = (event, address, tokens, type) => {
-    event.preventDefault();
-
-    const propertyAddress = address;
-    const quantity = tokens;
-    const propertyType = type;
-
-    dispatch(claimMonthlyPayment({ propertyAddress, quantity, propertyType }));
-  };
 
   const combinedData = investments.map((investment, index) => {
     const currentDate = new Date();
@@ -79,30 +64,15 @@ const Investments = ({ investments, transactions }) => {
       claim: (
         <div className={css.claim}>
           <Link to={`http:/localhost:3001/${investment.ID_Property}`}>
-            <button
-              style={{
-                backgroundColor: "gray",
-                borderRadius: "4px",
-                color: "white",
-                padding: "8px",
-              }}
-              onClick={(event) =>
-                handleClaimClick(
-                  event,
-                  investment.Address,
-                  transactions[index].Token_quantity,
-                  investment.Financial.Investment_type
-                )
-              }
-              disabled={!canClaim || claimError}
-            >
-              Claim
-            </button>
+            <ClaimMonthlyPayment
+              propertyAddress={investment.Address}
+              quantity={transactions[index].Token_quantity}
+              propertyType={investment.Financial.Investment_type}
+            />
           </Link>
           <div>
-          {errorMessage && <p className={css.error}>{errorMessage}</p>}
+            {errorMessage && <p className={css.error}>{errorMessage}</p>}
           </div>
-          
         </div>
       ),
     };
@@ -112,10 +82,7 @@ const Investments = ({ investments, transactions }) => {
     <div className={css.container}>
       <div className={css.table}>
         <h3>My Investments</h3>
-        <DataTable 
-          columns={columns} 
-          data={combinedData}           
-        />
+        <DataTable columns={columns} data={combinedData} />
       </div>
     </div>
   );

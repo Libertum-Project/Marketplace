@@ -1,10 +1,8 @@
+import MintCapitalRepaymentProperty from "../../../smartContracts/components/MintCapitalRepaymentProperty";
+import MintPassiveIncomeProperty from "../../../smartContracts/components/MintPassiveIncomProperty";
 import css from "./BuyProperty.module.css";
 import ProgressBar from "../../CreateProperty/ProgressBar";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  buyToken,
-  fetchCurrentUser,
-} from "../../../../redux/features/userSlice";
+import { useSelector } from "react-redux";
 import backBtn from "../../../assets/back_btn.svg";
 import Icons from "./Icons";
 import { useState } from "react";
@@ -21,10 +19,14 @@ const ConfirmInvestment = ({
   NFTPrice,
   value,
   propertyId,
+  property,
 }) => {
   const [subtotal, setSubtotal] = useState(0); //Estadp para ver el subtotal sin los impuestos
-  const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.user.currentUser);
+  const quantity = formData.tokensData.rangeValue.toString();
+  const userId = currentUser.ID_user.toString();
+  const propertyAddress = property.Address;
+  const propertyType = property.Financial.Investment_type;
 
   // Actualiza el subtotal cuando se recibe el formData
   useEffect(() => {
@@ -38,19 +40,6 @@ const ConfirmInvestment = ({
     calculateSubtotal();
   }, [formData, NFTPrice]);
 
-  const handleBuyTokenBtn = (event) => {
-    event.preventDefault();
-    const rangeValue = formData.tokensData.rangeValue.toString();
-    dispatch(
-      buyToken({
-        userId: currentUser.ID_user.toString(),
-        propertyId: propertyId.toString(),
-        quantity: rangeValue,
-      })
-    );
-    alert('Done')
-  };
-
   return (
     <form className={css.createForm}>
       <div className={css.formHeader}>
@@ -60,14 +49,11 @@ const ConfirmInvestment = ({
         <h2>Financial information</h2>
       </div>
       <ProgressBar step={"3"} />
-
       <h1>
         {address} | {location}
       </h1>
       <Icons />
-
       <div className={css.createForm__inputs}></div>
-
       <div className={css.box}>
         <div>
           <label>
@@ -94,12 +80,10 @@ const ConfirmInvestment = ({
           <span>{formData.paymentMethodData.currency}</span>
         </div>
       </div>
-
       <div className={css.fees}>
         <p>Platform fee $0.00</p>
         <p>Platform fee $0.00</p>
       </div>
-
       <div className={css.inputContainer}>
         <div className={css.subtotal}>
           <h2>
@@ -108,15 +92,23 @@ const ConfirmInvestment = ({
         </div>
       </div>
 
-      <button
-        className={css.nextBtn}
-        onClick={(event) => {
-          handleBuyTokenBtn(event);
-        }}
-        type="submit"
-      >
-        Invest Now!
-      </button>
+      {propertyType === "capitalRepayment" ? (
+        <MintCapitalRepaymentProperty
+          userId={userId}
+          propertyId={propertyId}
+          quantity={quantity}
+          capitalRepaymentPropertyAddress={propertyAddress}
+          totalPrice={subtotal}
+        />
+      ) : (
+        <MintPassiveIncomeProperty
+          userId={userId}
+          propertyId={propertyId}
+          quantity={quantity}
+          passiveIncomePropertyAddress={propertyAddress}
+          totalPrice={subtotal}
+        />
+      )}
     </form>
   );
 };

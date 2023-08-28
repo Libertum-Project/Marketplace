@@ -1,16 +1,14 @@
-const { propertyFactoryAndBankContract, getSigner } = require("./contractConfig");
+const { propertyFactoryAndBankContract, owner } = require("./contractConfig");
 
 async function setActiveCapitalRepayment(propertyAddress) {
-  const signer = await getSigner();
   return await propertyFactoryAndBankContract
-    .connect(signer)
+    .connect(owner)
     .setActiveCapitalRepayment(propertyAddress);
 }
 
 async function setInactiveCapitalRepayment(propertyAddress) {
-  const signer = await getSigner();
   return await propertyFactoryAndBankContract
-    .connect(signer)
+    .connect(owner)
     .setInactiveCapitalRepayment(propertyAddress);
 }
 

@@ -1,9 +1,9 @@
 const {
   propertyFactoryAndBankContract,
-  getSigner,
+  owner,
 } = require("./contractConfig");
 
-const paymentTokenAddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
+const paymentTokenAddress = '0x43A8768b6F9cA89D5436413609150c6FB087a29E';
 
 async function createPassiveIncomeProperty(propertyData, propertyID) {
   try {
@@ -14,10 +14,9 @@ async function createPassiveIncomeProperty(propertyData, propertyID) {
     const pricePerToken = financialData.Token_Price;
     const collateralizedValue = totalSupply * pricePerToken;
     const interestRate = financialData.Rental_yield;
-    const signer = await getSigner();
 
     const transaction = await propertyFactoryAndBankContract
-      .connect(signer)
+      .connect(owner)
       .newPassiveIncomeProperty(
         name,
         symbol,
