@@ -21,6 +21,7 @@ $secondarycolor: var(--LibertumBlue);
     font-size: 35px;
     margin-bottom: 1rem;
     text-transform: uppercase;
+    color: #3a3a3a;
 
     .span1{
       color: $primarycolor;
@@ -51,6 +52,7 @@ $secondarycolor: var(--LibertumBlue);
   gap: 3rem;
   width: fit-content;
   padding: 3rem;
+  color: #3a3a3a;
 
   h2 {
     font-size: 24px;

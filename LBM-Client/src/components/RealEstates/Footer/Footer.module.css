@@ -9,8 +9,8 @@
 }
 
 .image {
-  width: 131px;
-  height: 36px;
+  /* width: 131px; */
+  height: 5rem;
 }
 
 .text {
@@ -30,7 +30,7 @@
   font-size: 12px;
   line-height: 18px;
   color: #222222;
-  opacity: 0.3;
+  opacity: 0.7;
   margin: 0;
 }
 
@@ -96,7 +96,7 @@
 
   .links {
     align-items: flex-end;
-    width: 485px;
+    /* width: 485px; */
     gap: 3rem;
   }
 
