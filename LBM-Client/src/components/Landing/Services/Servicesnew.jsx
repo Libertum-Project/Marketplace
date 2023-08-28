@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Slide } from "react-awesome-reveal";
 import styles from './servicesnew.module.scss';
 import loginImage from './assets/login.svg'
 import marketplaceImage from './assets/marketplace.svg';
@@ -23,29 +24,38 @@ const servicesData = [
 ];
 
 const ServicesNew = () => {
-  const [activeItem, setActiveItem] = useState(0); // Usamos índices en base 0
+  const [activeItem, setActiveItem] = useState(0);
 
   return (
     <div className={styles.section}>
-      <h1>How it works?</h1>
+      <Slide direction={"down"} triggerOnce={false}>
+        <h1>How it works?</h1>
+      </Slide>
       <div className={styles.topBar}>
-        {servicesData.map((service, index) => (
-          <div
-            key={index}
-            className={`${styles.item} ${activeItem === index ? styles.active : ''}`}
-            onClick={() => setActiveItem(index)}
-          >
-            <h2>{`${index + 1 < 10 ? '0' : ''}${index + 1} - ${service.nombre}`}</h2>
-          </div>
-        ))}
+        <Slide direction={"up"} triggerOnce={false}>
+          {servicesData.map((service, index) => (
+            <div
+              key={index}
+              className={`${styles.item} ${activeItem === index ? styles.active : ''}`}
+              onClick={() => setActiveItem(index)}
+            >
+              <h2>{`${index + 1 < 10 ? '0' : ''}${index + 1} - ${service.nombre}`}</h2>
+            </div>
+          ))}
+        </Slide>
       </div>
+
       <div className={styles.content}>
-        <img
-          src={servicesData[activeItem].image}
-          alt={`Imagen ${activeItem + 1}`}
-        />
+        <Slide direction={"left"} triggerOnce={false}>
+          <img
+            src={servicesData[activeItem].image}
+            alt={`Imagen ${activeItem + 1}`}
+          />
+        </Slide>
         <div className={styles.overlay}>
-          <p>{servicesData[activeItem].description}</p>
+          <Slide direction={"right"} triggerOnce={false}>
+            <p>{servicesData[activeItem].description}</p>
+          </Slide>
         </div>
       </div>
     </div>

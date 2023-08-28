@@ -7,15 +7,16 @@
   animation-duration: 1s;
   animation-fill-mode: both;
 
-  h1{
-        font-family: "Montserrat";
-        font-style: normal;
-        font-weight: 800;
-        font-size: 34px;
-        text-transform: uppercase;
-        margin-bottom: 1rem;
-        color: #3a3a3a;
+  h1 {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 800;
+    font-size: 34px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    color: #3a3a3a;
   }
+
   .topBar {
     display: flex;
     justify-content: space-between;
@@ -64,7 +65,7 @@
       padding: 10px;
       border-radius: 5px;
       width: 10rem;
-      opacity:1;
+      opacity: 1;
       transition: opacity 0.3s;
 
       p {
@@ -75,13 +76,13 @@
         opacity: 1;
         transform: translateX(0);
         z-index: 1;
-  
+
         img {
           transform: scale(1.1);
         }
-    }    
+      }
+    }
   }
-}
 }
 
 @keyframes inOpacity {
@@ -95,30 +96,34 @@
 }
 
 @media screen and (max-width: 845px) {
-.section{
-  .topBar {
-    width: 100%;
-    .item {
-      width: fit-content;
-      padding:2px;      
+  .section {
+    .topBar {
+      width: 100%;
+
+      .item {
+        width: fit-content;
+        padding: 2px;
+      }
+    }
+
+    .content {
+      img {
+        width: 20rem;
+      }
+
+      .overlay {
+        position: relative;
+        top: 100%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(0, 0, 0, 0.6);
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        width: 20rem;
+        opacity: 1;
+        transition: opacity 0.3s;
+      }
     }
   }
-  .content {
-    img{
-      width: 20rem;
-    }
-    .overlay {
-      position: relative;
-      top: 100%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: rgba(0, 0, 0, 0.6);
-      color: white;
-      padding: 10px;
-      border-radius: 5px;
-      width: 20rem;
-      opacity:1;
-      transition: opacity 0.3s;
-    } 
-  }
-}}
+}
