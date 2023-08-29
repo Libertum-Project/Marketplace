@@ -265,6 +265,7 @@ const BuyProperty = () => {
           address={property.Feature.Address}
           location={property.Feature.City}
           NFTPrice={property.Financial.Token_Price}
+          PRY={property.Financial.Rental_yield}
         />
       )}
       {currentForm === 2 && (
