@@ -70,7 +70,7 @@ const prevContent = () => {
   return (
     <main className="protocol_items">
       <section className="protocol_section">
-        <Slide direction={"left"} triggerOnce={"true"}>
+        <Slide direction={"left"} triggerOnce={false}>
           <div className="procotol_image">
             <div>
               <div></div>
@@ -78,7 +78,7 @@ const prevContent = () => {
             <img alt="Launch App" src={imagen} />
           </div>
         </Slide>
-        <Slide direction={"right"} triggerOnce={"true"}>
+        <Slide direction={"right"} triggerOnce={false}>
           <div className="protocol_text">
             <h2>
               {title}
