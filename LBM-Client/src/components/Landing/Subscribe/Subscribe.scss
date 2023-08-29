@@ -68,6 +68,10 @@
           padding: 14px 28px;
           border: none;
           color: #ffffff;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
           &:focus {
             border: none;
             outline: none;

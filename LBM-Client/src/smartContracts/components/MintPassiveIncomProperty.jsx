@@ -1,6 +1,7 @@
 import { ethers } from "ethers";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { selectIsConnected } from "../../../redux/features/walletSlice";
 import { buyToken } from "../../../redux/features/userSlice";
 import passiveIncomeABi from "../ABI/PassiveIncomeProperty.json";
 import usdtTokenABI from "../ABI/MockUSDT.json";
@@ -14,6 +15,7 @@ function MintPassiveIncomeProperty({
   totalPrice,
 }) {
   const dispatch = useDispatch();
+  const isConnected = useSelector(selectIsConnected);
   const navigate = useNavigate();
   const usdtTokenAddress = "0x43A8768b6F9cA89D5436413609150c6FB087a29E";
 
@@ -76,11 +78,12 @@ function MintPassiveIncomeProperty({
 
   return (
     <button
-      className={css.mintBtn}
+      className={`${css.mintBtn} ${isConnected ? "" : css.disabledButton}`}
       onClick={(event) => {
         handleBuyTokenBtn(event);
       }}
       type="submit"
+      disabled={!isConnected}
     >
       Invest Now!
     </button>

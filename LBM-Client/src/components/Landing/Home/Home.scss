@@ -5,30 +5,26 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  height: 100vh;
-  justify-content: center;
-  align-content: center;
-   align-items: center;
-
   
-  .home_section {
-    text-align: center;
-    // max-width: 1183px;
-    display: flex;
+  justify-content: center;  
+  align-items: center;
+  
+  
+  .home_section {    
+    display: flex;    
     flex-direction: column;
-    margin: 0 auto;
-    justify-content: center;
-    align-content: center;
-
-    // margin-top: 70px;
-    animation-name: inOpacity;
+    justify-content: center;  
+    align-items: center;
+    height: 88vh;
+    // margin: 0 auto;
     animation-duration: 2s;
     animation-fill-mode: both;
     .home_text {
-     width: 45rem;
-    //  gap: 3rem;
+      color: #3a3a3a;
+      width: 50rem;
     }
     .home_text h1 {
+      
       width: 100%;
       // height: 292px;
       font-size: 3.5rem;
@@ -36,7 +32,9 @@
       line-height: 4.5rem;
       font-family: Montserrat;
       margin-bottom: 1rem;
-      // text-transform: uppercase;
+      margin-top: 1rem;
+      text-align: center;
+
       span {
         &:first-child {
           color: var(--Libertum-color);
@@ -52,15 +50,13 @@
       font-style: normal;
       font-weight: 200;
       font-size: 1.6rem;
-      line-height: 2.3rem;
+      line-height: 2.5rem;
       // width: 570px;
-      // height: 114px;
-      margin-top: 6rem;
+      // height: 114px; 
+      
     }
     .home_links {
-      width: max-content;
-      margin-top: 0px;
-      
+      width: max-content;         
       display: flex;
       gap: 18px;
       align-items: center;
@@ -136,7 +132,8 @@
     background-image: url("./assets/background-responsive.svg");
     height: fit-content;
     .home_section {
-      // margin-bottom: 1rem;
+      height: fit-content;
+      
       .home_text {
         width: 315px;
         h1 {

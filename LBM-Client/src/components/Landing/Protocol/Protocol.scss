@@ -1,16 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
 .protocol_items {
-  margin-top: 6rem;
-  height: 424px;
+  // margin-top: 6rem;
+  height: fit-content;
   position: relative;
   margin-bottom: 10px;
   .protocol_section {
     display: flex;
     gap: 5rem;
     justify-content: center;
-    
+    align-items: center ;    
     max-width: 1100px;
     margin: 0 auto;
     text-align: right;
@@ -19,29 +17,17 @@
     animation-fill-mode: both;
     .procotol_image {
       position: relative;
-      filter: drop-shadow(0px 20px 60px rgba(34, 34, 34, 0.2));
+      // filter: drop-shadow(0px 20px 60px rgba(34, 34, 34, 0.2));
+      animation-name: inOpacity;
+      animation-duration: 1s;
+      animation-fill-mode: both;
       img {
         object-fit: cover;
-        height: 100%;
-        width: 100%;
+        height: 28rem;
+        overflow: visible;
+        
       }
-      div {
-        position: absolute;
-        width: 70px;
-        height: 320px;
-        left: 2%;
-        top: 4%;
-        background-color: #f0b975fb;
 
-        div {
-          position: absolute;
-          background-color: #ffffff;
-          height: 20px;
-          width: 20px;
-          top: 93.75%;
-          left: 71.4%;
-        }
-      }
       &:hover {
         div {
           transform: translate(-100px);
@@ -55,13 +41,17 @@
       }
     }
     .protocol_text {
-      color: #222222;
+      color: #3a3a3a;
+      animation-name: inOpacity;
+      animation-duration: 1s;
+      animation-fill-mode: both;
       h2 {
-        font-family: "Inter";
+        font-family: "Montserrat";
         font-style: normal;
-        font-weight: 700;
+        font-weight: 800;
         font-size: 34px;
         line-height: 130%;
+        text-transform: uppercase;
       }
       .protocol_slide {
         width: 570px;
@@ -72,11 +62,11 @@
         flex-direction: column;
 
         p {
-          font-family: "Raleway";
+          font-family: "Montserrat";
           font-style: normal;
           font-weight: 400;
           font-size: 16px;
-          line-height: 24px;
+          line-height: 28px;
           height: 80px;
         }
         img {
@@ -106,6 +96,7 @@
     }
   }
 }
+
 
 @keyframes inOpacity {
   0% {
@@ -149,12 +140,20 @@
 
 @media screen and (max-width: 880px) {
   .protocol_items {
-    height: 100vh;
+    // height: 100vh;
     margin: 0 auto;
     display: flex;
     .protocol_section {
       flex-direction: column-reverse;
-      justify-content: space-around;
+      justify-content: center
+    }
+    .protocol_slide{
+      p{
+        margin-top: 1rem;
+      }
+      div img{
+        margin-top: 1rem;
+      }
     }
   }
 }
@@ -162,22 +161,18 @@
   .protocol_items {
     margin-top: 6rem;
     .protocol_section {
-      
+
       .procotol_image {
         width: 315px;
-        height: 240px;
-        margin: 0 auto;
-        div {
-          width: 46.91px;
-          height: 213.33px;
-          
-          div {
-            top: 90.6%;
-            left: 57.5%;
-            
-          }
-        }
+        height: 315px;
+        margin: 0 ;
+        justify-content: center;
+        align-items: center;
+        img {         
+          height: 280px;
+        
       }
     }
   }
+}
 }

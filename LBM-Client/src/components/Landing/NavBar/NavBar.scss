@@ -224,7 +224,7 @@
   .nav_items {
     height: 7rem;
     padding: 1rem;
-    transition: background-color 0.3s ease-in-out; 
+    transition: background-color 0.1s ease-in-out; 
   
     &.active {
       background-color: #fff;
@@ -260,8 +260,8 @@
     padding: 1rem;
     z-index: 999;
     margin-top: 3rem;   
-    animation-name: inOpacity;
-    animation-duration: 1s;
-    animation-fill-mode: both;
+    transition: opacity 0.5s ease-in-out, transform 1s ease-in-out;
+    border-bottom: 2px solid #fff;
+    border-radius: 0 0 2rem 2rem; /* top-left, top-right, bottom-right, bottom-left */
 } 
 }

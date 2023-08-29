@@ -2,8 +2,16 @@ import React from "react";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import style from "./SideBar.module.scss";
 import WalletIcon from "../../../public/icons/walletIcon";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setConnected,
+  selectIsConnected,
+} from "../../../redux/features/walletSlice";
 
 function CustomConnectButtom({ container }) {
+  const isConnected = useSelector(selectIsConnected);
+  const dispatch = useDispatch();
+
   return (
     <div className={style.button}>
       <ConnectButton.Custom>
@@ -37,6 +45,7 @@ function CustomConnectButtom({ container }) {
             >
               {(() => {
                 if (!connected) {
+                  dispatch(setConnected(false));
                   return (
                     <div className={style.button}>
                       <button
@@ -57,6 +66,9 @@ function CustomConnectButtom({ container }) {
                     </button>
                   );
                 }
+                if (ready && !isConnected) {
+                  dispatch(setConnected(true));
+                }
 
                 return (
                   <div className={style.ConnectedModal}>
@@ -64,6 +76,7 @@ function CustomConnectButtom({ container }) {
                       onClick={openChainModal}
                       type="button"
                       className={style.chainModal}
+                      disabled
                     >
                       {/* {chain.hasIcon && (
                           <div

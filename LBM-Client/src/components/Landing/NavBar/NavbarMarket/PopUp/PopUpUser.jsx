@@ -43,7 +43,7 @@ function PopUpUser({ setActiveMenu }) {
     "RUB - ₽",
   ];
 
-  const { logout, user, isAuthenticated, loginWithRedirect} = useAuth0();
+  const { logout, user, isAuthenticated, loginWithRedirect } = useAuth0();
   let admin = null;
 
   if (user?.sub === import.meta.env.VITE_ADMIN_DEV1)
@@ -60,7 +60,6 @@ function PopUpUser({ setActiveMenu }) {
   const allUsers = useSelector((state) => state.user.allUsers);
   const currentUser = useSelector((state) => state.user.currentUser);
 
-
   console.log(currentUser);
   console.log(allUsers);
 
@@ -70,17 +69,17 @@ function PopUpUser({ setActiveMenu }) {
       redirectUri: redirectUri,
     });
   };
- useEffect(() => {
-    if (isAuthenticated) {      
-        dispatch(fetchAllUsers());
-        dispatch(
-          fetchCurrentUser({
-            email: user.email,
-            name: user.name,
-          })
-        );     
+  useEffect(() => {
+    if (isAuthenticated) {
+      dispatch(fetchAllUsers());
+      dispatch(
+        fetchCurrentUser({
+          email: user.email,
+          name: user.name,
+        })
+      );
     }
-  }, [ isAuthenticated]);
+  }, [isAuthenticated]);
 
   return (
     <div className={style.container} data-menu>
@@ -90,155 +89,176 @@ function PopUpUser({ setActiveMenu }) {
         </div>
         {screenWidth < 800 ? (
           <div className={style.buttons}>
-           
             {isAuthenticated ? (
-             <div className={style.buttons}>
-            {/* <Link to="/mydashboard" onClick={() => setActiveMenu(false)}> */}
-            <a href="/">Home</a>
-            <a href="/about">About us</a>
-            <a href="/contact">Contacts</a>
-            <div
-              className={
-                active === "language" ? style.dropdownActive : style.dropdown
-              }
-              onClick={() =>
-                setActive(active === "language" ? "null" : "language")
-              }
-            >
-              <a>Language</a>
-              <IoChevronDownOutline />
-            </div>
-            <div
-              className={active === "language" ? style.flexList : style.notList}
-            >
-              {languages.map((p) => (
-                <p>{p}</p>
-              ))}
-            </div>
-            <div
-              className={
-                active === "currency" ? style.dropdownActive : style.dropdown
-              }
-              onClick={() =>
-                setActive(active === "currency" ? "null" : "currency")
-              }
-            >
-              <a>{currency}</a>
-              <IoChevronDownOutline />
-            </div>
-            <div
-              className={active === "currency" ? style.flexList : style.notList}
-            >
-              {currencies.map((p) => (
-                <p onClick={() => dispatch(setCurrency(p))}>{p}</p>
-              ))}
-            </div>
-              <a href="/mydashboard">My dashboard</a>
-            {/* </Link>             */}
-              <a rel="noreferrer" 
-            onClick={() =>
-              logout({
-                logoutParams: {
-                  returnTo: window.location.origin,
-                },
-              })
-            } >LogOut</a>
-           
-           {admin ? (
-              <Link
-                to="./admindashboard"
-                className={style.formBtn}
-                onClick={() => setActiveMenu(false)}
-              >
-                Admin Dashboard
-              </Link>
-            ) : null}
+              <div className={style.buttons}>
+                {/* <Link to="/mydashboard" onClick={() => setActiveMenu(false)}> */}
+                <a href="/">Home</a>
+                <a href="/about">About us</a>
+                <a href="/contact">Contacts</a>
+                <div
+                  className={
+                    active === "language"
+                      ? style.dropdownActive
+                      : style.dropdown
+                  }
+                  onClick={() =>
+                    setActive(active === "language" ? "null" : "language")
+                  }
+                >
+                  <a>Language</a>
+                  <IoChevronDownOutline />
+                </div>
+                <div
+                  className={
+                    active === "language" ? style.flexList : style.notList
+                  }
+                >
+                  {languages.map((p) => (
+                    <p>{p}</p>
+                  ))}
+                </div>
+                <div
+                  className={
+                    active === "currency"
+                      ? style.dropdownActive
+                      : style.dropdown
+                  }
+                  onClick={() =>
+                    setActive(active === "currency" ? "null" : "currency")
+                  }
+                >
+                  <a>{currency}</a>
+                  <IoChevronDownOutline />
+                </div>
+                <div
+                  className={
+                    active === "currency" ? style.flexList : style.notList
+                  }
+                >
+                  {currencies.map((p) => (
+                    <p onClick={() => dispatch(setCurrency(p))}>{p}</p>
+                  ))}
+                </div>
+                <a href="/mydashboard">My dashboard</a>
+                {/* </Link>             */}
+                <a
+                  rel="noreferrer"
+                  onClick={() =>
+                    logout({
+                      logoutParams: {
+                        returnTo: window.location.origin,
+                      },
+                    })
+                  }
+                >
+                  LogOut
+                </a>
 
-            <div className={style.ConnectButtom}>
-              <CustomConnectButtom />
-            </div>
-            </div>
-            ):(
+                {admin ? (
+                  <Link
+                    to="./admindashboard"
+                    className={style.formBtn}
+                    onClick={() => setActiveMenu(false)}
+                  >
+                    Admin Dashboard
+                  </Link>
+                ) : null}
+
+                <div className={style.ConnectButtom}>
+                  <CustomConnectButtom />
+                </div>
+              </div>
+            ) : (
               <div className={style.buttons}>
                 <a href="/">Home</a>
                 <a href="/about">About us</a>
                 <a href="/contact">Contacts</a>
                 <div
                   className={
-                    active === "language" ? style.dropdownActive : style.dropdown
+                    active === "language"
+                      ? style.dropdownActive
+                      : style.dropdown
                   }
                   onClick={() =>
                     setActive(active === "language" ? "null" : "language")
                   }
                 >
-              <a>Language</a>
-              <IoChevronDownOutline />
-                  </div>
-                  <div
-                    className={active === "language" ? style.flexList : style.notList}
-                  >
-                    {languages.map((p) => (
-                      <p>{p}</p>
-                    ))}
-                  </div>
-                  <div
-                    className={
-                      active === "currency" ? style.dropdownActive : style.dropdown
-                    }
-                    onClick={() =>
-                      setActive(active === "currency" ? "null" : "currency")
-                    }
-                  >
-                    <a>{currency}</a>
-                    <IoChevronDownOutline />
-                  </div>
-                  <div
-                    className={active === "currency" ? style.flexList : style.notList}
-                  >
-                    {currencies.map((p) => (
-                      <p onClick={() => dispatch(setCurrency(p))}>{p}</p>
-                    ))}
-                                   
-                    </div>
+                  <a>Language</a>
+                  <IoChevronDownOutline />
+                </div>
+                <div
+                  className={
+                    active === "language" ? style.flexList : style.notList
+                  }
+                >
+                  {languages.map((p) => (
+                    <p>{p}</p>
+                  ))}
+                </div>
+                <div
+                  className={
+                    active === "currency"
+                      ? style.dropdownActive
+                      : style.dropdown
+                  }
+                  onClick={() =>
+                    setActive(active === "currency" ? "null" : "currency")
+                  }
+                >
+                  <a>{currency}</a>
+                  <IoChevronDownOutline />
+                </div>
+                <div
+                  className={
+                    active === "currency" ? style.flexList : style.notList
+                  }
+                >
+                  {currencies.map((p) => (
+                    <p onClick={() => dispatch(setCurrency(p))}>{p}</p>
+                  ))}
+                </div>
 
-                    <button rel="noreferrer" 
-                    className={style.login}
-                    onClick={handleLogin} >LogIn</button>
-                    
-                    </div>
-              
+                <button
+                  rel="noreferrer"
+                  className={style.login}
+                  onClick={handleLogin}
+                >
+                  LogIn
+                </button>
+              </div>
             )}
-
-           
-
           </div>
         ) : (
           <div className={style.buttons}>
             {/* <a>Notifications</a>
             <a>FAQ</a> */}
             {isAuthenticated ? (
-             <div className={style.buttons}>
-            {/* <Link to="/mydashboard" onClick={() => setActiveMenu(false)}> */}
-              <a href="/mydashboard">My dashboard</a>
-            {/* </Link>             */}
-              <a rel="noreferrer" 
-            onClick={() =>
-              logout({
-                logoutParams: {
-                  returnTo: window.location.origin,
-                },
-              })
-            } >LogOut</a>
-           
-            </div>
-            ):(
-              <button rel="noreferrer" 
-              className={style.login}
-              onClick={handleLogin} >LogIn</button>
+              <div className={style.buttons}>
+                {/* <Link to="/mydashboard" onClick={() => setActiveMenu(false)}> */}
+                <a href="/mydashboard">My dashboard</a>
+                {/* </Link>             */}
+                <a
+                  rel="noreferrer"
+                  onClick={() =>
+                    logout({
+                      logoutParams: {
+                        returnTo: window.location.origin,
+                      },
+                    })
+                  }
+                >
+                  LogOut
+                </a>
+              </div>
+            ) : (
+              <button
+                rel="noreferrer"
+                className={style.login}
+                onClick={handleLogin}
+              >
+                LogIn
+              </button>
             )}
-
-           
-
 
             {admin ? (
               <Link

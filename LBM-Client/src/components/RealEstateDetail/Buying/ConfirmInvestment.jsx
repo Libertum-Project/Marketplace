@@ -1,5 +1,6 @@
 import MintCapitalRepaymentProperty from "../../../smartContracts/components/MintCapitalRepaymentProperty";
 import MintPassiveIncomeProperty from "../../../smartContracts/components/MintPassiveIncomProperty";
+import CustomConnectButtom from "../../SideBar/CustomConnectButtom";
 import css from "./BuyProperty.module.css";
 import ProgressBar from "../../CreateProperty/ProgressBar";
 import { useSelector } from "react-redux";
@@ -91,6 +92,7 @@ const ConfirmInvestment = ({
           </h2>
         </div>
       </div>
+      <CustomConnectButtom />
 
       {propertyType === "capitalRepayment" ? (
         <MintCapitalRepaymentProperty

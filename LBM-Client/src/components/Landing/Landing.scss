@@ -13,12 +13,39 @@ $secondarycolor: var(--LibertumBlue);
   // min-height: 100vh;
   padding: 1rem;
 
+
   .timer-content{
-  padding: 3rem;
+  padding: 1rem;
   // border: 1px solid black;
   justify-self: center;
   width: fit-content;
   font-family: montserrat;
+  animation-name: inOpacity;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  
+  p{
+    font-family: montserrat;
+    font-weight: 200;
+    font-size: 25px;
+    margin-bottom: 1rem;
+    color: #3a3a3a;
+    
+    
+    text-align: center;
+
+    span{
+      color: var(--Libertum-color);
+    }
+    .span2{
+      color: var(--LibertumBlue)
+    }
+
+    @media (max-width: 768px){
+      font-size: 1rem;
+    }
+  }
+  
 
     .timer{ 
       display: flex;
@@ -55,6 +82,7 @@ $secondarycolor: var(--LibertumBlue);
 
 .cs_form {
   display: flex;
+  margin-top: 3rem;
   // flex-direction: column;
   justify-content: center;
   // margin: 50px 60px 60px 60px;
@@ -109,6 +137,9 @@ $secondarycolor: var(--LibertumBlue);
 .modal-container {
   position: fixed;
   position: fixed;
+  animation-name: inOpacity;
+  animation-duration: 2s;
+  animation-fill-mode: both;
   top: 50%; 
   left: 50%; 
   transform: translate(-50%, -50%); 
@@ -119,12 +150,25 @@ $secondarycolor: var(--LibertumBlue);
   justify-content: center;
   align-items: center;
   z-index: 999;
+  
+
 
   .modal-content {
-    background-color: #fff;
+    background-color: rgb(222, 234, 239);
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);   
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+    align-items: center;
+    justify-items: center;  
+    // background-image: url(./assets/coin.svg);
+    // background-repeat: no-repeat;
+    // background-size: cover;
+    
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
    
     
     .button1 {
@@ -137,15 +181,30 @@ $secondarycolor: var(--LibertumBlue);
       border-radius: 9999px;    
       cursor: pointer;      
       margin-left: 70%;  
-      margin-top: 3rem;
+      margin-top: 1rem;
       text-align: center;
       justify-content: center;
       align-content: center;   
     }
-  }
-  @media (max-width: 800px){
-  
+
+    @media (max-width: 768px){
+      min-height: 100%;
     }
+  }
+  .modal-section {
+    max-width: 42rem;
+  }
+  
+}
+
+.coin{
+  
+}
+
+.second-section{
+  animation-name: inOpacity;
+  animation-duration: 2s;
+  animation-fill-mode: both;
 }
 
 .containercenter{
