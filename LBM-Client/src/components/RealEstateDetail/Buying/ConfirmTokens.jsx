@@ -10,6 +10,7 @@ const ConfirmTokens = ({ handleSubmit, onNext,
   location,  
   AvailablesNFT,  
   NFTPrice, 
+  PRY
 
 }) => {
 
@@ -59,8 +60,9 @@ const ConfirmTokens = ({ handleSubmit, onNext,
             />
             <p>
               <span> <b>{rangeValue} </b></span> NFT at <b>$
-              {NFTPrice}</b> per NFT
+              {NFTPrice}</b> per Token
             </p>
+            <p> <b>Rental Yield:</b> {PRY} %</p>
           </div>
         </div>
 
