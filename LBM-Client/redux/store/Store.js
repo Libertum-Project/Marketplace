@@ -6,11 +6,13 @@ import reducerAll from "../reducer/index";
 import storage from "redux-persist/lib/storage";
 import propertyReducer from '../features/propertySlice';
 import userReducer from "../features/userSlice";
+import walletReducer from "../features/walletSlice";
 
 const reducers = combineReducers({
   reducerCompleto: reducerAll,
   property: propertyReducer,
   user: userReducer,
+  wallet: walletReducer,
 });
 
 const persistConfig = {

@@ -1,6 +1,7 @@
 import { ethers } from "ethers";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { selectIsConnected } from "../../../redux/features/walletSlice";
 import { buyToken } from "../../../redux/features/userSlice";
 import capitalRepaymentABI from "../ABI/CapitalRepaymentProperty.json";
 import usdtTokenABI from "../ABI/MockUSDT.json";
@@ -11,9 +12,10 @@ function MintCapitalRepaymentProperty({
   userId,
   propertyId,
   quantity,
-  totalPrice
+  totalPrice,
 }) {
   const dispatch = useDispatch();
+  const isConnected = useSelector(selectIsConnected);
   const navigate = useNavigate();
   const usdtTokenAddress = "0x43A8768b6F9cA89D5436413609150c6FB087a29E";
 
@@ -38,8 +40,7 @@ function MintCapitalRepaymentProperty({
         signer
       );
 
-      const tokenPrice =
-        await capitalRepaymentPropertyContract.pricePerToken();
+      const tokenPrice = await capitalRepaymentPropertyContract.pricePerToken();
       const price = BigInt(quantity) * BigInt(tokenPrice) * BigInt(10 ** 6);
 
       const faucetTransaction = await usdtTokenContract
@@ -77,11 +78,12 @@ function MintCapitalRepaymentProperty({
 
   return (
     <button
-      className={css.mintBtn}
+      className={`${css.mintBtn} ${isConnected ? "" : css.disabledButton}`}
       onClick={(event) => {
         handleBuyTokenBtn(event);
       }}
       type="submit"
+      disabled={!isConnected}
     >
       Invest Now!
     </button>
