@@ -19,7 +19,7 @@ import {
 import { configureChains, createClient, WagmiConfig } from "wagmi";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
-import { mainnet, polygon, optimism, arbitrum } from "wagmi/chains";
+import { mainnet, polygon, optimism, arbitrum, polygonMumbai } from "wagmi/chains";
 import {
   AstarNetworkChain,
   avalancheChain,
@@ -39,6 +39,7 @@ import {
 
 const { chains, provider } = configureChains(
   [
+    polygonMumbai,
     BinanceSmartChain,
     BinanceTestNet,
     mainnet,
@@ -89,7 +90,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <WagmiConfig client={wagmiClient}>
           <RainbowKitProvider
             chains={chains}
-            initialChain={BinanceSmartChain}
+            initialChain={polygonMumbai}
             theme={lightTheme({
               accentColor: "#F4911A",
               accentColorForeground: "white",

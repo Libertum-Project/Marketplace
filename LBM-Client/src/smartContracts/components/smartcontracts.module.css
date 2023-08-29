@@ -11,3 +11,8 @@
   background-color: var(--primary) !important;
   text-transform: uppercase;
 }
+
+.disabledButton {
+  cursor: not-allowed !important;
+  opacity: 0.7;
+}
