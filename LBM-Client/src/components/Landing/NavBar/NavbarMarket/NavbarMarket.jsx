@@ -181,11 +181,12 @@ function NavbarMarket() {
                     </div>
                   )}
                 </div>
-                {openAccountModal && (
+                {/* {openAccountModal && (
                   <div onClick={openAccountModal} className={style.account}>
                     <IoPerson />
+                    <p>Wallet</p>
                   </div>
-                )}
+                )} */}
                 {activeMenu ? (
                   <PopUpUser data-menu setActiveMenu={setActiveMenu} />
                 ) : null}
@@ -221,11 +222,11 @@ function NavbarMarket() {
             <a href="/">
             <img src="./LibertumColor.png" alt="Libertum Logo" width="80px" />
             </a>
-            {openAccountModal && (
+            {/* {openAccountModal && (
               <div onClick={openAccountModal} className={style.accountIcon}>
                 <IoPerson />
               </div>
-            )}
+            )} */}
           </div>
           {user ? (
             <div className={style["notification-badge"]}>

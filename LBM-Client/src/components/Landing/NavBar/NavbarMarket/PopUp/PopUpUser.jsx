@@ -4,6 +4,7 @@ import style from "./PopUpUser.module.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { setCurrency } from "../../../../../../redux/reducer";
 import { IoChevronDownOutline } from "react-icons/io5";
+import { useAccountModal } from "@rainbow-me/rainbowkit";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 import {
@@ -12,6 +13,8 @@ import {
 } from "../../../../../../redux/features/userSlice";
 
 function PopUpUser({ setActiveMenu }) {
+  const { openAccountModal } = useAccountModal();
+
   const screenWidth = window.innerWidth || document.body.clientWidth;
   const { currency, isAdmin } = useSelector((state) => state.reducerCompleto);
   const [active, setActive] = useState("null");
@@ -154,6 +157,8 @@ function PopUpUser({ setActiveMenu }) {
                   LogOut
                 </a>
 
+
+               
                 {admin ? (
                   <Link
                     to="./admindashboard"
@@ -249,6 +254,7 @@ function PopUpUser({ setActiveMenu }) {
                 >
                   LogOut
                 </a>
+              
               </div>
             ) : (
               <button
