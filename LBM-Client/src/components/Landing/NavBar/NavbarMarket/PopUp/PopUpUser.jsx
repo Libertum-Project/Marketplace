@@ -278,6 +278,7 @@ function PopUpUser({ setActiveMenu }) {
             {isAdmin ? <a href="/admin">Admin menu</a> : null}
           </div>
         )}
+        
       </div>
     </div>
   );
