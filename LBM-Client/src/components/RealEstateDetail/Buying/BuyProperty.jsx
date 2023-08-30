@@ -268,7 +268,7 @@ const BuyProperty = () => {
           PRY={property.Financial.Rental_yield}
         />
       )}
-      {currentForm === 2 && (
+      {/* {currentForm === 2 && (
         <PaymentMethod
           handleSubmit={handleSubmit}
           onBack={handleBack}
@@ -277,8 +277,8 @@ const BuyProperty = () => {
           address={property.Feature.Address}
           location={property.Feature.City}
         />
-      )}
-      {currentForm === 3 && (
+      )} */}
+      {currentForm === 2 && (
         <ConfirmInvestment
           handleSubmit={handleSubmit}
           onBack={handleBack}
