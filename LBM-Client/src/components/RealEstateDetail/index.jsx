@@ -8,6 +8,10 @@ import Aboutproperty from "./Aboutproperty";
 import Buy from "./Buy";
 import Loading from "../Loading/Loading";
 import { useEffect, useState } from "react";
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
 
 const Index = () => {
   const navigate = useNavigate();
@@ -187,6 +191,26 @@ console.log("proerty" + property.Feature.Address)
   }, []);
 
 
+  //--------------------   CARROUSEL  -------------------
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const openModal = (index) => {
+    setCurrentImageIndex(index);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const settings = {
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    initialSlide: currentImageIndex,
+  };
 
 
   return !isLoading ? (
@@ -225,15 +249,38 @@ console.log("proerty" + property.Feature.Address)
         </div>
       </div> */}
 
-      <section className={css.mosaic}>
-        <img src={property.Feature.Link_Image[0]} alt="Lalaland" />
+<section className={css.mosaic}>
+        <img
+          src={property.Feature.Link_Image[0]}
+          alt="Lalaland"
+          onClick={() => openModal(0)}
+        />
         <div className={css.otherImages}>
-          <img src={property.Feature.Link_Image[1]} alt="Land" />
-          <img src={property.Feature.Link_Image[2]} alt="Land" />
-          <img src={property.Feature.Link_Image[3]} alt="Land" />
-          <img src={property.Feature.Link_Image[4]} alt="Land" />
+          {property.Feature.Link_Image.slice(1).map((image, index) => (
+            <img
+              key={index}
+              src={image}
+              alt={`Image ${index}`}
+              onClick={() => openModal(index + 1)}
+            />
+          ))}
         </div>
       </section>
+
+      {isModalOpen && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={closeModal}>
+              &times;
+            </span>
+            <img
+              src={property.Feature.Link_Image[currentImageIndex]}
+              alt={`Image ${currentImageIndex}`}
+              className="modal-image"
+            />
+          </div>
+        </div>
+      )}
 
       
 

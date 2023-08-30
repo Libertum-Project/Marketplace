@@ -84,11 +84,14 @@ export default function NavBar() {
               Contact
             </Link>
           </li>
+          <Link to="/marketplace">
           <li className="menu-li_items">
-            <a href="/marketplace" rel="noreferrer" className="menu-a_items">
+            <p className="menu-a_items">
               Marketplace
-            </a>
+            </p>
           </li>
+          </Link>
+
           <li className="menu-li_items">
           {isAuthenticated ? (
             <a rel="noreferrer" className="sign-in"  

@@ -63,7 +63,7 @@ const Index = (props) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    // Puedes agregar más opciones aquí según tus necesidades
+   
   };
 
 
