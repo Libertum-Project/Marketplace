@@ -1,5 +1,5 @@
 import css from "./BuyProperty.module.css";
-import ProgressBar from "../../CreateProperty/ProgressBar";
+import ProgressBar from "./ProgressBar";
 import Icons from "./Icons";
 import { useState } from "react";
 
