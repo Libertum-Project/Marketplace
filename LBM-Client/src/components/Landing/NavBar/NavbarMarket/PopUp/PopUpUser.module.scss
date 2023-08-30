@@ -26,14 +26,14 @@ margin-top: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  // width: 231px;
+  width: 231px;
   position: fixed;
   height: fit-content;
   background: #ffffff;
   box-shadow: 0px 8px 16px -8px rgba(15, 15, 15, 0.4);
   border-radius: 12px;
-  // top: 5em;
-  // gap: 1rem;
+  top: 5em;
+  gap: 1rem;
 }
 
 .flexContainer {
@@ -82,10 +82,10 @@ margin-top: 1rem;
 // }
 
 // @media screen and (min-width: 800px) {
-//   .flexContainer {
-//     justify-content: space-evenly;
-//     height: 0rem;
-//   }
+// //   .flexContainer {
+// //     justify-content: space-evenly;
+// //     height: 0rem;
+// //   }
 //   .buttons {
 //     justify-content: space-around;
 //     height: 10rem;   
@@ -107,7 +107,7 @@ margin-top: 1rem;
   }
   .buttons {
     position: absolute;
-    // top: 3em;
+    top: 3em;
     margin-top: 2rem;
     min-height: 45rem;
     gap: 3em;
