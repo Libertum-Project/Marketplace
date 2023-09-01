@@ -8,13 +8,20 @@
 
 .card{
   width: calc(33.33% - 20px); /* Ancho de cada columna con margen */
+  // max-width: 116rem;
+  height: 18rem;
   margin: 10px; /* Espacio entre las columnas y las tarjetas */
-  padding: 20px;
+  padding:4rem;
   border: 1px solid white;
   background-color: white;
   border-radius: 3rem;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
   
   .icon{
     width: 3rem;
@@ -24,10 +31,14 @@
   .title{
   font-size: 1.2rem;
   font-weight: 600;
+  line-height: 1.2rem;
+  color: rgb(77, 76, 76);
+  margin-top: 1rem;
   }
-  // .description{
-
-  // }
+  .description{
+  line-height: 1.2rem;
+  color:rgba(0, 0, 0, 0.456);
+  }
 
 }
 .card:hover {
