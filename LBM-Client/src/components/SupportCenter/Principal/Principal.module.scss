@@ -1,0 +1,36 @@
+.container{
+  width: 100%; 
+  justify-content: center; 
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+}
+
+.card{
+  width: calc(33.33% - 20px); /* Ancho de cada columna con margen */
+  margin: 10px; /* Espacio entre las columnas y las tarjetas */
+  padding: 20px;
+  border: 1px solid white;
+  background-color: white;
+  border-radius: 3rem;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  
+  .icon{
+    width: 3rem;
+    margin: auto;
+    height: 3rem;
+  }
+  .title{
+  font-size: 1.2rem;
+  font-weight: 600;
+  }
+  // .description{
+
+  // }
+
+}
+.card:hover {
+  transform: translateY(-4px);
+}
+

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Autosuggest from 'react-autosuggest';
 import styles from './SearchBar.module.scss';
-import Cards from '../Cards/cards.json'
+import Cards from '../Cards/cards.json';
+import { Link } from 'react-router-dom';
 
 
 
@@ -55,7 +56,7 @@ const SearchBar = () => {
 
   //  Autosuggest configuration
   const inputProps = {
-    placeholder: '🔍 Search',
+    placeholder: 'How to start earning?',
     value: searchTerm,
     onChange: onChange,
     style: {
@@ -91,7 +92,8 @@ const SearchBar = () => {
   };
 
   return (
-    <div className={styles.searchContainer}>
+    <div className={styles.all}>
+      <div className={styles.searchContainer}>
       <div className={styles.input}> 
            <Autosuggest 
           suggestions={suggestions}
@@ -103,8 +105,35 @@ const SearchBar = () => {
         /> 
       </div>
       <div>
-        <button className={styles.button} onClick={handleSearch}>Search</button>
+        <button className={styles.button} onClick={handleSearch}>🔍</button>
       </div>
+      </div>     
+
+      {/* <div className={styles.popular}>
+        <h3>POPULAR:</h3>        
+        <ul>
+          <li>
+            <Link to="/detail/6">
+            <p>What is hosting?</p>
+            </Link>   
+          </li>
+
+          <li>
+            <Link to="/detail/7">
+            <p>Why is my website slow?</p>
+            </Link>
+          </li>
+
+          <li>
+            <Link to="/cards">
+            <p>Show all</p>
+            </Link>
+          </li>
+        </ul>        
+
+      </div> */}
+
+
       <div className={styles.container}>
           {filteredCards.length > 0 ? <FilteredCards /> : null }
      

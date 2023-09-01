@@ -3,10 +3,11 @@ import styles from "./DetailSupport.module.scss";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import questionsData from "../Cards/cards.json"; // import Card.JSON with questions & answ.
-import ThumbUp from '../../assets/ThumbUp.png';
-import ThumbDown from '../../assets/ThumbDown.png';
+import ThumbUp from '../../../assets/ThumbUp.png';
+import ThumbDown from '../../../assets/ThumbDown.png';
 import {Link} from 'react-router-dom';
 import SearchBar from '../SearchBar/SearchBar'
+import SupportCenter from "../SupportCenter";
 
 
 export default function DetailSupport() {
@@ -57,19 +58,7 @@ export default function DetailSupport() {
   return (
     <div className={styles.detailContainer}>
       <div>
-        <h1 className={styles.h1}>Support Center</h1>
-        <span>
-          <h3 className={styles.h2}>
-            Browse through our frequently asked questions, tutorials, and other self-help resources to find the answers you need.
-          </h3>
-        </span>
-        <SearchBar></SearchBar>
-       <div className={styles.divPopular}>
-        <h2 className={styles.popular}>POPULAR:</h2>
-        <Link to = "/detail/6" className={styles.question1}><p>What is hosting?</p></Link>
-        <Link to ="/detail/7" className={styles.question2}><p>Why my website is slow?</p></Link>
-        <Link to="/cards" className={styles.question2}><p>Show all</p></Link>
-        </div>
+        <SupportCenter />
 
         <div>
           <div className={styles.divRectangle}>

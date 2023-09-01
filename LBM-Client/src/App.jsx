@@ -38,8 +38,8 @@ import ChatBot from "./components/ChatBot/ChatBot";
 import Recommendations from "./components/ChatBot/Recommendations";
 import { useMediaQuery } from "react-responsive";
 import SupportCenter from "./components/SupportCenter/SupportCenter";
-import DetailSupport from "./components/DetailSupport/DetailSupport";
-import Cards from "../src/components/Cards/Cards";
+import DetailSupport from "./components/SupportCenter/DetailSupport/DetailSupport";
+import Cards from "./components/SupportCenter/Cards/Cards";
 // import BuyProperty from "../components/RealEstateDetail/BuyProperty";
 import BuyProperty from "./components/RealEstateDetail/Buying/BuyProperty"
 import IDO from "./components/IDO/IDO";
@@ -52,6 +52,7 @@ import Properties from "./components/AdminDashboard/Properties/Properties";
 import DashboardUser from "./components/DashboardUser/DashboardUser";
 import CoinPage from "./components/Coin/Coin";
 import SignIn from "./components/SignIn/SignIn";
+import Faq from "./components/Faq/Faq";
 
 
 function App() {
@@ -266,8 +267,14 @@ function App() {
           <Route path={"/create"} element={<CreateProperty />} />
 
           <Route path="/support" element={<SupportCenter />} />
+          {/* <Route 
+          path="/support"
+          element={Faq}
+          /> */}
+
           <Route path="/detail/:id" element={<DetailSupport />} />
           <Route path="/cards" element={<Cards />} />
+
           {/* <Route
             path="/realestate"
             element={
