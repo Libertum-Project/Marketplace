@@ -48,7 +48,8 @@ function NavbarMarket() {
     if (!userModal) setUserModal(true);
   };
 
-  useEffect(() => {
+  useEffect(() => {   
+  
     document.addEventListener("click", (e) => {
       const isDropdownButton = e.target.matches("[data-dropdown-button]");
       const isMenuButton = e.target.matches("[data-dropdown-menu]");
@@ -77,10 +78,29 @@ function NavbarMarket() {
       }
     });
   }, []);
+
+  const [headerType, setHeaderType] = useState('default');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setHeaderType('alternative');
+      } else {
+        setHeaderType('default');
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <div>
       {screenWidth > 600 ? (
-        <div className={style.container}>
+        <div className={style.container} style={headerType === 'alternative' ? { background: 'rgba(255, 255, 255, 0.483)', backdropFilter: 'blur(3px)' } : {}}>
           <div className={style.flexContainer}>
             {/* <a href="/" className={style.icon}>
               <img src="../icons/Logo.svg"></img>
@@ -196,7 +216,7 @@ function NavbarMarket() {
           {active ? <PopUpMarket setActive={setActive} data-dropdown /> : null}
         </div>
       ) : (
-        <div className={style.container}>
+        <div className={style.container} >
           <div
             className={
               openAccountModal ? style.flexContainer : style.flexContainer2

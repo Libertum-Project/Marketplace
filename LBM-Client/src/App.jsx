@@ -52,7 +52,7 @@ import Properties from "./components/AdminDashboard/Properties/Properties";
 import DashboardUser from "./components/DashboardUser/DashboardUser";
 import CoinPage from "./components/Coin/Coin";
 import SignIn from "./components/SignIn/SignIn";
-import Faq from "./components/Faq/Faq";
+
 
 
 function App() {
