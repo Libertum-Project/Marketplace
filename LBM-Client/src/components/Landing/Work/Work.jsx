@@ -1,0 +1,2 @@
+import './Work.module.scss'; 
+

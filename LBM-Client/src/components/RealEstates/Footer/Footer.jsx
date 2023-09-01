@@ -31,7 +31,7 @@ const Footer = () => {
           {/* <Link to="/">PRODUCT</Link> */}
         
           <a
-            href="https://discord.com/invite/cAB2MKRw7b"
+            href="https://www.linkedin.com/company/libertum1"
             target="_blank"
             rel="noreferrer"
           >
