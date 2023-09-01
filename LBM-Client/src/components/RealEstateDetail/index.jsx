@@ -192,68 +192,44 @@ console.log("proerty" + property.Feature.Address)
 
 
   //--------------------   CARROUSEL  -------------------
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const openModal = (index) => {
+  const openModal = (index, event) => {
     setCurrentImageIndex(index);
-    setIsModalOpen(true);
+    setModalOpen(true);    
   };
 
   const closeModal = () => {
-    setIsModalOpen(false);
+    setModalOpen(false);
   };
 
   const settings = {
+    // Configura las opciones de tu carrusel aquí según tus preferencias
+    dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    initialSlide: currentImageIndex,
   };
 
 
   return !isLoading ? (
     <div className={css.details}>
-   
-
-
       <header className={css.header}>
         <h2>{property.Feature.Address}</h2>
         <div className={css.headerText}>
           <p>{property.Feature.City}</p>
-          {/* <div className={css.headerBtns}>
-            <img src={sharePC} alt="share" />
-            <img src={save} alt="save" />
-          </div> */}
         </div>
-        {/* <img src={avatar} alt="Person" className={css.avatar} /> */}
       </header>
-      
-      <img src={property.Feature.Link_Image[0]} alt="Land" className={css.detailsImage} />
-      {/* <div className={css.navMobile}>
-        <img
-          src={backIcon}
-          alt="back icon"
-          onClick={() => navigate("/marketplace")}
-        />
-        <div className={css.navMobileItems}>
-          <div>
-            <img src={shareIcon} alt="Share" />
-            <p>Share</p>
-          </div>
-          <div>
-            <img src={heartMobile} alt="Heart" />
-            <p>Like</p>
-          </div>
-        </div>
-      </div> */}
 
-<section className={css.mosaic}>
+      <img src={property.Feature.Link_Image[0]} alt="Land" className={css.detailsImage} onClick={(event) => openModal(0, event)}/>
+
+      <section className={css.mosaic}>
         <img
           src={property.Feature.Link_Image[0]}
           alt="Lalaland"
-          onClick={() => openModal(0)}
+          onClick={(event) => openModal(0, event)}
         />
         <div className={css.otherImages}>
           {property.Feature.Link_Image.slice(1).map((image, index) => (
@@ -261,26 +237,30 @@ console.log("proerty" + property.Feature.Address)
               key={index}
               src={image}
               alt={`Image ${index}`}
-              onClick={() => openModal(index + 1)}
+              onClick={() => openModal(index)}
             />
           ))}
         </div>
       </section>
 
-      {isModalOpen && (
-        <div className="modal">
-          <div className="modal-content">
-            <span className="close" onClick={closeModal}>
-              &times;
-            </span>
-            <img
-              src={property.Feature.Link_Image[currentImageIndex]}
-              alt={`Image ${currentImageIndex}`}
-              className="modal-image"
-            />
+      {modalOpen && (
+          <div className={css.modal}>
+            <div className={css.modalContent}>
+
+              <Slider {...settings} initialSlide={currentImageIndex}>
+                {property.Feature.Link_Image.map((image, index) => (
+                  <div key={index} className={css.slideContainer}>
+                    <span className={css.close} onClick={closeModal}>
+                    &times;
+                    </span>
+                    <img src={image} alt={`Image ${index}`} />
+                  </div>
+                ))}
+              </Slider>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+ 
 
       
 
