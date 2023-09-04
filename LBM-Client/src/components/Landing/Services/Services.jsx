@@ -38,7 +38,7 @@ const Services = () => {
 
   return (
     <div className={styles.section}>
-      <Slide direction={"down"} triggerOnce={false}>
+      <Slide direction={"down"} triggerOnce={true}>
         <h1>How it works?</h1>
       </Slide>
       <div className={styles.topBar}>

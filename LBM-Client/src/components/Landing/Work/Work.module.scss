@@ -1,0 +1,76 @@
+.container{
+  width: 100%;
+padding: 2rem;
+  color: #3a3a3a;
+  font-family: "Montserrat";
+
+  h2{    
+    font-style: normal;
+    font-weight: 800;
+    font-size: 34px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;  
+  }
+
+  .section{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    text-align: left;
+
+    .sidebox{
+      // position: absolute;
+      // top: 50%;
+      // left: -10%;
+      // transform: translate(-50%, -50%);
+      background-color: rgba(231, 229, 229, 0.6);
+      color: rgb(74, 73, 73);
+      padding: 2rem;
+      border-radius: 5px;
+      width: 20rem;
+      height: fit-content; 
+      line-height: 1.5rem;  
+      
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    h3{
+      font-family: montserrat;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+    
+    p{
+      line-height: 1.4rem;
+    }
+
+    .image{
+      box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.1);
+      width: 24%;
+      border-radius: 5px;
+    }
+
+    .icon{
+      align-self: flex-start;
+    }
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .container
+  .section{
+    display: flex;
+    flex-direction: column;
+  }
+  .image{
+    display: none;
+  }
+}

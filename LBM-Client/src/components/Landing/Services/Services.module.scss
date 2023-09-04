@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 2rem;
   animation-name: inOpacity;
   animation-duration: 1s;
   animation-fill-mode: both;
@@ -152,6 +152,10 @@
   .section {
     .topBar {
       width: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      gap: 1rem;
 
       .item {
         width: fit-content;
