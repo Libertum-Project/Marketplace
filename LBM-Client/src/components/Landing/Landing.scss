@@ -2,8 +2,9 @@ $primarycolor: var(--Libertum-color);
 $secondarycolor: var(--LibertumBlue);
 
 .divider-container {
-  display: flex;
-  justify-content: center;
+  display: none;
+  // display: flex;
+  // justify-content: center;
 }
 
 .timer-container{
