@@ -64,3 +64,13 @@ padding: 2rem;
   }
 }
 
+@media screen and (max-width: 780px) {
+  .container
+  .section{
+    display: flex;
+    flex-direction: column;
+  }
+  .image{
+    display: none;
+  }
+}

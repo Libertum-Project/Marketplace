@@ -28,9 +28,10 @@ $secondarycolor: var(--LibertumBlue);
   p{
     font-family: montserrat;
     font-weight: 200;
-    font-size: 25px;
+    font-size: 1.2rem;
     margin-bottom: 1rem;
     color: #3a3a3a;
+    line-height: 1.5rem;
     
     
     text-align: center;
@@ -195,10 +196,6 @@ $secondarycolor: var(--LibertumBlue);
   .modal-section {
     max-width: 42rem;
   }
-  
-}
-
-.coin{
   
 }
 
