@@ -10,7 +10,7 @@ const MyInvestments = ({ name, id, transactions, investments }) => {
         
         {investments.length === 0 ? (
             <div className={css.alertNoInvestment}>
-            <p>You don't have any investments yet. Enter our marketplace and start investing! </p>            
+            <p>You don't have any investments yet. Enter our marketplace and start investing!</p>            
             <Link to="/marketplace">
             <button> Marketplace! </button>
             </Link>             
