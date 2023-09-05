@@ -7,13 +7,10 @@ const Card = (
   price,
   address,
   location,
-  onDelete
+  
 }
 ) => {
 
-  const handleDeleteClick = () => {
-   onDelete(id);
-  };
 
   return(
     <div className={css.cardcontainer}>

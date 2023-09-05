@@ -1,15 +1,10 @@
 import css from "./Userproperties.module.scss";
 import Card from "./Card";
-import { useState } from "react";
+
 
 const SavedProperties = ({ saved }) => {
-   const [properties, setProperties] = useState(saved);
 
-  const handlePropertyDelete = (propertyId) => {
-    // Filtra las propiedades para eliminar la que coincide con el ID proporcionado
-    const updatedProperties = properties.filter((property) => property.id !== propertyId);
-    setProperties(updatedProperties);
-  };
+
 
   return (
     <div className={css.header}>
@@ -41,7 +36,7 @@ const SavedProperties = ({ saved }) => {
       AvailablesNFT={property.Financial.Percent_of_property_tokenized}
       capital={property.Financial.Market_value_of_the_property}
       littledescription={property.Feature.More} 
-      onDelete={handlePropertyDelete}
+      
                 />
                 );
               })}
