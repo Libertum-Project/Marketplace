@@ -1,8 +1,14 @@
 import css from "./BuyProperty.module.css";
 import ProgressBar from "./ProgressBar";
 import Icons from "./Icons";
+import check from "./assets/check.svg"
 import { useState } from "react";
-
+import { useSelector } from "react-redux";
+import CustomConnectButtom from "../../SideBar/CustomConnectButtom";
+import {
+  setConnected,
+  selectIsConnected,
+} from "../../../../redux/features/walletSlice";
 
 const ConfirmTokens = ({ handleSubmit, onNext, 
 
@@ -33,9 +39,9 @@ const ConfirmTokens = ({ handleSubmit, onNext,
       onNext()
     };
 
-    
-    
-    
+    const isConnected = useSelector(selectIsConnected);
+    console.log("connected" + isConnected)
+  
     return (
     <form className={css.createForm} onSubmit={handleFormSubmit}>
       <h2>Confirm Tokens and Property</h2>
@@ -47,6 +53,22 @@ const ConfirmTokens = ({ handleSubmit, onNext,
       <Icons /> 
 
       <div className={css.createForm__inputs}>
+
+      <div className={css.inputContainer}>        
+        { (!isConnected) ?
+         <span>                    
+         <p>Please connect your wallet:</p>        
+            <CustomConnectButtom />
+        </span>
+        :
+        <div> 
+          <span>
+            Your Metamask wallet is already connected.
+            <img src={check} alt="" />
+          </span>        
+        </div>
+        }      
+      </div>
 
         <div className={css.inputContainer}>
           <div>

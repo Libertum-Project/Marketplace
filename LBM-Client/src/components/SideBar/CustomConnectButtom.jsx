@@ -83,7 +83,7 @@ function CustomConnectButtom({ container }) {
                       className={style.chainModal}                      
                     >
                       {/* {chain.name} */}
-                      My Wallet
+                      Wallet
                     </button>
                     {/* 
                     <button
