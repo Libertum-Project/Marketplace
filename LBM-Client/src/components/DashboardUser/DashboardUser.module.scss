@@ -11,7 +11,7 @@ $--bc: var(--Libertum-color);
     padding-left: 2rem;
     padding-right: 2rem;
     width: 100%;  
-    background-color: #faf7f7;
+    background-image: url('../../assets/background.jpg');
     
   
     .sidebar {
@@ -244,10 +244,7 @@ $--bc: var(--Libertum-color);
     }
   
     .content {
-      flex: 1;
-      
+      flex: 1;      
     }
-
-
   }
   

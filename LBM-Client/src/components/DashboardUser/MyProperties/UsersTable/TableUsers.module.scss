@@ -1,16 +1,13 @@
 .container{
     display: flex;
-    width: 65rem;
-    // height: 17rem;
+    width: 100%;
     justify-content: space-between;
     align-items: center;
     flex-shrink: 0;
-    // padding: 4rem;
-    // gap: 3rem;
     padding-left: 1rem;
     padding-right: 1rem;
     margin-bottom: 3rem;
-    margin-top: 3rem;
+    margin-top: 1rem;
 
     @media (max-width: 720px){
     
@@ -50,7 +47,7 @@
     text-align: left;
     padding-left: 1rem;
     padding-top: 1.5rem;
-    color: var(--0-c-0507, #0C0507);
+    color: var(--0-c-0507, #3a3939);
     font-family: Montserrat;    
     font-size: 1.125rem;
     font-style: normal;
