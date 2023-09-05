@@ -208,7 +208,13 @@
     }
   }
 
-
+.inputContainer span{
+  font-size: 1.2rem;
+  width: 100%;  
+  display: flex;
+  gap: .3rem;
+  justify-content: center;
+}
 
   .subtotal{
     color: #000;    
