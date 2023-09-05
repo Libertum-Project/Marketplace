@@ -1,0 +1,72 @@
+.errorBoxContainer {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  background: rgba(247, 147, 26, 0.4);
+}
+
+.errorBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+  background-color: red;
+  border-radius: 1.59856rem;
+  background-color: #fff;
+}
+
+.header {
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  gap: .5rem;
+}
+
+.header img {
+  width: 3.94881rem;
+  height: 3.41031rem;
+  flex-shrink: 0;
+}
+
+.header h2 {
+  color: rgba(242, 30, 30, 0.93);
+  text-align: center;
+  font-family: Roboto;
+  font-size: 1.39513rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.errorBox p {
+  color: #4a4a4a;
+  width: 18rem;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 1.1305rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.7rem;
+}
+
+.errorBox button {
+  border-radius: 0.31rem;
+  background: rgba(242, 30, 30, 0.93);
+  color: white;
+  width: 15.26169rem;
+  height: 2.907rem;
+}
+
+@media (min-width: 750px) {
+  .errorBox p {
+    width: 31rem;
+  }
+}

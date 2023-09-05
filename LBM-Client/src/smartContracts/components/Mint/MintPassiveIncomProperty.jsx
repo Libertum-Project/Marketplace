@@ -2,12 +2,12 @@ import { ethers } from "ethers";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { selectIsConnected } from "../../../redux/features/walletSlice";
-import { buyToken } from "../../../redux/features/userSlice";
-import passiveIncomeABi from "../ABI/PassiveIncomeProperty.json";
-import usdtTokenABI from "../ABI/MockUSDT.json";
-import css from "./smartcontracts.module.css";
-import Loading from "./LoadingBtn.jsx";
+import { selectIsConnected } from "../../../../redux/features/walletSlice";
+import { buyToken } from "../../../../redux/features/userSlice";
+import passiveIncomeABi from "../../ABI/PassiveIncomeProperty.json";
+import usdtTokenABI from "../../ABI/MockUSDT.json";
+import css from "../smartcontracts.module.css";
+import Loading from "../LoadingBtn.jsx";
 
 function MintPassiveIncomeProperty({
   passiveIncomePropertyAddress,
@@ -92,6 +92,7 @@ function MintPassiveIncomeProperty({
     }
   };
 
+  console.log('hola')
   return (
     <>
       {isLoading ? <Loading /> : null}

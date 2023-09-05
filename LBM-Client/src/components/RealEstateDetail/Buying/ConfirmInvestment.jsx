@@ -1,5 +1,5 @@
-import MintCapitalRepaymentProperty from "../../../smartContracts/components/MintCapitalRepaymentProperty";
-import MintPassiveIncomeProperty from "../../../smartContracts/components/MintPassiveIncomProperty";
+import MintCapitalRepaymentProperty from "../../../smartContracts/components/Mint/MintCapitalRepaymentProperty.jsx";
+import MintPassiveIncomeProperty from "../../../smartContracts/components/Mint/MintPassiveIncomProperty.jsx";
 import CustomConnectButtom from "../../SideBar/CustomConnectButtom";
 import css from "./BuyProperty.module.css";
 import ProgressBar from "./ProgressBar";

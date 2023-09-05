@@ -2,12 +2,13 @@ import { ethers } from "ethers";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { selectIsConnected } from "../../../redux/features/walletSlice";
-import { buyToken } from "../../../redux/features/userSlice";
-import capitalRepaymentABI from "../ABI/CapitalRepaymentProperty.json";
-import usdtTokenABI from "../ABI/MockUSDT.json";
-import css from "./smartcontracts.module.css";
-import Loading from "./LoadingBtn.jsx";
+import { selectIsConnected } from "../../../../redux/features/walletSlice";
+import { buyToken } from "../../../../redux/features/userSlice";
+import capitalRepaymentABI from "../../ABI/CapitalRepaymentProperty.json";
+import usdtTokenABI from "../../ABI/MockUSDT.json";
+import css from "../smartcontracts.module.css";
+import Loading from "../LoadingBtn.jsx";
+import FailMessage from "../MessageBox/FailMessage";
 
 function MintCapitalRepaymentProperty({
   capitalRepaymentPropertyAddress,
@@ -17,6 +18,7 @@ function MintCapitalRepaymentProperty({
   totalPrice,
 }) {
   const [isLoading, setIsLoading] = useState(false);
+  const [showFailMessage, setShowFailMessage] = useState(false);
   const dispatch = useDispatch();
   const isConnected = useSelector(selectIsConnected);
   const navigate = useNavigate();
@@ -90,13 +92,16 @@ function MintCapitalRepaymentProperty({
     } catch (error) {
       setIsLoading(false);
       console.error(error);
-      alert("Transaction failed");
+      setShowFailMessage(true);
     }
   };
 
   return (
     <>
       {isLoading ? <Loading /> : null}
+      {showFailMessage ? (
+        <FailMessage setShowFailMessage={setShowFailMessage} />
+      ) : null}
       <button
         className={`${css.mintBtn} ${isConnected ? "" : css.disabledButton}`}
         onClick={(event) => {
