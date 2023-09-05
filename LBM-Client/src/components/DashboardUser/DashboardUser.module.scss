@@ -13,7 +13,10 @@ $--bc: var(--Libertum-color);
     width: 100%;  
     background-image: url('../../assets/background.jpg');
     
-  
+    @media screen and (max-width: 780px) {
+
+      justify-content: center;
+    }
     .sidebar {
         // width: 150px;
         // background-color: #f0f0f0;
@@ -25,8 +28,8 @@ $--bc: var(--Libertum-color);
         
 
       
-        @media screen and (max-width: 767px) {
-          /* Estilos para dispositivos móviles */
+        @media screen and (max-width: 780px) {
+          
           width: 100%;
           padding: 15px; 
           position: fixed;
@@ -34,7 +37,7 @@ $--bc: var(--Libertum-color);
           left: 0;
           width: 100%;
           background-color: #f0f0f0;
-          z-index: 9999; /* Asegura que la barra esté en primer plano */
+          z-index: 9999; 
           flex-direction: row;
         }
       
@@ -244,7 +247,8 @@ $--bc: var(--Libertum-color);
     }
   
     .content {
-      flex: 1;      
+      flex: 1; 
+      width: 75rem;     
     }
   }
   

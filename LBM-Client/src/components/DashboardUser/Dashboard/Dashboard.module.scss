@@ -1,41 +1,41 @@
 $greycolor: #F4F8EE;
 $primarycolor: var(--Libertum-color);
 
-$bigbutton: (
-    // min-width: 12rem,
-    height: 13.5rem,
-    flex-shrink: 0,
-    border-radius: 1rem,    
-    display: flex,
-    flex-direction: column,
-    justify-content: space-around,
-    flex-basis: calc(33.33% - .2rem)/* Restamos 1rem para dejar espacio entre los botones */
-);
-$texto-button: (
-  color: var(--0-c-0507, #0C0507),
-  font-family: Inter,
-  font-size: 0.875rem,
-  font-style: normal,
-  font-weight: 400,
-  line-height: 1.5rem,
-  text-transform: capitalize,
-  text-align: left,
-  margin-top: 1rem,
-  margin-left: 0.9rem
-);
+// $bigbutton: (
+//     // min-width: 12rem,
+//     height: 13.5rem,
+//     flex-shrink: 0,
+//     border-radius: 1rem,    
+//     display: flex,
+//     flex-direction: column,
+//     justify-content: space-around,
+//     flex-basis: calc(33.33% - .2rem)/* Restamos 1rem para dejar espacio entre los botones */
+// );
+// $texto-button: (
+//   color: var(--0-c-0507, #0C0507),
+//   font-family: Inter,
+//   font-size: 0.875rem,
+//   font-style: normal,
+//   font-weight: 400,
+//   line-height: 1.5rem,
+//   text-transform: capitalize,
+//   text-align: left,
+//   margin-top: 1rem,
+//   margin-left: 0.9rem
+// );
 
-$buttonh2: (
-    color: var(--0-c-0507, #0C0507),
-    font-family: Inter,
-    font-size: 1.5rem,
-    font-style: normal,
-    font-weight: 500,
-    line-height: 2.125rem,
-    text-align: left,
-    margin-bottom: 2rem,
-    margin-left: 0.9rem,
-    margin-top: auto, /* Añade esta línea */
-);
+// $buttonh2: (
+//     color: var(--0-c-0507, #0C0507),
+//     font-family: Inter,
+//     font-size: 1.5rem,
+//     font-style: normal,
+//     font-weight: 500,
+//     line-height: 2.125rem,
+//     text-align: left,
+//     margin-bottom: 2rem,
+//     margin-left: 0.9rem,
+//     margin-top: auto, /* Añade esta línea */
+// );
 
 
 .welcome{
@@ -84,8 +84,7 @@ $buttonh2: (
 
 .mainContainer section{
     flex: 1;
-    height: 18rem;
-    
+    height: 18rem;    
 }
 
 .section1{
@@ -100,9 +99,8 @@ $buttonh2: (
     background: white;
     padding: 2rem;
 
-
     h2{
-        width: 238.565px;
+        // width: 238.565px;
         color: #2D3748;
         font-family: Montserrat;
         font-size: 1rem;
@@ -256,7 +254,7 @@ $buttonh2: (
     justify-content: space-between;
     align-items: center;
     // width: calc(1/2);
-    height: 20rem;
+    // height: 20rem;
     flex-shrink: 0;
     border-radius: 16px;
     background: white;

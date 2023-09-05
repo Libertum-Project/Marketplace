@@ -5,11 +5,10 @@ import { Link } from "react-router-dom";
 
 const MyProperties = ({name, transactions, investments, publishedProperties, email}) => {
   return (
-    <div className={css.propcontainer}>
-
+    <div className={css.container}>
     {publishedProperties.length === 0 ? (
             <div className={css.alertNoInvestment}>
-              <p>You don't have properties published yet.  Click the link and list your first property!</p>
+              <p>You don't have properties published yet. Click the link and list your first property!</p>
 
               <Link
                 to="https://docs.google.com/forms/d/e/1FAIpQLSd8HkLol829WO2hii1aem2H1_VNXWY6-1J_kqQAQclMPwo2MA/viewform"
