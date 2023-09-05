@@ -1,4 +1,5 @@
 import { ethers } from "ethers";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsConnected } from "../../../redux/features/walletSlice";
@@ -6,6 +7,7 @@ import { buyToken } from "../../../redux/features/userSlice";
 import capitalRepaymentABI from "../ABI/CapitalRepaymentProperty.json";
 import usdtTokenABI from "../ABI/MockUSDT.json";
 import css from "./smartcontracts.module.css";
+import Loading from "./LoadingBtn.jsx";
 
 function MintCapitalRepaymentProperty({
   capitalRepaymentPropertyAddress,
@@ -14,6 +16,7 @@ function MintCapitalRepaymentProperty({
   quantity,
   totalPrice,
 }) {
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const isConnected = useSelector(selectIsConnected);
   const navigate = useNavigate();
@@ -21,72 +24,90 @@ function MintCapitalRepaymentProperty({
 
   const handleBuyTokenBtn = async (event) => {
     event.preventDefault();
+    try {
+      setIsLoading(true);
+      if (window.ethereum) {
+        await window.ethereum.enable();
 
-    if (window.ethereum) {
-      await window.ethereum.enable();
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
 
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const signer = provider.getSigner();
+        const usdtTokenContract = new ethers.Contract(
+          usdtTokenAddress,
+          usdtTokenABI.abi,
+          signer
+        );
 
-      const usdtTokenContract = new ethers.Contract(
-        usdtTokenAddress,
-        usdtTokenABI.abi,
-        signer
-      );
+        const capitalRepaymentPropertyContract = new ethers.Contract(
+          capitalRepaymentPropertyAddress,
+          capitalRepaymentABI.abi,
+          signer
+        );
 
-      const capitalRepaymentPropertyContract = new ethers.Contract(
-        capitalRepaymentPropertyAddress,
-        capitalRepaymentABI.abi,
-        signer
-      );
+        const tokenPrice =
+          await capitalRepaymentPropertyContract.pricePerToken();
+        const price = BigInt(quantity) * BigInt(tokenPrice) * BigInt(10 ** 6);
 
-      const tokenPrice = await capitalRepaymentPropertyContract.pricePerToken();
-      const price = BigInt(quantity) * BigInt(tokenPrice) * BigInt(10 ** 6);
+        const faucetTransaction = await usdtTokenContract
+          .connect(signer)
+          .faucet(100_000_000);
+        faucetTransaction.wait();
 
-      const faucetTransaction = await usdtTokenContract
-        .connect(signer)
-        .faucet(100_000);
-      faucetTransaction.wait();
+        const approveTransaction = await usdtTokenContract
+          .connect(signer)
+          .approve(capitalRepaymentPropertyAddress, price);
+        approveTransaction.wait();
 
-      const approveTransaction = await usdtTokenContract
-        .connect(signer)
-        .approve(capitalRepaymentPropertyAddress, price);
-      approveTransaction.wait();
-
-      const mintTransaction = await capitalRepaymentPropertyContract.mint(
-        quantity,
-        {
-          gasLimit: 200000,
-        }
-      );
-      mintTransaction.wait();
-
-      const pricePerToken = Number(tokenPrice);
-
-      dispatch(
-        buyToken({
-          userId,
-          propertyId,
+        const mintTransaction = await capitalRepaymentPropertyContract.mint(
           quantity,
-          pricePerToken,
-          totalPrice,
-        })
-      );
-      navigate("/mydashboard");
-    } else alert("Metamask not found.");
+          {
+            gasLimit: 2000000,
+          }
+        );
+        const receipt = await mintTransaction.wait();
+
+        if (receipt.status === 1) {
+          console.log("Transaction was successful");
+
+          const pricePerToken = Number(tokenPrice);
+
+          dispatch(
+            buyToken({
+              userId,
+              propertyId,
+              quantity,
+              pricePerToken,
+              totalPrice,
+            })
+          );
+          setIsLoading(false);
+          navigate("/mydashboard");
+        } else {
+          console.error("Transaction failed");
+        }
+        console.log(receipt);
+      } else alert("Metamask not found.");
+    } catch (error) {
+      setIsLoading(false);
+      console.error(error);
+      alert("Transaction failed");
+    }
   };
 
   return (
-    <button
-      className={`${css.mintBtn} ${isConnected ? "" : css.disabledButton}`}
-      onClick={(event) => {
-        handleBuyTokenBtn(event);
-      }}
-      type="submit"
-      disabled={!isConnected}
-    >
-      Invest Now!
-    </button>
+    <>
+      {isLoading ? <Loading /> : null}
+      <button
+        className={`${css.mintBtn} ${isConnected ? "" : css.disabledButton}`}
+        onClick={(event) => {
+          handleBuyTokenBtn(event);
+        }}
+        type="submit"
+        disabled={!isConnected}
+      >
+        Invest Now!
+      </button>
+    </>
   );
 }
 

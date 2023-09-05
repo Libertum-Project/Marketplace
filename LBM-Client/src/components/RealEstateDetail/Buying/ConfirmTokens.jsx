@@ -18,7 +18,7 @@ const ConfirmTokens = ({ handleSubmit, onNext,
     const handleRangeChange = (event) => {
         setRangeValue(event.target.value);
       };
-    const [rangeValue, setRangeValue] = useState(40);
+    const [rangeValue, setRangeValue] = useState(10);
 
 
     const handleFormSubmit = (event) => {
