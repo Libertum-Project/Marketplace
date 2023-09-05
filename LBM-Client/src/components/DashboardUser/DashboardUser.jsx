@@ -255,7 +255,8 @@ function DashboardUser() {
 
       {activeTab === 5 && (
         <div className={styles.content}>
-          <SavedProperties saved={currentUser.savedProperties} />
+          <SavedProperties 
+          saved={currentUser.savedProperties} />
         </div>
       )}
 
