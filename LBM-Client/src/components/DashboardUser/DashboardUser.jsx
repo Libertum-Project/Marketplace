@@ -27,6 +27,7 @@ import profileimageActive from "./assets/profileActive.svg";
 import styles from "./DashboardUser.module.scss";
 import { current } from "@reduxjs/toolkit";
 import Loading from "../Loading/Loading";
+import { cssObjectFromTheme } from "@rainbow-me/rainbowkit";
 
 function DashboardUser() {
   const [activeTab, setActiveTab] = useState(1);
@@ -229,7 +230,7 @@ function DashboardUser() {
       )}
 
       {activeTab === 3 && (
-        <div>
+        <div className={styles.content}>
           <MyProperties
             name={currentUser.name}
             id={currentUser.ID_user}
@@ -242,7 +243,7 @@ function DashboardUser() {
       )}
 
       {activeTab === 4 && (
-        <div>
+        <div className={styles.content}>
           <MyInvestments
             name={currentUser.name}
             id={currentUser.ID_user}
@@ -253,13 +254,13 @@ function DashboardUser() {
       )}
 
       {activeTab === 5 && (
-        <div>
+        <div className={styles.content}>
           <SavedProperties saved={currentUser.savedProperties} />
         </div>
       )}
 
       {activeTab === 6 && (
-        <div>
+        <div className={styles.content}>
           <MyProfile
             name={currentUser.name}
             id={currentUser.key}
