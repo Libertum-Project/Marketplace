@@ -42,6 +42,10 @@ const Footer = () => {
               MARKETPLACE
           </a>
 
+          <a href="/support" rel="noreferrer">
+              FAQs
+          </a>
+
           <Link to="subscribe" smooth={true} duration={1000} className="menu-a_items">
               CONTACT
             </Link>
