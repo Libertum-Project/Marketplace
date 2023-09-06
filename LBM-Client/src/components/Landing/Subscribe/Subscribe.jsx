@@ -2,6 +2,7 @@ import React from "react";
 import ContactForm from "./ContactForm";
 import "./Subscribe.scss";
 import { Slide } from "react-awesome-reveal";
+import image from './image.svg'
 
 export default function Subscribe() {
   return (
@@ -9,14 +10,15 @@ export default function Subscribe() {
       <Slide direction={"down"} triggerOnce={false}>
       <section className="subscribe_section">
         <div className="subscribe_text">
-          <h2>Start Earning today</h2>
-          <p>
+          <h2>Are you ready to start earning today? </h2>
+          {/* <p>
             Subscribe to our newsletter to receive updates on the progress of
             Libertum Project and be part of a movement to democratize the real estate investment market
-          </p>
+          </p> */}
+          <button className="button">LOG IN</button>
         </div>
-        <div className="subscribe_form">
-          <ContactForm />
+        <div className="image">
+          <img src={image} alt="" />
         </div>
       </section>
       </Slide>
