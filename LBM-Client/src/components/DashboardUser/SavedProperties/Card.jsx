@@ -1,4 +1,4 @@
-import css from './userproperties.module.scss';
+import css from "./Userproperties.module.scss";
 import { Link } from 'react-router-dom'; 
 const Card = (
   {
