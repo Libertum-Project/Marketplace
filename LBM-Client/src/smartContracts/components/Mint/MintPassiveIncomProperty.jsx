@@ -1,6 +1,5 @@
 import { ethers } from "ethers";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsConnected } from "../../../../redux/features/walletSlice";
 import { buyToken } from "../../../../redux/features/userSlice";
@@ -8,6 +7,8 @@ import passiveIncomeABi from "../../ABI/PassiveIncomeProperty.json";
 import usdtTokenABI from "../../ABI/MockUSDT.json";
 import css from "../smartcontracts.module.css";
 import Loading from "../LoadingBtn.jsx";
+import FailMessage from "../MessageBox/FailMessage";
+import SuccessMessage from "../MessageBox/SuccessMessage";
 
 function MintPassiveIncomeProperty({
   passiveIncomePropertyAddress,
@@ -17,9 +18,10 @@ function MintPassiveIncomeProperty({
   totalPrice,
 }) {
   const [isLoading, setIsLoading] = useState(false);
+  const [showFailMessage, setShowFailMessage] = useState(false);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const dispatch = useDispatch();
   const isConnected = useSelector(selectIsConnected);
-  const navigate = useNavigate();
   const usdtTokenAddress = "0x43A8768b6F9cA89D5436413609150c6FB087a29E";
 
   const handleBuyTokenBtn = async (event) => {
@@ -79,7 +81,7 @@ function MintPassiveIncomeProperty({
             })
           );
           setIsLoading(false);
-          navigate("/mydashboard");
+          setShowSuccessMessage(true);
         } else {
           console.error("Transaction failed");
         }
@@ -88,14 +90,19 @@ function MintPassiveIncomeProperty({
     } catch (error) {
       setIsLoading(false);
       console.error(error);
-      alert("Transaction failed");
+      setShowFailMessage(true);
     }
   };
 
-  console.log('hola')
   return (
     <>
       {isLoading ? <Loading /> : null}
+      {showFailMessage ? (
+        <FailMessage setShowFailMessage={setShowFailMessage} />
+      ) : null}
+      {showSuccessMessage ? (
+        <SuccessMessage setShowSuccessMessage={setShowSuccessMessage} />
+      ) : null}
       <button
         className={`${css.mintBtn} ${isConnected ? "" : css.disabledButton}`}
         onClick={(event) => {
