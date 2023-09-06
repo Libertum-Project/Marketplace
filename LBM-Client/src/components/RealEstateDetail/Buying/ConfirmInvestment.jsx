@@ -1,8 +1,8 @@
-import MintCapitalRepaymentProperty from "../../../smartContracts/components/MintCapitalRepaymentProperty";
-import MintPassiveIncomeProperty from "../../../smartContracts/components/MintPassiveIncomProperty";
+import MintCapitalRepaymentProperty from "../../../smartContracts/components/Mint/MintCapitalRepaymentProperty.jsx";
+import MintPassiveIncomeProperty from "../../../smartContracts/components/Mint/MintPassiveIncomProperty.jsx";
 import CustomConnectButtom from "../../SideBar/CustomConnectButtom";
 import css from "./BuyProperty.module.css";
-import ProgressBar from "../../CreateProperty/ProgressBar";
+import ProgressBar from "./ProgressBar";
 import { useSelector } from "react-redux";
 import backBtn from "../../../assets/back_btn.svg";
 import Icons from "./Icons";
@@ -49,7 +49,7 @@ const ConfirmInvestment = ({
         </button>
         <h2>Financial information</h2>
       </div>
-      <ProgressBar step={"3"} />
+      <ProgressBar step={"2"} />
       <h1>
         {address} | {location}
       </h1>
@@ -72,13 +72,15 @@ const ConfirmInvestment = ({
           <label>
             <b>Payment Method:</b>
           </label>
-          <span>{formData.paymentMethodData.method}</span>
+          {/* <span>{formData.paymentMethodData.method}</span> */}
+          <span>Metamask</span>
         </div>
         <div>
           <label>
             <b>Payment Currency:</b>
           </label>
-          <span>{formData.paymentMethodData.currency}</span>
+          {/* <span>{formData.paymentMethodData.currency}</span> */}
+          <span> USDT </span>
         </div>
       </div>
       <div className={css.fees}>

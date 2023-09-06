@@ -6,9 +6,7 @@ $filters: (
   display: flex,
   align-items: center,
   background: transparent,
-  // border: 1px solid #f7931a,
   border: 1px solid transparent,
-  // padding: 11px 24px,
   border-radius: 9999px,
   gap: 12px,
   cursor: pointer,
@@ -19,26 +17,13 @@ $filters: (
   line-height: 18px,
   color: #5c6068,
   min-height: 45px,
-  // min-width: 5px,
-  // max-width: 226px,
-  // max-height:50px
 );
 
 
 .container {
   width: 100%;
   padding-bottom: 6rem;
-  // justify-content: center;
-  // align-items: center;
 }
-
-// .container h2 {
-//   color: #515562;
-//   text-align: left;
-//   font-family: var(--EnvwiseFont);
-
-//   padding: 0 1.2rem;
-// }
 
 .filtersContainer {
   display: flex;
@@ -145,6 +130,7 @@ $filters: (
   align-items: center;
   background: transparent;
   border: solid 1px $secondary-color;
+  padding: 1rem;
   // padding: 11px 24px;
   border-radius: 12px;
   // gap: 12px;
@@ -181,14 +167,12 @@ display: none;
 .clean{
   border: 1px solid #f7931a;
   border-radius: 12px;
-  width: 100px; /* Ancho determinado del icono */
-  height: 100%; /* Alto determinado del icono */
-  background-color: #f7931a; /* Color del fondo igual al color del borde */
+  padding: .7rem;
+  background-color: #f7931a; 
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white; /* Color del icono en blanco */
-
+  color: white; 
  
     @media (max-width: 720px){
       width: 80px; 

@@ -33,7 +33,7 @@ margin-top: 1rem;
   box-shadow: 0px 8px 16px -8px rgba(15, 15, 15, 0.4);
   border-radius: 12px;
   top: 5em;
-  // gap: 1rem;
+  gap: 1rem;
 }
 
 .flexContainer {
@@ -81,23 +81,24 @@ margin-top: 1rem;
 //   color:#ffffff
 // }
 
-@media screen and (min-width: 800px) {
-  .flexContainer {
-    justify-content: space-evenly;
-    height: fit-content;
-  }
-  .buttons {
-    justify-content: space-around;
-    height: fit-content;
-  }
-}
+// @media screen and (min-width: 800px) {
+// //   .flexContainer {
+// //     justify-content: space-evenly;
+// //     height: 0rem;
+// //   }
+//   .buttons {
+//     justify-content: space-around;
+//     height: 10rem;   
+//     z-index: 999999999;
+//   }
+// }
 
 @media screen and (max-width: 800px) {
   .container {
     top: auto;
     position: relative;
     box-shadow: none;
-    height: fit-content;
+    // overflow: scroll;
     width: 100%;
   }
   .connect {
@@ -107,7 +108,8 @@ margin-top: 1rem;
   .buttons {
     position: absolute;
     top: 3em;
-    min-height: 25em;
+    margin-top: 2rem;
+    min-height: 45rem;
     gap: 3em;
     font-family: "Montserrat";
     align-items: center;
@@ -120,7 +122,7 @@ margin-top: 1rem;
     // margin-left: 2em;
   }
 
-  .buttons a {
+  .buttons a p {
     font-family: "Inter";
     align-items: flex-start;
     font-style: normal;

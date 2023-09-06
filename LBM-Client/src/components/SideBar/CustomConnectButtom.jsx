@@ -7,10 +7,15 @@ import {
   setConnected,
   selectIsConnected,
 } from "../../../redux/features/walletSlice";
+import { useAccountModal } from "@rainbow-me/rainbowkit";
 
 function CustomConnectButtom({ container }) {
   const isConnected = useSelector(selectIsConnected);
   const dispatch = useDispatch();
+
+  const { openAccountModal } = useAccountModal();
+
+  
 
   return (
     <div className={style.button}>
@@ -73,32 +78,12 @@ function CustomConnectButtom({ container }) {
                 return (
                   <div className={style.ConnectedModal}>
                     <button
-                      onClick={openChainModal}
+                      onClick={openAccountModal}
                       type="button"
-                      className={style.chainModal}
-                      disabled
+                      className={style.chainModal}                      
                     >
-                      {/* {chain.hasIcon && (
-                          <div
-                            style={{
-                              background: chain.iconBackground,
-                              width: 12,
-                              height: 12,
-                              borderRadius: 999,
-                              overflow: "hidden",
-                              marginRight: 4,
-                            }}
-                          >
-                            {chain.iconUrl && (
-                              <img
-                                alt={chain.name ?? "Chain icon"}
-                                src={chain.iconUrl}
-                                style={{ width: 12, height: 12 }}
-                              />
-                            )}
-                          </div>
-                        )} */}
-                      {chain.name}
+                      {/* {chain.name} */}
+                      My Wallet
                     </button>
                     {/* 
                     <button

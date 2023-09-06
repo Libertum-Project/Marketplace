@@ -8,6 +8,10 @@ import Aboutproperty from "./Aboutproperty";
 import Buy from "./Buy";
 import Loading from "../Loading/Loading";
 import { useEffect, useState } from "react";
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
 
 const Index = () => {
   const navigate = useNavigate();
@@ -187,53 +191,76 @@ console.log("proerty" + property.Feature.Address)
   }, []);
 
 
+  //--------------------   CARROUSEL  -------------------
+  const [modalOpen, setModalOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const openModal = (index, event) => {
+    setCurrentImageIndex(index);
+    setModalOpen(true);    
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+  const settings = {
+    // Configura las opciones de tu carrusel aquí según tus preferencias
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
 
 
   return !isLoading ? (
     <div className={css.details}>
-   
-
-
       <header className={css.header}>
         <h2>{property.Feature.Address}</h2>
         <div className={css.headerText}>
           <p>{property.Feature.City}</p>
-          {/* <div className={css.headerBtns}>
-            <img src={sharePC} alt="share" />
-            <img src={save} alt="save" />
-          </div> */}
         </div>
-        {/* <img src={avatar} alt="Person" className={css.avatar} /> */}
       </header>
-      
-      <img src={property.Feature.Link_Image[0]} alt="Land" className={css.detailsImage} />
-      {/* <div className={css.navMobile}>
-        <img
-          src={backIcon}
-          alt="back icon"
-          onClick={() => navigate("/marketplace")}
-        />
-        <div className={css.navMobileItems}>
-          <div>
-            <img src={shareIcon} alt="Share" />
-            <p>Share</p>
-          </div>
-          <div>
-            <img src={heartMobile} alt="Heart" />
-            <p>Like</p>
-          </div>
-        </div>
-      </div> */}
+
+      <img src={property.Feature.Link_Image[0]} alt="Land" className={css.detailsImage} onClick={(event) => openModal(0, event)}/>
 
       <section className={css.mosaic}>
-        <img src={property.Feature.Link_Image[0]} alt="Lalaland" />
+        <img
+          src={property.Feature.Link_Image[0]}
+          alt="Lalaland"
+          onClick={(event) => openModal(0, event)}
+        />
         <div className={css.otherImages}>
-          <img src={property.Feature.Link_Image[1]} alt="Land" />
-          <img src={property.Feature.Link_Image[2]} alt="Land" />
-          <img src={property.Feature.Link_Image[3]} alt="Land" />
-          <img src={property.Feature.Link_Image[4]} alt="Land" />
+          {property.Feature.Link_Image.slice(1).map((image, index) => (
+            <img
+              key={index}
+              src={image}
+              alt={`Image ${index}`}
+              onClick={() => openModal(index)}
+            />
+          ))}
         </div>
       </section>
+
+      {modalOpen && (
+          <div className={css.modal}>
+            <div className={css.modalContent}>
+
+              <Slider {...settings} initialSlide={currentImageIndex}>
+                {property.Feature.Link_Image.map((image, index) => (
+                  <div key={index} className={css.slideContainer}>
+                    <span className={css.close} onClick={closeModal}>
+                    &times;
+                    </span>
+                    <img src={image} alt={`Image ${index}`} />
+                  </div>
+                ))}
+              </Slider>
+            </div>
+          </div>
+        )}
+ 
 
       
 

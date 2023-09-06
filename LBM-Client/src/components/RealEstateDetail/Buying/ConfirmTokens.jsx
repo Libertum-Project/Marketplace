@@ -1,5 +1,5 @@
 import css from "./BuyProperty.module.css";
-import ProgressBar from "../../CreateProperty/ProgressBar";
+import ProgressBar from "./ProgressBar";
 import Icons from "./Icons";
 import { useState } from "react";
 
@@ -10,6 +10,7 @@ const ConfirmTokens = ({ handleSubmit, onNext,
   location,  
   AvailablesNFT,  
   NFTPrice, 
+  PRY
 
 }) => {
 
@@ -17,7 +18,7 @@ const ConfirmTokens = ({ handleSubmit, onNext,
     const handleRangeChange = (event) => {
         setRangeValue(event.target.value);
       };
-    const [rangeValue, setRangeValue] = useState(40);
+    const [rangeValue, setRangeValue] = useState(10);
 
 
     const handleFormSubmit = (event) => {
@@ -59,8 +60,9 @@ const ConfirmTokens = ({ handleSubmit, onNext,
             />
             <p>
               <span> <b>{rangeValue} </b></span> NFT at <b>$
-              {NFTPrice}</b> per NFT
+              {NFTPrice}</b> per Token
             </p>
+            <p> <b>Rental Yield:</b> {PRY} %</p>
           </div>
         </div>
 

@@ -64,12 +64,6 @@ const connectors = connectorsForWallets([
     groupName: "Libertum",
     wallets: [
       metaMaskWallet({ chains }),
-      coinbaseWallet({ chains, appName: "Libertum" }),
-      walletConnectWallet({ chains }),
-      braveWallet({ chains }),
-      ledgerWallet({ chains }),
-      trustWallet({ chains }),
-      injectedWallet({ chains }),
     ],
   },
 ]);
