@@ -88,7 +88,7 @@ export default function Landing() {
       </div>
       
       <div >
-         <div >
+         <div className="timer-section">
           <div className="timer-container">
             <div className="timer-content">
            

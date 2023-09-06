@@ -205,6 +205,14 @@ $secondarycolor: var(--LibertumBlue);
   animation-fill-mode: both;
 }
 
+.timer-section{
+  background-color: #dddddd5b;
+  border-radius: 1rem  30rem 30rem 1rem;
+  margin-right: 2rem;
+
+
+}
+
 .containercenter{
   display: flex;
   flex-direction: column;
@@ -225,6 +233,10 @@ $secondarycolor: var(--LibertumBlue);
   .divider {
     max-width: 370px;
     filter: saturate(1);
+  }
+  .timer-section{
+    margin: 0;
+    border-radius: 0rem;    
   }
 }
 

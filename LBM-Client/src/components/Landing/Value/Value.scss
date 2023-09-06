@@ -10,6 +10,10 @@
   animation-name: inOpacity;
   animation-duration: 1s;
   animation-fill-mode: both;
+  background-color: #dddddd5b;
+  border-radius: 30rem  1rem 1rem 30rem;
+  margin-left: 2rem;
+  padding: 3rem;
   .value_section {
     display: flex;
     align-items: left;
@@ -80,8 +84,8 @@
 
 @media screen and (max-width: 870px) {
   .value_items {
-    // margin-top: 90px;
-    // margin-bottom: 100px;
+   margin: 0;
+   border-radius: 10rem 0rem;
     .value_section {
       flex-direction: column-reverse;
       gap: 0;

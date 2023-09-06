@@ -24,8 +24,10 @@ export default function Subscribe() {
           </Link>
           
         </div>
+        <div className="background">
         <div className="image">
           <img src={image} alt="" />
+        </div>
         </div>
       </section>
       </Slide>

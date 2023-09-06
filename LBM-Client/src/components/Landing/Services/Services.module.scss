@@ -5,7 +5,7 @@
   padding: 2rem;
   animation-name: inOpacity;
   animation-duration: 1s;
-  animation-fill-mode: both;
+  animation-fill-mode: both; 
 
   h1 {
     font-family: "Montserrat";
@@ -74,14 +74,17 @@
     }
   }
 
+
   .content {
     position: relative;
     margin-left: 10%;
-    width: fit-content;   
+    width: fit-content; 
+
+  
 
     img {
       position: relative;
-      width: 30rem;
+      width: 27rem;
       transition: transform 0.3s ease-in-out;
 
       &.active {
@@ -105,6 +108,7 @@
       p {
         margin: 0;
         line-height: 1.5rem;
+        
       }
 
       &.active {
