@@ -9,6 +9,7 @@ import css from "../smartcontracts.module.css";
 import Loading from "../LoadingBtn.jsx";
 import FailMessage from "../MessageBox/FailMessage";
 import SuccessMessage from "../MessageBox/SuccessMessage";
+import PendingMessage from "../MessageBox/PendingMessage";
 
 function MintCapitalRepaymentProperty({
   capitalRepaymentPropertyAddress,
@@ -19,6 +20,7 @@ function MintCapitalRepaymentProperty({
 }) {
   const [isLoading, setIsLoading] = useState(false);
   const [showFailMessage, setShowFailMessage] = useState(false);
+  const [showPendingMessage, setShowPendingMessage] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const dispatch = useDispatch();
   const isConnected = useSelector(selectIsConnected);
@@ -66,6 +68,7 @@ function MintCapitalRepaymentProperty({
             gasLimit: 2000000,
           }
         );
+        setShowPendingMessage(true);
         const receipt = await mintTransaction.wait();
 
         if (receipt.status === 1) {
@@ -82,6 +85,7 @@ function MintCapitalRepaymentProperty({
               totalPrice,
             })
           );
+          setShowPendingMessage(false);
           setIsLoading(false);
           setShowSuccessMessage(true);
         } else {
@@ -90,8 +94,9 @@ function MintCapitalRepaymentProperty({
         console.log(receipt);
       } else alert("Metamask not found.");
     } catch (error) {
-      setIsLoading(false);
       console.error(error);
+      setIsLoading(false);
+      setShowPendingMessage(false);
       setShowFailMessage(true);
     }
   };
@@ -102,6 +107,7 @@ function MintCapitalRepaymentProperty({
       {showFailMessage ? (
         <FailMessage setShowFailMessage={setShowFailMessage} />
       ) : null}
+      {showPendingMessage ? <PendingMessage /> : null}
       {showSuccessMessage ? (
         <SuccessMessage setShowSuccessMessage={setShowSuccessMessage} />
       ) : null}

@@ -9,6 +9,7 @@ import css from "../smartcontracts.module.css";
 import Loading from "../LoadingBtn.jsx";
 import FailMessage from "../MessageBox/FailMessage";
 import SuccessMessage from "../MessageBox/SuccessMessage";
+import PendingMessage from "../MessageBox/PendingMessage";
 
 function MintPassiveIncomeProperty({
   passiveIncomePropertyAddress,
@@ -18,6 +19,7 @@ function MintPassiveIncomeProperty({
   totalPrice,
 }) {
   const [isLoading, setIsLoading] = useState(false);
+  const [showPendingMessage, setShowPendingMessage] = useState(false);
   const [showFailMessage, setShowFailMessage] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const dispatch = useDispatch();
@@ -64,6 +66,7 @@ function MintPassiveIncomeProperty({
             gasLimit: 2000000,
           }
         );
+        setShowPendingMessage(true);
         const receipt = await mintTransaction.wait();
 
         if (receipt.status === 1) {
@@ -80,6 +83,7 @@ function MintPassiveIncomeProperty({
               totalPrice,
             })
           );
+          setShowPendingMessage(false);
           setIsLoading(false);
           setShowSuccessMessage(true);
         } else {
@@ -88,8 +92,9 @@ function MintPassiveIncomeProperty({
         console.log(receipt);
       } else alert("Metamask not found.");
     } catch (error) {
-      setIsLoading(false);
       console.error(error);
+      setIsLoading(false);
+      setShowPendingMessage(false);
       setShowFailMessage(true);
     }
   };
@@ -97,6 +102,7 @@ function MintPassiveIncomeProperty({
   return (
     <>
       {isLoading ? <Loading /> : null}
+      {showPendingMessage ? <PendingMessage /> : null}
       {showFailMessage ? (
         <FailMessage setShowFailMessage={setShowFailMessage} />
       ) : null}

@@ -1,4 +1,5 @@
 .errorBoxContainer,
+.pendingBoxContainer,
 .successBoxContainer {
   align-items: center;
   display: flex;
@@ -14,6 +15,7 @@
 }
 
 .errorBox,
+.pendingBox,
 .successBox {
   display: flex;
   align-items: center;
@@ -24,6 +26,9 @@
   background-color: red;
   border-radius: 1.59856rem;
   background-color: #fff;
+  -webkit-box-shadow: 0px 0px 30px 8px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0px 0px 30px 8px rgba(0,0,0,0.5);
+  box-shadow: 0px 0px 30px 8px rgba(0,0,0,0.5);
 }
 
 .header {
@@ -50,6 +55,7 @@
 }
 
 .errorBox p,
+.pendingBox p,
 .successBox p {
   color: #4a4a4a;
   width: 18rem;
@@ -76,6 +82,22 @@
 
 .successBox button {
   background: #27ae60;
+}
+
+.pendingBox h2 {
+  color: var(--Libertum-color);
+}
+
+.pendingBox {
+  gap: 0.5rem;
+}
+.header {
+  gap: 2rem;
+}
+
+.pendingBox img {
+  width: 3rem;
+  height: auto;
 }
 
 @media (min-width: 750px) {
