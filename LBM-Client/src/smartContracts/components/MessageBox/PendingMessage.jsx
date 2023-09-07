@@ -1,5 +1,5 @@
 import css from "./MessageBox.module.css";
-import pending from "../../../assets/wait.gif";
+import pending from '../.../../../../../public/icons/timeIcon.svg'
 
 const PendingMessage = () => {
   return (

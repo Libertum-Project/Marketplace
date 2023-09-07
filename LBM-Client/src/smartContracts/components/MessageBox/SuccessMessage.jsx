@@ -1,5 +1,5 @@
 import css from "./MessageBox.module.css";
-import success from "../../../assets/success.svg";
+import success from "../../../../public/icons/checkIcon.svg"
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
