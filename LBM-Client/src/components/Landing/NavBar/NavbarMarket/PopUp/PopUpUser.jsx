@@ -177,7 +177,7 @@ function PopUpUser({ setActiveMenu }) {
               <div className={style.buttons}>
                 <a href="/">Home</a>
                 <a href="/about">About us</a>
-                <a href="/support">Support</a>
+                <Link href="/support">Support</Link>
                 <div
                   className={
                     active === "language"
@@ -240,9 +240,9 @@ function PopUpUser({ setActiveMenu }) {
             {isAuthenticated ? (
               <div className={style.buttons}>
                 {/* <Link to="/mydashboard" onClick={() => setActiveMenu(false)}> */}
-                <a href="/mydashboard">My dashboard</a>
+                <Link to="/mydashboard">My dashboard</Link>
                 {/* </Link>             */}
-                <a
+                <Link
                   rel="noreferrer"
                   onClick={() =>
                     logout({
@@ -253,7 +253,7 @@ function PopUpUser({ setActiveMenu }) {
                   }
                 >
                   LogOut
-                </a>
+                </Link>
               
               </div>
             ) : (

@@ -343,13 +343,18 @@
   }
 }
 
-@media (max-width: 740px) {
+@media (max-width: 780px) {
   .userImage {
-    height: 30px;
+    display: none;
   }
 
   .container {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    gap: 1rem;
+    
   }
 }
