@@ -1,146 +1,20 @@
-.userModal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
-.userModal-content {
-  box-shadow: 0px 8px 28px rgba(0, 0, 0, 0.28);
-  border-radius: 12px;
-  background-color: white;
-  width: 303px;
-}
+// .notification-badge {
+//   position: relative;
+//   display: inline-block;
+//   box-sizing: content-box !important;
+// }
 
-.userModal-header {
-  position: relative;
-  border-bottom: 1px solid #ebebeb;
-}
-
-.userModal-header h2 {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-  text-align: center;
-  color: #222222;
-  margin: 1rem 0;
-}
-
-.userModal-close {
-  position: absolute;
-  top: 2px;
-  left: 1rem;
-  cursor: pointer;
-}
-
-.userModal-close:hover {
-  transform: scale(1.2);
-  transition: all ease-in 150ms;
-}
-
-.userModal-body {
-  padding: 1rem;
-}
-
-.userModal-body img {
-  margin: 1rem 0;
-  width: 118px;
-  height: 118px;
-  border-radius: 100%;
-  display: inline;
-}
-
-.userModal-body h4,
-.userModal-body p {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 500;
-  margin: 0;
-}
-
-.userModal-body h4 {
-  font-size: 14px;
-  line-height: 26px;
-  color: #222222;
-}
-
-.userModal-body p {
-  font-size: 12px;
-  line-height: 20px;
-  color: #717171;
-}
-
-.userModal-btn {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  gap: 1rem;
-  padding-top: 1rem;
-}
-
-.userModal-btn button {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  padding: 0.5rem 1rem;
-  gap: 10px;
-  border: 1px solid #222222;
-  border-radius: 8px;
-}
-
-.userModal-btn button:hover {
-  border-color: #f7931a;
-  transition: all ease-in 150ms;
-}
-
-.userModal-btn img {
-  margin: 0;
-}
-
-.userModal-btn p {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 15px;
-  color: #222222;
-}
-
-.userModal-btn img {
-  width: 15.2px;
-  height: 16px;
-}
-
-.userImage {
-  border-radius: 100%;
-  width: 65px;
-
-  position: relative;
-}
-
-.notification-badge {
-  position: relative;
-  display: inline-block;
-  box-sizing: content-box !important;
-}
-
-.notification-badge::after {
-  content: "";
-  position: absolute;
-  left: 23px;
-  top: -1px;
-  width: 10px;
-  height: 10px;
-  background: #ff385c;
-  border-radius: 50%;
-}
+// .notification-badge::after {
+//   content: "";
+//   position: absolute;
+//   left: 23px;
+//   top: -1px;
+//   width: 10px;
+//   height: 10px;
+//   background: #ff385c;
+//   border-radius: 50%;
+// }
 
 .container {
   width: 100%;
@@ -155,7 +29,7 @@
   justify-content: center;
   z-index: 10;
   position: fixed;
-  font-family: "Inter";
+  font-family: "montserrat";
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -375,8 +249,7 @@
 
 .userImage {
   border-radius: 100%;
-  width: 30px;
-  cursor: pointer;
+  width: 30px; 
 }
 
 .account {

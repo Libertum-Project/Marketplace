@@ -97,7 +97,7 @@ function PopUpUser({ setActiveMenu }) {
                 {/* <Link to="/mydashboard" onClick={() => setActiveMenu(false)}> */}
                 <a href="/">Home</a>
                 <a href="/about">About us</a>
-                <a href="/contact">Contacts</a>
+                <a href="/support">Support</a>
                 <div
                   className={
                     active === "language"
@@ -177,7 +177,7 @@ function PopUpUser({ setActiveMenu }) {
               <div className={style.buttons}>
                 <a href="/">Home</a>
                 <a href="/about">About us</a>
-                <a href="/contact">Contacts</a>
+                <a href="/support">Support</a>
                 <div
                   className={
                     active === "language"
