@@ -1,13 +1,23 @@
 import { ethers } from "ethers";
+import { useState } from "react";
 import propertyFactoryAndBankABI from "../ABI/PropertyFactoryAndBank.json";
+import Loading from "./LoadingBtn.jsx";
+import FailMessage from "./MessageBox/FailMessage";
+import SuccessMessage from "./MessageBox/SuccessMessage";
+import PendingMessage from "./MessageBox/PendingMessage";
 
 const ClaimMonthlyPayment = ({ propertyAddress, quantity, propertyType }) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [showFailMessage, setShowFailMessage] = useState(false);
+  const [showPendingMessage, setShowPendingMessage] = useState(false);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const tokenIds = new Array(quantity).fill().map((_, index) => index);
   const propertyFactoryAndBankAddress =
     "0x18d83e26bC15BBFa4F14D38A9991e12554ACB906";
 
   const handleClaimClick = async (event) => {
     event.preventDefault();
+    setIsLoading(true);
     if (window.ethereum) {
       await window.ethereum.enable();
 
@@ -30,26 +40,67 @@ const ClaimMonthlyPayment = ({ propertyAddress, quantity, propertyType }) => {
     propertyFactoryAndBankContract,
     signer
   ) {
-    await propertyFactoryAndBankContract
-      .connect(signer)
-      .claimCapitalRepayment(propertyAddress, tokenIds, {
-        gasLimit: 200000,
-      });
+    try {
+      const claimTransaction = await propertyFactoryAndBankContract
+        .connect(signer)
+        .claimCapitalRepayment(propertyAddress, tokenIds, {
+          gasLimit: 2000000,
+        });
+      setShowPendingMessage(true);
+      const receipt = await claimTransaction.wait();
+
+      if (receipt.status === 1) {
+        setShowSuccessMessage(true);
+      } else {
+        setShowFailMessage(true);
+      }
+      setIsLoading(false);
+      setShowPendingMessage(false);
+    } catch (error) {
+      setIsLoading(false);
+      setShowPendingMessage(false);
+      setShowFailMessage(true);
+    }
   }
 
   async function claimPassiveIncomeProperty(
     propertyFactoryAndBankContract,
     signer
   ) {
-    await propertyFactoryAndBankContract
-      .connect(signer)
-      .claimPassiveIncome(propertyAddress, tokenIds, {
-        gasLimit: 200000,
-      });
+    try {
+      const claimTransaction = await propertyFactoryAndBankContract
+        .connect(signer)
+        .claimPassiveIncome(propertyAddress, tokenIds, {
+          gasLimit: 2000000,
+        });
+      setShowPendingMessage(true);
+      const receipt = await claimTransaction.wait();
+
+      if (receipt.status === 1) {
+        setShowSuccessMessage(true);
+      } else {
+        setShowFailMessage(true);
+      }
+      setIsLoading(false);
+      setShowPendingMessage(false);
+    } catch (error) {
+      setIsLoading(false);
+      setShowPendingMessage(false);
+      setShowFailMessage(true);
+    }
   }
 
   return (
     <>
+      {isLoading ? <Loading /> : null}
+      {showPendingMessage ? <PendingMessage /> : null}
+      {showFailMessage ? (
+        <FailMessage setShowFailMessage={setShowFailMessage} />
+      ) : null}
+      {showSuccessMessage ? (
+        <SuccessMessage setShowSuccessMessage={setShowSuccessMessage} />
+      ) : null}
+
       <button
         style={{
           backgroundColor: "gray",
