@@ -33,9 +33,6 @@ const columns = [
   },
 ];
 const Investments = ({ investments, transactions }) => {
-  const claimError = useSelector((state) => state.property.error);
-  const [error, setError] = useState(claimError);
-
   const combinedData = investments.map((investment, index) => {
     const currentDate = new Date();
     const purchaseDate = new Date(transactions[index].createdAt);
@@ -48,11 +45,6 @@ const Investments = ({ investments, transactions }) => {
       "/" +
       purchaseDate.getFullYear().toString().slice(-2);
 
-    const canClaim = currentDate >= claimableDate;
-    const errorMessage = canClaim
-      ? null
-      : "Must wait at least 30 days to claim your earnings";
-
     return {
       idProperty: `#${investment.ID_Property}`,
       addressID: investment.Address,
@@ -63,15 +55,12 @@ const Investments = ({ investments, transactions }) => {
       datepurchase: formattedPurchaseDate,
       claim: (
         <div className={css.claim}>
-          <Link to={`http:/localhost:3001/${investment.ID_Property}`}>
             <ClaimMonthlyPayment
               propertyAddress={investment.Address}
               quantity={transactions[index].Token_quantity}
               propertyType={investment.Financial.Investment_type}
             />
-          </Link>
           <div>
-            {errorMessage && <p className={css.error}>{errorMessage}</p>}
           </div>
         </div>
       ),
