@@ -43,6 +43,18 @@ const columns = [
         name: "",
         selector: row => row.empty
     },
+    {
+      name: "",
+      selector: row => row.empty
+  },
+  {
+    name: "",
+    selector: row => row.empty
+  },
+  {
+    name: "",
+    selector: row => row.empty
+},
     
     {
         name: 'Remove',
@@ -53,7 +65,7 @@ const columns = [
                 backgroundColor: 'gray', // Cambia el color de fondo deseado
                 borderRadius: '4px', // Añade el borde redondeado
                 color: 'white', // Cambia el color del texto deseado
-                padding: '8px', // Ajusta el espaciado interno según sea necesario
+                padding: '4px', // Ajusta el espaciado interno según sea necesario
 
               }}
             >
@@ -67,13 +79,13 @@ const data = [
         id: 1,
         user: 'Alan',
         mail: "allena@gmail.com",
-        status: "remove"
+        status: "Remove"
     },
     {
         id: 2,
         user: 'Guillermo',
         mail: "guillermo@gmail.com",
-        status: "remove"
+        status: "Remove"
     },
     // {
     //     id: 3,
