@@ -14,6 +14,24 @@ const PropertyForm = ({
   setImages,
   images,
 }) => {
+
+
+  const amenitiesOptions = ['Swimming Pool', 'Gym ', 'Parking', 'WiFi Access', "Terrace", 'Garden', 'Security']; 
+  const [selectedAmenities, setSelectedAmenities] = useState([]);
+
+  const handleAmenitiesChange = (e) => {
+    const { value, checked } = e.target;
+    let updatedAmenities = [...selectedAmenities];
+    if (checked) {
+      updatedAmenities.push(value);
+    } else {
+      updatedAmenities = updatedAmenities.filter(item => item !== value);
+    }
+    setSelectedAmenities(updatedAmenities);
+    onChange("Amenities", updatedAmenities);
+  };
+  
+
   const [formErrors, setFormErrors] = useState({});
 
   const validateForm = () => {
@@ -63,9 +81,10 @@ const PropertyForm = ({
       errors.Rooms = "Rooms is required";
     }
 
-    if (!propertyData.featureData.Amenities.trim()) {
+    if (!propertyData.featureData.Amenities || propertyData.featureData.Amenities.length === 0) {
       errors.Amenities = "Amenities are required";
     }
+    
 
     if (!propertyData.featureData.Description.trim()) {
       errors.Description = "Description is required";
@@ -252,7 +271,7 @@ const PropertyForm = ({
               <p className={css.error}>{formErrors.Rooms}</p>
             )}
           </div>
-          <div>
+          {/* <div>
             <label>Amenities</label>
             <input
               type="text"
@@ -264,7 +283,33 @@ const PropertyForm = ({
             {formErrors.Amenities && (
               <p className={css.error}>{formErrors.Amenities}</p>
             )}
-          </div>
+          </div> */}
+
+        </div>
+        <div className={css.inputContainer}>
+
+        <div >
+      <label>Amenities</label>
+      <div className={css.amenities}>
+      {amenitiesOptions.map((option) => (
+        <div key={option}>
+          <label>
+            <input
+              type="checkbox"
+              value={option}
+              onChange={handleAmenitiesChange}
+              checked={selectedAmenities.includes(option)}              
+            />
+            {option}
+          </label>          
+        </div>
+          ))}
+      </div>
+      {formErrors.Amenities && (
+            <p className={css.error}>{formErrors.Amenities}</p>
+          )}
+        </div>
+
         </div>
 
         <div className={css.inputContainer}>
