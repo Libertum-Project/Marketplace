@@ -350,9 +350,9 @@ const PropertyForm = ({
                 onChange("Current_Emission", e.target.value);
               }}
             />
-            {/* {formErrors.Current_Emission && (
+            {formErrors.Current_Emission && (
               <p className={css.error}>{formErrors.Current_Emission}</p>
-            )} */}
+            )}
           </div>
           <div>
             <label>Expected CO2 Emission Level</label>
@@ -363,9 +363,9 @@ const PropertyForm = ({
                 onChange("Expected_Emission_Level", e.target.value);
               }}
             />
-            {/* {formErrors.Expected_Emission_Level && (
+            {formErrors.Expected_Emission_Level && (
               <p className={css.error}>{formErrors.Expected_Emission_Level}</p>
-            )} */}
+            )}
           </div>
         </div>
         <UploadImages
