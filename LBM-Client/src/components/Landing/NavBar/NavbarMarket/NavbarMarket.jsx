@@ -216,7 +216,7 @@ function NavbarMarket() {
           {active ? <PopUpMarket setActive={setActive} data-dropdown /> : null}
         </div>
       ) : (
-        <div className={style.container} >
+        <div className={style.container} style={headerType === 'alternative' ? { background: 'rgba(255, 255, 255, 0.483)', backdropFilter: 'blur(3px)' } : {}}>
           <div
             className={
               openAccountModal ? style.flexContainer : style.flexContainer2

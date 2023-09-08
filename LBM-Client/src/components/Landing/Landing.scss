@@ -2,8 +2,9 @@ $primarycolor: var(--Libertum-color);
 $secondarycolor: var(--LibertumBlue);
 
 .divider-container {
-  display: flex;
-  justify-content: center;
+  display: none;
+  // display: flex;
+  // justify-content: center;
 }
 
 .timer-container{
@@ -27,9 +28,10 @@ $secondarycolor: var(--LibertumBlue);
   p{
     font-family: montserrat;
     font-weight: 200;
-    font-size: 25px;
+    font-size: 1.2rem;
     margin-bottom: 1rem;
     color: #3a3a3a;
+    line-height: 1.5rem;
     
     
     text-align: center;
@@ -197,14 +199,18 @@ $secondarycolor: var(--LibertumBlue);
   
 }
 
-.coin{
-  
-}
-
 .second-section{
   animation-name: inOpacity;
   animation-duration: 2s;
   animation-fill-mode: both;
+}
+
+.timer-section{
+  background-color: #dddddd5b;
+  border-radius: 1rem  30rem 30rem 1rem;
+  margin-right: 2rem;
+
+
 }
 
 .containercenter{
@@ -227,6 +233,10 @@ $secondarycolor: var(--LibertumBlue);
   .divider {
     max-width: 370px;
     filter: saturate(1);
+  }
+  .timer-section{
+    margin: 0;
+    border-radius: 0rem;    
   }
 }
 

@@ -27,6 +27,7 @@ import profileimageActive from "./assets/profileActive.svg";
 import styles from "./DashboardUser.module.scss";
 import { current } from "@reduxjs/toolkit";
 import Loading from "../Loading/Loading";
+import { cssObjectFromTheme } from "@rainbow-me/rainbowkit";
 
 function DashboardUser() {
   const [activeTab, setActiveTab] = useState(1);
@@ -80,6 +81,7 @@ function DashboardUser() {
   };
 
   return !isLoading && isAuthenticated ? (
+
     <div className={styles["dashboard-user"]}>
       <div className={styles.sidebar}>
         <button
@@ -123,12 +125,12 @@ function DashboardUser() {
                   alt=""
                   className={styles.imageActive}
                 />
-                <p>My Properties</p>
+                <p>Properties</p>
               </>
             ) : (
               <>
                 <img src={propertiesimage} alt="" className={styles.image} />
-                <p>My Properties</p>
+                <p>Properties</p>
               </>
             )}
           </div>
@@ -146,12 +148,12 @@ function DashboardUser() {
                   alt=""
                   className={styles.imageActive}
                 />
-                <p>my Investments</p>
+                <p>Investments</p>
               </>
             ) : (
               <>
                 <img src={investmentsimage} alt="" className={styles.image} />
-                <p>my Investments</p>
+                <p>Investments</p>
               </>
             )}
           </div>
@@ -169,7 +171,7 @@ function DashboardUser() {
                   alt=""
                   className={styles.imageActive}
                 />
-                <p>Saved properties</p>
+                <p>Saved</p>
               </>
             ) : (
               <>
@@ -192,12 +194,12 @@ function DashboardUser() {
                   alt=""
                   className={styles.imageActive}
                 />
-                <p>my Profile</p>
+                <p>Profile</p>
               </>
             ) : (
               <>
                 <img src={profileimage} alt="" className={styles.image} />
-                <p>my Profile</p>
+                <p>Profile</p>
               </>
             )}
           </div>
@@ -228,7 +230,7 @@ function DashboardUser() {
       )}
 
       {activeTab === 3 && (
-        <div>
+        <div className={styles.content}>
           <MyProperties
             name={currentUser.name}
             id={currentUser.ID_user}
@@ -241,7 +243,7 @@ function DashboardUser() {
       )}
 
       {activeTab === 4 && (
-        <div>
+        <div className={styles.content}>
           <MyInvestments
             name={currentUser.name}
             id={currentUser.ID_user}
@@ -252,13 +254,13 @@ function DashboardUser() {
       )}
 
       {activeTab === 5 && (
-        <div>
+        <div className={styles.content}>
           <SavedProperties saved={currentUser.savedProperties} />
         </div>
       )}
 
       {activeTab === 6 && (
-        <div>
+        <div className={styles.content}>
           <MyProfile
             name={currentUser.name}
             id={currentUser.key}
@@ -267,6 +269,7 @@ function DashboardUser() {
         </div>
       )}
     </div>
+
   ) : (
     <Loading />
   );

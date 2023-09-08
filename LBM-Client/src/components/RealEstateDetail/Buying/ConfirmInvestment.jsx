@@ -10,11 +10,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 const ConfirmInvestment = ({
-  handleSubmit,
   onBack,
   formData,
-  isValid,
-  errorMessage,
   address,
   location,
   NFTPrice,
@@ -94,7 +91,7 @@ const ConfirmInvestment = ({
           </h2>
         </div>
       </div>
-      <CustomConnectButtom />
+      {/* <CustomConnectButtom /> */}
 
       {propertyType === "capitalRepayment" ? (
         <MintCapitalRepaymentProperty

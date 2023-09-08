@@ -8,9 +8,8 @@ import divider from "./assets/divider.png";
 import "./Landing.scss";
 import Timer from "../Coin/Timer";
 import Header from "../Coin/Header"
-import { Link } from "react-router-dom";
-import coinimage from "./assets/coin.svg"
 import ContactForm from "../Landing/Subscribe/ContactForm";
+import Work from "./Work/Work";
 
 export default function Landing() {
 
@@ -63,14 +62,8 @@ export default function Landing() {
           </div>
           
       </div>
-      </div>
-
-      
+      </div>      
     </div>,
-    // <div className="third-section">
-    //   {/* Content for the third section */}
-      
-    // </div>,
   ];
 
 
@@ -95,7 +88,7 @@ export default function Landing() {
       </div>
       
       <div >
-         <div >
+         <div className="timer-section">
           <div className="timer-container">
             <div className="timer-content">
            
@@ -126,10 +119,19 @@ export default function Landing() {
       </div>
 
       <Services />
+
       <div className="divider-container">
         <img src={divider} className="divider" />
       </div>
+
+      <Work />       
+
+      <div className="divider-container">
+        <img src={divider} className="divider" />
+      </div>
+
       <Value />
+
       <div className="divider-container">
         <img src={divider} className="divider" />
       </div>

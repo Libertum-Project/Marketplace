@@ -4,27 +4,32 @@ $secondary-color:  #5c6068;
 $font-size-base: 16px;
 $--bc: var(--Libertum-color);
 
+
 .dashboard-user {
     display: flex;
-    margin-top: 7rem;
-    padding: 2rem;
-    width: 100%;
-    background-color: #f0f0f01c;
-  
+    padding-top:8rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    width: 100%;  
+    background-image: url('../../assets/background.jpg');
+    
+    @media screen and (max-width: 780px) {
+
+      justify-content: center;
+    }
     .sidebar {
         // width: 150px;
         // background-color: #f0f0f0;
-        padding: 20px;     
+        padding: 1rem;     
         margin: 0;  
         display: flex;
-        flex-direction: column;
-        padding: 0;
+        flex-direction: column;        
         border-radius: 0.75rem;
         
 
       
-        @media screen and (max-width: 767px) {
-          /* Estilos para dispositivos móviles */
+        @media screen and (max-width: 780px) {
+          
           width: 100%;
           padding: 15px; 
           position: fixed;
@@ -32,7 +37,7 @@ $--bc: var(--Libertum-color);
           left: 0;
           width: 100%;
           background-color: #f0f0f0;
-          z-index: 9999; /* Asegura que la barra esté en primer plano */
+          z-index: 9999; 
           flex-direction: row;
         }
       
@@ -41,7 +46,7 @@ $--bc: var(--Libertum-color);
           position: relative;
           display: table-column;
           cursor: pointer;
-          color: var(--gray-gray-400, #A0AEC0);
+          color: var(--gray-gray-400, #5d5c5c);
             font-family: Montserrat;
             font-size: 0.75rem;
             font-style: normal;
@@ -50,7 +55,8 @@ $--bc: var(--Libertum-color);
           font-size: 15px;
           width: fit-content;
           height: fit-content;
-          padding: 0;
+          padding-left: 1rem;
+          padding-right: 1rem;
           margin-left: 1rem;
           text-transform: uppercase;
           margin-top: 1.5rem;
@@ -58,18 +64,19 @@ $--bc: var(--Libertum-color);
       
       }
       .tab:hover{
-        border-bottom: 2px solid $blue-color;
+        // border-bottom: 2px solid $blue-color;
         border-radius: 0; 
+        transform: scale(110%);
       }
       
       .tabActive{
         border-radius: 0.9375rem;
         width: 12rem;
         height: 3.5rem;
-        background: var(--black-amp-white-white, #FFF);
+        background:  #ffffff;
         box-shadow: 0px 3.500000238418579px 5.500000476837158px 0px rgba(0, 0, 0, 0.02);
         color: var(--gray-gray-700, #2D3748);
-        background-color: #f0f0f0;
+        // background-color: #f0f0f0;
         font-family: Montserrat;
         font-size: 0.75rem;
         font-style: normal;
@@ -107,10 +114,10 @@ $--bc: var(--Libertum-color);
         border-radius: 0.9375rem;
         width: 12rem;
         height: 3.5rem;
-        background: var(--black-amp-white-white, #FFF);
+        background:  #FFF;
         box-shadow: 0px 3.500000238418579px 5.500000476837158px 0px rgba(0, 0, 0, 0.02);
         color: var(--gray-gray-700, #2D3748);
-        background-color: #f0f0f0;
+        background-color: #ffffff;
         font-family: Montserrat;
         font-size: 0.75rem;
         font-style: normal;
@@ -240,10 +247,8 @@ $--bc: var(--Libertum-color);
     }
   
     .content {
-      flex: 1;
-      
+      flex: 1; 
+      width: 75rem;     
     }
-
-
   }
   
