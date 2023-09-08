@@ -12,7 +12,7 @@ const [timerSeconds, setTimerSeconds] = useState('00');
 let interval = useRef();
 
 const startTimer = () => {
-  const contdownDate = new Date ('September 9, 2023, 00:00:00').getTime()
+  const contdownDate = new Date ('December 1, 2023, 00:00:00').getTime()
 
   interval = setInterval(() => {
     const now = new Date().getTime();
