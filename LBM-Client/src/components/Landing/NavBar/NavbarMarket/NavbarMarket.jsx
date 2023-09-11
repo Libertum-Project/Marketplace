@@ -28,7 +28,6 @@ function NavbarMarket() {
   const [activeMenuMobile, setActiveMenuMobile] = useState(false);
   const [activeLanguage, setActiveLanguage] = useState(false);
   const screenWidth = window.innerWidth || document.body.clientWidth;
-  const [userModal, setUserModal] = useState(false);
 
   let admin = null;
 
@@ -43,10 +42,7 @@ function NavbarMarket() {
   if (user?.sub === import.meta.env.VITE_ADMIN_JAVVAD)
     admin = import.meta.env.VITE_ADMIN_JAVVAD;
 
-  const handleUserModal = () => {
-    if (userModal) setUserModal(false);
-    if (!userModal) setUserModal(true);
-  };
+
 
   useEffect(() => {   
   
@@ -89,9 +85,7 @@ function NavbarMarket() {
         setHeaderType('default');
       }
     };
-
     window.addEventListener('scroll', handleScroll);
-
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -102,10 +96,6 @@ function NavbarMarket() {
       {screenWidth > 600 ? (
         <div className={style.container} style={headerType === 'alternative' ? { background: 'rgba(255, 255, 255, 0.483)', backdropFilter: 'blur(3px)' } : {}}>
           <div className={style.flexContainer}>
-            {/* <a href="/" className={style.icon}>
-              <img src="../icons/Logo.svg"></img>
-              <img src="../icons/Logo Cherryswap.svg"></img>
-            </a> */}
             <a href="/">
               <img src={logo} alt="Libertum Logo" width="80px" />
             </a>
@@ -150,63 +140,12 @@ function NavbarMarket() {
                         src={user.picture}
                         alt={user.name}
                         className={style.userImage}
-                        onClick={handleUserModal}
                       />
                     </div>
                   ) : null}
-                  {userModal && (
-                    <div className={style.userModal}>
-                      <div className={style["userModal-content"]}>
-                        <div className={style["userModal-header"]}>
-                          <span
-                            className={style["userModal-close"]}
-                            onClick={handleUserModal}
-                          >
-                            <img src={closeIcon} alt="Close" />
-                          </span>
-                          <h2>Profile</h2>
-                        </div>
-
-                        <div className={style["userModal-body"]}>
-                          <img src={user.picture} alt="user" />
-                          <h4>{user.name}</h4>
-                          <p>Record of all transactions of the last 30 days</p>
-                          <div className={style["userModal-btn"]}>
-                            {admin ? (
-                              <Link to="./create" className={style.formBtn}>
-                                Admin Form
-                              </Link>
-                            ) : (
-                              <button>
-                                <img src={copyIcon} alt="Copy" />
-                                <p>Address</p>
-                              </button>
-                            )}
-
-                            <button
-                              onClick={() =>
-                                logout({
-                                  logoutParams: {
-                                    returnTo: window.location.origin,
-                                  },
-                                })
-                              }
-                            >
-                              <img src={logoutIcon} alt="logout" />
-                              <p>Disconnect</p>
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
+ 
                 </div>
-                {/* {openAccountModal && (
-                  <div onClick={openAccountModal} className={style.account}>
-                    <IoPerson />
-                    <p>Wallet</p>
-                  </div>
-                )} */}
+
                 {activeMenu ? (
                   <PopUpUser data-menu setActiveMenu={setActiveMenu} />
                 ) : null}
@@ -235,75 +174,19 @@ function NavbarMarket() {
                 data-dropdown-menumobile
               />
             </div>
-            {/* <a href="/" className={openAccountModal ? style.icon : style.icon2}>
-              <img src="../icons/Logo.svg"></img>
-              <img src="../icons/Logo Cherryswap.svg"></img>
-            </a> */}
-            <a href="/">
-            <img src="./LibertumColor.png" alt="Libertum Logo" width="80px" />
-            </a>
-            {/* {openAccountModal && (
-              <div onClick={openAccountModal} className={style.accountIcon}>
-                <IoPerson />
-              </div>
-            )} */}
           </div>
+            <Link href="/">
+            <img src="./LibertumColor.png" alt="Libertum Logo" width="80px" />
+            </Link>
           {user ? (
             <div className={style["notification-badge"]}>
               <img
                 src={user.picture}
                 alt={user.name}
-                className={style.userImage}
-                onClick={handleUserModal}
+                className={style.userImage}                
               />
             </div>
-          ) : null}
-          {userModal && (
-            <div className={style.userModal}>
-              <div className={style["userModal-content"]}>
-                <div className={style["userModal-header"]}>
-                  <span
-                    className={style["userModal-close"]}
-                    onClick={handleUserModal}
-                  >
-                    <img src={closeIcon} alt="Close" />
-                  </span>
-                  <h2>Profile</h2>
-                </div>
-
-                <div className={style["userModal-body"]}>
-                  <img src={user.picture} alt="user" />
-                  <h4>{user.name}</h4>
-                  <p>Record of all transactions of the last 30 days</p>
-                  <div className={style["userModal-btn"]}>
-                    {admin ? (
-                      <Link to="./create" className={style.formBtn}>
-                        Admin Form
-                      </Link>
-                    ) : (
-                      <button>
-                        <img src={copyIcon} alt="Copy" />
-                        <p>Address</p>
-                      </button>
-                    )}
-
-                    <button
-                      onClick={() =>
-                        logout({
-                          logoutParams: {
-                            returnTo: window.location.origin,
-                          },
-                        })
-                      }
-                    >
-                      <img src={logoutIcon} alt="logout" />
-                      <p>Disconnect</p>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
+          ) : null}          
 
           {activeMenuMobile ? <MobileMenu data-menumobile /> : null}
         </div>

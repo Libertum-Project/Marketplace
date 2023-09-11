@@ -64,9 +64,9 @@ export default function NavBar() {
 
         <ul className={`menu_items ${mobileMenuActive ? "active" : ""}`}>
           <li className="menu-li_items">
-            <Link to="home" smooth={true} duration={500} className="menu-a_items">
+            {/* <Link to="home" smooth={true} duration={500} className="menu-a_items">
               Home
-            </Link>
+            </Link> */}
           </li>
           <li className="menu-li_items">
             <a
@@ -80,8 +80,8 @@ export default function NavBar() {
             </a>
           </li>
           <li className="menu-li_items">
-            <Link to="subscribe" smooth={true} duration={1000} className="menu-a_items">
-              Contact
+            <Link to="support" smooth={true} duration={1000} className="menu-a_items">
+              support
             </Link>
           </li>
           <Link to="/marketplace">

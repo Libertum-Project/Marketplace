@@ -50,7 +50,7 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  font-family: monserrat;
+  font-family: montserrat;
 }
 
 .errorBox p,
@@ -64,13 +64,13 @@
   font-style: normal;
   font-weight: 500;
   line-height: 1.7rem;
-  font-family: monserrat;
+  font-family: montserrat;
 }
 
 .errorBox button,
 .successBox button {
   border-radius: 0.31rem;
-  background: rgba(242, 30, 30, 0.93);
+  background: var(--Libertum-color);
   color: white;
   width: 15.26169rem;
   height: 2.907rem;
