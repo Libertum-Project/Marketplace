@@ -66,7 +66,7 @@
         sortable: true,
       },
       {
-        name: 'Status',
+        name: 'Monthly Payment',
         cell: row => (
           <div>
             {row.IsActive ? 'Active' : 'Paused'}
