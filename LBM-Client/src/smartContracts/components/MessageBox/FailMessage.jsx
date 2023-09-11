@@ -1,5 +1,5 @@
 import css from "./MessageBox.module.css";
-import error from '../../../../public/icons/alertIcon.svg'
+import error from "../../../../public/icons/alertIcon.svg";
 
 const FailMessage = ({ setShowFailMessage }) => {
   const handleContinue = (event) => {
@@ -20,8 +20,8 @@ const FailMessage = ({ setShowFailMessage }) => {
         </div>
         <div>
           <p>
-            Thank you for your request. We are unable to continue the process.
-            Please try again to complete the request.
+            It looks like you rejected this transaction. Dont lose out out the
+            opportunity to earn passive income!
           </p>
         </div>
         <button
