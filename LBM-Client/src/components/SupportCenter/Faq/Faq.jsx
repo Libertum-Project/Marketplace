@@ -1,24 +1,38 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './Faq.module.scss';
 import { HiOutlineChevronDown, HiOutlineChevronUp } from 'react-icons/hi';
 import Autosuggest from 'react-autosuggest';
 import Principal from '../Principal/Principal';
 
-const QuestionAnswer = ({ pregunta, answer, isActive, onClick }) => (
-  <div className={`${styles['faq-item']} ${isActive ? styles.active : ''}`}>
-    <div className={styles['faq-question']} onClick={onClick}>
-      {pregunta}
-      <div className={styles['faq-icon']}>
-        {isActive ? <HiOutlineChevronUp /> : <HiOutlineChevronDown />}
+const QuestionAnswer = ({ pregunta, answer, isActive, onClick }) => {
+  const itemRef = useRef(null);
+
+  useEffect(() => {
+    if (isActive && itemRef.current) {
+      itemRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+      });
+    }
+  }, [isActive]);
+
+  return (
+    <div
+      ref={itemRef}
+      className={`${styles['faq-item']} ${isActive ? styles.active : ''}`}
+    >
+      <div className={styles['faq-question']} onClick={onClick}>
+        {pregunta}
+        <div className={styles['faq-icon']}>
+          {isActive ? <HiOutlineChevronUp /> : <HiOutlineChevronDown />}
+        </div>
       </div>
+      {isActive && (
+        <div className={styles['faq-answer']}>{answer}</div>
+      )}
     </div>
-    {isActive && (
-      <div className={styles['faq-answer']}>
-        {answer}
-      </div>
-    )}
-  </div>
-);
+  );
+};
 
 const Faq = () => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -144,29 +158,27 @@ const Faq = () => {
 
   return (
     <div className={styles.container}>
-
       <div className={styles.searchContainer}>
-        <div className={styles.input}> 
-            <Autosuggest
-        suggestions={suggestions}
-        onSuggestionsFetchRequested={onSuggestionsFetchRequested}
-        onSuggestionsClearRequested={onSuggestionsClearRequested}
-        getSuggestionValue={(suggestion) => suggestion.pregunta}
-        renderSuggestion={renderSuggestion}
-        inputProps={inputProps}
-        onSuggestionSelected={onSuggestionSelected}
-      />
+        <div className={styles.input}>
+          <Autosuggest
+            suggestions={suggestions}
+            onSuggestionsFetchRequested={onSuggestionsFetchRequested}
+            onSuggestionsClearRequested={onSuggestionsClearRequested}
+            getSuggestionValue={(suggestion) => suggestion.pregunta}
+            renderSuggestion={renderSuggestion}
+            inputProps={inputProps}
+            onSuggestionSelected={onSuggestionSelected}
+          />
+        </div>
+        <button className={styles.button} onClick={getSuggestions}>🔍</button>
       </div>
-      <button className={styles.button} onClick={getSuggestions}>🔍</button>   
-
-      </div>   
 
       <div>
-       <Principal />
+        <Principal />
       </div>
 
       <h2>Getting started</h2>
-      <p>Answer you initial doubts!</p>
+      <p>Answer your initial doubts!</p>
       {startingData.map((item, index) => (
         <QuestionAnswer
           key={index}
