@@ -88,6 +88,8 @@ const PropertyForm = ({
 
     if (!propertyData.featureData.Description.trim()) {
       errors.Description = "Description is required";
+    } else if (propertyData.featureData.Description.length > 300) {
+      errors.Description = "Description must not exceed 300 characters";
     }
 
     if (
