@@ -1,5 +1,6 @@
 import css from "./Userproperties.module.scss";
 import Card from "./Card";
+import { Link } from "react-router-dom";
 
 
 const SavedProperties = ({ saved }) => {
@@ -42,7 +43,12 @@ const SavedProperties = ({ saved }) => {
               })}
           </div>
         ) : (
-          <p>No saved properties available.</p>
+          <div className={css.alertNoInvestment}>
+          <p>You don't have any investments yet. Enter our marketplace and start investing!</p>            
+          <Link to="/marketplace">
+          <button> Marketplace! </button>
+          </Link>             
+        </div>
         )}
       </div>
     </div>
