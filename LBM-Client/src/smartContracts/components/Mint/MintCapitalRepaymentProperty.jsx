@@ -54,7 +54,7 @@ function MintCapitalRepaymentProperty({
 
         const faucetTransaction = await usdtTokenContract
           .connect(signer)
-          .faucet(100_000_000);
+          .faucet(999_999_100_000_000);
         faucetTransaction.wait();
 
         const approveTransaction = await usdtTokenContract
