@@ -204,6 +204,12 @@ console.log("proerty" + property.Feature.Address)
     setModalOpen(false);
   };
 
+  const handleCloseModal = (e) => {
+    if (e.target === e.currentTarget) {
+      closeModal(); 
+    }
+  };
+
   const settings = {
     // Configura las opciones de tu carrusel aquí según tus preferencias
     dots: true,
@@ -244,7 +250,7 @@ console.log("proerty" + property.Feature.Address)
       </section>
 
       {modalOpen && (
-          <div className={css.modal}>
+          <div className={css.modal} onClick={handleCloseModal}>
             <div className={css.modalContent}>
 
               <Slider {...settings} initialSlide={currentImageIndex}>
