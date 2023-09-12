@@ -39,11 +39,11 @@ module.exports = (sequelize) => {
       },
       Monthly_capital_repayment_amount: {
         type: DataTypes.DECIMAL(10, 2),
-        allowNull: false,
+        allowNull: true,
       },
       Capital_payment_duration: {
         type: DataTypes.DECIMAL(10, 2),
-        allowNull: false,
+        allowNull: true,
       },
       Mortgage: {
         type: DataTypes.DECIMAL(10, 2),

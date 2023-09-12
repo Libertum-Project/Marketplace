@@ -34,7 +34,7 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       Description: {
-        type: DataTypes.STRING(500),
+        type: DataTypes.STRING(300),
         allowNull: false,
       },
       Square_foot: {
@@ -42,7 +42,7 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       Amenities: {
-        type: DataTypes.STRING(200),
+        type: DataTypes.ARRAY(DataTypes.STRING(100)),
         allowNull: false,
       },
       Rooms: {
@@ -63,14 +63,14 @@ module.exports = (sequelize) => {
       },
       Current_Emission: {
         type: DataTypes.DECIMAL(10, 2),
-        allowNull: false,
+        allowNull: true,
       },
       Expected_Emission_Level: {
         type: DataTypes.DECIMAL(10, 2),
-        allowNull: false,
+        allowNull: true,
       },
       More: {
-        type: DataTypes.STRING(100),
+        type: DataTypes.STRING(500),
       },
     },
     {
