@@ -3,10 +3,10 @@ const {
 } = require("../../controllers/user/updateUserController.js");
 
 async function updateUserHandler(req, res) {
-  const { userId, saved, invested } = req.query;
+  const { userId, saved, unsave, invested } = req.query;
   const { quantity, pricePerToken, totalPrice } = req.body;
   try {
-    const updatedUser = await updateUser(userId, saved, invested, quantity, pricePerToken, totalPrice);
+    const updatedUser = await updateUser(userId, saved, unsave, invested, quantity, pricePerToken, totalPrice);
 
     res.status(202).send(updatedUser);
   } catch (error) {
