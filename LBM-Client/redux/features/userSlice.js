@@ -62,21 +62,51 @@ export const saveProperty = createAsyncThunk(
   }
 );
 
-export const buyToken = createAsyncThunk("put/buyToken", async ({ userId, propertyId, quantity, pricePerToken, totalPrice }) => {
-  const body = { quantity, pricePerToken, totalPrice }
-  const response = await fetch(
-    `${userURL}/update?userId=${userId}&invested=${propertyId}`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
+export const unsaveProperty = createAsyncThunk(
+  "user/unsaveProperty",
+  async (propertyData, { getState }) => {
+    try {
+      const userId = getState().user.currentUser.ID_user;
+      const propertyId = propertyData.propertyId;
+      const response = await fetch(
+        `${userURL}/update?userId=${userId}&unsave=${propertyId}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(propertyData),
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Failed to save property on the server");
+      }
+      return propertyData;
+    } catch (error) {
+      console.error("Error unsaving property:", error.message);
+      throw error;
     }
-  );
+  }
+);
 
-  return await response.json();
-});
+export const buyToken = createAsyncThunk(
+  "put/buyToken",
+  async ({ userId, propertyId, quantity, pricePerToken, totalPrice }) => {
+    const body = { quantity, pricePerToken, totalPrice };
+    const response = await fetch(
+      `${userURL}/update?userId=${userId}&invested=${propertyId}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      }
+    );
+
+    return await response.json();
+  }
+);
 
 // export const deleteProperty = createAsyncThunk(
 //   "user/deleteProperty",
