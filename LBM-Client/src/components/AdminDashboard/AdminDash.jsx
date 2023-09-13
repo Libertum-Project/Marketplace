@@ -12,6 +12,7 @@ import Frame3 from "./Frame3/Frame3";
 import Admins from "./TableAdmins/TableAdmins";
 import styles from "./adminDash.module.css";
 import Loading from "../Loading/Loading";
+import PropertyTable from "./Properties/PropertyTable"; 
 
 const AdminDash = () => {
   const dispatch = useDispatch();
@@ -65,7 +66,7 @@ const AdminDash = () => {
   return !isLoading && isAuthenticated && admin ? (
     <div>
       <Frame1 />
-      {allProperties.length > 0 && (
+      {/* {allProperties.length > 0 && (
         <section className={styles.properties_container}>
           {allProperties.map((property) => (
             <div key={property.ID_Property} className={styles.property}>
@@ -97,10 +98,11 @@ const AdminDash = () => {
             </div>
           ))}
         </section>
-      )}
-      <Frame2 />
-      <Frame3 />
+      )} */}
+      {/* <Frame2 /> */}
+      {/* <Frame3 /> */}
       <Admins />
+      <PropertyTable />
     </div>
   ) : (
     <Loading />

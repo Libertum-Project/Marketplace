@@ -66,7 +66,7 @@
         sortable: true,
       },
       {
-        name: 'Status',
+        name: 'Monthly Payment',
         cell: row => (
           <div>
             {row.IsActive ? 'Active' : 'Paused'}
@@ -79,17 +79,27 @@
         cell: row => (
           <div>
             {row.IsActive ? (
-              <button onClick={() => handlePause(row.ID_Property, false)}>Pause</button>
-
+              <button
+                style={{ backgroundColor: 'orange', color: 'white', border: 'none', borderRadius: '3px', padding: '3px 10px' }}
+                onClick={() => handlePause(row.ID_Property, false)}
+              >
+                Pause
+              </button>
             ) : (
-              <button onClick={() => handleActive(row.ID_Property, true)}>Activate</button>
+              <button
+                style={{ backgroundColor: 'blue', color: 'white', border: 'none', borderRadius: '3px', padding: '3px 10px' }}
+                onClick={() => handleActive(row.ID_Property, true)}
+              >
+                Activate
+              </button>
             )}
           </div>
         ),
         ignoreRowClick: true,
         allowOverflow: true,
         button: true,
-      },
+      }
+      
     ];
   
     const mappedProperties = allProperties.map((property) => ({

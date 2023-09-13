@@ -135,6 +135,52 @@ $filters: (
 
 }
 
+.alertNoInvestment{
+  display: flex;
+  background-color: #fcfcfc;
+  border-radius: 1rem;
+  padding: 2rem;
+  margin: 1rem;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+  
+  p{
+      font-family: montserrat;
+      font-size: 1rem;
+      text-align: left;   
+  }
+
+  button{
+      display: flex;
+      padding: 0.5rem 1.5rem;
+      text-align: center;
+      font-family: Montserrat;
+      font-size: 0.875rem;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 1.5rem; 
+      letter-spacing: 0.00875rem;
+      justify-content: center;
+      align-items: center;
+      gap: 0.625rem;
+      border-radius: 0.625rem;
+      background: var(--Libertum-color);  
+      color: #F4F8EE;
+      justify-self: flex-start;        
+      margin-left: 30px;
+  }
+
+}
+
+@media screen and (max-width: 780px) {
+      
+  .alertNoInvestment{
+   flex-direction: column;
+   justify-content: flex-end;
+  }
+}
+
 .button {
     display: flex;
     width: 100%;

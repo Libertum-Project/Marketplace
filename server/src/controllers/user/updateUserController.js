@@ -1,6 +1,14 @@
 const { User, Property, Transaction, Financial } = require("../../db.js");
 
-async function updateUser(userId, saved, invested, quantity, pricePerToken, totalPrice) {
+async function updateUser(
+  userId,
+  saved,
+  unsave,
+  invested,
+  quantity,
+  pricePerToken,
+  totalPrice
+) {
   try {
     const user = await User.findByPk(userId, {
       include: [
@@ -16,6 +24,14 @@ async function updateUser(userId, saved, invested, quantity, pricePerToken, tota
 
     if (saved) {
       await user.addSavedProperties(saved);
+    } else if (unsave) {
+      const propertyToUnsave = await Property.findByPk(unsave);
+
+      if (!propertyToUnsave) {
+        throw new Error("Property to unsave not found.");
+      }
+
+      await user.removeSavedProperties(propertyToUnsave);
     } else if (invested) {
       await Transaction.create({
         Token_quantity: quantity,
