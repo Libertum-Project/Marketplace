@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import style from "./NavbarMarket.module.scss";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchCurrentUser } from "../../../../../redux/features/userSlice";
 import { useAuth0 } from "@auth0/auth0-react";
 import { NavLink, Link } from "react-router-dom";
 import {
@@ -17,9 +18,10 @@ import { Divide as Hamburger } from "hamburger-react";
 import closeIcon from "../../../../assets/close.svg";
 import copyIcon from "../../../../assets/Copy.svg";
 import logoutIcon from "../../../../assets/Logout.svg";
-import  logo  from "../../../../../public/LibertumColor.png"
+import logo from "../../../../../public/LibertumColor.png";
 
 function NavbarMarket() {
+  const dispatch = useDispatch();
   const { logout, user } = useAuth0();
   const { openAccountModal } = useAccountModal();
   const [active, setActive] = useState(false);
@@ -42,10 +44,7 @@ function NavbarMarket() {
   if (user?.sub === import.meta.env.VITE_ADMIN_JAVVAD)
     admin = import.meta.env.VITE_ADMIN_JAVVAD;
 
-
-
-  useEffect(() => {   
-  
+  useEffect(() => {
     document.addEventListener("click", (e) => {
       const isDropdownButton = e.target.matches("[data-dropdown-button]");
       const isMenuButton = e.target.matches("[data-dropdown-menu]");
@@ -75,26 +74,47 @@ function NavbarMarket() {
     });
   }, []);
 
-  const [headerType, setHeaderType] = useState('default');
+  const [headerType, setHeaderType] = useState("default");
 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 100) {
-        setHeaderType('alternative');
+        setHeaderType("alternative");
       } else {
-        setHeaderType('default');
+        setHeaderType("default");
       }
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
+  }, []);
+
+  useEffect(() => {
+    if (user) {
+      dispatch(
+        fetchCurrentUser({
+          email: user.email,
+          name: user.name,
+        })
+      );
+    }
   }, []);
 
   return (
     <div>
       {screenWidth > 600 ? (
-        <div className={style.container} style={headerType === 'alternative' ? { background: 'rgba(255, 255, 255, 0.483)', backdropFilter: 'blur(3px)' } : {}}>
+        <div
+          className={style.container}
+          style={
+            headerType === "alternative"
+              ? {
+                  background: "rgba(255, 255, 255, 0.483)",
+                  backdropFilter: "blur(3px)",
+                }
+              : {}
+          }
+        >
           <div className={style.flexContainer}>
             <a href="/">
               <img src={logo} alt="Libertum Logo" width="80px" />
@@ -143,7 +163,6 @@ function NavbarMarket() {
                       />
                     </div>
                   ) : null}
- 
                 </div>
 
                 {activeMenu ? (
@@ -155,7 +174,17 @@ function NavbarMarket() {
           {active ? <PopUpMarket setActive={setActive} data-dropdown /> : null}
         </div>
       ) : (
-        <div className={style.container} style={headerType === 'alternative' ? { background: 'rgba(255, 255, 255, 0.483)', backdropFilter: 'blur(3px)' } : {}}>
+        <div
+          className={style.container}
+          style={
+            headerType === "alternative"
+              ? {
+                  background: "rgba(255, 255, 255, 0.483)",
+                  backdropFilter: "blur(3px)",
+                }
+              : {}
+          }
+        >
           <div
             className={
               openAccountModal ? style.flexContainer : style.flexContainer2
@@ -175,18 +204,18 @@ function NavbarMarket() {
               />
             </div>
           </div>
-            <Link href="/">
+          <Link href="/">
             <img src="./LibertumColor.png" alt="Libertum Logo" width="80px" />
-            </Link>
+          </Link>
           {user ? (
             <div className={style["notification-badge"]}>
               <img
                 src={user.picture}
                 alt={user.name}
-                className={style.userImage}                
+                className={style.userImage}
               />
             </div>
-          ) : null}          
+          ) : null}
 
           {activeMenuMobile ? <MobileMenu data-menumobile /> : null}
         </div>
@@ -195,4 +224,4 @@ function NavbarMarket() {
   );
 }
 
-export default NavbarMarket
+export default NavbarMarket;
