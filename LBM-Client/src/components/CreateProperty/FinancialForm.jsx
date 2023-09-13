@@ -24,12 +24,12 @@ const FinancialForm = ({ handleSubmit, onBack, onChange, propertyData }) => {
         "The mortgage amount cannot be greater than the property value.";
     }
 
-    if (
-      !propertyData.financialData.Mortgage ||
-      propertyData.financialData.Mortgage < 0
-    ) {
-      errors.Mortgage = "Mortgage is required";
-    }
+    // if (
+    //   !propertyData.financialData.Mortgage ||
+    //   propertyData.financialData.Mortgage < 0
+    // ) {
+    //   errors.Mortgage = "Mortgage is required";
+    // }
 
     if (!propertyData.financialData.Investment_type) {
       errors.Investment_type = "Investment type is required";
@@ -72,17 +72,16 @@ const FinancialForm = ({ handleSubmit, onBack, onChange, propertyData }) => {
         "Percent of property tokenized is required";
     }
 
-    if (
-      !propertyData.financialData.Monthly_capital_repayment_amount ||
-      propertyData.financialData.Monthly_capital_repayment_amount < 1
-    ) {
-      errors.Monthly_capital_repayment_amount =
-        "Monthly Capital Repayment Amount is required";
-    }
+    // if (
+    //   !propertyData.financialData.Monthly_capital_repayment_amount ||
+    //   propertyData.financialData.Monthly_capital_repayment_amount < 1
+    // ) {
+    //   errors.Monthly_capital_repayment_amount =
+    //     "Monthly Capital Repayment Amount is required";
+    // }
 
     if (
-      !propertyData.financialData.Capital_payment_duration ||
-      propertyData.financialData.Capital_payment_duration < 1
+      propertyData.financialData.Monthly_capital_repayment_amount 
     ) {
       errors.Capital_payment_duration = "Capital Payment Duration is required";
     }
@@ -110,7 +109,7 @@ const FinancialForm = ({ handleSubmit, onBack, onChange, propertyData }) => {
       <div className={css.createForm__inputs}>
         <div className={css.inputContainer}>
           <div>
-            <label>Market Value of the property</label>
+            <label>Market Value of the property (in USD)</label>
             <input
               type="number"
               value={propertyData.financialData.Market_value_of_the_property}
@@ -146,7 +145,7 @@ const FinancialForm = ({ handleSubmit, onBack, onChange, propertyData }) => {
 
         <div className={css.inputContainer}>
           <div>
-            <label>Passive Income per token</label>
+            <label>Passive Income per token (in USD)</label>
             <input
               type="number"
               value={propertyData.financialData.Passive_Income_per_token}
@@ -159,7 +158,7 @@ const FinancialForm = ({ handleSubmit, onBack, onChange, propertyData }) => {
             )}
           </div>
           <div>
-            <label>Token price</label>
+            <label>Token price (in USD)</label>
             <input
               type="number"
               value={propertyData.financialData.Token_Price}
@@ -190,7 +189,7 @@ const FinancialForm = ({ handleSubmit, onBack, onChange, propertyData }) => {
             )}
           </div>
           <div>
-            <label>Rental Yield</label>
+            <label>Rental Yield (in %)</label>
             <input
               type="number"
               value={propertyData.financialData.Rental_yield}
@@ -206,7 +205,7 @@ const FinancialForm = ({ handleSubmit, onBack, onChange, propertyData }) => {
 
         <div className={css.inputContainer}>
           <div>
-            <label>Mortgage</label>
+            <label>Mortgage (in USD)</label>
             <input
               type="number"
               value={propertyData.financialData.Mortgage}
@@ -220,7 +219,7 @@ const FinancialForm = ({ handleSubmit, onBack, onChange, propertyData }) => {
           </div>
 
           <div>
-            <label>Percent of property tokenized</label>
+            <label>Percent of property tokenized (in %)</label>
             <input
               type="number"
               value={propertyData.financialData.Percent_of_property_tokenized}
@@ -238,7 +237,7 @@ const FinancialForm = ({ handleSubmit, onBack, onChange, propertyData }) => {
 
         <div className={css.inputContainer}>
           <div>
-            <label>Monthly Capital Repayment Amount</label>
+            <label>Monthly Capital Repayment Amount (in USD)</label>
             <input
               type="number"
               value={
@@ -255,7 +254,7 @@ const FinancialForm = ({ handleSubmit, onBack, onChange, propertyData }) => {
             )}
           </div>
           <div>
-            <label>Capital Payment Duration</label>
+            <label>Capital Payment Duration (in years)</label>
             <input
               type="number"
               value={propertyData.financialData.Capital_payment_duration}
