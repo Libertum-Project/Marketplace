@@ -1,4 +1,4 @@
-import css from "./icons.module.scss";
+import css from "./Icons.module.scss";
 import React from "react";
 import gymIcon from "./icons/gym.svg";
 import bathroomIcon from "./icons/bathroom.svg";
