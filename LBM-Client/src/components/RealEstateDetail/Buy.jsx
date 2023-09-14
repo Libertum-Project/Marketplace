@@ -10,10 +10,11 @@ const Buy = (props) => {
 
            <div className={style.column2}>          
             <div className={style.buycontainer}>
-              <h1>{location} | {address} </h1>
+              <h1>{location}  </h1>
+              <h1> {address} </h1>
             
 
-            <div>
+            {/* <div>
               <Icons 
               amenities ={amenities}
               rooms = {rooms}
@@ -22,7 +23,7 @@ const Buy = (props) => {
               containerWidth= "3rem"
               withParagraph={false}
               />
-            </div>
+            </div> */}
 
             <div className={style.cardbody}>
 

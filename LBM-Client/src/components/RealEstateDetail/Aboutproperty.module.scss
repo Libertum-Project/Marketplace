@@ -517,7 +517,8 @@ input[type="range"]::-ms-track {
 
 .button{
   display: inline-flex;
-  background-color: $primary-color;  
+  background-color:  var(--Libertum-color) ; 
+  // background-color: var(--LibertumBlue);
   cursor: pointer;
   align-items: center;
   justify-content: center;
