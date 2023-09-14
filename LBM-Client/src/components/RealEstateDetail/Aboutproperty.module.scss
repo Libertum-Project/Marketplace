@@ -58,6 +58,7 @@ font-family: Inter;
 font-weight: 500;
 line-height: 2rem;
 text-align: left;
+justify-content: left;
 
 @media screen and (max-width: 767px) {
   /* Estilos para dispositivos móviles */
@@ -373,8 +374,6 @@ input[type="range"]::-ms-track {
   margin-top: 1rem;
 }
 
-
-
 // ----------------------------- TABLA CUMULATIVE GAIN  ------------------------------
 
 .tableincome{
@@ -543,56 +542,56 @@ display: none;
   }
 }
 
-.icons div {
-  text-align: center;
-  margin-right: 20px;
-}
+// .icons div {
+//   text-align: center;
+//   margin-right: 20px;
+// }
 
-.icons span {
-  display: inline-flex;
-  align-items: center;
-  border-radius: 50%;
-  background-color: $primary-color;
-  padding: 5px;
-  font-size: 30px;
-}
+// .icons span {
+//   display: inline-flex;
+//   align-items: center;
+//   border-radius: 50%;
+//   background-color: $primary-color;
+//   padding: 5px;
+//   font-size: 30px;
+// }
 
-.icons p {
-  margin-top: -8px;
-  font-size: 11px;
-}
+// .icons p {
+//   margin-top: -8px;
+//   font-size: 11px;
+// }
 
 
-.iconsbig{
-  display: flex;
-  // margin: 1rem;
-  justify-content: left;
-  margin-top: 1rem;
+// .iconsbig{
+//   display: flex;
+//   // margin: 1rem;
+//   justify-content: left;
+//   margin-top: 1rem;
 
-  @media screen and (max-width: 767px) {
-    /* Estilos para dispositivos móviles */
-   margin-left: 2.8rem;    
-  }
-}
+//   @media screen and (max-width: 767px) {
+//     /* Estilos para dispositivos móviles */
+//    margin-left: 2.8rem;    
+//   }
+// }
 
-.iconsbig div {
-  text-align: center;
-  margin-right: 20px;
-}
+// .iconsbig div {
+//   text-align: center;
+//   margin-right: 20px;
+// }
 
-.iconsbig span {
-  display: inline-flex;
-  align-items: center;
-  border-radius: 50%;
-  background-color: $primary-color;
-  padding: 5px;
-  font-size: 40px;
-}
+// .iconsbig span {
+//   display: inline-flex;
+//   align-items: center;
+//   border-radius: 50%;
+//   background-color: $primary-color;
+//   padding: 5px;
+//   font-size: 40px;
+// }
 
-.iconsbig p {
-  margin-top: -4px;
-  font-size: 11px;
-}
+// .iconsbig p {
+//   margin-top: -4px;
+//   font-size: 11px;
+// }
 
 .cardbutton{
   display: flex;

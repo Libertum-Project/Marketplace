@@ -5,7 +5,7 @@ import css from "./BuyProperty.module.css";
 import ProgressBar from "./ProgressBar";
 import { useSelector } from "react-redux";
 import backBtn from "../../../assets/back_btn.svg";
-import Icons from "./Icons";
+import HeaderProperty from "./Header.jsx";
 import { useState } from "react";
 import { useEffect } from "react";
 
@@ -18,6 +18,9 @@ const ConfirmInvestment = ({
   value,
   propertyId,
   property,
+  Square_foot,
+  amenities,
+  rooms
 }) => {
   const [subtotal, setSubtotal] = useState(0); //Estadp para ver el subtotal sin los impuestos
   const currentUser = useSelector((state) => state.user.currentUser);
@@ -47,10 +50,17 @@ const ConfirmInvestment = ({
         <h2>Financial information</h2>
       </div>
       <ProgressBar step={"2"} />
-      <h1>
-        {address} | {location}
-      </h1>
-      <Icons />
+      <div className={css.formHeader}>
+      <HeaderProperty
+                  address={address}
+                  location={location}
+                  amenities={amenities}
+                  rooms={rooms}
+                  Square_foot={Square_foot}
+                />
+      </div>
+          
+
       <div className={css.createForm__inputs}></div>
       <div className={css.box}>
         <div>

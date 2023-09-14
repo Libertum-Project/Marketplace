@@ -5,14 +5,15 @@ import { FaBath, FaBed, FaWifi, FaParking   } from "react-icons/fa";
 import Details from "./Details";
 import Financials from "./Financials/Financials";
 import Documents from "./documents/Documents";
+import Icons from "./IconsAmenities/Icons";
 
 import Buy from "./Buy";
-import Icons from "./Buying/Icons"
+// import Icons from "./Buying/Icons"
 
 
 
 const Aboutproperty = (props) => {
-    const { capital, more, map, image, number, address, location, PIT, PRY, AvailablesNFT, amenities, rooms, guests, value, Tokenised, NFTPrice, description } = props;
+    const { Square_foot, capital, more, map, image, number, address, location, PIT, PRY, AvailablesNFT, amenities, rooms, guests, value, Tokenised, NFTPrice, description } = props;
     
 
     const [activeTab, setActiveTab] = useState(1);
@@ -25,37 +26,18 @@ const Aboutproperty = (props) => {
 
     return (
         <div className={style.container}>
-
           <div className={style.column1}>
 
-            <div >
-
+            <div className={style.about} >
             <p className={style.about}>ABOUT THE PROPERTY</p>   
 
-
-            {/* ----------------------------------------------  ICONOS  ------------------------------------------------         */}
-
-            <div className={style.iconsbig}>         
-                <div>
-                  <span><FaBath /></span>
-                  <p>2 bath</p>
-                </div>
-                <div>
-                  <span><FaBed /></span>
-                  <p>3 rooms</p>
-                </div>
-                <div>
-                  <span><FaWifi /></span>
-                  <p>Free Wifi</p>
-                </div>
-                <div>
-                  <span><FaParking /></span>
-                  <p>Parking</p>
-                </div>                        
-            </div>
+              <Icons 
+              amenities ={amenities}
+              rooms = {rooms}
+              squarefoot = {Square_foot}
+              />
 
             <p className={style.description}>{description} </p>
-
             </div>
           
 

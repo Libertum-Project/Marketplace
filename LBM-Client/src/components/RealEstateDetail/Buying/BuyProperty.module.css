@@ -57,11 +57,6 @@
     flex: 1;
   }
 
-  .iconscontainer{
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-  }
   
   .progressBarContainer {
     display: flex;

@@ -24,12 +24,12 @@ const FinancialForm = ({ handleSubmit, onBack, onChange, propertyData }) => {
         "The mortgage amount cannot be greater than the property value.";
     }
 
-    // if (
-    //   !propertyData.financialData.Mortgage ||
-    //   propertyData.financialData.Mortgage < 0
-    // ) {
-    //   errors.Mortgage = "Mortgage is required";
-    // }
+    if (
+      !propertyData.financialData.Mortgage ||
+      propertyData.financialData.Mortgage < 0
+    ) {
+      errors.Mortgage = "Mortgage is required";
+    }
 
     if (!propertyData.financialData.Investment_type) {
       errors.Investment_type = "Investment type is required";
@@ -72,13 +72,13 @@ const FinancialForm = ({ handleSubmit, onBack, onChange, propertyData }) => {
         "Percent of property tokenized is required";
     }
 
-    // if (
-    //   !propertyData.financialData.Monthly_capital_repayment_amount ||
-    //   propertyData.financialData.Monthly_capital_repayment_amount < 1
-    // ) {
-    //   errors.Monthly_capital_repayment_amount =
-    //     "Monthly Capital Repayment Amount is required";
-    // }
+    if (
+      !propertyData.financialData.Monthly_capital_repayment_amount ||
+      propertyData.financialData.Monthly_capital_repayment_amount < 1
+    ) {
+      errors.Monthly_capital_repayment_amount =
+        "Monthly Capital Repayment Amount is required";
+    }
 
     if (
       propertyData.financialData.Monthly_capital_repayment_amount 

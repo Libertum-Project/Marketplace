@@ -1,0 +1,31 @@
+.iconosamenities {
+  display: inline-flex; 
+  margin-top: 1rem;
+   gap: 5px;  
+   
+  /* Resto del CSS sin cambios */
+  .div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  img {
+    width: 4rem;
+  }
+  span {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    padding: 5px;
+    font-size: 40px;
+  }
+  p {
+    font-size: 11px;
+    max-width: 70px;
+    line-height: 1.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
