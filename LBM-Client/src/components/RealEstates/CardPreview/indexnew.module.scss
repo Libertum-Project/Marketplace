@@ -6,26 +6,37 @@ $font-size-base: 16px;
 .container{
   display: flex;
   width: 100%;
+  height: fit-content;
   align-items: flex-start;
   gap: 24px;
   flex-shrink: 0;
   // align-self: stretch;
-  margin-top: 2rem;
-  // padding: auto;
+  margin-top: 1rem;
+
+  // padding-top: 3rem;
+  // padding-bottom: 3rem;
 
   @media (max-width: 768px) {
     flex-direction: column;
     padding: 1rem;
     max-width: 768px;
     width: 100%; 
+    height: fit-content;
     gap: 10px;
+    
   }
 
   @media (max-width: 1020px) {
-    width:100%;
+    // width:95%;
     gap: 10px;
     max-width: 1020px;
-    padding: 1rem;
+    padding: .5rem;
+    // border: 1px solid var(--LibertumBlue);
+    border-radius: 1.5rem;
+    height: fit-content;
+    margin: .1rem;
+    margin-bottom: 2rem;
+
   }
 
   
@@ -37,26 +48,21 @@ width: calc(100% - 326px);
 height: 200px;
 flex-direction: column;
 align-items: flex-start;
-// gap: auto;
 flex-shrink: 0;
-// justify-content: space-around;
 justify-content: space-between;
-
-
 
 @media (max-width: 768px) {
   width:100%;
   // gap: 14px;
   justify-content: space-around;
   max-width: 768px;
-  
+  height: fit-content;  
 }
 
 @media (max-width: 1020px) {
   width:100%;
-  gap: 32px;
-  max-width: 450px;
-  
+  gap: 12px;
+  max-width: 450px;  
 }
 @media screen and (min-width: 1800px){
   // width: 1800px;
@@ -194,6 +200,7 @@ justify-content: space-between;
   flex-direction: column;
   align-items: flex-start;
   flex: 1 0 0;
+  line-height: 1.8rem;
 }
 
 .titleSubtitle h3{

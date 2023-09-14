@@ -7,64 +7,170 @@ $--bc: var(--Libertum-color);
 
 .container {
   position: relative;  
-  display: flex;
   justify-content: space-between;
   width: 100%;
- 
-
-  @media screen and (max-width: 767px) {
-    /* Estilos para dispositivos móviles */
-    // justify-content: center;
-    
-
-  }
-  
+  gap: 2rem;  
 }
 
 .column1{
-  flex-basis: 70%;
+  flex-basis: 60%;
+  padding-right: 1rem;
+
+  @media screen and (max-width: 1200px) {
+    flex-basis: 100%;
+    padding: .2rem;
+  }
 }
 
 .column2 {
-  flex-basis: 30%;
-  
-  // Ajusta la posición horizontalmente según tus necesidades
-}
+  flex-basis: 40%; 
 
+  @media screen and (max-width: 1200px) {
+    z-index: 9999;
+    max-width: 100%;
+  }
+  // ----------------------------- BUY MODULE ------------------------------
+.buycontainer{
+  border-radius: 1rem;
+  background-color: rgb(255, 255, 255); 
+  box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.302);
+  padding: 2rem 2rem;
+  font-size: 0.875rem/* 14px */;
+  line-height: 1.25rem/* 20px */;
+  justify-content: center;
+  
+  @media screen and (max-width: 780px) {
+    div{
+      display: none;
+    }
+    .cardbody{
+      height: fit-content;
+    }
+    position: fixed;
+    bottom: 0;
+    z-index: 9999;
+    max-width: 100%;
+    padding-top: .5rem;
+    padding-bottom: 2.2rem;
+    margin-bottom: .5rem;
+  }
+
+  h1{
+    margin-bottom: 20px;
+    color: #000;
+    text-align: center;
+    font-size: 1.375rem;
+    font-family: Inter;
+    font-weight: 600;
+    margin-bottom: 2rem;
+  
+    @media screen and (min-width: 768px) and (max-width: 1023px) {
+      /* Estilos para tablets */
+    display: none;
+    }
+  
+    @media screen and (max-width: 767px) {
+      /* Estilos para dispositivos móviles */
+    display:none;
+      
+    }
+  }
+  
+ span {
+    margin-bottom: 20px;
+    color: #000;
+    text-align: center;
+    font-size: 1.375rem;
+    font-family: Inter;
+    font-weight: 600;
+    
+  
+  }
+  
+  .cardbody{
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 0.5rem/* 8px */;
+  
+    @media screen and (min-width: 768px) and (max-width: 1200px) {
+      /* Estilos para tablets */
+      flex-direction: row;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+  
+    @media screen and (max-width: 767px) {
+      /* Estilos para dispositivos móviles */
+     padding: 0;
+     gap: 0;
+    }
+    
+    p{
+      text-align: left;
+      color: #000;
+      font-size: 0.9375rem;
+      font-family: Inter;
+      font-weight: 500;
+      }
+      
+      .cardtext{
+        display: flex;
+        flex-direction: column;
+      
+        @media screen and (max-width: 767px) {
+          /* Estilos para dispositivos móviles */
+          display: none;
+          
+        }
+      }
+  } 
+  
+  .cardbutton{
+  display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 0.5rem/* 8px */;
+    justify-content: center;
+    margin-top: 2rem;
+}
+}
+}
 
 .buttons {
   margin: 0;  
+  margin-top: 1rem;
   display: flex;
   padding: 0;
-  // background-color: #f4f5f6b2;
+  background-color: var(--LibertumBlue);
+  border-radius: .6rem;
   // border-radius: 1rem;
-  // height: 2rem;
   // align-items: center;
   // justify-items: stretch;
 
   @media screen and (max-width: 767px) {
-    /* Estilos para dispositivos móviles */
-    width: 350px;
-    flex-direction: column;   
+    flex-wrap: wrap;   
     align-items: center;
+    line-height: 1.5rem;
+    max-width: 350px;
   }
 }
 
 .about{
 color: var(--black, #000);
-/* text-2xl/Medium */
 font-size: 1.5rem;
 font-family: Inter;
 font-weight: 500;
 line-height: 2rem;
 text-align: left;
 justify-content: left;
+width: fit-content;
 
 @media screen and (max-width: 767px) {
-  /* Estilos para dispositivos móviles */
 text-align: left;
-margin-left: 3rem;
-
+padding: auto;
+// max-width: 250px;
 }
 }
 
@@ -75,7 +181,7 @@ margin-left: 3rem;
   font-family: Inter;
   line-height: 1.5rem;  
   display: flex;
-  width: 37.6875rem;
+  // width: 37.6875rem;
   height: 9.875rem;
   flex-direction: column;
   justify-content: center;
@@ -97,58 +203,67 @@ margin-left: 3rem;
 
 
 .tab {
+    flex: 1;
     position: relative;
     display: inline-flex;
     cursor: pointer;
-    color: gray;
+    color: rgb(255, 255, 255);
     font-size: 15px;
     width: fit-content;
     height: fit-content;
     padding: 0;
-    margin-left: 1rem;
+    // margin-left: 1rem;
     text-transform: uppercase;
-    margin-top: 1.5rem;
-    margin-bottom: 1rem;
+    margin: auto;
+    justify-content: center;
 
+    @media screen and (max-width: 780px) {
+      flex:content;
+      padding-top: .5rem;
+      padding-bottom: .5rem;
+    }
 }
-.tab:hover{
-  border-bottom: 2px solid $primary-color;
-  border-radius: 0; 
-}
+
+
 
 .tabActive{
-  color: $primary-color;
-  font-size: 18px;
-  border-bottom: 2px solid $primary-color;
-  border-radius: 0; 
+  color: var(--LibertumBlue);
+  background-color: #FFF;
+  margin: .4rem;
+  padding: auto;
+  font-size: 14px;
+  font-weight: 600;
+  // border-bottom: 2px solid $primary-color;
+  border-radius: .6rem;
 }
 
 .tabActive:hover{
-  color: $primary-color;
-  font-size: 18px;
-  border-bottom: 2px solid $primary-color;
-  border-radius: 0;
+  color: var(--LibertumBlue);
+  // border-bottom: 2px solid $primary-color;
+  
 }
 
 
 
 // ---------------------- TABLES ------------------------------------
 
-.table {
+.table {  
   display: table;
   width: 100%;
   border-collapse: separate;
   border-spacing: 0 1.5rem;
   margin-left: 1rem;
   // margin-bottom: 3rem;
+
+  @media screen and (max-width: 780px) {
+    margin: 0rem;
+  }
 }
 
-.barra{
-  // background-color: #cecfd1;
+.barra{  
   border-radius: 3%;
   width:max-content;
   justify-content: center;
-
 }
 .row {
   display: table-row;
@@ -343,7 +458,7 @@ input[type="range"]::-ms-track {
   justify-content: center;
   flex-shrink: 0;
   text-align: left;
-  margin-left: 1rem;
+  // margin-left: 1rem;
 }
 
 .descriptiontabledif:hover{
@@ -371,6 +486,7 @@ input[type="range"]::-ms-track {
 .download {
   align-items: left;
   text-align: left;
+  line-height: 1.5rem;
   margin-top: 1rem;
 }
 
@@ -396,216 +512,8 @@ input[type="range"]::-ms-track {
   margin-bottom: 1rem;
 }
 
-// ----------------------------- BUY MODULE ------------------------------
-
-// .fixed{
-//   position: sticky;
-//   top: 50px; // Ajusta la posición verticalmente según tus necesidades
-//   left: 20px; 
-// }
-
-.buycontainer{
-  position: relative; 
-  border-radius: 1rem;
-  width: 24rem;
-  height: 22rem;
-  background-color: rgb(255, 255, 255);
-  // opacity: 0.8;
-  box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.302);
-  padding: 2rem 2rem;
-  font-size: 0.875rem/* 14px */;
-  line-height: 1.25rem/* 20px */;
-  justify-content: center;
-
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
-    /* Estilos para tablets */
-    max-width: 768px;
-    min-width: 750px;
-    max-height: 180px;
-    display: flex;
-    flex: row;
-   
-  }
-
-  @media screen and (max-width: 767px) {
-    /* Estilos para dispositivos móviles */
-    max-width: 100vh;
-    min-width: 300px;
-    max-height: 100px;
-    
-  }
-}
 
 
-
-
-.buycontainer figure{
-border-radius: 1rem;
-}
-
-.buycontainer h1{
-  margin-bottom: 20px;
-  color: #000;
-  text-align: center;
-  font-size: 1.375rem;
-  font-family: Inter;
-  font-weight: 600;
-  margin-bottom: 2rem;
-
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
-    /* Estilos para tablets */
-  display: none;
-  }
-
-  @media screen and (max-width: 767px) {
-    /* Estilos para dispositivos móviles */
-  display:none;
-    
-  }
-}
-
-.buycontainer span {
-  margin-bottom: 20px;
-  color: #000;
-  text-align: center;
-  font-size: 1.375rem;
-  font-family: Inter;
-  font-weight: 600;
-
-}
-
-.cardbody{
-  display: flex;
-  flex: 1 1 auto;
-  flex-direction: column;
-  padding: 2rem;
-  gap: 0.5rem/* 8px */;
-
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
-    /* Estilos para tablets */
-    flex-direction: row;
-    justify-content: center;
-    gap: 2.5rem;
-  }
-
-  @media screen and (max-width: 767px) {
-    /* Estilos para dispositivos móviles */
-   padding: 0;
-   gap: 0;
-  }
-  
-  
-}
-
-.cardbody p{
-text-align: left;
-color: #000;
-font-size: 0.9375rem;
-font-family: Inter;
-font-weight: 500;
-}
-
-.cardtext{
-  display: flex;
-  flex-direction: column;
-
-  @media screen and (max-width: 767px) {
-    /* Estilos para dispositivos móviles */
-    display: none;
-    
-  }
-}
-
-// .cardbutton{
-//   display: flex;
-//     flex-wrap: wrap;
-//     align-items: flex-start;
-//     gap: 0.5rem/* 8px */;
-//     justify-content: center;
-//     margin-top: 2rem;
-// }
-
-.icons {
-  display: flex;
-  justify-content: center;
-
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
-    /* Estilos para tablets */
-display: none;
-   
-  }
-
-  @media screen and (max-width: 767px) {
-    /* Estilos para dispositivos móviles */
-display: none;
-    
-  }
-}
-
-// .icons div {
-//   text-align: center;
-//   margin-right: 20px;
-// }
-
-// .icons span {
-//   display: inline-flex;
-//   align-items: center;
-//   border-radius: 50%;
-//   background-color: $primary-color;
-//   padding: 5px;
-//   font-size: 30px;
-// }
-
-// .icons p {
-//   margin-top: -8px;
-//   font-size: 11px;
-// }
-
-
-// .iconsbig{
-//   display: flex;
-//   // margin: 1rem;
-//   justify-content: left;
-//   margin-top: 1rem;
-
-//   @media screen and (max-width: 767px) {
-//     /* Estilos para dispositivos móviles */
-//    margin-left: 2.8rem;    
-//   }
-// }
-
-// .iconsbig div {
-//   text-align: center;
-//   margin-right: 20px;
-// }
-
-// .iconsbig span {
-//   display: inline-flex;
-//   align-items: center;
-//   border-radius: 50%;
-//   background-color: $primary-color;
-//   padding: 5px;
-//   font-size: 40px;
-// }
-
-// .iconsbig p {
-//   margin-top: -4px;
-//   font-size: 11px;
-// }
-
-.cardbutton{
-  display: flex;
-  justify-content: center;
-  align-content: end;
-
-  @media screen and (max-width: 767px) {
-    /* Estilos para dispositivos móviles */
-    display: flex;
-    justify-content: center;
-    align-content: center;
-
-  }
-}
 
 .button{
   display: inline-flex;
@@ -625,6 +533,7 @@ display: none;
   text-align: center;
   font-size: 1.125rem;
   width: 21rem ;
+  border-radius: .6rem;
 
   @media screen and (min-width: 768px) and (max-width: 1023px) {
     /* Estilos para tablets */
@@ -633,7 +542,7 @@ display: none;
   
   @media screen and (max-width: 767px) {
     /* Estilos para dispositivos móviles */
-    width: 330px;
+    
 
   }
   

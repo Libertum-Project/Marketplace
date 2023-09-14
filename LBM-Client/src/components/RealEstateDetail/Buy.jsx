@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 import style from "./Aboutproperty.module.scss";
-import { FaBath, FaBed, FaWifi, FaParking   } from "react-icons/fa";
 import Icons from "./IconsAmenities/Icons";
+
 
 const Buy = (props) => {
   const { Square_foot, rooms, amenities, image, id, address, location, PIT, PRY, AvailablesNFT } = props;
 
   return (
-           <div
-          className={style.column2}        >          
+
+           <div className={style.column2}>          
             <div className={style.buycontainer}>
               <h1>{location} | {address} </h1>
             
@@ -20,6 +20,7 @@ const Buy = (props) => {
               squarefoot = {Square_foot}
               iconSize="2.5rem"
               containerWidth= "3rem"
+              withParagraph={false}
               />
             </div>
 
@@ -43,7 +44,9 @@ const Buy = (props) => {
             </div>
             </div>
 
-          </div> 
+          </div>
+
+ 
   );
 };
 

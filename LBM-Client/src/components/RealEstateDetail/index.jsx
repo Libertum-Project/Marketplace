@@ -176,17 +176,17 @@ console.log("proerty" + property.Feature.Address)
 
   const { isLoading } = useAuth0();
 
-  const [isScrolled, setIsScrolled] = useState(false);
+  // const [isScrolled, setIsScrolled] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      setIsScrolled(scrollTop > 120);
-    };
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  //     setIsScrolled(scrollTop > 100);
+  //   };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  //   window.addEventListener('scroll', handleScroll);
+  //   return () => window.removeEventListener('scroll', handleScroll);
+  // }, []);
 
 
   //--------------------   CARROUSEL  -------------------
@@ -263,7 +263,7 @@ console.log("proerty" + property.Feature.Address)
       
 
 
-      <div className={css.info}>
+      <div className={css.contenedor}>
              
           <Aboutproperty
             id={property.ID_Property}
@@ -287,8 +287,6 @@ console.log("proerty" + property.Feature.Address)
            
           />
         
-
-        <div className={isScrolled ? css.buycontainer : ''}>
           <Buy
             id={property.ID_Property}
             number={property.ID_Property}
@@ -305,9 +303,10 @@ console.log("proerty" + property.Feature.Address)
             capital={property.Financial.Capital_payment_duration}
             Square_foot={property.Feature.Square_foot}
             amenities={property.Feature.Amenities}
-            rooms={property.Feature.Rooms}
+            rooms={property.Feature.Rooms}         
           />
-        </div>
+
+
       </div>
     </div>
   ) : <Loading />

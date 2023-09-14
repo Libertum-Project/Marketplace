@@ -11,24 +11,26 @@ import swimmingIcon from "./icons/pool.svg";
 import terraceIcon from "./icons/terrace.svg";
 import wifiIcon from "./icons/wifi.svg";
 
-const Icons = ({ amenities, squarefoot, rooms, iconSize, containerWidth}) => {
+const Icons = ({ amenities, squarefoot, rooms, iconSize, containerWidth, withParagraph}) => {
   const displayedAmenities = amenities.slice(0, 5);
+
+  console.log("with p " + withParagraph)
 
   return (
     <div className={css.iconosamenities}>
-      <div className= {css.div} style={{ width: containerWidth }}>
-      <img src={sqfeetIcon} alt="" style={{ width: iconSize, height: iconSize }} />
-      <p>{squarefoot} sq ft</p>
-    </div>
-    <div className= {css.div} style={{ width: containerWidth }}>
-      <img src={bedroomIcon} alt="" style={{ width: iconSize, height: iconSize }} />
-      <p>{rooms} bedrooms</p>
-    </div>
+      <div className={css.div} style={{ width: containerWidth }}>
+        <img src={sqfeetIcon} alt="" style={{ width: iconSize, height: iconSize }} />
+        {withParagraph ? <p>{squarefoot} sq ft</p> : null}
+      </div>
+      <div className={css.div} style={{ width: containerWidth }}>
+        <img src={bedroomIcon} alt="" style={{ width: iconSize, height: iconSize }} />
+        {withParagraph ? <p>{rooms} bedrooms</p> : null}
+      </div>
 
       {displayedAmenities.map((amenity, index) => {
         let icon = null;
         const amenityLowerCase = amenity.toLowerCase();
-        
+
         switch (amenityLowerCase) {
           case "garden":
             icon = gardenIcon;
@@ -56,14 +58,14 @@ const Icons = ({ amenities, squarefoot, rooms, iconSize, containerWidth}) => {
         }
 
         return (
-          <div className= {css.div} key={index} style={{ width: containerWidth }}>
-             {icon && <img src={icon} alt="" style={{ width: iconSize, height: iconSize }} />}
-            <p>{amenity}</p>
+          <div className={css.div} key={index} style={{ width: containerWidth }}>
+            {icon && <img src={icon} alt="" style={{ width: iconSize, height: iconSize }} />}
+            {withParagraph ? <p>{amenity}</p> : null}
           </div>
         );
       })}
     </div>
   );
-};
+}
 
 export default Icons;
