@@ -5,6 +5,7 @@ import { FaBath, FaBed, FaWifi, FaParking   } from "react-icons/fa";
 import Details from "./Details";
 import Financials from "./Financials/Financials";
 import Documents from "./documents/Documents";
+import InvestmentGuide from "./BuyingProcess";
 import Icons from "./IconsAmenities/Icons";
 
 import Buy from "./Buy";
@@ -13,7 +14,7 @@ import Buy from "./Buy";
 
 
 const Aboutproperty = (props) => {
-    const { Square_foot, capital, more, map, image, number, address, location, PIT, PRY, AvailablesNFT, amenities, rooms, guests, value, Tokenised, NFTPrice, description } = props;
+    const { Square_foot, capital, more, map, image, number, address, location, PIT, PRY, AvailablesNFT, amenities, rooms, guests, value, Tokenised, NFTPrice, description, type } = props;
     
 
     const [activeTab, setActiveTab] = useState(1);
@@ -90,6 +91,7 @@ const Aboutproperty = (props) => {
               guests={guests}
               value={value}
               description={description}
+              type={type}
               // map ={map}
             />
           </div>
@@ -140,12 +142,10 @@ const Aboutproperty = (props) => {
           </table>
                   
                 )}
-
+ {/* ------------------------------ BUYING PROCESS ---------------------- */}
         {activeTab === 5 && (
                 <div className="mt-8">
-                  {/* Contenido de la pestaña 3 */}
-                  
-                  <p>Charge document</p>
+                <InvestmentGuide />
                 </div>
               )}
 

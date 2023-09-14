@@ -1,10 +1,18 @@
 import  style  from "./Aboutproperty.module.scss"
 
-const Details = ({amenities, rooms, address, more, map }) => {
+const Details = ({amenities, rooms, address, more, map, type }) => {
     
 
     return (
     <div className={style.table}>
+      <div className={style.row}>
+      <div className={style.cell}>
+        <span className={style.label}>Property Type:</span>
+      </div>
+      <div className={style.cell}>
+        <span className={style.descriptiontable}>{type}</span>
+      </div>
+    </div>
     <div className={style.row}>
       <div className={style.cell}>
         <span className={style.label}>Amenities:</span>
