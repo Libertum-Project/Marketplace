@@ -284,6 +284,7 @@ console.log("proerty" + property.Feature.Address)
             more={property.Feature.More}
             description={property.Feature.Description}
             Square_foot={property.Feature.Square_foot}
+            type = {property.Feature.Type}
            
           />
         

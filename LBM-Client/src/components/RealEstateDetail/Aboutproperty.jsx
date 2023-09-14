@@ -13,7 +13,7 @@ import Buy from "./Buy";
 
 
 const Aboutproperty = (props) => {
-    const { Square_foot, capital, more, map, image, number, address, location, PIT, PRY, AvailablesNFT, amenities, rooms, guests, value, Tokenised, NFTPrice, description } = props;
+    const { Square_foot, capital, more, map, image, number, address, location, PIT, PRY, AvailablesNFT, amenities, rooms, guests, value, Tokenised, NFTPrice, description, type } = props;
     
 
     const [activeTab, setActiveTab] = useState(1);
@@ -90,6 +90,7 @@ const Aboutproperty = (props) => {
               guests={guests}
               value={value}
               description={description}
+              type={type}
               // map ={map}
             />
           </div>
