@@ -1,6 +1,5 @@
 import css from "./BuyProperty.module.css";
 import ProgressBar from "./ProgressBar";
-import Icons from "./Icons";
 import check from "./assets/check.svg"
 import { useState } from "react";
 import { useSelector } from "react-redux";
@@ -9,15 +8,17 @@ import {
   setConnected,
   selectIsConnected,
 } from "../../../../redux/features/walletSlice";
+import HeaderProperty from "./Header";
 
 const ConfirmTokens = ({ handleSubmit, onNext, 
-
-  address, 
-  location,  
   AvailablesNFT,  
   NFTPrice, 
-  PRY
-
+  PRY,
+  address,
+  location,
+  Square_foot,
+  amenities,
+  rooms
 }) => {
 
     
@@ -47,10 +48,13 @@ const ConfirmTokens = ({ handleSubmit, onNext,
       <h2>Confirm Tokens and Property</h2>
       <ProgressBar step="1" />
 
-      <h1> 
-         {address} | {location}             
-      </h1>          
-      <Icons /> 
+      <HeaderProperty
+            address={address}
+            location={location}
+            amenities={amenities}
+            rooms={rooms}
+            Square_foot={Square_foot}
+          />
 
       <div className={css.createForm__inputs}>
 

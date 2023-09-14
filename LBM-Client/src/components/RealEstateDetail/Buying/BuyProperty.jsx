@@ -266,6 +266,10 @@ const BuyProperty = () => {
           location={property.Feature.City}
           NFTPrice={property.Financial.Token_Price}
           PRY={property.Financial.Rental_yield}
+          amenities={property.Feature.Amenities}
+          rooms={property.Feature.Rooms}
+          Square_foot={property.Feature.Square_foot}
+
         />
       )}
       {/* {currentForm === 2 && (
@@ -290,6 +294,10 @@ const BuyProperty = () => {
           NFTPrice={property.Financial.Token_Price}
           propertyId={propertyId}
           property={property}
+          PRY={property.Financial.Rental_yield}
+          amenities={property.Feature.Amenities}
+          rooms={property.Feature.Rooms}
+          Square_foot={property.Feature.Square_foot}
         />
       )}
     </div>

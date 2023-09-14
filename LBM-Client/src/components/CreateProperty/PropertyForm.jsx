@@ -92,19 +92,19 @@ const PropertyForm = ({
       errors.Description = "Description must not exceed 300 characters";
     }
 
-    // if (
-    //   !propertyData.featureData.Current_Emission ||
-    //   propertyData.featureData.Current_Emission < 0
-    // ) {
-    //   errors.Current_Emission = "Current Emission is required";
-    // }
+    if (
+      !propertyData.featureData.Current_Emission ||
+      propertyData.featureData.Current_Emission < 0
+    ) {
+      errors.Current_Emission = "Current Emission is required";
+    }
 
-    // if (
-    //   !propertyData.featureData.Expected_Emission_Level ||
-    //   propertyData.featureData.Expected_Emission_Level < 0
-    // ) {
-    //   errors.Expected_Emission_Level = "Expected Emission Level is required";
-    // }
+    if (
+      !propertyData.featureData.Expected_Emission_Level ||
+      propertyData.featureData.Expected_Emission_Level < 0
+    ) {
+      errors.Expected_Emission_Level = "Expected Emission Level is required";
+    }
 
     if(images.length < 5 ){
       errors.ExpectedImages = "Please upload at least 5 images";
