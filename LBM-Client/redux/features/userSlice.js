@@ -37,10 +37,9 @@ export const fetchAllUsers = createAsyncThunk(
 
 export const saveProperty = createAsyncThunk(
   "user/saveProperty",
-  async (propertyData, { getState }) => {
+  async (propertyId, { getState }) => {
     try {
       const userId = getState().user.currentUser.ID_user;
-      const propertyId = propertyData.propertyId;
       const response = await fetch(
         `${userURL}/update?userId=${userId}&saved=${propertyId}`,
         {
@@ -48,13 +47,11 @@ export const saveProperty = createAsyncThunk(
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(propertyData),
         }
       );
       if (!response.ok) {
         throw new Error("Failed to save property on the server");
       }
-      return propertyData;
     } catch (error) {
       console.error("Error saving property:", error.message);
       throw error;
@@ -64,10 +61,9 @@ export const saveProperty = createAsyncThunk(
 
 export const unsaveProperty = createAsyncThunk(
   "user/unsaveProperty",
-  async (propertyData, { getState }) => {
+  async (propertyId, { getState }) => {
     try {
       const userId = getState().user.currentUser.ID_user;
-      const propertyId = propertyData.propertyId;
       const response = await fetch(
         `${userURL}/update?userId=${userId}&unsave=${propertyId}`,
         {
@@ -75,13 +71,11 @@ export const unsaveProperty = createAsyncThunk(
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(propertyData),
         }
       );
       if (!response.ok) {
         throw new Error("Failed to save property on the server");
       }
-      return propertyData;
     } catch (error) {
       console.error("Error unsaving property:", error.message);
       throw error;
@@ -107,29 +101,6 @@ export const buyToken = createAsyncThunk(
     return await response.json();
   }
 );
-
-// export const deleteProperty = createAsyncThunk(
-//   "user/deleteProperty",
-//   async (propertyId, { getState }) => {
-//     try {
-//       const userId = getState().user.currentUser.ID_user;
-//       const response = await fetch(`${userURL}/update?userId=${userId}&saved=false`, {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({ propertyId }),
-//       });
-//       if (!response.ok) {
-//         throw new Error("Failed to delete property on the server");
-//       }
-//       return propertyId;
-//     } catch (error) {
-//       console.error("Error deleting property:", error.message);
-//       throw error;
-//     }
-//   }
-// );
 
 export const deleteProperty = createAsyncThunk(
   "user/deleteProperty",

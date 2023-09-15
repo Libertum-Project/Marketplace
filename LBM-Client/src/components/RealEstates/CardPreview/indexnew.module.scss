@@ -271,10 +271,11 @@ font-weight: 500;
 .saveIcon{
   width: 1.4rem;
   height: 1.4rem;
-
-  @media (max-width: 768px) {
-  
-  }
+  border-radius: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 

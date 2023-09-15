@@ -1,4 +1,5 @@
 import css from "./Userproperties.module.scss";
+import SaveProperty from "../../SaveProperty/SaveProperty";
 import { Link } from 'react-router-dom'; 
 const Card = (
   {
@@ -14,6 +15,7 @@ const Card = (
 
   return(
     <div className={css.cardcontainer}>
+      <SaveProperty propertyId={id} />
         <img src={image} alt="" />
         <h2>{address}</h2>        
         <p>{location}</p>
