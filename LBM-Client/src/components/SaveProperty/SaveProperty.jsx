@@ -12,7 +12,7 @@ import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 const SaveProperty = ({ propertyId }) => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.user.currentUser);
-  const { isAuthenticated, isLoading, user } = useAuth0();
+  const { user } = useAuth0();
   const savedPropertiesArray = currentUser.savedProperties.map(
     (property) => property.ID_Property
   );
@@ -24,6 +24,17 @@ const SaveProperty = ({ propertyId }) => {
   });
 
   const [showSaved, setShowSaved] = useState(isCurrentPropertySaved);
+
+    useEffect(() => {
+    if (user) {
+      dispatch(
+        fetchCurrentUser({
+          email: user.email,
+          name: user.name,
+        })
+      );
+    }
+  }, [showSaved, dispatch, user]);
 
   const handleSaveProperty = () => {
     setShowSaved(true);
