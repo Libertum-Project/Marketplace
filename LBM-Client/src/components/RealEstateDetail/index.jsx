@@ -7,6 +7,7 @@ import { fetchFilteredProperties, fetchAllProperties } from '../../../redux/feat
 import Aboutproperty from "./Aboutproperty";
 import Buy from "./Buy";
 import Loading from "../Loading/Loading";
+import SaveProperty from '../SaveProperty/SaveProperty'
 import { useEffect, useState } from "react";
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -219,11 +220,10 @@ console.log("proerty" + property.Feature.Address)
     slidesToScroll: 1,
   };
 
-
   return !isLoading ? (
     <div className={css.details}>
       <header className={css.header}>
-        <h2>{property.Feature.Address}</h2>
+        <h2>{property.Feature.Address} <SaveProperty propertyId={property.ID_Property} /> </h2>
         <div className={css.headerText}>
           <p>{property.Feature.City}</p>
         </div>
