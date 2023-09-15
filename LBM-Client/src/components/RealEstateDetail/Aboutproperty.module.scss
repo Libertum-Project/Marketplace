@@ -229,6 +229,7 @@ padding: auto;
 .tabActive{
   color: var(--LibertumBlue);
   background-color: #FFF;
+  // transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
   margin: .4rem;
   padding: auto;
   font-size: 14px;
@@ -239,6 +240,7 @@ padding: auto;
 
 .tabActive:hover{
   color: var(--LibertumBlue);
+  transition: color 0.3s ease-in-out;
   // border-bottom: 2px solid $primary-color;
   
 }

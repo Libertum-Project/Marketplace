@@ -54,7 +54,7 @@ const Principal = () => {
       {selectedCard !== null && (
         <div className={styles.fullscreen}>
           <div className={styles.fullscreenContent}>
-            <button onClick={handleCloseFullscreen}>❮</button>
+            <button onClick={handleCloseFullscreen} className={styles.buttonClose}>❮</button>
             {selectedCard === 0 && <About />}
             {selectedCard === 1 && <Investing />}
             {selectedCard === 2 && <Contact />}
