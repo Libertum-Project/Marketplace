@@ -90,7 +90,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Landing />} />
+        {/* <Route path="/" element={<Landing />} /> */}
         <Route element={<AppLayout />}>
           <Route
             path="/dashboard"
@@ -108,6 +108,7 @@ function App() {
               </div>
             }
           />
+          <Route path="/" element={<Landing />} />
           <Route
             path={"/marketplace"}
             element={
