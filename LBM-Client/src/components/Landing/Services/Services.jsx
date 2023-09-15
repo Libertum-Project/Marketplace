@@ -59,23 +59,25 @@ const Services = () => {
           ))}
         </Slide>
       </div>
-
-      <div className={styles.content}>
-        <Slide direction={animationDirection}>
-          <img
-            key={activeItem} 
-            src={servicesData[activeItem].image}
-            alt={`Imagen ${activeItem + 1}`}
-          />
-        </Slide>
-        <div className={styles.overlay}>
-          <Slide direction={animationDirection}>
-            <p key={activeItem}> 
-              {servicesData[activeItem].text}
-            </p>
-          </Slide>
+        <div className={styles.contentcontainer}> 
+             <div className={styles.content}>
+                <Slide direction={animationDirection}>
+                  <img
+                    key={activeItem} 
+                    src={servicesData[activeItem].image}
+                    alt={`Imagen ${activeItem + 1}`}
+                  />
+                </Slide>
+                <div className={styles.overlay}>
+                  <Slide direction={animationDirection}>
+                    <p key={activeItem}> 
+                      {servicesData[activeItem].text}
+                    </p>
+                  </Slide>
+                </div>
+              </div>
         </div>
-      </div>
+              
     </div>
   );
 };

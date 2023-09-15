@@ -68,7 +68,7 @@ function DashboardUser() {
         );
       }
     }
-  }, [isAuthenticated, isLoading]);
+  }, [isAuthenticated, isLoading, DashboardUser]);
 
   const handleClickProperties = () => {
     console.log("handleClickProperties");

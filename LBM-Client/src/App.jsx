@@ -50,6 +50,9 @@ import Properties from "./components/AdminDashboard/Properties/Properties";
 import DashboardUser from "./components/DashboardUser/DashboardUser";
 import CoinPage from "./components/Coin/Coin";
 import SignIn from "./components/SignIn/SignIn";
+import SubscribePage from "./components/Contact/SubscribePage";
+import ContactPage from "./components/Contact/ContactPage";
+
 
 
 
@@ -87,7 +90,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Landing />} />
+        {/* <Route path="/" element={<Landing />} /> */}
         <Route element={<AppLayout />}>
           <Route
             path="/dashboard"
@@ -105,6 +108,7 @@ function App() {
               </div>
             }
           />
+          <Route path="/" element={<Landing />} />
           <Route
             path={"/marketplace"}
             element={
@@ -281,6 +285,11 @@ function App() {
 
           <Route path={"/mydashboard/*"} element= {<DashboardUser />} />
 
+          <Route path="/subscribe" element = {<SubscribePage />} />
+
+          <Route path= "/contact" element = { <ContactPage />} />
+
+
           <Route
             path={"/coinrelease"}
             element={
@@ -295,6 +304,7 @@ function App() {
         <Route path="/swap" element={<CoomingSoon />} />
         <Route path="/comingsoon" element={<CoomingSoon />} />
         <Route path="*" element={<NotFound />} />
+        
         {/* <Route path="/signin" element={<DashboardUser />} /> */}
       </Routes>
       <Footer />

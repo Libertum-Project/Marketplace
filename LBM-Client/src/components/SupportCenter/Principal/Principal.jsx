@@ -3,6 +3,10 @@ import styles from './Principal.module.scss';
 import groupIcon from "./assets/group.svg";
 import houseIcon from "./assets/house.svg";
 import helpIcon from "./assets/question.svg";
+import About from './About';
+import Contact from './Contact';
+import Investing from './Investing';
+
 
 const Principal = () => {
   const data = [
@@ -10,19 +14,16 @@ const Principal = () => {
       icon: groupIcon,
       title: 'About Libertum',
       description: 'Know more about Libertum.io',
-      text: "add here some text"
     },
     {
       icon: houseIcon,
       title: 'Investing',
       description: 'Learn more about the investment process',
-      text: "add here some text"
     },
     {
       icon: helpIcon,
       title: 'Contact Our Team',
       description: 'Contact us if you have any other questions',
-      text: "add here some text"
     }
   ];
 
@@ -53,14 +54,10 @@ const Principal = () => {
       {selectedCard !== null && (
         <div className={styles.fullscreen}>
           <div className={styles.fullscreenContent}>
-          <button onClick={handleCloseFullscreen}>❮</button>
-            {/* <img className={styles.icon} src={data[selectedCard].icon} alt={data[selectedCard].title} /> */}
-            <div className={styles.content}>
-              <div className={styles.title}>{data[selectedCard].title}</div>             
-              <div className={styles.text}>{data[selectedCard].text}</div>
-            </div>
-            
-            
+            <button onClick={handleCloseFullscreen} className={styles.buttonClose}>❮</button>
+            {selectedCard === 0 && <About />}
+            {selectedCard === 1 && <Investing />}
+            {selectedCard === 2 && <Contact />}
           </div>
         </div>
       )}

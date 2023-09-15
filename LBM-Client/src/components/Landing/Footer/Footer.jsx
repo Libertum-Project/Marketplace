@@ -55,12 +55,12 @@ export default function Footer() {
               </li>
               <li>
                 <Scroll
-                  to="subscribe"
+                  to="contact"
                   smooth={true}
                   duration={1000}
                   className="footer_li"
                 >
-                  Contacts
+                  Contact
                 </Scroll>
               </li>
               <li>

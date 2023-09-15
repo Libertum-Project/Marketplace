@@ -46,7 +46,7 @@ const Footer = () => {
               FAQs
           </a>
 
-          <Link to="subscribe" smooth={true} duration={1000} className="menu-a_items">
+          <Link to="contact" smooth={true} duration={1000} className="menu-a_items">
               CONTACT
             </Link>
 
