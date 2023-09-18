@@ -10,8 +10,14 @@ const {
 async function createUser(email, name) {
   try {
     const [user, created] = await User.findOrCreate({
-      where: { email },
-      defaults: { name },
+      where: {
+        email: email,
+        name: name,
+      },
+      defaults: {
+        name: name,
+        editableName: name
+      },
       include: [
         {
           model: Property,

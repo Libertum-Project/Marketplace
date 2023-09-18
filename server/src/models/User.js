@@ -34,6 +34,10 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING(100),
         allowNull: false,
       },
+        editableName: {
+        type: DataTypes.STRING(100),
+        allowNull: true,
+      },
       lastName: {
         type: DataTypes.STRING(100),
         allowNull: true,
