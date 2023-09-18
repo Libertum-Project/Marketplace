@@ -7,13 +7,17 @@ const {
   Feature,
 } = require("../../db");
 
-const { privateKeys } = require("../../privateKey");
-
 async function createUser(email, name) {
   try {
     const [user, created] = await User.findOrCreate({
-      where: { email },
-      defaults: { name },
+      where: {
+        email: email,
+        name: name,
+      },
+      defaults: {
+        name: name,
+        editableName: name
+      },
       include: [
         {
           model: Property,
@@ -37,9 +41,6 @@ async function createUser(email, name) {
       ],
     });
 
-    const id = user.ID_user;
-    user.privateKey = privateKeys[id -1];
-    await user.save();
     return user;
   } catch (error) {
     console.error(error);

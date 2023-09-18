@@ -27,6 +27,22 @@ export const fetchCurrentUser = createAsyncThunk(
   }
 );
 
+export const editUserInfo = createAsyncThunk(
+  "patch/editUserInfo",
+  async ({userData, userId}) => {
+    console.log(userData)
+    const newURL = `${userURL}/edit/${userId}`
+    const response = await fetch(newURL, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    });
+    return await response.json();
+  }
+);
+
 export const fetchAllUsers = createAsyncThunk(
   "fetch/fetchAllUsers",
   async () => {

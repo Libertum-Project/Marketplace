@@ -9,8 +9,21 @@ module.exports = (sequelize) => {
         primaryKey: true,
         autoIncrement: true,
       },
-      privateKey: {
-        type: DataTypes.STRING,
+      address: {
+        type: DataTypes.STRING(100),
+        allowNull: true,
+      },
+      city: {
+        type: DataTypes.STRING(50),
+        allowNull: true,
+      },
+      country: {
+        type: DataTypes.STRING(50),
+        allowNull: true,
+      },
+      phoneNumber: {
+        type: DataTypes.STRING(20),
+        allowNull: true,
       },
       email: {
         type: DataTypes.STRING(100),
@@ -21,6 +34,14 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING(100),
         allowNull: false,
       },
+        editableName: {
+        type: DataTypes.STRING(100),
+        allowNull: true,
+      },
+      lastName: {
+        type: DataTypes.STRING(100),
+        allowNull: true,
+      }
     },
     {
       tableName: "User",
