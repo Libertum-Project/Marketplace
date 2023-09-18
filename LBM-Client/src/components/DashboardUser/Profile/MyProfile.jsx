@@ -3,50 +3,31 @@ import css from "./MyProfile.module.scss";
 import { useDispatch } from "react-redux";
 import { editUserInfo } from "../../../../redux/features/userSlice";
 
-const MyProfile = ({ name: initialName, email: initialEmail }) => {
+const MyProfile = ({ name: initialName, email: initialEmail, user }) => {
   const dispatch = useDispatch();
-  const [name, setName] = useState(initialName);
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [firstName, setFirstName] = useState(user.editableName);
+  const [lastName, setLastName] = useState(user.lastName);
   const [email, setEmail] = useState(initialEmail);
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [country, setCountry] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-
-/*  useEffect(() => {
-    const userData = {
-      editableName: "pepe",
-      lastName: "doe",
-      country: "Argentina",
-      city: "Buenos Aires",
-      address: "some Address 3202",
-      phoneNumber: "554455442"
-    }
-
-    const userId = 1;
-
-    dispatch(editUserInfo({userData, userId}))
-  }, [dispatch]);
-*/
-
+  const [address, setAddress] = useState(user.address);
+  const [city, setCity] = useState(user.city);
+  const [country, setCountry] = useState(user.country);
+  const [phoneNumber, setPhoneNumber] = useState(user.phoneNumber);
 
   const handleUpdateProfile = () => {
-    // Lógica para actualizar datos en la base de datos
-    console.log("Nuevos datos:", {
-      name,
-      email,
-      firstName,   // Utiliza firstName en lugar de name para enviar
+    const userData = {
+      editableName: firstName, 
       lastName,
       address,
       city,
       country,
       phoneNumber,
-    });
+    };
+
+    const userId = user.ID_user;
+
+    dispatch(editUserInfo({userData, userId}))
   };
 
-  //   const firstName = name.split()
-  //   const lastName = name.split(); 
   return (
     <div className={css.formContainer}>
       {/* <h2 className={css.createForm__inputs}>My Profile</h2> */}
@@ -60,7 +41,7 @@ const MyProfile = ({ name: initialName, email: initialEmail }) => {
               <input
                 type="text"
                 value={firstName}
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e) => setFirstName(e.target.value)}
                 className={css.createForm__inputs__input}
               />
             </div>
@@ -81,8 +62,8 @@ const MyProfile = ({ name: initialName, email: initialEmail }) => {
             <label className={css.createForm__inputs__label}>Email:</label>
             <input
               type="email"
+              disabled
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
               className={css.createForm__inputs__input}
             />
           </div>
@@ -130,12 +111,12 @@ const MyProfile = ({ name: initialName, email: initialEmail }) => {
             />
           </div>
         </div>
-        {/* <button
-          onClick={handleUpdateProfile}
-          className={css.createForm__inputs__nextBtn}
+        <button
+        onClick={handleUpdateProfile}
+          className={css.updateBtn}
         >
-          Actualizar Perfil
-        </button> */}
+          Update
+        </button>
       </div>
     </div>
   );
