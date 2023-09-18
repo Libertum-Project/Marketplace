@@ -1,35 +1,29 @@
 import { Link } from "react-router-dom";
 import style from "./Aboutproperty.module.scss";
-import { FaBath, FaBed, FaWifi, FaParking   } from "react-icons/fa";
+import Icons from "./IconsAmenities/Icons";
+
 
 const Buy = (props) => {
-  const { image, id, address, location, PIT, PRY, AvailablesNFT } = props;
+  const { Square_foot, rooms, amenities, image, id, address, location, PIT, PRY, AvailablesNFT } = props;
 
   return (
-           <div
-          className={style.column2}        >          
-            <div className={style.buycontainer}>
-              <h1>{location} | {address} </h1>
-            
-              <div className={style.icons}>
-                <div>
-                  <span><FaBath /></span>
-                  <p>2 bath</p>
-                </div>
-                <div>
-                  <span><FaBed /></span>
-                  <p>3 rooms</p>
-                </div>
-                <div>
-                  <span><FaWifi /></span>
-                  <p>Free Wifi</p>
-                </div>
-                <div>
-                  <span><FaParking /></span>
-                  <p>Parking</p>
-                </div>
-              </div>
 
+           <div className={style.column2}>          
+            <div className={style.buycontainer}>
+              <h1>{location}  </h1>
+              <h1> {address} </h1>
+            
+
+            {/* <div>
+              <Icons 
+              amenities ={amenities}
+              rooms = {rooms}
+              squarefoot = {Square_foot}
+              iconSize="2.5rem"
+              containerWidth= "3rem"
+              withParagraph={false}
+              />
+            </div> */}
 
             <div className={style.cardbody}>
 
@@ -51,7 +45,9 @@ const Buy = (props) => {
             </div>
             </div>
 
-          </div> 
+          </div>
+
+ 
   );
 };
 

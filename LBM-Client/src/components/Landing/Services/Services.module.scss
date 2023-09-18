@@ -32,7 +32,7 @@
       border-radius: 10px;
       padding: 10px;
       cursor: pointer;
-      opacity: 0.5;
+      opacity: 0.3;
       transition: opacity 0.3s;
       text-align: left;
       max-width: 25rem;
@@ -48,7 +48,8 @@
        padding-left: 1rem;
        padding-right: 1rem;
        background-color: var(--Libertum-color);  
-       border-radius: 10px;    
+       border-radius: 10px;  
+       
       }
 
       h2{
@@ -74,7 +75,9 @@
     }
   }
 
-
+    .contentcontainer{
+      min-height: 28rem;
+    }
   .content {
     position: relative;
     margin-left: 10%;

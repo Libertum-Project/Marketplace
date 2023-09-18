@@ -1,9 +1,7 @@
 import css from "./index.module.scss";
 import { useParams, useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import db from "../RealEstates/fakedb/db.json";
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchFilteredProperties, fetchAllProperties } from '../../../redux/features/propertySlice';
 import Aboutproperty from "./Aboutproperty";
 import Buy from "./Buy";
 import Loading from "../Loading/Loading";
@@ -80,7 +78,7 @@ const Index = () => {
       "Postal_Code": "MO 63128",
       "Description": "Come and stay in this superb duplex T2, in the heart of the historic center of Bordeaux. Spacious and bright, in a real Bordeaux building in exposed stone, you will enjoy all the harms of the city thanks to its ideal location. Close to many shops, bars and restaurants, you can    access the apartment by tram A and C and bus routes 27 and 44",
       "Square_foot": 1200,
-      "Amenities": "Swimming pool, gym, parking",
+      "Amenities": ["Swimming pool", "gym", "parking"],
       "Rooms": 2,
       "Occupancy_Status": "Vacant",
       "Link_Image": [
@@ -144,7 +142,7 @@ const Index = () => {
       "Postal_Code": "67890",
       "Description": "The properties are mid-terraced traditional brick-built retail units. N° 21 trades as Hannahs Bakery and N° 23 as an H&T Pawnbrokers. Are of solid brick construction and sit beneath butterfly main roofs, with a central valley, served by replacement interlocking concrete roof tiles. Parapet front walls mask the main roof elevations from the roadside. Both are two storeys in height to include later rear additions of cavity brick/block construction.",
       "Square_foot": 1200,
-      "Amenities": "kitchen, wifi",
+      "Amenities": ["kitchen", "wifi"],
       "Rooms": 2,
       "Occupancy_Status": "Vacant",
       "Link_Image": [
@@ -179,17 +177,17 @@ console.log("proerty" + property.Feature.Address)
 
   const { isLoading } = useAuth0();
 
-  const [isScrolled, setIsScrolled] = useState(false);
+  // const [isScrolled, setIsScrolled] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      setIsScrolled(scrollTop > 120);
-    };
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  //     setIsScrolled(scrollTop > 100);
+  //   };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  //   window.addEventListener('scroll', handleScroll);
+  //   return () => window.removeEventListener('scroll', handleScroll);
+  // }, []);
 
 
   //--------------------   CARROUSEL  -------------------
@@ -234,7 +232,7 @@ console.log("proerty" + property.Feature.Address)
       <section className={css.mosaic}>
         <img
           src={property.Feature.Link_Image[0]}
-          alt="Lalaland"
+          alt="property image"
           onClick={(event) => openModal(0, event)}
         />
         <div className={css.otherImages}>
@@ -271,7 +269,7 @@ console.log("proerty" + property.Feature.Address)
       
 
 
-      <div className={css.info}>
+      <div className={css.contenedor}>
              
           <Aboutproperty
             id={property.ID_Property}
@@ -291,11 +289,11 @@ console.log("proerty" + property.Feature.Address)
             map={property.Feature.Map}
             more={property.Feature.More}
             description={property.Feature.Description}
+            Square_foot={property.Feature.Square_foot}
+            type = {property.Feature.Type}
            
           />
         
-
-        <div className={isScrolled ? css.buycontainer : ''}>
           <Buy
             id={property.ID_Property}
             number={property.ID_Property}
@@ -310,8 +308,12 @@ console.log("proerty" + property.Feature.Address)
             NFTPrice={property.Financial.Token_Price}
             AvailablesNFT={property.Financial.Number_of_tokens_available}
             capital={property.Financial.Capital_payment_duration}
+            Square_foot={property.Feature.Square_foot}
+            amenities={property.Feature.Amenities}
+            rooms={property.Feature.Rooms}         
           />
-        </div>
+
+
       </div>
     </div>
   ) : <Loading />

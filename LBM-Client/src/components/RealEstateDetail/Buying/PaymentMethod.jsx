@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import css from './BuyProperty.module.css';
 import ProgressBar from '../../CreateProperty/ProgressBar';
 import backBtn from '../../../assets/back_btn.svg';
-import Icons from './Icons';
+
 import BankTransfer from './BankTransfer';
 import CreditCard from './CreditCard';
 
@@ -62,7 +62,7 @@ const PaymentMethod = ({ handleSubmit, onNext, onBack,
         <h1>
           {address} | {location}
         </h1>
-        <Icons />
+
 
         <div className={css.createForm__inputs}>
           <div className={css.inputContainer}>

@@ -1,0 +1,56 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.subscribe_form {
+  margin: 0 auto;
+  form {
+    position: relative;
+    display: flex;
+    gap: 10px;
+    input {
+      background: rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
+      border: none;
+      border-radius: 15px;
+      width: 260px;
+      height: 48px;
+      font-size: 16px;
+      font-family: "Inter";
+      font-style: normal;
+      padding-left: 20px;
+      &:focus {
+        border: none;
+        outline: none;
+      }
+    }
+    button {
+      width: 146px;
+      height: 48px;
+      background: #f88612;
+      box-shadow: 0px 10px 30px rgba(56, 29, 219, 0.2);
+      border-radius: 15px;
+      padding: 14px 28px;
+      border: none;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:focus {
+        border: none;
+        outline: none;
+      }
+    }
+    span {
+      position: absolute;
+      top: 100%;
+      margin-left: 20px;
+      font-size: 10px;
+      color: red;
+    }
+  }
+}
