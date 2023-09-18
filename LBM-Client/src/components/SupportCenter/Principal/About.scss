@@ -1,0 +1,79 @@
+
+.aboutus{
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img{
+    width: 60rem;
+    margin-top: 3rem;
+  }
+
+  section{
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+  h2{
+    letter-spacing: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  p{
+  
+    line-height: 2rem;
+    text-align: left;
+    margin-bottom: 1rem;
+  }
+}
+
+.phrase{
+display: flex;
+justify-content: center;
+background-color: var(--Libertum-color);
+border-radius: 10rem 0;
+
+  p{
+    width: 50%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-size: 20px ;
+    line-height: 1.8rem;
+    color: whitesmoke;
+    
+
+  }
+}
+
+.team{
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  h2{
+    letter-spacing: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .teamPictures{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+
+    
+    .person{
+      // border: 1px solid blue;
+      border-radius: .5rem;
+      padding: 2rem;
+      background: linear-gradient(to bottom, #bdbdbd, #ffffff);
+      img{
+        width: 15rem;
+      }
+      p{
+  
+      }
+    }
+  }
+  
+}
