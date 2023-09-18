@@ -36,7 +36,8 @@ const Financials = ({number, PRY, value, AvailablesNFT, NFTPrice, capital}) => {
 return (
   <div>
     <div className={style.table}>
-                 <div className={style.row}>
+      <div className={style.tableRectangule}>
+                <div className={style.row}>
                    <div className={style.cell}>
                      <span className={style.label}>Market value of the property:</span>
                    </div>
@@ -91,10 +92,15 @@ return (
                    </div>
                  </div>
                  
-                 <div className={style.row}>
-                   <div className={style.cell}>
+
+      </div>
+
+      <div className={style.tableRectangule}>
+                  <div className={style.row}>
+                  <div className={style.cell}>
                      <span className={style.label}>Number of tokens to be purchased:</span>
                    </div>
+ 
 
                    <div className={style.cell} >                   
                       <div className={style.barra}>
@@ -115,8 +121,6 @@ return (
                    </div>
 
 
-                   <div style={dividerStyle}></div>
-           
                  <div className={style.row}>
                    <div className={style.cell}>
                      <span className={style.label}>Invesment:</span>
@@ -145,8 +149,8 @@ return (
                    <span className={style.descriptiontabledif}>$ {passiveIncomePerMonth}</span>
                    </div>
                  </div>
-
-                 <div style={dividerStyle}></div>
+            
+                 
                  { capital  ? ( <>
                                    <div className={style.row}>
                                    <div className={style.cell}>
@@ -179,10 +183,10 @@ return (
                               )
                             : null}  
 
-                              <div style={dividerStyle}></div>                 
+                                              
 
     </div>
-
+</div>
 
            <div className={style.graphics}>
 
@@ -202,13 +206,13 @@ return (
                   <span className={style.descriptiontablemonth}>
                    <p><i>ACCUMULATIVE PASSIVE INCOME IN YEARS</i></p>
                   </span>
-         </div>
+         
 
 
 
 
            </div>
-           
+           </div>
            </div>
 )}; 
 

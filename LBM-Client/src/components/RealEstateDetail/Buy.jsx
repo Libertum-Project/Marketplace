@@ -14,7 +14,7 @@ const Buy = (props) => {
               <h1> {address} </h1>
             
 
-            {/* <div>
+            <div>
               <Icons 
               amenities ={amenities}
               rooms = {rooms}
@@ -23,7 +23,7 @@ const Buy = (props) => {
               containerWidth= "3rem"
               withParagraph={false}
               />
-            </div> */}
+            </div>
 
             <div className={style.cardbody}>
 
