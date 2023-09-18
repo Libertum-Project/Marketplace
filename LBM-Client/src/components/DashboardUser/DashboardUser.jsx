@@ -265,6 +265,7 @@ function DashboardUser() {
             name={currentUser.name}
             id={currentUser.key}
             email={currentUser.email}
+            user={currentUser}
           />
         </div>
       )}
