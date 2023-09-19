@@ -1,5 +1,5 @@
 .background{
-  background-image: url(./background.svg);
+  // background-image: url(./background.svg);
   background-repeat: no-repeat;
 }
 .contact-form {
@@ -86,3 +86,21 @@
       }
 }
 }
+
+    @media screen and (max-width: 780px){
+      .contact-form{
+        display: flex;
+        flex-direction: column;
+
+        h2{
+          letter-spacing: 0rem;
+          text-align: center;
+          width: 100%;
+        }
+        p{
+          text-align: center;
+        }
+
+      
+      }
+    }
