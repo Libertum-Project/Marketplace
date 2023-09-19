@@ -7,7 +7,8 @@ import SelectCodeArea from "./SelectCodeArea";
 
 const MyProfile = ({ name: initialName, email: initialEmail, user }) => {
   const dispatch = useDispatch();
-  const [firstName, setFirstName] = useState(user.editableName);
+  const [name, surname] = user.editableName.split(" ");
+  const [firstName, setFirstName] = useState(name);
   const [lastName, setLastName] = useState(user.lastName);
   const [email, setEmail] = useState(initialEmail);
   const [address, setAddress] = useState(user.address);
