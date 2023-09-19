@@ -1,6 +1,8 @@
 import groupIcon from "./assets/group.svg";
 import AlanPhoto from "./assets/Alan.jpg";
-import JavvadPhoto from "./assets/Javvad.jpg"
+import JavvadPhoto from "./assets/Javvad.jpg";
+import NicolePhto from "./assets/Nicole.png";
+import GuillermoPhoto from "./assets/Guillermo.png";
 import './About.scss'
 
 
@@ -10,15 +12,34 @@ const About = () => {
     {
       id:1,
       name: "Alan Gormley",
-      role: "Co-Founder",
+      role: "Co-Founder and COO",
       image: AlanPhoto
     },
     {
       id:2,
       name: "Javvad Azam",
-      role: "Co-Founder",
+      role: "Co-Founder and CEO",
       image: JavvadPhoto
-    }
+    },
+    {
+      id: 5,
+      name:"Christopher Tham",
+      role: "Chief Blockchain Office"
+    },
+    {
+      id: 3,
+      name: "Guillermo Galarza",
+      role: "Full Stack Developer",
+      image: GuillermoPhoto
+
+    },
+    {
+      id: 4,
+      name: "Nicole Burgos Vega",
+      role: "Front End UX/UI Developer",
+      image: NicolePhto
+
+    },
   ]
   return(
     <div className="aboutUsContainer">
@@ -61,8 +82,8 @@ const About = () => {
           {team.map((person) => (
             <div key={person.id} className="person">
               <img src={person.image} alt={`Photo of ${person.name}`} />
-              <p>{person.name}</p>
-              <p>{person.role}</p>
+              <p className="name">{person.name}</p>
+              <p className="role">{person.role}</p>
             </div>
 
           ))}

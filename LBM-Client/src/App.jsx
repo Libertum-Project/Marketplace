@@ -52,7 +52,7 @@ import CoinPage from "./components/Coin/Coin";
 import SignIn from "./components/SignIn/SignIn";
 import SubscribePage from "./components/Contact/SubscribePage";
 import ContactPage from "./components/Contact/ContactPage";
-
+import AboutPage from "./components/AboutUs/About";
 
 
 
@@ -288,6 +288,8 @@ function App() {
           <Route path="/subscribe" element = {<SubscribePage />} />
 
           <Route path= "/contact" element = { <ContactPage />} />
+
+          <Route path= "/about" element = { <AboutPage />} />
 
 
           <Route

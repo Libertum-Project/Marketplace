@@ -128,7 +128,9 @@ function NavbarMarket() {
                 <p>MARKETPLACES</p>
                 <IoChevronDownOutline />
               </div>
+              <NavLink to="/about">
               <p>ABOUT US</p>
+              </NavLink>
               <NavLink to="/support">
                 <p>SUPPORT</p>
               </NavLink>
