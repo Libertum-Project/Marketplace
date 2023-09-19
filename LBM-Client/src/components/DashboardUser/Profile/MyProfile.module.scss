@@ -21,7 +21,6 @@
   border: 1px solid var(--soft-bg);
   background: #fff;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  width: 39.375rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -34,6 +33,7 @@
   display: flex;
   width: 100%;
 }
+
 .formHeader button {
   padding: 0;
 }
@@ -194,7 +194,12 @@ select:focus {
   padding: 0.5rem;
 }
 
-@media (min-width: 720px) {
+@media (min-width: 920px) {
+
+  .createForm {
+    width: 39.375rem;
+  }
+
   .createForm__inputs .inputContainer {
     flex-direction: row;
   }

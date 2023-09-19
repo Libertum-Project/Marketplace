@@ -25,6 +25,10 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING(20),
         allowNull: true,
       },
+      codeArea: {
+        type: DataTypes.STRING(10),
+        allowNull: true,
+      },
       email: {
         type: DataTypes.STRING(100),
         allowNull: false,
@@ -34,7 +38,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING(100),
         allowNull: false,
       },
-        editableName: {
+      editableName: {
         type: DataTypes.STRING(100),
         allowNull: true,
       },

@@ -30,7 +30,6 @@ export const fetchCurrentUser = createAsyncThunk(
 export const editUserInfo = createAsyncThunk(
   "patch/editUserInfo",
   async ({userData, userId}) => {
-    console.log(userData)
     const newURL = `${userURL}/edit/${userId}`
     const response = await fetch(newURL, {
       method: "PATCH",
