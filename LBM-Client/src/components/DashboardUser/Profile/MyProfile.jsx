@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import css from "./MyProfile.module.scss";
 import { useDispatch } from "react-redux";
 import { editUserInfo } from "../../../../redux/features/userSlice";
+import SelectCountry from "./SelectCountry";
+import SelectCodeArea from "./SelectCodeArea";
 
 const MyProfile = ({ name: initialName, email: initialEmail, user }) => {
   const dispatch = useDispatch();
@@ -11,21 +13,23 @@ const MyProfile = ({ name: initialName, email: initialEmail, user }) => {
   const [address, setAddress] = useState(user.address);
   const [city, setCity] = useState(user.city);
   const [country, setCountry] = useState(user.country);
+  const [codeArea, setCodeArea] = useState(user.codeArea);
   const [phoneNumber, setPhoneNumber] = useState(user.phoneNumber);
 
   const handleUpdateProfile = () => {
     const userData = {
-      editableName: firstName, 
+      editableName: firstName,
       lastName,
       address,
       city,
       country,
+      codeArea,
       phoneNumber,
     };
 
     const userId = user.ID_user;
 
-    dispatch(editUserInfo({userData, userId}))
+    dispatch(editUserInfo({ userData, userId }))
   };
 
   return (
@@ -78,7 +82,10 @@ const MyProfile = ({ name: initialName, email: initialEmail, user }) => {
           </div>
 
           <div className={css.inputContainer}>
-
+            <div>
+              <label className={css.createForm__inputs__label}>Country:</label>
+              <SelectCountry onChange={(country) => setCountry(country)} currentValue={country} />
+            </div>
             <div className={css.createForm__inputs}>
               <label className={css.createForm__inputs__label}>City:</label>
               <input
@@ -88,31 +95,32 @@ const MyProfile = ({ name: initialName, email: initialEmail, user }) => {
                 className={css.createForm__inputs__input}
               />
             </div>
+          </div>
+          <div className={css.inputContainer}>
             <div className={css.createForm__inputs}>
-              <label className={css.createForm__inputs__label}>Country:</label>
+              <label className={css.createForm__inputs__label}>
+                Code Area
+              </label>
+              <div>
+                <SelectCodeArea onChange={(codeArea) => setCodeArea(codeArea)} currentValue={codeArea} />
+              </div>
+            </div>
+            <div>
+              <label className={css.createForm__inputs__label}>
+                Phone Number
+              </label>
               <input
                 type="text"
-                value={country}
-                onChange={(e) => setCountry(e.target.value)}
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
                 className={css.createForm__inputs__input}
               />
             </div>
           </div>
 
-          <div className={css.createForm__inputs}>
-            <label className={css.createForm__inputs__label}>
-              Phone Number
-            </label>
-            <input
-              type="text"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-              className={css.createForm__inputs__input}
-            />
-          </div>
         </div>
         <button
-        onClick={handleUpdateProfile}
+          onClick={handleUpdateProfile}
           className={css.updateBtn}
         >
           Update
