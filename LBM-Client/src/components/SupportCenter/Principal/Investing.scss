@@ -67,3 +67,25 @@
   //   transform: translateX(-50%); /* Centra horizontalmente la línea */
   // }
 }
+
+@media screen and (max-width:780px){
+  .investingContainer{
+    padding: 2rem .0rem;
+    h2{
+      letter-spacing: 0;
+      width: 100%;
+    }
+  }
+  .investingProcess{
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+
+  }
+  .investingContainer .text{
+    h3{
+      font-size: 16px;
+      line-height: 1.5rem;
+    }
+  }
+}
