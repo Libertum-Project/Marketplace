@@ -44,7 +44,7 @@ const SavedProperties = ({ saved }) => {
           </div>
         ) : (
           <div className={css.alertNoInvestment}>
-          <p>You don't have any investments yet. Enter our marketplace and start investing!</p>            
+          <p>You don't have any saved properties yet. Go to our marketplace and see all the amazing properties!</p>            
           <Link to="/marketplace">
           <button> Marketplace! </button>
           </Link>             
