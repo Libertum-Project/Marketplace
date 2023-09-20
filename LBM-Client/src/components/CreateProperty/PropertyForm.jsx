@@ -92,20 +92,6 @@ const PropertyForm = ({
       errors.Description = "Description must not exceed 300 characters";
     }
 
-    if (
-      !propertyData.featureData.Current_Emission ||
-      propertyData.featureData.Current_Emission < 0
-    ) {
-      errors.Current_Emission = "Current Emission is required";
-    }
-
-    if (
-      !propertyData.featureData.Expected_Emission_Level ||
-      propertyData.featureData.Expected_Emission_Level < 0
-    ) {
-      errors.Expected_Emission_Level = "Expected Emission Level is required";
-    }
-
     if(images.length < 5 ){
       errors.ExpectedImages = "Please upload at least 5 images";
     }
@@ -156,8 +142,6 @@ const PropertyForm = ({
             >
               <option value="">Select</option>
               <option value="green">Green / Sustainable</option>
-              {/* <option value="high-yield">High Yield</option> */}
-              {/* <option value="build-ukraine">Help Build Ukraine Properties </option> */}
               <option value="commercial">Commercial</option>
               <option value="residential">Residential</option>
               <option value="hotels">Hotels</option>
@@ -338,35 +322,6 @@ const PropertyForm = ({
             ></textarea>
             {formErrors.Description && (
               <p className={css.error}>{formErrors.Description}</p>
-            )}
-          </div>
-        </div>
-
-        <div className={css.inputContainer}>
-          <div>
-            <label>Current CO2 Emission</label>
-            <input
-              type="number"
-              value={propertyData.featureData.Current_Emission}
-              onChange={(e) => {
-                onChange("Current_Emission", e.target.value);
-              }}
-            />
-            {formErrors.Current_Emission && (
-              <p className={css.error}>{formErrors.Current_Emission}</p>
-            )}
-          </div>
-          <div>
-            <label>Expected CO2 Emission Level</label>
-            <input
-              type="number"
-              value={propertyData.featureData.Expected_Emission_Level}
-              onChange={(e) => {
-                onChange("Expected_Emission_Level", e.target.value);
-              }}
-            />
-            {formErrors.Expected_Emission_Level && (
-              <p className={css.error}>{formErrors.Expected_Emission_Level}</p>
             )}
           </div>
         </div>
