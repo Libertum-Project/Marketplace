@@ -15,13 +15,16 @@ export default function Subscribe() {
       <section className="subscribe_section">
         <div className="subscribe_text">
           <h2>Are you ready to start earning today? </h2>
-          {/* <p>
+          <p>
             Subscribe to our newsletter to receive updates on the progress of
             Libertum Project and be part of a movement to democratize the real estate investment market
-          </p> */}
-          <Link to='/mydashboard'>
+          </p>
+          <div className="subscribe_form ">
+            <ContactForm />
+          </div>
+          {/* <Link to='/mydashboard'>
           <button className="button">LOG IN</button>
-          </Link>
+          </Link> */}
           
         </div>
         <div className="background">

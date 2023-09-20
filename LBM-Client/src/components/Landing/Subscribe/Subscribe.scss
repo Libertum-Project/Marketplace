@@ -38,6 +38,7 @@
         line-height: 28px;
         // height: 80px;
         margin-top: 1rem;
+        margin-bottom: 1rem;
         
       }
     }
@@ -46,6 +47,7 @@
       form {
         position: relative;
         display: flex;
+        justify-content: space-around;
         gap: 10px;
         input {
           background: rgba(0, 0, 0, 0.1);
@@ -100,14 +102,14 @@
     justify-content: center;
     
     .image{
-      height: 500px;
+      height:350px;
       width: auto;
       overflow: hidden;
       margin: auto;
 
     img{   
       width: auto;      
-      height: 800px;
+      height: 700px;
       margin: auto;
 
     }
