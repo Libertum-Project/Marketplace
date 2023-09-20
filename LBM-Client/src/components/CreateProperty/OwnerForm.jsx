@@ -33,7 +33,7 @@ const OwnerForm = ({ handleSubmit, onNext, onChange, propertyData }) => {
 
     if (!propertyData.ownerData.City.trim()) {
       errors.City = "City is required";
-    } 
+    }
 
     if (!propertyData.ownerData.State) {
       errors.State = "Region / State / Province is required";
@@ -91,7 +91,9 @@ const OwnerForm = ({ handleSubmit, onNext, onChange, propertyData }) => {
             <input
               type="text"
               value={propertyData.ownerData.Firstname}
-              disabled
+              onChange={(e) => {
+                onChange("Firstname", e.target.value);
+              }}
             />
             {formErrors.Firstname && (
               <p className={css.error}>{formErrors.Firstname}</p>
@@ -102,7 +104,9 @@ const OwnerForm = ({ handleSubmit, onNext, onChange, propertyData }) => {
             <input
               type="text"
               value={propertyData.ownerData.Surname}
-              disabled
+              onChange={(e) => {
+                onChange("Surname", e.target.value);
+              }}
             />
             {formErrors.Surname && (
               <p className={css.error}>{formErrors.Surname}</p>

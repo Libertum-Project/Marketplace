@@ -1,6 +1,6 @@
 const { User } = require("../../db.js");
 
-async function editUserInfo(userId, editableName, lastName, country, city, address, phoneNumber) {
+async function editUserInfo(userId, editableName, lastName, country, city, address, codeArea, phoneNumber) {
   const user = await User.findByPk(userId);
   if (!user) {
     throw new Error("User not found.");
@@ -12,6 +12,7 @@ async function editUserInfo(userId, editableName, lastName, country, city, addre
     country: country,
     city: city,
     address: address,
+    codeArea: codeArea,
     phoneNumber: phoneNumber
   };
 

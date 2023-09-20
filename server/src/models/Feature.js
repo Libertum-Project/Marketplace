@@ -61,14 +61,6 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING(100),
         allowNull: false,
       },
-      Current_Emission: {
-        type: DataTypes.DECIMAL(10, 2),
-        allowNull: true,
-      },
-      Expected_Emission_Level: {
-        type: DataTypes.DECIMAL(10, 2),
-        allowNull: true,
-      },
       More: {
         type: DataTypes.STRING(500),
       },

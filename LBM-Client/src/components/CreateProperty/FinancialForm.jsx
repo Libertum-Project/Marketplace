@@ -17,7 +17,7 @@ const FinancialForm = ({ handleSubmit, onBack, onChange, propertyData }) => {
         "Market Value of the property is required";
     } else if (
       propertyData.financialData.Market_value_of_the_property -
-        propertyData.financialData.Mortgage <=
+      propertyData.financialData.Mortgage <=
       0
     ) {
       errors.Market_value_of_the_property =
@@ -81,8 +81,8 @@ const FinancialForm = ({ handleSubmit, onBack, onChange, propertyData }) => {
     }
 
     if (
-      propertyData.financialData.Monthly_capital_repayment_amount 
-    ) {
+      ( !propertyData.financialData.Capital_payment_duration ||
+        propertyData.financialData.Capital_payment_duration < 1) && propertyData.financialData.Investment_type !== "passiveIncome") {
       errors.Capital_payment_duration = "Capital Payment Duration is required";
     }
 
@@ -94,7 +94,7 @@ const FinancialForm = ({ handleSubmit, onBack, onChange, propertyData }) => {
   const handleBtn = (event) => {
     event.preventDefault();
     const isValid = validateForm();
-    isValid ? handleSubmit() : console.log(formErrors); //Quitar el signo !
+    isValid ? handleSubmit() : console.log(formErrors);
   };
   return (
     <form className={css.createForm} onSubmit={handleSubmit}>
@@ -253,19 +253,20 @@ const FinancialForm = ({ handleSubmit, onBack, onChange, propertyData }) => {
               </p>
             )}
           </div>
-          <div>
-            <label>Capital Payment Duration (in years)</label>
-            <input
-              type="number"
-              value={propertyData.financialData.Capital_payment_duration}
-              onChange={(e) => {
-                onChange("Capital_payment_duration", e.target.value);
-              }}
-            />
-            {formErrors.Capital_payment_duration && (
-              <p className={css.error}>{formErrors.Capital_payment_duration}</p>
-            )}
-          </div>
+          {propertyData.financialData.Investment_type !== "passiveIncome" ?
+            (<div>
+              <label>Capital Payment Duration (in Months)</label>
+              <input
+                type="number"
+                value={propertyData.financialData.Capital_payment_duration}
+                onChange={(e) => {
+                  onChange("Capital_payment_duration", e.target.value);
+                }}
+              />
+              {formErrors.Capital_payment_duration && (
+                <p className={css.error}>{formErrors.Capital_payment_duration}</p>
+              )}
+            </div>) : null}
         </div>
       </div>
       <button

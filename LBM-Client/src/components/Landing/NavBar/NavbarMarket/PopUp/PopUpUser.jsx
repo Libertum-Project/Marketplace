@@ -177,7 +177,7 @@ function PopUpUser({ setActiveMenu }) {
               <div className={style.buttons}>
                 <a href="/">Home</a>
                 <a href="/about">About us</a>
-                <Link href="/support">Support</Link>
+                <a href="/support">Support</a>
                 <div
                   className={
                     active === "language"

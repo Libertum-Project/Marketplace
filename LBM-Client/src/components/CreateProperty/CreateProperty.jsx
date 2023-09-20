@@ -11,23 +11,23 @@ import FinancialForm from "./FinancialForm";
 
 const CreateProperty = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
-  const [firstname, surname] = currentUser.name.split(" ");
+  const [name, surname] = currentUser.editableName.split(" ");
   const dispatch = useDispatch();
   const status = useSelector((state) => state.property.status);
   const [currentForm, setCurrentForm] = useState(1);
   const [images, setImages] = useState([]);
   const [ownerData, setOwnerData] = useState({
     UserID: currentUser.ID_user,
-    Firstname: firstname,
-    Surname: surname,
-    Address: "",
-    City: "",
+    Firstname: name,
+    Surname: currentUser.lastName,
+    Address: currentUser.address,
+    City: currentUser.city,
     State: "",
-    Country: "",
+    Country: currentUser.country,
     Postal_Code: "",
     Mail: currentUser.email,
-    Phone_number: "",
-    Code_area: "",
+    Phone_number: currentUser.phoneNumber,
+    Code_area: currentUser.codeArea,
     Passport_ID: "",
     Date_of_birth: "",
   });
@@ -46,8 +46,6 @@ const CreateProperty = () => {
     Occupancy_Status: "",
     Link_Image: images,
     Link_Document: "http://example.com/document.pdf",
-    Current_Emission: "",
-    Expected_Emission_Level: "",
     More: "",
   });
 
