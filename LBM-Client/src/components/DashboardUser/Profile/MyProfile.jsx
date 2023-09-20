@@ -11,21 +11,29 @@ const MyProfile = ({ name: initialName, email: initialEmail, user }) => {
   const [firstName, setFirstName] = useState(name);
   const [lastName, setLastName] = useState(user.lastName);
   const [email, setEmail] = useState(initialEmail);
-  const [address, setAddress] = useState(user.address);
-  const [city, setCity] = useState(user.city);
   const [country, setCountry] = useState(user.country);
+  const [city, setCity] = useState(user.city);
+  const [region, setRegion] = useState(user.state);
+  const [address, setAddress] = useState(user.address);
+  const [postalCode, setPostalCode] = useState(user.postalCode);
   const [codeArea, setCodeArea] = useState(user.codeArea);
   const [phoneNumber, setPhoneNumber] = useState(user.phoneNumber);
+  const [passportId, setPassportId] = useState(user.passportId);
+  const [dateOfBirth, setDateOfBirth] = useState(user.dateOfBirth);
 
   const handleUpdateProfile = () => {
     const userData = {
       editableName: firstName,
       lastName,
-      address,
-      city,
       country,
+      city,
+      state: region,
+      address,
+      postalCode,
       codeArea,
       phoneNumber,
+      passportId,
+      dateOfBirth
     };
 
     const userId = user.ID_user;
@@ -72,16 +80,48 @@ const MyProfile = ({ name: initialName, email: initialEmail, user }) => {
               className={css.createForm__inputs__input}
             />
           </div>
-          <div className={css.createForm__inputs}>
-            <label className={css.createForm__inputs__label}>Address:</label>
-            <input
-              type="text"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              className={css.createForm__inputs__input}
-            />
+          <div className={css.inputContainer}>
+            <div className={css.createForm__inputs}>
+              <label className={css.createForm__inputs__label}>Region / State / Province:</label>
+              <input
+                type="text"
+                value={region}
+                onChange={(e) => setRegion(e.target.value)}
+                className={css.createForm__inputs__input}
+              />
+            </div>
+            <div className={css.createForm__inputs}>
+              <label className={css.createForm__inputs__label}>Address:</label>
+              <input
+                type="text"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                className={css.createForm__inputs__input}
+              />
+            </div>
           </div>
-
+          <div className={css.inputContainer}>
+            <div className={css.createForm__inputs}>
+              <label className={css.createForm__inputs__label}>Postal Code:</label>
+              <input
+                type="text"
+                value={postalCode}
+                onChange={(e) => setPostalCode(e.target.value)}
+                className={css.createForm__inputs__input}
+              />
+            </div>
+            <div>
+              <label>Phone Number</label>
+              <div className={css.codeNumber}>
+                <SelectCodeArea onChange={(codeArea) => setCodeArea(codeArea)} currentValue={codeArea} />
+                <input
+                  type="number"
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                />
+              </div>
+            </div>
+          </div>
           <div className={css.inputContainer}>
             <div>
               <label className={css.createForm__inputs__label}>Country:</label>
@@ -97,24 +137,23 @@ const MyProfile = ({ name: initialName, email: initialEmail, user }) => {
               />
             </div>
           </div>
+
           <div className={css.inputContainer}>
-            <div className={css.createForm__inputs}>
-              <label className={css.createForm__inputs__label}>
-                Code Area
-              </label>
-              <div>
-                <SelectCodeArea onChange={(codeArea) => setCodeArea(codeArea)} currentValue={codeArea} />
-              </div>
-            </div>
             <div>
-              <label className={css.createForm__inputs__label}>
-                Phone Number
-              </label>
+              <label>Passport / ID</label>
               <input
                 type="text"
-                value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
-                className={css.createForm__inputs__input}
+                value={passportId}
+                onChange={(e) => setPassportId(e.target.value)}
+              />
+
+            </div>
+            <div>
+              <label>Date of Birth</label>
+              <input
+                type="date"
+                value={dateOfBirth}
+                onChange={(e) => setDateOfBirth(e.target.value)}
               />
             </div>
           </div>
