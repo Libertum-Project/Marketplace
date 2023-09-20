@@ -46,8 +46,6 @@ const CreateProperty = () => {
     Occupancy_Status: "",
     Link_Image: images,
     Link_Document: "http://example.com/document.pdf",
-    Current_Emission: "",
-    Expected_Emission_Level: "",
     More: "",
   });
 
