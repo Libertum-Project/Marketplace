@@ -10,6 +10,7 @@ const SavedProperties = ({ saved }) => {
   return (
     <div className={css.header}>
       <div className={css.cards}>
+        {/* <h2>SAVED PROPERTIES</h2> */}
         {saved.length ? (
           <div className={css.cardGrid}>
     {saved.map((property, index) => {
