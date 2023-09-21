@@ -81,6 +81,21 @@ const MyProfile = ({ name: initialName, email: initialEmail, user }) => {
             />
           </div>
           <div className={css.inputContainer}>
+            <div>
+              <label className={css.createForm__inputs__label}>Country:</label>
+              <SelectCountry onChange={(country) => setCountry(country)} currentValue={country} />
+            </div>
+            <div className={css.createForm__inputs}>
+              <label className={css.createForm__inputs__label}>City:</label>
+              <input
+                type="text"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                className={css.createForm__inputs__input}
+              />
+            </div>
+          </div>
+          <div className={css.inputContainer}>
             <div className={css.createForm__inputs}>
               <label className={css.createForm__inputs__label}>Region / State / Province:</label>
               <input
@@ -124,29 +139,12 @@ const MyProfile = ({ name: initialName, email: initialEmail, user }) => {
           </div>
           <div className={css.inputContainer}>
             <div>
-              <label className={css.createForm__inputs__label}>Country:</label>
-              <SelectCountry onChange={(country) => setCountry(country)} currentValue={country} />
-            </div>
-            <div className={css.createForm__inputs}>
-              <label className={css.createForm__inputs__label}>City:</label>
-              <input
-                type="text"
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-                className={css.createForm__inputs__input}
-              />
-            </div>
-          </div>
-
-          <div className={css.inputContainer}>
-            <div>
               <label>Passport / ID</label>
               <input
                 type="text"
                 value={passportId}
                 onChange={(e) => setPassportId(e.target.value)}
               />
-
             </div>
             <div>
               <label>Date of Birth</label>
@@ -157,7 +155,6 @@ const MyProfile = ({ name: initialName, email: initialEmail, user }) => {
               />
             </div>
           </div>
-
         </div>
         <button
           onClick={handleUpdateProfile}
