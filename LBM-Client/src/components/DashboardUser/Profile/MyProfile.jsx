@@ -43,7 +43,7 @@ const MyProfile = ({ name: initialName, email: initialEmail, user }) => {
 
   return (
     <div className={css.formContainer}>
-      {/* <h2 className={css.createForm__inputs}>My Profile</h2> */}
+      <h2 className={css.title}>My Profile</h2>
       <div className={css.createForm}>
         <div className={css.createForm__inputs}>
 
@@ -155,13 +155,24 @@ const MyProfile = ({ name: initialName, email: initialEmail, user }) => {
               />
             </div>
           </div>
+
+          <label for="newsletterCheckbox" className={css.suscribe}>
+            <input type="checkbox" id="newsletterCheckbox" name="subscribeNewsletter" />
+            Subscribe to newsletter
+          </label>
         </div>
+    
+        <div className={css.buttons}>
+        <button className={css.cancelBtn}>Cancel</button>
         <button
           onClick={handleUpdateProfile}
           className={css.updateBtn}
         >
           Update
         </button>
+
+        </div>
+
       </div>
     </div>
   );
