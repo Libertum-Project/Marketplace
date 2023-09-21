@@ -10,9 +10,29 @@
   --soft-bg: rgba(var(--LibertumColorRGB), 0.1);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   justify-content: center;
   caret-color: var(--primary);
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  background-image: url('../assets/background.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  padding-left: 3rem;
+}
+
+.title{
+  color: whitesmoke;
+  text-align: left;
+  width: 100%;
+  // padding-left: 3rem;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-family: montserrat;
+  letter-spacing: 1rem;
+  margin-bottom: 2rem;
+  font-weight: 600;
+
 }
 
 .createForm {
@@ -26,6 +46,7 @@
   justify-content: space-between;
   padding: 1rem;
   gap: 2rem;
+  
 }
 
 .formHeader {
@@ -209,10 +230,46 @@ select:focus {
     padding: 1rem;
   }
 }
+.buttons{
+  display: flex;
+  gap: 1.5rem;
+  .updateBtn {
+    color: white;
+    background-color: var(--Libertum-color);
+    border-radius: 1rem;
+    width: 100%;
+    padding: .2rem 2rem ;
+  }
 
-.updateBtn {
-  color: white;
-  background-color: var(--Libertum-color);
-  border-radius: 1rem;
-  width: 100%;
+  .cancelBtn{
+    border: 1px solid var(--Libertum-color); 
+    border-radius: 1rem;
+    width: 100%;
+    padding: .2rem 2rem ;
+  }
+}
+
+.suscribe{
+  display: flex;
+  gap: .5rem;
+  justify-content: center;
+  align-items: center;
+
+  
+  input{
+    width: fit-content;
+  }
+}
+
+
+@media screen and (max-width: 780px) {
+  .formContainer{
+    padding: 0;
+    background-image: none;
+    .title{
+      letter-spacing: 0;
+      text-align: center;
+      color: var(--LibertumBlue);
+    }
+  }
 }
