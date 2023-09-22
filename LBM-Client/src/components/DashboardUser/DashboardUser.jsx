@@ -43,8 +43,8 @@ function DashboardUser() {
   const allUsers = useSelector((state) => state.user.allUsers);
   const currentUser = useSelector((state) => state.user.currentUser);
 
-  console.log(currentUser);
-  console.log(allUsers);
+  // console.log(currentUser);
+  // console.log(allUsers);
 
   const handleLogin = () => {
     const redirectUri = `${window.location.origin}/mydashboard/`;
