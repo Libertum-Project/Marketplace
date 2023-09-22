@@ -91,7 +91,7 @@ $--bc: var(--Libertum-color);
         font-style: normal;
         font-weight: 700;
         line-height: 150%; /* 1.125rem */
-        align-self: center;
+        
 
         @media screen and (max-width: 767px) {
           position: relative;
@@ -159,7 +159,7 @@ $--bc: var(--Libertum-color);
 
       .tabContent{
         display: flex;
-        justify-content: center;
+        justify-content: left;
         align-content: center;
 
         .image {
@@ -188,6 +188,7 @@ $--bc: var(--Libertum-color);
 
         p{
           align-self: center;
+          margin-left: .5rem;
 
           
           @media screen and (max-width: 767px) {
