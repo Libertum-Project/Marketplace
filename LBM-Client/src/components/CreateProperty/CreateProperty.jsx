@@ -22,14 +22,14 @@ const CreateProperty = () => {
     Surname: currentUser.lastName,
     Address: currentUser.address,
     City: currentUser.city,
-    State: "",
+    State: currentUser.state,
     Country: currentUser.country,
-    Postal_Code: "",
+    Postal_Code: currentUser.postalCode,
     Mail: currentUser.email,
     Phone_number: currentUser.phoneNumber,
     Code_area: currentUser.codeArea,
-    Passport_ID: "",
-    Date_of_birth: "",
+    Passport_ID: currentUser.passportId,
+    Date_of_birth: currentUser.dateOfBirth,
   });
 
   const [featureData, setFeatureData] = useState({
