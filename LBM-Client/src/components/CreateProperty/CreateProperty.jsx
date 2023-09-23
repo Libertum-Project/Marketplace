@@ -41,7 +41,7 @@ const CreateProperty = () => {
     Postal_Code: "",
     Description: "",
     Square_foot: "",
-    Amenities: "",
+    Amenities: [],
     Rooms: "",
     Occupancy_Status: "",
     Link_Image: images,

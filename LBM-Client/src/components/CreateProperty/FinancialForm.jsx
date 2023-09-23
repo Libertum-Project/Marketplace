@@ -73,15 +73,14 @@ const FinancialForm = ({ handleSubmit, onBack, onChange, propertyData }) => {
     }
 
     if (
-      !propertyData.financialData.Monthly_capital_repayment_amount ||
-      propertyData.financialData.Monthly_capital_repayment_amount < 1
-    ) {
+      (!propertyData.financialData.Monthly_capital_repayment_amount ||
+        propertyData.financialData.Monthly_capital_repayment_amount < 1) && propertyData.financialData.Investment_type !== "passiveIncome") {
       errors.Monthly_capital_repayment_amount =
         "Monthly Capital Repayment Amount is required";
     }
 
     if (
-      ( !propertyData.financialData.Capital_payment_duration ||
+      (!propertyData.financialData.Capital_payment_duration ||
         propertyData.financialData.Capital_payment_duration < 1) && propertyData.financialData.Investment_type !== "passiveIncome") {
       errors.Capital_payment_duration = "Capital Payment Duration is required";
     }
@@ -234,27 +233,28 @@ const FinancialForm = ({ handleSubmit, onBack, onChange, propertyData }) => {
             )}
           </div>
         </div>
+        {propertyData.financialData.Investment_type !== "passiveIncome" ?
 
-        <div className={css.inputContainer}>
-          <div>
-            <label>Monthly Capital Repayment Amount (in USD)</label>
-            <input
-              type="number"
-              value={
-                propertyData.financialData.Monthly_capital_repayment_amount
-              }
-              onChange={(e) => {
-                onChange("Monthly_capital_repayment_amount", e.target.value);
-              }}
-            />
-            {formErrors.Monthly_capital_repayment_amount && (
-              <p className={css.error}>
-                {formErrors.Monthly_capital_repayment_amount}
-              </p>
-            )}
-          </div>
-          {propertyData.financialData.Investment_type !== "passiveIncome" ?
-            (<div>
+          (<div className={css.inputContainer}>
+            <div>
+              <label>Monthly Capital Repayment Amount (in USD)</label>
+              <input
+                type="number"
+                value={
+                  propertyData.financialData.Monthly_capital_repayment_amount
+                }
+                onChange={(e) => {
+                  onChange("Monthly_capital_repayment_amount", e.target.value);
+                }}
+              />
+              {formErrors.Monthly_capital_repayment_amount && (
+                <p className={css.error}>
+                  {formErrors.Monthly_capital_repayment_amount}
+                </p>
+              )}
+            </div>
+
+            <div>
               <label>Capital Payment Duration (in Months)</label>
               <input
                 type="number"
@@ -266,8 +266,8 @@ const FinancialForm = ({ handleSubmit, onBack, onChange, propertyData }) => {
               {formErrors.Capital_payment_duration && (
                 <p className={css.error}>{formErrors.Capital_payment_duration}</p>
               )}
-            </div>) : null}
-        </div>
+            </div>
+          </div>) : null}
       </div>
       <button
         className={css.nextBtn}
