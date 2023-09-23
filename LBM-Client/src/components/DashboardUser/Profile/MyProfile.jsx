@@ -42,139 +42,141 @@ const MyProfile = ({ name: initialName, email: initialEmail, user }) => {
   };
 
   return (
-    <div className={css.formContainer}>
-      <h2 className={css.title}>My Profile</h2>
-      <div className={css.createForm}>
-        <div className={css.createForm__inputs}>
-
-          <div className={css.inputContainer}>
-
-            <div>
-              <label className={css.createForm__inputs__label}>Name:</label>
-              <input
-                type="text"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-                className={css.createForm__inputs__input}
-              />
-            </div>
-
-            <div>
-              <label className={css.createForm__inputs__label}>Last Name:</label>
-              <input
-                type="text"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-                className={css.createForm__inputs__input}
-              />
-            </div>
-          </div>
-
-
+    <form>
+      <div className={css.formContainer}>
+        <h2 className={css.title}>My Profile</h2>
+        <div className={css.createForm}>
           <div className={css.createForm__inputs}>
-            <label className={css.createForm__inputs__label}>Email:</label>
-            <input
-              type="email"
-              disabled
-              value={email}
-              className={css.createForm__inputs__input}
-            />
-          </div>
-          <div className={css.inputContainer}>
-            <div>
-              <label className={css.createForm__inputs__label}>Country:</label>
-              <SelectCountry onChange={(country) => setCountry(country)} currentValue={country} />
-            </div>
-            <div className={css.createForm__inputs}>
-              <label className={css.createForm__inputs__label}>City:</label>
-              <input
-                type="text"
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-                className={css.createForm__inputs__input}
-              />
-            </div>
-          </div>
-          <div className={css.inputContainer}>
-            <div className={css.createForm__inputs}>
-              <label className={css.createForm__inputs__label}>Region / State / Province:</label>
-              <input
-                type="text"
-                value={region}
-                onChange={(e) => setRegion(e.target.value)}
-                className={css.createForm__inputs__input}
-              />
-            </div>
-            <div className={css.createForm__inputs}>
-              <label className={css.createForm__inputs__label}>Address:</label>
-              <input
-                type="text"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-                className={css.createForm__inputs__input}
-              />
-            </div>
-          </div>
-          <div className={css.inputContainer}>
-            <div className={css.createForm__inputs}>
-              <label className={css.createForm__inputs__label}>Postal Code:</label>
-              <input
-                type="text"
-                value={postalCode}
-                onChange={(e) => setPostalCode(e.target.value)}
-                className={css.createForm__inputs__input}
-              />
-            </div>
-            <div>
-              <label>Phone Number</label>
-              <div className={css.codeNumber}>
-                <SelectCodeArea onChange={(codeArea) => setCodeArea(codeArea)} currentValue={codeArea} />
+
+            <div className={css.inputContainer}>
+
+              <div>
+                <label className={css.createForm__inputs__label}>Name:</label>
                 <input
-                  type="number"
-                  value={phoneNumber}
-                  onChange={(e) => setPhoneNumber(e.target.value)}
+                  type="text"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  className={css.createForm__inputs__input}
+                />
+              </div>
+
+              <div>
+                <label className={css.createForm__inputs__label}>Last Name:</label>
+                <input
+                  type="text"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                  className={css.createForm__inputs__input}
                 />
               </div>
             </div>
-          </div>
-          <div className={css.inputContainer}>
-            <div>
-              <label>Passport / ID</label>
+
+
+            <div className={css.createForm__inputs}>
+              <label className={css.createForm__inputs__label}>Email:</label>
               <input
-                type="text"
-                value={passportId}
-                onChange={(e) => setPassportId(e.target.value)}
+                type="email"
+                disabled
+                value={email}
+                className={css.createForm__inputs__input}
               />
             </div>
-            <div>
-              <label>Date of Birth</label>
-              <input
-                type="date"
-                value={dateOfBirth}
-                onChange={(e) => setDateOfBirth(e.target.value)}
-              />
+            <div className={css.inputContainer}>
+              <div>
+                <label className={css.createForm__inputs__label}>Country:</label>
+                <SelectCountry onChange={(country) => setCountry(country)} currentValue={country} />
+              </div>
+              <div className={css.createForm__inputs}>
+                <label className={css.createForm__inputs__label}>City:</label>
+                <input
+                  type="text"
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                  className={css.createForm__inputs__input}
+                />
+              </div>
             </div>
+            <div className={css.inputContainer}>
+              <div className={css.createForm__inputs}>
+                <label className={css.createForm__inputs__label}>Region / State / Province:</label>
+                <input
+                  type="text"
+                  value={region}
+                  onChange={(e) => setRegion(e.target.value)}
+                  className={css.createForm__inputs__input}
+                />
+              </div>
+              <div className={css.createForm__inputs}>
+                <label className={css.createForm__inputs__label}>Address:</label>
+                <input
+                  type="text"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                  className={css.createForm__inputs__input}
+                />
+              </div>
+            </div>
+            <div className={css.inputContainer}>
+              <div className={css.createForm__inputs}>
+                <label className={css.createForm__inputs__label}>Postal Code:</label>
+                <input
+                  type="text"
+                  value={postalCode}
+                  onChange={(e) => setPostalCode(e.target.value)}
+                  className={css.createForm__inputs__input}
+                />
+              </div>
+              <div>
+                <label>Phone Number</label>
+                <div className={css.codeNumber}>
+                  <SelectCodeArea onChange={(codeArea) => setCodeArea(codeArea)} currentValue={codeArea} />
+                  <input
+                    type="number"
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className={css.inputContainer}>
+              <div>
+                <label>Passport / ID</label>
+                <input
+                  type="text"
+                  value={passportId}
+                  onChange={(e) => setPassportId(e.target.value)}
+                />
+              </div>
+              <div>
+                <label>Date of Birth</label>
+                <input
+                  type="date"
+                  value={dateOfBirth}
+                  onChange={(e) => setDateOfBirth(e.target.value)}
+                />
+              </div>
+            </div>
+
+            <label for="newsletterCheckbox" className={css.suscribe}>
+              <input type="checkbox" id="newsletterCheckbox" name="subscribeNewsletter" />
+              Subscribe to newsletter
+            </label>
           </div>
 
-          <label for="newsletterCheckbox" className={css.suscribe}>
-            <input type="checkbox" id="newsletterCheckbox" name="subscribeNewsletter" />
-            Subscribe to newsletter
-          </label>
-        </div>
-    
-        <div className={css.buttons}>
-        <button className={css.cancelBtn}>Cancel</button>
-        <button
-          onClick={handleUpdateProfile}
-          className={css.updateBtn}
-        >
-          Update
-        </button>
+          <div className={css.buttons}>
+            <button className={css.cancelBtn}>Cancel</button>
+            <button
+              onClick={handleUpdateProfile}
+              className={css.updateBtn}
+            >
+              Update
+            </button>
+
+          </div>
 
         </div>
-
       </div>
-    </div>
+    </form>
   );
 };
 
