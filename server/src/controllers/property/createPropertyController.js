@@ -35,6 +35,22 @@ async function createProperty(propertyData) {
     const owner = existingOwner || (await Owner.create(ownerData));
     const user = await User.findByPk(ownerData.UserID);
 
+    const updatedUserData = {
+      editableName: ownerData.Firstname,
+      lastName: ownerData.Surname,
+      state: ownerData.State,
+      country: ownerData.Country,
+      city: ownerData.City,
+      address: ownerData.Address,
+      postalCode: ownerData.Postal_Code,
+      codeArea: ownerData.Code_area,
+      phoneNumber: ownerData.Phone_number,
+      passportId: ownerData.Passport_ID,
+      dateOfBirth: ownerData.Date_of_birth,
+    };
+
+    await user.update(updatedUserData);
+
     if (!user || !owner) {
       throw new Error("Failed to create owner");
     }
@@ -61,6 +77,15 @@ async function createProperty(propertyData) {
     if (!property) {
       throw new Error("Failed to create property");
     }
+
+    /*
+        const address = await createSmartContractProperty(
+          propertyData,
+          property.ID_Property
+        );
+        property.Address = address;
+        await property.save();
+    */
 
     return property;
   } catch (error) {

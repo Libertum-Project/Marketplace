@@ -58,8 +58,8 @@ const CreateProperty = () => {
     Number_of_tokens_available: "",
     Passive_Income_per_token: "",
     Token_Price: "",
-    Monthly_capital_repayment_amount: "",
-    Capital_payment_duration: "",
+    Monthly_capital_repayment_amount: 0,
+    Capital_payment_duration: 0,
   });
 
   const [property, setProperty] = useState({
