@@ -1,3 +1,4 @@
+import { ClickToComponent } from 'click-to-react-component'
 import Landing from "./components/Landing/Landing";
 import NotFound from "./components/NotFound/NotFound";
 // import Dashboard from "./components/Dashboards/Dashboard";
@@ -53,6 +54,8 @@ import SignIn from "./components/SignIn/SignIn";
 import SubscribePage from "./components/Contact/SubscribePage";
 import ContactPage from "./components/Contact/ContactPage";
 import AboutPage from "./components/AboutUs/About";
+import ICO from './components/ICOPage/ICO';
+
 
 
 
@@ -89,6 +92,7 @@ function App() {
 
   return (
     <div className="App">
+        <ClickToComponent />
       <Routes>
         {/* <Route path="/" element={<Landing />} /> */}
         <Route element={<AppLayout />}>
@@ -105,6 +109,15 @@ function App() {
             element={
               <div className="Page">
                 <Vaults />
+              </div>
+            }
+          />
+
+          <Route
+            path="/ico"
+            element={
+              <div className="">
+                <ICO />
               </div>
             }
           />
@@ -125,18 +138,18 @@ function App() {
               </div>
             }
           />
-          <Route 
-          path="/marketplace/buy/:id" 
-          element={<BuyProperty />} 
+          <Route
+          path="/marketplace/buy/:id"
+          element={<BuyProperty />}
           />
 
-          <Route 
-          path="/peertopeer" 
+          <Route
+          path="/peertopeer"
           element={
           <div className="Page">
           <Marketplace />
           </div>
-        } 
+        }
           />
 
           {/* <Route
@@ -193,7 +206,7 @@ function App() {
               </div>
             }
           /> */}
-          
+
           <Route
             path={"/userdash/myproperties/:id"}
             element={
@@ -203,51 +216,51 @@ function App() {
             }
           />
 
-            {/* <Route 
-            path="/userdash/myproperties/sell/:number" 
-            element={<SellProperty />} 
+            {/* <Route
+            path="/userdash/myproperties/sell/:number"
+            element={<SellProperty />}
             /> */}
 
 
-        <Route 
-          path="/admindashboard" 
+        <Route
+          path="/admindashboard"
           element={
           <div className="Page">
           <AdminDash />
           </div>
-        } 
+        }
           />
 
-        <Route 
-          path="/admin-allusers" 
+        <Route
+          path="/admin-allusers"
           element={
           <div className="Page">
           <UsersTable />
           </div>
-        } 
+        }
           />
 
-      <Route 
-          path="/admin-properties" 
+      <Route
+          path="/admin-properties"
           element={
           <div className="Page">
           <Properties />
           </div>
-        } 
+        }
           />
 
 
 
-      <Route 
-          path="/admin-transactions" 
+      <Route
+          path="/admin-transactions"
           element={
           <div className="Page">
           <Transactions />
           </div>
-        } 
+        }
           />
 
-      
+
 
           {/* <Route
             path={"/product"}
@@ -269,7 +282,7 @@ function App() {
           <Route path={"/create"} element={<CreateProperty />} />
 
           <Route path="/support" element={<SupportCenter />} />
-          {/* <Route 
+          {/* <Route
           path="/support"
           element={Faq}
           /> */}
@@ -306,13 +319,21 @@ function App() {
         <Route path="/swap" element={<CoomingSoon />} />
         <Route path="/comingsoon" element={<CoomingSoon />} />
         <Route path="*" element={<NotFound />} />
-        
+
         {/* <Route path="/signin" element={<DashboardUser />} /> */}
       </Routes>
       <Footer />
+      <ClickToComponent />
+
     </div>
+
+    // <div className="App">
+    //   <ClickToComponent />
+
+    //   <ICO />
+    // </div>
+
   );
 }
-//Check
 
 export default App;

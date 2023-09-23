@@ -134,6 +134,9 @@ function NavbarMarket() {
               <NavLink to="/support">
                 <p>SUPPORT</p>
               </NavLink>
+              <NavLink to="/ico">
+                <p>Buy Libertum</p>
+              </NavLink>
             </div>
             <div className={style.buttons2}>
               <div className={style.language}>
