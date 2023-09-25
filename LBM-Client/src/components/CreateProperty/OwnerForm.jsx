@@ -10,6 +10,7 @@ const OwnerForm = ({ handleSubmit, onNext, onChange, propertyData }) => {
   const validateForm = () => {
     const errors = {};
     const onlyLetters = /^[A-Za-z]+$/;
+    const onlyLettersAndSpace = /^[A-Za-z ]+$/;
 
     if (!propertyData.ownerData.Firstname) {
       errors.Firstname = "First Name is required";
@@ -19,7 +20,7 @@ const OwnerForm = ({ handleSubmit, onNext, onChange, propertyData }) => {
 
     if (!propertyData.ownerData.Surname) {
       errors.Surname = "Surname is required";
-    } else if (!onlyLetters.test(propertyData.ownerData.Surname)) {
+    } else if (!onlyLettersAndSpace.test(propertyData.ownerData.Surname)) {
       errors.Surname = "Surname should contain only letters";
     }
 
