@@ -7,6 +7,7 @@ import { withdrawFunds } from '../../../../../redux/features/propertySlice';
 import PropertyDetails from '../PropertyDetails/PropertyDetails.jsx';
 
 const Properties = ({ transactions, publishedProperties }) => {   
+    
     const columns = [
         {
             name: 'ID',
