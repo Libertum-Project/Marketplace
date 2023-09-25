@@ -1,23 +1,22 @@
-import React from 'react';
 import './PropertyDetails.scss';  
 
 const PropertyDetails = ({ property, closeModal }) => {
+
+
   return (
     <div className="property-details-modal">
-      <div className='property-details-container'>
+      <div className='property-details-container' >
         <div className="header">
-        {/* <img src="url_de_la_imagen_de_fondo.jpg" alt="Imagen de fondo" /> */}
-        <div className="property-info">
-          {/* <button className='buttonClose' onClick={closeModal}>X</button> */}
-          {/* <img src="" alt="Imagen izquierda" /> */}
-          <div>
-            <p>Property #{property.id}</p>
-            <h2>{property.address}</h2>
-            <p>{property.rooms} </p>
-            {/* <p>Característica 2: </p>
-            <p>Característica 5: </p> */}
+          <h2>Property #{property.id}</h2>
+          <div className="property-info">
+            <img src="" alt="Imagen izquierda" />
+            <div>
+              <h3>{property.address}</h3>
+              <p> 3 Bedrooms </p>
+              <p> 456 SqFeet </p>
+              <p> Gym • Parking • WiFi  </p>
+            </div>
           </div>
-        </div>
       </div>
       {/* Inputs */}
       <div className="inputs">
@@ -61,6 +60,55 @@ const PropertyDetails = ({ property, closeModal }) => {
                 <input type="text" />
               </div>
             </div>
+
+            <div className='inputContainer'>
+              <div>
+                <label htmlFor="">Region / State / Province</label>
+                <input type="text" name="" id="" />
+              </div>
+
+              <div>
+                <label htmlFor="">Address</label>
+                <input type="text" />
+              </div>
+            </div>
+
+            <div className='inputContainer'>
+              <div>
+                <label htmlFor="">Postal Code</label>
+                <input type="number" name="" id="" />
+              </div>
+
+              <div>
+                <label htmlFor="">Ocuupancy Status</label>
+                <input type="text" />
+              </div>
+            </div>
+
+            <div className='inputContainer'>
+              <div>
+                <label htmlFor="">Rooms</label>
+                <input type="text" name="" id="" />
+              </div>
+
+            </div>
+
+            <div className='inputContainer'>
+              <div>
+                <label htmlFor="">More / Extra</label>
+                <input type="text" name="" id="" />
+              </div>
+            </div>
+
+            <div className='inputContainer'>
+              <div>
+                <label htmlFor="">Description</label>
+                <input type="text" name="" id="" />
+              </div>
+
+            </div>
+
+
           </div>
 
           <div className='buttons'>
