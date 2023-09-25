@@ -1,20 +1,18 @@
 import React from 'react';
-import './PropertyDetails.scss'; // Asegúrate de tener un archivo CSS o SCSS para estilizar este componente.
+import './PropertyDetails.scss';  
 
 const PropertyDetails = ({ property, closeModal }) => {
   return (
     <div className="property-details-modal">
       <div className='property-details-container'>
-
-      <div className="header">
+        <div className="header">
         {/* <img src="url_de_la_imagen_de_fondo.jpg" alt="Imagen de fondo" /> */}
         <div className="property-info">
           {/* <button className='buttonClose' onClick={closeModal}>X</button> */}
           {/* <img src="" alt="Imagen izquierda" /> */}
           <div>
-            <p>Property #{property.id} </p>
+            <p>Property #{property.id}</p>
             <h2>{property.address}</h2>
-
             <p>{property.rooms} </p>
             {/* <p>Característica 2: </p>
             <p>Característica 5: </p> */}
