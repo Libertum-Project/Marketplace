@@ -14,6 +14,7 @@
   color: rgb(67, 67, 67);
   backdrop-filter: blur(2px); 
 
+
   .property-details-container{
     background-color: rgb(255, 255, 255);
     // width: 50rem;
@@ -24,15 +25,25 @@
     // height: 40rem;
     border-radius: 2rem;
 
+
     .header {     
       background-image: url('./background.svg');
       background-size: cover;
       background-position: center;
       display: flex;
-      align-items: center;
-      margin-top: 3rem;
+      flex-direction: column;      
+      margin-top: 5rem;
       padding: 20px;
       height: 12rem;
+      font-size: 30px;
+      font-weight: bold;
+      margin-top: 2rem;
+      color: whitesmoke;
+
+      h2{
+        text-align: left;
+      }
+      
       // border-radius: 2rem 2rem 0 0;
   
       img {
@@ -43,7 +54,10 @@
       }
 
       .property-info{
-        color: whitesmoke;
+        display: flex;
+        align-items: center;
+        color: #2d2e2e;
+        font-weight: 200;
 
         .buttonClose{
           background-color: aliceblue;
@@ -60,11 +74,17 @@
           color: var(--LibertumBlue);
         }
 
-        h2 {
+        img{
+          width: 6rem;
+          margin-right: 3rem;
+        }
+        h3 {
           /* Estilos para el título */
           font-size: 24px;
           font-weight: bold;
           margin-top: .5rem;
+          color: #2d2e2e;
+          padding: 0;
           
         }
     
@@ -80,9 +100,11 @@
   
     .inputs {
       /* Estilos para los inputs */
-      margin-top: 20px;
+     margin-top: 20px;
      padding-left: 2rem;
      padding-right: 2rem;
+     max-height: 25rem;
+     overflow-y: scroll;
       h2{
         text-align: left;
         font-size: 18px;
