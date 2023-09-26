@@ -79,6 +79,21 @@ export const withdrawFunds = createAsyncThunk(
   }
 );
 
+export const editProperty = createAsyncThunk(
+  "patch/editProperty",
+  async ({newFeatureData, propertyId}) => {
+    const newURL = `${propertyURL}/edit/${propertyId}`
+    const response = await fetch(newURL, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newFeatureData),
+    });
+    return await response.json();
+  }
+);
+
 const propertySlice = createSlice({
   name: "property",
   initialState,

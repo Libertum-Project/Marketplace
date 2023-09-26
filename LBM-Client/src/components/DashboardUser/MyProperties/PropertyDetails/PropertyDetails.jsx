@@ -1,7 +1,53 @@
-import './PropertyDetails.scss';  
+import './PropertyDetails.scss';
+import { useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import SelectCountry from '../../Profile/SelectCountry';
+import { editProperty } from '../../../../../redux/features/propertySlice';
 
 const PropertyDetails = ({ property, closeModal }) => {
 
+  const dispatch = useDispatch();
+
+  const user = useSelector((state) => state.user.currentUser);
+  const propertyId = property.id;
+  const currentProperty = user.publishedProperties.find((property) => property.ID_Property === propertyId)
+  const feature = currentProperty.Feature
+
+  const [type, setType] = useState(feature.Type);
+  const [country, setCountry] = useState(feature.Country);
+  const [city, setCity] = useState(feature.City);
+  const [address, setAddress] = useState(feature.Address);
+  const [state, setState] = useState(feature.State);
+  const [postalCode, setPostalCode] = useState(feature.Postal_Code);
+  const [description, setDescription] = useState(feature.Description);
+  const [squareFoot, setSquareFoot] = useState(feature.Square_foot);
+  const [amenities, setAmenities] = useState(feature.Amenities);
+  const [rooms, setRooms] = useState(feature.Rooms);
+  const [occupancyStatus, setOccupancyStatus] = useState(feature.Occupancy_Status);
+  const [linkImage, setLinkImage] = useState(feature.Link_Image);
+  const [linkDocument, setLinkDocument] = useState(feature.Link_Document);
+  const [more, setMore] = useState(feature.More);
+
+  const handleEdit = () => {
+    const newFeatureData = {
+      Type: type,
+      Country: country,
+      City: city,
+      Address: address,
+      State: state,
+      Postal_Code: postalCode,
+      Description: description,
+      Square_foot: squareFoot,
+      Amenities: amenities,
+      Rooms: rooms,
+      Occupancy_Status: occupancyStatus,
+      Link_Image: linkImage,
+      Link_Document: linkDocument,
+      More: more
+    };
+
+    dispatch(editProperty({ newFeatureData, propertyId }))
+  }
 
   return (
     <div className="property-details-modal">
@@ -17,109 +63,141 @@ const PropertyDetails = ({ property, closeModal }) => {
               <p> Gym • Parking • WiFi  </p>
             </div>
           </div>
-      </div>
-      {/* Inputs */}
-      <div className="inputs">
-        <h2>Edit property info</h2>
+        </div>
+        <div className="inputs">
+          <h2>Edit property info</h2>
 
-        <form action="" className='createForm'>
-          <div className='createForm__inputs'>
-            <div className='inputContainer'>
+          <form className='createForm'>
+            <div className='createForm__inputs'>
+              <div className='inputContainer'>
 
-              <div>
-                <label htmlFor="">Square Foot</label>
-                <input type="number" />  
-              </div> 
+                <div>
+                  <label htmlFor="">Square Foot</label>
+                  <input
+                    type="number"
+                    value={squareFoot}
+                    onChange={(e) => setSquareFoot(e.target.value)}
+                  />
+                </div>
 
-              <div>
-                <label htmlFor="">Type</label>
-                <select name="" id="">
-                  <option value="">Select</option>
-                  <option value="green">Green / Sustainable</option>
-                  <option value="commercial">Commercial</option>
-                  <option value="residential">Residential</option>
-                  <option value="hotels">Hotels</option>
-                  <option value="agriculture">Agriculture</option>
-                  <option value="farm-house">Farm House</option>
-                  <option value="development-fund">Development Fund</option>
-                  <option value="industrial">Industrial</option>
-                  <option value="boat-house">Boat House</option>
-                </select>
+                <div>
+                  <label htmlFor="">Type</label>
+                  <select
+                    onChange={(e) => setType(e.target.value)}
+                  >
+                    <option value={type}>{type}</option>
+                    <option value="green">Green / Sustainable</option>
+                    <option value="commercial">Commercial</option>
+                    <option value="residential">Residential</option>
+                    <option value="hotels">Hotels</option>
+                    <option value="agriculture">Agriculture</option>
+                    <option value="farm-house">Farm House</option>
+                    <option value="development-fund">Development Fund</option>
+                    <option value="industrial">Industrial</option>
+                    <option value="boat-house">Boat House</option>
+                  </select>
+                </div>
+
               </div>
-              
+
+              <div className='inputContainer'>
+                <div>
+                  <label>Country</label>
+                  <SelectCountry onChange={(country) => setCountry(country)} currentValue={country} />
+                </div>
+
+                <div>
+                  <label>City</label>
+                  <input
+                    type="text"
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)} />
+                </div>
+              </div>
+
+              <div className='inputContainer'>
+                <div>
+                  <label>Region / State / Province</label>
+                  <input
+                    type="text"
+                    value={state}
+                    onChange={(e) => setState(e.target.value)}
+                  />
+                </div>
+
+                <div>
+                  <label>Address</label>
+                  <input
+                    type="text"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                  />
+                </div>
+              </div>
+
+              <div className='inputContainer'>
+                <div>
+                  <label>Postal Code</label>
+                  <input
+                    type="text"
+                    value={postalCode}
+                    onChange={(e) => setPostalCode(e.target.value)}
+                  />
+                </div>
+
+                <div>
+                  <label>Ocuupancy Status</label>
+                  <select
+                    onChange={(e) => setOccupancyStatus(e.target.value)}
+                  >
+                    <option value={occupancyStatus}>{occupancyStatus}</option>
+                    <option value="free">Free</option>
+                    <option value="occupied">Occupied</option>
+                    <option value="long term lease">Long Term Lease</option>
+                    <option value="short term lease">Short Term Lease</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className='inputContainer'>
+                <div>
+                  <label>Rooms</label>
+                  <input
+                    type="number"
+                    value={rooms}
+                    onChange={(e) => setRooms(e.target.value)} />
+                </div>
+              </div>
+
+              <div className='inputContainer'>
+                <div>
+                  <label>More / Extra</label>
+                  <input
+                    type="text"
+                    value={more}
+                    onChange={(e) => setMore(e.target.value)}
+                  />
+                </div>
+              </div>
+
+              <div className='inputContainer'>
+                <div>
+                  <label>Description</label>
+                  <input type="text"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                  />
+                </div>
+              </div>
             </div>
 
-            <div className='inputContainer'>
-              <div>
-                <label htmlFor="">Country</label>
-                <input type="text" name="" id="" />
-              </div>
-
-              <div>
-                <label htmlFor="">City</label>
-                <input type="text" />
-              </div>
+            <div className='buttons'>
+              <button className='cancelBtn' onClick={closeModal}>Cancel</button>
+              <button className='updateBtn' onClick={handleEdit}>Edit</button>
             </div>
 
-            <div className='inputContainer'>
-              <div>
-                <label htmlFor="">Region / State / Province</label>
-                <input type="text" name="" id="" />
-              </div>
-
-              <div>
-                <label htmlFor="">Address</label>
-                <input type="text" />
-              </div>
-            </div>
-
-            <div className='inputContainer'>
-              <div>
-                <label htmlFor="">Postal Code</label>
-                <input type="number" name="" id="" />
-              </div>
-
-              <div>
-                <label htmlFor="">Ocuupancy Status</label>
-                <input type="text" />
-              </div>
-            </div>
-
-            <div className='inputContainer'>
-              <div>
-                <label htmlFor="">Rooms</label>
-                <input type="text" name="" id="" />
-              </div>
-
-            </div>
-
-            <div className='inputContainer'>
-              <div>
-                <label htmlFor="">More / Extra</label>
-                <input type="text" name="" id="" />
-              </div>
-            </div>
-
-            <div className='inputContainer'>
-              <div>
-                <label htmlFor="">Description</label>
-                <input type="text" name="" id="" />
-              </div>
-
-            </div>
-
-
-          </div>
-
-          <div className='buttons'>
-            <button className='cancelBtn' onClick={closeModal}>Cancel</button>
-            <button className='updateBtn'>Edit</button>
-          </div>
-          
-        </form>
-
-
-      </div>
+          </form>
+        </div>
       </div>
     </div>
   );
