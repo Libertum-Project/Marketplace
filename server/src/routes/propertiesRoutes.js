@@ -14,6 +14,8 @@ const {
 
 const { withdrawHandler } = require("../handlers/property/withdrawHandler.js");
 
+const { editPropertyHandler } = require('../handlers/property/editPropertyHandler.js');
+
 const propertyRouter = Router();
 
 propertyRouter.get("/", getAllPropertiesHandler);
@@ -21,5 +23,6 @@ propertyRouter.post("/", createPropertyHandler);
 propertyRouter.get("/filter", getFilteredPropertiesHandler);
 propertyRouter.post("/status", setPropertyStatusHandler);
 propertyRouter.post("/withdraw", withdrawHandler);
+propertyRouter.patch("/edit/:id", editPropertyHandler);
 
 module.exports = propertyRouter;
