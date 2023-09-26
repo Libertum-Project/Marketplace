@@ -102,6 +102,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                 redirect_uri: window.location.origin,
               }}
             >
+              <ClickToComponent/>
               <App />
 
             </Auth0Provider>
