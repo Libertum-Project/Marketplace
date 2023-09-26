@@ -1,31 +1,295 @@
-// PropertyDetails.scss
-
-.modal {
+.property-details-modal {
+  /* Estilos para el contenedor principal del modal */
+  background-color: rgba(151, 151, 151, 0.452);
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  max-width: 80%;
-  padding: 20px;
-}
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999; 
+  font-family: montserrat;
+  color: rgb(67, 67, 67);
+  backdrop-filter: blur(2px); 
 
-.modal-content {
-  font-size: 1rem;
-  line-height: 1.5;
-}
 
-.modal-title {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-}
+  .property-details-container{
+    background-color: rgb(255, 255, 255);
+    // width: 50rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; 
+    // height: 40rem;
+    border-radius: 2rem;
 
-.modal-close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: transparent;
-  border: none;
+
+    .header {     
+      background-image: url('./background.svg');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;      
+      margin-top: 5rem;
+      padding: 20px;
+      height: 12rem;
+      font-size: 30px;
+      font-weight: bold;
+      margin-top: 2rem;
+      color: whitesmoke;
+
+      h2{
+        text-align: left;
+      }
+      
+      // border-radius: 2rem 2rem 0 0;
+  
+      img {
+        /* Estilos para la imagen izquierda */
+        width: 100px;
+        height: 100px;
+        margin-right: 20px;
+      }
+
+      .property-info{
+        display: flex;
+        align-items: center;
+        color: #2d2e2e;
+        font-weight: 200;
+
+        .buttonClose{
+          background-color: aliceblue;
+          padding: .5rem;
+          border-radius: 50%;
+          height: 2.5rem;
+          width: 2.5rem;
+          cursor: pointer;
+          font-weight: 600;
+          // justify-self: self-end;
+          // position: fixed;
+          // right: 20%;
+          // top: 17%;
+          color: var(--LibertumBlue);
+        }
+
+        img{
+          width: 6rem;
+          margin-right: 3rem;
+        }
+        h3 {
+          /* Estilos para el título */
+          font-size: 24px;
+          font-weight: bold;
+          margin-top: .5rem;
+          color: #2d2e2e;
+          padding: 0;
+          
+        }
+    
+        p {
+          /* Estilos para las características en forma de párrafo */
+          font-size: 16px;
+          text-align: left;
+        }
+      }
+    }
+  
+
+  
+    .inputs {
+      /* Estilos para los inputs */
+     margin-top: 20px;
+     padding-left: 2rem;
+     padding-right: 2rem;
+     max-height: 25rem;
+     overflow-y: scroll;
+      h2{
+        text-align: left;
+        font-size: 18px;
+      }
+
+      .createForm {
+        align-items: center;
+        // border-radius: 16px;
+        // border: 1px solid var(--soft-bg);
+        // background: #fff;
+        // box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        width: 65rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 1rem;
+        gap: 2rem;
+      }
+
+    .createForm__inputs {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+    .createForm__inputs div {
+      align-items: flex-start;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+    
+    .createForm__inputs .inputContainer {
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .createForm__inputs label {
+      color: #121826;
+      font-size: 0.75rem;
+    }
+    
+    .createForm__inputs input,
+    select,
+    .createForm__inputs textarea {
+      border-radius: 8px;
+      border: 1px solid #d2d5da;
+      height: 2.5rem;
+      width: 100%;
+      background-color: white;
+      padding: 0.5rem 1rem;
+      outline-color: rgba(var(--LibertumColorRGB), 0.3);
+    }
+    
+    .createForm__inputs textarea {
+      height: 4rem;
+    }
+    
+    .createForm__inputs input:focus,
+    .createForm__inputs textarea:focus,
+    select:focus {
+      outline-color: rgba(var(--LibertumColorRGB), 0.3);
+      transition: all ease-in 0.3s;
+    }
+    
+    .inputContainer select {
+      padding: 0 0.5rem;
+      color: #6c727f;
+      font-size: 1rem;
+    }
+    
+    .createForm__inputs div .codeNumber {
+      flex-direction: row;
+      gap: 0.5rem;
+    }
+    
+    .inputContainer input[type="date"] {
+      padding: 0 0.5rem;
+      color: #6c727f;
+      font-size: 1rem;
+    }
+    
+    
+    .amenities {
+      display: flex;
+      flex-direction: row;
+      margin-right: 10px;
+      border-radius: 8px;
+      border: 1px solid #d2d5da;
+      padding: 1rem;
+      max-height: 10rem;
+      overflow-y: scroll;
+    
+    }
+    
+    .amenities input {
+      width: fit-content;
+      margin-right: 10px;
+    }
+    
+    .amenities label {
+      display: flex;
+      align-items: center; 
+      
+    }
+    .amenities .error {
+      margin-left: 5px; /* Espacio entre el checkbox y el mensaje de error */
+      color: red; /* Cambia el color del mensaje de error */
+    }
+    
+    .inputContainer .drop {
+      align-items: center;
+      border-radius: 0.5rem;
+      border: 1px dashed #d2d5da;
+      height: 4rem;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+      padding: 0 0.5rem;
+    }
+    
+    .drop p {
+      color: #6c727f;
+      font-size: 13px;
+      line-height: normal;
+    }
+    
+    .drop button {
+      padding: 0.5rem 1rem;
+      border-radius: 1rem;
+      border: 1px solid #d2d5da;
+      color: #6c727f;
+      font-size: 1rem;
+      font-family: Inter;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+    
+    .createForm .nextBtn {
+      color: var(--primary);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.0225rem;
+      width: 100%;
+      border-radius: 16px;
+      background: var(--soft-bg);
+      border: 1px solid var(--primary);
+      padding: 0.5rem;
+    }
+    
+    
+    .buttons{
+      display: flex;
+      align-self: self-end;
+      gap: 1.5rem;
+      .updateBtn {
+        color: white;
+        background-color: var(--Libertum-color);
+        border-radius: 1rem;
+        width: 100%;
+        padding: .2rem 2.7rem ;
+      }
+
+      .cancelBtn{
+        border: 1px solid var(--Libertum-color); 
+        border-radius: 1rem;
+        width: 100%;
+        padding: .2rem 2rem ;
+      }
+    }
+
+    @media (min-width: 720px) {
+      .createForm__inputs .inputContainer {
+        flex-direction: row;
+      }
+    
+      .inputContainer .drop {
+        height: 5.625rem;
+        padding: 1rem;
+      }
+    }
+    }
+
+
+  }
+
+  
 }
