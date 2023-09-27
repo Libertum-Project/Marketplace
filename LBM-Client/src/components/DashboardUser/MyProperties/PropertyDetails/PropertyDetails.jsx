@@ -1,10 +1,27 @@
 import './PropertyDetails.scss';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import SelectCountry from '../../Profile/SelectCountry';
 import { editProperty } from '../../../../../redux/features/propertySlice';
 
 const PropertyDetails = ({ property, closeModal }) => {
+
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      const modal = document.querySelector('.property-details-container');
+      if (modal && !modal.contains(e.target)) {
+        closeModal(); // Llama a la función para cerrar el modal
+      }
+    };
+
+    // Agregar el event listener cuando el componente se monta
+    document.addEventListener('mousedown', handleOutsideClick);
+
+    // Limpiar el event listener cuando el componente se desmonta
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
+  }, [closeModal]);
 
   const dispatch = useDispatch();
 
