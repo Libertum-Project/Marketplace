@@ -56,7 +56,7 @@
       .property-info{
         display: flex;
         align-items: center;
-        color: #2d2e2e;
+        color: whitesmoke;
         font-weight: 200;
 
         .buttonClose{
@@ -83,7 +83,7 @@
           font-size: 24px;
           font-weight: bold;
           margin-top: .5rem;
-          color: #2d2e2e;
+          color: whitesmoke;
           padding: 0;
           
         }
@@ -291,5 +291,21 @@
 
   }
 
+  @media screen and (max-width: 720px) {
+    .property-details-container{
+      width: 100%;
+      border-radius: 0;
+
+      .inputs{
+        // max-width:10rem;
+
+        .createForm {
+          width: 20rem;
+          margin-bottom: 6rem;
+        }
+      }
+
+    }
+  }
   
 }

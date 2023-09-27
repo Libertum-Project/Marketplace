@@ -13,6 +13,8 @@ const PropertyDetails = ({ property, closeModal }) => {
   const currentProperty = user.publishedProperties.find((property) => property.ID_Property === propertyId)
   const feature = currentProperty.Feature
 
+  console.log(feature)
+
   const [type, setType] = useState(feature.Type);
   const [country, setCountry] = useState(feature.Country);
   const [city, setCity] = useState(feature.City);
@@ -55,12 +57,13 @@ const PropertyDetails = ({ property, closeModal }) => {
         <div className="header">
           <h2>Property #{property.id}</h2>
           <div className="property-info">
-            <img src="" alt="Imagen izquierda" />
+          <img src="{feature.Link_Image[0]}" alt="" />
+
             <div>
               <h3>{property.address}</h3>
-              <p> 3 Bedrooms </p>
-              <p> 456 SqFeet </p>
-              <p> Gym • Parking • WiFi  </p>
+              <p> {feature.City} • {feature.Country} </p>
+              <p> {feature.Square_foot} SqFeet </p>
+              <p> {feature.Amenities.join(' • ')} </p>
             </div>
           </div>
         </div>

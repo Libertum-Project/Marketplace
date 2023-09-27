@@ -15,7 +15,10 @@ $primarycolor: var(--Libertum-color);
     @media (min-width: 721px) and (max-width: 1024px) {  
         padding: 0.5rem;         
       }
-
+    @media (max-width: 720px){
+    
+        width: 25rem;
+       }
 
 }
     
