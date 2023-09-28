@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import DataTable from 'react-data-table-component';   
+import DataTable from 'react-data-table-component';
 import css from './TableUsers.module.scss';
 import { Link } from 'react-router-dom';
-import { withdrawFunds } from '../../../../../redux/features/propertySlice';
 import PropertyDetails from '../PropertyDetails/PropertyDetails.jsx';
+import WithdrawFunds from '../../../../smartContracts/components/WithdrawFunds';
 
-const Properties = ({ transactions, publishedProperties }) => {   
-    
+const Properties = ({ transactions, publishedProperties }) => {
+
+    console.log(publishedProperties)
     const columns = [
         {
             name: 'ID',
@@ -53,24 +54,11 @@ const Properties = ({ transactions, publishedProperties }) => {
         {
             name: "Withdraw",
             selector: row => row.withdrawFunds,
-            cell: row => (
-                <Link to={`http:/localhost:3001/${row.propertyID}`}>
-                    <button
-                        style={{
-                            backgroundColor: "gray",
-                            borderRadius: "5px",
-                            color: "white",
-                            padding: "8px",
-                        }}
-                    >
-                        {row.withdrawFunds}
-                    </button>
-                </Link>
-            )
+            cell: row => (row.withdrawFunds)
         },
     ];
 
-    
+
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedProperty, setSelectedProperty] = useState(null);
 
@@ -80,21 +68,8 @@ const Properties = ({ transactions, publishedProperties }) => {
     };
 
     const dispatch = useDispatch();
-    const claimError = useSelector((state) =>state.property.error)
+    const claimError = useSelector((state) => state.property.error)
     const [error, setError] = useState(claimError);
-
-    const handleClickWithdraw = (event, address, type) => {
-        const propertyType = type;
-        const propertyAddress = address;
-
-        event.preventDefault();
-        dispatch(
-            withdrawFunds({propertyAddress, propertyType})
-            .then(() => {
-                console.log(error)
-            })
-        )
-    }
 
     const properties = publishedProperties.map((property) => ({
         id: property.ID_Property,
@@ -106,17 +81,10 @@ const Properties = ({ transactions, publishedProperties }) => {
         propertystatus: property.Feature.Occupancy_Status,
         edit: "Edit",
         withdrawFunds: (
-            <button
-                onClick={(event) =>
-                    handleClickWithdraw(
-                        event,
-                        property.Feature.Address,
-                        property.Feature.Type                         
-                    )
-                }
-            >
-                Withdraw
-            </button>
+            <WithdrawFunds 
+                propertyAddress={property.Address}
+                propertyType={property.Financial.Investment_type}
+            />
         )
     }));
 
@@ -138,11 +106,11 @@ const Properties = ({ transactions, publishedProperties }) => {
 
                 {/* Renderizamos el modal cuando isModalOpen es true */}
                 {isModalOpen && (
-                    <PropertyDetails 
-                    property = { selectedProperty }
-                    closeModal = { () => setIsModalOpen(false) }
+                    <PropertyDetails
+                        property={selectedProperty}
+                        closeModal={() => setIsModalOpen(false)}
                     />
-                    
+
                 )}
             </div>
         </div>
