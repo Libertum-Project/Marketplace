@@ -47,11 +47,17 @@ const Icons = ({ amenities, squarefoot, rooms, iconSize, containerWidth, withPar
           case "wifi":
             icon = wifiIcon;
             break;
+          case "parking":
+            icon = parkingIcon;
+            break;
           case "gym":
             icon = gymIcon;
             break;
-          case "parking":
-            icon = parkingIcon;
+          case "gym ":
+            icon = gymIcon;
+            break;
+          case "none":
+            icon = bathroomIcon;
             break;
           default:
             break;

@@ -47,7 +47,7 @@ const Details = ({amenities, rooms, address, more, map, type }) => {
       </div>
       <div className={style.cell}>
       <span className={style.descriptiontable}>{address}</span>
-      <iframe
+      {/* <iframe
               src={map}
               // width="400"
               // height="250"
@@ -57,7 +57,7 @@ const Details = ({amenities, rooms, address, more, map, type }) => {
               loading="lazy"
               title="Map">
               
-            </iframe>
+            </iframe> */}
       </div>
     </div>
 
