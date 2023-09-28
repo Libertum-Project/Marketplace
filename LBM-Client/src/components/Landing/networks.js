@@ -4,6 +4,7 @@ import github from "./assets/networks/github.svg";
 import linkedin from "./assets/networks/linkedin.svg";
 import tiktok from "./assets/networks/tiktok.svg";
 import facebook from "./assets/networks/facebook.svg";
+import discord from "./assets/networks/discord.svg";
 
 export const networks = [
   {
@@ -24,5 +25,9 @@ export const networks = [
     net: linkedin,
     href: "https://www.linkedin.com/company/libertum1",
   },
+  {
+    net: discord,
+    href: "https://discord.com/invite/dKCByZ64"
+  }
   // { net: tiktok, href: "" },
 ];

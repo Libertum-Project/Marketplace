@@ -13,13 +13,13 @@ const SaveProperty = ({ propertyId }) => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.user.currentUser);
   const { user } = useAuth0();
-  const savedPropertiesArray = currentUser.savedProperties.map(
+  const savedPropertiesArray = currentUser.savedProperties?.map(
     (property) => property.ID_Property
   );
 
   let isCurrentPropertySaved = false;
 
-  savedPropertiesArray.forEach((property) => {
+  savedPropertiesArray?.forEach((property) => {
     if (property === propertyId) isCurrentPropertySaved = true;
   });
 

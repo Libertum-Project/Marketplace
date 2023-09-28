@@ -38,7 +38,7 @@ const Properties = ({ transactions, publishedProperties }) => {
             selector: row => row.edit,
             cell: row => (
                 <button
-                    onClick={() => handleEditClick(row)} // Cambiamos la función para abrir el modal
+                    onClick={() => handleEditClick(row)}
                     style={{
                         backgroundColor: "gray",
                         borderRadius: "5px",
@@ -77,8 +77,6 @@ const Properties = ({ transactions, publishedProperties }) => {
     const handleEditClick = (property) => {
         setSelectedProperty(property);
         setIsModalOpen(true);
-        console.log("apretaste edit")
-        console.log(isModalOpen)
     };
 
     const dispatch = useDispatch();

@@ -16,7 +16,7 @@ const PropertyForm = ({
 }) => {
 
 
-  const amenitiesOptions = ['Swimming Pool', 'Gym ', 'Parking', 'WiFi Access', "Terrace", 'Garden', 'Security', 'None']; 
+  const amenitiesOptions = ['Swimming Pool', 'Gym', 'Parking', 'WiFi Access', "Terrace", 'Garden', 'Security', 'None']; 
   const [selectedAmenities, setSelectedAmenities] = useState([]);
 
   const handleAmenitiesChange = (e) => {
