@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import SelectCountry from '../../Profile/SelectCountry';
 import { editProperty } from '../../../../../redux/features/propertySlice';
+import { fetchCurrentUser } from '../../../../../redux/features/userSlice';
 
 const PropertyDetails = ({ property, closeModal }) => {
 
@@ -30,8 +31,6 @@ const PropertyDetails = ({ property, closeModal }) => {
   const currentProperty = user.publishedProperties.find((property) => property.ID_Property === propertyId)
   const feature = currentProperty.Feature
 
-  console.log(feature)
-
   const [type, setType] = useState(feature.Type);
   const [country, setCountry] = useState(feature.Country);
   const [city, setCity] = useState(feature.City);
@@ -47,7 +46,8 @@ const PropertyDetails = ({ property, closeModal }) => {
   const [linkDocument, setLinkDocument] = useState(feature.Link_Document);
   const [more, setMore] = useState(feature.More);
 
-  const handleEdit = () => {
+  const handleEdit = (e) => {
+    e.preventDefault()
     const newFeatureData = {
       Type: type,
       Country: country,
@@ -66,7 +66,24 @@ const PropertyDetails = ({ property, closeModal }) => {
     };
 
     dispatch(editProperty({ newFeatureData, propertyId }))
+    dispatch(
+      fetchCurrentUser({
+        email: user.email,
+        name: user.name,
+      }))
+    closeModal()
   }
+
+  const amenitiesOptions = ['Swimming Pool', 'Gym', 'Parking', 'WiFi Access', "Terrace", 'Garden', 'Security', 'None'];
+
+  const handleAmenitiesChange = (e) => {
+    const { value, checked } = e.target;
+    if (checked) {
+      setAmenities([...amenities, value]);
+    } else {
+      setAmenities(amenities.filter(item => item !== value));
+    }
+  };
 
   return (
     <div className="property-details-modal">
@@ -74,7 +91,7 @@ const PropertyDetails = ({ property, closeModal }) => {
         <div className="header">
           {/* <h2>Property #{property.id}</h2> */}
           <div className="property-info">
-          <img src="{feature.Link_Image[0]}" alt="" />
+            <img src="{feature.Link_Image[0]}" alt="" />
 
             <div>
               <h3>{property.address}</h3>
@@ -187,6 +204,23 @@ const PropertyDetails = ({ property, closeModal }) => {
                     value={rooms}
                     onChange={(e) => setRooms(e.target.value)} />
                 </div>
+
+                <div className="amenities">
+                  {amenitiesOptions.map((option) => (
+                    <div key={option}>
+                      <label>
+                        <input
+                          type="checkbox"
+                          value={option}
+                          onChange={handleAmenitiesChange}
+                          checked={amenities.includes(option)}
+                        />
+                        {option}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+
               </div>
 
               <div className='inputContainer'>
@@ -203,17 +237,17 @@ const PropertyDetails = ({ property, closeModal }) => {
               <div className='inputContainer'>
                 <div>
                   <label>Description</label>
-                  <input type="text"
+                  <textarea
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                  />
+                  ></textarea>
                 </div>
               </div>
             </div>
 
             <div className='buttons'>
               <button className='cancelBtn' onClick={closeModal}>Cancel</button>
-              <button className='updateBtn' onClick={handleEdit}>Edit</button>
+              <button className='updateBtn' onClick={(e) => { handleEdit(e) }}>Edit</button>
             </div>
 
           </form>
