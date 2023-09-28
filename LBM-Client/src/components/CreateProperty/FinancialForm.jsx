@@ -3,7 +3,7 @@ import css from "./CreateProperty.module.css";
 import ProgressBar from "./ProgressBar";
 import backBtn from "../../assets/back_btn.svg";
 
-const FinancialForm = ({ handleSubmit, onBack, onChange, propertyData }) => {
+const FinancialForm = ({ handleSubmit, onNext, onBack, onChange, propertyData }) => {
   const [formErrors, setFormErrors] = useState({});
 
   const validateForm = () => {
@@ -90,11 +90,19 @@ const FinancialForm = ({ handleSubmit, onBack, onChange, propertyData }) => {
     return Object.keys(errors).length === 0;
   };
 
+  // const handleBtn = (event) => {
+  //   event.preventDefault();
+  //   const isValid = validateForm();
+  //   isValid ? handleSubmit() : console.log(formErrors);
+  // };
+
   const handleBtn = (event) => {
     event.preventDefault();
     const isValid = validateForm();
-    isValid ? handleSubmit() : console.log(formErrors);
+    isValid ? onNext() : console.log(formErrors);
   };
+
+  
   return (
     <form className={css.createForm} onSubmit={handleSubmit}>
       <div className={css.formHeader}>

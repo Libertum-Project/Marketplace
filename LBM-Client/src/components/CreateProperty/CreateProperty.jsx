@@ -8,6 +8,7 @@ import Loading from "../Loading/Loading.jsx";
 import OwnerForm from "./OwnerForm";
 import PropertyForm from "./PropertyForm";
 import FinancialForm from "./FinancialForm";
+import Review from "./Review";
 
 const CreateProperty = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
@@ -186,9 +187,16 @@ const CreateProperty = () => {
       {currentForm === 3 && (
         <FinancialForm
           handleSubmit={handleSubmit}
+          onNext={handleNext}
           onBack={handleBack}
           onChange={updateFinancialData}
           propertyData={property}
+        />
+      )}
+      {currentForm === 4 && (
+        <Review
+          handleSubmit={handleSubmit}  
+          onBack={handleBack} 
         />
       )}
     </div>
