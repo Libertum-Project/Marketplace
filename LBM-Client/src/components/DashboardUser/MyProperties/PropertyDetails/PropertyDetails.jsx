@@ -74,7 +74,7 @@ const PropertyDetails = ({ property, closeModal }) => {
         <div className="header">
           {/* <h2>Property #{property.id}</h2> */}
           <div className="property-info">
-          <img src="{feature.Link_Image[0]}" alt="" />
+            <img src={feature.Link_Image[0]} alt="" />
 
             <div>
               <h3>{property.address}</h3>
