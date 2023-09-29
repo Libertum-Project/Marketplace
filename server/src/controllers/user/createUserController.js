@@ -1,6 +1,7 @@
 const {
   User,
   Property,
+  DraftProperty,
   Transaction,
   Owner,
   Financial,
@@ -16,7 +17,7 @@ async function createUser(email, name) {
       },
       defaults: {
         name: name,
-        editableName: name
+        editableName: name,
       },
       include: [
         {
@@ -32,6 +33,11 @@ async function createUser(email, name) {
         {
           model: Property,
           as: "investedProperties",
+          include: [Owner, Financial, Feature],
+        },
+        {
+          model: DraftProperty,
+          as: "draftProperties",
           include: [Owner, Financial, Feature],
         },
         {
