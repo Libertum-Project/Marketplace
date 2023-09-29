@@ -44,7 +44,7 @@ const Icons = ({ amenities, squarefoot, rooms, iconSize, containerWidth, withPar
           case "security":
             icon = securityIcon;
             break;
-          case "wifi":
+          case "wifi access":
             icon = wifiIcon;
             break;
           case "parking":

@@ -1,5 +1,4 @@
 .property-details-modal {
-  /* Estilos para el contenedor principal del modal */
   background-color: rgba(151, 151, 151, 0.452);
   position: fixed;
   top: 0;
@@ -17,12 +16,10 @@
 
   .property-details-container{
     background-color: rgb(255, 255, 255);
-    // width: 50rem;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     z-index: 9999; 
-    // height: 40rem;
     border-radius: 2rem;
 
 
@@ -43,11 +40,8 @@
       h2{
         text-align: left;
       }
-      
-      // border-radius: 2rem 2rem 0 0;
   
       img {
-        /* Estilos para la imagen izquierda */
         width: 100px;
         height: 100px;
         margin-right: 20px;
@@ -55,9 +49,10 @@
 
       .property-info{
         display: flex;
-        align-items: center;
+        align-items: stretch;
         color: whitesmoke;
         font-weight: 200;
+        height: 100%;
 
         .buttonClose{
           background-color: aliceblue;
@@ -67,29 +62,29 @@
           width: 2.5rem;
           cursor: pointer;
           font-weight: 600;
-          // justify-self: self-end;
-          // position: fixed;
-          // right: 20%;
-          // top: 17%;
           color: var(--LibertumBlue);
         }
 
         img{
-          width: 6rem;
-          margin-right: 3rem;
+          height: 100%;
+          width: 15rem;
+          // margin-right: 3rem;
+        }
+        div {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          height: 100%;
         }
         h3 {
-          /* Estilos para el título */
           font-size: 24px;
           font-weight: bold;
-          margin-top: .5rem;
           color: whitesmoke;
           padding: 0;
           
         }
     
         p {
-          /* Estilos para las características en forma de párrafo */
           font-size: 16px;
           text-align: left;
         }
@@ -99,7 +94,6 @@
 
   
     .inputs {
-      /* Estilos para los inputs */
      margin-top: 20px;
      padding-left: 2rem;
      padding-right: 2rem;
@@ -112,10 +106,6 @@
 
       .createForm {
         align-items: center;
-        // border-radius: 16px;
-        // border: 1px solid var(--soft-bg);
-        // background: #fff;
-        // box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
         width: 65rem;
         display: flex;
         flex-direction: column;
@@ -210,8 +200,8 @@
       
     }
     .amenities .error {
-      margin-left: 5px; /* Espacio entre el checkbox y el mensaje de error */
-      color: red; /* Cambia el color del mensaje de error */
+      margin-left: 5px; 
+      color: red;
     }
     
     .inputContainer .drop {
