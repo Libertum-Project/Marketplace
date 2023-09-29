@@ -197,6 +197,7 @@ const CreateProperty = () => {
         <Review
           handleSubmit={handleSubmit}  
           onBack={handleBack} 
+          propertyData={property}
         />
       )}
     </div>
