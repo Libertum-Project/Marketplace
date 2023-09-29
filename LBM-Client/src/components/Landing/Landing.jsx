@@ -16,11 +16,11 @@ export default function Landing() {
   const [showModal, setShowModal] = useState(false);
   const [currentSection, setCurrentSection] = useState(0);
 
-  useEffect(() => {    
+  useEffect(() => {
     const timer = setTimeout(() => {
       setShowModal(true);
-    }, 3000); // 3000 milisegundos = 3 segundoS
-    return () => clearTimeout(timer); 
+    }, 4000); // 3000 milisegundos = 3 segundoS
+    return () => clearTimeout(timer);
   }, []);
 
   const closeModal = () => {
@@ -28,41 +28,41 @@ export default function Landing() {
   };
 
 
-  const sections = [    
+  const sections = [
     <div className="first-section">
-      <button onClick={() => setCurrentSection(1)} className="button1"> ❯ </button>
+      <button onClick={() => setCurrentSection(1)} className="text-red-300 bg-transparent text-3xl ml-80 -mr-52"> ❯ </button>
       <div className="timer-container">
-          <div className="timer-content">
+        <div className="timer-content">
           {/* <Link to="/coinrelease"> */}
-              <Header />
-              {/* <img src={coinimage} alt="" className="coin" /> */}
-              <div className="timer">          
-              <Timer />   
-            </div>
+          <Header />
+          {/* <img src={coinimage} alt="" className="coin" /> */}
+          <div className="timer">
+            <Timer />
+          </div>
           {/* </Link> */}
+        </div>
       </div>
-      </div>      
     </div>,
 
-    <div className="second-section"> 
-    <button onClick={() => setShowModal(false)} className="button1">x</button>     
+    <div className="second-section">
+      <button onClick={() => setShowModal(false)} className="text-red-400 bg-transparent text-3xl ml-80 -mr-52">x</button>
       <div className="timer-container">
-          <div className="timer-content">         
-          
-              <p> The <span>$ LMB</span> launch is coming 
-                  soon, and we're so excited to 
-                  share it with you! </p> 
-                 
-              <p> Stay tuned for 
-                  more details, and in the 
-                  meantime, be sure to <span className="span2">register 
-                  below </span> for all the latest updates.</p>
-            <div className="cs_form">
-              <ContactForm />
+        <div className="timer-content">
+
+          <p> The <span>$ LMB</span> launch is coming
+            soon, and we're so excited to
+            share it with you! </p>
+
+          <p> Stay tuned for
+            more details, and in the
+            meantime, be sure to <span className="span2">register
+              below </span> for all the latest updates.</p>
+          <div className="cs_form">
+            <ContactForm />
           </div>
-          
+
+        </div>
       </div>
-      </div>      
     </div>,
   ];
 
@@ -73,48 +73,48 @@ export default function Landing() {
 
 
       {showModal && (
-         <div className='modal-container'>
-         <div className='modal-content'>
-          <div className="modal-section">
-            {sections[currentSection]}
+        <div className='modal-container'>
+          <div className='modal-content'>
+            <div className="modal-section">
+              {sections[currentSection]}
+            </div>
           </div>
-         </div>
-       </div>
+        </div>
       )}
-          
-      <Protocol />      
+
+      <Protocol />
       <div className="divider-container">
         <img src={divider} className="divider" />
       </div>
-      
+
       <div >
-         <div className="timer-section">
+        <div className="timer-section">
           <div className="timer-container">
             <div className="timer-content">
-           
-                <Header />
-              <div className="timer">          
-                <Timer />   
+
+              <Header />
+              <div className="timer">
+                <Timer />
               </div>
 
-              <p> The <span>$ LMB</span> launch is coming 
-                  soon, and we're so excited to 
-                  share it with you! </p> 
-                 
-              <p> Stay tuned for 
-                  more details, and in the 
-                  meantime, be sure to <span className="span2">register 
+              <p> The <span>$ LMB</span> launch is coming
+                soon, and we're so excited to
+                share it with you! </p>
+
+              <p> Stay tuned for
+                more details, and in the
+                meantime, be sure to <span className="span2">register
                   below </span> for all the latest updates.</p>
-            
-            <div className="cs_form">
+
+              <div className="cs_form">
                 <ContactForm />
-             </div>
-           </div>
-           </div>         
-         </div>
-       </div>
-       
-       <div className="divider-container">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="divider-container">
         <img src={divider} className="divider" />
       </div>
 
@@ -124,7 +124,7 @@ export default function Landing() {
         <img src={divider} className="divider" />
       </div>
 
-      <Work />       
+      <Work />
 
       <div className="divider-container">
         <img src={divider} className="divider" />
