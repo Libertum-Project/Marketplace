@@ -17,6 +17,10 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING(50),
         allowNull: true,
       },
+      state: {
+        type: DataTypes.STRING(50),
+        allowNull: true,
+      },
       country: {
         type: DataTypes.STRING(50),
         allowNull: true,
@@ -27,6 +31,18 @@ module.exports = (sequelize) => {
       },
       codeArea: {
         type: DataTypes.STRING(10),
+        allowNull: true,
+      },
+      postalCode: {
+        type: DataTypes.STRING(10),
+        allowNull: true,
+      },
+      passportId: {
+        type: DataTypes.STRING(20),
+        allowNull: true,
+      },
+      dateOfBirth: {
+        type: DataTypes.STRING(20),
         allowNull: true,
       },
       email: {
