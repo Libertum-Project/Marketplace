@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { createProperty } from "../../../redux/features/propertySlice";
+import { createProperty, createDraftProperty } from "../../../redux/features/propertySlice";
 import Loading from "../Loading/Loading.jsx";
 import OwnerForm from "./OwnerForm";
 import PropertyForm from "./PropertyForm";
@@ -41,9 +41,9 @@ const CreateProperty = () => {
     State: "",
     Postal_Code: "",
     Description: "",
-    Square_foot: "",
+    Square_foot: null,
     Amenities: [],
-    Rooms: "",
+    Rooms: null,
     Occupancy_Status: "",
     Link_Image: images,
     Link_Document: "http://example.com/document.pdf",
@@ -51,14 +51,14 @@ const CreateProperty = () => {
   });
 
   const [financialData, setFinancialData] = useState({
-    Market_value_of_the_property: "",
-    Mortgage: "",
-    Investment_type: "",
-    Percent_of_property_tokenized: "",
-    Rental_yield: "",
-    Number_of_tokens_available: "",
-    Passive_Income_per_token: "",
-    Token_Price: "",
+    Market_value_of_the_property: null,
+    Mortgage: 0,
+    Investment_type: null,
+    Percent_of_property_tokenized: null,
+    Rental_yield: null,
+    Number_of_tokens_available: null,
+    Passive_Income_per_token: null,
+    Token_Price: null,
     Monthly_capital_repayment_amount: 0,
     Capital_payment_duration: 0,
   });
@@ -155,6 +155,10 @@ const CreateProperty = () => {
     }
   };
 
+  const createDraft = () => {
+    dispatch(createDraftProperty(property));
+  };
+
   const handleNext = () => {
     setCurrentForm((prevForm) => prevForm + 1);
   };
@@ -195,9 +199,10 @@ const CreateProperty = () => {
       )}
       {currentForm === 4 && (
         <Review
-          handleSubmit={handleSubmit}  
-          onBack={handleBack} 
+          handleSubmit={handleSubmit}
+          onBack={handleBack}
           propertyData={property}
+          createDraft={createDraft}
         />
       )}
     </div>
