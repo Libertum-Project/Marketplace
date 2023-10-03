@@ -4,104 +4,12 @@ import ProgressBar from "./ProgressBar";
 import backBtn from "../../assets/back_btn.svg";
 
 const FinancialForm = ({ handleSubmit, onNext, onBack, onChange, propertyData }) => {
+
   const [formErrors, setFormErrors] = useState({});
-
-  const validateForm = () => {
-    const errors = {};
-
-    if (
-      !propertyData.financialData.Market_value_of_the_property ||
-      propertyData.financialData.Market_value_of_the_property < 1
-    ) {
-      errors.Market_value_of_the_property =
-        "Market Value of the property is required";
-    } else if (
-      propertyData.financialData.Market_value_of_the_property -
-      propertyData.financialData.Mortgage <=
-      0
-    ) {
-      errors.Market_value_of_the_property =
-        "The mortgage amount cannot be greater than the property value.";
-    }
-
-    if (
-      !propertyData.financialData.Mortgage ||
-      propertyData.financialData.Mortgage < 0
-    ) {
-      errors.Mortgage = "Mortgage is required";
-    }
-
-    if (!propertyData.financialData.Investment_type) {
-      errors.Investment_type = "Investment type is required";
-    }
-
-    if (
-      !propertyData.financialData.Passive_Income_per_token ||
-      propertyData.financialData.Passive_Income_per_token < 1
-    ) {
-      errors.Passive_Income_per_token = "Passive Income per token is required";
-    }
-
-    if (
-      !propertyData.financialData.Token_Price ||
-      propertyData.financialData.Token_Price < 1
-    ) {
-      errors.Token_Price = "Token price is required";
-    }
-
-    if (
-      !propertyData.financialData.Number_of_tokens_available ||
-      propertyData.financialData.Number_of_tokens_available < 1
-    ) {
-      errors.Number_of_tokens_available =
-        "Number of Tokens available is required";
-    }
-
-    if (
-      !propertyData.financialData.Rental_yield ||
-      propertyData.financialData.Rental_yield < 1
-    ) {
-      errors.Rental_yield = "Rental Yield is required";
-    }
-
-    if (
-      !propertyData.financialData.Percent_of_property_tokenized ||
-      propertyData.financialData.Percent_of_property_tokenized < 1
-    ) {
-      errors.Percent_of_property_tokenized =
-        "Percent of property tokenized is required";
-    }
-
-    if (
-      (!propertyData.financialData.Monthly_capital_repayment_amount ||
-        propertyData.financialData.Monthly_capital_repayment_amount < 1) && propertyData.financialData.Investment_type !== "passiveIncome") {
-      errors.Monthly_capital_repayment_amount =
-        "Monthly Capital Repayment Amount is required";
-    }
-
-    if (
-      (!propertyData.financialData.Capital_payment_duration ||
-        propertyData.financialData.Capital_payment_duration < 1) && propertyData.financialData.Investment_type !== "passiveIncome") {
-      errors.Capital_payment_duration = "Capital Payment Duration is required";
-    }
-
-    setFormErrors(errors);
-
-    return Object.keys(errors).length === 0;
-  };
-
-  // const handleBtn = (event) => {
-  //   event.preventDefault();
-  //   const isValid = validateForm();
-  //   isValid ? handleSubmit() : console.log(formErrors);
-  // };
-
   const handleBtn = (event) => {
     event.preventDefault();
-    const isValid = validateForm();
-    isValid ? onNext() : console.log(formErrors);
+    onNext()
   };
-
   
   return (
     <form className={css.createForm} onSubmit={handleSubmit}>
