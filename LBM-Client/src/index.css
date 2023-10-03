@@ -6,7 +6,7 @@
 @import "daisyui";
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;700;900&family=Rubik:wght@300&display=swap");
-/* :root {
+:root {
   --white-color: #fff;
   --modern-white: rgba(22, 22, 26, 0.04);
   --gray-color: rgba(22, 22, 26, 0.4);
@@ -21,7 +21,7 @@
   --LibertumColorlighter: rgba(247, 148, 26, 0.5);
   --Titles: 'Agency FB';
   --Text: 'Montserrat';
-  font-family:  Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-family:  Montserrat, Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 50px;
   font-weight: 400;
@@ -31,7 +31,7 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
   overflow-x: hidden;
-} */
+}
 html {
   scroll-behavior: smooth;
 }

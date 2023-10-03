@@ -11,7 +11,8 @@ const MyProperties = ({name, transactions, investments, publishedProperties, ema
               <p>You don't have properties published yet. Click the link and list your first property!</p>
 
               <Link
-                to="https://docs.google.com/forms/d/e/1FAIpQLSd8HkLol829WO2hii1aem2H1_VNXWY6-1J_kqQAQclMPwo2MA/viewform"
+                // to="https://docs.google.com/forms/d/e/1FAIpQLSd8HkLol829WO2hii1aem2H1_VNXWY6-1J_kqQAQclMPwo2MA/viewform"
+                to="/create"
                 target="_blank"
               >
                 <button> List </button>
