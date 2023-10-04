@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import css from "./CreateProperty.module.css";
 import ProgressBar from "./ProgressBar";
 import backBtn from "../../assets/back_btn.svg";
@@ -10,7 +10,8 @@ const FinancialForm = ({ handleSubmit, onNext, onBack, onChange, propertyData })
     event.preventDefault();
     onNext()
   };
-  
+
+
   return (
     <form className={css.createForm} onSubmit={handleSubmit}>
       <div className={css.formHeader}>
