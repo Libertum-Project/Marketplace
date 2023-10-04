@@ -3,9 +3,14 @@ import css from "./CreateProperty.module.css";
 import ProgressBar from "./ProgressBar";
 import backBtn from "../../assets/back_btn.svg";
 import { useState } from "react";
-import { createDraftProperty } from "../../../redux/features/propertySlice";
 
-const Review = ({ handleSubmit, onBack, propertyData, createDraft }) => {
+const Review = ({
+  handleSubmit,
+  onBack,
+  propertyData,
+  createDraft,
+  images,
+}) => {
   const [formErrors, setFormErrors] = useState({});
   const handleCreateDraft = (event) => {
     event.preventDefault();
@@ -283,6 +288,17 @@ const Review = ({ handleSubmit, onBack, propertyData, createDraft }) => {
             <label>More</label>
             <textarea disabled value={propertyData.featureData.Description} />
           </div>
+        </div>
+
+        <div className={css.images}>
+          {images &&
+            images.map((image, index) => (
+              <span>
+                <a href={image} target="_blank">
+                  image {index + 1}
+                </a>
+              </span>
+            ))}
         </div>
       </div>
 

@@ -102,12 +102,19 @@ function MintPassiveIncomeProperty({
   return (
     <>
       {isLoading ? <Loading /> : null}
-      {showPendingMessage ? <PendingMessage /> : null}
+      {showPendingMessage ? (
+        <PendingMessage messagge="Processing your investment..." />
+      ) : null}
       {showFailMessage ? (
         <FailMessage setShowFailMessage={setShowFailMessage} />
       ) : null}
       {showSuccessMessage ? (
-        <SuccessMessage setShowSuccessMessage={setShowSuccessMessage} />
+        <SuccessMessage
+          setShowSuccessMessage={setShowSuccessMessage}
+          messagge="Great news! You've successfully invested in this property. Your tokens are on the way!"
+          textBtn="My Investments"
+          redirectURL="/mydashboard"
+        />
       ) : null}
       <button
         className={`${css.mintBtn} ${isConnected ? "" : css.disabledButton}`}

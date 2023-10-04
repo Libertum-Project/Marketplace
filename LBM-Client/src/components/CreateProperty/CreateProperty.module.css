@@ -1,4 +1,4 @@
-.upload .images {
+.upload .images, .images {
   margin-top: 2rem;
   align-items: center;
   display: flex;
@@ -9,7 +9,7 @@
   flex-wrap: wrap;
 }
 
-.upload .images a {
+.upload .images a, .images a {
   color: white;
   background-color: var(--primary);
   padding: 0.5rem 1rem;
