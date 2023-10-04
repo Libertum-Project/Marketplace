@@ -36,7 +36,6 @@ import {
   walletConnectWallet,
   injectedWallet,
 } from "@rainbow-me/rainbowkit/wallets";
-import { ClickToComponent } from "click-to-react-component";
 
 
 const { chains, provider } = configureChains(
@@ -102,7 +101,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                 redirect_uri: window.location.origin,
               }}
             >
-              <ClickToComponent/>
               <App />
 
             </Auth0Provider>
