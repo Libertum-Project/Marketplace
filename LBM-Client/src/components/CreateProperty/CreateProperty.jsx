@@ -17,29 +17,8 @@ const CreateProperty = () => {
   const status = useSelector((state) => state.property.status);
   const [currentForm, setCurrentForm] = useState(1);
   const [images, setImages] = useState([]);
-  const { draftId } = useParams();
+  const { id } = useParams();  
 
-  // const selectedDraft = currentUser.draftProperties?.find((draft) => draft.ID_Property === draftId); 
-  console.log("draftId " + draftId)
-
-  // const loadDraftData = (draftId) => {
-  //   const selectedDraft = currentUser.draftProperties.find((draft) => draft.ID_Property === id)
-  //   console.log(id)
-
-  //   if (selectedDraft) {
-  //     setOwnerData({ ...ownerData, ...selectedDraft });
-  //     setFeatureData({ ...featureData, ...selectedDraft });
-  //     setFinancialData({ ...financialData, ...selectedDraft });
-  //   }
-  // }
-
-  // useEffect(() =>{
-  //   if(draftId){
-  //     loadDraftData(draftId)
-  //   }
-  // }, [draftId])
-  
-  
   const [ownerData, setOwnerData] = useState({
     UserID: currentUser.ID_user,
     Firstname: name,
@@ -106,6 +85,47 @@ const CreateProperty = () => {
       },
     });
   };
+
+  const selectedDraft = currentUser.draftProperties.find((draft) => draft.ID_PropertyDraft == id);
+  useEffect(() => {
+    const updateStates = () => {
+      console.log(selectedDraft?.FeatureDraft.City)
+      if (selectedDraft) {
+        setFeatureData({
+          Type: selectedDraft.FeatureDraft.Type,
+          Country: selectedDraft.FeatureDraft.Country,
+          City: selectedDraft.FeatureDraft.City,
+          Address: selectedDraft.FeatureDraft.Address,
+          State: selectedDraft.FeatureDraft.State,
+          Postal_Code: selectedDraft.FeatureDraft.Postal_Code,
+          Description: selectedDraft.FeatureDraft.Description,
+          Square_foot: selectedDraft.FeatureDraft.Square_foot,
+          Amenities: selectedDraft.FeatureDraft.Amenities,
+          Rooms: selectedDraft.FeatureDraft.Rooms,
+          Occupancy_Status: selectedDraft.FeatureDraft.Occupancy_Status,
+          Link_Image: selectedDraft.FeatureDraft.Link_Image,
+          Link_Document: selectedDraft.FeatureDraft.Link_Document,
+          More: selectedDraft.FeatureDraft.More,
+        });
+
+        // Actualizar financialData con la información de FinancialDraft
+        setFinancialData({
+          Market_value_of_the_property: selectedDraft.FinancialDraft.Market_value_of_the_property,
+          Mortgage: selectedDraft.FinancialDraft.Mortgage,
+          Investment_type: selectedDraft.FinancialDraft.Investment_type,
+          Percent_of_property_tokenized: selectedDraft.FinancialDraft.Percent_of_property_tokenized,
+          Rental_yield: selectedDraft.FinancialDraft.Rental_yield,
+          Number_of_tokens_available: selectedDraft.FinancialDraft.Number_of_tokens_available,
+          Passive_Income_per_token: selectedDraft.FinancialDraft.Passive_Income_per_token,
+          Token_Price: selectedDraft.FinancialDraft.Token_Price,
+          Monthly_capital_repayment_amount: selectedDraft.FinancialDraft.Monthly_capital_repayment_amount,
+          Capital_payment_duration: selectedDraft.FinancialDraft.Capital_payment_duration,
+        });
+      }
+    };
+
+    updateStates();
+  }, [selectedDraft]);
 
   const updateFeatureData = (field, value) => {
     setFeatureData({
