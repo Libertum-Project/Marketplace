@@ -3,6 +3,10 @@ import Card from './Card';
 
 const Draft = ({draft}) => {
 
+  if (draft?.length === 0) {
+    return null;
+  }
+
   return(
     <div className='draftContainer'>
       <h2 className='title'>Property Drafts</h2>
