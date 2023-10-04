@@ -5,6 +5,7 @@ import css from "./MyProperties.module.scss";
 import { Link } from "react-router-dom";
 
 const MyProperties = ({name, transactions, investments, publishedProperties, email, draft}) => {
+  console.log(draft)
   return (
     <div className={css.container}>
     {publishedProperties?.length === 0 ? (
@@ -35,7 +36,7 @@ const MyProperties = ({name, transactions, investments, publishedProperties, ema
 
         <div>
           <Draft 
-          draft = {draft}
+          draft = {draft}          
           />
         </div>
       
