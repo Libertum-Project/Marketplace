@@ -54,8 +54,18 @@ let capsEntries = entries.map((entry) => [
 ]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { Property, DraftProperty, Owner, Feature, Financial, User, Transaction } =
-  sequelize.models;
+const {
+  Property,
+  Owner,
+  Feature,
+  Financial,
+  User,
+  Transaction,
+  DraftProperty,
+  FeatureDraft,
+  FinancialDraft,
+  OwnerDraft,
+} = sequelize.models;
 
 Property.hasOne(Owner, { foreignKey: "ID_owner" });
 Owner.belongsTo(Property, { foreignKey: "ID_owner" });
@@ -66,14 +76,14 @@ Financial.belongsTo(Property, { foreignKey: "ID_Financial" });
 Property.hasOne(Feature, { foreignKey: "ID_Feature" });
 Feature.belongsTo(Property, { foreignKey: "ID_Feature" });
 
-DraftProperty.hasOne(Owner, { foreignKey: "ID_owner" });
-Owner.belongsTo(DraftProperty, { foreignKey: "ID_owner" });
+DraftProperty.hasOne(OwnerDraft, { foreignKey: "ID_ownerDraft" });
+OwnerDraft.belongsTo(DraftProperty, { foreignKey: "ID_ownerDraft" });
 
-DraftProperty.hasOne(Financial, { foreignKey: "ID_Financial" });
-Financial.belongsTo(DraftProperty, { foreignKey: "ID_Financial" });
+DraftProperty.hasOne(FinancialDraft, { foreignKey: "ID_FinancialDraft" });
+FinancialDraft.belongsTo(DraftProperty, { foreignKey: "ID_FinancialDraft" });
 
-DraftProperty.hasOne(Feature, { foreignKey: "ID_Feature" });
-Feature.belongsTo(DraftProperty, { foreignKey: "ID_Feature" });
+DraftProperty.hasOne(FeatureDraft, { foreignKey: "ID_FeatureDraft" });
+FeatureDraft.belongsTo(DraftProperty, { foreignKey: "ID_FeatureDraft" });
 
 User.hasMany(Property, {
   as: "savedProperties",

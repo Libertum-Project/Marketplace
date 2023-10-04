@@ -1,11 +1,14 @@
 const {
   User,
   Property,
-  DraftProperty,
   Transaction,
   Owner,
   Financial,
   Feature,
+  DraftProperty,
+  OwnerDraft,
+  FeatureDraft,
+  FinancialDraft
 } = require("../../db");
 
 async function createUser(email, name) {
@@ -38,7 +41,7 @@ async function createUser(email, name) {
         {
           model: DraftProperty,
           as: "draftProperties",
-          include: [Owner, Financial, Feature],
+          include: [OwnerDraft, FinancialDraft, FeatureDraft],
         },
         {
           model: Transaction,

@@ -1,4 +1,4 @@
-const { DraftProperty, Owner, Financial, Feature, User } = require("../../db");
+const { DraftProperty, OwnerDraft, FinancialDraft, FeatureDraft, User } = require("../../db");
 
 async function createDraftProperty(propertyData) {
   const { ownerData, featureData, financialData } = propertyData;
@@ -16,34 +16,34 @@ async function createDraftProperty(propertyData) {
       throw new Error("Feature data is incomplete");
     }
 
-    const existingOwner = await Owner.findOne({
+    const existingOwner = await OwnerDraft.findOne({
       where: { Firstname: ownerData.Firstname, Mail: ownerData.Mail },
     });
 
-    const owner = existingOwner || (await Owner.create(ownerData));
+    const owner = existingOwner || (await OwnerDraft.create(ownerData));
     const user = await User.findByPk(ownerData.UserID);
 
     if (!user || !owner) {
       throw new Error("Failed to create owner");
     }
 
-    const financial = await Financial.create(financialData);
+    const financial = await FinancialDraft.create(financialData);
     if (!financial) {
       throw new Error("Failed to create financial");
     }
 
-    const feature = await Feature.create(featureData);
+    const feature = await FeatureDraft.create(featureData);
     if (!feature) {
       throw new Error("Failed to create feature");
     }
 
     const draftProperty = await DraftProperty.create({
-      ID_owner: owner.ID_owner,
-      ID_Financials: financial.ID_Financial,
-      ID_Features: feature.ID_Feature,
+      ID_owner: owner.ID_ownerDraft,
+      ID_Financials: financial.ID_FinancialDraft,
+      ID_Features: feature.ID_FeatureDraft,
     });
 
-    const propertyID = draftProperty.ID_Property;
+    const propertyID = draftProperty.ID_PropertyDraft;
     await user.addDraftProperties(propertyID);
 
     if (!draftProperty) {
