@@ -13,10 +13,10 @@ const Draft = ({draft}) => {
 
               <Card
                 key = { index }
-                id = { property.ID_Property}
-                address = { property.Feature.Address }
-                city = { property.Feature.City }
-                country = { property.Feature.Country }
+                id = { property.ID_PropertyDraft}
+                address = { property.FeatureDraft.Address }
+                city = { property.FeatureDraft.City }
+                country = { property.FeatureDraft.Country }
               />
           )
  })}
