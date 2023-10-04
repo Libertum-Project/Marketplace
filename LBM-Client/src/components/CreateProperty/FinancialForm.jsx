@@ -192,7 +192,7 @@ const FinancialForm = ({ handleSubmit, onNext, onBack, onChange, propertyData })
           handleBtn(event);
         }}
       >
-        Submit
+        Review
       </button>
     </form>
   );
