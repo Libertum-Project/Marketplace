@@ -4,7 +4,7 @@ module.exports = (sequelize) => {
   sequelize.define(
     "DraftProperty",
     {
-      ID_Property: {
+      ID_PropertyDraft: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
@@ -12,22 +12,22 @@ module.exports = (sequelize) => {
       ID_owner: {
         type: DataTypes.INTEGER,
         references: {
-          model: "Owner",
-          key: "ID_owner",
+          model: "OwnerDraft",
+          key: "ID_ownerDraft",
         },
       },
       ID_Financials: {
         type: DataTypes.INTEGER,
         references: {
-          model: "Financial",
-          key: "ID_Financial",
+          model: "FinancialDraft",
+          key: "ID_FinancialDraft",
         },
       },
       ID_Features: {
         type: DataTypes.INTEGER,
         references: {
-          model: "Feature",
-          key: "ID_Feature",
+          model: "FeatureDraft",
+          key: "ID_FeatureDraft",
         },
       },
     },
