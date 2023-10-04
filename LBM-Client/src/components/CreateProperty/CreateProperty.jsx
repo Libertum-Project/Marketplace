@@ -1,7 +1,7 @@
 import css from "./CreateProperty.module.css";
 import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createProperty, createDraftProperty } from "../../../redux/features/propertySlice";
 import Loading from "../Loading/Loading.jsx";
@@ -17,6 +17,29 @@ const CreateProperty = () => {
   const status = useSelector((state) => state.property.status);
   const [currentForm, setCurrentForm] = useState(1);
   const [images, setImages] = useState([]);
+  const { draftId } = useParams();
+
+  // const selectedDraft = currentUser.draftProperties?.find((draft) => draft.ID_Property === draftId); 
+  console.log("draftId " + draftId)
+
+  // const loadDraftData = (draftId) => {
+  //   const selectedDraft = currentUser.draftProperties.find((draft) => draft.ID_Property === id)
+  //   console.log(id)
+
+  //   if (selectedDraft) {
+  //     setOwnerData({ ...ownerData, ...selectedDraft });
+  //     setFeatureData({ ...featureData, ...selectedDraft });
+  //     setFinancialData({ ...financialData, ...selectedDraft });
+  //   }
+  // }
+
+  // useEffect(() =>{
+  //   if(draftId){
+  //     loadDraftData(draftId)
+  //   }
+  // }, [draftId])
+  
+  
   const [ownerData, setOwnerData] = useState({
     UserID: currentUser.ID_user,
     Firstname: name,

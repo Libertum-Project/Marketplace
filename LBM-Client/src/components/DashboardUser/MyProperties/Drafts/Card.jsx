@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 
 const Card = ({key, id, address, city, country}) => {
 
+  const editRoute = `/create/${id}`;
+
   return(
     <div className="cardDraft">
       <img src={iconHouse} alt=""/>
@@ -14,7 +16,7 @@ const Card = ({key, id, address, city, country}) => {
         <p>Country: {country} </p>
       </div>
       <div className='button'>
-        <Link>
+        <Link  to={editRoute}>
           <button>Edit</button>
         </Link>
       </div>

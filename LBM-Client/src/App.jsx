@@ -283,6 +283,8 @@ function App() {
 
           <Route path={"/create"} element={<CreateProperty />} />
 
+          <Route path={"/create/:id"} element={<CreateProperty />} />
+
           <Route path="/support" element={<SupportCenter />} />
           {/* <Route
           path="/support"
