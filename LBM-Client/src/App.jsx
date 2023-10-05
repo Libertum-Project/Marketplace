@@ -93,8 +93,6 @@ function App() {
   return (
     <div className="App">
         <ClickToComponent />
-
-        
       <Routes>
         {/* <Route path="/" element={<Landing />} /> */}
         <Route element={<AppLayout />}>
