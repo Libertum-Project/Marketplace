@@ -25,7 +25,7 @@ export default function Subscribe() {
           {/* <Link to='/mydashboard'>
           <button className="button">LOG IN</button>
           </Link> */}
-          
+
         </div>
         <div className="background">
         <div className="image">

@@ -19,6 +19,7 @@ import closeIcon from "../../../../assets/close.svg";
 import copyIcon from "../../../../assets/Copy.svg";
 import logoutIcon from "../../../../assets/Logout.svg";
 import logo from "../../../../../public/LibertumColor.png";
+import pdf from "../../assets/LBM-whitepaper.pdf";
 
 function NavbarMarket() {
   const dispatch = useDispatch();
@@ -137,6 +138,16 @@ function NavbarMarket() {
               <NavLink to="/ico">
                 <p>Buy Libertum</p>
               </NavLink>
+                <NavLink
+                  to={pdf}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  // download="LBM-whitepaper.pdf"
+                  // className="footer_li"
+                >
+                  Whitepaper
+                </NavLink>
+
             </div>
             <div className={style.buttons2}>
               <div className={style.language}>
