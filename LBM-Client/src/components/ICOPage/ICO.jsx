@@ -13,11 +13,11 @@ const ICO = () => {
                 <div className="relative z-1 mx-auto container block md:flex pb-24 md:flex-row items-center ">
                     <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center mt-40">
                         <h1 className="text-3xl md:text-5xl mb-4 md:-mt-44 -mt-20  text-white font-fb font-bold">
-                            Join The <span className='bg-gradient-to-r from-blue-600 to-lime-400 text-transparent bg-clip-text'>Green Revolution</span>
-                            <br className="hidden lg:inline-block" />Get Your $TUK Token Now!
+                            Transforming an Exclusive Market into an Inclusive <span className='bg-gradient-to-r from-blue-600 to-lime-400 text-transparent bg-clip-text'>Opportunity for Everyone</span>
+                            <span className="hidden lg:inline-block pt-4" >Get Your $LBM Tokens Now!</span>
                         </h1>
-                        <p className="mb-8 leading-relaxed md:text-xl text-gray-400 text-sm ">Be a part of Sustainable transportation and secure your stake in a greener future with eTukTuk's $TUK Token Presale.</p>
-                        <p className="mb-8 leading-relaxed md:text-xl text-gray-400 text-sm px-2">Buy $Tuk tokens and propel the rEvolution that transforming the lanscape of transportation for the better. Act now and join us in building a more Sustainable and inclusive world for everyone</p>
+                        <p className="mb-8 leading-relaxed md:text-xl text-gray-400 text-sm ">Don't miss out on your chance to be a part of the inclusive revolution in the real estate market. Start earning a steady rental income every month, hassle-free, and without any additional maintenance costs.</p>
+                        <p className="mb-8 leading-relaxed md:text-xl text-gray-400 text-sm px-2">By purchasing $LBM tokens, you are joining a movement that seeks to democratise and transform the landscape of fractionalised rental income investments. join us in creating a more inclusive world for all.</p>
                         <img src={certik} alt="" className='rounded-2xl md:w-40 w-24' />
                     </div>
                     <div className=" shadow-2xl rounded-3xl md:mt-20 md:-mr-[74px] px-5 md:px-0 -mt-10">

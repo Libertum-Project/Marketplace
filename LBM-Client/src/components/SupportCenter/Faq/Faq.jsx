@@ -55,8 +55,8 @@ const Faq = () => {
     return inputValue === ''
       ? []
       : startingData.concat(financialData).filter((item) =>
-          item.pregunta.toLowerCase().includes(inputValue)
-        );
+        item.pregunta.toLowerCase().includes(inputValue)
+      );
   };
 
   // Renderizar sugerencias
@@ -93,8 +93,8 @@ const Faq = () => {
     }
   }, [selectedSuggestion]);
 
-   //  Autosuggest configuration
-   const inputProps = {
+  //  Autosuggest configuration
+  const inputProps = {
     placeholder: 'How to...?',
     value: searchTerm,
     onChange: onChange,
@@ -121,7 +121,7 @@ const Faq = () => {
     },
     {
       pregunta: "I don’t have an account yet",
-      answer: (        
+      answer: (
         <ul>
           <li>No worries, creating an account with us is a straightforward process. Here's how you can do it:</li>
           <li>1. Visit our website.</li>
@@ -181,35 +181,35 @@ const Faq = () => {
           <li>Our mission is to make real estate investment accessible to everyone.</li>
           <br />
           <li>Traditionally, real estate has been exclusive to the wealthy, but we believe that everyone should have the opportunity to participateWhether you want to own an entire property or just a fraction of it, we provide the means for you to earn rental
-          income in proportion to your ownership.
-          To achieve this, we convert properties into digital assets and break them into
-          smaller fractions on the blockchain. Each fraction represents a slice of monthly
-          rental income, revolutionizing the way we think about investment.</li>
+            income in proportion to your ownership.
+            To achieve this, we convert properties into digital assets and break them into
+            smaller fractions on the blockchain. Each fraction represents a slice of monthly
+            rental income, revolutionizing the way we think about investment.</li>
           <li>
             <br />
-          There are three primary reasons why people invest in real estate:
+            There are three primary reasons why people invest in real estate:
           </li>
           <li> • To earn passive income through rent.</li>
           <li> • For future security and a hedge against any risk</li>
           <li> • To see their capital appreciate over time.</li>
           <br />
           <li>
-          With Libertum, you can invest as little as $50 and start earning monthly income
-          on your investment, while also watching your capital grow. The best part? You
-          won't have to worry about unexpected maintenance costs like insurance or
-          repairs. It's a win-win situation for all!
+            With Libertum, you can invest as little as $50 and start earning monthly income
+            on your investment, while also watching your capital grow. The best part? You
+            won't have to worry about unexpected maintenance costs like insurance or
+            repairs. It's a win-win situation for all!
           </li>
           <br />
           <li>
-          Our peer-to-peer marketplace is the only platform in the blockchain where you
-          can easily sell your shares of digital property. We're shaping the future of
-          fractional real estate trading and investment.
+            Our peer-to-peer marketplace is the only platform in the blockchain where you
+            can easily sell your shares of digital property. We're shaping the future of
+            fractional real estate trading and investment.
           </li>
           <br />
           <li>
-          The key difference between Libertum and other platforms is that we offer monthly
-          rental income, rather than annual dividends that can be easily manipulated in our
-          opinion.
+            The key difference between Libertum and other platforms is that we offer monthly
+            rental income, rather than annual dividends that can be easily manipulated in our
+            opinion.
           </li>
 
         </ul>
@@ -319,7 +319,7 @@ const Faq = () => {
       ),
     },
   ];
-  
+
 
   return (
     <div className={styles.container}>
@@ -366,15 +366,15 @@ const Faq = () => {
         />
       ))}
 
-    <h2>About Libertum</h2>
+      <h2>About Libertum</h2>
       <p>FAQs about the company</p>
       {aboutLibertum.map((item, index) => (
         <QuestionAnswer
           key={index}
           pregunta={item.pregunta}
           answer={item.answer}
-          isActive={activeIndex === index + startingData.length}
-          onClick={() => toggleAccordion(index + startingData.length)}
+          isActive={activeIndex === index + startingData.length + financialData.length }
+          onClick={() => toggleAccordion(index + startingData.length + financialData.length)}
         />
       ))}
     </div>

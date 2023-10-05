@@ -5,7 +5,7 @@ import './ContactPage.scss';
 
 const ContactPage = () => {
   const form = useRef()
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -27,45 +27,49 @@ const ContactPage = () => {
       <div className="contact-form">
         <div className="contact-form-image">
           <h2>GET IN TOUCH</h2>
-          <p>Send us your consult. We will reply you back as soon as possible</p>
+          <p className=''>Send us your consult. We will reply you back as soon as possible</p>
         </div>
-        <div className="contact-form-content">    
-              <form ref={form} onSubmit={sendEmail}>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    name="user_name"
-                    placeholder="Name"
-                    required
-                  />
-                </div>
-                {/* <div className="form-group">
-                  <input
-                    type="text"
-                    name="user_email"
-                    placeholder="Surname"
-                    required
-                    autoComplete="off"
-                  />
-                </div> */}
-                <div className="form-group">
-                  <input
-                    type="email"
-                    name="user_email"
-                    placeholder="E-mail"
-                    required
-                    autoComplete="off"
-                  />
-                </div>
-                <div className="form-group">
-                  <textarea
-                    name="message"
-                    placeholder="Write here your message"
-                    required
-                  ></textarea>
-                </div>
-                <button type="submit" value="Send" className='buttonSubmitForm'>Send</button>
-              </form>            
+        <div className="contact-form-content">
+          <form ref={form} onSubmit={sendEmail} className="max-w-md mx-auto bg-white p-6 rounded-xl shadow-xl ">
+            <div className="mb-4">
+              <label htmlFor="user_name" className="block text-gray-700 font-semibold">Name</label>
+              <input
+                type="text"
+                id="user_name"
+                name="user_name"
+                placeholder="Your Name"
+                required
+                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+              />
+            </div>
+
+            <div className="mb-4">
+              <label htmlFor="user_email" className="block text-gray-700 font-semibold">E-mail</label>
+              <input
+                type="email"
+                id="user_email"
+                name="user_email"
+                placeholder="Your E-mail"
+                required
+                autoComplete="off"
+                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+              />
+            </div>
+
+            <div className="mb-6">
+              <label htmlFor="message" className="block text-gray-700 font-semibold">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Write your message here"
+                required
+                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+              ></textarea>
+            </div>
+
+            <button type="submit" className="bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600 focus:outline-none focus:bg-indigo-600">Send</button>
+          </form>
+
         </div>
       </div>
     </div>

@@ -90,21 +90,23 @@ export default function Landing() {
       <div >
         <div className="timer-section">
           <div className="timer-container">
-            <div className="timer-content">
+            <div className="timer-content ">
 
               <Header />
               <div className="timer">
                 <Timer />
               </div>
 
-              <p> The <span>$ LMB</span> launch is coming
+              <div className='text-left'>
+              <p > The <span>$ LMB</span> launch is coming
                 soon, and we're so excited to
-                share it with you! </p>
+                share it with you !</p>
 
               <p> Stay tuned for
                 more details, and in the
                 meantime, be sure to <span className="span2">register
                   below </span> for all the latest updates.</p>
+              </div>
 
               <div className="cs_form">
                 <ContactForm />
