@@ -3,11 +3,11 @@ import success from "../../../../public/icons/checkIcon.svg"
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-const SuccessMessage = ({ setShowSuccessMessage }) => {
+const SuccessMessage = ({ setShowSuccessMessage, messagge, textBtn, redirectURL }) => {
   const navigate = useNavigate();
   const handleContinue = (event) => {
     event.preventDefault();
-    navigate("/mydashboard");
+    navigate(redirectURL);
     setShowSuccessMessage(false);
   };
   return (
@@ -24,8 +24,7 @@ const SuccessMessage = ({ setShowSuccessMessage }) => {
         </div>
         <div>
           <p>
-            Great news! You've successfully invested in this property. Your
-            tokens are on the way!
+           {messagge} 
           </p>
         </div>
         <button
@@ -33,7 +32,7 @@ const SuccessMessage = ({ setShowSuccessMessage }) => {
             handleContinue(event);
           }}
         >
-          My Investments
+        {textBtn}
         </button>
       </div>
     </div>

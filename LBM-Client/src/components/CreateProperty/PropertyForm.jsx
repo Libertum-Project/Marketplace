@@ -16,6 +16,7 @@ const PropertyForm = ({
 }) => {
 
 
+  const [formErrors, setFormErrors] = useState({});
   const amenitiesOptions = ['Swimming Pool', 'Gym', 'Parking', 'WiFi Access', "Terrace", 'Garden', 'Security', 'None']; 
   const [selectedAmenities, setSelectedAmenities] = useState([]);
 
@@ -30,81 +31,10 @@ const PropertyForm = ({
     setSelectedAmenities(updatedAmenities);
     onChange("Amenities", updatedAmenities);
   };
-  
-
-  const [formErrors, setFormErrors] = useState({});
-
-  const validateForm = () => {
-    const errors = {};
-    const onlyLetters = /^[A-Za-z\s]+$/;
-
-    if (
-      !propertyData.featureData.Square_foot ||
-      propertyData.featureData.Square_foot < 1
-    ) {
-      errors.Square_foot = "Square Foot is required";
-    }
-
-    if (!propertyData.featureData.Type) {
-      errors.Type = "Type is required";
-    }
-
-    if (!propertyData.featureData.Country) {
-      errors.Country = "Country is required";
-    }
-
-    if (!propertyData.featureData.City.trim()) {
-      errors.City = "City is required";
-    } else if (!onlyLetters.test(propertyData.featureData.City)) {
-      errors.City = "City should contain only letters";
-    }
-
-    if (!propertyData.featureData.State.trim()) {
-      errors.State = "Region / State / Province is required";
-    } else if (!onlyLetters.test(propertyData.featureData.State)) {
-      errors.State = "It should contain only letters";
-    }
-
-    if (!propertyData.featureData.Address.trim()) {
-      errors.Address = "Address is required";
-    }
-
-    if (!propertyData.featureData.Postal_Code.trim()) {
-      errors.Postal_Code = "Postal Code is required";
-    }
-
-    if (!propertyData.featureData.Occupancy_Status) {
-      errors.Occupancy_Status = "Occupancy Status is required";
-    }
-
-    if (!propertyData.featureData.Rooms || propertyData.featureData.Rooms < 0) {
-      errors.Rooms = "Rooms is required";
-    }
-
-    if (!propertyData.featureData.Amenities || propertyData.featureData.Amenities.length === 0) {
-      errors.Amenities = "Amenities are required";
-    }
-    
-
-    if (!propertyData.featureData.Description.trim()) {
-      errors.Description = "Description is required";
-    } else if (propertyData.featureData.Description.length > 300) {
-      errors.Description = "Description must not exceed 300 characters";
-    }
-
-    if(images.length < 5 ){
-      errors.ExpectedImages = "Please upload at least 5 images";
-    }
-
-    setFormErrors(errors);
-
-    return Object.keys(errors).length === 0;
-  };
 
   const handleBtn = (event) => {
     event.preventDefault();
-    const isValid = validateForm();
-    isValid ? onNext() : console.log(formErrors);
+    onNext()
   };
 
   return (

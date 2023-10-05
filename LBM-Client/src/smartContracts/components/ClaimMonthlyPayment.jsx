@@ -93,12 +93,17 @@ const ClaimMonthlyPayment = ({ propertyAddress, quantity, propertyType }) => {
   return (
     <>
       {isLoading ? <Loading /> : null}
-      {showPendingMessage ? <PendingMessage /> : null}
+      {showPendingMessage ? <PendingMessage messagge="Claim in progress..."   /> : null}
       {showFailMessage ? (
         <FailMessage setShowFailMessage={setShowFailMessage} />
       ) : null}
       {showSuccessMessage ? (
-        <SuccessMessage setShowSuccessMessage={setShowSuccessMessage} />
+        <SuccessMessage
+          setShowSuccessMessage={setShowSuccessMessage}
+          messagge="Awesome! You can now celebrate your successfully claimed payment"
+          textBtn="Continue"
+          redirectURL="/mydashboard"
+        />
       ) : null}
 
       <button

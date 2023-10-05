@@ -5,6 +5,10 @@ const {
   Owner,
   Financial,
   Feature,
+  DraftProperty,
+  OwnerDraft,
+  FeatureDraft,
+  FinancialDraft
 } = require("../../db");
 
 async function createUser(email, name) {
@@ -16,7 +20,7 @@ async function createUser(email, name) {
       },
       defaults: {
         name: name,
-        editableName: name
+        editableName: name,
       },
       include: [
         {
@@ -33,6 +37,11 @@ async function createUser(email, name) {
           model: Property,
           as: "investedProperties",
           include: [Owner, Financial, Feature],
+        },
+        {
+          model: DraftProperty,
+          as: "draftProperties",
+          include: [OwnerDraft, FinancialDraft, FeatureDraft],
         },
         {
           model: Transaction,

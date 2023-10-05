@@ -38,7 +38,7 @@ const OwnerForm = ({ handleSubmit, onNext, onChange, propertyData }) => {
 
     if (!propertyData.ownerData.State) {
       errors.State = "Region / State / Province is required";
-    } else if (!onlyLetters.test(propertyData.ownerData.State)) {
+    } else if (!onlyLettersAndSpace.test(propertyData.ownerData.State)) {
       errors.State = "It should contain only letters";
     }
 
@@ -56,7 +56,8 @@ const OwnerForm = ({ handleSubmit, onNext, onChange, propertyData }) => {
 
     if (
       propertyData.ownerData.Phone_number < 0 ||
-      !propertyData.ownerData.Phone_number || propertyData.ownerData.Phone_number.length < 5
+      !propertyData.ownerData.Phone_number ||
+      propertyData.ownerData.Phone_number.length < 5
     ) {
       errors.Phone_number = "Phone Number is required";
     }
@@ -118,11 +119,7 @@ const OwnerForm = ({ handleSubmit, onNext, onChange, propertyData }) => {
         <div className={css.inputContainer}>
           <div>
             <label>Email</label>
-            <input
-              type="Email"
-              value={propertyData.ownerData.Mail}
-              disabled
-            />
+            <input type="Email" value={propertyData.ownerData.Mail} disabled />
             {formErrors.Mail && <p className={css.error}>{formErrors.Mail}</p>}
           </div>
         </div>

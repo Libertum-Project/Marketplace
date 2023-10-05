@@ -32,6 +32,21 @@ export const createProperty = createAsyncThunk(
   }
 );
 
+export const createDraftProperty = createAsyncThunk(
+  "property/createDraftProperty",
+  async (property) => {
+    const newUrl = `${propertyURL}/draft`;
+    const response = await fetch(newUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(property),
+    });
+    return await response.json();
+  }
+);
+
 export const fetchFilteredProperties = createAsyncThunk(
   "filter/fetchFilteredProperties",
   async (filters) => {

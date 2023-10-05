@@ -3,8 +3,14 @@ export default {
   content: ["./index.html", "./src/**/*.{js,jsx}"],
   theme: {
     extend: {
-      colors:{
-        primary: '#f7931a',       
+      colors: {
+        primary: '#f7931a',
+      },
+      fontFamily: {
+        fb: ['Agdasima'],
+      },
+      fontWeight: {
+        heavy: ['700']
       }
     },
   },

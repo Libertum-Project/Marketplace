@@ -43,7 +43,7 @@ function DashboardUser() {
   const allUsers = useSelector((state) => state.user.allUsers);
   const currentUser = useSelector((state) => state.user.currentUser);
 
-  // console.log(currentUser);
+  console.log(currentUser);
   // console.log(allUsers);
 
   const handleLogin = () => {
@@ -238,6 +238,7 @@ function DashboardUser() {
             transactions={currentUser.transactions}
             publishedProperties={currentUser.publishedProperties}
             investments={currentUser.investedProperties}
+            draft = {currentUser.draftProperties}
           />
         </div>
       )}
