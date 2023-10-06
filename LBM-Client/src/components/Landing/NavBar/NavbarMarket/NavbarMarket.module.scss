@@ -39,7 +39,9 @@
 }
 
 .flexContainer {
-  width: 90%;
+  // width: 90%;
+  width: 100%;
+  padding: 2rem 5rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -143,7 +145,7 @@
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
-  gap: 2em;
+  gap: 3rem;
 }
 
 .language,
@@ -163,7 +165,8 @@
   align-items: center;
   gap: 1em;
   color: #5b5b5b;
-  margin-right: 2rem;
+  // margin-right: 2rem;
+  width: fit-content;
 }
 
 .languageButton:hover {
