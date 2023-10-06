@@ -10,6 +10,7 @@ import Timer from "../Coin/Timer";
 import Header from "../Coin/Header"
 import ContactForm from "../Landing/Subscribe/ContactForm";
 import Work from "./Work/Work";
+import HowToBuy from '../Buy/HowToBuy';
 
 export default function Landing() {
 
@@ -29,9 +30,9 @@ export default function Landing() {
 
 
   const sections = [
+    <div className="timer-container">
     <div className="first-section">
-      <button onClick={() => setCurrentSection(1)} className="text-red-300 bg-transparent text-3xl ml-80 -mr-52"> ❯ </button>
-      <div className="timer-container">
+        <button onClick={() => setCurrentSection(1)} className="text-red-300 bg-transparent text-3xl ml-80 md:-mr-52 z-10 "> ❯ </button>
         <div className="timer-content">
           {/* <Link to="/coinrelease"> */}
           <Header />
@@ -45,7 +46,7 @@ export default function Landing() {
     </div>,
 
     <div className="second-section">
-      <button onClick={() => setShowModal(false)} className="text-red-400 bg-transparent text-3xl ml-80 -mr-52">x</button>
+      <button onClick={() => setShowModal(false)} className="text-red-400 bg-transparent text-3xl ml-80 lg:-mr-52">x</button>
       <div className="timer-container">
         <div className="timer-content">
 
@@ -138,6 +139,11 @@ export default function Landing() {
         <img src={divider} className="divider" />
       </div>
       <Subscribe />
+
+      {/* <div className="divider-container">
+        <img src={divider} className="divider" />
+      </div>
+      <HowToBuy/> */}
     </div>
   );
 }
