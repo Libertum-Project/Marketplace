@@ -2,17 +2,16 @@ import css from "./Coin.module.scss";
 const Header = () => {
   return (
      <div className={css.timerHeader}>
-       
-        <h2> 
+
+        <h2>
           Get ready for {""}
-          <span className={css.span1}>$ LBM </span> {""}  
+          <span className={css.span1}>$ LBM </span> {""}
           <span className={css.span2}></span> {""}
           <span className={css.span1}></span> {" "}
-                   
         </h2>
         {/* <p></p> */}
-      </div> 
+      </div>
       )
-}; 
+};
 
-export default Header; 
+export default Header;

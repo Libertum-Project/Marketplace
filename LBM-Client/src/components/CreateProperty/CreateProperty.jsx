@@ -3,22 +3,31 @@ import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { createProperty, createDraftProperty } from "../../../redux/features/propertySlice";
+import {
+  createProperty,
+  createDraftProperty,
+} from "../../../redux/features/propertySlice";
 import Loading from "../Loading/Loading.jsx";
 import OwnerForm from "./OwnerForm";
 import PropertyForm from "./PropertyForm";
 import FinancialForm from "./FinancialForm";
 import Review from "./Review";
+import SuccessMessage from "../../smartContracts/components/MessageBox/SuccessMessage";
 
 const CreateProperty = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
   const [name, surname] = currentUser.editableName.split(" ");
+  const [showPropertyCreatedMessage, setShowPropertyCreatedMessage] =
+    useState(false);
+  const [showDraftCreatedMessage, setShowDraftCreatedMessage] = useState(false);
   const dispatch = useDispatch();
   const status = useSelector((state) => state.property.status);
   const [currentForm, setCurrentForm] = useState(1);
   const [images, setImages] = useState([]);
-  const { id } = useParams();  
-  const selectedDraft = currentUser.draftProperties.find((draft) => draft.ID_PropertyDraft == id);
+  const { id } = useParams();
+  const selectedDraft = currentUser.draftProperties.find(
+    (draft) => draft.ID_PropertyDraft == id
+  );
 
   const [property, setProperty] = useState({
     ownerData: {
@@ -126,22 +135,18 @@ const CreateProperty = () => {
       },
     });
 
-    console.log('Updated Financial Data:', property.financialData);
-    console.log('Updated Property:', property);
+    console.log("Updated Financial Data:", property.financialData);
+    console.log("Updated Property:", property);
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
     dispatch(createProperty(property));
-    if (status === "succeeded") {
-      alert("Request sent successfully!");
-      navigate("/marketplace/");
-    } else if (status === "failed") {
-      alert("Error sending the request.");
-    }
+    setShowPropertyCreatedMessage(true);
   };
 
   const createDraft = () => {
     dispatch(createDraftProperty(property));
+    setShowDraftCreatedMessage(true);
   };
 
   const handleNext = () => {
@@ -174,16 +179,22 @@ const CreateProperty = () => {
             More: selectedDraft.FeatureDraft.More,
           },
           financialData: {
-            Market_value_of_the_property: selectedDraft.FinancialDraft.Market_value_of_the_property,
+            Market_value_of_the_property:
+              selectedDraft.FinancialDraft.Market_value_of_the_property,
             Mortgage: selectedDraft.FinancialDraft.Mortgage,
             Investment_type: selectedDraft.FinancialDraft.Investment_type,
-            Percent_of_property_tokenized: selectedDraft.FinancialDraft.Percent_of_property_tokenized,
+            Percent_of_property_tokenized:
+              selectedDraft.FinancialDraft.Percent_of_property_tokenized,
             Rental_yield: selectedDraft.FinancialDraft.Rental_yield,
-            Number_of_tokens_available: selectedDraft.FinancialDraft.Number_of_tokens_available,
-            Passive_Income_per_token: selectedDraft.FinancialDraft.Passive_Income_per_token,
+            Number_of_tokens_available:
+              selectedDraft.FinancialDraft.Number_of_tokens_available,
+            Passive_Income_per_token:
+              selectedDraft.FinancialDraft.Passive_Income_per_token,
             Token_Price: selectedDraft.FinancialDraft.Token_Price,
-            Monthly_capital_repayment_amount: selectedDraft.FinancialDraft.Monthly_capital_repayment_amount,
-            Capital_payment_duration: selectedDraft.FinancialDraft.Capital_payment_duration,
+            Monthly_capital_repayment_amount:
+              selectedDraft.FinancialDraft.Monthly_capital_repayment_amount,
+            Capital_payment_duration:
+              selectedDraft.FinancialDraft.Capital_payment_duration,
           },
         });
       }
@@ -193,44 +204,63 @@ const CreateProperty = () => {
   }, []);
 
   return !isLoading && isAuthenticated && admin ? (
-    <div className={css.formContainer}>
-      {currentForm === 1 && (
-        <OwnerForm
-          handleSubmit={handleSubmit}
-          onNext={handleNext}
-          onChange={updateOwnerData}
-          propertyData={property}
+    <>
+      {showPropertyCreatedMessage ? (
+        <SuccessMessage
+          setShowSuccessMessage={setShowPropertyCreatedMessage}
+          messagge="Congratulations! Your property has been successfully uploaded."
+          textBtn="Continue"
+          redirectURL="/marketplace"
         />
-      )}
-      {currentForm === 2 && (
-        <PropertyForm
-          handleSubmit={handleSubmit}
-          onBack={handleBack}
-          onNext={handleNext}
-          onChange={updateFeatureData}
-          propertyData={property}
-          setImages={setImages}
-          images={images}
+      ) : null}
+      {showDraftCreatedMessage ? (
+        <SuccessMessage
+          setShowSuccessMessage={setShowDraftCreatedMessage}
+          messagge="Draft completed! Your property details are ready for future submission."
+          textBtn="Continue"
+          redirectURL="/mydashboard"
         />
-      )}
-      {currentForm === 3 && (
-        <FinancialForm
-          handleSubmit={handleSubmit}
-          onNext={handleNext}
-          onBack={handleBack}
-          onChange={updateFinancialData}
-          propertyData={property}
-        />
-      )}
-      {currentForm === 4 && (
-        <Review
-          handleSubmit={handleSubmit}
-          onBack={handleBack}
-          propertyData={property}
-          createDraft={createDraft}
-        />
-      )}
-    </div>
+      ) : null}
+      <div className={css.formContainer}>
+        {currentForm === 1 && (
+          <OwnerForm
+            handleSubmit={handleSubmit}
+            onNext={handleNext}
+            onChange={updateOwnerData}
+            propertyData={property}
+          />
+        )}
+        {currentForm === 2 && (
+          <PropertyForm
+            handleSubmit={handleSubmit}
+            onBack={handleBack}
+            onNext={handleNext}
+            onChange={updateFeatureData}
+            propertyData={property}
+            setImages={setImages}
+            images={images}
+          />
+        )}
+        {currentForm === 3 && (
+          <FinancialForm
+            handleSubmit={handleSubmit}
+            onNext={handleNext}
+            onBack={handleBack}
+            onChange={updateFinancialData}
+            propertyData={property}
+          />
+        )}
+        {currentForm === 4 && (
+          <Review
+            handleSubmit={handleSubmit}
+            onBack={handleBack}
+            propertyData={property}
+            createDraft={createDraft}
+            images={images}
+          />
+        )}
+      </div>
+    </>
   ) : (
     <Loading />
   );
