@@ -358,3 +358,20 @@
 
   }
 }
+
+.sign-in{
+      
+  margin: 0 0 0 40px;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  font-size: 14px;
+  color: rgb(238, 238, 238);      
+  background-color:var(--Libertum-color) ;
+  border-radius: 999rem;
+  padding: .5rem 1.2rem .5rem 1.2rem;
+  &:hover {
+    background-color: var(--LibertumBlue);
+    cursor: pointer;
+  }
+}

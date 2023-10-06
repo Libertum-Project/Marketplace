@@ -70,7 +70,8 @@ export default function NavBar() {
           </li>
           <li className="menu-li_items">
             <a
-              href="/whitepaper.pdf" // Cambiar la ruta al PDF correcta!!
+              // href="/whitepaper.pdf" 
+              href="/comingsoon"
               target="_blank"
               rel="noopener noreferrer"
               download="LBM-whitepaper.pdf"
