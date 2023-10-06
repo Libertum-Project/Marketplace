@@ -129,27 +129,30 @@ function NavbarMarket() {
                 <p>MARKETPLACES</p>
                 <IoChevronDownOutline />
               </div>
-              <NavLink to="/about">
+              {/* <NavLink to="/about">
               <p>ABOUT US</p>
-              </NavLink>
+              </NavLink> */}
               <NavLink to="/support">
                 <p>SUPPORT</p>
               </NavLink>
               <NavLink to="/ico">
-                <p>Buy Libertum</p>
+                <p>BUY LIBERTUM</p>
               </NavLink>
                 <NavLink
-                  to={pdf}
+                  // to={pdf}
                   target="_blank"
                   rel="noopener noreferrer"
+                  to="/comingsoon"
                   // download="LBM-whitepaper.pdf"
                   // className="footer_li"
                 >
-                  Whitepaper
+                  <p>WHITEPAPER</p>
                 </NavLink>
 
             </div>
             <div className={style.buttons2}>
+
+              {/* ----------------------- CURRENCY - LANGUAGE  ------------------------- */}
               <div className={style.language}>
                 <div
                   className={style.languageButton}
@@ -161,7 +164,18 @@ function NavbarMarket() {
                 </div>
                 {activeLanguage ? <PopUpLanguage data-language /> : null}
               </div>
-              <div className={openAccountModal ? style.user : style.user1}>
+
+              {/* ----------------------- USER  ------------------------- */}
+              <div>
+                { !user ? (
+                  <div >
+                    <Link to='/mydashboard' >
+                    <p className={style["sign-in"]}>LOG IN</p>
+                    </Link>
+                  </div>
+                ) : 
+                 
+                <div className={openAccountModal ? style.user : style.user1}>
                 <div className={style.hamburgerContainer}>
                   <div
                     data-dropdown-menu
@@ -185,11 +199,15 @@ function NavbarMarket() {
                   <PopUpUser data-menu setActiveMenu={setActiveMenu} />
                 ) : null}
               </div>
+
+                }
+              </div>
             </div>
           </div>
           {active ? <PopUpMarket setActive={setActive} data-dropdown /> : null}
         </div>
       ) : (
+        // -----------------------------------RESPONSIVE -----------------------------------------------
         <div
           className={style.container}
           style={
@@ -241,3 +259,5 @@ function NavbarMarket() {
 }
 
 export default NavbarMarket;
+
+
