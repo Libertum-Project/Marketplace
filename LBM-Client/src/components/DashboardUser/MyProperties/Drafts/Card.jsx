@@ -2,7 +2,7 @@ import './Draft.scss'
 import iconHouse from '../../assets/dashboardInactive.svg'
 import { Link } from 'react-router-dom';
 
-const Card = ({key, id, address, city, country}) => {
+const Card = ({id, address, city, country}) => {
 
   const editRoute = `/create/${id}`;
 
