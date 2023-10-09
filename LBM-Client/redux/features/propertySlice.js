@@ -109,6 +109,21 @@ export const editProperty = createAsyncThunk(
   }
 );
 
+export const editDraftProperty = createAsyncThunk(
+  "patch/editDraftProperty",
+  async ({property, propertyId}) => {
+    const newURL = `${propertyURL}/draft/edit/${propertyId}`
+    const response = await fetch(newURL, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(property),
+    });
+    return await response.json();
+  }
+);
+
 const propertySlice = createSlice({
   name: "property",
   initialState,
