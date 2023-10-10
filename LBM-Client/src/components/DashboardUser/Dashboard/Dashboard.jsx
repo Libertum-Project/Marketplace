@@ -65,7 +65,7 @@ return(
                 <section className={style.section3}>                   
                     <img src={grafico1} alt="grafico1" />    
 
-                    <div> 
+                    <div className={style.myinvestments}> 
                         <section>
                             <h2>My Investments</h2>         
                             <p>See your investments month by month</p>  
@@ -82,7 +82,7 @@ return(
                 <section className={style.section3}>
                     
                     <img src={grafico2} alt="house image" />
-                    <div> 
+                    <div className={style.myinvestments}> 
                         <section>
                             <h2>My Properties</h2>         
                             <p>See your income for your properties month by month</p>  
