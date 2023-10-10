@@ -96,8 +96,8 @@ export const withdrawFunds = createAsyncThunk(
 
 export const editProperty = createAsyncThunk(
   "patch/editProperty",
-  async ({newFeatureData, propertyId}) => {
-    const newURL = `${propertyURL}/edit/${propertyId}`
+  async ({ newFeatureData, propertyId }) => {
+    const newURL = `${propertyURL}/edit/${propertyId}`;
     const response = await fetch(newURL, {
       method: "PATCH",
       headers: {
@@ -111,14 +111,28 @@ export const editProperty = createAsyncThunk(
 
 export const editDraftProperty = createAsyncThunk(
   "patch/editDraftProperty",
-  async ({property, propertyId}) => {
-    const newURL = `${propertyURL}/draft/edit/${propertyId}`
+  async ({ property, propertyId }) => {
+    const newURL = `${propertyURL}/draft/edit/${propertyId}`;
     const response = await fetch(newURL, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(property),
+    });
+    return await response.json();
+  }
+);
+
+export const deleteDraftProperty = createAsyncThunk(
+  "delete/deleteDraftProperty",
+  async ({ propertyId }) => {
+    const newURL = `${propertyURL}/draft/delete/${propertyId}`;
+    const response = await fetch(newURL, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
     return await response.json();
   }

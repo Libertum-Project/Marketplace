@@ -31,7 +31,7 @@ const CreateProperty = () => {
     (draft) => draft.ID_PropertyDraft == id
   );
 
-  const propertyId = selectedDraft.ID_PropertyDraft;
+  const propertyId = selectedDraft?.ID_PropertyDraft;
 
   const [property, setProperty] = useState({
     ownerData: {
@@ -148,11 +148,11 @@ const CreateProperty = () => {
     setShowPropertyCreatedMessage(true);
   };
 
-  const createDraft = () => {
+  const createDraft =  async () => {
     !selectedDraft
       ? dispatch(createDraftProperty(property))
       : dispatch(editDraftProperty({ property, propertyId }));
-    dispatch(
+    await dispatch(
       fetchCurrentUser({
         email: currentUser.email,
         name: currentUser.name,
