@@ -1,6 +1,8 @@
+import { Link } from 'react-router-dom';
 import './Draft.scss'
 import iconHouse from '../../assets/dashboardInactive.svg'
-import { Link } from 'react-router-dom';
+import iconDelete from '../../assets/delete.svg'
+
 
 const Card = ({id, address, city, country}) => {
 
@@ -16,8 +18,11 @@ const Card = ({id, address, city, country}) => {
         <p>Country: {country} </p>
       </div>
       <div className='button'>
+        <Link>
+          <img src={iconDelete} alt="" className='delete' />
+        </Link>
         <Link  to={editRoute}>
-          <button>Edit</button>
+          <button className='edit'>Edit</button>
         </Link>
       </div>
     </div>
