@@ -25,7 +25,7 @@ const SaveProperty = ({ propertyId }) => {
 
   const [showSaved, setShowSaved] = useState(isCurrentPropertySaved);
 
-    useEffect(() => {
+  useEffect(() => {
     if (user) {
       dispatch(
         fetchCurrentUser({
@@ -36,11 +36,11 @@ const SaveProperty = ({ propertyId }) => {
     }
   }, [showSaved, dispatch, user]);
 
-  const handleSaveProperty = () => {
+  const handleSaveProperty = async () => {
     setShowSaved(true);
-    dispatch(saveProperty(propertyId));
+    await dispatch(saveProperty(propertyId));
     if (user) {
-      dispatch(
+      await dispatch(
         fetchCurrentUser({
           email: user.email,
           name: user.name,
@@ -49,11 +49,11 @@ const SaveProperty = ({ propertyId }) => {
     }
   };
 
-  const handleUnsaveProperty = () => {
+  const handleUnsaveProperty = async () => {
     setShowSaved(false);
-    dispatch(unsaveProperty(propertyId));
+    await dispatch(unsaveProperty(propertyId));
     if (user) {
-      dispatch(
+      await dispatch(
         fetchCurrentUser({
           email: user.email,
           name: user.name,
