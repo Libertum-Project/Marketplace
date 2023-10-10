@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import style from "./Aboutproperty.module.scss";
 import Icons from "./IconsAmenities/Icons";
+import Reveal from 'react-awesome-reveal';
+
 
 
 const Buy = (props) => {

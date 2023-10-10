@@ -159,9 +159,6 @@ const Index = () => {
     }
   };
 
-
-
-  // Combine the fetched properties and fake properties into a single array
   const fakeProperties = [fakeProperty1, fakeProperty2];
   const allProperties = [...properties, ...fakeProperties];
 
@@ -210,7 +207,6 @@ console.log("proerty" + property.Feature.Address)
   };
 
   const settings = {
-    // Configura las opciones de tu carrusel aquí según tus preferencias
     dots: true,
     infinite: true,
     speed: 500,

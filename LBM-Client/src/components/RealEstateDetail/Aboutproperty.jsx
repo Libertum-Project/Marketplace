@@ -7,16 +7,16 @@ import InvestmentGuide from "./BuyingProcess";
 import style from "./Aboutproperty.module.scss";
 import { HiOutlineChevronDown, HiOutlineChevronUp } from 'react-icons/hi';
 
-const Accordion = ({ title, content }) => {
-  const [isActive, setIsActive] = useState(1);
+const Accordion = ({ title, content, isFirst }) => {
+  const [isActive, setIsActive] = useState(isFirst);
 
   const toggleAccordion = () => {
     setIsActive(!isActive);
   };
 
   return (
-    <div className={`${style.accordionItem} ${isActive ? style.active : ''}`}>
-      <div className={style.accordionTitle} onClick={toggleAccordion}>         
+    <div className={`${style.accordionItem} ${isActive ? style.active : style.inactive}`}>
+      <div className={`${style.accordionTitle} ${isActive ? style.openTitle : style.closedTitle}`} onClick={toggleAccordion}>         
         {title}
         <div className={style.accordionIcon}>
             {isActive ? <HiOutlineChevronUp /> : <HiOutlineChevronDown />}
@@ -26,6 +26,8 @@ const Accordion = ({ title, content }) => {
     </div>
   );
 };
+
+
 
 const Aboutproperty = ({
   Square_foot,
@@ -49,6 +51,7 @@ const Aboutproperty = ({
   type,
 }) => {
 
+  
 
   return (
     <div className={style.container}>
