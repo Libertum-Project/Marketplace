@@ -31,7 +31,7 @@ const CreateProperty = () => {
     (draft) => draft.ID_PropertyDraft == id
   );
 
-  const propertyId = selectedDraft.ID_PropertyDraft;
+  const propertyId = selectedDraft?.ID_PropertyDraft;
 
   const [property, setProperty] = useState({
     ownerData: {
