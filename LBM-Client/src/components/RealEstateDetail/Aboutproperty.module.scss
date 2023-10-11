@@ -25,6 +25,7 @@ $--bc: var(--Libertum-color);
 
 .column2 {
   flex-basis: 40%; 
+  overflow: auto;
 
   @media screen and (max-width: 1200px) {
     z-index: 9999;
@@ -38,9 +39,10 @@ $--bc: var(--Libertum-color);
   padding: 1rem 1rem;
   font-size: 0.875rem/* 14px */;
   line-height: 1.25rem/* 20px */;
-  justify-content: center;
   font-family: montserrat;
-  
+  position: sticky;
+  top: 20px;  
+
   @media screen and (max-width: 780px) {
     div{
       display: none;
@@ -59,7 +61,7 @@ $--bc: var(--Libertum-color);
 
   h1{
     margin-bottom: 20px;
-    color: #000;
+    color: #2b2b2b;
     text-align: center;
     font-size: 1.375rem;  
     font-weight: 600; 
@@ -106,10 +108,9 @@ $--bc: var(--Libertum-color);
     
     p{
       text-align: left;
-      color: #000;
+      color: #2e2d2d;
       font-size: 0.9375rem;
-      font-family: Inter;
-      font-weight: 500;
+      font-weight: 400;
       }
       
       .cardtext{
@@ -133,6 +134,11 @@ $--bc: var(--Libertum-color);
     margin-top: 2rem;
 }
 }
+}
+.activeBuyContainer {
+  position: sticky;
+  top: 20px;
+  /* Otros estilos según sea necesario */
 }
 
 // --------------------------- ABOUT PROPERTY ------------------------------
@@ -187,30 +193,46 @@ padding: auto;
     border-radius: 20px;
     margin-bottom: 10px;
     background-color: #ffffff82;
-    padding: 10px;
     transition: border-color 0.3s, background-color 0.3s;
     
     &.active {
       // border: 1px solid var(--LibertumBlue);      
-      background-color: #f5f5f514;    
+      background-color: rgba(228, 228, 228, 0.127);
+      // border: 1px solid rgb(227, 227, 227);
+      color: #4d4c4c; 
+      border-radius: .8rem;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);  
     }
   .accordionTitle{
     display: flex;
     text-align: left;
+    padding: .5rem 1rem;
     align-items: center;      
-    justify-content: space-between;      
+    justify-content: space-between;  
+    width: 100%;
+    // letter-spacing: .2rem;    
     cursor: pointer;    
     font-size: 1.1rem;  
-    font-weight: 600;
+    // font-weight: 600;
     .accordionIcon {
       margin-right: 10px;
       
     }
   }
 
-  // .accordionContent{
-  //   padding: 10px;
-  // }
+  .openTitle {
+    color: #4d4c4c; 
+     
+  }
+  
+  .closedTitle {
+    // background-color: #f0eeee1f; 
+    border: 1px solid rgb(227, 227, 227);
+    color: #4d4c4c; 
+    border-radius: .8rem;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2); 
+  }
+  
 }
 
 // ---------------------- ACCORDION CONTENT ------------------------------------
@@ -220,7 +242,8 @@ padding: auto;
   width: 100%;
   border-collapse: separate;
   border-spacing: 0 1.5rem;
-  margin-left: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   // margin-bottom: 3rem;
 
   @media screen and (max-width: 780px) {
@@ -395,13 +418,13 @@ input[type="range"]::-ms-track {
   text-align: left;
 }
 
-.tableRectangule{
-  padding: 20px;
-  // background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  margin-bottom: 1rem; 
-}
+// .tableRectangule{
+//   padding: 20px;
+//   // background-color: #fff;
+//   border: 1px solid #ccc;
+//   border-radius: 8px;
+//   margin-bottom: 1rem; 
+// }
 
 .descriptiontable {
   color: var(--black, #000);
