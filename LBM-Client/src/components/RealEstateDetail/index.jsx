@@ -28,19 +28,6 @@ const Index = () => {
 
   const { isLoading } = useAuth0();
 
-  // const [isScrolled, setIsScrolled] = useState(false);
-
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-  //     setIsScrolled(scrollTop > 100);
-  //   };
-
-  //   window.addEventListener('scroll', handleScroll);
-  //   return () => window.removeEventListener('scroll', handleScroll);
-  // }, []);
-
-
   //--------------------   CARROUSEL  -------------------
   const [carrouselOpen, setCarrouselOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
