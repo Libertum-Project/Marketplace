@@ -106,7 +106,7 @@ export default function NavBar() {
               Log Out
             </a>
           ) : (
-            <a href="/mydashboard" rel="noreferrer" className="sign-in">
+            <a href="/mydashboard" rel="noreferrer" className="sign-in ">
               Log In
             </a>
           )}

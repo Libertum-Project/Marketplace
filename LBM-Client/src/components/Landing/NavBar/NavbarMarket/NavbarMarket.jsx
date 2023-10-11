@@ -153,7 +153,7 @@ function NavbarMarket() {
             <div className={style.buttons2}>
 
               {/* ----------------------- CURRENCY - LANGUAGE  ------------------------- */}
-              <div className={style.language}>
+              <div className={`${style.language} md:hidden lg:flex`} >
                 <div
                   className={style.languageButton}
                   data-dropdown-language

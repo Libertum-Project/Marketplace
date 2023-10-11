@@ -140,10 +140,10 @@ export default function Landing() {
       </div>
       <Subscribe />
 
-      {/* <div className="divider-container">
+      <div className="divider-container">
         <img src={divider} className="divider" />
       </div>
-      <HowToBuy/> */}
+      <HowToBuy/>
     </div>
   );
 }
