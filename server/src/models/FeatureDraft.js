@@ -28,7 +28,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING(10),
       },
       Description: {
-        type: DataTypes.STRING(300),
+        type: DataTypes.STRING(600),
       },
       Square_foot: {
         type: DataTypes.INTEGER,
@@ -43,7 +43,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING(50),
       },
       Link_Image: {
-        type: DataTypes.ARRAY(DataTypes.STRING(100)),
+        type: DataTypes.ARRAY(DataTypes.STRING(300)),
       },
       Link_Document: {
         type: DataTypes.STRING(100),
