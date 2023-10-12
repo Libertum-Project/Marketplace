@@ -73,6 +73,7 @@ const Index = () => {
           onClick={(event) => openModal(0, event)}
         />
         <div className={css.otherImages}>
+
           {property.Feature.Link_Image.slice(1).map((image, index) => (
             <img
               key={index}

@@ -10,6 +10,7 @@ import sqfeetIcon from "./icons/sqfeet.svg";
 import swimmingIcon from "./icons/pool.svg";
 import terraceIcon from "./icons/terrace.svg";
 import wifiIcon from "./icons/wifi.svg";
+import defaultIcon from "./icons/default.svg"
 
 const Icons = ({ amenities, squarefoot, rooms, iconSize, containerWidth, withParagraph}) => {
   const displayedAmenities = amenities.slice(0, 5);
@@ -60,6 +61,7 @@ const Icons = ({ amenities, squarefoot, rooms, iconSize, containerWidth, withPar
             icon = bathroomIcon;
             break;
           default:
+            icon = defaultIcon; 
             break;
         }
 

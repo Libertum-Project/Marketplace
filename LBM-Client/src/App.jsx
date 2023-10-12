@@ -286,7 +286,14 @@ function App() {
 
           <Route path="/support" element={<SupportCenter />} />
           
-          <Route path={"/draft/preview/:id"} element={<PreviewProperty />} />
+          <Route 
+          path={"/draft/preview/:id"} 
+          element={
+            <div className="Page">
+              <PreviewProperty />
+            </div>
+          }
+          />
 
    
           

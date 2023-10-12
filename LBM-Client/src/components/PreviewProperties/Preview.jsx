@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -35,15 +34,23 @@ const PreviewProperty = () => {
           onClick={(event) => openModal(0, event)}
         />
         <div className={css.otherImages}>
-          {matchingDraft.FeatureDraft.Link_Image.slice(1).map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={`Image ${index}`}
-              onClick={() => openModal(index)}
-            />
-          ))}
+          {matchingDraft.FeatureDraft?.Link_Image.length >= 2 ? (
+            matchingDraft.FeatureDraft?.Link_Image.slice(1, 5).map((image, index) => (
+              <img
+                key={index}
+                src={image}
+                alt={`Image ${index}`}
+                onClick={() => openModal(index + 1)}
+              />
+            ))
+          ) : (
+            [...Array(4)].map((_, index) => (
+              <div key={index} className={`${css.placeholder} ${css.placeholderImage}`}></div>
+            ))
+          )}
         </div>
+
+
       </section>
        
       <div className={css.contenedor}>
