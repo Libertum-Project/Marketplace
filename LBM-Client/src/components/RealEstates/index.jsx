@@ -1,9 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchFilteredProperties, fetchAllProperties } from '../../../redux/features/propertySlice';
 import Classes from "../MarketPlace/Classes/Classes.jsx";
-import ModalFilter from "../MarketPlace/ModalFilter/ModalFilter.jsx";
 import css from "./index.module.scss";
-import db from "../RealEstates/fakedb/db.json";
 import CardPreview from "./CardPreview";
 import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";

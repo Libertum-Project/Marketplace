@@ -1,37 +1,41 @@
 import { useState } from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
 import { useParams } from 'react-router-dom';
-import './Preview.scss'
+import { useSelector } from 'react-redux';
+import css from '../../components/RealEstateDetail/index.module.scss'
 import Buy from '../RealEstateDetail/Buy';
 import Aboutproperty from '../RealEstateDetail/Aboutproperty';
 import Loading from "../Loading/Loading";
-
-
-
+import SaveProperty from '../SaveProperty/SaveProperty'
 
 const PreviewProperty = () => {
   const { isLoading } = useAuth0();
+  const { id } = useParams(); 
+  const propertyId = parseInt(id);
+
+  const draftProperties = useSelector((state) => state.user.currentUser.draftProperties)
+  const matchingDraft = draftProperties.find(draft => draft.ID_PropertyDraft === propertyId)
 
   return !isLoading ? (
     
     <div className={css.details}>
       <header className={css.header}>
-        <h2>{property.Feature.Address} <SaveProperty propertyId={property.ID_Property} /> </h2>
+        <h2>{matchingDraft.FeatureDraft.Address} <SaveProperty  /> </h2>
         <div className={css.headerText}>
-          <p>{property.Feature.City}</p>
+          <p>{matchingDraft.FeatureDraft.City}</p>
         </div>
       </header>
 
-      <img src={property.Feature.Link_Image[0]} alt="Land" className={css.detailsImage} onClick={(event) => openModal(0, event)}/>
+      <img src={matchingDraft.FeatureDraft.Link_Image[0]} alt="Land" className={css.detailsImage} onClick={(event) => openModal(0, event)}/>
 
       <section className={css.mosaic}>
         <img
-          src={property.Feature.Link_Image[0]}
+          src={matchingDraft.FeatureDraft.Link_Image[0]}
           alt="property image"
           onClick={(event) => openModal(0, event)}
         />
         <div className={css.otherImages}>
-          {property.Feature.Link_Image.slice(1).map((image, index) => (
+          {matchingDraft.FeatureDraft.Link_Image.slice(1).map((image, index) => (
             <img
               key={index}
               src={image}
@@ -45,45 +49,49 @@ const PreviewProperty = () => {
       <div className={css.contenedor}>
              
           <Aboutproperty
-            id={property.ID_Property}
-            image={property.Feature.Link_Image[0]}            
-            value={property.Financial.Market_value_of_the_property}
-            Tokenised={property.Financial.Percent_of_property_tokenized}
-            PRY={property.Financial.Rental_yield}
-            AvailablesNFT={property.Financial.Number_of_tokens_available}
-            capital={property.Financial.Capital_payment_duration}            
-            PIT={property.Financial.Passive_Income_per_token}
-            address={property.Feature.Address}
-            location={property.Feature.City}
-            NFTPrice={property.Financial.Token_Price}
-            amenities={property.Feature.Amenities}
-            rooms={property.Feature.Rooms}
-            guests={property.guests}
-            map={property.Feature.Map}
-            more={property.Feature.More}
-            description={property.Feature.Description}
-            Square_foot={property.Feature.Square_foot}
-            type = {property.Feature.Type}
+            id={matchingDraft.FeatureDraft.ID_FeatureDraft}
+            image={matchingDraft.FeatureDraft.Link_Image[0]}  
+            address={matchingDraft.FeatureDraft.Address}
+            location={matchingDraft.FeatureDraft.City}   
+            more={matchingDraft.FeatureDraft.More}
+            description={matchingDraft.FeatureDraft.Description}
+            amenities={matchingDraft.FeatureDraft.Amenities}
+            rooms={matchingDraft.FeatureDraft.Rooms}
+            Square_foot={matchingDraft.FeatureDraft.Square_foot}
+            type = {matchingDraft.FeatureDraft.Type}
+
+            value={matchingDraft.FinancialDraft.Market_value_of_the_property}
+            Tokenised={matchingDraft.FinancialDraft.Percent_of_property_tokenized}
+            PRY={matchingDraft.FinancialDraft.Rental_yield}
+            AvailablesNFT={matchingDraft.FinancialDraft.Number_of_tokens_available}
+            capital={matchingDraft.FinancialDraft.Capital_payment_duration}            
+            PIT={matchingDraft.FinancialDraft.Passive_Income_per_token}
+            NFTPrice={matchingDraft.FinancialDraft.Token_Price}
+            // guests={property.guests}
+            // map={property.Feature.Map}            
            
           />
         
           <Buy
-            id={property.ID_Property}
-            number={property.ID_Property}
-            image={property.Feature.Link_Image[0]}            
-            value={property.Financial.Market_value_of_the_property}
-            type={property.Feature.type}
-            address={property.Feature.Address}
-            location={property.Feature.City}
-            PIT={property.Financial.Passive_Income_per_token}
-            PRY={property.Financial.Rental_yield}
-            tokenised={property.Financial.Percent_of_property_tokenized}
-            NFTPrice={property.Financial.Token_Price}
-            AvailablesNFT={property.Financial.Number_of_tokens_available}
-            capital={property.Financial.Capital_payment_duration}
-            Square_foot={property.Feature.Square_foot}
-            amenities={property.Feature.Amenities}
-            rooms={property.Feature.Rooms}         
+            id={matchingDraft.FeatureDraft.ID_FeatureDraft}
+            // number={property.ID_Property}
+            image={matchingDraft.FeatureDraft.Link_Image[0]}  
+            type = {matchingDraft.FeatureDraft.Type}
+            address={matchingDraft.FeatureDraft.Address}
+            location={matchingDraft.FeatureDraft.City}   
+            amenities={matchingDraft.FeatureDraft.Amenities}
+            rooms={matchingDraft.FeatureDraft.Rooms}
+            Square_foot={matchingDraft.FeatureDraft.Square_foot}
+            value={matchingDraft.FinancialDraft.Market_value_of_the_property}
+            PRY={matchingDraft.FinancialDraft.Rental_yield}
+            AvailablesNFT={matchingDraft.FinancialDraft.Number_of_tokens_available}
+            capital={matchingDraft.FinancialDraft.Capital_payment_duration}            
+            PIT={matchingDraft.FinancialDraft.Passive_Income_per_token}
+            NFTPrice={matchingDraft.FinancialDraft.Token_Price}
+            tokenised={matchingDraft.FinancialDraft.Percent_of_property_tokenized}
+
+
+
           />
 
 
