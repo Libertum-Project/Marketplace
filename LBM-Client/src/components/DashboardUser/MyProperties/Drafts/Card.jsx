@@ -7,6 +7,7 @@ import iconPreview from "../../assets/preview.svg";
 
 const Card = ({ id, address, city, country, handleDelete }) => {
   const editRoute = `/create/${id}`;
+  const previewRoute = `/draft/preview/${id}`; 
 
   return (
     <div className="cardDraft">
@@ -24,9 +25,9 @@ const Card = ({ id, address, city, country, handleDelete }) => {
         <Link to={editRoute}>
           <img src={iconEdit} alt=""   className="icon"/>
         </Link>
-        <button>
+        <Link to={previewRoute}>
           <img src={iconPreview} alt=""  className="icon"/>
-        </button>
+        </Link>
       </div>
     </div>
   );
