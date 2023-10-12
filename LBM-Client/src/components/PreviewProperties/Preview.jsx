@@ -1,17 +1,20 @@
-import { useState } from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import css from '../../components/RealEstateDetail/index.module.scss'
 import Buy from '../RealEstateDetail/Buy';
 import Aboutproperty from '../RealEstateDetail/Aboutproperty';
 import Loading from "../Loading/Loading";
 import SaveProperty from '../SaveProperty/SaveProperty'
+import iconEdit from "../../components/DashboardUser/assets/edit.svg";
+
 
 const PreviewProperty = () => {
   const { isLoading } = useAuth0();
   const { id } = useParams(); 
   const propertyId = parseInt(id);
+  const editRoute = `/create/${id}`;
+
 
   const draftProperties = useSelector((state) => state.user.currentUser.draftProperties)
   const matchingDraft = draftProperties.find(draft => draft.ID_PropertyDraft === propertyId)
@@ -19,6 +22,11 @@ const PreviewProperty = () => {
   return !isLoading ? (
     
     <div className={css.details}>
+             <div className={css.edit}>
+        <Link to={editRoute}>
+            <img src={iconEdit} alt="" className={css.editIcon}/>
+          </Link>
+       </div>
       <header className={css.header}>
         <h2>{matchingDraft.FeatureDraft.Address} <SaveProperty  /> </h2>
         <div className={css.headerText}>
@@ -35,18 +43,28 @@ const PreviewProperty = () => {
           onClick={(event) => openModal(0, event)}
         />
         <div className={css.otherImages}>
-          {matchingDraft.FeatureDraft.Link_Image.slice(1).map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={`Image ${index}`}
-              onClick={() => openModal(index)}
-            />
-          ))}
+          {matchingDraft.FeatureDraft?.Link_Image.length >= 2 ? (
+            matchingDraft.FeatureDraft?.Link_Image.slice(1, 5).map((image, index) => (
+              <img
+                key={index}
+                src={image}
+                alt={`Image ${index}`}
+                onClick={() => openModal(index + 1)}
+              />
+            ))
+          ) : (
+            [...Array(4)].map((_, index) => (
+              <div key={index} className={`${css.placeholder} ${css.placeholderImage}`}></div>
+            ))
+          )}
         </div>
+
+
       </section>
-       
-      <div className={css.contenedor}>
+
+
+
+      <div className={css.contenedor}>       
              
           <Aboutproperty
             id={matchingDraft.FeatureDraft.ID_FeatureDraft}
@@ -93,9 +111,8 @@ const PreviewProperty = () => {
 
 
           />
-
-
       </div>
+
     </div>
   ): <Loading />
 }; 

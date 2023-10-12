@@ -8,6 +8,15 @@
   gap: 1rem;
   font-family: montserrat;
 }
+.edit{
+display: flex;  
+justify-content: end;
+
+.editIcon{
+    width: 5rem;
+    cursor: pointer;
+  }
+}
 
 .details {
   position: relative;
@@ -461,6 +470,7 @@
     margin: 0 1rem;
     overflow: hidden;
     border-radius: 2rem;
+    
   }
 
   .mosaic img {
@@ -468,6 +478,7 @@
     max-width: 50%;
     min-height: 100%;
     object-fit: cover;
+    background-color: #cdcdd0;
   }
 
   .otherImages {
@@ -478,11 +489,19 @@
     flex: 1;   
     min-height: 100%;
     // border-radius: 50%;
+    .placeholder {
+      background-color: #cdcdd0; /* gris de fondo */
+      flex: 1;
+    }
   }
 
   .otherImages img {
     width: 150px;
+    background-color: #cdcdd0;
   }
+
+  
+  
 
   .showAll {
     position: absolute;
