@@ -8,6 +8,15 @@
   gap: 1rem;
   font-family: montserrat;
 }
+.edit{
+display: flex;  
+justify-content: end;
+
+.editIcon{
+    width: 5rem;
+    cursor: pointer;
+  }
+}
 
 .details {
   position: relative;
