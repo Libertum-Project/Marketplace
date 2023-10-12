@@ -1,61 +1,19 @@
-import css from "./index.module.scss";
-import { useParams, useNavigate } from "react-router-dom";
+import { useState } from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
-import { useDispatch, useSelector } from 'react-redux';
-import Aboutproperty from "./Aboutproperty";
-import Buy from "./Buy";
+import { useParams } from 'react-router-dom';
+import './Preview.scss'
+import Buy from '../RealEstateDetail/Buy';
+import Aboutproperty from '../RealEstateDetail/Aboutproperty';
 import Loading from "../Loading/Loading";
-import SaveProperty from '../SaveProperty/SaveProperty'
-import { useEffect, useState } from "react";
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 
 
-const Index = () => {
-  const navigate = useNavigate();
 
-  const { id } = useParams();
-  const properties = useSelector((state) => state.property.filteredProperties);
-  
-  // Convertir el valor de 'id' a un número
-  const propertyId = parseInt(id);
 
-    // Find the property that matches the propertyId
-  const property = properties.find((property) => property.ID_Property === propertyId);
-
-  console.log("proerty" + property.Feature.Address)
-
+const PreviewProperty = () => {
   const { isLoading } = useAuth0();
 
-  //--------------------   CARROUSEL  -------------------
-  const [carrouselOpen, setCarrouselOpen] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  const openCarrousel = (index, event) => {
-    setCurrentImageIndex(index);
-    setCarrouselOpen(true);    
-  };
-
-  const closeCarrousel = () => {
-    setCarrouselOpen(false);
-  };
-
-  const handleCloseCarrousel = (e) => {
-    if (e.target === e.currentTarget) {
-      closeCarrousel(); 
-    }
-  };
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
-
   return !isLoading ? (
+    
     <div className={css.details}>
       <header className={css.header}>
         <h2>{property.Feature.Address} <SaveProperty propertyId={property.ID_Property} /> </h2>
@@ -83,23 +41,6 @@ const Index = () => {
           ))}
         </div>
       </section>
-      {carrouselOpen && (
-          <div className={css.modal} onClick={handleCloseCarrousel}>
-            <div className={css.modalContent}>
-
-              <Slider {...settings} initialSlide={currentImageIndex}>
-                {property.Feature.Link_Image.map((image, index) => (
-                  <div key={index} className={css.slideContainer}>
-                    <span className={css.close} onClick={closeCarrousel}>
-                    &times;
-                    </span>
-                    <img src={image} alt={`Image ${index}`} />
-                  </div>
-                ))}
-              </Slider>
-            </div>
-          </div>
-        )}
        
       <div className={css.contenedor}>
              
@@ -148,7 +89,7 @@ const Index = () => {
 
       </div>
     </div>
-  ) : <Loading />
-};
+  ): <Loading />
+}; 
 
-export default Index;
+export default PreviewProperty; 

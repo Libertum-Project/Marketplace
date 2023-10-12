@@ -25,7 +25,7 @@ $--bc: var(--Libertum-color);
 
 .column2 {
   flex-basis: 40%; 
-  overflow: auto;
+  align-self: flex;
 
   @media screen and (max-width: 1200px) {
     z-index: 9999;
@@ -33,15 +33,15 @@ $--bc: var(--Libertum-color);
   }
 // ----------------------------- BUY MODULE ------------------------------
 .buycontainer{
-  border-radius: 1rem;
-  background-color: rgb(255, 255, 255); 
-  box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.302);
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
   padding: 1rem 1rem;
-  font-size: 0.875rem/* 14px */;
-  line-height: 1.25rem/* 20px */;
-  font-family: montserrat;
-  position: sticky;
-  top: 20px;  
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-family: montserrat; 
+
 
   @media screen and (max-width: 780px) {
     div{
@@ -135,10 +135,23 @@ $--bc: var(--Libertum-color);
 }
 }
 }
-.activeBuyContainer {
-  position: sticky;
-  top: 20px;
-  /* Otros estilos según sea necesario */
+
+// .buyComponentCentered{
+//   position: fixed;
+//   top: 50%;
+//   transform: translateY(-50%);
+//   z-index: 0;
+// }
+.buyComponent {
+  // Otras propiedades de estilo aquí
+  transition: top 0.3s ease; // Ajusta la duración y el tipo de transición según tus preferencias
+}
+
+.sticky {
+  position: fixed;
+  top: 15%;
+  // width: 100%;
+  z-index: 0; // Ajusta según sea necesario
 }
 
 // --------------------------- ABOUT PROPERTY ------------------------------
@@ -162,7 +175,6 @@ padding: auto;
   color: var(--black, #000);
   /* text-base/Regular */
   font-size: 1rem;
-  font-family: Inter;
   line-height: 1.5rem;  
   display: flex;
   // width: 37.6875rem;
@@ -221,7 +233,7 @@ padding: auto;
   }
 
   .openTitle {
-    color: #4d4c4c; 
+    color: var(--Libertum-color); 
      
   }
   
@@ -241,9 +253,8 @@ padding: auto;
   display: table;
   width: 100%;
   border-collapse: separate;
-  border-spacing: 0 1.5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  border-spacing: 0 1rem;
+  padding: 0 1rem;
   // margin-bottom: 3rem;
 
   @media screen and (max-width: 780px) {
@@ -416,6 +427,7 @@ input[type="range"]::-ms-track {
   justify-content: center;
   flex-shrink: 0;
   text-align: left;
+  min-width: 4rem;
 }
 
 // .tableRectangule{
@@ -479,7 +491,7 @@ input[type="range"]::-ms-track {
   align-items: left;
   text-align: left;
   line-height: 1.5rem;
-  margin-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 // ----------------------------- TABLA CUMULATIVE GAIN  ------------------------------

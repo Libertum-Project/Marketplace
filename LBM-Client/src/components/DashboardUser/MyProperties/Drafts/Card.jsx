@@ -2,9 +2,12 @@ import { Link } from "react-router-dom";
 import "./Draft.scss";
 import iconHouse from "../../assets/dashboardInactive.svg";
 import iconDelete from "../../assets/delete.svg";
+import iconEdit from "../../assets/edit.svg";
+import iconPreview from "../../assets/preview.svg";
 
 const Card = ({ id, address, city, country, handleDelete }) => {
   const editRoute = `/create/${id}`;
+  const previewRoute = `/draft/preview/${id}`; 
 
   return (
     <div className="cardDraft">
@@ -17,10 +20,13 @@ const Card = ({ id, address, city, country, handleDelete }) => {
       </div>
       <div className="button">
         <button onClick={handleDelete}>
-          <img src={iconDelete} alt="" className="delete" />
+          <img src={iconDelete} alt="" className="icon"/>
         </button>
         <Link to={editRoute}>
-          <button className="edit">Edit</button>
+          <img src={iconEdit} alt=""   className="icon"/>
+        </Link>
+        <Link to={previewRoute}>
+          <img src={iconPreview} alt=""  className="icon"/>
         </Link>
       </div>
     </div>

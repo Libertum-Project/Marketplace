@@ -98,7 +98,7 @@ return (
       <div className={style.tableRectangule}>
                   <div className={style.row}>
                   <div className={style.cell}>
-                     <span className={style.label}>Number of tokens to be purchased:</span>
+                     <span className={style.label}>Tokens to be purchased:</span>
                    </div>
  
 

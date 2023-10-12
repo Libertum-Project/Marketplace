@@ -55,7 +55,7 @@ import SubscribePage from "./components/Contact/SubscribePage";
 import ContactPage from "./components/Contact/ContactPage";
 import AboutPage from "./components/AboutUs/About";
 import ICO from './components/ICOPage/ICO';
-
+import PreviewProperty from './components/PreviewProperties/Preview';
 
 
 
@@ -285,6 +285,11 @@ function App() {
           <Route path={"/create/:id"} element={<CreateProperty />} />
 
           <Route path="/support" element={<SupportCenter />} />
+          
+          <Route path={"/draft/preview/:id"} element={<PreviewProperty />} />
+
+   
+          
           {/* <Route
           path="/support"
           element={Faq}
