@@ -6,6 +6,7 @@
   animation-name: inOpacity;
   animation-duration: 1s;
   animation-fill-mode: both; 
+  min-height: 18rem;
 
   h1 {
     font-family: "Montserrat";
@@ -76,18 +77,18 @@
   }
 
     .contentcontainer{
-      min-height: 28rem;
+      min-height: 20rem;
     }
   .content {
     position: relative;
-    margin-left: 10%;
+    margin-left: 20%;
     width: fit-content; 
 
   
 
     img {
       position: relative;
-      width: 27rem;
+      width: 23rem;
       transition: transform 0.3s ease-in-out;
 
       &.active {
@@ -98,13 +99,13 @@
     .overlay {
       position: absolute;
       top: 50%;
-      left: -10%;
+      left: -30%;
       transform: translate(-50%, -50%);
       background-color: rgba(0, 0, 0, 0.6);
       color: white;
       padding: 10px;
       border-radius: 5px;
-      width: 18rem;
+      width: 22rem;
       opacity: 1;
       transition: opacity 0.3s;
 
