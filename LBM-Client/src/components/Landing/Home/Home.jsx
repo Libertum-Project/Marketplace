@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import launchapp from "./assets/launchapp.svg";
 import NavBar from "../NavBar/NavBar";
 import "./Home.scss";
-import bgvideo from './assets/bgvideo5.mp4'
+// import bgvideo from './assets/bgvideo5.mp4'
+import bgvideo from './assets/background.gif';
 
 export default function Home() {
   return (
@@ -12,7 +13,13 @@ export default function Home() {
 
       <section className="home_section">
         <div>
-          <video
+        <img
+            className="absolute inset-0 w-full h-full object-cover -z-10 opacity-30"
+            src={bgvideo} 
+            alt="Your browser does not support the video tag" 
+          />
+
+          {/* <video
             autoPlay
             loop
             muted
@@ -20,7 +27,7 @@ export default function Home() {
           >
             <source src={bgvideo} type="video/mp4" />
             Your browser does not support the video tag.
-          </video>
+          </video> */}
 
 
           <div className="home_text">

@@ -1,22 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { Slide } from "react-awesome-reveal";
-
-import desktop from "./assets/desktop.png";
+// import desktop from "./assets/desktop.png";
 import arrow from "./assets/arrow.svg";
-import criptoImage from "./assets/cripto.svg";
-import personImage from "./assets/person.svg";
+// import criptoImage from "./assets/cripto.svg";
+// import personImage from "./assets/person.svg";
+import rewardImage from "./assets/reward.svg";
+import opportunityImage from "./assets/opportunity.svg"
 import "./Protocol.scss";
 
 const content = [
   {
     title: "The libertum Opportunity",
     paragraph: "Using the Libertum platform allows everyone to invest in premium real estate. Real estate is the single biggest asset class that anyone can digitally invest in.. The Global real estate market is worth $369 trillion...​",
-    imagen: personImage
+    imagen: opportunityImage
   },
   {
     title:  "The Libertum Reward",
     paragraph: "Libertum allows everyone to earn a second income. There is no mortgage or large investment required, You simply sit back and enjoy the passive income your investments provide.",
-    imagen: criptoImage
+    imagen: rewardImage
   }
 ]
 
