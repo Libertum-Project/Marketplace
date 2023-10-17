@@ -138,16 +138,16 @@ function NavbarMarket() {
               <NavLink to="/ico">
                 <p>BUY LIBERTUM</p>
               </NavLink>
-                <NavLink
+                {/* <NavLink
                   // to={pdf}
-                  target="_blank"
+                  // target="_blank"
                   rel="noopener noreferrer"
                   to="/comingsoon"
                   // download="LBM-whitepaper.pdf"
                   // className="footer_li"
                 >
-                  <p>WHITEPAPER</p>
-                </NavLink>
+                  <p>BLOG</p>
+                </NavLink> */}
 
             </div>
             <div className={style.buttons2}>

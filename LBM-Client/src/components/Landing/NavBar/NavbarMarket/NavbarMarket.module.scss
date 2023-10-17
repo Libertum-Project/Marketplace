@@ -39,8 +39,8 @@
 }
 
 .flexContainer {
-  // width: 90%;
-  width: 100%;
+  width: 90%;
+  // width: 100%;
   padding: 2rem 5rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -82,7 +82,7 @@
   gap: 3em;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
-  justify-content: center;
+  justify-content: right;
 }
 
 .button,
@@ -145,7 +145,7 @@
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
-  gap: 3rem;
+  gap: 1rem;
 }
 
 .language,
