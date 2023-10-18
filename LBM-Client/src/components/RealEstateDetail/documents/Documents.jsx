@@ -12,7 +12,7 @@ const Documents = () => {
   const color= "#F7931A"
 
     return(
-        <div>
+        <div className={style.downloadContainer}>
             
             <Link
              to={plano1}
