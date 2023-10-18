@@ -121,14 +121,14 @@ function NavbarMarket() {
               <img src={logo} alt="Libertum Logo" width="80px" />
             </a>
             <div className={style.buttons}>
-              <div
+              <NavLink
                 data-dropdown-button
                 onClick={() => setActive(!active)}
                 className={active ? style.button2 : style.button}
               >
                 <p>MARKETPLACES</p>
                 <IoChevronDownOutline />
-              </div>
+              </NavLink>
               {/* <NavLink to="/about">
               <p>ABOUT US</p>
               </NavLink> */}
@@ -214,7 +214,7 @@ function NavbarMarket() {
             headerType === "alternative"
               ? {
                   background: "rgba(255, 255, 255, 0.483)",
-                  backdropFilter: "blur(3px)",
+                  backdropFilter: "blur(50px)",
                 }
               : {}
           }
@@ -241,6 +241,7 @@ function NavbarMarket() {
           <Link href="/">
             <img src="./LibertumColor.png" alt="Libertum Logo" width="80px" />
           </Link>
+          
           {user ? (
             <div className={style["notification-badge"]}>
               <img
