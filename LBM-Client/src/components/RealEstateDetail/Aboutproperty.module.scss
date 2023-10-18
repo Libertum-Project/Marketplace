@@ -46,6 +46,8 @@ $--bc: var(--Libertum-color);
   @media screen and (max-width: 780px) {
     div{
       display: none;
+      height: fit-content;
+
     }
     .cardbody{
       height: fit-content;
@@ -53,10 +55,11 @@ $--bc: var(--Libertum-color);
     position: fixed;
     bottom: 0;
     z-index: 9999;
-    max-width: 100%;
+    min-width: 100%;
     padding-top: .5rem;
     padding-bottom: 2.2rem;
-    margin-bottom: .5rem;
+    background-color: var(--Libertum-color);
+    border-radius: .5rem .5rem 0 0;
   }
 
   h1{
@@ -206,12 +209,13 @@ padding: auto;
     margin-bottom: 10px;
     background-color: #ffffff82;
     transition: border-color 0.3s, background-color 0.3s;
-    
+   
     &.active {
       // border: 1px solid var(--LibertumBlue);      
       background-color: rgba(228, 228, 228, 0.127);
       // border: 1px solid rgb(227, 227, 227);
       color: #4d4c4c; 
+      border: 1px solid var(--LibertumBlue);
       border-radius: .8rem;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);  
     }
@@ -227,13 +231,15 @@ padding: auto;
     font-size: 1.1rem;  
     // font-weight: 600;
     .accordionIcon {
-      margin-right: 10px;
-      
+      margin-right: 10px;      
     }
   }
 
   .openTitle {
-    color: var(--Libertum-color); 
+    // color: var(--LibertumBlue); 
+    color: #f2f2f2;
+    background-color: var(--LibertumBlue);
+    border-radius: .7rem;
      
   }
   
@@ -486,12 +492,16 @@ input[type="range"]::-ms-track {
     margin-left:0rem;
   }
 }
+.downloadContainer{
+  padding: 1rem .5rem;
 
+}
 .download {
   align-items: left;
   text-align: left;
   line-height: 1.5rem;
-  padding-bottom: 1rem;
+  padding-bottom: .5rem;
+
 }
 
 // ----------------------------- TABLA CUMULATIVE GAIN  ------------------------------
@@ -513,7 +523,7 @@ input[type="range"]::-ms-track {
   // margin-left: 1rem;
   
   @media screen and (max-width: 767px) {
-    width: 70%;
+    width: 100%;
   }
 }
 

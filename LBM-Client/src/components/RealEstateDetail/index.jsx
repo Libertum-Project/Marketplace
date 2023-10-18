@@ -70,7 +70,7 @@ const Index = () => {
         <img
           src={property.Feature.Link_Image[0]}
           alt="property image"
-          onClick={(event) => openModal(0, event)}
+          onClick={(event) => openCarrousel(0, event)}
         />
         <div className={css.otherImages}>
 
@@ -79,7 +79,7 @@ const Index = () => {
               key={index}
               src={image}
               alt={`Image ${index}`}
-              onClick={() => openModal(index)}
+              onClick={() => openCarrousel(index)}
             />
           ))}
         </div>
