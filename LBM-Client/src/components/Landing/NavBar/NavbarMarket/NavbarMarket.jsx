@@ -239,7 +239,7 @@ function NavbarMarket() {
             </div>
           </div>
           <Link href="/">
-            <img src="./LibertumColor.png" alt="Libertum Logo" width="80px" />
+            <img src={logo} alt="Libertum Logo" width="80px" />
           </Link>
           
           {user ? (
