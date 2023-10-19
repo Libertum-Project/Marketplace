@@ -36,6 +36,10 @@ $buttonh2: (
     margin-top: auto, /* Añade esta línea */
 );
 
+.adminContainer{
+    padding-top: 2rem;
+}
+
 .mainContainer{
     display: grid; /* Use grid layout */
     grid-template-columns: 1fr 1fr 2fr;/* Create three equal columns */
@@ -51,6 +55,38 @@ $buttonh2: (
 //     flex: 1;
 // }
 
+
+.formContainer {
+    --primary: var(--Libertum-color);
+    --soft-bg: rgba(var(--LibertumColorRGB), 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    caret-color: var(--primary);
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    background-image: url('../assets/background.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding-left: 3rem;
+    margin: 0 2rem;
+  }
+  
+  .title{
+    color: whitesmoke;
+    text-align: left;
+    width: 100%;
+    // padding-left: 3rem;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-family: montserrat;
+    letter-spacing: 1rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+  
+  }
+
 .section1{
     // flex: 1;
     display:block;
@@ -62,15 +98,14 @@ $buttonh2: (
     background: $greycolor;
     margin-left: 1rem;
     margin-right: 2rem;
-
-    
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);   
 }
 
 .section1 h2{
     // width: 238.565px;
-    color: var(--0-c-0507, #0C0507);
-    font-family: Inter;
-    font-size: 24px;
+    color: var(--0-c-0507, #323232);
+    font-family: Montserrat;
+    font-size: 20px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -105,13 +140,14 @@ $buttonh2: (
     border-radius: 16px;
     background: $greycolor;
     margin-right: 2rem;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
 }
 
 .section2 h2{
     // width: 238.565px;
-    color: var(--0-c-0507, #0C0507);
-    font-family: Inter;
-    font-size: 24px;
+    color: var(--0-c-0507, #323232);
+    font-family: Montserrat;
+    font-size: 20px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -146,6 +182,8 @@ $buttonh2: (
     border: 1px solid rgba(111, 111, 111, 0.20);
     background: var(--style, #FFF);
     margin-left: 2rem;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+
 }
 
 .seefraction{
@@ -162,9 +200,9 @@ $buttonh2: (
         height: 1.21669rem;
         flex-direction: column;
         justify-content: left;
-        color: var(--0-c-0507, #0C0507);
-        font-family: Inter;
-        font-size: 1.125rem;
+        color: var(--0-c-0507, #323232);
+        font-family: Montserrat;
+        font-size: 20px;
         font-style: normal;
         font-weight: 700;
         line-height: normal;
@@ -200,3 +238,16 @@ button{
         border-radius: 2%;
     }
 }
+
+
+@media screen and (max-width: 780px) {
+    .formContainer{
+      padding: 0;
+      background-image: none;
+      .title{
+        letter-spacing: 0;
+        text-align: center;
+        color: var(--LibertumBlue);
+      }
+    }
+  }

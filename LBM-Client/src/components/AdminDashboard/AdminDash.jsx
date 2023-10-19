@@ -13,6 +13,8 @@ import Admins from "./TableAdmins/TableAdmins";
 import styles from "./adminDash.module.css";
 import Loading from "../Loading/Loading";
 import PropertyTable from "./Properties/PropertyTable"; 
+import Tokens from "./Tokens/Tokens";
+import css from "./adminDash.module.css"
 
 const AdminDash = () => {
   const dispatch = useDispatch();
@@ -66,43 +68,16 @@ const AdminDash = () => {
   return !isLoading && isAuthenticated && admin ? (
     <div>
       <Frame1 />
-      {/* {allProperties.length > 0 && (
-        <section className={styles.properties_container}>
-          {allProperties.map((property) => (
-            <div key={property.ID_Property} className={styles.property}>
-              <p>Name: {property.Feature.Address}</p>
-              <p>
-                Investment Type:{" "}
-                <span>{property.Financial.Investment_type}</span>
-              </p>
-              <button
-                className={`${property.IsActive ? "" : styles.disable}`}
-                onClick={() =>
-                  property.IsActive
-                    ? handlePause(property.ID_Property, false)
-                    : null
-                }
-              >
-                Pause
-              </button>
-              <button
-                className={`${property.IsActive ? styles.disable : ""}`}
-                onClick={() =>
-                  property.IsActive
-                    ? null
-                    : handleActive(property.ID_Property, true)
-                }
-              >
-                Activate
-              </button>
-            </div>
-          ))}
-        </section>
-      )} */}
-      {/* <Frame2 /> */}
-      {/* <Frame3 /> */}
+
+      <h2 className={css.subtitle}>Other admins</h2>
       <Admins />
+
+      <h2 className={css.subtitle}>Properties' monthly payment</h2>
       <PropertyTable />
+
+      <h2 className={css.subtitle}>Tokens PRE-SALE</h2>
+      <Tokens />
+
     </div>
   ) : (
     <Loading />

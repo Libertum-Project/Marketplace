@@ -32,7 +32,7 @@
       headRow: {
             style: {
               color: 'var(--0-c-0507, #0C0507)',
-              fontFamily: 'Inter',
+              fontFamily: 'Montserrat',
               fontSize: '0.875rem',
               fontWeight: 700,
               textTransform: 'capitalize'
@@ -43,8 +43,8 @@
                 when: row => row.action === 'Activate',
                 style: {
                   borderRadius: '4px',
-                  backgroundColor: 'blue', // Aquí puedes cambiar el color de fondo deseado
-                  color: 'white', // Aquí puedes cambiar el color del texto deseado
+                  backgroundColor: '#009ED4', 
+                  color: 'white', 
                 }
               }
             ]
@@ -87,7 +87,7 @@
               </button>
             ) : (
               <button
-                style={{ backgroundColor: 'blue', color: 'white', border: 'none', borderRadius: '3px', padding: '3px 10px' }}
+                style={{ backgroundColor: '#009ED4', color: 'white', border: 'none', borderRadius: '3px', padding: '3px 10px' }}
                 onClick={() => handleActive(row.ID_Property, true)}
               >
                 Activate

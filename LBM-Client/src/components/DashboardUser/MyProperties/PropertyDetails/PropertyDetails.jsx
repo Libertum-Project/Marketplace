@@ -11,14 +11,10 @@ const PropertyDetails = ({ property, closeModal }) => {
     const handleOutsideClick = (e) => {
       const modal = document.querySelector('.property-details-container');
       if (modal && !modal.contains(e.target)) {
-        closeModal(); // Llama a la función para cerrar el modal
-      }
+        closeModal(); 
+      } 
     };
-
-    // Agregar el event listener cuando el componente se monta
     document.addEventListener('mousedown', handleOutsideClick);
-
-    // Limpiar el event listener cuando el componente se desmonta
     return () => {
       document.removeEventListener('mousedown', handleOutsideClick);
     };
