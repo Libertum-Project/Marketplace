@@ -146,6 +146,7 @@ useEffect(() => {
         NFTPrice={property.Financial.Token_Price}
         AvailablesNFT={property.Financial.Number_of_tokens_available}
         capital={property.Financial.Capital_payment_duration}
+        country = { property.Feature.Country}
       />
     ))
   ) : (
