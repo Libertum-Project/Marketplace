@@ -4,7 +4,7 @@ import style from "./Aboutproperty.module.scss";
 import Icons from "./IconsAmenities/Icons";
 
 const Buy = (props) => {
-  const { Square_foot, rooms, amenities, image, id, address, location, PIT, PRY, AvailablesNFT } = props;
+  const { Square_foot, rooms, amenities, image, id, address, location, PIT, PRY, AvailablesNFT, country } = props;
 
   const [isSticky, setIsSticky] = useState(false);
   const [hasReachedScrollLimit, setHasReachedScrollLimit] = useState(false);
@@ -47,7 +47,7 @@ const Buy = (props) => {
     <div className={style.column2}>
       <div id="buyComponent" className={`${style.buyComponent} ${isSticky ? style.sticky : ''}`}>
         <div className={style.buycontainer}>
-          <h1>{location}  </h1>
+          <h1>{location} · {country}  </h1>
           <h1> {address} </h1>
 
           <div>

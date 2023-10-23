@@ -60,7 +60,7 @@ const Index = () => {
       <header className={css.header}>
         <h2>{property.Feature.Address} <SaveProperty propertyId={property.ID_Property} /> </h2>
         <div className={css.headerText}>
-          <p>{property.Feature.City}</p>
+          <p>{property.Feature.City} · {property.Feature.Country}</p>
         </div>
       </header>
 
@@ -135,6 +135,7 @@ const Index = () => {
             type={property.Feature.type}
             address={property.Feature.Address}
             location={property.Feature.City}
+            country = {property.Feature.Country}
             PIT={property.Financial.Passive_Income_per_token}
             PRY={property.Financial.Rental_yield}
             tokenised={property.Financial.Percent_of_property_tokenized}
