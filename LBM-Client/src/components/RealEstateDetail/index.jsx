@@ -74,7 +74,7 @@ const Index = () => {
         />
         <div className={css.otherImages}>
 
-          {property.Feature.Link_Image.slice(1).map((image, index) => (
+          {property.Feature.Link_Image.slice(1,5).map((image, index) => (
             <img
               key={index}
               src={image}

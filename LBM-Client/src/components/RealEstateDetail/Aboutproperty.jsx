@@ -51,7 +51,7 @@ const Aboutproperty = ({
   type,
 }) => {
 
-  
+  console.log(amenities)
 
   return (
     <div className={style.container}>

@@ -21,6 +21,7 @@ const Review = ({
     const errors = {};
     const onlyLetters = /^[A-Za-z\s]+$/;
 
+    
     if (
       !propertyData.featureData.Square_foot ||
       propertyData.featureData.Square_foot < 1
@@ -71,11 +72,11 @@ const Review = ({
       errors.Amenities = "Amenities are required";
     }
 
-    if (!propertyData.featureData.Description.trim()) {
-      errors.Description = "Description is required";
-    } else if (propertyData.featureData.Description.length > 300) {
-      errors.Description = "Description must not exceed 300 characters";
-    }
+    // if (!propertyData.featureData.Description.trim()) {
+    //   errors.Description = "Description is required";
+    // } else if (propertyData.featureData.Description.length > 300) {
+    //   errors.Description = "Description must not exceed 300 characters";
+    // }
 
     /*
     if (images.length < 5) {
@@ -139,14 +140,14 @@ const Review = ({
         "Percent of property tokenized is required";
     }
 
-    if (
-      (!propertyData.financialData.Monthly_capital_repayment_amount ||
-        propertyData.financialData.Monthly_capital_repayment_amount < 1) &&
-      propertyData.financialData.Investment_type !== "passiveIncome"
-    ) {
-      errors.Monthly_capital_repayment_amount =
-        "Monthly Capital Repayment Amount is required";
-    }
+    // if (
+    //   (!propertyData.financialData.Monthly_capital_repayment_amount ||
+    //     propertyData.financialData.Monthly_capital_repayment_amount < 1) &&
+    //   propertyData.financialData.Investment_type !== "passiveIncome"
+    // ) {
+    //   errors.Monthly_capital_repayment_amount =
+    //     "Monthly Capital Repayment Amount is required";
+    // }
 
     if (
       (!propertyData.financialData.Capital_payment_duration ||
@@ -166,7 +167,11 @@ const Review = ({
     isValid ? handleSubmit() : console.log(formErrors);
   };
 
+  console.log(propertyData.financialData.Market_value_of_the_property)
+  console.log(propertyData)
+ 
   return (
+    
     <form className={css.createForm} onSubmit={handleSubmit}>
       <div className={css.formHeader}>
         <button onClick={onBack}>

@@ -31,7 +31,7 @@ const Financials = ({number, PRY, value, AvailablesNFT, NFTPrice, capital}) => {
     const monthlycapitalrepayment = (capitalrepaymentpertoken/12).toFixed(2)
     const anualcapitalrepayment = capitalrepaymentpertoken * rangeValue
   
- console.log(value)
+ console.log(PRY)
 
 return (
   <div>
