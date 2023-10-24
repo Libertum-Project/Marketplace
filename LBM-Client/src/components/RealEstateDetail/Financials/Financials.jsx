@@ -24,12 +24,13 @@ const Financials = ({number, PRY, value, AvailablesNFT, NFTPrice, capital}) => {
     
     const investment = NFTPrice * rangeValue;
     const passiveincometoken = (((investment * PRY)/100) / rangeValue).toFixed(2)
-    const passiveIncomePerYear = ((investment*PRY)).toFixed(2);
+    const passiveIncomePerYear = ((investment*PRY)/100).toFixed(2);
     const passiveIncomePerMonth = (passiveIncomePerYear / 12).toFixed(2);
+    console.log(passiveincometoken)
     console.log(passiveIncomePerMonth)
     const capitalrepaymentpertoken = NFTPrice/capital;
     const monthlycapitalrepayment = (capitalrepaymentpertoken/12).toFixed(2)
-    const anualcapitalrepayment = capitalrepaymentpertoken * rangeValue
+    const anualcapitalrepayment = (capitalrepaymentpertoken * rangeValue).toFixed(2)
   
  console.log(PRY)
 
@@ -85,7 +86,7 @@ return (
 
                  <div className={style.row}>
                    <div className={style.cell}>
-                     <span className={style.label}>Passive Income per token:</span>
+                     <span className={style.label}>Rental Income per token:</span>
                    </div>
                    <div className={style.cell}>
                      <span className={style.descriptiontable}>{passiveincometoken}</span>
@@ -134,7 +135,7 @@ return (
 
                  <div className={style.row}>
                    <div className={style.cell}>
-                     <span className={style.label}>Anual Passive Income:</span>
+                     <span className={style.label}>Annual Rental Income:</span>
                    </div>
                    <div className={style.cell}>
                    <span className={style.descriptiontabledif}>$ {passiveIncomePerYear}</span>
@@ -143,7 +144,7 @@ return (
 
                  <div className={style.row}>
                    <div className={style.cell}>
-                     <span className={style.label}>Passive Income per Month:</span>
+                     <span className={style.label}>Monthly Rental Income:</span>
                    </div>
                    <div className={style.cell}>
                    <span className={style.descriptiontabledif}>$ {passiveIncomePerMonth}</span>
