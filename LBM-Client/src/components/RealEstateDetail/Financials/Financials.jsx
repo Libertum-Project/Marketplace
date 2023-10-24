@@ -26,12 +26,16 @@ const Financials = ({number, PRY, value, AvailablesNFT, NFTPrice, capital}) => {
     const passiveincometoken = (((investment * PRY)/100) / rangeValue).toFixed(2)
     const passiveIncomePerYear = ((investment*PRY)/100).toFixed(2);
     const passiveIncomePerMonth = (passiveIncomePerYear / 12).toFixed(2);
+
     console.log(passiveincometoken)
     console.log(passiveIncomePerMonth)
-    const capitalrepaymentpertoken = NFTPrice/capital;
+
+    const capitalRepaymentDuration = Math.floor(capital);
+    const capitalrepaymentpertoken = (NFTPrice/capital/12).toFixed(2);
     const monthlycapitalrepayment = (capitalrepaymentpertoken/12).toFixed(2)
-    const anualcapitalrepayment = (capitalrepaymentpertoken * rangeValue).toFixed(2)
-  
+    // const anualcapitalrepayment = (capitalrepaymentpertoken * rangeValue).toFixed(2)
+    const anualcapitalrepayment = (parseFloat(passiveincometoken) + parseFloat(capitalrepaymentpertoken)).toFixed(2);
+
  console.log(PRY)
 
 return (
@@ -158,7 +162,7 @@ return (
                                      <span className={style.label}>Capital Repayment Duration:</span>
                                    </div>
                                    <div className={style.cell}>
-                                     <span className={style.descriptiontable}>{capital} years</span>
+                                     <span className={style.descriptiontable}>{capitalRepaymentDuration} years</span>
                                    </div>
                                  </div>
 
@@ -167,13 +171,13 @@ return (
                                      <span className={style.label}>Capital Repayment per Token:</span>
                                    </div>
                                    <div className={style.cell}>
-                                     <span className={style.descriptiontable}>$ {monthlycapitalrepayment} / month </span>
+                                     <span className={style.descriptiontable}>$ {capitalrepaymentpertoken} / month </span>
                                    </div>
                                  </div>
 
                                  <div className={style.row}>
                                    <div className={style.cell}>
-                                     <span className={style.label}>Annual Capital Repayment:</span>
+                                     <span className={style.label}>Annual Repayment:</span>
                                    </div>
                                    <div className={style.cell}>
                                      <span className={style.descriptiontable}> $  {anualcapitalrepayment} </span>
