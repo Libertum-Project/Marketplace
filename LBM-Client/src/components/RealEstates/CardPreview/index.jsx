@@ -83,7 +83,7 @@ const Index = (props) => {
         </div>
 
         <div className={style.description}>
-          <p>Pasive Income per Token: ${PIT} </p>
+          <p>Rental Income per token: ${PIT} </p>
           <p>Projected Rental Yield: {PRY} % </p>
           <p> Property Tokenised: {Math.floor(tokenised)}%</p>
           {capital ? <p>Capital Repayment Duration: {Math.floor(capital)} years</p> : null}
