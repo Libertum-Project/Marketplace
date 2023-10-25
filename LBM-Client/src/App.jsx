@@ -115,10 +115,10 @@ function App() {
             path="/ico"
             element={
               <div className="">
-                {/*
+                
                 <ICO />
-                 */}
-                <CoomingSoon />
+                
+                {/* <CoomingSoon /> */}
               </div>
             }
           />
