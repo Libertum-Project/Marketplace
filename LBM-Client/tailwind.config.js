@@ -5,7 +5,12 @@ export default {
     extend: {
       colors: {
         primary: '#f7931a',
+        customGray: '#CFD5EA',
+        // Color2: '#CED3E5',
+        // customBlue: '#527BC4'
+
       },
+
       fontFamily: {
         fb: ['Agdasima'],
       },
