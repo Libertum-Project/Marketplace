@@ -3,10 +3,10 @@ import Logo from "../../assets/Libertum-logo.png";
 
 const HowToBuy = () => {
     return (
-        <div className='bg-gray-800 lg:h-[700px] h-auto'>
-            <img src={Logo} alt="Under Construction" className=" mb-8 absolute -z-1 opacity-10 lg:h-[700px]" />
-            <h1 className=" items-center z-10 text-4xl text-gray-200 font-fb font-semibold relative pt-4 ">How To Buy</h1>
-            <div className="text-gray-400 text-center space-x-4 mt-6 lg:flex ">
+        <div className='bg-gray-800  lg:h-[700px] h-auto'>
+            <img src={Logo} alt="Under Construction" className=" mb-8 absolute -z-1 opacity-10 lg:h-[700px] md:h-[600px]" />
+            <h1 className=" items-center z-10 text-5xl text-orange-400 font-fb font-semibold relative pt-4  ">How To Buy</h1>
+            <div className="text-gray-400 text-center space-x-4 mt-12 lg:flex lg:mt-20 ">
 
                 <div className="inline-block px-6 p-2 lg:w-[33%] w-[96%] text-left">
                         <span className="text-3xl font-bold">Step 1</span>
@@ -42,7 +42,7 @@ const HowToBuy = () => {
 
             </div>
 
-            <div className='block lg:w-[50%] mx-auto text-gray-100  rounded-3xl  p-4'>
+            {/* <div className='block lg:w-[50%] mx-auto text-gray-100  rounded-3xl  p-4'>
                 <div className="lg:flex gap-6">
                 <div className=' lg:w-80 bg-gray-400 text-gray-800 p-4 rounded-xl mb-6 lg:mb-0'>
                     <h1 className='border-b-2 text-blue-900 mb-2'>BUY $LBM WITH CARD OR BANK TRANSFER (FIAT CURRENCY) </h1>
@@ -54,7 +54,7 @@ const HowToBuy = () => {
                     <p className='text-sm text-left'>With sufficient CRYPTO in your chosen wallet, you will now be able to swap for $LBM. Inside the ‘TRADE WITH CRYPTO’ panel, enter the amount of $LBM you would like to purchase, click ‘BUY’. You will then be shown the cost of gas and asked to confirm the transaction by your wallet provider. </p>
                 </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 };
