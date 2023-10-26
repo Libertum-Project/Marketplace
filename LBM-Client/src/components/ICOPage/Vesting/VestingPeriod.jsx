@@ -19,7 +19,7 @@ function Vesting() {
 
     return (
         <div className="bg-gray-800 p-8 shadow-md border-t border-b hidden md:block">
-            <h1 className="text-2xl mb-6 font-bold text-orange-400">We believe in  conservative approach to ensure price stability. Only a small (but significant) percentage of $LBM will be unlocked at the token generation event. This means that $LBM will enjoy stability and reputational excellence. ​</h1>
+            <h1 className="text-lg mb-6 font-bold text-orange-400">We believe in  conservative approach to ensure price stability. Only a small (but significant) percentage of $LBM will be unlocked at the token generation event. This means that $LBM will enjoy stability and reputational excellence. ​</h1>
 
             <table className="w-[60%] table-fixed mx-auto">
                 <thead>
