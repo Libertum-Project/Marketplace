@@ -29,7 +29,7 @@ const ICO = () => {
                             </h1>
                             <p className="mb-8 leading-relaxed md:text-xl text-gray-400 text-sm ">Don't miss out on your chance to be a part of the inclusive revolution in the real estate market. Start earning a steady rental income every month, hassle-free, and without any additional maintenance costs.</p>
                             <p className="mb-8 leading-relaxed md:text-xl text-gray-400 text-sm px-2">By purchasing $LBM tokens, you are joining a movement that seeks to democratise and transform the landscape of fractionalised rental income investments. join us in creating a more inclusive world for all.</p>
-                            <img src={certik} alt="" className='rounded-2xl md:w-40 w-24' />
+                            {/* <img src={certik} alt="" className='rounded-2xl md:w-40 w-24' /> */}
                         </div>
                         <div className=" shadow-2xl rounded-3xl md:mt-20 lg:-mr-[74px] px-5 md:px-0 -mt-10">
                             <div className='bg-gray-800 text-white p-5 text-center rounded-t-3xl'>
@@ -48,14 +48,14 @@ const ICO = () => {
                                         <p className='md:mb-3 text-sm'>Amount of USD you pay</p>
                                         <div className='flex bg-gray-300 rounded-lg lg:w-[130px] md:w-[200px] mx-auto '>
                                             <input type="text" placeholder='0' className='py-3 pl-5 rounded-xl text-lg  bg-gray-300 md:w-[90px]' />
-                                            <h2 className='font-bold  md:pr-4 mt-2'>USD</h2>
+                                            <h2 className='font-bold  md:pr-4 mt-[2px]'>USD</h2>
                                         </div>
                                     </div>
                                     <div className='md:px-2'>
                                         <p className='md:mb-3 text-sm '>Amount of USD you Recieve</p>
                                         <div className='flex rounded-lg bg-gray-300 lg:w-[130px] md:w-[200px] mx-auto'>
                                             <input type="text" placeholder='0' className='py-2 pl-5 rounded-xl text-lg  bg-gray-300 md:w-[90px]' />
-                                            <h2 className='font-bold md:pr-4 mt-2'>USD</h2>
+                                            <h2 className='font-bold md:pr-4 mt-[2px]'>USD</h2>
                                         </div>
                                     </div>
                                 </div>

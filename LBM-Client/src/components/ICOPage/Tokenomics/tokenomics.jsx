@@ -22,36 +22,37 @@ function Tokenomics() {
 
 
     return (
-        <div className="bg-gray-800 p-8 shadow-md border-t ">
+        // <div className="bg-gray-800 p-8 shadow-md border-t ">
+        
+        //     <div className='lg:flex lg:justify-around mx-auto rounded-xl'>
+        //         <table className="lg:w-[55%] mx-auto -ml-2 md:ml-0 rounded-lg hidden">
+        //             <thead className=''>
+        //                 <tr className='bg-[#527BC4] text-white '>
+        //                     <th className=" px-4 border-r-2 border-b-2 ">Allocation</th>
+        //                     <th className="lg:w-[60px] border-r-2  border-b-2">%</th>
+        //                     <th className=" px-2 lg:w-[150px] border-r-2  border-b-2">Token Amount</th>
+        //                     <th className="lg:px-4  border-b-2">Vesting</th>
+        //                 </tr>
+        //             </thead>
+        //             <tbody>
+        //                 {allocations.map((allocation, index) => (
+            //                     <tr key={index} className="bg-white border-b leading-5">
+            //                         <td className="lg:px-4 pl-1 bg-[#527BC4] text-white text-left font-semibold">{allocation.name}</td>
+            //                         <td className={`lg:w-[20px]  bg-${allocation.bg} border`}>{allocation.percentage}</td>
+            //                         <td className={` bg-${allocation.bg} border`}>{allocation.amount}  </td>
+            //                         <td className={`h-10 text-left px-2  bg-${allocation.bg} text-sm`}>{allocation.vesting}</td>
+            //                     </tr>
+            //                 ))}
+            //             </tbody>
+            //         </table>
+            
+            //     </div>
+            // </div>
+            <div className='lg:w-[60%] md:w-[60%] mx-auto py-10 lg:px-40'>
             <h1 className="text-3xl mb-6 font-bold text-orange-400 py-5">Allocation of $LBM Tokens</h1>
-
-            <div className='lg:flex lg:justify-around mx-auto rounded-xl'>
-                <table className="lg:w-[55%] mx-auto -ml-2 md:ml-0 rounded-lg">
-                    <thead className=''>
-                        <tr className='bg-[#527BC4] text-white '>
-                            <th className=" px-4 border-r-2 border-b-2 ">Allocation</th>
-                            <th className="lg:w-[60px] border-r-2  border-b-2">%</th>
-                            <th className=" px-2 lg:w-[150px] border-r-2  border-b-2">Token Amount</th>
-                            <th className="lg:px-4  border-b-2">Vesting</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {allocations.map((allocation, index) => (
-                            <tr key={index} className="bg-white border-b leading-5">
-                                <td className="lg:px-4 pl-1 bg-[#527BC4] text-white text-left font-semibold">{allocation.name}</td>
-                                <td className={`lg:w-[20px]  bg-${allocation.bg} border`}>{allocation.percentage}</td>
-                                <td className={` bg-${allocation.bg} border`}>{allocation.amount}  </td>
-                                <td className={`h-10 text-left px-2  bg-${allocation.bg} text-sm`}>{allocation.vesting}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-                <div className='lg:w-[38%] md:w-[60%] mx-auto'>
-                    <Chart />
-                    <h1 className='font-bold lg:mt-[-48%] md:absolute lg:relative md:mt-[-25%] md:ml-[20%] lg:ml-0 text-xl leading-8 text-white'>$LBM 
-                       <br /> Allocatiom %</h1>
-                </div>
-            </div>
+            <Chart />
+            <h1 className='lg:-mt-[20%] mt-[-50%] absolute lg:ml-[15.5%] ml-[36%] md:ml-[24%] md:mt-[-30%] font-bold xl:ml-[60]'>$LBM
+            <br /> Allocatiom %</h1>
         </div>
     );
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import whitePaper from './assets/LBM-whitePaper.pdf';
 
 function HowToClaim() {
     return (
@@ -8,8 +9,8 @@ function HowToClaim() {
                 <h1 className="text-3xl mb-6 font-bold text-orange-400">How to Claim $LBM Token</h1>
 
                 <p className="text-xl mb-6 w-full text-gray-100">
-                    As we complete all funding rounds, you'll gain the opportunity to claim your $LBM tokens effortlessly! Stay tuned for comprehensive instructions on how to claim, which will be revealed closer to the scheduled time. When the claiming process is ready, simply visit our main page at 
-                    <a href="https://libertum.io" className="text-blue-500 underline px-2">libertum.io</a> 
+                    As we complete all funding rounds, you'll gain the opportunity to claim your $LBM tokens effortlessly! Stay tuned for comprehensive instructions on how to claim, which will be revealed closer to the scheduled time. When the claiming process is ready, simply visit our main page at
+                    <a href="https://libertum.io" className="text-blue-500 underline px-2">libertum.io</a>
                     and click on the "Claim" button. We've got you covered, and claiming your $LBM tokens will be as seamless as our investing in our fractionalised rental income model!
                 </p>
                 <button className='bg-orange-400 px-10  rounded-xl'>Buy Now</button>
@@ -20,11 +21,11 @@ function HowToClaim() {
                     Purchase with peace of mind, knowing that our $LBM token contract has undergone rigorous audits by “...”, a renowned blockchain security firm, ensuring unparalleled levels of security.
                 </p>
                 <div>
-                    
-
-                    <button className='bg-gray-100 px-10  rounded-xl'>
-                        White Paper
-                    </button>
+                    <a href={whitePaper} target='_blank' >
+                        <button className='bg-gray-100 px-10  rounded-xl'>
+                            White Paper
+                        </button>
+                    </a>
                 </div>
 
             </div>
