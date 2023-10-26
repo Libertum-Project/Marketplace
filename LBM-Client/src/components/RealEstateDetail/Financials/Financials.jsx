@@ -9,29 +9,25 @@ const Financials = ({number, PRY, value, AvailablesNFT, NFTPrice, capital}) => {
   const dividerStyle = {
     borderBottom: "1px inset silver",
     width: '30%', 
-    // margin: '0 auto', 
-    
+    // margin: '0 auto',     
   }
-
     const [rangeValue, setRangeValue] = useState(40);
-
     const handleRangeChange = (event) => {
         setRangeValue(event.target.value);
       };
-
       const thumbPosition = (rangeValue - 0) / (100 - 0);
-
     
     const investment = NFTPrice * rangeValue;
     const passiveincometoken = (((investment * PRY)/100) / rangeValue).toFixed(2)
-    const passiveIncomePerYear = ((investment*PRY)).toFixed(2);
+    const passiveIncomePerYear = ((investment*PRY)/100).toFixed(2);
     const passiveIncomePerMonth = (passiveIncomePerYear / 12).toFixed(2);
-    console.log(passiveIncomePerMonth)
-    const capitalrepaymentpertoken = NFTPrice/capital;
+    const capitalRepaymentDuration = Math.floor(capital);
+    const capitalrepaymentpertoken = (NFTPrice/capital/12).toFixed(2);
     const monthlycapitalrepayment = (capitalrepaymentpertoken/12).toFixed(2)
-    const anualcapitalrepayment = capitalrepaymentpertoken * rangeValue
-  
- 
+    // const anualcapitalrepayment = (capitalrepaymentpertoken * rangeValue).toFixed(2)
+    const totalCapitalRepayment = (capitalrepaymentpertoken*rangeValue).toFixed(2)
+    const anualcapitalrepayment = (parseFloat(passiveincometoken) + parseFloat(capitalrepaymentpertoken)).toFixed(2);
+    const totalAnualCapitalRepayment = (anualcapitalrepayment * rangeValue).toFixed(2)
 
 return (
   <div>
@@ -85,7 +81,7 @@ return (
 
                  <div className={style.row}>
                    <div className={style.cell}>
-                     <span className={style.label}>Passive Income per token:</span>
+                     <span className={style.label}>Rental Income per token:</span>
                    </div>
                    <div className={style.cell}>
                      <span className={style.descriptiontable}>{passiveincometoken}</span>
@@ -98,7 +94,7 @@ return (
       <div className={style.tableRectangule}>
                   <div className={style.row}>
                   <div className={style.cell}>
-                     <span className={style.label}>Number of tokens to be purchased:</span>
+                     <span className={style.label}>Tokens to be purchased:</span>
                    </div>
  
 
@@ -134,7 +130,7 @@ return (
 
                  <div className={style.row}>
                    <div className={style.cell}>
-                     <span className={style.label}>Anual Passive Income:</span>
+                     <span className={style.label}>Annual Rental Income:</span>
                    </div>
                    <div className={style.cell}>
                    <span className={style.descriptiontabledif}>$ {passiveIncomePerYear}</span>
@@ -143,7 +139,7 @@ return (
 
                  <div className={style.row}>
                    <div className={style.cell}>
-                     <span className={style.label}>Passive Income per Month:</span>
+                     <span className={style.label}>Monthly Rental Income:</span>
                    </div>
                    <div className={style.cell}>
                    <span className={style.descriptiontabledif}>$ {passiveIncomePerMonth}</span>
@@ -157,7 +153,7 @@ return (
                                      <span className={style.label}>Capital Repayment Duration:</span>
                                    </div>
                                    <div className={style.cell}>
-                                     <span className={style.descriptiontable}>{capital} years</span>
+                                     <span className={style.descriptiontable}>{capitalRepaymentDuration} years</span>
                                    </div>
                                  </div>
 
@@ -166,16 +162,34 @@ return (
                                      <span className={style.label}>Capital Repayment per Token:</span>
                                    </div>
                                    <div className={style.cell}>
-                                     <span className={style.descriptiontable}>$ {monthlycapitalrepayment} / month </span>
+                                     <span className={style.descriptiontable}>$ {capitalrepaymentpertoken} / month </span>
                                    </div>
                                  </div>
 
                                  <div className={style.row}>
                                    <div className={style.cell}>
-                                     <span className={style.label}>Annual Capital Repayment:</span>
+                                     <span className={style.label}>Capital Repayment:</span>
+                                   </div>
+                                   <div className={style.cell}>
+                                     <span className={style.descriptiontable}>$ {totalCapitalRepayment} / month</span>
+                                   </div>
+                                 </div>
+
+                                 <div className={style.row}>
+                                   <div className={style.cell}>
+                                     <span className={style.label}>Annual Repayment per token:</span>
                                    </div>
                                    <div className={style.cell}>
                                      <span className={style.descriptiontable}> $  {anualcapitalrepayment} </span>
+                                   </div>
+                                 </div>
+
+                                 <div className={style.row}>
+                                   <div className={style.cell}>
+                                     <span className={style.label}>Annual Repayment:</span>
+                                   </div>
+                                   <div className={style.cell}>
+                                     <span className={style.descriptiontable}> $  {totalAnualCapitalRepayment} </span>
                                    </div>
                                  </div>
 

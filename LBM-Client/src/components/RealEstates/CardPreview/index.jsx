@@ -22,6 +22,7 @@ const Index = (props) => {
     AvailablesNFT,
     price,
     capital,
+    country
   } = props;
 
   // ---------------- IMAGES CARROUSEL -------------------------------
@@ -68,7 +69,7 @@ const Index = (props) => {
       <div className={style.content}>
         <div className={style.header}>
           <div className={style.titleSubtitle}>
-            <h3>{location}</h3>
+            <h3>{location} · {country} </h3>
             <p>{address}</p>
           </div>
 
@@ -82,10 +83,10 @@ const Index = (props) => {
         </div>
 
         <div className={style.description}>
-          <p>Pasive Income per Token: ${PIT} </p>
+          <p>Rental Income per token: ${PIT} </p>
           <p>Projected Rental Yield: {PRY} % </p>
-          <p> Property Tokenised: {tokenised}%</p>
-          {capital ? <p>Capital Repayment Duration: {capital} years</p> : null}
+          <p> Property Tokenised: {Math.floor(tokenised)}%</p>
+          {capital ? <p>Capital Repayment Duration: {Math.floor(capital)} years</p> : null}
         </div>
 
         <div className={style.rating}>

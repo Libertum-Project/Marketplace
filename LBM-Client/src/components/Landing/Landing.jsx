@@ -88,6 +88,8 @@ export default function Landing() {
         <img src={divider} className="divider" />
       </div>
 
+      <Services />
+
       <div >
         <div className="timer-section">
           <div className="timer-container">
@@ -121,7 +123,7 @@ export default function Landing() {
         <img src={divider} className="divider" />
       </div>
 
-      <Services />
+      {/* <Services /> */}
 
       <div className="divider-container">
         <img src={divider} className="divider" />

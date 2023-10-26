@@ -36,8 +36,8 @@
 .cardDraft{
   display: flex;    
   padding: 1.5rem;
-  justify-content: center;  
-  gap: 1rem;
+  justify-content: space-around;  
+  gap: .5rem;
   flex-shrink: 0;  
   border-radius: 0.75rem;
   border: 1px solid var(--gray-200, #EAECEE);
@@ -69,23 +69,36 @@
       line-height: 150%; 
 
   }
-  button{
-    background-color: var(--Libertum-color);
-    width: fit-content;
-    // max-height: 2rem;
-    padding: .2rem 1rem;
-    border-radius: .5rem;
-    color: whitesmoke;
-    text-align: center;
-    text-transform: uppercase;
-    line-height: 1.5rem;
-    font-size: 10px;
-  }
+  
   .button{
     display: flex;
-    justify-content: center;
-    align-items: end;
-  }
+    flex-direction: column;
+
+  //   .edit{
+  //     background-color: var(--Libertum-color);
+  //     width: fit-content;
+  //     // max-height: 2rem;
+  //     padding: .3rem 1.2rem;
+  //     border-radius: .5rem;
+  //     color: whitesmoke;
+  //     text-align: center;
+  //     text-transform: uppercase;
+  //     line-height: 1.5rem;
+  //     font-size: 12px;
+  //     margin-bottom: 0;
+  //   }
+
+    // .delete{
+    //   height: 1.5rem;
+    // }
+
+    .icon{
+      width: 2rem;
+      height: auto;
+    }
+ }
+
+
 }
 
 

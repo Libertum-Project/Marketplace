@@ -6,7 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   createProperty,
   createDraftProperty,
+  editDraftProperty,
 } from "../../../redux/features/propertySlice";
+import { fetchCurrentUser } from "../../../redux/features/userSlice";
 import Loading from "../Loading/Loading.jsx";
 import OwnerForm from "./OwnerForm";
 import PropertyForm from "./PropertyForm";
@@ -28,6 +30,8 @@ const CreateProperty = () => {
   const selectedDraft = currentUser.draftProperties.find(
     (draft) => draft.ID_PropertyDraft == id
   );
+
+  const propertyId = selectedDraft?.ID_PropertyDraft;
 
   const [property, setProperty] = useState({
     ownerData: {
@@ -144,8 +148,16 @@ const CreateProperty = () => {
     setShowPropertyCreatedMessage(true);
   };
 
-  const createDraft = () => {
-    dispatch(createDraftProperty(property));
+  const createDraft =  async () => {
+    !selectedDraft
+      ? dispatch(createDraftProperty(property))
+      : dispatch(editDraftProperty({ property, propertyId }));
+    await dispatch(
+      fetchCurrentUser({
+        email: currentUser.email,
+        name: currentUser.name,
+      })
+    );
     setShowDraftCreatedMessage(true);
   };
 

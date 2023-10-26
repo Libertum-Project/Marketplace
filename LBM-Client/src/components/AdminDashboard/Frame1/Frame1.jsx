@@ -12,8 +12,11 @@ const Frame1 = () => {
 
 
     return(
-        <div className={css.mainContainer}>
+        <div className={css.adminContainer}>
+            <div className={css.formContainer}>
+                <h2 className={css.title}>ADMIN DASHBOARD</h2>
 
+            <div className={css.mainContainer}>
             <section className={css.section1}>
                 <h2> Upload Property</h2>
                 {/* <Link to='/create'>
@@ -43,6 +46,8 @@ const Frame1 = () => {
         </section>
 
         </div>
+        </div>
+    </div>
     )
 }; 
 

@@ -237,6 +237,7 @@ function PopUpUser({ setActiveMenu }) {
           <div className={style.buttons}>
             {/* <a>Notifications</a>
             <a>FAQ</a> */}
+            
             {isAuthenticated ? (
               <div className={style.buttons}>
                 {/* <Link to="/mydashboard" onClick={() => setActiveMenu(false)}> */}

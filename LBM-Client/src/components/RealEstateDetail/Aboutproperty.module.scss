@@ -4,7 +4,6 @@ $secondary-color:  #5c6068;
 $font-size-base: 16px;
 $--bc: var(--Libertum-color);
 
-
 .container {
   position: relative;  
   justify-content: space-between;
@@ -25,6 +24,7 @@ $--bc: var(--Libertum-color);
 
 .column2 {
   flex-basis: 40%; 
+  align-self: flex;
 
   @media screen and (max-width: 1200px) {
     z-index: 9999;
@@ -32,18 +32,21 @@ $--bc: var(--Libertum-color);
   }
 // ----------------------------- BUY MODULE ------------------------------
 .buycontainer{
-  border-radius: 1rem;
-  background-color: rgb(255, 255, 255); 
-  box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.302);
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
   padding: 1rem 1rem;
-  font-size: 0.875rem/* 14px */;
-  line-height: 1.25rem/* 20px */;
-  justify-content: center;
-  font-family: montserrat;
-  
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-family: montserrat; 
+
+
   @media screen and (max-width: 780px) {
     div{
       display: none;
+      height: fit-content;
+
     }
     .cardbody{
       height: fit-content;
@@ -51,15 +54,16 @@ $--bc: var(--Libertum-color);
     position: fixed;
     bottom: 0;
     z-index: 9999;
-    max-width: 100%;
+    min-width: 100%;
     padding-top: .5rem;
     padding-bottom: 2.2rem;
-    margin-bottom: .5rem;
+    background-color: var(--Libertum-color);
+    border-radius: .5rem .5rem 0 0;
   }
 
   h1{
     margin-bottom: 20px;
-    color: #000;
+    color: #2b2b2b;
     text-align: center;
     font-size: 1.375rem;  
     font-weight: 600; 
@@ -106,10 +110,9 @@ $--bc: var(--Libertum-color);
     
     p{
       text-align: left;
-      color: #000;
+      color: #2e2d2d;
       font-size: 0.9375rem;
-      font-family: Inter;
-      font-weight: 500;
+      font-weight: 400;
       }
       
       .cardtext{
@@ -135,6 +138,24 @@ $--bc: var(--Libertum-color);
 }
 }
 
+// .buyComponentCentered{
+//   position: fixed;
+//   top: 50%;
+//   transform: translateY(-50%);
+//   z-index: 0;
+// }
+.buyComponent {
+  // Otras propiedades de estilo aquí
+  transition: top 0.3s ease; // Ajusta la duración y el tipo de transición según tus preferencias
+}
+
+.sticky {
+  position: fixed;
+  top: 15%;
+  // width: 100%;
+  z-index: 0; // Ajusta según sea necesario
+}
+
 // --------------------------- ABOUT PROPERTY ------------------------------
 .about{
 color: var(--black, #000);
@@ -156,7 +177,6 @@ padding: auto;
   color: var(--black, #000);
   /* text-base/Regular */
   font-size: 1rem;
-  font-family: Inter;
   line-height: 1.5rem;  
   display: flex;
   // width: 37.6875rem;
@@ -187,30 +207,49 @@ padding: auto;
     border-radius: 20px;
     margin-bottom: 10px;
     background-color: #ffffff82;
-    padding: 10px;
     transition: border-color 0.3s, background-color 0.3s;
-    
+   
     &.active {
       // border: 1px solid var(--LibertumBlue);      
-      background-color: #f5f5f514;    
+      background-color: rgba(228, 228, 228, 0.127);
+      // border: 1px solid rgb(227, 227, 227);
+      color: #4d4c4c; 
+      border: 1px solid var(--LibertumBlue);
+      border-radius: .8rem;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);  
     }
   .accordionTitle{
     display: flex;
     text-align: left;
+    padding: .5rem 1rem;
     align-items: center;      
-    justify-content: space-between;      
+    justify-content: space-between;  
+    width: 100%;
+    // letter-spacing: .2rem;    
     cursor: pointer;    
     font-size: 1.1rem;  
-    font-weight: 600;
+    // font-weight: 600;
     .accordionIcon {
-      margin-right: 10px;
-      
+      margin-right: 10px;      
     }
   }
 
-  // .accordionContent{
-  //   padding: 10px;
-  // }
+  .openTitle {
+    // color: var(--LibertumBlue); 
+    color: #f2f2f2;
+    background-color: var(--LibertumBlue);
+    border-radius: .7rem;
+     
+  }
+  
+  .closedTitle {
+    // background-color: #f0eeee1f; 
+    border: 1px solid rgb(227, 227, 227);
+    color: #4d4c4c; 
+    border-radius: .8rem;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2); 
+  }
+  
 }
 
 // ---------------------- ACCORDION CONTENT ------------------------------------
@@ -219,8 +258,8 @@ padding: auto;
   display: table;
   width: 100%;
   border-collapse: separate;
-  border-spacing: 0 1.5rem;
-  margin-left: 1rem;
+  border-spacing: 0 1rem;
+  padding: 0 1rem;
   // margin-bottom: 3rem;
 
   @media screen and (max-width: 780px) {
@@ -393,15 +432,16 @@ input[type="range"]::-ms-track {
   justify-content: center;
   flex-shrink: 0;
   text-align: left;
+  min-width: 4rem;
 }
 
-.tableRectangule{
-  padding: 20px;
-  // background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  margin-bottom: 1rem; 
-}
+// .tableRectangule{
+//   padding: 20px;
+//   // background-color: #fff;
+//   border: 1px solid #ccc;
+//   border-radius: 8px;
+//   margin-bottom: 1rem; 
+// }
 
 .descriptiontable {
   color: var(--black, #000);
@@ -413,7 +453,7 @@ input[type="range"]::-ms-track {
   justify-content: center;
   flex-shrink: 0;
   text-align: left;
-  // margin-left: 1rem;
+  margin-left: 1rem;
   width: 30rem;
 }
 
@@ -451,12 +491,16 @@ input[type="range"]::-ms-track {
     margin-left:0rem;
   }
 }
+.downloadContainer{
+  padding: 1rem .5rem;
 
+}
 .download {
   align-items: left;
   text-align: left;
   line-height: 1.5rem;
-  margin-top: 1rem;
+  padding-bottom: .5rem;
+
 }
 
 // ----------------------------- TABLA CUMULATIVE GAIN  ------------------------------
@@ -478,7 +522,7 @@ input[type="range"]::-ms-track {
   // margin-left: 1rem;
   
   @media screen and (max-width: 767px) {
-    width: 70%;
+    width: 100%;
   }
 }
 

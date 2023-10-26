@@ -121,36 +121,39 @@ function NavbarMarket() {
               <img src={logo} alt="Libertum Logo" width="80px" />
             </a>
             <div className={style.buttons}>
-              <div
+              <NavLink
                 data-dropdown-button
                 onClick={() => setActive(!active)}
                 className={active ? style.button2 : style.button}
               >
                 <p>MARKETPLACES</p>
                 <IoChevronDownOutline />
-              </div>
-              <NavLink to="/about">
-              <p>ABOUT US</p>
               </NavLink>
+              {/* <NavLink to="/about">
+              <p>ABOUT US</p>
+              </NavLink> */}
               <NavLink to="/support">
                 <p>SUPPORT</p>
               </NavLink>
               <NavLink to="/ico">
-                <p>Buy Libertum</p>
+                <p>BUY LIBERTUM</p>
               </NavLink>
-                <NavLink
-                  to={pdf}
-                  target="_blank"
+                {/* <NavLink
+                  // to={pdf}
+                  // target="_blank"
                   rel="noopener noreferrer"
+                  to="/comingsoon"
                   // download="LBM-whitepaper.pdf"
                   // className="footer_li"
                 >
-                  Whitepaper
-                </NavLink>
+                  <p>BLOG</p>
+                </NavLink> */}
 
             </div>
             <div className={style.buttons2}>
-              <div className={style.language}>
+
+              {/* ----------------------- CURRENCY - LANGUAGE  ------------------------- */}
+              <div className={`${style.language} md:hidden lg:flex`} >
                 <div
                   className={style.languageButton}
                   data-dropdown-language
@@ -161,7 +164,18 @@ function NavbarMarket() {
                 </div>
                 {activeLanguage ? <PopUpLanguage data-language /> : null}
               </div>
-              <div className={openAccountModal ? style.user : style.user1}>
+
+              {/* ----------------------- USER  ------------------------- */}
+              <div>
+                { !user ? (
+                  <div >
+                    <Link to='/mydashboard' >
+                    <p className={style["sign-in"]}>LOG IN</p>
+                    </Link>
+                  </div>
+                ) : 
+                 
+                <div className={openAccountModal ? style.user : style.user1}>
                 <div className={style.hamburgerContainer}>
                   <div
                     data-dropdown-menu
@@ -185,18 +199,22 @@ function NavbarMarket() {
                   <PopUpUser data-menu setActiveMenu={setActiveMenu} />
                 ) : null}
               </div>
+
+                }
+              </div>
             </div>
           </div>
           {active ? <PopUpMarket setActive={setActive} data-dropdown /> : null}
         </div>
       ) : (
+        // -----------------------------------RESPONSIVE -----------------------------------------------
         <div
           className={style.container}
           style={
             headerType === "alternative"
               ? {
                   background: "rgba(255, 255, 255, 0.483)",
-                  backdropFilter: "blur(3px)",
+                  backdropFilter: "blur(50px)",
                 }
               : {}
           }
@@ -221,8 +239,9 @@ function NavbarMarket() {
             </div>
           </div>
           <Link href="/">
-            <img src="./LibertumColor.png" alt="Libertum Logo" width="80px" />
+            <img src={logo} alt="Libertum Logo" width="80px" />
           </Link>
+          
           {user ? (
             <div className={style["notification-badge"]}>
               <img
@@ -241,3 +260,5 @@ function NavbarMarket() {
 }
 
 export default NavbarMarket;
+
+

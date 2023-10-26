@@ -1,4 +1,4 @@
-import { ClickToComponent } from 'click-to-react-component'
+import { ClickToComponent } from "click-to-react-component";
 import Landing from "./components/Landing/Landing";
 import NotFound from "./components/NotFound/NotFound";
 // import Dashboard from "./components/Dashboards/Dashboard";
@@ -40,7 +40,7 @@ import Recommendations from "./components/ChatBot/Recommendations";
 import { useMediaQuery } from "react-responsive";
 import SupportCenter from "./components/SupportCenter/SupportCenter";
 // import BuyProperty from "../components/RealEstateDetail/BuyProperty";
-import BuyProperty from "./components/RealEstateDetail/Buying/BuyProperty"
+import BuyProperty from "./components/RealEstateDetail/Buying/BuyProperty";
 import IDO from "./components/IDO/IDO";
 import Footer from "./components/RealEstates/Footer/Footer.jsx";
 import CreateProperty from "./components/CreateProperty/CreateProperty";
@@ -54,10 +54,8 @@ import SignIn from "./components/SignIn/SignIn";
 import SubscribePage from "./components/Contact/SubscribePage";
 import ContactPage from "./components/Contact/ContactPage";
 import AboutPage from "./components/AboutUs/About";
-import ICO from './components/ICOPage/ICO';
-
-
-
+import ICO from "./components/ICOPage/ICO";
+import PreviewProperty from "./components/PreviewProperties/Preview";
 
 function App() {
   const dispatch = useDispatch();
@@ -92,7 +90,7 @@ function App() {
 
   return (
     <div className="App">
-        <ClickToComponent />
+      <ClickToComponent />
       <Routes>
         {/* <Route path="/" element={<Landing />} /> */}
         <Route element={<AppLayout />}>
@@ -117,8 +115,10 @@ function App() {
             path="/ico"
             element={
               <div className="">
-                {/* <ICO /> */}
-                <CoomingSoon />
+                
+                <ICO />
+                
+                {/* <CoomingSoon /> */}
               </div>
             }
           />
@@ -139,18 +139,15 @@ function App() {
               </div>
             }
           />
-          <Route
-          path="/marketplace/buy/:id"
-          element={<BuyProperty />}
-          />
+          <Route path="/marketplace/buy/:id" element={<BuyProperty />} />
 
           <Route
-          path="/peertopeer"
-          element={
-          <div className="Page">
-          <Marketplace />
-          </div>
-        }
+            path="/peertopeer"
+            element={
+              <div className="Page">
+                <Marketplace />
+              </div>
+            }
           />
 
           {/* <Route
@@ -191,7 +188,7 @@ function App() {
             }
           />
 
-        {/* <Route
+          {/* <Route
             path={"/userdash"}
             element={
               <div className="Page">
@@ -199,7 +196,7 @@ function App() {
               </div>
             }
           /> */}
-                  {/* <Route
+          {/* <Route
             path={"/userdash/myproperties"}
             element={
               <div className="Page">
@@ -217,51 +214,46 @@ function App() {
             }
           />
 
-            {/* <Route
+          {/* <Route
             path="/userdash/myproperties/sell/:number"
             element={<SellProperty />}
             /> */}
 
-
-        <Route
-          path="/admindashboard"
-          element={
-          <div className="Page">
-          <AdminDash />
-          </div>
-        }
+          <Route
+            path="/admindashboard"
+            element={
+              <div className="Page">
+                <AdminDash />
+              </div>
+            }
           />
 
-        <Route
-          path="/admin-allusers"
-          element={
-          <div className="Page">
-          <UsersTable />
-          </div>
-        }
+          <Route
+            path="/admin-allusers"
+            element={
+              <div className="Page">
+                <UsersTable />
+              </div>
+            }
           />
 
-      <Route
-          path="/admin-properties"
-          element={
-          <div className="Page">
-          <Properties />
-          </div>
-        }
+          <Route
+            path="/admin-properties"
+            element={
+              <div className="Page">
+                <Properties />
+              </div>
+            }
           />
 
-
-
-      <Route
-          path="/admin-transactions"
-          element={
-          <div className="Page">
-          <Transactions />
-          </div>
-        }
+          <Route
+            path="/admin-transactions"
+            element={
+              <div className="Page">
+                <Transactions />
+              </div>
+            }
           />
-
-
 
           {/* <Route
             path={"/product"}
@@ -285,6 +277,16 @@ function App() {
           <Route path={"/create/:id"} element={<CreateProperty />} />
 
           <Route path="/support" element={<SupportCenter />} />
+
+          <Route
+            path={"/draft/preview/:id"}
+            element={
+              <div className="Page">
+                <PreviewProperty />
+              </div>
+            }
+          />
+
           {/* <Route
           path="/support"
           element={Faq}
@@ -299,14 +301,13 @@ function App() {
             }
           /> */}
 
-          <Route path={"/mydashboard/*"} element= {<DashboardUser />} />
+          <Route path={"/mydashboard/*"} element={<DashboardUser />} />
 
-          <Route path="/subscribe" element = {<SubscribePage />} />
+          <Route path="/subscribe" element={<SubscribePage />} />
 
-          <Route path= "/contact" element = { <ContactPage />} />
+          <Route path="/contact" element={<ContactPage />} />
 
-          <Route path= "/about" element = { <AboutPage />} />
-
+          <Route path="/about" element={<AboutPage />} />
 
           <Route
             path={"/coinrelease"}
@@ -327,7 +328,6 @@ function App() {
       </Routes>
       <Footer />
       <ClickToComponent />
-
     </div>
 
     // <div className="App">
@@ -335,7 +335,6 @@ function App() {
 
     //   <ICO />
     // </div>
-
   );
 }
 
