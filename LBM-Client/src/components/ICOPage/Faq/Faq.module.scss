@@ -25,13 +25,13 @@
     width: 100%;
     border-radius: 20px;
     margin-bottom: 10px;
-    background-color: #ffffff82;
+    background-color: #ffffff;
     padding: 10px;
     transition: border-color 0.3s, background-color 0.3s;
     
     &.active {
       border: 1px solid var(--LibertumBlue);      
-      background-color: #d9d8d8;    
+      background-color: #ffffff;    
     }
     
     .faq-question {
