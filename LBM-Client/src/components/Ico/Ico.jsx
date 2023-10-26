@@ -4,6 +4,7 @@ import PresaleGrid from "./Presale";
 import Join from "./Join";
 import HowToBuy from "./HowToBuy";
 import HowToClaim from "./HowToClaim";
+import WhyLBM from "./WhyLBM";
 
 const Ico = () => {
   const headingStyle = {
@@ -43,6 +44,11 @@ const Ico = () => {
     <Slide direction={"up"} triggerOnce={true}>
       <h2 style={headingStyle}>HOW TO CLAIM LBM TOKENS?</h2>
       <HowToClaim />
+    </Slide>
+
+    <Slide direction={"right"} triggerOnce={true}>
+      <h2 style={headingStyle}>WHY LBM TOKENS?</h2>
+      <WhyLBM />
     </Slide>
 
     </div>
