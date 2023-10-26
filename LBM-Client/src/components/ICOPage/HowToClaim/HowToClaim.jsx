@@ -1,5 +1,4 @@
 import React from 'react';
-import whitePaper from './assets/LBM-whitePaper.pdf';
 
 function HowToClaim() {
     return (
@@ -21,7 +20,7 @@ function HowToClaim() {
                     Purchase with peace of mind, knowing that our $LBM token contract has undergone rigorous audits by “...”, a renowned blockchain security firm, ensuring unparalleled levels of security.
                 </p>
                 <div>
-                    <a href={whitePaper} target='_blank' >
+                    <a href="https://raw.githubusercontent.com/Libertum-Project/Website/2829a6808fe188063f490cdf257e97558bbd1c66/LBM-Client/src/components/Landing/assets/LBM-whitepaper.pdf" target='_blank' >
                         <button className='bg-gray-100 px-10  rounded-xl'>
                             White Paper
                         </button>
