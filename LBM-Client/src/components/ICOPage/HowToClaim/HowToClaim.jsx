@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 function HowToClaim() {
     return (
         <div className="bg-gray-800  p-8 lg:px-12 py-10 border-t ">
@@ -27,6 +26,8 @@ function HowToClaim() {
                         </button>
                     </a>
                 </div>
+
+            </div>
         </div>
     );
 }
