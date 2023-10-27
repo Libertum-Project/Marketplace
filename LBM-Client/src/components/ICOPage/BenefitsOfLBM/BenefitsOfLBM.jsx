@@ -17,7 +17,7 @@ function LBMBenefits() {
                - The $LBM token is how we will both raise funds and give back funds to you, our community. There are three primary ways in how this will be achieved:
             </p>
 
-            <ol className="list-disc list-inside mb-6 pl-6 text-left text-cyan-600">
+            <ol className="list-disc list-inside mb-6 pl-6 text-left text-cyan-600 ">
                 <li className="mb-4">
                     $LBM will allow everyone to earn their share of the platform revenue. By staking the $LBM, the community can earn their reward in both $LBM and $USDC
                 </li>
@@ -29,7 +29,7 @@ function LBMBenefits() {
                 </li>
             </ol>
 
-            <p className="text-xl mb-6 text-red-500">
+            <p className="text-xl mb-6 text-gray-300">
                 We will be giving to non-profit organizations that help millions globally to create a home. As an $LBM holder, you will have the power to choose which projects we support.
             </p>
         </div>
