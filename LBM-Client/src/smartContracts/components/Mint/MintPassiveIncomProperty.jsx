@@ -1,15 +1,15 @@
-import { ethers } from "ethers";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { selectIsConnected } from "../../../../redux/features/walletSlice";
-import { buyToken } from "../../../../redux/features/userSlice";
-import passiveIncomeABi from "../../ABI/PassiveIncomeProperty.json";
-import usdtTokenABI from "../../ABI/MockUSDT.json";
-import css from "../smartcontracts.module.css";
-import Loading from "../LoadingBtn.jsx";
-import FailMessage from "../MessageBox/FailMessage";
-import SuccessMessage from "../MessageBox/SuccessMessage";
-import PendingMessage from "../MessageBox/PendingMessage";
+import { ethers } from 'ethers';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsConnected } from '../../../../redux/features/walletSlice';
+import { buyToken } from '../../../../redux/features/userSlice';
+import passiveIncomeABi from '../../ABI/PassiveIncomeProperty.json';
+import usdtTokenABI from '../../ABI/MockUSDT.json';
+import css from '../smartcontracts.module.css';
+import Loading from '../LoadingBtn.jsx';
+import FailMessage from '../MessageBox/FailMessage';
+import SuccessMessage from '../MessageBox/SuccessMessage';
+import PendingMessage from '../MessageBox/PendingMessage';
 
 function MintPassiveIncomeProperty({
   passiveIncomePropertyAddress,
@@ -24,7 +24,7 @@ function MintPassiveIncomeProperty({
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const dispatch = useDispatch();
   const isConnected = useSelector(selectIsConnected);
-  const usdtTokenAddress = "0x43A8768b6F9cA89D5436413609150c6FB087a29E";
+  const usdtTokenAddress = '0x43A8768b6F9cA89D5436413609150c6FB087a29E';
 
   const handleBuyTokenBtn = async (event) => {
     event.preventDefault();
@@ -70,7 +70,7 @@ function MintPassiveIncomeProperty({
         const receipt = await mintTransaction.wait();
 
         if (receipt.status === 1) {
-          console.log("Transaction was successful");
+          console.log('Transaction was successful');
 
           const pricePerToken = Number(tokenPrice);
 
@@ -87,10 +87,10 @@ function MintPassiveIncomeProperty({
           setIsLoading(false);
           setShowSuccessMessage(true);
         } else {
-          console.error("Transaction failed");
+          console.error('Transaction failed');
         }
         console.log(receipt);
-      } else alert("Metamask not found.");
+      } else alert('Metamask not found.');
     } catch (error) {
       console.error(error);
       setIsLoading(false);
@@ -106,7 +106,10 @@ function MintPassiveIncomeProperty({
         <PendingMessage messagge="Processing your investment..." />
       ) : null}
       {showFailMessage ? (
-        <FailMessage setShowFailMessage={setShowFailMessage} />
+        <FailMessage
+          setShowFailMessage={setShowFailMessage}
+          message="It looks like you rejected this transaction. Dont lose out out the opportunity to earn passive income!"
+        />
       ) : null}
       {showSuccessMessage ? (
         <SuccessMessage
@@ -117,7 +120,7 @@ function MintPassiveIncomeProperty({
         />
       ) : null}
       <button
-        className={`${css.mintBtn} ${isConnected ? "" : css.disabledButton}`}
+        className={`${css.mintBtn} ${isConnected ? '' : css.disabledButton}`}
         onClick={(event) => {
           handleBuyTokenBtn(event);
         }}
