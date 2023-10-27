@@ -5,7 +5,6 @@ import Coin from "./Coin/Coin";
 import { Link } from "react-router-dom";
 
 const MyInvestments = ({ name, id, transactions, investments }) => {
-    console.log("user name " + name);
       
     return (
       <div>

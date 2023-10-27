@@ -20,11 +20,11 @@ function HowToClaim() {
                     Purchase with peace of mind, knowing that our $LBM token contract has undergone rigorous audits by “...”, a renowned blockchain security firm, ensuring unparalleled levels of security.
                 </p>
                 <div>
-                    
-
-                    <button className='bg-gray-100 px-10  rounded-xl'>
-                        White Paper
-                    </button>
+                    <a href={whitePaper} target='_blank' >
+                        <button className='bg-gray-100 px-10  rounded-xl'>
+                            White Paper
+                        </button>
+                    </a>
                 </div>
 
             </div>
