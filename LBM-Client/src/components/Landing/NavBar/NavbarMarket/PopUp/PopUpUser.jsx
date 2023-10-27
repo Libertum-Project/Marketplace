@@ -98,6 +98,7 @@ function PopUpUser({ setActiveMenu }) {
                 <a href="/">Home</a>
                 <a href="/about">About us</a>
                 <a href="/support">Support</a>
+                <a href="/ico">Buy Libertum</a>
                 <div
                   className={
                     active === "language"
