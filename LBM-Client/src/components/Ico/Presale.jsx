@@ -1,6 +1,9 @@
 import coinIcon from './assets/coinIcon.svg';
 import calendarIcon from './assets/calendar.svg';
-import tagIcon from './assets/tag.svg'
+import tagIcon1 from './assets/tag.svg'
+import tagIcon2 from './assets/tag2.svg'
+import tagIcon3 from './assets/tag3.svg'
+import tagIcon4 from './assets/tag3.svg'
 import './Presale.scss'
 
 const Card = (
@@ -39,7 +42,7 @@ const PresaleGrid = () => {
   const cardData = [
     {
       icon: <img src={coinIcon} alt="" />,
-      image: <img src={tagIcon} alt="" />,
+      image: <img src={tagIcon1} alt="" />,
       dateIcon: <img src={calendarIcon} alt="" />,
       date: "Until 11-25-2023",
       title: 'Private Round',
@@ -51,7 +54,7 @@ const PresaleGrid = () => {
     },
     {
       icon: <img src={coinIcon} alt="" />,
-      image: <img src={tagIcon} alt="" />,
+      image: <img src={tagIcon2} alt="" />,
       dateIcon: <img src={calendarIcon} alt="" />,
       date: "15 to 20 January 2024",
       title: 'Whitelist Presale',
@@ -63,7 +66,7 @@ const PresaleGrid = () => {
     },
     {
       icon: <img src={coinIcon} alt="" />,
-      image: <img src={tagIcon} alt="" />,
+      image: <img src={tagIcon3} alt="" />,
       dateIcon: <img src={calendarIcon} alt="" />,
       date: "25 to 30 January 2024",
       title: 'Public Presale',
@@ -75,7 +78,7 @@ const PresaleGrid = () => {
     },
     {
       icon: <img src={coinIcon} alt="" />,
-      image: <img src={tagIcon} alt="" />,
+      image: <img src={tagIcon4} alt="" />,
       dateIcon: <img src={calendarIcon} alt="" />,
       date: "1st February 2024",
       title: 'Launch Day',
