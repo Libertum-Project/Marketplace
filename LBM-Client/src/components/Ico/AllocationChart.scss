@@ -1,11 +1,10 @@
-.join-container{
+.allocation-chart-container {
   border-radius: 2rem;
   background: #00222E;
   margin-top: 2rem;
   display: grid;
-  grid-template-columns: 1fr 3fr; 
+  grid-template-columns: 1fr 2fr;
   gap: 3rem;
-  // height: 30rem;
   margin-left: 2rem;
   margin-right: 2rem;
   padding: 4rem;
@@ -14,7 +13,6 @@
   align-items: center;
 
   section {
-    
     h2 {
       color: #FFF;
       text-align: center;
@@ -26,34 +24,32 @@
       letter-spacing: 0.275rem;
     }
 
-    button{
-      border-radius: 1rem;
-      width: 100%;
-      background: #F7931A;
-      color: whitesmoke;
-      margin-top: 2rem;
-    }
-
-    button:hover {
-      background-color:#c46e05;
-    }
-
-    p{
+    p {
       color: #D2D6DB;
       font-family: Montserrat;
       font-size: 1.2rem;
       font-style: normal;
       font-weight: 200;
       line-height: normal;
-      letter-spacing: 0.175rem; 
+      letter-spacing: 0.175rem;
     }
   }
-  
-}
 
-@media screen and (max-width: 780px) {
-  .join-container{
+  @media screen and (max-width: 780px) {
     grid-template-columns: repeat(1, 1fr);
     gap: 35px;
+    margin-left: 0;
+    margin-right: 0;
+
+    section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  section:nth-child(1) {
+    order: 2; // Cambia el orden en la vista responsive!!!!!!
   }
 }

@@ -7,6 +7,7 @@ import HowToClaim from "./HowToClaim";
 import WhyLBM from "./WhyLBM";
 import Faq from "./Faq";
 import Roadmap from "./Roadmap";
+import AllocationChart from "./AllocationChart";
 
 const Ico = () => {
   const headingStyle = {
@@ -38,14 +39,18 @@ const Ico = () => {
       <Join />    
     </Slide>
 
-    <Slide direction={"up"} triggerOnce={false}>
+
       <h2 style={headingStyle}>HOW TO BUY?</h2>
       <HowToBuy />
-    </Slide>
+
 
     <Slide direction={"up"} triggerOnce={true}>
       <h2 style={headingStyle}>HOW TO CLAIM LBM TOKENS?</h2>
       <HowToClaim />
+    </Slide>
+
+    <Slide direction={"up"} triggerOnce={true}>
+      <AllocationChart />
     </Slide>
 
     <Slide direction={"right"} triggerOnce={true}>
@@ -58,14 +63,15 @@ const Ico = () => {
     </Slide>
 
     <Slide direction={"up"} triggerOnce={true}>
+      <h2 style={headingStyle}>ROAD MAP</h2>
+      <Roadmap />
+    </Slide>
+
+    <Slide direction={"up"} triggerOnce={true}>
       <h2 style={headingStyle}>FAQs</h2>
       <Faq />    
     </Slide>
 
-    <Slide direction={"up"} triggerOnce={true}>
-      <h2 style={headingStyle}>ROAD MAP</h2>
-      <Roadmap />
-    </Slide>
 
 
 
