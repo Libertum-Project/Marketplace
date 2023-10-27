@@ -1,15 +1,20 @@
-import React from "react";
+import './WhyLBM.scss'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import iconarrow from './assets/iconarrow.svg'
+import iconarrow from './assets/iconarrow.svg';
+import iconhouse from './assets/iconhouse.svg';
+import iconbag from './assets/iconbolsa.svg'
 
 const CarouselCard = ({ icon, text }) => {
   return (
+    <div className='carousel-container'>
     <div className="carousel-card">
       <img className="icon" src={icon} alt="" />
       <p className="text">{text}</p>
     </div>
+    </div>
+
   );
 };
 
@@ -20,11 +25,11 @@ const WhyLBM = () => {
       text: "LBM is the Libertum native token. It is the bricks that will build a strong foundation for thee Libertum Community",
     },
     {
-      icon: iconarrow,
+      icon: iconbag,
       text: "LBM will allow everyone to earn their share of the platform revenue. By staking LBM, the community can earn their reward in LBM and USDC",
     },
     {
-      icon: iconarrow,
+      icon: iconhouse,
       text: "We will be giving to non-profit organizations that help millions globally to create a home. As an LBM holder, you will have the power to choose which projects we support",
     },
   ];

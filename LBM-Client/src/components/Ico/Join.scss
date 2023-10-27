@@ -45,5 +45,11 @@
     }
   }
   
+}
 
+@media screen and (max-width: 780px) {
+  .join-container{
+    grid-template-columns: repeat(1, 1fr);
+    gap: 35px;
+  }
 }

@@ -5,6 +5,8 @@ import Join from "./Join";
 import HowToBuy from "./HowToBuy";
 import HowToClaim from "./HowToClaim";
 import WhyLBM from "./WhyLBM";
+import Faq from "./Faq";
+import Roadmap from "./Roadmap";
 
 const Ico = () => {
   const headingStyle = {
@@ -27,16 +29,16 @@ const Ico = () => {
       <Hero />
     </Slide>
 
-    <Slide direction={"left"} triggerOnce={false}>
+    <Slide direction={"left"} triggerOnce={true}>
       <h2 style={headingStyle}>UPCOMING EVENTS</h2>
       <PresaleGrid />
     </Slide>
 
-    <Slide direction={"up"} triggerOnce={false}>
+    <Slide direction={"up"} triggerOnce={true}>
       <Join />    
     </Slide>
 
-    <Slide direction={"up"} triggerOnce={true}>
+    <Slide direction={"up"} triggerOnce={false}>
       <h2 style={headingStyle}>HOW TO BUY?</h2>
       <HowToBuy />
     </Slide>
@@ -50,6 +52,22 @@ const Ico = () => {
       <h2 style={headingStyle}>WHY LBM TOKENS?</h2>
       <WhyLBM />
     </Slide>
+
+    <Slide direction={"up"} triggerOnce={true}>
+      <Join />    
+    </Slide>
+
+    <Slide direction={"up"} triggerOnce={true}>
+      <h2 style={headingStyle}>FAQs</h2>
+      <Faq />    
+    </Slide>
+
+    <Slide direction={"up"} triggerOnce={true}>
+      <h2 style={headingStyle}>ROAD MAP</h2>
+      <Roadmap />
+    </Slide>
+
+
 
     </div>
   );
