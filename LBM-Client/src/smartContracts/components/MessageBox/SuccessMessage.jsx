@@ -1,9 +1,14 @@
-import css from "./MessageBox.module.css";
-import success from "../../../../public/icons/checkIcon.svg"
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import css from './MessageBox.module.css';
+import success from '../../../../public/icons/checkIcon.svg';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
-const SuccessMessage = ({ setShowSuccessMessage, messagge, textBtn, redirectURL }) => {
+const SuccessMessage = ({
+  setShowSuccessMessage,
+  messagge,
+  textBtn,
+  redirectURL,
+}) => {
   const navigate = useNavigate();
   const handleContinue = (event) => {
     event.preventDefault();
@@ -23,16 +28,14 @@ const SuccessMessage = ({ setShowSuccessMessage, messagge, textBtn, redirectURL 
           <h2>Success!</h2>
         </div>
         <div>
-          <p>
-           {messagge} 
-          </p>
+          <p>{messagge}</p>
         </div>
         <button
           onClick={(event) => {
             handleContinue(event);
           }}
         >
-        {textBtn}
+          {textBtn}
         </button>
       </div>
     </div>
