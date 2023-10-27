@@ -21,6 +21,7 @@ const Ico = () => {
     letterSpacing: '1rem',
     marginTop: '5rem',
     marginBottom: '2rem',
+    padding: '0 2px',
 
    };
 

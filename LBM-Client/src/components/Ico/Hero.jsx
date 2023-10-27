@@ -31,9 +31,9 @@ const Hero = () => {
   };
 
   return (
-    <div>
-      <div className='first-container'>
-        <section className='title'>
+
+    <div className='first-container'>
+        <div className='title'>
           <h2>Transforming an exclusive market into an Inclusive opportunity for Everyone!</h2>
           <h3>Get your LBM Tokens now!</h3>
           <Slide direction={'left'} triggerOnce={true}>
@@ -42,9 +42,9 @@ const Hero = () => {
               <p>By purchasing $LBM tokens, you are joining a movement that seeks to democratise and transform the landscape of fractionalised rental income investments. join us in creating a more inclusive world for all.</p>
             </section>
           </Slide>
-        </section>
+        </div>
         <Slide direction={'down'} triggerOnce={false}>
-          <section className='box'>
+          <div className='box'>
             <h4>Next Phase Price: $0.028</h4>
             <p className='first'>SOLD 2.345.534/5.000.000 $LBM</p>
             <p className='second'>40% Disscount Community Sale ends soon</p>
@@ -83,10 +83,10 @@ const Hero = () => {
 
               <button className='connect-wallet'>Connect Wallet</button>
             </div>
-          </section>
+          </div>
         </Slide>
       </div>
-    </div>
+
   );
 };
 
