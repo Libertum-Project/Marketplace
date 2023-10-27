@@ -108,7 +108,7 @@ function MintPassiveIncomeProperty({
       {showFailMessage ? (
         <FailMessage
           setShowFailMessage={setShowFailMessage}
-          message="It looks like you rejected this transaction. Dont lose out out the opportunity to earn passive income!"
+          message= "It looks like you rejected this transaction. Don't miss out on the opportunity to earn passive income!"
         />
       ) : null}
       {showSuccessMessage ? (
