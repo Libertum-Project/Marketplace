@@ -1,0 +1,56 @@
+.carousel-container {
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+
+  .carousel-card {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 40rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Montserrat;    
+
+    .icon {
+      max-width: 80px; 
+      margin-bottom: 15px;
+    }
+
+    .text {
+      color: #333;
+      font-size: 1.2rem;
+    }
+  }
+
+  .slick-dots {
+    bottom: 10px;
+  }
+
+  .slick-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #999;
+    border-radius: 50%;
+    margin: 0 5px;
+
+    &.slick-active {
+      background-color: #0074cc; // Color del punto activo
+    }
+  }
+}
+
+@media screen and (max-width: 780px) {
+  // .carrousel-container{
+  //   max-width: 100%;
+  // }
+  .carousel-card{
+    max-width: 16rem;
+  }
+}
