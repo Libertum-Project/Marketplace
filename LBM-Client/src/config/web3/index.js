@@ -9,4 +9,6 @@ const getLibrary = (provider) => {
   return new Web3(provider);
 };
 
-export { connector, getLibrary };
+const LBMPrice = 0.024
+
+export { connector, getLibrary, LBMPrice };

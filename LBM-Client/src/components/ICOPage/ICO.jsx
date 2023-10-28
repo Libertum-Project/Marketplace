@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import logo from '../../assets/Libertum-logo.png';
 import certik from '../../assets/certik.png'
 import LbmPresale from './Presale/Presale';
@@ -11,7 +11,136 @@ import Roadmap from './Roadmap/Roadmap';
 import Faq from './Faq/Faq';
 import Vesting from './Vesting/VestingPeriod';
 
+import { Web3Auth } from "@web3auth/modal";
+import { CHAIN_NAMESPACES } from "@web3auth/base";
+import RPC from "./../../Web3RPC";
+import Web3 from 'web3';
+import { LBMPrice } from '../../config/web3';
+
+const clientId = "BMofrJHeTcX4xwuGRtPk_x5bz0HjnFPRkrIVBi5bHJPramxfsF1m8feTTsXGlCXApQCItJEJsu7gecejqDd_Nf4";
+
 const ICO = () => {
+    const [web3auth, setWeb3auth] = useState(null);
+    const [provider, setProvider] = useState()
+    const [account, setAccount] = useState()
+    const [userInfo, setUserInfo] = useState()
+    const [usdInput, setUsdInput] = useState(0)
+    const [lbmInput, setLbmInput] = useState(0)
+
+    const handleUsdChange = (e) => {
+        setUsdInput(e.target.value)
+        setLbmInput(e.target.value / LBMPrice)
+    }
+
+    const handleLbmChange = (e) => {
+        setUsdInput(e.target.value * LBMPrice)
+        setLbmInput(e.target.value)
+    }
+
+    const handleBuy = async () => {
+
+    }
+
+    useEffect(() => {
+        const init = async () => {
+            try {
+                const web3auth = new Web3Auth({
+                    clientId,
+                    web3AuthNetwork: "testnet", // mainnet, aqua,  cyan or testnet
+                    chainConfig: {
+                        chainNamespace: CHAIN_NAMESPACES.EIP155,
+                        chainId: "0x13881",
+                        rpcTarget: "https://rpc-mumbai.maticvigil.com", // This is the public RPC we have added, please pass on your own endpoint while creating an app
+                    },
+                });
+
+                setWeb3auth(web3auth);
+                await web3auth.initModal();
+
+                if (web3auth.provider) {
+                    setProvider(web3auth.provider);
+                    console.log("here", web3auth.provider)
+                    await getAccounts(web3auth.provider)
+                    await getUserInfo(web3auth)
+                };
+
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        init();
+    }, []);
+
+    const login = async () => {
+        if (!web3auth) {
+            console.log("web3auth not initialized yet");
+            return;
+        }
+        const web3authProvider = await web3auth.connect();
+        setProvider(web3authProvider);
+        getAccounts(web3authProvider)
+        getUserInfo(web3auth)
+        window.location.reload()
+    };
+
+
+    const getUserInfo = async (_web3auth) => {
+        if (!_web3auth) {
+            console.log("web3auth not initialized yet");
+            return;
+        }
+        const user = await _web3auth.getUserInfo();
+        console.log("user", user)
+        setUserInfo(localStorage.getItem("Web3Auth-cachedAdapter"));
+    };
+
+    const logout = async () => {
+        if (!web3auth) {
+            console.log("web3auth not initialized yet");
+            return;
+        }
+        await web3auth.logout();
+        setProvider(null);
+        window.location.reload()
+    };
+
+
+    const getAccounts = async (_provider) => {
+        console.log("_provider", _provider)
+        if (!_provider) {
+            console.log("provider not initialized yet");
+            await logout()
+            localStorage.clear()
+            setProvider(null);
+            return;
+        }
+        const web3 = new Web3(_provider);
+        console.log("web3", web3)
+        const address = (await web3.eth.getAccounts())[0];
+        console.log("address", address)
+        if (!address) {
+            await logout()
+            localStorage.clear()
+            setProvider(null);
+        }
+        setAccount(address)
+        console.log(address);
+    };
+
+
+
+    const getPrivateKey = async () => {
+        if (!provider) {
+            console.log("provider not initialized yet");
+            return;
+        }
+        const rpc = new RPC(provider);
+        const privateKey = await rpc.getPrivateKey();
+        console.log(privateKey);
+    };
+
+
 
     return (
         <>
@@ -42,38 +171,44 @@ const ICO = () => {
 
                             <div className='bg-white text-center rounded-b-2xl md:pt-10 '>
                                 <h1 className='md:text-3xl text-2xl pt-2  font-bold pb-1'>Community Sale</h1>
-                                <h3>1 $LBM Token = 0.024 </h3>
+                                <h3>1 LBM Token = {LBMPrice} </h3>
                                 <div className='block md:flex md:justify-around lg:pt-2 px-6 py-1 text-left '>
                                     <div className='md:px-2 '>
                                         <p className='md:mb-3 text-sm'>Amount of USD you pay</p>
                                         <div className='flex bg-gray-300 rounded-lg lg:w-[130px] md:w-[200px] mx-auto '>
-                                            <input type="text" placeholder='0' className='py-3 pl-5 rounded-xl text-lg  bg-gray-300 md:w-[90px]' />
+                                            <input type="text" value={usdInput} onChange={handleUsdChange} placeholder='0' className='py-3 pl-5 rounded-xl text-lg  bg-gray-300 md:w-[90px]' />
                                             <h2 className='font-bold  md:pr-4 mt-[2px]'>USD</h2>
                                         </div>
                                     </div>
                                     <div className='md:px-2'>
-                                        <p className='md:mb-3 text-sm '>Amount of USD you Recieve</p>
+                                        <p className='md:mb-3 text-sm '>Amount of LBM you Recieve</p>
                                         <div className='flex rounded-lg bg-gray-300 lg:w-[130px] md:w-[200px] mx-auto'>
-                                            <input type="text" placeholder='0' className='py-2 pl-5 rounded-xl text-lg  bg-gray-300 md:w-[90px]' />
-                                            <h2 className='font-bold md:pr-4 mt-[2px]'>USD</h2>
+                                            <input type="text" value={lbmInput} onChange={handleLbmChange} placeholder='0' className='py-2 pl-5 rounded-xl text-lg  bg-gray-300 md:w-[90px]' />
+                                            <h2 className='font-bold md:pr-4 mt-[2px]'>LBM</h2>
                                         </div>
                                     </div>
                                 </div>
-                                <button className='text-xl md:px-32 px-12 mt-2  md:mt-8 mb-5 font-semibold lg:py-2 py-2 rounded-2xl bg-cyan-600 text-black md:py-4'>Connect Wallet</button>
+                                <button className='text-xl md:px-32 px-12 mt-2  md:mt-8 mb-5 font-semibold lg:py-2 py-2 rounded-2xl bg-cyan-600 text-black md:py-4' onClick={() => { account ? logout() : login() }}>{account ? account : "Connect Wallet"}</button>
+                                {userInfo == "openlogin" && <button onClick={() => {
+                                    getPrivateKey()
+                                }}>Export Private Key</button>}
+
+                                {account && <button className='text-xl md:px-32 px-12 mt-2  md:mt-8 mb-5 font-semibold lg:py-2 py-2 rounded-2xl bg-cyan-600 text-black md:py-4' onClick={handleBuy}>Buy Now</button>}
+
                             </div>
                         </div>
                     </div>
                 </section>
             </div>
-                <LbmPresale />
-                <HowToBuy/>
-                <HowToClaim/>
-                <TokenSaleStages/>
-                <Tokenomics/>
-                <Vesting/>
-                <LBMBenefits/>
-                <Roadmap/>
-                <Faq/>
+            <LbmPresale />
+            <HowToBuy />
+            <HowToClaim />
+            <TokenSaleStages />
+            <Tokenomics />
+            <Vesting />
+            <LBMBenefits />
+            <Roadmap />
+            <Faq />
         </>
     )
 }
