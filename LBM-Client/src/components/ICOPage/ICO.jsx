@@ -16,8 +16,31 @@ import { CHAIN_NAMESPACES } from "@web3auth/base";
 import RPC from "./../../Web3RPC";
 import Web3 from 'web3';
 import { LBMPrice } from '../../config/web3';
+import { checkIfNeedApproval, handleApproveUsdt } from '../../smartContracts/components/Ico';
 
 const clientId = "BMofrJHeTcX4xwuGRtPk_x5bz0HjnFPRkrIVBi5bHJPramxfsF1m8feTTsXGlCXApQCItJEJsu7gecejqDd_Nf4";
+
+export const web3AuthInstance = async () => {
+    try {
+        const web3auth = new Web3Auth({
+            clientId,
+            web3AuthNetwork: "testnet", // mainnet, aqua,  cyan or testnet
+            chainConfig: {
+                chainNamespace: CHAIN_NAMESPACES.EIP155,
+                chainId: "0x13881",
+                rpcTarget: "https://rpc-mumbai.maticvigil.com", // This is the public RPC we have added, please pass on your own endpoint while creating an app
+            },
+        });
+
+        await web3auth.initModal();
+        console.log("web3auth.provider", web3auth.provider);
+        if (web3auth.provider) {
+            return web3auth.provider;
+        }
+    } catch (Err) {
+        console.log("Err", Err);
+    }
+};
 
 const ICO = () => {
     const [web3auth, setWeb3auth] = useState(null);
@@ -26,6 +49,22 @@ const ICO = () => {
     const [userInfo, setUserInfo] = useState()
     const [usdInput, setUsdInput] = useState(0)
     const [lbmInput, setLbmInput] = useState(0)
+    const [btnName, setBtnName] = useState("Approve")
+    const [loading, setLoading] = useState(false)
+
+    useEffect(() => {
+        const fetch = async () => {
+            const needApproval = await checkIfNeedApproval(usdInput, account)
+            if (needApproval) {
+                setBtnName("Approve")
+            }
+            else {
+                setBtnName("Buy Now")
+            }
+        }
+        fetch()
+    }, [usdInput, loading])
+
 
     const handleUsdChange = (e) => {
         setUsdInput(e.target.value)
@@ -38,7 +77,18 @@ const ICO = () => {
     }
 
     const handleBuy = async () => {
+        if (checkIfNeedApproval()) {
+            handleApprove()
+        }
+    }
 
+    const handleApprove = async () => {
+        setLoading(true)
+        let res = await handleApproveUsdt(lbmInput, account)
+        if (res) {
+            setBtnName("Buy Now")
+        }
+        setLoading(false)
     }
 
     useEffect(() => {
@@ -193,7 +243,7 @@ const ICO = () => {
                                     getPrivateKey()
                                 }}>Export Private Key</button>}
 
-                                {account && <button className='text-xl md:px-32 px-12 mt-2  md:mt-8 mb-5 font-semibold lg:py-2 py-2 rounded-2xl bg-cyan-600 text-black md:py-4' onClick={handleBuy}>Buy Now</button>}
+                                {account && <button className='text-xl md:px-32 px-12 mt-2  md:mt-8 mb-5 font-semibold lg:py-2 py-2 rounded-2xl bg-cyan-600 text-black md:py-4' disabled={usdInput ? false : true} onClick={() => { btnName == "Approve" ? handleApprove() : handleBuy() }}>{btnName}</button>}
 
                             </div>
                         </div>
