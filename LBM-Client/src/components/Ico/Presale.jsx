@@ -48,7 +48,7 @@ const PresaleGrid = () => {
       title: 'Private Round',
       features: [
         'Tokens for sale: 12.500.000', 
-        'Price start at: $0.0018', 
+        'Price start at: $0.06', 
         'Per Stage min: $22.550'
       ],
     },
@@ -60,7 +60,7 @@ const PresaleGrid = () => {
       title: 'Whitelist Presale',
       features: [
         'Tokens for sale: 87.500.000', 
-        'Price start at: $0.0020', 
+        'Price start at: $0.072', 
         'Per Stage min: $175.000'
       ],
     },
@@ -72,7 +72,7 @@ const PresaleGrid = () => {
       title: 'Public Presale',
       features: [
         'Tokens for sale: 120.000.000', 
-        'Price start at: $0.0025', 
+        'Price start at: $0.08', 
         'Per Stage min: $300.000'
       ],
     },
@@ -84,7 +84,7 @@ const PresaleGrid = () => {
       title: 'Launch Day',
       features: [
         'Tokens for sale: 120.000.000', 
-        'Price start at: $0.0025', 
+        'Price start at: $0.08', 
         'Per Stage min: $300.000'
       ],
     },
