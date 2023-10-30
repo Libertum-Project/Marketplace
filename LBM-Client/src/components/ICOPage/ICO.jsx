@@ -194,7 +194,7 @@ const ICO = () => {
 
     return (
         <>
-
+            ffd
             <div>
                 <section className="text-gray-600 body-font pt-4 bg-gray-800 lg:h-[720px] md:h-auto mt-24 h-[1240px] ">
                     <div className='absolute -z-1'>
@@ -238,7 +238,7 @@ const ICO = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <button className='text-xl md:px-32 px-12 mt-2  md:mt-8 mb-5 font-semibold lg:py-2 py-2 rounded-2xl bg-cyan-600 text-black md:py-4' onClick={() => { account ? logout() : login() }}>{account ? account : "Connect Wallet"}</button>
+                                <button className='text-xl md:px-32 px-12 mt-2  md:mt-8 mb-5 font-semibold lg:py-2 py-2 rounded-2xl bg-cyan-600 text-black md:py-4' onClick={() => { account ? logout() : login() }}>{account ? account : "Connect Wallettt"}</button>
                                 {userInfo == "openlogin" && <button onClick={() => {
                                     getPrivateKey()
                                 }}>Export Private Key</button>}
