@@ -1,0 +1,62 @@
+.howtoclaim-container{
+  padding-left: 6rem;
+  padding-right: 6rem;
+}
+
+.howtoclaim-card {
+  background-color: #fff;
+  border-radius: 1.375rem;
+  background: rgba(0, 158, 212, 0.24);
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+
+  // &:hover {
+  //   transform: scale(1.05);
+  // }
+
+  .howtoclaim-title {
+    color: #009ED4;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 1.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+  }
+
+  .howtoclaim-p {
+    color: #5F5F5F;
+    font-family: montserrat;
+    text-align: left;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5rem;
+    margin-top: 1rem; 
+  }
+
+  .howtoclaim-button {
+    border-radius: 1rem;
+    background: #F7931A;
+    color: #fff;
+    padding: 0 2rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 2rem;
+
+    &:hover {
+      transform: scale(1.05);
+      background-color: #005a99;
+    }
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .howtoclaim-container{
+    padding: 1rem;
+  }
+}

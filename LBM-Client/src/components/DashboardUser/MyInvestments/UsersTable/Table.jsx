@@ -1,33 +1,30 @@
-import DataTable from "react-data-table-component";
-import ClaimMonthlyPayment from "../../../../smartContracts/components/ClaimMonthlyPayment";
-import css from "./TableUsers.module.scss";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { useState } from "react";
+import DataTable from 'react-data-table-component';
+import ClaimMonthlyPayment from '../../../../smartContracts/components/ClaimMonthlyPayment';
+import css from './TableUsers.module.scss';
 
 const columns = [
   {
-    name: "Address",
+    name: 'Address',
     selector: (row) => row.address,
   },
   {
-    name: "Tokens purchased",
+    name: 'Tokens purchased',
     selector: (row) => row.tokens,
   },
   {
-    name: "Price per token",
+    name: 'Price per token',
     selector: (row) => row.tokenprice,
   },
   {
-    name: "Payment Method",
+    name: 'Payment Method',
     selector: (row) => row.paymentMethod,
   },
   {
-    name: "Purchase date",
+    name: 'Purchase date',
     selector: (row) => row.datepurchase,
   },
   {
-    name: "Claim Earnings",
+    name: 'Claim Earnings',
     selector: (row) => row.claim,
     cell: (row) => <button>{row.claim}</button>,
   },
@@ -39,13 +36,14 @@ const Investments = ({ investments, transactions }) => {
     const claimableDate = new Date(purchaseDate);
     claimableDate.setDate(claimableDate.getDate() + 30);
     const formattedPurchaseDate =
-      ("0" + (purchaseDate.getMonth() + 1)).slice(-2) +
-      "/" +
-      ("0" + purchaseDate.getDate()).slice(-2) +
-      "/" +
+      ('0' + (purchaseDate.getMonth() + 1)).slice(-2) +
+      '/' +
+      ('0' + purchaseDate.getDate()).slice(-2) +
+      '/' +
       purchaseDate.getFullYear().toString().slice(-2);
 
     const propertyId = transaction.ID_Property;
+    const isActive = investments[propertyId - 1].IsActive;
     return {
       addressID: investments[propertyId - 1].Address,
       address: investments[propertyId - 1].Feature.Address,
@@ -59,6 +57,7 @@ const Investments = ({ investments, transactions }) => {
             propertyAddress={investments[propertyId - 1].Address}
             quantity={transaction.Token_quantity}
             propertyType={investments[propertyId - 1].Financial.Investment_type}
+            isActive={isActive}
           />
           <div></div>
         </div>

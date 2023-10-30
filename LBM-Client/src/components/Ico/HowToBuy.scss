@@ -1,0 +1,82 @@
+.card-buy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px; 
+  padding-left: 6rem;
+  padding-right: 6rem;
+  margin-top: 4.5rem;
+}
+
+.card-buy {
+  padding: 25px;
+  border-radius: 2.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: transform 0.3s ease-in-out; 
+  border-radius: 1.375rem;
+  background: rgba(0, 158, 212, 0.17);
+  height: fit-content;
+
+  &:hover {
+    transform: scale(1.1) translate(0%, -5%); 
+  }
+
+  .image-buy {
+    position: absolute;
+    top: -3.8rem; 
+    right: 8.5rem; 
+  }
+
+  .step{
+    position: absolute;
+    top: -2.5rem;
+    right: 10.8rem;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 3.125rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    z-index: 2;
+  }
+ 
+}
+
+.icon-buy,
+.title-buy {
+  color: #009ED4;
+  font-family: Montserrat;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-top: 2rem;
+}
+.text-buy{
+  color: #5F5F5F;
+  font-family: Montserrat;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5rem;
+  margin-top: 1rem;
+  text-align: left; 
+}
+.text-buy-5{
+  color: #5F5F5F;
+  font-family: Montserrat;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5rem;
+  text-align: left; 
+  margin-left: 2rem;
+}
+
+@media screen and (max-width: 780px) {
+  .card-buy-grid{
+    grid-template-columns: repeat(1, 1fr);
+    gap: 35px;
+    padding: 1rem;
+  }
+}

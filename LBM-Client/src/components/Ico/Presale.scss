@@ -1,0 +1,110 @@
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px; 
+  padding-left: 6rem;
+  padding-right: 6rem;
+  margin-top: 3rem;
+}
+
+.card {
+  border: 1px solid #ccc;
+  padding: 25px;
+  border-radius: 2.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: transform 0.3s ease-in-out; 
+
+  &:hover {
+    transform: scale(1.1) translate(0%, -5%); 
+  }
+
+  .image {
+    position: absolute;
+    top: -22px; 
+    right: 8px; 
+
+  }
+
+  .date-container {
+    display: flex;
+    align-items: center; 
+    margin-top: 1rem;
+  }
+  .date-icon {
+    display: inline-block;
+    margin-right: 5px; 
+  }
+
+  .date {
+    display: inline-block;
+    color: #6C6B6B;
+    font-family: montserrat;
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+  }
+}
+
+.icon,
+.title {
+  margin-bottom: 10px;
+  margin-top: 1rem;
+  margin-bottom: 2.2rem;
+  color: #000;
+  font-family: Montserrat;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: capitalize;
+  text-align: left;
+  padding: 0;
+}
+
+.features {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 10px;
+
+  li {
+    margin-bottom: 5px;
+    position: relative;
+    text-align: left;
+    padding-left: 20px;
+    line-height: 1.5rem;
+
+    &::before {
+      content: '\2713'; // Código Unicode del check azul
+      color: #0074cc; 
+      position: absolute;
+      left: 0px; 
+    }
+  }
+}
+
+.buybutton {
+  background-color: #0074cc;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 1rem;
+
+  &:hover {
+    background-color: #005a99;
+  }
+}
+
+
+@media screen and (max-width: 780px) {
+  .card-grid{
+    grid-template-columns: repeat(1, 1fr);
+    gap: 35px;
+    padding: 1rem;
+  }
+}
