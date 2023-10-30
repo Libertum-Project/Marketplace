@@ -3,8 +3,8 @@
   grid-template-columns: 1.2fr 1fr; 
   gap: 2rem; 
   padding-top: 9rem;
-  padding-left: 8rem;
-  padding-right: 8rem;
+  padding-left: 9rem;
+  padding-right: 9rem;
   padding-bottom: 3rem;
   position: relative; 
   justify-content: space-around;
@@ -20,8 +20,9 @@
     background-size:100%;
     border-radius: 2rem;
     background-repeat: no-repeat;
-    margin: 0 2rem;
+    margin: 0 4rem;
     z-index: -1; 
+    // width: 90%;
   }
 
   .title{
@@ -81,7 +82,7 @@
   h4{
     color: #FFF;
     font-family: Montserrat;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
