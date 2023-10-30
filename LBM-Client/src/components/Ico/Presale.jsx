@@ -56,7 +56,7 @@ const PresaleGrid = () => {
       icon: <img src={coinIcon} alt="" />,
       image: <img src={tagIcon2} alt="" />,
       dateIcon: <img src={calendarIcon} alt="" />,
-      date: "15 to 20 January 2024",
+      date: "15 to 20 Jan 2024",
       title: 'Whitelist Presale',
       features: [
         'Tokens for sale: 87.500.000', 
@@ -68,7 +68,7 @@ const PresaleGrid = () => {
       icon: <img src={coinIcon} alt="" />,
       image: <img src={tagIcon3} alt="" />,
       dateIcon: <img src={calendarIcon} alt="" />,
-      date: "25 to 30 January 2024",
+      date: "25 to 30 Jan 2024",
       title: 'Public Presale',
       features: [
         'Tokens for sale: 120.000.000', 
@@ -80,7 +80,7 @@ const PresaleGrid = () => {
       icon: <img src={coinIcon} alt="" />,
       image: <img src={tagIcon4} alt="" />,
       dateIcon: <img src={calendarIcon} alt="" />,
-      date: "1st February 2024",
+      date: "1st Feb 2024",
       title: 'Launch Day',
       features: [
         'Tokens for sale: 120.000.000', 
