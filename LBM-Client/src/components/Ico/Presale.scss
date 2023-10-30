@@ -2,8 +2,8 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px; 
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-left: 6rem;
+  padding-right: 6rem;
   margin-top: 3rem;
 }
 
@@ -23,12 +23,13 @@
     position: absolute;
     top: -22px; 
     right: 8px; 
+
   }
 
   .date-container {
     display: flex;
     align-items: center; 
-    margin-top: .5rem;
+    margin-top: 1rem;
   }
   .date-icon {
     display: inline-block;
@@ -54,7 +55,7 @@
   margin-bottom: 2.2rem;
   color: #000;
   font-family: Montserrat;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
