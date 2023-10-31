@@ -11,25 +11,47 @@ const Financials = ({number, PRY, value, AvailablesNFT, NFTPrice, capital}) => {
     width: '30%', 
     // margin: '0 auto',     
   }
-    const [rangeValue, setRangeValue] = useState(40);
+    const [rangeValue, setRangeValue] = useState(1);
     const handleRangeChange = (event) => {
         setRangeValue(event.target.value);
       };
       const thumbPosition = (rangeValue - 0) / (100 - 0);
     
+
+    // const passiveincometoken = (((investment * PRY)/100) / rangeValue).toFixed(2) //Rental Income 
+    // const passiveIncomePerYear = ((investment*PRY)/100).toFixed(2); //Rental Income Year
+    // const passiveIncomePerMonth = (passiveIncomePerYear / 12).toFixed(2);
+
+    // const capitalrepaymentpertoken = (NFTPrice/capital/12).toFixed(2);
+    // const monthlycapitalrepayment = (capitalrepaymentpertoken/12).toFixed(2)
+    // const annualcapitalrepaymentpertoken = (capitalrepaymentpertoken*12).toFixed(2)
+    // // const anualcapitalrepayment = (capitalrepaymentpertoken * rangeValue).toFixed(2)
+    // const totalCapitalRepayment = (capitalrepaymentpertoken*rangeValue).toFixed(2)
+    // const anualcapitalrepayment = (parseFloat(passiveIncomePerYear) + parseFloat(annualcapitalrepaymentpertoken)).toFixed(2);
+    // const totalAnualCapitalRepayment = (anualcapitalrepayment * rangeValue).toFixed(2)
+    // const capitalrepaymentmonth = (anualcapitalrepayment /12).toFixed(2)
+
     const investment = NFTPrice * rangeValue;
-    const passiveincometoken = (((investment * PRY)/100) / rangeValue).toFixed(2) //Rental Income 
-    const passiveIncomePerYear = ((investment*PRY)/100).toFixed(2); //Rental Income Year
-    const passiveIncomePerMonth = (passiveIncomePerYear / 12).toFixed(2);
+    const rentalIncomePerToken = ((NFTPrice * PRY )/100);
+    const rentalIncomePerTokenSHOW = rentalIncomePerToken.toFixed(2);
+    const annualRentalIncome = (investment * PRY)/100
+    const annualRentalIncomeSHOW = annualRentalIncome.toFixed(2)
+    const monthlyRentalIncome = annualRentalIncome/12;
+    const monthlyRentalIncomeSHOW = monthlyRentalIncome.toFixed(2);
     const capitalRepaymentDuration = Math.floor(capital);
-    const capitalrepaymentpertoken = (NFTPrice/capital/12).toFixed(2);
-    const monthlycapitalrepayment = (capitalrepaymentpertoken/12).toFixed(2)
-    const annualcapitalrepaymentpertoken = (capitalrepaymentpertoken*12).toFixed(2)
-    // const anualcapitalrepayment = (capitalrepaymentpertoken * rangeValue).toFixed(2)
-    const totalCapitalRepayment = (capitalrepaymentpertoken*rangeValue).toFixed(2)
-    const anualcapitalrepayment = (parseFloat(passiveIncomePerYear) + parseFloat(annualcapitalrepaymentpertoken)).toFixed(2);
-    const totalAnualCapitalRepayment = (anualcapitalrepayment * rangeValue).toFixed(2)
-    const capitalrepaymentmonth = (anualcapitalrepayment /12).toFixed(2)
+    const annualCapitalRepayment = (investment / capitalRepaymentDuration)
+    const annualCapitalRepaymentSHOW = annualCapitalRepayment.toFixed(2)
+    const monthlyCapitalRepaymentPerToken = (investment/rangeValue/capitalRepaymentDuration/12)
+    const monthlyCapitalRepaymentPerTokenSHOW = monthlyCapitalRepaymentPerToken.toFixed(2);
+    const annualRepaymentPerToken = (parseFloat(annualCapitalRepayment) + parseFloat(annualRentalIncome))/rangeValue;
+    const annualRepaymentPerTokenSHOW = annualRepaymentPerToken.toFixed(2)
+    const annualRepayment = (parseFloat(annualCapitalRepayment) + parseFloat(annualRentalIncome))
+    const annualRepaymentSHOW = annualRepayment.toFixed(2)
+    const monthlyRepayment = annualRepayment/12;
+    const monthtlyRepaymentSHOW = monthlyRepayment.toFixed(2)
+
+
+
 
 return (
   <div>
@@ -86,7 +108,7 @@ return (
                      <span className={style.label}>Rental Income per token:</span>
                    </div>
                    <div className={style.cell}>
-                     <span className={style.descriptiontable}>{passiveincometoken}</span>
+                     <span className={style.descriptiontable}>{rentalIncomePerTokenSHOW}</span>
                    </div>
                  </div>
                  
@@ -135,7 +157,7 @@ return (
                      <span className={style.label}>Annual Rental Income:</span>
                    </div>
                    <div className={style.cell}>
-                   <span className={style.descriptiontabledif}>$ {passiveIncomePerYear}</span>
+                   <span className={style.descriptiontabledif}>$ {annualRentalIncomeSHOW}</span>
                    </div>
                  </div>
 
@@ -144,7 +166,7 @@ return (
                      <span className={style.label}>Monthly Rental Income:</span>
                    </div>
                    <div className={style.cell}>
-                   <span className={style.descriptiontabledif}>$ {passiveIncomePerMonth}</span>
+                   <span className={style.descriptiontabledif}>$ {monthlyRentalIncomeSHOW}</span>
                    </div>
                  </div>
             
@@ -161,28 +183,28 @@ return (
 
                                  <div className={style.row}>
                                    <div className={style.cell}>
-                                     <span className={style.label}>Capital Repayment per Token:</span>
+                                     <span className={style.label}>Monthly Capital Repayment per Token:</span>
                                    </div>
                                    <div className={style.cell}>
-                                     <span className={style.descriptiontable}>$ {capitalrepaymentpertoken} / month </span>
-                                   </div>
-                                 </div>
-
-                                 <div className={style.row}>
-                                   <div className={style.cell}>
-                                     <span className={style.label}>Capital Repayment:</span>
-                                   </div>
-                                   <div className={style.cell}>
-                                     <span className={style.descriptiontable}>$ {annualcapitalrepaymentpertoken} / year</span>
+                                     <span className={style.descriptiontable}>$ {monthlyCapitalRepaymentPerTokenSHOW} </span>
                                    </div>
                                  </div>
 
                                  <div className={style.row}>
                                    <div className={style.cell}>
-                                     <span className={style.label}>Monthly Repayment per token:</span>
+                                     <span className={style.label}>Annual Capital Repayment:</span>
                                    </div>
                                    <div className={style.cell}>
-                                     <span className={style.descriptiontable}> $  {capitalrepaymentmonth} </span>
+                                     <span className={style.descriptiontabledif}>$ {annualCapitalRepaymentSHOW} / year</span>
+                                   </div>
+                                 </div>
+
+                                 <div className={style.row}>
+                                   <div className={style.cell}>
+                                     <span className={style.label}>Monthly Repayment:</span>
+                                   </div>
+                                   <div className={style.cell}>
+                                     <span className={style.descriptiontabledif}> $  {monthtlyRepaymentSHOW} </span>
                                    </div>
                                  </div>
 
@@ -191,7 +213,7 @@ return (
                                      <span className={style.label}>Annual Repayment:</span>
                                    </div>
                                    <div className={style.cell}>
-                                     <span className={style.descriptiontable}> $  {totalAnualCapitalRepayment} </span>
+                                     <span className={style.descriptiontabledif}> $  {annualRepaymentSHOW} </span>
                                    </div>
                                  </div>
 
@@ -208,7 +230,7 @@ return (
 
            <div className={style.graphic1}>
                  <GraphicIncomeMonth 
-                      passiveIncomePerMonth={passiveIncomePerMonth}                
+                      passiveIncomePerMonth={monthlyRentalIncome}                
                    />  
                    <span className={style.descriptiontablemonth}>
                    <p><i>ACCUMULATIVE PASSIVE INCOME PER MONTH</i></p>
@@ -216,7 +238,7 @@ return (
                  </div>
          <div>
                 <TableIncome 
-                   passiveIncomePerYear={passiveIncomePerYear}
+                   passiveIncomePerYear={annualRentalIncome}
                    investment={investment}
                    /> 
                   <span className={style.descriptiontablemonth}>

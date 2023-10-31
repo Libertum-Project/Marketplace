@@ -35,7 +35,7 @@ const Hero = () => {
     <div className='first-container'>
         <div className='title'>
           <h2>Transforming an exclusive market into an Inclusive opportunity for Everyone!</h2>
-          <h3>Get your LBM Tokens now!</h3>
+          <h3>Get your $LBM Tokens now!</h3>
           <Slide direction={'left'} triggerOnce={true}>
             <section className='text'>
               <p>Don't miss out on your chance to be a part of the inclusive revolution in the real estate market. Start earning a steady rental income every month, hassle-free, and without any additional maintenance costs.</p>
@@ -51,7 +51,7 @@ const Hero = () => {
 
             <div className='exchange-box'>
               <h3>Private Community Pre-Sale</h3>
-              <p>1 LBM = 0.06 USD</p>
+              <p>1 $LBM = 0.06 USD</p>
 
               <div className='exchange-box-coins'>
                 <div className='exchange-buttons'>
