@@ -52,7 +52,7 @@ const AllocationChart = () => {
         <Doughnut data={chartData} options={chartOptions} />
       </section>
       <section>
-        <h2>ALLOCATION OF THE LBM TOKENS</h2>
+        <h2>ALLOCATION OF THE $LBM TOKENS</h2>
         <p>We believe in a conservative approach to ensure price stability. Only a small - but significant - percentage of $LBM will be unlocked at the token generation event. This means that $LBM will enjoy stability and reputational excellence.</p>
         <div className="legend-container">
           {chartData.labels.map((label, index) => (
