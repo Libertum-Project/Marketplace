@@ -49,7 +49,7 @@ const PresaleGrid = () => {
       features: [
         'Tokens for sale: 12.500.000', 
         'Price start at: $0.06', 
-        'Per Stage min: $22.550'
+        'Per Stage min: $22.550',
       ],
     },
     {

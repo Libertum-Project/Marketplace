@@ -57,6 +57,7 @@ import AboutPage from "./components/AboutUs/About";
 import ICO from "./components/ICOPage/ICO";
 import PreviewProperty from "./components/PreviewProperties/Preview";
 import Ico from "./components/Ico/Ico";
+import PLBM_example from "./smartContracts/pLBM/PLBM_example.jsx";
 
 function App() {
   const dispatch = useDispatch();
@@ -311,6 +312,8 @@ function App() {
           <Route path="/contact" element={<ContactPage />} />
 
           <Route path="/about" element={<AboutPage />} />
+
+          <Route path="/plbm" element={<PLBM_example /> } />
 
           <Route
             path={"/coinrelease"}
