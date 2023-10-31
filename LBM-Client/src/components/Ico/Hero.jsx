@@ -63,8 +63,7 @@ const Hero = () => {
 
     transak.on(transak.EVENTS.TRANSAK_ORDER_SUCCESSFUL, (orderData) => {
       console.log(orderData);
-      alert("Order Completed Successfully")
-      transak.close();
+      // transak.close();
     });
 
     return () => {
@@ -78,7 +77,7 @@ const Hero = () => {
       try {
         const web3auth = new Web3Auth({
           clientId,
-          web3AuthNetwork: "testnet", // mainnet, aqua,  cyan or testnet
+          web3AuthNetwork: import.meta.env.VITE_NETWORK, // mainnet, aqua,  cyan or testnet
           chainConfig: {
             chainNamespace: CHAIN_NAMESPACES.EIP155,
             chainId: import.meta.env.VITE_CHAIN_ID,
