@@ -223,15 +223,6 @@ const Hero = () => {
                   alt=''
                   onClick={handleExchangeClick}
                 />
-                <p>{selectedCurrency.toUpperCase()}</p>
-              </div>
-
-              <img
-                className='exchangeIcon'
-                src={exchangeIcon}
-                alt=''
-                onClick={handleExchangeClick}
-              />
 
               <div className='exchange-buttons'>
                 <input
@@ -242,6 +233,7 @@ const Hero = () => {
                 <p>{selectedCurrency === 'lbm' ? 'USD' : 'LBM'}</p>
               </div>
             </div>
+            </div>
 
             <button className='connect-wallet' onClick={() => { account ? logout() : login() }}>{account ? account.slice(0, 7) + "....." + account.slice(35, 42) : "Connect Wallet"}</button>
             {account && <div><button className='connect-wallet' onClick={() => { account ? logout() : login() }}>Buy Now</button>
@@ -250,9 +242,8 @@ const Hero = () => {
             }
 
           </div>
+        </Slide>
         </div>
-      </Slide>
-    </div>
 
   );
 };
