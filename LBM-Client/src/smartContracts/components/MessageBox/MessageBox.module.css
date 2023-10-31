@@ -75,7 +75,7 @@
 .errorBox button,
 .successBox button {
   border-radius: 0.31rem;
-  background: var(--Libertum-color);
+  background: var(--Libertum-color) !important;
   color: white;
   width: 15.26169rem;
   height: 2.907rem;

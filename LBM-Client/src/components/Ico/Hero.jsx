@@ -8,8 +8,8 @@ const Hero = () => {
   const [selectedCurrency, setSelectedCurrency] = useState('lbm');
 
   const exchangeRates = {
-    lbm: 0.024,
-    usd: 1 / 0.024, 
+    lbm: 0.06,
+    usd: 1 / 0.06, 
   };
 
   const handleInputChange = (event) => {
@@ -35,7 +35,7 @@ const Hero = () => {
     <div className='first-container'>
         <div className='title'>
           <h2>Transforming an exclusive market into an Inclusive opportunity for Everyone!</h2>
-          <h3>Get your LBM Tokens now!</h3>
+          <h3>Get your $LBM Tokens now!</h3>
           <Slide direction={'left'} triggerOnce={true}>
             <section className='text'>
               <p>Don't miss out on your chance to be a part of the inclusive revolution in the real estate market. Start earning a steady rental income every month, hassle-free, and without any additional maintenance costs.</p>
@@ -45,13 +45,13 @@ const Hero = () => {
         </div>
         <Slide direction={'down'} triggerOnce={false}>
           <div className='box'>
-            <h4>Next Phase Price: $0.028</h4>
-            <p className='first'>SOLD 2.345.534/5.000.000 $LBM</p>
-            <p className='second'>40% Disscount Community Sale ends soon</p>
+            <h4>Private Round - Price: $0.06</h4>
+            <p className='first'>SOLD 2.345.534/12.500.000</p>
+            <p className='second'>99% Disscount Community Sale ends soon</p>
 
             <div className='exchange-box'>
-              <h3>Community Pre-Sale</h3>
-              <p>1 LBM = 0.024 USD</p>
+              <h3>Private Community Pre-Sale</h3>
+              <p>1 $LBM = 0.06 USD</p>
 
               <div className='exchange-box-coins'>
                 <div className='exchange-buttons'>

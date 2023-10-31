@@ -2,9 +2,9 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px; 
-  padding-left: 2rem;
-  padding-right: 2rem;
-  margin-top: 3rem;
+  padding-left: 6rem;
+  padding-right: 6rem;
+  margin-top: 4.5rem;
 }
 
 .card-buy {
@@ -23,14 +23,14 @@
 
   .image-buy {
     position: absolute;
-    top: -60px; 
-    right: 160px; 
+    top: -3.8rem; 
+    right: 8.5rem; 
   }
 
   .step{
     position: absolute;
-    top: -36px; 
-    right: 195px; 
+    top: -2.5rem;
+    right: 10.8rem;
     color: #FFF;
     font-family: Inter;
     font-size: 3.125rem;
@@ -77,5 +77,6 @@
   .card-buy-grid{
     grid-template-columns: repeat(1, 1fr);
     gap: 35px;
+    padding: 1rem;
   }
 }
