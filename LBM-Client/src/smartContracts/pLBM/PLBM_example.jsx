@@ -3,6 +3,7 @@ import css from './PLBM_example.module.css';
 import { getCurrentSaleStage } from './getCurrentSaleStage';
 import { getRemainingTokens } from './getRemainingTokens';
 import { getUserWhitelistAllocation } from './getUserWhitelistAllocation';
+import { getUserBalance } from './getUserBalance';
 
 function PLBM_example() {
   const [currentStage, setCurrentStage] = useState(null);
@@ -12,6 +13,7 @@ function PLBM_example() {
     publicTokensRemaining: null,
   });
   const [userWhitelistAllocation, setUserWhitelistAllocation] = useState(null);
+  const [userBalance, setUserBalance] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -28,6 +30,11 @@ function PLBM_example() {
   const handleGetUserWhitelistAllocation = async () => {
     const whitelistAllocation = await getUserWhitelistAllocation();
     setUserWhitelistAllocation(whitelistAllocation);
+  };
+
+  const handleGetUserBalance = async () => {
+    const balance = await getUserBalance();
+    setUserBalance(balance);
   };
 
   return (
@@ -64,9 +71,15 @@ function PLBM_example() {
         </button>
         {userWhitelistAllocation !== null ? (
           <p>
-            {' '}
             Your Current Whitelist Allocations is: {userWhitelistAllocation}
           </p>
+        ) : null}
+      </div>
+
+      <div className={css.whitelistAllocation}>
+        <button onClick={handleGetUserBalance}>Get Balance</button>
+        {userBalance !== null ? (
+          <p>Your Current Balance is: {userBalance}</p>
         ) : null}
       </div>
     </div>
