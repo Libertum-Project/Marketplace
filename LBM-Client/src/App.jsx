@@ -57,7 +57,7 @@ import AboutPage from "./components/AboutUs/About";
 import ICO from "./components/ICOPage/ICO";
 import PreviewProperty from "./components/PreviewProperties/Preview";
 import Ico from "./components/Ico/Ico";
-import PLBM_example from "./smartContracts/pLBM/pLBM_example";
+import PLBM_example from "./smartContracts/pLBM/PLBM_example.jsx";
 
 function App() {
   const dispatch = useDispatch();

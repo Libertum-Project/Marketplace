@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
-import './PLBM_example.css';
+import  css from './PLBM_example.module.css';
 import { getCurrentSaleStage } from './getCurrentSaleStage';
 import { getRemainingTokens } from './getRemainingTokens';
+import { getUserWhitelistAllocation } from './getUserWhitelistAllocation';
 
 function PLBM_example() {
   const [currentStage, setCurrentStage] = useState(null);
@@ -10,42 +11,65 @@ function PLBM_example() {
     whitelistTokensRemaining: null,
     publicTokensRemaining: null,
   });
+  const [userWhitelistAllocation, setUserWhitelistAllocation] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
-      // Fetch the current stage
       const stage = await getCurrentSaleStage();
       setCurrentStage(stage);
 
-      // Fetch the remaining tokens
       const tokens = await getRemainingTokens();
       setRemainingTokens(tokens);
+
+ 
     }
 
     fetchData();
   }, []);
 
-  return (
-    <div className="PLBM">
-      <h1>Current Token Sale Stage:</h1>
-      {currentStage !== null ? <p>{currentStage}</p> : <p>Loading...</p>}
+  const handleGetUserWhitelistAllocation = async () => {
+     const whitelistAllocation = await getUserWhitelistAllocation(
+        '0xA74fCD902beB43b29cfc7c5c9Ff33Aea6FF05424'
+      );
+      setUserWhitelistAllocation(whitelistAllocation);
+  }
 
-      <h2>Remaining Tokens:</h2>
-      {remainingTokens.seedTokensRemaining !== null ? (
-        <p>Seed Round: {remainingTokens.seedTokensRemaining} pLBM</p>
-      ) : (
-        <p>Loading...</p>
-      )}
-      {remainingTokens.whitelistTokensRemaining !== null ? (
-        <p>Whitelist Round: {remainingTokens.whitelistTokensRemaining} pLBM</p>
-      ) : (
-        <p>Loading...</p>
-      )}
-      {remainingTokens.publicTokensRemaining !== null ? (
-        <p>Public Round: {remainingTokens.publicTokensRemaining} pLBM</p>
-      ) : (
-        <p>Loading...</p>
-      )}
+  return (
+    <div className={css.PLBM}>
+      <div>
+        <h2>Current Token Sale Stage:</h2>
+        {currentStage !== null ? <p>{currentStage}</p> : <p>Loading...</p>}
+      </div>
+
+      <div>
+        <h2>Remaining Tokens:</h2>
+        {remainingTokens.seedTokensRemaining !== null ? (
+          <p>Seed Round: {remainingTokens.seedTokensRemaining} pLBM</p>
+        ) : (
+          <p>Loading...</p>
+        )}
+        {remainingTokens.whitelistTokensRemaining !== null ? (
+          <p>
+            Whitelist Round: {remainingTokens.whitelistTokensRemaining} pLBM
+          </p>
+        ) : (
+          <p>Loading...</p>
+        )}
+        {remainingTokens.publicTokensRemaining !== null ? (
+          <p>Public Round: {remainingTokens.publicTokensRemaining} pLBM</p>
+        ) : (
+          <p>Loading...</p>
+        )}
+      </div>
+
+      <div>
+        <button onClick={handleGetUserWhitelistAllocation}>Whitelist Allocation:</button>
+        {userWhitelistAllocation !== null ? (
+          <p>{userWhitelistAllocation}</p>
+        ) : (
+          <p>Loading...</p>
+        )}
+      </div>
     </div>
   );
 }
