@@ -15,7 +15,7 @@ function CustomConnectButtom({ container }) {
 
   const { openAccountModal } = useAccountModal();
 
-  
+
 
   return (
     <div className={style.button}>
@@ -80,7 +80,7 @@ function CustomConnectButtom({ container }) {
                     <button
                       onClick={openAccountModal}
                       type="button"
-                      className={style.chainModal}                      
+                      className={style.chainModal}
                     >
                       {/* {chain.name} */}
                       Wallet
