@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import  css from './PLBM_example.module.css';
+import css from './PLBM_example.module.css';
 import { getCurrentSaleStage } from './getCurrentSaleStage';
 import { getRemainingTokens } from './getRemainingTokens';
 import { getUserWhitelistAllocation } from './getUserWhitelistAllocation';
@@ -20,23 +20,19 @@ function PLBM_example() {
 
       const tokens = await getRemainingTokens();
       setRemainingTokens(tokens);
-
- 
     }
 
     fetchData();
   }, []);
 
   const handleGetUserWhitelistAllocation = async () => {
-     const whitelistAllocation = await getUserWhitelistAllocation(
-        '0xA74fCD902beB43b29cfc7c5c9Ff33Aea6FF05424'
-      );
-      setUserWhitelistAllocation(whitelistAllocation);
-  }
+    const whitelistAllocation = await getUserWhitelistAllocation();
+    setUserWhitelistAllocation(whitelistAllocation);
+  };
 
   return (
     <div className={css.PLBM}>
-      <div>
+      <div className={css.currentStage}>
         <h2>Current Token Sale Stage:</h2>
         {currentStage !== null ? <p>{currentStage}</p> : <p>Loading...</p>}
       </div>
@@ -62,13 +58,16 @@ function PLBM_example() {
         )}
       </div>
 
-      <div>
-        <button onClick={handleGetUserWhitelistAllocation}>Whitelist Allocation:</button>
+      <div className={css.whitelistAllocation}>
+        <button onClick={handleGetUserWhitelistAllocation}>
+          Get Whitelist Allocation
+        </button>
         {userWhitelistAllocation !== null ? (
-          <p>{userWhitelistAllocation}</p>
-        ) : (
-          <p>Loading...</p>
-        )}
+          <p>
+            {' '}
+            Your Current Whitelist Allocations is: {userWhitelistAllocation}
+          </p>
+        ) : null}
       </div>
     </div>
   );
