@@ -4,6 +4,7 @@ import { getCurrentSaleStage } from './getCurrentSaleStage';
 import { getRemainingTokens } from './getRemainingTokens';
 import { getUserWhitelistAllocation } from './getUserWhitelistAllocation';
 import { getUserBalance } from './getUserBalance';
+import { advanceToNextSaleStage } from './advanceToNextSaleStage';
 
 function PLBM_example() {
   const [currentStage, setCurrentStage] = useState(null);
@@ -14,6 +15,7 @@ function PLBM_example() {
   });
   const [userWhitelistAllocation, setUserWhitelistAllocation] = useState(null);
   const [userBalance, setUserBalance] = useState(null);
+  const [updateTrigger, setUpdateTrigger] = useState(0);
 
   useEffect(() => {
     async function fetchData() {
@@ -25,7 +27,7 @@ function PLBM_example() {
     }
 
     fetchData();
-  }, []);
+  }, [updateTrigger]);
 
   const handleGetUserWhitelistAllocation = async () => {
     const whitelistAllocation = await getUserWhitelistAllocation();
@@ -35,6 +37,11 @@ function PLBM_example() {
   const handleGetUserBalance = async () => {
     const balance = await getUserBalance();
     setUserBalance(balance);
+  };
+
+  const handleAdvanceToNextSaleStage = async () => {
+    await advanceToNextSaleStage();
+    setUpdateTrigger((prev) => prev + 1);
   };
 
   return (
@@ -81,6 +88,12 @@ function PLBM_example() {
         {userBalance !== null ? (
           <p>Your Current Balance is: {userBalance}</p>
         ) : null}
+      </div>
+
+      <div className={css.whitelistAllocation}>
+        <button onClick={handleAdvanceToNextSaleStage}>
+          Advance to Next Sale Stage
+        </button>
       </div>
     </div>
   );
