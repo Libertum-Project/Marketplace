@@ -236,7 +236,9 @@ const Hero = () => {
 
 
             <button className='connect-wallet' onClick={() => { account ? logout() : login() }}>{account ? account.slice(0, 7) + "....." + account.slice(35, 42) : "Connect Wallet"}</button>
-            {account && <div><button className='connect-wallet' onClick={() => { account ? logout() : login() }}>Buy Now</button>
+            {account && 
+            <div className='connectedwallet'>
+              <button className='connect-wallet' onClick={() => { account ? logout() : login() }}>Buy Now</button>
               <button className='connect-wallet' onClick={() => { handleBuyUsdt() }}>Buy USDT</button>
             </div>
             }
