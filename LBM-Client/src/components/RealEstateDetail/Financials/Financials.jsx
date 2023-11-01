@@ -16,20 +16,6 @@ const Financials = ({number, PRY, value, AvailablesNFT, NFTPrice, capital}) => {
         setRangeValue(event.target.value);
       };
       const thumbPosition = (rangeValue - 0) / (100 - 0);
-    
-
-    // const passiveincometoken = (((investment * PRY)/100) / rangeValue).toFixed(2) //Rental Income 
-    // const passiveIncomePerYear = ((investment*PRY)/100).toFixed(2); //Rental Income Year
-    // const passiveIncomePerMonth = (passiveIncomePerYear / 12).toFixed(2);
-
-    // const capitalrepaymentpertoken = (NFTPrice/capital/12).toFixed(2);
-    // const monthlycapitalrepayment = (capitalrepaymentpertoken/12).toFixed(2)
-    // const annualcapitalrepaymentpertoken = (capitalrepaymentpertoken*12).toFixed(2)
-    // // const anualcapitalrepayment = (capitalrepaymentpertoken * rangeValue).toFixed(2)
-    // const totalCapitalRepayment = (capitalrepaymentpertoken*rangeValue).toFixed(2)
-    // const anualcapitalrepayment = (parseFloat(passiveIncomePerYear) + parseFloat(annualcapitalrepaymentpertoken)).toFixed(2);
-    // const totalAnualCapitalRepayment = (anualcapitalrepayment * rangeValue).toFixed(2)
-    // const capitalrepaymentmonth = (anualcapitalrepayment /12).toFixed(2)
 
     const investment = NFTPrice * rangeValue;
     const rentalIncomePerToken = ((NFTPrice * PRY )/100);
