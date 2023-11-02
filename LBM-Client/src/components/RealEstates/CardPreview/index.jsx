@@ -36,6 +36,8 @@ const Index = (props) => {
     slidesToScroll: 1,
   };
 
+  const capitalRepayment = (100/capital).toFixed(2)
+
   return (
     <div className={style.container}>
       <div className={style.imageContainer}>
@@ -56,7 +58,7 @@ const Index = (props) => {
         <div className={style.funded}>
           <div className={style.informacion}>
             <div className={style.progressBar}></div>
-            <div className={style.fundedtext}>44 % funded</div>
+            <div className={style.fundedtext}>32 % funded</div>
           </div>
         </div>
         {capital ? (
@@ -83,8 +85,10 @@ const Index = (props) => {
         </div>
 
         <div className={style.description}>
+          <p> <b>Annual Repayment - up to 12.2%</b></p>
           <p>Rental Income per token: ${PIT} </p>
           <p>Projected Rental Yield: {PRY} % </p>
+          {capital ? <p>Capital Repayment: {capitalRepayment} </p> : null}
           <p> Property Tokenised: {Math.floor(tokenised)}%</p>
           {capital ? <p>Capital Repayment Duration: {Math.floor(capital)} years</p> : null}
         </div>
@@ -104,6 +108,7 @@ const Index = (props) => {
           </div>
         </div>
       </div>
+
     </div>
   );
 };

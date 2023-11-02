@@ -66,7 +66,7 @@ const PresaleGrid = () => {
     },
     {
       icon: <img src={coinIcon} alt="" />,
-      image: <img src={tagIcon3} alt="" />,
+      // image: <img src={tagIcon3} alt="" />,
       dateIcon: <img src={calendarIcon} alt="" />,
       date: "25 to 30 Jan 2024",
       title: 'Public Presale',
@@ -78,7 +78,7 @@ const PresaleGrid = () => {
     },
     {
       icon: <img src={coinIcon} alt="" />,
-      image: <img src={tagIcon4} alt="" />,
+      // image: <img src={tagIcon4} alt="" />,
       dateIcon: <img src={calendarIcon} alt="" />,
       date: "1st Feb 2024",
       title: 'Launch Day',
