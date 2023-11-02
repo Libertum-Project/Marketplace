@@ -268,3 +268,9 @@ display: none;
     margin-top: 4rem;
   }
 }
+
+@media screen and (max-width: 720px) {
+  section {
+    margin: 1rem;
+  }
+}
