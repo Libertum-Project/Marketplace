@@ -6,6 +6,8 @@ import document2 from "./Register2.pdf"
 import document3 from "./Register4.pdf"
 import document4 from "./Register5.pdf"
 import document5 from "./policy.pdf"
+import document6 from "./otro.pdf"
+import document7 from "./otro2.pdf"
 import  style  from "../Aboutproperty.module.scss"
 import { BsDownload } from "react-icons/bs"
 
@@ -96,6 +98,36 @@ const Documents = () => {
             
             <Link
              to={document5}
+             target="_blank"
+             rel="noopener noreferrer"
+             download="plano1.pdf"                  
+           >
+            <p className={style.download}
+            >
+            <span style={{ display: 'inline-flex', alignItems: 'center', marginLeft: '10px', marginRight: '5px', borderRadius: '50%', backgroundColor: color,    padding: '5px'}}>
+                <BsDownload />
+              </span>
+              Download <b>Other document</b></p>
+
+            </Link>
+
+            <Link
+             to={document6}
+             target="_blank"
+             rel="noopener noreferrer"
+             download="plano1.pdf"                  
+           >
+            <p className={style.download}
+            >
+            <span style={{ display: 'inline-flex', alignItems: 'center', marginLeft: '10px', marginRight: '5px', borderRadius: '50%', backgroundColor: color,    padding: '5px'}}>
+                <BsDownload />
+              </span>
+              Download <b>Other document</b></p>
+
+            </Link>
+
+            <Link
+             to={document7}
              target="_blank"
              rel="noopener noreferrer"
              download="plano1.pdf"                  
