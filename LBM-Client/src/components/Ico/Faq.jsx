@@ -62,15 +62,6 @@ const Faq = () => {
           ),
       },
       {
-          pregunta: "What are the $LBM token details?  ",
-          answer: (
-              <ul>
-                  <li>Investing in real estate has never been easier with Libertum. We've revolutionised the process by transforming properties into digital assets and dividing them into fractions on the blockchain. Each fraction represents a slice of monthly rental income, so now anyone can confidently invest in fractionalised rental income and earn passive income consistently in proportional to their ownership. Our platform is powered by $LBM and we're here to support you every step of the way in building this innovative ecosystem. </li>
-                  {/* <li>This groundbreaking approach offers a multitude of benefits...</li> */}
-              </ul>
-          ),
-      },
-      {
           pregunta: "Why the $LBM token?  ",
           answer: (
               <ul>
