@@ -15,7 +15,7 @@
     top: 50%;
     left: 0;
     right: 0;
-    bottom: -7%;
+    bottom: 0;
     background-image: url('./assets/rectangule.svg');
     background-size:100%;
     border-radius: 2rem;
@@ -178,6 +178,8 @@
           }
         }
       }
+
+    
       .connectedwallet{
         display: flex;
         width: 100%;
@@ -197,6 +199,13 @@
       }
       .connect-wallet:hover {
         background-color: #014f70; 
+      }
+
+      .connect-wallet-buttons{
+        display: flex;
+        width: 100%;
+        padding: 0 1rem;
+        gap: .5rem;
       }
     }
    

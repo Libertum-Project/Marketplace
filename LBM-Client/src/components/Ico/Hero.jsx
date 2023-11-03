@@ -203,7 +203,7 @@ const Hero = () => {
       <Slide direction={'down'} triggerOnce={false}>
         <div className='box'>
           <h4>Private Round - Price: $0.06</h4>
-          <p className='first'>SOLD 2.345.534/12.500.000</p>
+          <p className='first'> SOLD 2.345.534/12.500.000</p>
           <p className='second'>99% Disscount Community Sale ends soon</p>
 
           <div className='exchange-box'>
@@ -227,15 +227,6 @@ const Hero = () => {
                 alt=''
                 onClick={handleExchangeClick}
               />
-              <p>{selectedCurrency.toUpperCase()}</p>
-            </div>
-
-            <img
-              className='exchangeIcon'
-              src={exchangeIcon}
-              alt=''
-              onClick={handleExchangeClick}
-            />
 
             <div className='exchange-buttons'>
               <input
@@ -244,16 +235,19 @@ const Hero = () => {
                 readOnly
               />
               <p>{selectedCurrency === 'lbm' ? 'USD' : 'LBM'}</p>
+              </div>
 
             </div>
-          </div>
+
 
           <button className='connect-wallet' onClick={() => { account ? logout() : login() }}>{account ? account.slice(0, 7) + "....." + account.slice(35, 42) : "Connect Wallet"}</button>
-          {account && <div><button className='connect-wallet' onClick={() => { account ? logout() : login() }}>Buy Now</button>
+          {account && 
+          <div className='connect-wallet-buttons'>
+            <button className='connect-wallet' onClick={() => { account ? logout() : login() }}>Buy Now</button>
             <button className='connect-wallet' onClick={() => { handleBuyUsdt() }}>Buy USDT</button>
           </div>
           }
-
+          </div>
         </div>
       </Slide>
 
