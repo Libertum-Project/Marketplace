@@ -194,7 +194,7 @@ const ICO = () => {
 
     return (
         <>
-            ffd
+
             <div>
                 <section className="text-gray-600 body-font pt-4 bg-gray-800 lg:h-[720px] md:h-auto mt-24 h-[1240px] ">
                     <div className='absolute -z-1'>
