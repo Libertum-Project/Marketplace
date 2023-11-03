@@ -46,16 +46,19 @@ const Index = (props) => {
     <div className="card-container">
 
       <div className="card-image-container">
-      <Link  to={`/marketplace/${id}`}>
+
         <img src={image} alt="property image" />
-      </Link>
+
+      <div className="card-image-container-savebutton">
+      <SaveProperty propertyId={props.id} />
+      </div>
       
       <div className="card-progress">
         <progress max="100" value={fundedBar}></progress>
         <div className="progress-text">{fundedBar}% Funded</div>
       </div>
 
-      <Slider {...sliderSettings}>
+      {/* <Slider {...sliderSettings}>
           {images.map((img, index) => (
             <div key={index}>
               <Link to={`/marketplace/${id}`}>
@@ -63,7 +66,7 @@ const Index = (props) => {
               </Link>
             </div>
           ))}
-        </Slider>
+        </Slider> */}
       </div>
       <div className="card-content">
         <div className="card-content-header">
@@ -71,15 +74,18 @@ const Index = (props) => {
             <h3>{location} · {country}</h3>
             <h2>{address}</h2>
           </div>
-          <p>Proyected rental yield {PRY} % </p>
-          {capital ? <p>Annual repayment up to 12.2%</p> : null} 
-          
-          <SaveProperty propertyId={props.id} />
+          <div className="card-content-header-flags">
+            <p>Proyected rental yield {PRY} % </p>
+            {capital ? <p>Annual repayment: 12.2%</p> : null}           
+          </div>
+
+          {/* <SaveProperty propertyId={props.id} /> */}
         </div>
         <div className="card-content-columns">
           <div className="card-content-details">
-            <h5>1400  <span>tokens for sale</span></h5>
-            <h5>$50  <span>each token</span></h5>
+            {/* <h5>1400  <span>tokens for sale</span></h5>
+            <h5>$50  <span>each token</span></h5> */}
+            <p><span>1400 tokens for sale · $50 each token</span></p>
             <p>Rental Income per token: ${PIT} </p>
             {capital ? <p>Capital Repayment: {capitalRepayment} % </p> : null}            
             {capital ? <p>Capital Repayment Duration: {Math.floor(capital)} years</p> : null}
@@ -87,6 +93,9 @@ const Index = (props) => {
 
           <div className="card-content-price">
             <p>${price.toLocaleString('en-US')}</p>
+            <Link  to={`/marketplace/${id}`}>
+              <button>See more</button>
+            </Link>
           </div>
 
 

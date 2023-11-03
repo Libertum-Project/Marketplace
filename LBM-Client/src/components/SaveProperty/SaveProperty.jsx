@@ -66,12 +66,12 @@ const SaveProperty = ({ propertyId }) => {
     <>
       {showSaved ? (
         <div className={style.bookmark} onClick={() => handleUnsaveProperty()}>
-          <BsBookmarkFill style={{ fontSize: '24px', fontWeight: 'bold', color: 'gray' }} />
+          <BsBookmarkFill style={{ fontSize: '24px', fontWeight: 900, color: 'white' }} />
 
         </div>
       ) : (
         <div className={style.bookmark} onClick={() => handleSaveProperty()}>
-          <BsBookmark style={{ fontSize: '24px', fontWeight: 'bold', color: 'gray' }} />
+          <BsBookmark style={{ fontSize: '24px', fontWeight: 900, color: 'white' }} />
         </div>
       )}
     </>
