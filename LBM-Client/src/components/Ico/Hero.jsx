@@ -49,7 +49,10 @@ const Hero = () => {
     const transak = new transakSDK({
       apiKey: import.meta.env.VITE_TRANSAK_API_KEY, // (Required)
       environment: import.meta.env.VITE_TRANSAK_ENVIRONMENT, // (Required)
-      defaultCrypto: 'USDT'
+      defaultCrypto: 'USDC',
+      defaultFiatCurrency: "USD",
+      cryptoCurrency: "USDC",
+      network: "bsc"
     });
     transak.init()
     // This will trigger when the user closed the widget
