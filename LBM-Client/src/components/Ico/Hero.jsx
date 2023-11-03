@@ -189,6 +189,7 @@ const Hero = () => {
   return (
 
     <div className='first-container'>
+
       <div className='title'>
         <h2>Transforming an exclusive market into an Inclusive opportunity for Everyone!</h2>
         <h3>Get your $LBM Tokens now!</h3>
@@ -243,6 +244,7 @@ const Hero = () => {
                 readOnly
               />
               <p>{selectedCurrency === 'lbm' ? 'USD' : 'LBM'}</p>
+
             </div>
           </div>
 
@@ -254,6 +256,7 @@ const Hero = () => {
 
         </div>
       </Slide>
+
     </div>
 
   );

@@ -27,7 +27,7 @@
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  z-index: 10;
+  z-index: 100;
   position: fixed;
   font-family: "montserrat";
   font-style: normal;
@@ -36,6 +36,7 @@
   line-height: 18px;
   text-align: center;
   color: #000000;
+  padding-inline: clamp(2rem, 12vw, 0rem);
 }
 
 .flexContainer {
@@ -55,6 +56,7 @@
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  z-index: 99999;
 }
 
 .icon {
