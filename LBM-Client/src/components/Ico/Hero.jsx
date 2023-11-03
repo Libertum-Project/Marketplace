@@ -203,7 +203,7 @@ const Hero = () => {
       <Slide direction={'down'} triggerOnce={false}>
         <div className='box'>
           <h4>Private Round - Price: $0.06</h4>
-          <p className='first'>SOLD 2.345.534/12.500.000</p>
+          <p className='first'> SOLD 2.345.534/12.500.000</p>
           <p className='second'>99% Disscount Community Sale ends soon</p>
 
           <div className='exchange-box'>
