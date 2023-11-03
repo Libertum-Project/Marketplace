@@ -52,3 +52,10 @@
   box-shadow: 2px 2px 12px #c5c5c5,
     -2px -2px 12px #ffffff;
 }
+
+.buttonContainer {
+  align-items: center;
+  display: flex;
+  justify-content: start;
+  gap: 1.5rem;
+}

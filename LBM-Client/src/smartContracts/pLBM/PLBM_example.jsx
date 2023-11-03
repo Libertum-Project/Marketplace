@@ -5,6 +5,9 @@ import { getRemainingTokens } from './getRemainingTokens';
 import { getUserWhitelistAllocation } from './getUserWhitelistAllocation';
 import { getUserBalance } from './getUserBalance';
 import { advanceToNextSaleStage } from './advanceToNextSaleStage';
+import { buyTokens } from './buyTokens';
+import withdrawFunds from './withdrawFunds';
+import addToWhitelist from './addToWhitelist';
 
 function PLBM_example() {
   const [currentStage, setCurrentStage] = useState(null);
@@ -44,6 +47,11 @@ function PLBM_example() {
     setUpdateTrigger((prev) => prev + 1);
   };
 
+  const handleBuyTokens = async () => {
+    await buyTokens(10);
+    setUpdateTrigger((prev) => prev + 1);
+  };
+
   return (
     <div className={css.PLBM}>
       <div className={css.currentStage}>
@@ -71,29 +79,42 @@ function PLBM_example() {
           <p>Loading...</p>
         )}
       </div>
+      <div className={css.buttonContainer}>
+        <div className={css.whitelistAllocation}>
+          <button onClick={handleGetUserWhitelistAllocation}>
+            Get Whitelist Allocation
+          </button>
+          {userWhitelistAllocation !== null ? (
+            <p>
+              Your Current Whitelist Allocations is: {userWhitelistAllocation}
+            </p>
+          ) : null}
+        </div>
 
-      <div className={css.whitelistAllocation}>
-        <button onClick={handleGetUserWhitelistAllocation}>
-          Get Whitelist Allocation
-        </button>
-        {userWhitelistAllocation !== null ? (
-          <p>
-            Your Current Whitelist Allocations is: {userWhitelistAllocation}
-          </p>
-        ) : null}
-      </div>
+        <div className={css.whitelistAllocation}>
+          <button onClick={addToWhitelist}> Add user to Whitelist </button>
+        </div>
 
-      <div className={css.whitelistAllocation}>
-        <button onClick={handleGetUserBalance}>Get Balance</button>
-        {userBalance !== null ? (
-          <p>Your Current Balance is: {userBalance}</p>
-        ) : null}
-      </div>
+        <div className={css.whitelistAllocation}>
+          <button onClick={handleGetUserBalance}>Get Balance</button>
+          {userBalance !== null ? (
+            <p>Your Current Balance is: {userBalance}</p>
+          ) : null}
+        </div>
 
-      <div className={css.whitelistAllocation}>
-        <button onClick={handleAdvanceToNextSaleStage}>
-          Advance to Next Sale Stage
-        </button>
+        <div className={css.whitelistAllocation}>
+          <button onClick={handleAdvanceToNextSaleStage}>
+            Advance to Next Sale Stage
+          </button>
+        </div>
+
+        <div className={css.whitelistAllocation}>
+          <button onClick={handleBuyTokens}>Buy 10 Tokens</button>
+        </div>
+
+        <div className={css.whitelistAllocation}>
+          <button onClick={withdrawFunds}> Withdraw All Funds </button>
+        </div>
       </div>
     </div>
   );
