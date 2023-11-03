@@ -46,7 +46,7 @@ const Ico = () => {
 
 
     <Slide direction={"up"} triggerOnce={true}>
-      <h2 style={headingStyle}>HOW TO CLAIM LBM TOKENS?</h2>
+      <h2 style={headingStyle}>HOW TO CLAIM $LBM TOKENS?</h2>
       <HowToClaim />
     </Slide>
 
@@ -55,7 +55,7 @@ const Ico = () => {
     </Slide>
 
     <Slide direction={"right"} triggerOnce={true}>
-      <h2 style={headingStyle}>WHY LBM TOKENS?</h2>
+      <h2 style={headingStyle}>WHY $LBM TOKENS?</h2>
       <WhyLBM />
     </Slide>
 

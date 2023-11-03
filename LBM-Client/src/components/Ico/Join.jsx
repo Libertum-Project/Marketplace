@@ -5,7 +5,7 @@ const Join = () => {
   return(
     <div className="join-container">
       <section>
-        <h2>JOIN THE LBM COIN PRE SALE</h2>
+        <h2>JOIN THE $LBM COIN PRE SALE</h2>
         <button>BUY NOW</button>
       </section>
       <section>

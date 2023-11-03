@@ -1,0 +1,54 @@
+.PLBM {
+  min-height: 100vh;
+  padding: 10rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.PLBM h2 {
+  font-size: 1.5rem;
+}
+
+.currentStage {
+  display: flex;
+  gap: 1rem;
+}
+
+.currentStage p {
+  font-size: 1.5rem;
+  color: blue;
+}
+
+.whitelistAllocation {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.PLBM button {
+  color: #090909;
+  padding: 0.7em 1.7em;
+  font-size: 18px;
+  border-radius: 0.5em;
+  background: #e8e8e8;
+  border: 1px solid #e8e8e8;
+  transition: all .3s;
+  box-shadow: 6px 6px 12px #c5c5c5,
+    -6px -6px 12px #ffffff;
+}
+
+.PLBM button:hover {
+  border: 1px solid white;
+  box-shadow: 4px 4px 12px #c5c5c5,
+    -4px -4px 12px #ffffff;
+}
+
+.PLBM button:active {
+  box-shadow: 2px 2px 12px #c5c5c5,
+    -2px -2px 12px #ffffff;
+}

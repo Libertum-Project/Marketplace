@@ -22,15 +22,15 @@ const WhyLBM = () => {
   const data = [
     {
       icon: iconarrow,
-      text: "LBM is the Libertum native token. It is the bricks that will build a strong foundation for thee Libertum Community",
+      text: "$LBM is the Libertum native token. It is the bricks that will build a strong foundation for thee Libertum Community",
     },
     {
       icon: iconbag,
-      text: "LBM will allow everyone to earn their share of the platform revenue. By staking LBM, the community can earn their reward in LBM and USDC",
+      text: "$LBM will allow everyone to earn their share of the platform revenue. By staking $LBM, the community can earn their reward in $LBM and USDC",
     },
     {
       icon: iconhouse,
-      text: "We will be giving to non-profit organizations that help millions globally to create a home. As an LBM holder, you will have the power to choose which projects we support",
+      text: "We will be giving to non-profit organizations that help millions globally to create a home. As an $LBM holder, you will have the power to choose which projects we support",
     },
   ];
 
