@@ -49,10 +49,11 @@ const Hero = () => {
     const transak = new transakSDK({
       apiKey: import.meta.env.VITE_TRANSAK_API_KEY, // (Required)
       environment: import.meta.env.VITE_TRANSAK_ENVIRONMENT, // (Required)
-      defaultCrypto: 'USDC',
+      defaultCrypto: 'MATIC',
       defaultFiatCurrency: "USD",
-      cryptoCurrency: "USDC",
-      network: "bsc"
+      cryptoCurrencyCode: "MATIC",
+      network: "polygon",
+      fiatAmount: 100
     });
     transak.init()
     // This will trigger when the user closed the widget
@@ -228,25 +229,25 @@ const Hero = () => {
                 onClick={handleExchangeClick}
               />
 
-            <div className='exchange-buttons'>
-              <input
-                type='text'
-                id={selectedCurrency === 'lbm' ? 'usd' : 'lbm'}
-                readOnly
-              />
-              <p>{selectedCurrency === 'lbm' ? 'USD' : 'LBM'}</p>
+              <div className='exchange-buttons'>
+                <input
+                  type='text'
+                  id={selectedCurrency === 'lbm' ? 'usd' : 'lbm'}
+                  readOnly
+                />
+                <p>{selectedCurrency === 'lbm' ? 'USD' : 'LBM'}</p>
               </div>
 
             </div>
 
 
-          <button className='connect-wallet' onClick={() => { account ? logout() : login() }}>{account ? account.slice(0, 7) + "....." + account.slice(35, 42) : "Connect Wallet"}</button>
-          {account && 
-          <div className='connect-wallet-buttons'>
-            <button className='connect-wallet' onClick={() => { account ? logout() : login() }}>Buy Now</button>
-            <button className='connect-wallet' onClick={() => { handleBuyUsdt() }}>Buy USDT</button>
-          </div>
-          }
+            <button className='connect-wallet' onClick={() => { account ? logout() : login() }}>{account ? account.slice(0, 7) + "....." + account.slice(35, 42) : "Connect Wallet"}</button>
+            {account &&
+              <div className='connect-wallet-buttons'>
+                <button className='connect-wallet' onClick={() => { account ? logout() : login() }}>Buy Now</button>
+                <button className='connect-wallet' onClick={() => { handleBuyUsdt() }}>Buy USDT</button>
+              </div>
+            }
           </div>
         </div>
       </Slide>
