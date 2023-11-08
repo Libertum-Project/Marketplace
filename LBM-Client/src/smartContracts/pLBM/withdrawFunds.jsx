@@ -1,21 +1,35 @@
 import { ethers } from 'ethers';
 import pLBM_ABI from '../ABI/pLBM.json';
 import USDC_ABI from '../ABI/USDC.json';
-const pLBM_address = '0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512';
-const USDC_address = '0x5FbDB2315678afecb367f032d93F642f64180aa3';
-const provider = new ethers.providers.JsonRpcProvider();
-const signer = provider.getSigner();
-const pLBM_contract = new ethers.Contract(pLBM_address, pLBM_ABI.abi, signer);
-const USDC_contract = new ethers.Contract(USDC_address, USDC_ABI.abi, signer);
+const pLBM_address = import.meta.env.VITE_pLBM_address;
+const USDC_address = import.meta.env.VITE_USDC_address;
+const ownerPrivateKey = import.meta.env.VITE_ownerPrivateKey;
 
 const withdrawFunds = async () => {
   try {
     if (window.ethereum) {
-      await window.ethereum.enable();
+      const provider = new ethers.providers.JsonRpcProvider(
+        'https://polygon-mumbai.g.alchemy.com/v2/1MGoef4uSxJ3hjS0wszW_hmrScMeLq6B',
+      );
+      const ownerSigner = new ethers.Wallet(ownerPrivateKey, provider);
+      const pLBM_contract = new ethers.Contract(
+        pLBM_address,
+        pLBM_ABI.abi,
+        ownerSigner,
+      );
+      const USDC_contract = new ethers.Contract(
+        USDC_address,
+        USDC_ABI.abi,
+        ownerSigner,
+      );
 
       const owner = await pLBM_contract.owner();
       console.log(await USDC_contract.balanceOf(owner));
-      await pLBM_contract.connect(signer).withdrawAllFunds();
+      const tx = await pLBM_contract
+        .connect(ownerSigner)
+        .withdrawAllFunds({ gasLimit: 2000000 });
+      await tx.wait()
+      console.log(tx)
       console.log(await USDC_contract.balanceOf(owner));
     } else {
       console.error(
@@ -23,7 +37,7 @@ const withdrawFunds = async () => {
       );
     }
   } catch (error) {
-    console.error('Error buying tokens:', error);
+    console.error('Error:', error);
   }
 };
 export default withdrawFunds;

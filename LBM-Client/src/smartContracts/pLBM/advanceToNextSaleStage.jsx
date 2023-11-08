@@ -1,16 +1,19 @@
 import { ethers } from 'ethers';
 import pLBM_ABI from '../ABI/pLBM.json';
-const pLBM_address = '0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512';
+const pLBM_address = import.meta.env.VITE_pLBM_address;
+const ownerPrivateKey = import.meta.env.VITE_ownerPrivateKey;
 
 export async function advanceToNextSaleStage() {
   try {
     if (window.ethereum) {
-      await window.ethereum.enable();
-      const provider = new ethers.providers.JsonRpcProvider();
-      const signer = provider.getSigner();
-      const contract = new ethers.Contract(pLBM_address, pLBM_ABI.abi, signer);
-      const tx = await contract.advanceToNextStage();
+      const provider = new ethers.providers.JsonRpcProvider(
+        'https://polygon-mumbai.g.alchemy.com/v2/1MGoef4uSxJ3hjS0wszW_hmrScMeLq6B',
+      );
+      const owner = new ethers.Wallet(ownerPrivateKey, provider);
+      const contract = new ethers.Contract(pLBM_address, pLBM_ABI.abi, owner);
+      const tx = await contract.advanceToNextStage({ gasLimit: 2000000 });
       await tx.wait();
+      console.log(tx)
     }
   } catch (error) {
     console.error('Error advancing to the next sale stage:', error);
