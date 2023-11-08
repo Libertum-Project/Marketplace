@@ -1,13 +1,12 @@
 import { ethers } from 'ethers';
 import pLBM_ABI from '../ABI/pLBM.json';
-const pLBM_address = '0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512';
+const pLBM_address = import.meta.env.VITE_pLBM_address;
 
 export async function getRemainingTokens() {
-  const provider = new ethers.providers.JsonRpcProvider();
-  const signer = provider.getSigner();
-  const contract = new ethers.Contract(pLBM_address, pLBM_ABI.abi, signer);
-
   try {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const contract = new ethers.Contract(pLBM_address, pLBM_ABI.abi, provider);
+
     const seedTokensRemaining = await contract.seedTokensRemaining();
     const whitelistTokensRemaining = await contract.whitelistTokensRemaining();
     const publicTokensRemaining = await contract.publicTokensRemaining();
