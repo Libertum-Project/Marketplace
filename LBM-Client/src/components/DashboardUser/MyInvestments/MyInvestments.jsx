@@ -31,7 +31,7 @@ const MyInvestments = ({ name, id, transactions, investments }) => {
             transactions={transactions} />
           </div>
 
-          <h2 className={css.title}>LBM COIN</h2>
+          <h2 className={css.title}>LBM COIN</h2>          
           <div className="">
             <Coin />
           </div>

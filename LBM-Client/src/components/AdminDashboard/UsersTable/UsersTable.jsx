@@ -6,8 +6,6 @@ const UsersTable = () => {
 
     return(
         <div>
-            <Frame1 />
-            <Frame2 />
             <Users/>
         </div>
     )

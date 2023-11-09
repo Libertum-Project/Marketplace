@@ -43,10 +43,10 @@ const Investments = ({ investments, transactions }) => {
       purchaseDate.getFullYear().toString().slice(-2);
 
     const propertyId = transaction.ID_Property;
-    const isActive = investments[propertyId - 1].IsActive;
+    const isActive = investments[propertyId - 1]?.IsActive;
     return {
-      addressID: investments[propertyId - 1].Address,
-      address: investments[propertyId - 1].Feature.Address,
+      addressID: investments[propertyId - 1]?.Address,
+      address: investments[propertyId - 1]?.Feature.Address,
       tokens: transaction.Token_quantity,
       tokenprice: `$${transaction.PricePerToken}`,
       paymentMethod: `${transaction.Payment_Method}`,
@@ -54,9 +54,9 @@ const Investments = ({ investments, transactions }) => {
       claim: (
         <div className={css.claim}>
           <ClaimMonthlyPayment
-            propertyAddress={investments[propertyId - 1].Address}
+            propertyAddress={investments[propertyId - 1]?.Address}
             quantity={transaction.Token_quantity}
-            propertyType={investments[propertyId - 1].Financial.Investment_type}
+            propertyType={investments[propertyId - 1]?.Financial.Investment_type}
             isActive={isActive}
           />
           <div></div>
