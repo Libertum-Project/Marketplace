@@ -89,7 +89,7 @@ const Tokens = () => {
     <div className={css.container}>
       <div className={css.cardsGrid}>
         <div className={css.card}>
-          <h2 className={css.card__title}>Current Token Stage:<br /> <b>{currentStage}</b></h2>
+          <h2 className={css.card__title}>Current Token Stage:<br /> <b>{currentStage || 'Pre-sale not started yet'}</b></h2>
           <p className={css.card__content}>Remaining tokens: {getRemainingTokensText()}</p>
           <div className={css.card__date}>
             ADVANCE TO NEXT STAGE
@@ -103,8 +103,8 @@ const Tokens = () => {
         </div>
 
         <div className={css.card}>
-        <h2 className={css.card__title}>FUNDS:<br /> <b>$5489521</b></h2>
-        <p className={css.card__content}>Sold Tokens: 23562</p>
+        <h2 className={css.card__title}>FUNDS:<br /> <b>$0</b></h2>
+        <p className={css.card__content}>Sold Tokens: 0</p>
         <div className={css.card__date}>
           WITHDRAW FUNDS
         </div>
