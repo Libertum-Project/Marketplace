@@ -65,3 +65,54 @@
 .claim{
   height: fit-content;
 }
+
+.tokens{
+  display: flex;
+  line-height: 2rem;
+  gap: .8rem;
+  padding: 0 .8rem;
+  margin-bottom: 1rem;
+  font-family: montserrat;
+    h3{
+      // background-color: rgb(98, 98, 236);
+      border-radius: 999999%;
+      color: rgb(98, 98, 236);
+      font-size: 2.2rem;
+    }
+    h2{
+      text-transform: uppercase;
+      color: #505050;
+    }
+}
+
+.buytokensButton{
+    gap: 2rem;
+    // padding: 0 2rem;
+    margin-bottom: 1rem;
+    text-align: left;
+    font-family: montserrat;
+    // line-height: 1.5rem;
+
+
+    p{
+      color: rgb(111, 111, 224);
+      font-size: 1.3rem;
+    }
+
+    h5{
+      color: #505050;
+      // font-size: 1.3rem;
+    }
+
+    button{
+      background-color: var(--Libertum-color);
+      padding: 0 1rem;
+      color: white;
+      border-radius: 1rem;
+    }
+.buytokensbuttonSection{
+  display: flex;
+  gap: 2rem;
+
+}
+}

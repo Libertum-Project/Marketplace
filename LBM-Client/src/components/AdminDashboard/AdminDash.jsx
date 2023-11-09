@@ -6,6 +6,10 @@ import {
   fetchAllProperties,
   setPropertyStatus,
 } from "../../../redux/features/propertySlice";
+import {
+  fetchAllUsers,
+  fetchCurrentUser,
+} from "../../../redux/features/userSlice";
 import Frame1 from "./Frame1/Frame1";
 import Frame2 from "./Frame2/Frame2";
 import Frame3 from "./Frame3/Frame3";
@@ -15,13 +19,17 @@ import Loading from "../Loading/Loading";
 import PropertyTable from "./Properties/PropertyTable"; 
 import Tokens from "./Tokens/Tokens";
 import css from "./adminDash.module.css"
+import UsersTable from "./UsersTable/UsersTable";
 
 const AdminDash = () => {
   const dispatch = useDispatch();
   const allProperties = useSelector((state) => state.property.allProperies);
+  const allUsers = useSelector((state) => state.user.allUsers);
+
 
   useEffect(() => {
     dispatch(fetchAllProperties());
+    dispatch(fetchAllUsers());
   }, [dispatch]);
 
   const handleActive = async (propertyId, isActive) => {
@@ -77,6 +85,10 @@ const AdminDash = () => {
 
       <h2 className={css.subtitle}>Tokens PRE-SALE</h2>
       <Tokens />
+
+      {/* <h2 className={css.subtitle}>Users</h2>
+      <UsersTable /> */}
+
 
     </div>
   ) : (

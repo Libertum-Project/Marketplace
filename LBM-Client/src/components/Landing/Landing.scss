@@ -15,6 +15,7 @@ $secondarycolor: var(--LibertumBlue);
   padding: 1rem;
 
 
+
   .timer-content{
   padding: 1rem;
   // border: 1px solid black;
@@ -131,7 +132,6 @@ $secondarycolor: var(--LibertumBlue);
       align-items: center;
       }
   }
-
 }
 
 .modal-container {
@@ -150,6 +150,9 @@ $secondarycolor: var(--LibertumBlue);
   justify-content: center;
   align-items: center;
   z-index: 999;
+  box-shadow: 10px 11px 15px 0px rgba(0,0,0,0.41);
+-webkit-box-shadow: 10px 11px 15px 0px rgba(0,0,0,0.41);
+-moz-box-shadow: 10px 11px 15px 0px rgba(0,0,0,0.41);
 
 
 
