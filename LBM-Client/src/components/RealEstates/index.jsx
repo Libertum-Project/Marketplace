@@ -59,7 +59,6 @@ useEffect(() => {
   dispatch(fetchFilteredProperties(filters));
 }, [dispatch, selectedFilters]);
 
-  
 
   return !isLoading ? (
     <div className={css.container}>

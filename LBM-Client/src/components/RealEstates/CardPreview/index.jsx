@@ -38,8 +38,12 @@ const Index = (props) => {
   };
 
   const capitalRepayment = (100/capital).toFixed(2)
+  const annualRepayment = (parseFloat(capitalRepayment) + parseFloat(PRY)).toFixed(2);
   const fundedBar = 32
-  
+
+  const numericPrice = parseFloat(price);
+  const formattedPrice = numericPrice.toLocaleString('en-US', { maximumFractionDigits: 0 });
+  console.log(formattedPrice)
 
   return (
 
@@ -76,7 +80,7 @@ const Index = (props) => {
           </div>
           <div className="card-content-header-flags">
             <p>Proyected rental yield {PRY} % </p>
-            {capital ? <p>Annual repayment: 12.2%</p> : null}           
+            {capital > 0 && <p>Annual repayment: {annualRepayment} %</p>}
           </div>
 
           {/* <SaveProperty propertyId={props.id} /> */}
@@ -92,7 +96,7 @@ const Index = (props) => {
           </div>
 
           <div className="card-content-price">
-            <p>${price.toLocaleString('en-US')}</p>
+            <p>${formattedPrice}</p>
             <Link  to={`/marketplace/${id}`}>
               <button>See more</button>
             </Link>
