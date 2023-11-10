@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import "./Draft.scss";
 import iconHouse from "../../assets/dashboardInactive.svg";
 import iconDelete from "../../assets/delete.svg";
@@ -9,6 +9,18 @@ const Card = ({ id, address, city, country, handleDelete }) => {
   const editRoute = `/create/${id}`;
   const previewRoute = `/draft/preview/${id}`; 
 
+  const navigate = useNavigate();
+
+
+  const handleEditClick = () => {
+    navigate(editRoute);
+  };
+  
+  const handlePreviewClick = () => {
+    navigate(previewRoute);
+  };
+
+
   return (
     <div className="cardDraft">
       <img src={iconHouse} alt="" />
@@ -18,16 +30,16 @@ const Card = ({ id, address, city, country, handleDelete }) => {
         <p>City: {city} </p>
         <p>Country: {country} </p>
       </div>
-      <div className="button">
-        <button onClick={handleDelete}>
+      <div className="buttons">
+        <button onClick={handleDelete} className='button'>
           <img src={iconDelete} alt="" className="icon"/>
         </button>
-        <Link to={editRoute}>
-          <img src={iconEdit} alt=""   className="icon"/>
-        </Link>
-        <Link to={previewRoute}>
-          <img src={iconPreview} alt=""  className="icon"/>
-        </Link>
+          <button onClick={handleEditClick} className='button'>
+            <img src={iconEdit} alt=""   className="icon"/>
+          </button>
+          <button onClick={handlePreviewClick} className='button'>
+            <img src={iconPreview} alt=""  className="icon"/>
+          </button>
       </div>
     </div>
   );
