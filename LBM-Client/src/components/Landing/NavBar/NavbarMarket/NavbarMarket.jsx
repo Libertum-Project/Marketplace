@@ -1,29 +1,21 @@
-import React, { useState, useEffect } from "react";
-import style from "./NavbarMarket.module.scss";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchCurrentUser } from "../../../../../redux/features/userSlice";
-import { useAuth0 } from "@auth0/auth0-react";
-import { NavLink, Link } from "react-router-dom";
-import {
-  IoChevronDownOutline,
-  IoGlobeOutline,
-  IoPerson,
-} from "react-icons/io5";
-import PopUpMarket from "./PopUp/PopUpMarket";
-import PopUpUser from "./PopUp/PopUpUser";
-import { useAccountModal } from "@rainbow-me/rainbowkit";
-import PopUpLanguage from "./PopUp/PopUpLanguage";
-import MobileMenu from "./MobileMenu/MobileMenu";
-import { Divide as Hamburger } from "hamburger-react";
-import closeIcon from "../../../../assets/close.svg";
-import copyIcon from "../../../../assets/Copy.svg";
-import logoutIcon from "../../../../assets/Logout.svg";
-import logo from "../../../../../public/LibertumColor.png";
-import pdf from "../../assets/LBM-whitepaper.pdf";
+import React, { useState, useEffect } from 'react';
+import style from './NavbarMarket.module.scss';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchCurrentUser } from '../../../../../redux/features/userSlice';
+import { useAuth0 } from '@auth0/auth0-react';
+import { NavLink, Link } from 'react-router-dom';
+import { IoChevronDownOutline, IoGlobeOutline } from 'react-icons/io5';
+import PopUpMarket from './PopUp/PopUpMarket';
+import PopUpUser from './PopUp/PopUpUser';
+import { useAccountModal } from '@rainbow-me/rainbowkit';
+import PopUpLanguage from './PopUp/PopUpLanguage';
+import MobileMenu from './MobileMenu/MobileMenu';
+import { Divide as Hamburger } from 'hamburger-react';
+import logo from '../../../../../public/LibertumColor.png';
 
 function NavbarMarket() {
   const dispatch = useDispatch();
-  const { logout, user } = useAuth0();
+  const { user } = useAuth0();
   const { openAccountModal } = useAccountModal();
   const [active, setActive] = useState(false);
   const { currency } = useSelector((state) => state.reducerCompleto);
@@ -46,48 +38,42 @@ function NavbarMarket() {
     admin = import.meta.env.VITE_ADMIN_JAVVAD;
 
   useEffect(() => {
-    document.addEventListener("click", (e) => {
-      const isDropdownButton = e.target.matches("[data-dropdown-button]");
-      const isMenuButton = e.target.matches("[data-dropdown-menu]");
-      const isMenuButtonMobile = e.target.matches("[data-dropdown-menumobile]");
-      const isLanguageButton = e.target.matches("[data-dropdown-language]");
+    document.addEventListener('click', (e) => {
+      const isDropdownButton = e.target.matches('[data-dropdown-button]');
+      const isMenuButton = e.target.matches('[data-dropdown-menu]');
+      const isMenuButtonMobile = e.target.matches('[data-dropdown-menumobile]');
+      const isLanguageButton = e.target.matches('[data-dropdown-language]');
 
-      if (!isMenuButton && e.target.closest("[data-menu]") != null) return;
-      if (!isMenuButtonMobile && e.target.closest("[data-menumobile]") != null)
+      if (!isMenuButton && e.target.closest('[data-menu]') != null) return;
+      if (!isMenuButtonMobile && e.target.closest('[data-menumobile]') != null)
         return;
-      if (!isDropdownButton && e.target.closest("[data-dropdown]") != null)
+      if (!isDropdownButton && e.target.closest('[data-dropdown]') != null)
         return;
-      if (!isLanguageButton && e.target.closest("[data-language]") != null)
+      if (!isLanguageButton && e.target.closest('[data-language]') != null)
         return;
 
       if (!isDropdownButton) {
         setActive(false);
       }
-      // if (!isMenuButton) {
-      //   setActiveMenu(false);
-      // }
-      // if (!isMenuButtonMobile) {
-      //   setActiveMenuMobile(false);
-      // }
-      if (!isLanguageButton && e.target.closest("[data-language]") === null) {
+      if (!isLanguageButton && e.target.closest('[data-language]') === null) {
         setActiveLanguage(false);
       }
     });
   }, []);
 
-  const [headerType, setHeaderType] = useState("default");
+  const [headerType, setHeaderType] = useState('default');
 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 100) {
-        setHeaderType("alternative");
+        setHeaderType('alternative');
       } else {
-        setHeaderType("default");
+        setHeaderType('default');
       }
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -97,7 +83,7 @@ function NavbarMarket() {
         fetchCurrentUser({
           email: user.email,
           name: user.name,
-        })
+        }),
       );
     }
   }, []);
@@ -108,10 +94,10 @@ function NavbarMarket() {
         <div
           className={style.container}
           style={
-            headerType === "alternative"
+            headerType === 'alternative'
               ? {
-                  background: "rgba(255, 255, 255, 0.483)",
-                  backdropFilter: "blur(3px)",
+                  background: 'rgba(255, 255, 255, 0.483)',
+                  backdropFilter: 'blur(3px)',
                 }
               : {}
           }
@@ -129,31 +115,16 @@ function NavbarMarket() {
                 <p>MARKETPLACES</p>
                 <IoChevronDownOutline />
               </NavLink>
-              {/* <NavLink to="/about">
-              <p>ABOUT US</p>
-              </NavLink> */}
               <NavLink to="/support">
                 <p>SUPPORT</p>
               </NavLink>
-              <NavLink to="/ico">
+              <NavLink to="https://www.libertum.io/ico">
                 <p>BUY LIBERTUM</p>
               </NavLink>
-                {/* <NavLink
-                  // to={pdf}
-                  // target="_blank"
-                  rel="noopener noreferrer"
-                  to="/comingsoon"
-                  // download="LBM-whitepaper.pdf"
-                  // className="footer_li"
-                >
-                  <p>BLOG</p>
-                </NavLink> */}
-
             </div>
             <div className={style.buttons2}>
-
               {/* ----------------------- CURRENCY - LANGUAGE  ------------------------- */}
-              <div className={`${style.language} md:hidden lg:flex`} >
+              <div className={`${style.language} md:hidden lg:flex`}>
                 <div
                   className={style.languageButton}
                   data-dropdown-language
@@ -167,40 +138,38 @@ function NavbarMarket() {
 
               {/* ----------------------- USER  ------------------------- */}
               <div>
-                { !user ? (
-                  <div >
-                    <Link to='/mydashboard' >
-                    <p className={style["sign-in"]}>LOG IN</p>
+                {!user ? (
+                  <div>
+                    <Link to="/mydashboard">
+                      <p className={style['sign-in']}>LOG IN</p>
                     </Link>
                   </div>
-                ) : 
-                 
-                <div className={openAccountModal ? style.user : style.user1}>
-                <div className={style.hamburgerContainer}>
-                  <div
-                    data-dropdown-menu
-                    className={style.hamburger}
-                    onClick={() => setActiveMenu(!activeMenu)}
-                  >
-                    <Hamburger size={18} toggled={activeMenu} />
-                  </div>
-                  {user ? (
-                    <div className={style["notification-badge"]}>
-                      <img
-                        src={user.picture}
-                        alt={user.name}
-                        className={style.userImage}
-                      />
+                ) : (
+                  <div className={openAccountModal ? style.user : style.user1}>
+                    <div className={style.hamburgerContainer}>
+                      <div
+                        data-dropdown-menu
+                        className={style.hamburger}
+                        onClick={() => setActiveMenu(!activeMenu)}
+                      >
+                        <Hamburger size={18} toggled={activeMenu} />
+                      </div>
+                      {user ? (
+                        <div className={style['notification-badge']}>
+                          <img
+                            src={user.picture}
+                            alt={user.name}
+                            className={style.userImage}
+                          />
+                        </div>
+                      ) : null}
                     </div>
-                  ) : null}
-                </div>
 
-                {activeMenu ? (
-                  <PopUpUser data-menu setActiveMenu={setActiveMenu} />
-                ) : null}
-              </div>
-
-                }
+                    {activeMenu ? (
+                      <PopUpUser data-menu setActiveMenu={setActiveMenu} />
+                    ) : null}
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -211,10 +180,10 @@ function NavbarMarket() {
         <div
           className={style.container}
           style={
-            headerType === "alternative"
+            headerType === 'alternative'
               ? {
-                  background: "rgba(255, 255, 255, 0.483)",
-                  backdropFilter: "blur(50px)",
+                  background: 'rgba(255, 255, 255, 0.483)',
+                  backdropFilter: 'blur(50px)',
                 }
               : {}
           }
@@ -241,9 +210,9 @@ function NavbarMarket() {
           <Link href="/">
             <img src={logo} alt="Libertum Logo" width="80px" />
           </Link>
-          
+
           {user ? (
-            <div className={style["notification-badge"]}>
+            <div className={style['notification-badge']}>
               <img
                 src={user.picture}
                 alt={user.name}
@@ -260,5 +229,3 @@ function NavbarMarket() {
 }
 
 export default NavbarMarket;
-
-
