@@ -20,13 +20,14 @@ import PropertyTable from "./Properties/PropertyTable";
 import Tokens from "./Tokens/Tokens";
 import css from "./adminDash.module.css"
 import UsersTable from "./UsersTable/UsersTable";
+import Users from "./UsersTable/Table";
 
 const AdminDash = () => {
   const dispatch = useDispatch();
   const allProperties = useSelector((state) => state.property.allProperies);
   const allUsers = useSelector((state) => state.user.allUsers);
 
-
+console.log(allUsers)
   useEffect(() => {
     dispatch(fetchAllProperties());
     dispatch(fetchAllUsers());
@@ -86,8 +87,10 @@ const AdminDash = () => {
       <h2 className={css.subtitle}>Tokens PRE-SALE</h2>
       <Tokens />
 
-      {/* <h2 className={css.subtitle}>Users</h2>
-      <UsersTable /> */}
+      <h2 className={css.subtitle}>Users</h2>
+      <Users
+      users = {allUsers} 
+      />
 
 
     </div>

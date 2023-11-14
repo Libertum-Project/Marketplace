@@ -3,7 +3,7 @@
   display: flex;
   border-radius: .8rem;
   overflow: hidden;
-  font-family: Montserrat;
+  font-family: "Montserrat" !important;
   gap: 1rem;
   padding: 1.2rem 1rem 1.2rem 1rem;
   align-items: center;
@@ -41,6 +41,7 @@
   align-items: center;
   border-radius: .2rem;
   margin-left: .5rem;
+  font-family: "Montserrat";
 
   img {
     object-fit: cover;
@@ -105,6 +106,7 @@
   display: flex;
   flex-direction: column;
   z-index: 6;
+  font-family: "Montserrat";
 }
 
 .card-content-header {
@@ -113,6 +115,7 @@
   align-items: start;
   padding: 10px;
   gap: .5rem;
+  font-family: "Montserrat";
   .card-content-header-title {
     flex: 2;
 
@@ -124,6 +127,7 @@
     line-height: 1.25rem;
     text-align: left;
     text-transform: uppercase;
+    font-family: "Montserrat";
   } 
   h2 {
     color: #404142;
@@ -132,6 +136,7 @@
     font-weight: 400;
     line-height: 2rem; 
     text-align: left;
+    font-family: "Montserrat";
   }
 }
 
@@ -201,10 +206,12 @@
     line-height: 0.6rem;
     padding: .2rem .5rem;
     box-shadow: 0px 4px 4px 0px rgba(128, 128, 128, 0.438);  
+    font-family: "Montserrat";
 
       span {
         font-size: 0.7rem;  
         margin-left: .2rem; 
+        font-family: "Montserrat";
       }
   }
 
@@ -215,6 +222,7 @@
     font-weight: 400;
     line-height: 1.25rem; 
     text-align: left;
+    font-family: "Montserrat";
     
       span{
         font-weight: 600;
@@ -231,7 +239,8 @@
   align-items: center;
   padding: 10px;
   gap: .5rem;
-  font-family: Montserrat;
+  // font-family: Montserrat;
+  font-family: "Montserrat";
 
   p {
     color: #4d4e4f;
@@ -250,6 +259,7 @@
     line-height: 1.5rem;
     box-shadow: 0px 4px 4px 0px rgba(169, 169, 169, 0.25);  
     cursor: pointer;
+    font-family: "Montserrat";
   }
   button:hover{
     transform: scale(110%);
