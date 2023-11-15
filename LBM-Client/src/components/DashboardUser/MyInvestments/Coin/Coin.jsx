@@ -31,10 +31,24 @@ const columns = [
 
 const Coin = () => {
   const data = [0,];
-  // const tokensPurchased = 21;
-  // const whitelistAllocation = 150;
-  const [userBalance, setUserBalance] = useState(null);
 
+  const [userBalance, setUserBalance] = useState(null);
+  const [whitelistAllocation, setWhitelistAllocation] = useState(1500);
+
+  useEffect(() => {
+    const fetchWhitelistAllocation = async () => {
+      try {
+        const allocation = await getUserWhitelistAllocation();
+        setWhitelistAllocation(allocation);
+      } catch (error) {
+        console.error('Error fetching user whitelist allocation:', error);
+      }
+    };
+
+    fetchWhitelistAllocation();
+  }, []);
+
+  
   useEffect(() => {
     const fetchUserBalance = async () => {
       try {
@@ -53,45 +67,44 @@ const handleBuy = () => {
   navigate('/ico');
 };
 
-  return (
-    <div className={css.container}>
-          <div>
+return (
+  <div className={css.container}>
+    <div>
       {userBalance === 0 || userBalance === null ? (
-        userBalance !== 0 ? (
-          <div className={css.buytokensButton}>
-            <h5>Congratulations! You are in the whitelist for the Libertum pre-sale. Don't miss this opportunity!</h5>
-            <div className={css.buytokensbuttonSection}>
-              <p>You can buy up to {getUserWhitelistAllocation} tokens!</p>
-              <button onClick={handleBuy}>BUY TOKENS</button>
+        whitelistAllocation !== null ? (
+          <div>
+            <div className={css.buytokensButton}>
+              <h5>Congratulations! You are in the whitelist for the Libertum pre-sale. Don't miss this opportunity!</h5>
+              <div className={css.buytokensbuttonSection}>
+                <p>You can buy up to {whitelistAllocation} tokens!</p>
+                <button onClick={handleBuy}>BUY TOKENS</button>
+              </div>
             </div>
           </div>
         ) : (
           <div className={css.buytokensButton}>
-            <h5>Don't miss this opportunity! Buy tokens now.</h5>
+            <h5>Haven't purchased $LBM yet? Buy tokens now.</h5>
             <button onClick={handleBuy}>BUY TOKENS</button>
           </div>
         )
       ) : (
-        <div>        
+        <div>
           <div className={css.tokens}>
             <h3>{userBalance}</h3>
             <h2>tokens purchased</h2>
           </div>
           <div className={css.buytokensButton}>
-
             <button>BUY MORE</button>
           </div>
         </div>
-
       )}
-          </div>
-      
-      <div className={css.table}>
-        <h3>My Investments</h3>
-        <DataTable columns={columns} data={data} />
-      </div>
     </div>
-  );
-};
 
-export default Coin; 
+    <div className={css.table}>
+      <h3>My Investments</h3>
+      <DataTable columns={columns} data={data} />
+    </div>
+  </div>
+);
+}
+export default Coin;
