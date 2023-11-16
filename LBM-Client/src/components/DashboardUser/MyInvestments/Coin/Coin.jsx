@@ -30,48 +30,29 @@ const columns = [
 
 const Coin = () => {
   const data = [0];
-  // const tokensPurchased = 21;
-  // const whitelistAllocation = 150;
   const [userBalance, setUserBalance] = useState(null);
+  const [whitelistAllocation, setWhitelistAllocation] = useState(null);
 
   useEffect(() => {
-    const fetchUserBalance = async () => {
+    const fetchData = async () => {
       try {
         const balance = await getUserBalance();
         setUserBalance(balance);
+
+        const allocation = await getUserWhitelistAllocation();
+        setWhitelistAllocation(allocation);
       } catch (error) {
-        console.error('Error fetching user balance:', error);
+        console.error('Error fetching data:', error);
       }
     };
-    fetchUserBalance();
+
+    fetchData();
   }, []);
 
   return (
     <div className={css.container}>
       <div>
-        {userBalance === 0 || userBalance === null ? (
-          userBalance !== 0 ? (
-            <div className={css.buytokensButton}>
-              <h5>
-                Congratulations! You are in the whitelist for the Libertum
-                pre-sale. Don't miss this opportunity!
-              </h5>
-              <div className={css.buytokensbuttonSection}>
-                <p>You can buy up to {getUserWhitelistAllocation} tokens!</p>
-                <button>
-                  <a href="https://www.libertum.io/ico">BUT TOKENS</a>
-                </button>
-              </div>
-            </div>
-          ) : (
-            <div className={css.buytokensButton}>
-              <h5>Don't miss this opportunity! Buy tokens now.</h5>
-              <button>
-                <a href="https://www.libertum.io/ico">BUY TOKENS</a>
-              </button>
-            </div>
-          )
-        ) : (
+        {userBalance !== null && userBalance !== 0 ? (
           <div>
             <div className={css.tokens}>
               <h3>{userBalance}</h3>
@@ -82,6 +63,26 @@ const Coin = () => {
                 <a href="https://www.libertum.io/ico">BUY MORE</a>
               </button>
             </div>
+          </div>
+        ) : whitelistAllocation !== null && whitelistAllocation !== 0 ? (
+          <div className={css.buytokensButton}>
+            <h5>
+              Congratulations! You are in the whitelist for the Libertum
+              pre-sale. Don't miss this opportunity!
+            </h5>
+            <div className={css.buytokensbuttonSection}>
+              <p>You can buy up to {whitelistAllocation} tokens!</p>
+              <button>
+                <a href="https://www.libertum.io/ico">BUY TOKENS</a>
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div className={css.buytokensButton}>
+            <h5>Haven't purchased $LBM yet? Buy tokens now!</h5>
+            <button>
+              <a href="https://www.libertum.io/ico">BUY TOKENS</a>
+            </button>
           </div>
         )}
       </div>
