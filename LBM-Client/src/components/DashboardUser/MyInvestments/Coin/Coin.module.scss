@@ -1,4 +1,4 @@
-.container{
+.container {
   // display: flex;
   width: 100%;
   justify-content: space-between;
@@ -8,34 +8,31 @@
   padding-right: 1rem;
   margin-bottom: 3rem;
   margin-top: 1rem;
-  @media (max-width: 720px){    
+  @media (max-width: 720px) {
     padding: 0;
-   }
-
-   @media (min-width: 721px) and (max-width: 1024px) {    
-    flex-direction: column; 
-    align-items: center;  
-
   }
-    @media (min-width: 1600px) {
 
+  @media (min-width: 721px) and (max-width: 1024px) {
+    flex-direction: column;
+    align-items: center;
+  }
+  @media (min-width: 1600px) {
+  }
 }
-}
 
+.table {
+  width: 100%;
+  // height: 22.1875rem;
+  flex-shrink: 0;
+  border-radius: 1rem;
+  border: 1px solid rgba(111, 111, 111, 0.2);
+  background: var(--style, #fff);
+  padding-left: 1rem;
+  padding-right: 1rem;
+  justify-content: space-around;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 
-.table{
-    width: 100%;
-    // height: 22.1875rem;
-    flex-shrink: 0;
-    border-radius: 1rem;
-    border: 1px solid rgba(111, 111, 111, 0.20);
-    background: var(--style, #FFF);
-    padding-left: 1rem;
-    padding-right: 1rem;
-    justify-content: space-around;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
-
-    h3{
+  h3 {
     display: flex;
     width: 100%;
     height: 3rem;
@@ -45,14 +42,14 @@
     text-align: left;
     padding-left: 1rem;
     padding-top: 1.5rem;
-    color: var(--0-c-0507, #0C0507);
-    font-family: Montserrat;    
+    color: var(--0-c-0507, #0c0507);
+    font-family: Montserrat;
     font-size: 1.125rem;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
     text-transform: capitalize;
-    }
+  }
 }
 
 .error {
@@ -62,57 +59,60 @@
   height: fit-content;
 }
 
-.claim{
+.claim {
   height: fit-content;
 }
 
-.tokens{
+.tokens {
   display: flex;
   line-height: 2rem;
-  gap: .8rem;
-  padding: 0 .8rem;
+  gap: 0.8rem;
+  padding: 0 0.8rem;
   margin-bottom: 1rem;
   font-family: montserrat;
-    h3{
-      // background-color: rgb(98, 98, 236);
-      border-radius: 999999%;
-      color: rgb(98, 98, 236);
-      font-size: 2.2rem;
-    }
-    h2{
-      text-transform: uppercase;
-      color: #505050;
-    }
+  h3 {
+    // background-color: rgb(98, 98, 236);
+    border-radius: 999999%;
+    color: rgb(98, 98, 236);
+    font-size: 2.2rem;
+  }
+  h2 {
+    text-transform: uppercase;
+    color: #505050;
+  }
 }
 
-.buytokensButton{
-    gap: 2rem;
-    // padding: 0 2rem;
-    margin-bottom: 1rem;
-    text-align: left;
-    font-family: montserrat;
-    // line-height: 1.5rem;
-
-
-    p{
-      color: rgb(111, 111, 224);
-      font-size: 1.3rem;
-    }
-
-    h5{
-      color: #505050;
-      // font-size: 1.3rem;
-    }
-
-    button{
-      background-color: var(--Libertum-color);
-      padding: 0 1rem;
-      color: white;
-      border-radius: 1rem;
-    }
-.buytokensbuttonSection{
-  display: flex;
+.buytokensButton {
   gap: 2rem;
+  // padding: 0 2rem;
+  margin-bottom: 1rem;
+  text-align: left;
+  font-family: montserrat;
+  // line-height: 1.5rem;
 
-}
+  p {
+    color: rgb(111, 111, 224);
+    font-size: 1.3rem;
+  }
+
+  h5 {
+    color: #505050;
+    // font-size: 1.3rem;
+  }
+
+  button {
+    background-color: var(--Libertum-color);
+    padding: 0 1rem;
+    color: white;
+    border-radius: 1rem;
+  }
+
+  a {
+    color: white;
+  }
+
+  .buytokensbuttonSection {
+    display: flex;
+    gap: 2rem;
+  }
 }
