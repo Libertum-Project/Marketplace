@@ -211,7 +211,7 @@ function NavbarMarket() {
               />
             </div>
           </div>
-          <Link href="/">
+          <Link href="https://www.libertum.io/">
             <img src={logo} alt="Libertum Logo" width="80px" />
           </Link>
 
