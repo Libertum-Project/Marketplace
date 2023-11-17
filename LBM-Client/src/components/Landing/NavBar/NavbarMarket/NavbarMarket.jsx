@@ -11,7 +11,8 @@ import { useAccountModal } from '@rainbow-me/rainbowkit';
 import PopUpLanguage from './PopUp/PopUpLanguage';
 import MobileMenu from './MobileMenu/MobileMenu';
 import { Divide as Hamburger } from 'hamburger-react';
-import logo from '../../../../../public/LibertumColor.png';
+// import logo from '../../../../../public/LibertumColor.png';
+import logo from '../../../../../public/Logo.svg'
 
 function NavbarMarket() {
   const dispatch = useDispatch();
@@ -104,9 +105,12 @@ function NavbarMarket() {
         >
           <div className={style.flexContainer}>
             <a href="/">
-              <img src={logo} alt="Libertum Logo" width="80px" />
+              <img src={logo} alt="Libertum Logo" width="150px" />
             </a>
             <div className={style.buttons}>
+            <NavLink to="https://www.libertum.io">
+                <p>HOME</p>
+              </NavLink>
               <NavLink
                 data-dropdown-button
                 onClick={() => setActive(!active)}
@@ -124,7 +128,7 @@ function NavbarMarket() {
             </div>
             <div className={style.buttons2}>
               {/* ----------------------- CURRENCY - LANGUAGE  ------------------------- */}
-              <div className={`${style.language} md:hidden lg:flex`}>
+              {/* <div className={`${style.language} md:hidden lg:flex`}>
                 <div
                   className={style.languageButton}
                   data-dropdown-language
@@ -134,7 +138,7 @@ function NavbarMarket() {
                   <p>{currency}</p>
                 </div>
                 {activeLanguage ? <PopUpLanguage data-language /> : null}
-              </div>
+              </div> */}
 
               {/* ----------------------- USER  ------------------------- */}
               <div>
