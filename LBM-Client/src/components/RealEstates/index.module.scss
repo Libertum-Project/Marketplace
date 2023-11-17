@@ -59,7 +59,7 @@ $filters: (
   justify-content: center;
   justify-items: center;
   height: auto;
-  width:100%;
+  width:50rem;
   // padding: 2rem 0;
   height: 45px;
   // background-color: #9193950f;
@@ -166,14 +166,12 @@ display: none;
 }
 
 .clean{
-  border: 1px solid #f7931a;
   border-radius: 12px;
-  padding: .7rem;
-  background-color: #f7931a; 
+  padding: .7rem; 
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white; 
+  color: var(--Libertum-color); 
  
     @media (max-width: 720px){
       width: 80px; 

@@ -96,7 +96,7 @@ useEffect(() => {
         <option value="Capital Rep. + Passive Income">Capital Rep. + Passive Income</option>       
       </select>
 
-          <div className={css.filterbuttons}>
+          {/* <div className={css.filterbuttons}>
             <button> 
               all 
             </button> |
@@ -106,7 +106,7 @@ useEffect(() => {
             <button> 
               Upcoming 
             </button>
-          </div>
+          </div> */}
 
        {/* Botón para remover los filtros */}
        <button onClick={handleRemoveFilters} className={css.clean}><FiRefreshCcw /></button>
