@@ -3,10 +3,18 @@ import { Link } from "react-router-dom";
 // import logo from "../../Landing/assets/logo.svg";
 import logo  from "../../Landing/assets/LibertumColor.png";
 import css from "./Footer.module.css";
-import pdf from "../../Landing/assets/LBM-whitepaper.pdf";
+// import pdf from "../../Landing/assets/LBM-whitepaper.pdf";
 import { networks } from "../../Landing/networks";
+import whitepaperPDF from "../../../assets/whitepaperLibertum.pdf"
+
 
 const Footer = () => {
+  // const handleDownloadWhitepaper = () => {
+  //   const link = document.createElement("a");
+  //   link.href = whitepaperPDF;
+  //   link.download = "whitepaperLibertum.pdf";
+  //   link.click();
+  // };
   return (
     <footer className={css.footer}>
       <img src={logo} alt="Libertum" className={ css.image}/>
@@ -21,7 +29,7 @@ const Footer = () => {
         <div className={css.navigation}>
           <Link to="/">HOME</Link>
           <Link
-            to={pdf}
+            to={whitepaperPDF}
             target="_blank"
             rel="noopener noreferrer"
             download="LBM-whitepaper.pdf"

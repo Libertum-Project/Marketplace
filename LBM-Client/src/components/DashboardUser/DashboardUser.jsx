@@ -5,7 +5,7 @@ import {
   fetchAllUsers,
   fetchCurrentUser,
 } from "../../../redux/features/userSlice";
-import { NavLink, Route, Routes, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import DashboardContent from "./Dashboard/Dashboard";
 import Finances from "./Finances/Finances";
 import MyProperties from "./MyProperties/MyProperties";
@@ -23,6 +23,7 @@ import savedimage from "./assets/savedInactive.svg";
 import savedimageActive from "./assets/savedActive.svg";
 import profileimage from "./assets/profileInactive.svg";
 import profileimageActive from "./assets/profileActive.svg";
+import whitepaperPDF from "../../assets/whitepaperLibertum.pdf"
 
 import styles from "./DashboardUser.module.scss";
 import { current } from "@reduxjs/toolkit";
@@ -43,7 +44,7 @@ function DashboardUser() {
   const allUsers = useSelector((state) => state.user.allUsers);
   const currentUser = useSelector((state) => state.user.currentUser);
 
-  console.log(currentUser);
+  // console.log(currentUser);
   // console.log(allUsers);
 
   const handleLogin = () => {
@@ -79,6 +80,16 @@ function DashboardUser() {
   const handleClickInvestments = () => {
     setActiveTab(4);
   };
+
+
+  const handleDownloadWhitepaper = () => {
+    const link = document.createElement("a");
+    link.href = whitepaperPDF;
+    link.download = "whitepaperLibertum.pdf";
+    link.click();
+  };
+
+
 
   return !isLoading && isAuthenticated ? (
 
@@ -208,7 +219,15 @@ function DashboardUser() {
         <div className={styles.helpbox}>
           <h3>Need help?</h3>
           <p>Please check out our docs</p>
-          <button>WHITEPAPER</button>
+          {/* <Link
+            to={whitepaperPDF}
+            target="_blank"
+            rel="noopener noreferrer"
+            download="LBM-whitepaper.pdf"
+          >
+            WHITEPAPER
+          </Link> */}
+        <button onClick={handleDownloadWhitepaper}>WHITEPAPER</button>
         </div>
       </div>
 
