@@ -7,7 +7,8 @@ import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
 import Loading from "../Loading/Loading.jsx";
-import { FiRefreshCcw } from 'react-icons/fi'
+import { FiRefreshCcw } from 'react-icons/fi';
+import video from '../../../public/bg.mp4'
 
 const index = () => {
   const navigate = useNavigate();
