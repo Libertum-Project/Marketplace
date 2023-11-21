@@ -13,6 +13,7 @@
   -webkit-box-shadow: 6px 8px 5px -1px rgba(199,191,191,0.54);
   -moz-box-shadow: 6px 8px 5px -1px rgba(199,191,191,0.54);
   margin-bottom: 2rem;
+ 
   // &::before {
   //   content: "";
   //   position: absolute;
@@ -43,13 +44,23 @@
   margin-left: .5rem;
   font-family: "Montserrat";
 
-  img {
-    object-fit: cover;
-    border-radius: 10px;   
+  .card-img {
     width: 100%;
     height: 100%;
- 
+    border-radius: 10px;
+    overflow: hidden;
+  
+    img {
+      width: 100%;
+      min-height: 13rem;
+      max-height: 13rem;
+      object-fit: cover;
+      object-position: center;
+    }
   }
+  
+  
+  
 
    .card-progress {
     position: absolute;
@@ -286,6 +297,8 @@
   }
   .card-image-container {
     position: relative;
+    width: 100%;
+    height: 100%;
 
     .card-image-container-savebutton{
       position: absolute;
@@ -294,9 +307,11 @@
       transform: translate(-50%, -50%); 
   
     }
-img{
-  height: 12rem;
-}
+    .card-img{
+      img{
+        min-height: 18rem;
+      }
+    }
     .card-progress {
       position: absolute;
       top: 90%;    
