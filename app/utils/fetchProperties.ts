@@ -4,6 +4,6 @@ export async function getProperties() {
   if (!res.ok) {
     throw new Error('Failed to fetch data')
   }
- 
+ console.log('Fetching Data ...')
   return res.json()
 }
