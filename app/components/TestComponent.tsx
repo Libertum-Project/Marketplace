@@ -5,15 +5,30 @@ import { useContext } from "react";
 import PropertyContext from "../context/PropertyContext";
 
 export function TestComponent(): ReactElement {
-  const { allProperties, setReFetchProperties } = useContext(PropertyContext);
+  const { allProperties, reFetchProperties, getPropertyDetails } =
+    useContext(PropertyContext);
 
   const handleButton = () => {
-    setReFetchProperties();
+    reFetchProperties();
   };
+
+  const handleGetDetails = (ID: number) => {
+    const propertyDetails = getPropertyDetails(ID);
+    console.log(propertyDetails);
+  };
+
   return (
     <>
       {allProperties.map((property: any) => (
-        <p key={property.Address}>{property.Address}</p>
+        <img
+          key={property.Address}
+          src={property.Feature.Link_Image[0]}
+          alt={property.Address}
+          style={{ width: 500 }}
+          onClick={(e) => {
+            handleGetDetails(property.ID_Property);
+          }}
+        />
       ))}
       <button onClick={handleButton}>Refetch</button>
     </>

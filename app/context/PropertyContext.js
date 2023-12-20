@@ -5,7 +5,10 @@ import { createContext } from "react";
 const PropertyContext = createContext({
   allProperties: [],
   setAllProperties: () => {},
-  setReFetchProperties: () => {},
+  reFetchProperties: () => {},
+  getPropertyDetails: () => {},
+  isLoading: false,
+  setIsLoading: () => {},
 });
 
 export default PropertyContext;

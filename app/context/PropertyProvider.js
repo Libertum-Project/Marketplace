@@ -6,23 +6,36 @@ import { getProperties } from "../utils/fetchProperties";
 
 const PropertyProvider = ({ children }) => {
   const [allProperties, setAllProperties] = useState([]);
+  const [isLoading, setIsLoading] = useState(false)
 
-  const setReFetchProperties = async () => {
+  const reFetchProperties = async () => {
     const newProperties = await getProperties();
     setAllProperties(newProperties);
   };
 
   useEffect(() => {
+    setIsLoading(true)
     const fetchProperties = async () => {
       setAllProperties(await getProperties());
+      setIsLoading(false)
     };
 
     fetchProperties();
   }, []);
 
+  const getPropertyDetails = (ID) => {
+    const propertyDetails = allProperties.filter(
+      (property) => property.ID_Property === ID,
+    );
+
+    return propertyDetails;
+  };
+
   const value = {
     allProperties,
-    setReFetchProperties,
+    reFetchProperties,
+    getPropertyDetails,
+    isLoading,
   };
 
   return (
