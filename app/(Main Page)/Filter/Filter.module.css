@@ -1,0 +1,42 @@
+.filterContainer {
+  margin-top: -3rem;
+  margin-inline: 1rem;
+  border-radius: 20px;
+  background: #fffefe;
+  padding: 1rem;
+}
+
+.filterList {
+  display: none;
+}
+
+.searchByName {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  background: #f8f8f8;
+  border-radius: 12px;
+}
+
+.searchByName input {
+  border: 0;
+  flex-shrink: 1;
+  width: 100%;
+  background: #f8f8f8;
+  height: 3rem;
+  background-image: url("./search.svg");
+  background-position: .5rem;
+  background-repeat: no-repeat;
+  border-radius: 12px;
+  padding-left: 2.5rem;
+}
+
+.moreOptionsBtn {
+  background-color: #26437f;
+  border: 0;
+  border-radius: 12px;
+  width: 57px;
+  height: 56px;
+  flex-shrink: 0;
+}

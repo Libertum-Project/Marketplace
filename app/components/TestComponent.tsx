@@ -3,7 +3,6 @@ import { type ReactElement } from "react";
 
 import { useContext } from "react";
 import PropertyContext from "../context/PropertyContext";
-import { Header } from "./Header/Header";
 
 export function TestComponent(): ReactElement {
   const { allProperties, reFetchProperties, getPropertyDetails } =
@@ -20,7 +19,6 @@ export function TestComponent(): ReactElement {
 
   return (
     <>
-      <Header />
       {allProperties.map((property: any) => (
         <img
           key={property.Address}
