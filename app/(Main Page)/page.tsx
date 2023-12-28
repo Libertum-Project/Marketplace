@@ -1,6 +1,6 @@
-import { TestComponent } from "../components/TestComponent";
 import { Header } from "./Header/Header";
 import { Filter } from "./Filter/Filter";
+import { PropertyList } from "./PropertyList/PropertyList";
 
 export default function Home() {
   return (
@@ -8,6 +8,7 @@ export default function Home() {
       <Header />
       <Filter />
       <main>
+        <PropertyList />
       </main>
     </>
   );
