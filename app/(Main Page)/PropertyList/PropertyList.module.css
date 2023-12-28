@@ -6,24 +6,35 @@
   flex-direction: column;
 }
 
+.allProperties {
+  align-items: center;
+  flex-wrap: wrap;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  max-width: 1700px;
+}
+
 .listProperty h3 {
-  color: var(--Black, #2b2c34);
+  color: #2b2c34;
   font-family: Montserrat;
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
   text-transform: capitalize;
+  text-align: left;
 }
 
 .listProperty .property {
   display: flex;
-  padding: 18px 18px 22px 18px;
+  padding: 1rem;
   flex-direction: column;
   align-items: center;
   border-radius: 14px;
   background: #fff;
-  margin-top: 2rem;
+  max-width: 308px;
+  box-sizing: border-box;
 }
 
 .property {
@@ -37,7 +48,7 @@
 
 .property img:first-child {
   border-radius: 14px;
-  width: 100%;
+  width: 272px;
 }
 
 .saveIcon {
@@ -166,4 +177,10 @@
   font-weight: 400;
   line-height: normal;
   margin: 0;
+}
+
+@media (min-width: 1300px) {
+  .listProperty {
+    margin-inline: 3rem;
+  }
 }

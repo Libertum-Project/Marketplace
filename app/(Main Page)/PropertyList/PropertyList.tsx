@@ -10,8 +10,8 @@ export function PropertyList(): ReactElement {
   return (
     <section className={css.listProperty}>
       <article className={css.bestSellers}></article>
+      <h3>All Properties</h3>
       <article className={css.allProperties}>
-        <h3>All Properties</h3>
         {allProperties.map((property: any) => (
           <div className={css.property}>
             <Image
