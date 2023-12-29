@@ -65,3 +65,9 @@
 .link:hover{
   color: rgb(37 99 235);
 }
+
+@media screen and (max-width: 780px) {
+  .footerContainer{
+    display: none;
+  }
+}
