@@ -17,7 +17,6 @@
 
 .listProperty h3 {
   color: #2b2c34;
-  font-family: Montserrat;
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
@@ -86,7 +85,6 @@
   margin: 0;
   text-align: center;
   color: #7c7c7c;
-  font-family: Plus Jakarta Sans;
   font-size: 10px;
   font-style: normal;
   font-weight: 600;
@@ -96,7 +94,6 @@
 
 .propertyImportantInfo span {
   color: #14121e;
-  font-family: Plus Jakarta Sans;
   font-size: 14px;
   font-style: normal;
   font-weight: 700;
@@ -116,7 +113,6 @@
 
 .propertyAddress P {
   color: #8a8e85;
-  font-family: Montserrat;
   font-size: 10px;
   font-style: normal;
   font-weight: 500;
@@ -126,7 +122,6 @@
 
 .property h4 {
   color: #151d0c;
-  font-family: Montserrat;
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
@@ -143,7 +138,6 @@
 
 .propertyRentalYield p {
   color: #8a8e85;
-  font-family: Montserrat;
   font-size: 10px;
   font-style: normal;
   font-weight: 400;
@@ -161,7 +155,6 @@
 
 .propertyPrice p:first-child {
   color: #151d0c;
-  font-family: Montserrat;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -171,7 +164,6 @@
 
 .propertyPrice p:last-child {
   color: #19976a;
-  font-family: Montserrat;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
