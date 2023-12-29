@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Inter, Montserrat, Roboto, } from "next/font/google";
 import "./globals.css";
 import PropertyProvider from "./context/PropertyProvider";
-import Footer from "./components/Footer/Desktop/Footer"
+import Footer from "./components/Footer/Desktop/Footer";
+import NavigationMobile from "./components/Footer/Mobile/NavigationMobile"
 
 const inter = Inter({ subsets: ["latin"] });
 const montserrat = Montserrat({subsets: ["latin"]})
@@ -26,6 +27,7 @@ export default function RootLayout({
       </body>
       <footer className={montserrat.className}>
         <Footer />
+        <NavigationMobile />        
       </footer>
     </html>
   );
