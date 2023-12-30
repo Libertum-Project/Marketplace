@@ -31,7 +31,7 @@
 
 .bestSellers .property img:first-child {
   border-radius: 14px;
-  width: 100%;
+  width: 335px;
 }
 
 .bestSellers .property {
@@ -58,7 +58,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: .5rem;
+  gap: 0.5rem;
 }
 
 .bestSellers .propertyImportantInfo {
@@ -221,6 +221,87 @@
   font-weight: 400;
   line-height: normal;
   margin: 0;
+}
+
+.bestSellers .imageContainer {
+  display: none;
+}
+
+@media (min-width: 1100px) {
+  .listProperty {
+    margin-inline: 2rem;
+  }
+  .bestSellers {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .bestSellers .property {
+    flex-direction: row;
+    max-width: 1335px;
+    width: 100%;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .bestSellers .property img:first-child {
+    width: 272px;
+    height: 200px;
+  }
+
+  .bestSellers .saveIcon {
+    left: 260px;
+  }
+
+  .bestSellersInfoContainer {
+    flex: 1;
+  }
+
+  .bestSellersInfoContainer {
+    align-items: flex-start !important;
+  }
+
+  .bestSellerInfo {
+    gap: 1rem;
+  }
+
+  .bestSellers .imageContainer {
+    border-radius: 100px;
+    border: 1px solid rgba(62, 223, 130, 0.1);
+    display: flex;
+    padding: 2px;
+  }
+
+  .bestSellers .propertyImportantInfo img {
+    width: 24px !important;
+    height: 24px !important;
+  }
+
+  .bestSellers .propertyAddress p {
+    font-size: 14px;
+  }
+
+  .bestSellers h4 {
+    font-size: 28px;
+  }
+
+  .bestSellers .propertyRentalYield p {
+    font-size: 14px;
+  }
+
+  .bestSellers .propertyPrice p {
+    font-size: 24px;
+  }
+
+  .bestSellers .propertyImportantInfo {
+    flex-direction: row;
+    padding: 0;
+    gap: 1rem;
+  }
+
+  .bestSellers .propertyImportantInfo div {
+    padding: .5rem 2rem;
+  }
 }
 
 @media (min-width: 1300px) {
