@@ -1,0 +1,150 @@
+.errorBoxContainer,
+.pendingBoxContainer,
+.successBoxContainer,
+.messageBoxContainer {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  background-color: rgba(0, 158, 212, 0.2);
+}
+
+.errorBox,
+.pendingBox,
+.successBox,
+.messageBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+  border-radius: 1.59856rem;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 0px 30px 8px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 0px 30px 8px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 30px 8px rgba(0, 0, 0, 0.5);
+}
+
+.errorBox {
+  gap: 2rem;
+}
+
+.header {
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.header img {
+  width: 3.94881rem;
+  height: 3.41031rem;
+  flex-shrink: 0;
+}
+
+.header h2 {
+  color: rgba(242, 30, 30, 0.93);
+  text-align: center;
+  font-family: Roboto;
+  font-size: 1.39513rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  font-family: montserrat;
+}
+
+.errorBox p,
+.pendingBox p,
+.successBox p,
+.messageBox p {
+  color: #4a4a4a;
+  width: 18rem;
+  text-align: center;
+  font-size: 1.1305rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.7rem;
+  font-family: montserrat;
+  cursor: auto;
+}
+
+.errorBox button,
+.successBox button,
+.messageBox button {
+  border-radius: 0.31rem;
+  background: #374151 !important;
+  color: white;
+  width: 15.26169rem;
+  height: 2.907rem;
+}
+
+.errorBox button:hover,
+.successBox button:hover,
+.messageBox button:hover {
+  transition: all ease-in 0.3s;
+  opacity: 0.8;
+}
+
+.successBox h2 {
+  color: #009ed4;
+}
+
+.successBox button {
+  background: #009ed4;
+}
+
+.pendingBox h2,
+.messageBox h2 {
+  color: #374151;
+}
+
+.pendingBox {
+  gap: 0.5rem;
+}
+
+.header {
+  gap: 2rem;
+}
+
+.pendingBox img {
+  width: 3rem;
+  height: auto;
+}
+
+.polyScanURL a {
+  font-size: 1rem;
+  color: #374151;
+  opacity: 0.8;
+  text-decoration: underline;
+  transition: all ease-in-out 0.4s;
+}
+
+.polyScanURL a:hover {
+  opacity: 1;
+}
+
+.messageBox {
+  gap: 1.5rem;
+}
+
+.messageBox p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+@media (min-width: 750px) {
+  .errorBox p,
+  .successBox p {
+    width: 31rem;
+  }
+
+  .successBox p {
+    width: 27rem;
+  }
+}

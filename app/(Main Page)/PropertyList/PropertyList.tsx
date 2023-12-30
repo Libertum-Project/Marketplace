@@ -16,9 +16,8 @@ export function PropertyList(): ReactElement {
       <h3>Best Sellers</h3>
       <article className={css.bestSellers}>
         {bestSellersProperties.map((property: any) => (
-          <div className={css.property}>
+          <div key={property.Address} className={css.property}>
             <Image
-              key={property.Address}
               src={property.Feature.Link_Image[0]}
               alt={property.Address}
               width={272}
@@ -79,7 +78,7 @@ export function PropertyList(): ReactElement {
       <h3>All Properties</h3>
       <article className={css.allProperties}>
         {allProperties.map((property: any) => (
-          <div className={css.property}>
+          <div key={property.Address} className={css.property}>
             <Image
               key={property.Address}
               src={property.Feature.Link_Image[0]}

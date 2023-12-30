@@ -1,12 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import MessageBoxContext from "./MessageBoxContext";
 import PropertyContext from "./PropertyContext";
 import { getProperties } from "../utils/fetchProperties";
 
 const PropertyProvider = ({ children }) => {
+  const { isLoading, setIsLoading } = useContext(MessageBoxContext)
   const [allProperties, setAllProperties] = useState([]);
-  const [isLoading, setIsLoading] = useState(false)
 
   const reFetchProperties = async () => {
     const newProperties = await getProperties();
@@ -14,7 +15,6 @@ const PropertyProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    setIsLoading(true)
     const fetchProperties = async () => {
       setAllProperties(await getProperties());
       setIsLoading(false)
