@@ -4,6 +4,7 @@ import "./globals.css";
 import PropertyProvider from "./context/PropertyProvider";
 import Footer from "./components/Footer/Desktop/Footer";
 import NavigationMobile from "./components/Footer/Mobile/NavigationMobile"
+import Navbar from "./components/Navbar/Navbar"
 
 const inter = Inter({ subsets: ["latin"] });
 const montserrat = Montserrat({subsets: ["latin"]})
@@ -23,12 +24,22 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={montserrat.className}>
-        <PropertyProvider>{children}</PropertyProvider>
+        <nav>
+          <Navbar />
+        </nav>
+        <div  style={{ paddingTop: '120px' }}>
+          <PropertyProvider>{children}</PropertyProvider>
+        </div>        
+        <footer className={montserrat.className}>
+          <Footer />
+          <NavigationMobile />        
+        </footer>
       </body>
-      <footer className={montserrat.className}>
-        <Footer />
-        <NavigationMobile />        
-      </footer>
     </html>
   );
 }
+
+
+{/* <nav className={montserrat.className}>
+<Navbar />
+</nav> */}

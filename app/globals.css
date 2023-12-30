@@ -76,9 +76,30 @@ pre {
  * Remove the gray background on active links in IE 10.
  */
 
-a {
+/* a {
   background-color: transparent;
+} */
+/* globals.css */
+
+a {
+  cursor: pointer;
+  font-weight: normal;
+  text-decoration: none;
+  color: inherit;
+  transition: font-weight 0.3s ease;
 }
+
+a:hover,
+a:active,
+li:hover a {
+  font-weight: bold;
+}
+
+a:hover {
+  transform: translateX(2%);
+  color: rgb(171, 171, 226);
+}
+
 
 /**
  * 1. Remove the bottom border in Chrome 57-
