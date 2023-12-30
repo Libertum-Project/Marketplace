@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { Inter, Montserrat, Roboto, } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 import PropertyProvider from "./context/PropertyProvider";
+import MessageBoxProvider from "./context/MessageBoxProvider";
 import Footer from "./components/Footer/Desktop/Footer";
-import NavigationMobile from "./components/Footer/Mobile/NavigationMobile"
-import Navbar from "./components/Navbar/Navbar"
+import NavigationMobile from "./components/Footer/Mobile/NavigationMobile";
+import Navbar from "./components/Navbar/Navbar";
+import MessageBox from "./components/MessageBox/MessageBox";
 
-const inter = Inter({ subsets: ["latin"] });
-const montserrat = Montserrat({subsets: ["latin"]})
-
+const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Marketplace - Libertum",
@@ -27,19 +27,25 @@ export default function RootLayout({
         <nav>
           <Navbar />
         </nav>
-        <div  style={{ paddingTop: '120px' }}>
-          <PropertyProvider>{children}</PropertyProvider>
-        </div>        
+        <div style={{ paddingTop: "120px" }}>
+          <MessageBoxProvider>
+            <PropertyProvider>
+              <MessageBox />
+              {children}
+            </PropertyProvider>
+          </MessageBoxProvider>
+        </div>
         <footer className={montserrat.className}>
           <Footer />
-          <NavigationMobile />        
+          <NavigationMobile />
         </footer>
       </body>
     </html>
   );
 }
 
-
-{/* <nav className={montserrat.className}>
+{
+  /* <nav className={montserrat.className}>
 <Navbar />
-</nav> */}
+</nav> */
+}
