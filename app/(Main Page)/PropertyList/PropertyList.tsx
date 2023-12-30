@@ -4,6 +4,8 @@ import PropertyContext from "@/app/context/PropertyContext";
 import Image from "next/image";
 import css from "./PropertyList.module.css";
 import saveIcon from "./save.svg";
+import proyectedYield from "./proyectedYield.svg";
+import annualRepayment from "./annualRepayment.svg";
 
 export function PropertyList(): ReactElement {
   const { allProperties } = useContext(PropertyContext);
@@ -48,16 +50,24 @@ export function PropertyList(): ReactElement {
                   </p>
                 </div>
                 <div className={css.propertyPrice}>
-                  <p>$ {property.Financial.Market_value_of_the_property}</p>
-                  <p>$ {property.Financial.Token_Price}/Token</p>
+                  <p>
+                    ${parseInt(property.Financial.Market_value_of_the_property)}
+                  </p>
+                  <p>${parseInt(property.Financial.Token_Price)}/Token</p>
                 </div>
               </div>
               <div className={css.propertyImportantInfo}>
                 <div>
+                  <span className={css.imageContainer}>
+                    <Image src={proyectedYield} alt="Projected Yield" />
+                  </span>
                   <p>Projected Rental Yield</p>
                   <span>4%</span>
                 </div>
                 <div>
+                  <span className={css.imageContainer}>
+                    <Image src={annualRepayment} alt="Annual Repayment" />
+                  </span>
                   <p>Annual Repayment</p>
                   <span>7.33%</span>
                 </div>
@@ -111,8 +121,10 @@ export function PropertyList(): ReactElement {
               </p>
             </div>
             <div className={css.propertyPrice}>
-              <p>$ {property.Financial.Market_value_of_the_property}</p>
-              <p>$ {property.Financial.Token_Price}/Token</p>
+              <p>
+                ${parseInt(property.Financial.Market_value_of_the_property)}
+              </p>
+              <p>${parseInt(property.Financial.Token_Price)}/Token</p>
             </div>
           </div>
         ))}
