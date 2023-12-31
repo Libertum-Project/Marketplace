@@ -1,8 +1,8 @@
-'use client'
-import { useState} from "react";
+"use client";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import styles from './Navbar.module.css';
+import styles from "./Navbar.module.css";
 import {
   ChatBubbleLeftIcon,
   DocumentTextIcon,
@@ -11,9 +11,7 @@ import {
   CurrencyDollarIcon,
 } from "@heroicons/react/20/solid";
 
-
 const Navbar = () => {
-
   const [isNavOpen, setNavOpen] = useState(false);
 
   const handleNavToggle = () => {
@@ -56,87 +54,69 @@ const Navbar = () => {
     },
   ];
 
-  return (    
+  return (
+    <header id="navbar" className={styles.mainHeader}>
+      <div className={styles.header}>
+        <Link href="/" prefetch={false}>
+          <Image
+            src="/assets/imagoTipo.svg"
+            alt="logo"
+            width="180"
+            height="120"
+          />
+        </Link>
 
-<header className={styles.mainHeader}>
+        <div className={styles.btnNav} onClick={handleNavToggle}>
+          {isNavOpen ? (
+            <svg
+              className={styles.iconMenu}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+          ) : (
+            <svg
+              className={styles.iconMenu}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          )}
+        </div>
+      </div>
 
-  <div className={styles.header}>
-  
-  <Link
-    href="/"
-    prefetch={false}
-  >
-    <Image
-    src="/assets/imagoTipo.svg"
-    alt="logo"
-    width="180"
-    height="120"
-    />  
-  </Link>
-
-    <div 
-    className={styles.btnNav} 
-    onClick={handleNavToggle}
-    >
-      {
-        isNavOpen ? (
-          <svg
-            className={styles.iconMenu}
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M6 18L18 6M6 6l12 12"
-            ></path>
-          </svg>
-        ) : (
-          <svg
-          className={styles.iconMenu}
-          fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            ></path>
-          </svg>
-        )
-      }
-
-    </div>
-  </div>
-
-
-
-    
-
-    <nav className={`${styles.nav} ${isNavOpen ? styles.open : ''}`}>
-      <h1>MENU</h1>
-      <ul className={styles.navigation}>
-        {menuItems.map((item, index) => (
-          <li key={index}>
+      <nav className={`${styles.nav} ${isNavOpen ? styles.open : ""}`}>
+        <h1>MENU</h1>
+        <ul className={styles.navigation}>
+          {menuItems.map((item, index) => (
+            <li key={index}>
               <Link href={item.href} passHref>
                 <p>
-                {item.icon && <item.icon className={styles.icon} />}
-                <span className={styles.name}>{item.name}</span>
+                  {item.icon && <item.icon className={styles.icon} />}
+                  <span className={styles.name}>{item.name}</span>
                 </p>
               </Link>
-          </li>
-        ))}
-      </ul>
-    </nav>
-  </header>
-
-
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </header>
   );
 };
 

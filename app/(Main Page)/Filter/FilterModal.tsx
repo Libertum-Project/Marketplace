@@ -8,10 +8,24 @@ interface FilterProps {
 }
 
 export function FilterModal({ setShowModal }: FilterProps): ReactElement {
+  document.body.style.overflow = "hidden";
+
+  const footerElement = document.getElementById("footer");
+  const navbarElement = document.getElementById("navbar");
+
+  if (footerElement && navbarElement) {
+    footerElement.style.visibility = "hidden";
+    navbarElement.style.display= "none";
+  }
   const handleCloseModal = () => {
+    document.body.style.overflow = "auto";
+    if (footerElement && navbarElement) {
+      footerElement.style.visibility = "visible";
+      navbarElement.style.display= "block";
+    }
+
     setShowModal(false);
   };
-
   return (
     <div className={css.filterModalContainer}>
       <section className={css.filterModal}>

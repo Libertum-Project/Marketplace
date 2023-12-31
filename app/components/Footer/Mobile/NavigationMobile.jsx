@@ -27,7 +27,7 @@ const NavigationMobile = () => {
   ]
 
   return(
-    <div className={css.container}>
+    <div id="footer" className={css.container}>
 
       <div className={css.links}>
       {navigation.map((item, index) => (
