@@ -90,6 +90,7 @@
 .filterModal .savechanges {
   background: #26437f;
   border-radius: 0.5rem;
+  border: none;
   color: white;
   padding: 0.5rem 1rem;
   width: 100%;

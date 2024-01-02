@@ -7,8 +7,9 @@ const PropertyContext = createContext({
   setAllProperties: () => {},
   reFetchProperties: () => {},
   getPropertyDetails: () => {},
-  isLoading: false,
-  setIsLoading: () => {},
+  selectedFilters: {},
+  setSelectedFilters: () => {},
+  getFilteredProperties: () => {},
 });
 
 export default PropertyContext;

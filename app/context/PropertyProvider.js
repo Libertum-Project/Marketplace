@@ -3,21 +3,36 @@
 import { useState, useEffect, useContext } from "react";
 import MessageBoxContext from "./MessageBoxContext";
 import PropertyContext from "./PropertyContext";
-import { getProperties } from "../utils/fetchProperties";
+import {
+  getProperties,
+  fetchFilteredProperties,
+} from "../utils/fetchProperties";
 
 const PropertyProvider = ({ children }) => {
-  const { isLoading, setIsLoading } = useContext(MessageBoxContext)
+  const { isLoading, setIsLoading } = useContext(MessageBoxContext);
   const [allProperties, setAllProperties] = useState([]);
+  const [selectedFilters, setSelectedFilters] = useState({
+    rentalYield: "",
+    location: "",
+    financeType: "",
+  });
 
   const reFetchProperties = async () => {
     const newProperties = await getProperties();
     setAllProperties(newProperties);
   };
 
+  const getFilteredProperties = async () => {
+    const { rentalYield, location, financeType } = selectedFilters;
+    const filters = `financeType=${financeType}&rentalYield=${rentalYield}&location=${location}`;
+    const filteredProperties = await fetchFilteredProperties(filters);
+    setAllProperties(filteredProperties);
+  };
+
   useEffect(() => {
     const fetchProperties = async () => {
       setAllProperties(await getProperties());
-      setIsLoading(false)
+      setIsLoading(false);
     };
 
     fetchProperties();
@@ -36,6 +51,9 @@ const PropertyProvider = ({ children }) => {
     reFetchProperties,
     getPropertyDetails,
     isLoading,
+    selectedFilters,
+    setSelectedFilters,
+    getFilteredProperties,
   };
 
   return (

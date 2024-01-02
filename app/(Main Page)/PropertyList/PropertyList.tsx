@@ -22,6 +22,7 @@ export function PropertyList(): ReactElement {
               alt={property.Address}
               width={272}
               height={200}
+              priority={true}
             />
             <Image
               className={css.saveIcon}
