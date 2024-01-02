@@ -2,13 +2,30 @@ import { type ReactElement } from "react";
 import css from "./FilterModal.module.css";
 import closeIcon from "./closeIcon.svg";
 import Image from "next/image";
+import SelectCountry from "@/app/components/SelectCountry/SelectCountry";
 
-interface FilterProps {
-  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
-}
+export function FilterModal({
+  setShowModal,
+  selectedFilters,
+  handleFilterChange,
+  handleApplyFilter,
+}: any): ReactElement {
+  document.body.style.overflow = "hidden";
 
-export function FilterModal({ setShowModal }: FilterProps): ReactElement {
+  const footerElement = document.getElementById("footer");
+  const navbarElement = document.getElementById("navbar");
+
+  if (footerElement && navbarElement) {
+    footerElement.style.visibility = "hidden";
+    navbarElement.style.display = "none";
+  }
   const handleCloseModal = () => {
+    document.body.style.overflow = "auto";
+    if (footerElement && navbarElement) {
+      footerElement.style.visibility = "visible";
+      navbarElement.style.display = "block";
+    }
+
     setShowModal(false);
   };
 
@@ -24,23 +41,35 @@ export function FilterModal({ setShowModal }: FilterProps): ReactElement {
         <div className={css.modalFilterList}>
           <div>
             <label htmlFor="location">Location</label>
-            <select id="location">
-              <option value="">All</option>
-              <option value="passiveIncome">Passive Income</option>
-              <option value="capitalRepayment">Capital Repayment</option>
-            </select>
+            <SelectCountry
+              currentValue={selectedFilters.location}
+              onChange={handleFilterChange}
+            />
           </div>
           <div>
             <label htmlFor="rentalYield">Rental Yield</label>
-            <select id="rentalYield">
+            <select
+              id="rentalYield"
+              defaultValue={selectedFilters.rentalYield}
+              onChange={(e) =>
+                handleFilterChange("rentalYield", e.target.value)
+              }
+            >
               <option value="">All</option>
-              <option value="passiveIncome">Passive Income</option>
-              <option value="capitalRepayment">Capital Repayment</option>
+              <option value="0-5">Up to 5%</option>
+              <option value="5-10">5% to 10%</option>
+              <option value="10-25">10% to 25%</option>
             </select>
           </div>
           <div>
             <label htmlFor="financeType">Finance Type</label>
-            <select id="financeType">
+            <select
+              id="financeType"
+              defaultValue={selectedFilters.financeType}
+              onChange={(e) =>
+                handleFilterChange("financeType", e.target.value)
+              }
+            >
               <option value="">All</option>
               <option value="passiveIncome">Passive Income</option>
               <option value="capitalRepayment">Capital Repayment</option>
@@ -63,7 +92,15 @@ export function FilterModal({ setShowModal }: FilterProps): ReactElement {
             <span>Apartament</span>
           </label>
         </div>
-        <button className={css.savechanges}>Save changes</button>
+        <button
+          className={css.savechanges}
+          onClick={() => {
+            handleApplyFilter();
+            handleCloseModal();
+          }}
+        >
+          Save changes
+        </button>
       </section>
     </div>
   );

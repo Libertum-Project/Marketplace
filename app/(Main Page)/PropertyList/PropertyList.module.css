@@ -32,6 +32,7 @@
 .bestSellers .property img:first-child {
   border-radius: 14px;
   width: 335px;
+  height: auto;
 }
 
 .bestSellers .property {
