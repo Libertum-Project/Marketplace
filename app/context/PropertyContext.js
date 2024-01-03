@@ -10,6 +10,7 @@ const PropertyContext = createContext({
   selectedFilters: {},
   setSelectedFilters: () => {},
   getFilteredProperties: () => {},
+  isLoading: false,
 });
 
 export default PropertyContext;

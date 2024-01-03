@@ -1,15 +1,10 @@
 "use client";
-import { type ReactElement } from "react";
 import { useContext } from "react";
 import PropertyContext from "@/app/context/PropertyContext";
 
-export default function PropertyDetails({
-  params,
-}: {
-  params: { propertyID: string };
-}): ReactElement {
+export default function PropertyDetails({ params }) {
   const { getPropertyDetails, isLoading } = useContext(PropertyContext);
-  const ID: number = parseInt(params.propertyID);
+  const ID = parseInt(params.propertyID);
 
   const propertyDetails = getPropertyDetails(ID);
   console.log(propertyDetails);

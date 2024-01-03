@@ -8,7 +8,7 @@ export default function PropertyDetails({
 }: {
   params: { propertyID: string };
 }): ReactElement {
-  const { getPropertyDetails, isLoading } = useContext(PropertyContext);
+  const { getPropertyDetails, isLoading }: any = useContext(PropertyContext);
   const ID: number = parseInt(params.propertyID);
 
   const propertyDetails = getPropertyDetails(ID);
