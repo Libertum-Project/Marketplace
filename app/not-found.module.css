@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+  align-items: center;
+  justify-content: center; 
+}
+
+.errorMessagePage {
+  text-align: center; 
+  gap: 2rem;
+}
+
+.errorPage {
+  font-size: 3rem;
+}
+
+.button {
+  text-transform: uppercase;
+  padding: 1rem 1.5rem;
+  color: rgb(255, 255, 255);
+  background-color: rgb(59, 130, 246);
+  margin-top: 2rem; 
+  text-decoration: none; 
+  display: inline-block; 
+  border-radius: .3rem;
+}

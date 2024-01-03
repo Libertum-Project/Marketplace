@@ -1,0 +1,15 @@
+.socialMediaContainer{
+  display: flex;
+  --tw-space-x-reverse: 0;
+  justify-content: space-between;
+  width: 70%;
+
+}
+.socialMediaLinks{
+justify-content: space-between;
+}
+.socialMediaLinks :hover{
+  transform: scale(105%);
+  transition-duration: 200ms;
+  color: blue;
+}
