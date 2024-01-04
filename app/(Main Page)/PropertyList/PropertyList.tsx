@@ -8,8 +8,14 @@ import proyectedYield from "./proyectedYield.svg";
 import annualRepayment from "./annualRepayment.svg";
 
 export function PropertyList(): ReactElement {
-  const { allProperties } = useContext(PropertyContext);
-  const bestSellersProperties = allProperties.slice(0, 2);
+  const { allProperties }: any = useContext(PropertyContext);
+
+  const bestSellersProperties:any = []
+  for (const property of allProperties) {
+    if (property.IsBestSeller) {
+      bestSellersProperties.push(property)
+    }
+  }
 
   return (
     <section className={css.listProperty}>
