@@ -1,4 +1,5 @@
-const serverURL = "https://libertum.azurewebsites.net";
+//const serverURL = process.env.NEXT_PUBLIC_SERVER_URL;
+const serverURL = 'http://localhost:5432'
 
 export async function getProperties() {
   const res = await fetch(`${serverURL}/properties/`);

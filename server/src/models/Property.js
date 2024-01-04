@@ -16,6 +16,10 @@ module.exports = (sequelize) => {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
       },
+      IsBestSeller: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
       ID_owner: {
         type: DataTypes.INTEGER,
         references: {
