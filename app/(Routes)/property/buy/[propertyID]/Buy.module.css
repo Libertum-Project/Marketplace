@@ -1,0 +1,95 @@
+.header {
+  align-items: center;
+  border-radius: 0px 14px 31px 31px;
+  background: #2196f3;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-direction: column;
+}
+
+.tittle {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.goBackBtn {
+  display: inline-flex;
+  padding: 8px;
+  align-items: flex-start;
+  border-radius: 100px;
+  border: 1px solid #ededed;
+  background: #fff;
+  cursor: pointer;
+}
+
+.tittle h1 {
+  color: #fff;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 38px;
+  margin: 0;
+}
+
+.header p {
+  color: #fff;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: center;
+  margin: 0;
+}
+
+.progressBar {
+  align-items: center;
+  display: flex;
+  width: 55%;
+  justify-content: space-between;
+}
+
+.progressBar .step {
+  padding: 13px;
+  border-radius: 50px;
+  border: 1px solid #fff;
+  background: #fff;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.step p {
+  color: #009ed4;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.divider {
+  width: 100%;
+  height: 1.8px;
+  background: #47b2ff;
+}
+
+.progressBar .selected {
+  background: #47b2ff ;
+  border: none;
+}
+
+.progressBar .selected p{
+  color: #fff;
+}
+
+
