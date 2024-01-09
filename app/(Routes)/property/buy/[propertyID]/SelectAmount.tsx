@@ -33,7 +33,7 @@ export function SelectAmount({
     <div className={css.buySection}>
       <header className={css.header}>
         <div className={css.tittle}>
-          <div className={css.goBackBtn} onClick={handleGoBack}>
+          <button className={css.goBackBtn} onClick={handleGoBack}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -49,18 +49,18 @@ export function SelectAmount({
                 stroke-linejoin="round"
               />
             </svg>
-          </div>
+          </button>
           <h1>Select Amount</h1>
         </div>
         <p className={css.paragraph}>Select the amount of tokens to purchase</p>
         <div className={css.progressBar}>
-          <div className={css.step + " " + css.selected}>
+          <button className={css.step + " " + css.selected}>
             <p>1</p>
-          </div>
+          </button>
           <div className={css.divider}></div>
-          <div className={css.step} onClick={handleNextStep}>
+          <button className={css.step} onClick={handleNextStep}>
             <p>2</p>
-          </div>
+          </button>
         </div>
       </header>
       <main>

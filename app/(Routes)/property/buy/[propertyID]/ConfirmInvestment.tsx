@@ -21,7 +21,7 @@ const total = subtotal + (subtotal * 0.03);
     <div className={css.buySection}>
       <header className={css.header}>
         <div className={css.tittle}>
-          <div className={css.goBackBtn} onClick={handlePreviusStep}>
+          <button className={css.goBackBtn} onClick={handlePreviusStep}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -37,14 +37,14 @@ const total = subtotal + (subtotal * 0.03);
                 stroke-linejoin="round"
               />
             </svg>
-          </div>
+          </button>
           <h1>Confirm Investment</h1>
         </div>
         <p className={css.paragraph}>
           Check the data and confirm the investment
         </p>
         <div className={css.progressBar}>
-          <div className={css.step} onClick={handlePreviusStep}>
+          <button className={css.step} onClick={handlePreviusStep}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -60,11 +60,11 @@ const total = subtotal + (subtotal * 0.03);
                 stroke-linejoin="round"
               />
             </svg>
-          </div>
+          </button>
           <div className={css.divider}></div>
-          <div className={css.step + " " + css.selected}>
+          <button className={css.step + " " + css.selected}>
             <p>2</p>
-          </div>
+          </button>
         </div>
       </header>
 
