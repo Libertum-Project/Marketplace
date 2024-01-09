@@ -93,10 +93,12 @@ export function SelectAmount({
               id="inputAmount"
               type="number"
               value={amount}
-              onChange={(e)=>{handleChangeAmount(e.target.value)}}
+              onChange={(e) => {
+                handleChangeAmount(e.target.value);
+              }}
             />
           </div>
-          <div className={css.details}>
+          <div className={css.details + " " + css.detailsFinancial}>
             <div>
               <p>Price Per Token</p>
               <p>$ {pricePerToken}</p>
@@ -127,7 +129,7 @@ export function SelectAmount({
             />
           </svg>
           <p>
-            You <span>wallet</span> is already connected
+            Your <span>wallet</span> is already connected
           </p>
         </section>
         <button onClick={handleNextStep} className={css.nextBtn}>
