@@ -1,6 +1,11 @@
+.buySection {
+  background: #fff;
+  margin-bottom: 8rem;
+}
+
 .header {
   align-items: center;
-  border-radius: 0px 14px 31px 31px;
+  border-radius: 0px 0px 31px 31px;
   background: #2196f3;
   padding: 2rem;
   display: flex;
@@ -92,6 +97,144 @@
   color: #fff;
 }
 
+.buySection main {
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.detailsContainer {
+  border-radius: 16px;
+  border: 1px solid #ededed;
+  padding: 1rem;
+}
+
+.detailsContainer h3 {
+  color: #101010;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  margin: 0;
+  margin-bottom: 1rem;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
+}
+
+.details p {
+  margin: 0;
+}
+
+.details div {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.details div p:first-child {
+  color: #878787;
+  text-align: center;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.details div p:last-child {
+  color: #101010;
+  text-align: center;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.orange {
+  color: var(--Libertum-orange, #f39200) !important;
+}
+
+.selectQuantity {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.selectQuantity label {
+  position: relative;
+  top: 0.5rem;
+  padding: 0 3px;
+  width: fit-content;
+  margin: 0 1rem;
+  background: #fff;
+  color: #939191;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 18px;
+}
+
+.selectQuantity input {
+  border-radius: 8px;
+  border: 1px solid #939191;
+  padding: 1rem;
+  -moz-appearance: textfield;
+}
+
+.financialInfo {
+  padding: 0 1rem;
+}
+
+.walletMessage {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.walletMessage p {
+ margin: 0;
+ color: var(--Neutral-60, #878787);
+ font-family: Inter;
+ font-size: 14px;
+ font-style: normal;
+ font-weight: 400;
+ line-height: 20px; /* 142.857% */
+}
+
+.walletMessage span {
+  color: #484545;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  text-decoration-line: underline;
+}
+
+.nextBtn {
+  width: 100%;
+  flex-shrink: 0;
+  padding: 1rem;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  background: #2196f3;
+  box-shadow: 0px 10px 20px 0px rgba(48, 48, 48, 0.25);
+  cursor: pointer;
+}
+
 @media (min-width: 900px) {
   .header {
     border-radius: 18px;
@@ -111,7 +254,7 @@
   .progressBar {
     order: -1;
     width: 25%;
-  align-self: self-end;
+    align-self: self-end;
   }
 
   .tittle h1 {

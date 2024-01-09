@@ -13,6 +13,7 @@ export default function PropertyDetails({
 }): any {
   const router = useRouter();
   const [currentStep, setCurrentStep] = useState(1);
+  const [amount, setAmount] = useState(10)
   const { getPropertyDetails, isLoading }: any = useContext(PropertyContext);
   const ID: number = parseInt(params.propertyID);
   const propertyDetails = getPropertyDetails(ID);
@@ -27,14 +28,16 @@ export default function PropertyDetails({
       {currentStep === 1 ? (
         <SelectAmount
           propertyDetails={propertyDetails}
-          currentStep={currentStep}
           setCurrentStep={setCurrentStep}
+          amount={amount}
+          setAmount={setAmount}
         />
       ) : (
         <ConfirmInvestment
           propertyDetails={propertyDetails}
           currentStep={currentStep}
           setCurrentStep={setCurrentStep}
+          amount={amount}
         />
       )}
     </>
