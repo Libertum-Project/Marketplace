@@ -35,9 +35,8 @@
   margin: 0;
 }
 
-.header p {
+.header .paragraph {
   color: #fff;
-  font-family: Montserrat;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -75,6 +74,7 @@
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  user-select: none;
 }
 
 .divider {
@@ -84,12 +84,47 @@
 }
 
 .progressBar .selected {
-  background: #47b2ff ;
+  background: #47b2ff;
   border: none;
 }
 
-.progressBar .selected p{
+.progressBar .selected p {
   color: #fff;
 }
 
+@media (min-width: 900px) {
+  .header {
+    border-radius: 18px;
+    background: linear-gradient(
+      180deg,
+      #2196f3 0%,
+      rgba(33, 150, 243, 0.29) 100%
+    );
+    max-width: 1310px;
+    margin: 0 auto;
+  }
 
+  .goBackBtn {
+    display: none;
+  }
+
+  .progressBar {
+    order: -1;
+    width: 25%;
+  align-self: self-end;
+  }
+
+  .tittle h1 {
+    color: #fff;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 38px;
+    text-align: right;
+    width: 100%;
+  }
+  .header .paragraph {
+    width: 100%;
+    text-align: right;
+  }
+}

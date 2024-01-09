@@ -33,7 +33,7 @@ export function ConfirmInvestment({
           </div>
           <h1>Confirm Investment</h1>
         </div>
-        <p>Select the amount of tokens to purchase</p>
+        <p className={css.paragraph}>Check the data and confirm the investment</p>
         <div className={css.progressBar}>
           <div className={css.step} onClick={handlePreviusStep}>
             <svg
