@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import plano1 from "./plano1.pdf"
 import plano2 from "./plano2.pdf"
 import document1 from "./Register1.pdf"
@@ -12,9 +13,20 @@ import  style  from "../Aboutproperty.module.scss"
 import { BsDownload } from "react-icons/bs"
 
 
+
 const Documents = () => {
 
   const color= "#F7931A"
+
+  const { id } = useParams();
+  const propertyId = parseInt(id);
+  console.log(propertyId);
+  
+  if (propertyId !== 25) {
+    <div className={style.downloadContainer}>
+      <h2>No documents for this property</h2>
+    </div>
+  }
 
     return(
         <div className={style.downloadContainer}>
