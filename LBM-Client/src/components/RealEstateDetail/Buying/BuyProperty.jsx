@@ -182,7 +182,7 @@ const BuyProperty = () => {
   const { user, isAuthenticated, isLoading, loginWithRedirect } = useAuth0();
 
   const handleLogin = () => {
-    const redirectUri = `${window.location.origin}/marketplace/`;
+    const redirectUri = `${window.location.origin}`;
     loginWithRedirect({
       redirectUri: redirectUri,
     });
