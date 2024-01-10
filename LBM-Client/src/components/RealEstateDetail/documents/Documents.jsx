@@ -22,11 +22,16 @@ const Documents = () => {
   const propertyId = parseInt(id);
   console.log(propertyId);
   
-  if (propertyId !== 25) {
+if (propertyId !== 25) {
+  return (
     <div className={style.downloadContainer}>
-      <h2>No documents for this property</h2>
+      <p className={style.download}> 
+      No documents for this property
+      </p>
     </div>
-  }
+  );
+}
+
 
     return(
         <div className={style.downloadContainer}>
