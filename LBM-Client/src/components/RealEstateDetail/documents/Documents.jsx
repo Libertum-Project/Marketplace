@@ -30,9 +30,25 @@ const Documents = () => {
               <span style={{ display: 'inline-flex', alignItems: 'center',  marginLeft: '10px', marginRight: '5px', borderRadius: '50%', backgroundColor: color,    padding: '5px'}}>
                 <BsDownload />              
               </span>
-              Download <b>Blueprint</b>
+              Download <b>Floor Plan</b>
             </p>
             </Link>
+
+                      <Link
+             to={plano2}
+             target="_blank"
+             rel="noopener noreferrer"
+             download="plano1.pdf"                  
+           >
+            <p className={style.download}>            
+                 
+              <span style={{ display: 'inline-flex', alignItems: 'center',  marginLeft: '10px', marginRight: '5px', borderRadius: '50%', backgroundColor: color,    padding: '5px'}}>
+                <BsDownload />              
+              </span>
+              Download <b>Floor Plan 23 High Street</b>
+            </p>
+            </Link>
+          
 
             <Link
              to={document1}
@@ -44,7 +60,7 @@ const Documents = () => {
             <span style={{ display: 'inline-flex', alignItems: 'center', marginLeft: '10px', marginRight: '5px', borderRadius: '50%', backgroundColor: color,    padding: '5px'}}>
                 <BsDownload />
               </span>
-              Download <b>Title</b></p>
+              Download <b>Title 21 High Street</b></p>
 
               </Link>
 
@@ -59,7 +75,7 @@ const Documents = () => {
             <span style={{ display: 'inline-flex', alignItems: 'center', marginLeft: '10px', marginRight: '5px', borderRadius: '50%', backgroundColor: color,    padding: '5px'}}>
                 <BsDownload />
               </span>
-              Download <b>Smart Contract</b></p>
+              Download <b>Title 23 High Street</b></p>
 
             </Link>
 
@@ -75,12 +91,12 @@ const Documents = () => {
             <span style={{ display: 'inline-flex', alignItems: 'center', marginLeft: '10px', marginRight: '5px', borderRadius: '50%', backgroundColor: color,    padding: '5px'}}>
                 <BsDownload />
               </span>
-              Download <b>Other document</b></p>
+              Download <b>Smart Contract</b></p>
 
             </Link>
 
             
-            <Link
+{/*             <Link
              to={document3}
              target="_blank"
              rel="noopener noreferrer"
@@ -93,7 +109,7 @@ const Documents = () => {
               </span>
               Download <b>Other document</b></p>
 
-            </Link>
+            </Link> */}
 
             
             <Link
@@ -107,7 +123,7 @@ const Documents = () => {
             <span style={{ display: 'inline-flex', alignItems: 'center', marginLeft: '10px', marginRight: '5px', borderRadius: '50%', backgroundColor: color,    padding: '5px'}}>
                 <BsDownload />
               </span>
-              Download <b>Other document</b></p>
+              Download <b>Encumbrance Certificate</b></p>
 
             </Link>
 
@@ -122,7 +138,7 @@ const Documents = () => {
             <span style={{ display: 'inline-flex', alignItems: 'center', marginLeft: '10px', marginRight: '5px', borderRadius: '50%', backgroundColor: color,    padding: '5px'}}>
                 <BsDownload />
               </span>
-              Download <b>Other document</b></p>
+              Download <b>Lease document 21 High Street</b></p>
 
             </Link>
 
@@ -137,7 +153,7 @@ const Documents = () => {
             <span style={{ display: 'inline-flex', alignItems: 'center', marginLeft: '10px', marginRight: '5px', borderRadius: '50%', backgroundColor: color,    padding: '5px'}}>
                 <BsDownload />
               </span>
-              Download <b>Other document</b></p>
+              Download <b>Lease document 23 High Street</b></p>
 
             </Link>
 
