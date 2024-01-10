@@ -113,7 +113,7 @@ if (propertyId !== 25) {
             </Link>
 
             
-{/*             <Link
+            <Link
              to={document3}
              target="_blank"
              rel="noopener noreferrer"
@@ -124,9 +124,9 @@ if (propertyId !== 25) {
             <span style={{ display: 'inline-flex', alignItems: 'center', marginLeft: '10px', marginRight: '5px', borderRadius: '50%', backgroundColor: color,    padding: '5px'}}>
                 <BsDownload />
               </span>
-              Download <b>Other document</b></p>
+              Download <b>Mortgage Document</b></p>
 
-            </Link> */}
+            </Link>
 
             
             <Link
