@@ -1,0 +1,44 @@
+Elements description:
+
+Dockerfile - Defines the instructions to build the docker image
+.dockerignore - Defines files to ignore when building the docker image
+marketplace-pod.yaml - Defines the Kubernetes pod, builds the docker container based on given image
+marketplace-node-port-service.yaml - Defines the Kubernetes service, allows communication to the pod via a node port
+marketplace-deployment.yaml - Acts as a watchdog for the pod, if the pod goes down a new one is spun up to take its place, can also be used to scale the application by increasing the number of replicas
+
+Docker commands:
+
+Build image: docker build -t <imagename> .  
+Example: docker build -t marketplace .  
+
+Run container: docker run --name <containername> -p <porttobindto>:<portofserver> <imagename>  
+Example: docker run --name marketplace -p 3000:3000 marketplace
+
+Running the docker container inside a Kubernetes cluster:
+Note: When using with Kubernetes, the image must be on Docker Hub and the imagename must match the repository name on Docker Hub (username/imagename)
+To push image to Docker Hub use docker push <imagename> (after repo is created on DockerHub)
+You must be logged into DockerHub via the CLI to push images. Use docker login to login via CLI.
+
+1. Build image:
+docker build -t username/imagename .
+
+2. Push to Docker Hub:
+docker push username/imagename
+
+3. Run the Kubernetes pod:
+cd into the k8s folder
+kubectl apply -f marketplace-pod.yaml
+
+4. Run the Kubernetes service:
+kubectl apply -f marketplace-node-port-service.yaml
+
+5. Run the Kubernetes deployment:
+kubectl apply -f marketplace-deployment.yaml
+
+6. Access the application:
+localhost:31600 (port defined in marketplace-node-port-service.yaml)
+
+
+
+
+
