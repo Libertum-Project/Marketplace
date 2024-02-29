@@ -1,5 +1,6 @@
 import css from './MessageBox.module.css';
 import error from './alertIcon.svg';
+import Image from 'next/image';
 
 const FailMessage = ({ setShowFailMessage, message, url }) => {
   const handleContinue = (event) => {
@@ -20,14 +21,14 @@ const FailMessage = ({ setShowFailMessage, message, url }) => {
     >
       <div className={css.errorBox} onClick={handleErrorBoxClick}>
         <div className={css.header}>
-          <img src={error} alt="error" />
-          <h2>Error!</h2>
+          <Image src={error} alt="error" />
+          <h2>Error</h2>
         </div>
         <div>
           <p>{message}</p>
         </div>
         {url && (
-          <div className={css.polyScanURL}>
+          <div className={css.URL}>
             <a href={url} target="_blank">
               Click here to view Transaction Details on Block explorer
             </a>

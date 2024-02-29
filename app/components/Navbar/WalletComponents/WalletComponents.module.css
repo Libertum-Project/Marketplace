@@ -1,0 +1,87 @@
+.connectWalletButtonContainer {
+  width: 100%;
+}
+
+.w3mBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 8rem;
+}
+
+.connectWalletButton {
+  display: flex;
+  width: calc(100% - 2rem);
+  padding: 8px 16px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+  border: 1px solid #00b3b5;
+  background: rgba(0, 179, 181, 0.3);
+  backdrop-filter: blur(5px);
+  color: #fff;
+  text-align: center;
+  font-family: Space Grotesk;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%;
+  cursor: pointer;
+  margin: 2rem 1rem;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.connectWalletButton div {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.connectWalletButton div p {
+  padding: 0;
+}
+
+@media (min-width: 1000px) {
+  .connectWalletButtonContainer {
+    width: auto;
+  }
+
+  .connectWalletButton div p {
+    margin: 0;
+  }
+
+  .connectWalletButton {
+    display: flex;
+    width: 182px;
+    padding: 8px 16px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    border: 1px solid #00b3b5;
+    background: rgba(0, 179, 181, 0.3);
+    backdrop-filter: blur(5px);
+    color: #fff;
+    text-align: center;
+    font-family: Space Grotesk;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%;
+    cursor: pointer;
+    margin: 0;
+    gap: 1rem;
+  }
+  .connectWalletButton div {
+    flex: 2;
+    justify-content: space-between;
+  }
+
+  .w3mBtn {
+    position: unset;
+    gap: 1rem;
+  }
+}

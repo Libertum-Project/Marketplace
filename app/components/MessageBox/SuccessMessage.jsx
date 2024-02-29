@@ -1,4 +1,5 @@
 import css from "./MessageBox.module.css";
+import Image from "next/image";
 import success from "./checkIcon.svg";
 
 const SuccessMessage = ({ setShowSuccessMessage, messagge, textBtn }) => {
@@ -15,7 +16,7 @@ const SuccessMessage = ({ setShowSuccessMessage, messagge, textBtn }) => {
     >
       <div className={css.successBox}>
         <div className={css.header}>
-          <img src={success} alt="success" />
+          <Image src={success} alt="success" />
           <h2>Success!</h2>
         </div>
         <div>

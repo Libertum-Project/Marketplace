@@ -1,11 +1,13 @@
 "use client";
 import { useContext } from "react";
-import MessageBoxContext from "../../context/MessageBoxContext";
+import MessageBoxContext from "../../../context/MessageBoxContext";
 import Loading from "./Loading";
 import PendingMessage from "./PendingMessage";
 import FailMessage from "./FailMessage";
 import SuccessMessage from "./SuccessMessage";
-import ConnectToPolygonMessage from "./ConnectToPolygonMessage.jsx";
+import ConnectToNetworkMessage from "./ConnectToNetworkMessage.jsx";
+import NotEnoughUSDT from "./NotEnoughUSDT";
+import ConnectWallet from "./ConnectWallet";
 
 const MessageBox = () => {
   const {
@@ -13,28 +15,39 @@ const MessageBox = () => {
     showFailMessage,
     setShowFailMessage,
     errorMessage,
-    polyScanURL,
+    networkScanURL,
     showPendingMessage,
     showSuccessMessage,
     setShowSuccessMessage,
-    showConnectToPolygonMessage,
-    setShowConnectToPolygonMessage,
+    showConnectToNetworkMessage,
+    setShowConnectToNetworkMessage,
+    showNotEnoughUSDT,
+    setShowNotEnoughUSDT,
+    showConnectWallet,
+    setShowConnectWallet,
   } = useContext(MessageBoxContext);
 
   return (
     <>
       {isLoading ? <Loading /> : null}
+      {showNotEnoughUSDT ? (
+        <NotEnoughUSDT setShowNotEnoughUSDT={setShowNotEnoughUSDT} />
+      ) : null}
+
+      {showConnectWallet ? (
+        <ConnectWallet setShowConnectWallet={setShowConnectWallet} />
+      ) : null}
       {showFailMessage ? (
         <FailMessage
           setShowFailMessage={setShowFailMessage}
           message={errorMessage}
-          url={polyScanURL}
+          url={networkScanURL}
         />
       ) : null}
 
-      {showConnectToPolygonMessage ? (
-        <ConnectToPolygonMessage
-          setShowConnectToPolygonMessage={setShowConnectToPolygonMessage}
+      {showConnectToNetworkMessage ? (
+        <ConnectToNetworkMessage
+          setShowConnectToNetworkMessage={setShowConnectToNetworkMessage}
         />
       ) : null}
 

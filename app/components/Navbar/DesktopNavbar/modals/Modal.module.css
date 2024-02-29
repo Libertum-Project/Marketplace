@@ -1,0 +1,60 @@
+  .navModalContainer {
+    position: absolute;
+    top: 93px;
+    right: 0;
+    left: 0;
+    z-index: 99999;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(8, 9, 21, 0.95);
+    padding: 1.5rem 1rem;
+
+  }
+
+  .navModal {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10%;
+    margin: 0 auto;
+    max-width: 1202px;
+  }
+
+  .modalHeader {
+    align-items: center;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+  }
+
+  .modalHeader p {
+    color: #f9861e;
+    font-family: Helvetica, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin: 0;
+  }
+
+  .modalLinks {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 25rem;
+    gap: 1rem;
+  }
+
+  .modalLinks div a {
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: #fff;
+    font-family: "Space Grotesk";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
