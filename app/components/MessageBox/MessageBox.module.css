@@ -1,0 +1,192 @@
+.errorBoxContainer,
+.notEnoughContainer,
+.pendingBoxContainer,
+.successBoxContainer,
+.messageBoxContainer {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  background-color: rgba(8, 9, 21, 0.3);
+}
+
+.errorBox,
+.notEnough,
+.pendingBox,
+.successBox,
+.messageBox {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 5px;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 0px 30px 8px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 0px 30px 8px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 30px 8px rgba(0, 0, 0, 0.5);
+}
+
+.errorBox,
+.notEnough {
+  gap: 2rem;
+}
+
+.header {
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  display: flex;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 1rem 0;
+  gap: 1rem;
+  width: 100%;
+}
+
+.header img {
+  width: 3rem;
+  flex-shrink: 0;
+}
+
+.header h2 {
+  color: var(--color-primary);
+  text-align: left;
+  font-size: 1.3rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  font-family: var(--font-primary);
+  margin: 0;
+}
+
+.errorBox p,
+.notEnough p,
+.pendingBox p,
+.successBox p,
+.messageBox p {
+  color: var(--color-primary);
+  width: 18rem;
+  text-align: left;
+  font-size: 1.1305rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.7rem;
+  cursor: auto;
+  font-family: var(--font-secondary);
+  margin: 0;
+}
+
+.errorBox button,
+.successBox button,
+.notEnough button,
+.messageBox button {
+  border-radius: 0.31rem;
+  background: var(--color-secondary);
+  font-family: var(--font-primary);
+  border: none;
+  color: white;
+  width: 100%;
+  height: 2.907rem;
+}
+
+.errorBox button:hover,
+.notEnough button:hover,
+.successBox button:hover,
+.messageBox button:hover {
+  transition: all ease-in 0.3s;
+  opacity: 0.8;
+}
+
+.successBox h2 {
+ color: var(--color-secondary);
+}
+
+.pendingBox h2,
+.messageBox h2 {
+  color: var(--color-primary);
+}
+
+.pendingBox {
+  gap: 1.5rem;
+}
+
+.pendingBox img {
+  width: 2.3rem;
+  height: auto;
+  margin-right: 1rem;
+}
+
+.URL a {
+  font-size: 1rem;
+  color: #374151;
+  opacity: 0.8;
+  text-decoration: underline;
+  transition: all ease-in-out 0.2s;
+  font-family: var(--font-secondary);
+}
+
+.URL a:hover {
+  opacity: 1;
+}
+
+.messageBox {
+  gap: 1.5rem;
+}
+
+.messageBox p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.notEnough img {
+  width: 2rem;
+  height: 2rem;
+}
+
+.notEnough .header h2 {
+  color: var(--color-primary);
+}
+
+.networkImage {
+  width: 2.5rem !important;
+  height: 2.5rem;
+}
+
+.connectWalletButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+}
+
+.connectWalletButton div {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.connectWalletButton div p {
+  color: white;
+  font-family: var(--font-primary);
+  cursor: pointer;
+}
+
+
+@media (min-width: 750px) {
+  .errorBox p,
+  .successBox p,
+  .notEnough p {
+    width: 31rem;
+  }
+
+  .successBox p {
+    width: 27rem;
+  }
+}
