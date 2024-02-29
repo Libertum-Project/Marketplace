@@ -1,14 +1,10 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
 import "./globals.css";
 import PropertyProvider from "./context/PropertyProvider";
-import MessageBoxProvider from "./context/MessageBoxProvider";
-import Footer from "./components/Footer/Desktop/Footer";
-import NavigationMobile from "./components/Footer/Mobile/NavigationMobile";
-import Navbar from "./components/Navbar/Navbar";
-import MessageBox from "./components/MessageBox/MessageBox";
+// import MessageBoxProvider from "./context/MessageBoxProvider";
+import { NavBar } from "./components/Navbar/NavBar";
+import Footer from "./components/Footer/Footer"
 
-const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Marketplace - Libertum",
@@ -23,29 +19,24 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={montserrat.className}>
-        <nav>
-          <Navbar />
-        </nav>
-        <div style={{ paddingTop: "120px" }}>
-          <MessageBoxProvider>
-            <PropertyProvider>
-              <MessageBox />
+        <head>
+        <link rel="preconnect" href="https://cdn.ad360.media" />
+        {/* <GoogleTagManager gtmId="GTM-WBK9FF4T" /> */}
+      </head>
+
+
+
+      <body>
+        
+          <NavBar />
+          {/* <MessageBoxProvider> */}
+            <PropertyProvider>              
               {children}
             </PropertyProvider>
-          </MessageBoxProvider>
-        </div>
-        <footer className={montserrat.className}>
-          <Footer />
-          <NavigationMobile />
-        </footer>
+            <Footer />
+
       </body>
     </html>
   );
 }
 
-{
-  /* <nav className={montserrat.className}>
-<Navbar />
-</nav> */
-}
