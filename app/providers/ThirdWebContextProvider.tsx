@@ -12,7 +12,7 @@ export function ThirdwebContextProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const clientId = '04def6ed3834a997825d9b216dd2631a';
+  const clientId = process.env.NEXT_PUBLIC_THIRD_WEB_CLIENT_ID;
   return (
     <ThirdwebContext.Provider value={{}}>
       <ThirdwebProvider

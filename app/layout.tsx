@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { ThirdwebContextProvider } from './providers/ThirdWebContextProvider';
-import { NavBar } from './components/Navbar/NavBar';
-import Footer from './components/Footer/Footer';
 
 export const metadata: Metadata = {
   title: 'Marketplace - Libertum',
@@ -23,11 +21,7 @@ export default function RootLayout({
       </head>
 
       <body>
-        <ThirdwebContextProvider>
-          <NavBar />
-          {children}
-          <Footer />
-        </ThirdwebContextProvider>
+        <ThirdwebContextProvider>{children}</ThirdwebContextProvider>
       </body>
     </html>
   );
