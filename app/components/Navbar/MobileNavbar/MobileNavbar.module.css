@@ -4,7 +4,7 @@
   top: 0;
   right: 0;
   left: 0;
-  z-index: 99999;
+  z-index: 10;
   border-bottom: 1px solid;
   border-image: linear-gradient(
     90deg,
@@ -13,6 +13,7 @@
     rgba(255, 255, 255, 0) 100%
   );
   border-image-slice: 1;
+  background-color: var(--color-primary);
 }
 
 .mobileNavBar {
