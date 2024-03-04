@@ -1,5 +1,6 @@
 .desktopNavbar {
   display: none;
+  background: var(--color-primary);
 }
 
 @media (min-width: 1000px) {
@@ -22,7 +23,7 @@
     top: 0;
     right: 0;
     left: 0;
-    z-index: 89;
+    z-index: 10;
   }
 
   .desktopNavbar a img {

@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import PropertyProvider from "./context/PropertyProvider";
-// import MessageBoxProvider from "./context/MessageBoxProvider";
 import { NavBar } from "./components/Navbar/NavBar";
-import Footer from "./components/Footer/Footer"
-
+import Footer from "./components/Footer/Footer";
+import { EmbedProvider } from "./context/EmbedProvider";
 
 export const metadata: Metadata = {
   title: "Marketplace - Libertum",
@@ -19,24 +17,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-        <head>
+      <head>
         <link rel="preconnect" href="https://cdn.ad360.media" />
         {/* <GoogleTagManager gtmId="GTM-WBK9FF4T" /> */}
       </head>
 
-
-
-      <body>
-        
+      <EmbedProvider>
+        <body>
           <NavBar />
-          {/* <MessageBoxProvider> */}
-            <PropertyProvider>              
-              {children}
-            </PropertyProvider>
-            <Footer />
-
-      </body>
+          {children}
+          <Footer />
+        </body>
+      </EmbedProvider>
     </html>
   );
 }
-
