@@ -72,6 +72,10 @@ const config = {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
+      fontFamily: {
+        ubuntu: ['Ubuntu', 'system-ui', 'sans-serif'],
+        space_grotesk: ['Space Grotesk', 'system-ui', 'sans-serif'],
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],

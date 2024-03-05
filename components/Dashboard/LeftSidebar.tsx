@@ -25,7 +25,7 @@ const LeftSidebar = () => {
           return (
             <Link
               href={item.route}
-              className={`text-white flex gap-[10px] group py-[10px] px-5 ${
+              className={`text-white flex gap-[10px] group py-[10px] px-5 items-center ${
                 isActive && 'bg-white bg-opacity-5 rounded-[5px]'
               }`}
               key={item.route}
@@ -37,7 +37,7 @@ const LeftSidebar = () => {
                 height={20}
                 className="group-hover:fill-[#00B3B5]"
               />
-              <p className="text-white group-hover:text-[#00B3B5]">
+              <p className="text-white group-hover:text-[#00B3B5] text-opacity-70 text-xs font-bold font-ubuntu">
                 {item.label}
               </p>
             </Link>
@@ -48,13 +48,13 @@ const LeftSidebar = () => {
       <div className="flex flex-col gap-2">
         <Link
           href="/"
-          className="bg-teal-500 bg-opacity-30 rounded-[5px] border border-teal-500 text-white p-4 text-center"
+          className="bg-teal-500 bg-opacity-30 rounded-[5px] border border-teal-500 text-white text-base font-bold font-space_grotesk leading-normal text-center p-4"
         >
           Tokenomics
         </Link>
         <Link
           href="/"
-          className="bg-teal-500 bg-opacity-30 rounded-[5px] border border-teal-500 text-white p-4 text-center"
+          className="bg-teal-500 bg-opacity-30 rounded-[5px] border border-teal-500 text-base font-bold font-space_grotesk leading-normal text-white p-4 text-center"
         >
           Whitepaper
         </Link>
