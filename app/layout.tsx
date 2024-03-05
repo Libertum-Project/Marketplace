@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { NavBar } from "./components/Navbar/NavBar";
+import PropertyProvider from "./context/PropertyProvider";
 import Footer from "./components/Footer/Footer";
 import { EmbedProvider } from "./context/EmbedProvider";
 
@@ -25,7 +26,9 @@ export default function RootLayout({
       <EmbedProvider>
         <body>
           <NavBar />
+          <PropertyProvider> 
           {children}
+          </PropertyProvider>
           <Footer />
         </body>
       </EmbedProvider>
