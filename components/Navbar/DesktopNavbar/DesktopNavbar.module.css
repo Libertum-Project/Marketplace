@@ -1,6 +1,5 @@
 .desktopNavbar {
   display: none;
-  background: var(--color-primary);
 }
 
 @media (min-width: 1000px) {
