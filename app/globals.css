@@ -1,7 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('../public/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: var(--font-secondary);
+  src: url('../public/Helvetica/Helvetica.ttf');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-primary: 'Space Grotesk';
+  --font-secondary: 'Helvetica';
+  --color-primary: #080915; /* Dark blue */
+  --color-secondary: #00b3b5; /* Light blue */
+  --color-tertiary: #ffa143; /* Orange */
+  --color-quaternary: #fff; /* White */
+  --color-quinary: #f6f8fa; /* gray - for backgrounds */
+}
+/*  
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -73,4 +99,4 @@
   body {
     @apply bg-background text-foreground;
   }
-}
+} */
