@@ -1,14 +1,11 @@
-import type { Metadata } from "next";
-import "./globals.css";
-import { NavBar } from "./components/Navbar/NavBar";
-import PropertyProvider from "./context/PropertyProvider";
-import Footer from "./components/Footer/Footer";
-import { EmbedProvider } from "./context/EmbedProvider";
+import type { Metadata } from 'next';
+import './globals.css';
+import { ThirdwebContextProvider } from './providers/ThirdWebContextProvider';
 
 export const metadata: Metadata = {
-  title: "Marketplace - Libertum",
+  title: 'Marketplace - Libertum',
   description:
-    "Exploring freedom, technology, and innovation in our journey to a brighter future.",
+    'Exploring freedom, technology, and innovation in our journey to a brighter future.',
 };
 
 export default function RootLayout({
@@ -23,15 +20,9 @@ export default function RootLayout({
         {/* <GoogleTagManager gtmId="GTM-WBK9FF4T" /> */}
       </head>
 
-      <EmbedProvider>
-        <body>
-          <NavBar />
-          <PropertyProvider> 
-          {children}
-          </PropertyProvider>
-          <Footer />
-        </body>
-      </EmbedProvider>
+      <body>
+        <ThirdwebContextProvider>{children}</ThirdwebContextProvider>
+      </body>
     </html>
   );
 }
