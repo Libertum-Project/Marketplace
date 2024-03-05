@@ -15,7 +15,6 @@ const LeftSidebar = () => {
             alt="Logo"
             width={140}
             height={20}
-            className="group-hover:fill-[#00B3B5]"
           />
         </Link>
         {sidebarLinks.map((item) => {

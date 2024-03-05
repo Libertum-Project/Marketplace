@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const Search = () => {
   return (
-    <div className="rounded-[5px] border border-black border-opacity-10 flex items-center justify-between w-[218px] px-[10px]">
+    <div className="rounded-[5px] border border-black border-opacity-10 flex items-center justify-between w-[218px] px-[10px] max-sm:hidden">
       <Input
         type="text"
         placeholder="Search dashboard"
