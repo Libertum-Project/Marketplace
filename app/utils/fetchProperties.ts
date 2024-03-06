@@ -2,10 +2,10 @@ const serverURL = process.env.NEXT_PUBLIC_SERVER_URL;
 //const serverURL = 'http://localhost:5432'
 
 export async function getProperties() {
-  const res = await fetch(`${serverURL}/properties/`);
+  const res = await fetch(`/api/properties`);
 
   if (!res.ok) {
-    throw new Error("Failed to fetch data");
+    throw new Error('Failed to fetch data');
   }
   return res.json();
 }
