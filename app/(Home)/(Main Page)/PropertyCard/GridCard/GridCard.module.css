@@ -1,13 +1,8 @@
 .allPropertiesGrid{
-  /* align-items: center;
-*/
-/* display: flex;
-flex-wrap: wrap;
-justify-content: space-between;
-max-width: 1700px; */
+
 display: grid;
-grid-template-columns: repeat(3, 1fr); /* Calcula dinámicamente el número de columnas */
-grid-gap: 20px; /* Espacio entre las tarjetas */
+grid-template-columns: repeat(3, 1fr); 
+grid-gap: 20px; 
 max-width: 1700px;
 margin: auto;
 }
