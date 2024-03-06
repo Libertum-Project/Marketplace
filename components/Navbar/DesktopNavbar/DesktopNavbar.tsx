@@ -7,9 +7,7 @@ import css from './DesktopNavbar.module.css';
 import logo from '@/public/horizontal-logo.svg';
 import { LearnModal } from './modals/LearnModal';
 import { DocsModal } from './modals/DocsModal';
-import { ConnectWalletButton } from '../WalletComponents/ConnectWalletButton';
-
-import { ConnectWallet } from '@thirdweb-dev/react';
+import ConnectWalletButton from '../WalletComponents/ConnectWalletButton';
 
 export function DesktopNavbar(): ReactElement {
   const [isLearnModalVisible, setIsLearnModalVisible] = useState(false);
@@ -78,7 +76,7 @@ export function DesktopNavbar(): ReactElement {
             Docs ↓
           </a>
           <div onMouseEnter={handleHideModals} onTouchStart={handleHideModals}>
-            <ConnectWallet modalSize={'compact'} />
+            <ConnectWalletButton />
           </div>
         </div>
       </nav>
