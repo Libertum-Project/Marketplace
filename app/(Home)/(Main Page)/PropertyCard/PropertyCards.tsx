@@ -1,25 +1,50 @@
 'use client';
 import React, {
-  ReactComponentElement,
   useState,
+  useEffect,
   type ReactElement,
-  useContext,
 } from 'react';
 import Link from 'next/link';
 import css from './PropertyCards.module.css';
-import PropertyContext from '@/app/context/PropertyContext';
 import Image from 'next/image';
 import gridActive from '../../../../public/assets/gridActive.svg';
 import filesInactive from '../../../../public/assets/filesInactive.svg';
+import gridInactive from '../../../../public/assets/gridInactive.svg';
+import filesActive from '../../../../public/assets/filesActive.svg';
+
+
 import hotel from '../../../../public/assets/hotel.svg';
 import rentalYield from '../../../../public/assets/rentalyield.svg';
 import location from '../../../../public/assets/filter2.svg';
 
-export function PropertyCard(): ReactElement {
-  const { allProperties }: any = React.useContext(PropertyContext);
-  const [expandedCard, setExpandedCard] = useState<string | null>(null);
 
-  console.log(allProperties);
+
+export function PropertyCard(): ReactElement {
+ 
+  const [properties, setProperties] = useState<any[]>([]);
+  const [expandedCard, setExpandedCard] = useState<string | null>(null);
+  const [grid, setGrid] = useState<boolean>(true); 
+
+  const toggleView = () => {
+    setGrid(!grid);
+  };
+
+  useEffect(() => {
+    async function fetchProperties() {
+      try {
+        const response = await fetch('https://libertum.azurewebsites.net/properties');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+      const data = await response.json();
+      setProperties(data);
+    }catch (error) {
+      console.error('Error fetching properties:', error);
+    }
+  }
+
+  fetchProperties();
+}, []);
 
   const handleCardClick = (address: string) => {
     if (expandedCard === address) {
@@ -28,6 +53,7 @@ export function PropertyCard(): ReactElement {
       setExpandedCard(address);
     }
   };
+
 
   return (
     <div className={css.marketplaceLayout}>
@@ -38,25 +64,27 @@ export function PropertyCard(): ReactElement {
         </select>
 
         <div className={css.marketplaceFrame__show}>
-          <Image
-            src={gridActive}
+        <Image
+            src={grid ? gridActive : gridInactive}
             alt="N"
             width="32"
             height="32"
             className={css.marketplaceFrame__show_image}
+            onClick={toggleView} 
           />
           <Image
-            src={filesInactive}
+             src={grid ? filesInactive : filesActive} 
             alt="N"
             width="32"
             height="32"
             className={css.marketplaceFrame__show_image}
+            onClick={toggleView} 
           />
         </div>
       </div>
 
       <article className={css.allProperties}>
-        {allProperties.map((property: any) => (
+        {properties.map((property: any) => (
           <div
             key={property.Address}
             className={`${css.property} ${
