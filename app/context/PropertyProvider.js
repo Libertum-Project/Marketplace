@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import { useState, useEffect, useContext } from "react";
-import MessageBoxContext from "./MessageBoxContext";
-import PropertyContext from "./PropertyContext";
+import { useState, useEffect, useContext } from 'react';
+import MessageBoxContext from './MessageBoxContext';
+import PropertyContext from './PropertyContext';
 import {
   getProperties,
   fetchFilteredProperties,
-} from "../utils/fetchProperties";
+} from '../utils/fetchProperties';
 
 const PropertyProvider = ({ children }) => {
   const { isLoading, setIsLoading } = useContext(MessageBoxContext);
   const [allProperties, setAllProperties] = useState([]);
   const [selectedFilters, setSelectedFilters] = useState({
-    rentalYield: "",
-    location: "",
-    financeType: "",
+    rentalYield: '',
+    location: '',
+    financeType: '',
   });
 
   const reFetchProperties = async () => {
@@ -29,18 +29,20 @@ const PropertyProvider = ({ children }) => {
     setAllProperties(filteredProperties);
   };
 
-  useEffect(() => {
-    const fetchProperties = async () => {
-      setAllProperties(await getProperties());
-      setIsLoading(false);
-    };
+  const fetchProperties = async () => {
+    const properties = await getProperties();
+    setAllProperties(properties);
+    setIsLoading(false);
+  };
 
+  useEffect(() => {
     fetchProperties();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getPropertyDetails = (ID) => {
     const propertyDetails = allProperties.filter(
-      (property) => property.ID_Property === ID,
+      (property) => property.ID_Property === ID
     );
 
     return propertyDetails;
