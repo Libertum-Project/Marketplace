@@ -1,3 +1,4 @@
+import RightSidebar from '@/components/Dashboard/RightSidebar';
 import PropertyCard from '@/components/shared/PropertyCard';
 import { properties } from '@/constants';
 
@@ -17,7 +18,7 @@ const page = () => {
           );
         })}
       </div>
-      <div className="max-sm:hidden w-[310px] min-h-screen bg-black"></div>
+      <RightSidebar />
     </div>
   );
 };
