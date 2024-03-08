@@ -76,6 +76,10 @@ const config = {
         ubuntu: ['Ubuntu', 'system-ui', 'sans-serif'],
         space_grotesk: ['Space Grotesk', 'system-ui', 'sans-serif'],
       },
+      backgroundImage: {
+        'primary-gradient':
+          'radial-gradient(80.5% 80.5% at 50% 103.87%, #000041 0%, #0E0E1E 100%)',
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],
