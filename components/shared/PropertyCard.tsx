@@ -6,13 +6,31 @@ interface Props {
   property: any;
   address: string;
   viewType?: string;
+  btnTitle?: string;
 }
 
-const PropertyCard = ({ property, address, viewType = 'grid' }: Props) => {
+const PropertyCard = ({
+  property,
+  address,
+  viewType = 'grid',
+  btnTitle = 'View Property',
+}: Props) => {
   return (
     <Card className="bg-white rounded-[5px] shadow border border-black border-opacity-10">
       {viewType == 'grid' ? (
-        <CardContent className="p-0">
+        <CardContent className="p-0 relative">
+          <Button className="absolute right-4 top-4 bg-transparent hover:bg-transparent p-0">
+            <ServerImage
+              src={`${
+                property.favourite
+                  ? '/assets/icons/property-liked.svg'
+                  : '/assets/icons/property-unliked.svg'
+              }`}
+              alt={property.name}
+              width={24}
+              height={24}
+            />
+          </Button>
           <ServerImage
             className="w-full"
             src={property.image}
@@ -67,9 +85,9 @@ const PropertyCard = ({ property, address, viewType = 'grid' }: Props) => {
             </div>
             <Button
               variant="outline"
-              className="w-full rounded-[5px] border border-teal-500 border-opacity-20 text-gray-950 text-base font-bold font-space_grotesk py-6"
+              className="w-full rounded-[5px] border border-teal-500 border-opacity-20 text-gray-950 text-base font-bold font-space_grotesk py-6 hover:bg-teal-500 hover:text-white"
             >
-              View Property
+              {btnTitle}
             </Button>
           </div>
         </CardContent>
