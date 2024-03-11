@@ -1,5 +1,5 @@
 import { Hero } from './Hero/hero';
-import { Filters } from './Filters/Filters';
+import { Filters } from './Filters';
 import { properties } from '@/constants';
 import AllProperties from '@/components/Home/AllProperties';
 
