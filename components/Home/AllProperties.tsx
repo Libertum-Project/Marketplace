@@ -17,15 +17,15 @@ const AllProperties = ({ properties }: Props) => {
 
   const propertyWrapperClassName =
     viewType == 'grid'
-      ? 'py-5 px-4 grid grid-cols-1 min-[575px]:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-[1200px] m-auto'
-      : 'flex flex-col py-5 max-w-[1200px] m-auto gap-8';
+      ? 'py-5 px-4 grid md:px-0 grid-cols-1 min-[575px]:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-[1200px] m-auto'
+      : 'flex flex-col py-5 max-w-[75rem] m-auto gap-8';
 
   return (
-    <div className="max-w-[1200px] m-auto">
+    <div>
       <div className="flex justify-center md:justify-between items-center">
         <select
           defaultValue="Select"
-          className="min-w-[95%] px-3 py-2 bg-slate-900 bg-opacity-5 rounded-[5px] border border-black border-opacity-10 cursor-pointer"
+          className="min-w-[95%] md:min-w-0 px-3 py-2 bg-slate-900 bg-opacity-5 rounded-[5px] border border-black border-opacity-10 cursor-pointer"
         >
           <option value="Newest first">Sort by: Newest first</option>
           <option value="Old First">Sort by: Old first</option>

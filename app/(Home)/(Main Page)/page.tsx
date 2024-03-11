@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div >
       <Hero />
-      <div className='lg:max-w-[1200px] m-auto'> 
+      <div className='md:max-w-[75rem] m-auto'> 
       <Filters />
       <AllProperties properties={properties} />
       </div>
