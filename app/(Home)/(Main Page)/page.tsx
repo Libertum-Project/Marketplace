@@ -5,10 +5,13 @@ import AllProperties from '@/components/Home/AllProperties';
 
 const Home = () => {
   return (
-    <div>
+    <div >
       <Hero />
+      <div className='lg:max-w-[1200px] m-auto'> 
       <Filters />
       <AllProperties properties={properties} />
+      </div>
+
     </div>
   );
 };

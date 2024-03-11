@@ -174,5 +174,9 @@
     padding: 1rem;
   }
 
+  .featuredProperties{
+    display: none;
+  }
+
   }
 
