@@ -6,14 +6,14 @@ import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 
 interface Props {
   property: any;
-  address: string;
+  location: string;
   viewType?: string;
   btnTitle?: string;
 }
 
 const PropertyCard = ({
   property,
-  address,
+  location,
   viewType = 'grid',
   btnTitle = 'View Property',
 }: Props) => {
@@ -34,9 +34,9 @@ const PropertyCard = ({
             />
           </Button>
           <ServerImage
-            className="w-full"
+            className="w-full max-h-[255px]"
             src={property.image}
-            alt={property.name}
+            alt={property.location.city}
             width={310}
             height={250}
           />
@@ -44,19 +44,19 @@ const PropertyCard = ({
             <div className="flex justify-between">
               <div className="flex flex-col">
                 <p className="text-black text-opacity-80 text-lg font-bold font-space_grotesk">
-                  {property.name}
+                  {property.location.address}
                 </p>
                 <p className="text-black text-opacity-30 text-[13px] font-normal capitalize block">
-                  {address}
+                  {property.location.city} • {property.location.country}
                 </p>
               </div>
 
               <p className="px-4 py-1 bg-teal-500 bg-opacity-10 rounded-[50px] border border-teal-500 font-space_grotesk text-teal-500 text-xs font-bold flex items-center justify-center">
-                {property.price}
+                $ {property.total_valuation}
               </p>
             </div>
 
-            <div className="flex justify-between py-6">
+            <div className="flex justify-between py-4">
               <div className="bg-neutral-100 rounded-[48px] text-black text-opacity-50 text-xs font-light capitalize p-3 flex items-center gap-[6px]">
                 <ServerImage
                   src="/assets/hotel.svg"
@@ -64,25 +64,25 @@ const PropertyCard = ({
                   height={14}
                   alt="image"
                 />
-                {property.type}
+                {property.category}
               </div>
               <div className="bg-neutral-100 rounded-[48px] text-black text-opacity-50 text-xs font-light capitalize p-3 flex items-center gap-[6px]">
                 <ServerImage
-                  src="/assets/hotel.svg"
+                  src="/assets/filter2.svg"
                   width={14}
                   height={14}
                   alt="image"
                 />
-                {property.address.country}
+                {property.location.country}
               </div>
               <div className="bg-neutral-100 rounded-[48px] text-black text-opacity-50 text-xs font-light capitalize p-3 flex items-center gap-[6px]">
                 <ServerImage
-                  src="/assets/hotel.svg"
+                  src="/assets/filter3.svg"
                   width={14}
                   height={14}
                   alt="image"
                 />
-                {property.percentage}%
+                {property.annual_yield}%
               </div>
             </div>            
             <Accordion type="single" collapsible>
@@ -145,7 +145,7 @@ const PropertyCard = ({
         <CardContent className="p-0 flex w-full max-h-[168px]">
           <ServerImage
             src={property.image}
-            alt={property.name}
+            alt={property.location.city}
             width={250}
             height={166}                 
           />
@@ -153,14 +153,14 @@ const PropertyCard = ({
             <div className="flex flex-col py-6 justify-between">
               <div>
                 <p className="text-black text-opacity-80 text-lg font-bold font-space_grotesk">
-                  {property.name}
+                {property.location.address}
                 </p>
                 <p className="text-black text-opacity-30 text-[13px] font-normal capitalize block">
-                  {address}
+                {property.location.city} • {property.location.country}                
                 </p>
               </div>                
                 <p className="px-4 py-1 bg-teal-500 bg-opacity-10 rounded-[50px] border border-teal-500 font-space_grotesk text-teal-500 text-xs font-bold flex items-center justify-center w-fit">
-                  {property.price}
+                $ {property.total_valuation}
                 </p>
             </div>
             <div className="flex flex-col justify-between py-6 pl-8">
@@ -178,7 +178,7 @@ const PropertyCard = ({
                     height={14}
                     alt="image"
                   />
-                  <p className='font-semibold'>Property:</p>{property.type}
+                  <p className='font-semibold'>Property:</p>                {property.category}
                 </div>
                 <div className="bg-neutral-100 rounded-[48px] text-black text-opacity-50 text-xs font-light capitalize p-3 flex items-center gap-[6px]">
                   <ServerImage
@@ -187,7 +187,7 @@ const PropertyCard = ({
                     height={14}
                     alt="image"
                   />
-                  {property.address.country}
+                {property.location.country}
                 </div>
                 <div className="bg-neutral-100 rounded-[48px] text-black text-opacity-50 text-xs font-light capitalize p-3 flex items-center gap-[6px]">
                   <ServerImage
@@ -196,7 +196,7 @@ const PropertyCard = ({
                     height={14}
                     alt="image"
                   />
-                   <p className='font-semibold'>Yield:</p>{property.percentage}%
+                   <p className='font-semibold'>Yield:</p>                {property.annual_yield}%
                 </div>
               </div>
             </div>

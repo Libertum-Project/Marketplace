@@ -60,12 +60,12 @@ const AllProperties = ({ properties }: Props) => {
       </div>
       <div className={propertyWrapperClassName}>
         {properties.map((property: any) => {
-          const address = `${property.address.city},${property.address.state},${property.address.country}`;
+          const location = `${property.location.city},${property.location.region},${property.location.country}`;
           return (
             <PropertyCard
               key={property.id}
               property={property}
-              address={address}
+              location={location}
               viewType={viewType}
             />
           );
