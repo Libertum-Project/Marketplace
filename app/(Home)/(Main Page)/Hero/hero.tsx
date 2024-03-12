@@ -22,15 +22,17 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="hidden md:flex items-center">
-          <ServerImage
-            src="/assets/photoMarket.png"
-            alt="N"
-            width="336"
-            height="206"
-            className='mr-[-2rem] mt-10'
-            priority={true}
-          />
+        <div className="hidden md:flex items-center justify-end">
+            <ServerImage
+              src="/assets/photoMarket.png"
+              alt="N"
+              width="336"
+              height="336"
+              className='cover mr-[-2rem] z-10'
+              // className='mr-[-2rem] mt-10'
+              priority={true}
+            />
+
           <div className="pl-10 pr-4 py-4 bg-white bg-opacity-5 rounded-xl border border-l-0 rounded-l-none border-teal-500">
             <div className={css.featuredProperties__title}>
               <span>New</span>
