@@ -18,13 +18,11 @@ const AllProperties = ({ properties }: Props) => {
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
 
   const handleCardClick = (location: string) => {
-    console.log('Before handleCardClick:', expandedCard);
     if (expandedCard === location) {
       setExpandedCard(null);
     } else {
       setExpandedCard(location);
     }
-    console.log('After handleCardClick:', expandedCard);
   };
 
   const propertyWrapperClassName =

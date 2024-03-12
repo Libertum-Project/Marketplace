@@ -29,6 +29,7 @@ const Hero = () => {
             width="336"
             height="206"
             className='mr-[-2rem] mt-10'
+            priority={true}
           />
           <div className="pl-10 pr-4 py-4 bg-white bg-opacity-5 rounded-xl border border-l-0 rounded-l-none border-teal-500">
             <div className={css.featuredProperties__title}>

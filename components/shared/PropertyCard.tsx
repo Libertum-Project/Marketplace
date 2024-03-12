@@ -28,7 +28,6 @@ const [isExpanded, setIsExpanded] = useState(false);
     setIsExpanded(!isExpanded);
   };
 
-
   return (
     <Card
     className={`bg-white rounded-[5px] shadow border border-black border-opacity-10 ${
