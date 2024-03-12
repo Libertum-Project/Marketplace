@@ -29,10 +29,10 @@ const [isExpanded, setIsExpanded] = useState(false);
   };
 
   return (
-    <Card
-    className={`bg-white rounded-[5px] shadow border border-black border-opacity-10 ${
+<Card
+    className={`bg-white h-fit rounded-[5px] shadow border border-black border-opacity-10 ${
       isExpanded && viewType === 'grid' ? 'h-auto' : 'h-[480px]'
-    } overflow-hidden`}
+    } ${viewType !== 'grid' ? 'max-h-[168px]' : ''} overflow-hidden`}
   >
       {viewType == 'grid' ? (
         <CardContent className="p-0 relative">
