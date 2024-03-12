@@ -1,7 +1,7 @@
+import { useState } from "react";
 import { ServerImage } from '@/components/shared/ServerImage';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Accordion,  AccordionContent,  AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 
 interface Props {
@@ -9,6 +9,8 @@ interface Props {
   location: string;
   viewType?: string;
   btnTitle?: string;
+  expandedCard: string | null;
+  handleCardClick: (location: string) => void;
 }
 
 const PropertyCard = ({
@@ -16,9 +18,23 @@ const PropertyCard = ({
   location,
   viewType = 'grid',
   btnTitle = 'View Property',
+  expandedCard,
+  handleCardClick
 }: Props) => {
+
+const [isExpanded, setIsExpanded] = useState(false);
+
+  const toggleExpanded = () => {
+    setIsExpanded(!isExpanded);
+  };
+
+
   return (
-    <Card className="bg-white rounded-[5px] shadow border border-black border-opacity-10">
+    <Card
+    className={`bg-white rounded-[5px] shadow border border-black border-opacity-10 ${
+      isExpanded && viewType === 'grid' ? 'h-auto' : 'h-[480px]'
+    } overflow-hidden`}
+  >
       {viewType == 'grid' ? (
         <CardContent className="p-0 relative">
           <Button className="absolute right-4 top-4 bg-transparent hover:bg-transparent p-0">
@@ -85,9 +101,8 @@ const PropertyCard = ({
                 {property.annual_yield}%
               </div>
             </div>            
-            <Accordion type="single" collapsible>
-              <AccordionItem value="item-1">
-                <AccordionContent>
+            {expandedCard === property.location && (
+              <div className="mb-2 animate-accordion-down">
                 <Table className='border border-slate-500 border-opacity-20'>
                   <TableBody>
                     <TableRow className='odd:bg-[#F5F5F5]'>
@@ -122,23 +137,22 @@ const PropertyCard = ({
                       <TableCell className="font-medium">Annual Return:</TableCell>
                       <TableCell className='text-opacity-80'>$458</TableCell>
                     </TableRow>
-
                   </TableBody>
                 </Table>
-
-                </AccordionContent>
-                <AccordionTrigger>
-                  <Button
+                </div>
+            )}
+                <Button
                     variant="outline"
                     className="w-full rounded-[5px] border border-teal-500 border-opacity-20  text-base font-bold font-space_grotesk py-6 hover:bg-teal-500
                     hover:text-white
                     bg-[#00062F] text-white"
-                  >
+                    onClick={() => {
+                      toggleExpanded();
+                      handleCardClick(property.location);
+                    }}                  >
                     {btnTitle}
                   </Button>
-              </AccordionTrigger>
-              </AccordionItem>
-            </Accordion>
+                  
           </div>
         </CardContent>
       ) : (

@@ -15,6 +15,18 @@ const AllProperties = ({ properties }: Props) => {
     setViewType(type);
   };
 
+  const [expandedCard, setExpandedCard] = useState<string | null>(null);
+
+  const handleCardClick = (location: string) => {
+    console.log('Before handleCardClick:', expandedCard);
+    if (expandedCard === location) {
+      setExpandedCard(null);
+    } else {
+      setExpandedCard(location);
+    }
+    console.log('After handleCardClick:', expandedCard);
+  };
+
   const propertyWrapperClassName =
     viewType == 'grid'
       ? 'py-5 px-4 grid md:px-0 grid-cols-1 min-[575px]:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-[1200px] m-auto'
@@ -67,6 +79,8 @@ const AllProperties = ({ properties }: Props) => {
               property={property}
               location={location}
               viewType={viewType}
+              expandedCard={expandedCard}
+              handleCardClick={handleCardClick}
             />
           );
         })}
