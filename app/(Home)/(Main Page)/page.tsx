@@ -1,14 +1,17 @@
 import { Hero } from './Hero/hero';
-import { Filters } from './Filters/Filters';
+import { Filters } from './Filters';
 import { properties } from '@/constants';
 import AllProperties from '@/components/Home/AllProperties';
 
 const Home = () => {
   return (
-    <div>
+    <div >
       <Hero />
+      <div className='md:max-w-[75rem] m-auto'> 
       <Filters />
       <AllProperties properties={properties} />
+      </div>
+
     </div>
   );
 };

@@ -59,11 +59,10 @@ const Footer = () => {
   return (
     <footer className={css.footer}>
       <Image
-        src={background}
+        src="./background.svg"
         alt="N"
         width="1812"
         height="460"
-        // className={css.logo}
       />
       <div className={css.background}>
         <div className={css.footerContainer}>

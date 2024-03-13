@@ -5,6 +5,9 @@ import css from "./hero.module.css";
 import Link from "next/link";
 import photosMarket  from "../../../../public/assets/photosMarket.svg";
 
+//todo! ARREGLAR QUE SE VE MAL EL MOSAICO DE LA IMAGEN HASTA Q SE CARGA Y SE CORRE TODO. 
+
+
 export function Hero(): ReactElement {
 
   const [isMobile, setIsMobile] = useState(false);
