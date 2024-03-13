@@ -3,13 +3,19 @@ import {
   ConnectEmbed,
   lightTheme,
   useShowConnectEmbed,
+  useConnectionStatus,
 } from '@thirdweb-dev/react';
 import Image from 'next/image';
 import { redirect } from 'next/navigation';
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 
 const Page = () => {
   const showConnectEmbed = useShowConnectEmbed();
+  const status = useConnectionStatus();
+
+  useLayoutEffect(() => {
+    if (status == 'connected') redirect('/dashboard');
+  });
   return (
     <>
       {showConnectEmbed ? (
@@ -23,7 +29,7 @@ const Page = () => {
           <ConnectEmbed
             auth={{
               onLogin: () => {
-                redirect('/');
+                redirect('/dashboard');
               },
             }}
             theme={lightTheme({
@@ -40,7 +46,7 @@ const Page = () => {
           />
         </div>
       ) : (
-        redirect('/')
+        status == 'connected' && redirect('/dashboard')
       )}
     </>
   );
