@@ -1,4 +1,5 @@
 "use client";
+import css from "./mock.module.css";
 import { type ReactElement, useEffect, useState } from "react";
 import { Property } from "../../types/index";
 
@@ -36,13 +37,13 @@ export default function page(): ReactElement {
     return <p>{error}</p>;
   }
   return (
-    <>
+    <div className={css.container}>
       {properties?.length > 0 &&
         properties.map((property: Property) => (
-          <div key={property.id}>
+          <div className={css.card} key={property.id}>
             <p>{property.contract_address}</p>
           </div>
         ))}
-    </>
+    </div>
   );
 }
