@@ -15,6 +15,16 @@ const AllProperties = ({ properties }: Props) => {
     setViewType(type);
   };
 
+  const [expandedCard, setExpandedCard] = useState<string | null>(null);
+
+  const handleCardClick = (location: string) => {
+    if (expandedCard === location) {
+      setExpandedCard(null);
+    } else {
+      setExpandedCard(location);
+    }
+  };
+
   const propertyWrapperClassName =
     viewType == 'grid'
       ? 'py-5 px-4 grid md:px-0 grid-cols-1 min-[575px]:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-[1200px] m-auto'
@@ -60,13 +70,15 @@ const AllProperties = ({ properties }: Props) => {
       </div>
       <div className={propertyWrapperClassName}>
         {properties.map((property: any) => {
-          const address = `${property.address.city},${property.address.state},${property.address.country}`;
+          const location = `${property.location.city},${property.location.region},${property.location.country}`;
           return (
             <PropertyCard
               key={property.id}
               property={property}
-              address={address}
+              location={location}
               viewType={viewType}
+              expandedCard={expandedCard}
+              handleCardClick={handleCardClick}
             />
           );
         })}
