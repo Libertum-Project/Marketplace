@@ -75,10 +75,8 @@ const AllProperties = ({ properties }: Props) => {
             <PropertyCard
               key={property.id}
               property={property}
-              location={location}
               viewType={viewType}
-              expandedCard={expandedCard}
-              handleCardClick={handleCardClick}
+              btnLink="/details"
             />
           );
         })}
