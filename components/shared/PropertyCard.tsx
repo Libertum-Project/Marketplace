@@ -8,11 +8,13 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
+import Link from 'next/link';
 
 interface Props {
   property: any;
   viewType?: string;
   btnTitle?: string;
+  btnLink?: string;
   handleCardClick?: (location: string) => void;
 }
 
@@ -20,6 +22,7 @@ const PropertyCard = ({
   property,
   viewType = 'grid',
   btnTitle = 'View Property',
+  btnLink,
   handleCardClick,
 }: Props) => {
   return (
@@ -156,19 +159,35 @@ const PropertyCard = ({
                   </Table>
                 </AccordionContent>
 
-                <AccordionTrigger asChild className="text-center">
-                  <Button
-                    variant="outline"
-                    className="flex items-center w-full rounded-[5px] border border-teal-500 border-opacity-20  text-center font-bold font-space_grotesk py-6 hover:bg-teal-500
+                {btnLink ? (
+                  <Link href={btnLink} className="text-center">
+                    <Button
+                      variant="outline"
+                      className="flex items-center w-full rounded-[5px] border border-teal-500 border-opacity-20  text-center font-bold font-space_grotesk py-6 hover:bg-teal-500
                     hover:text-white
                     bg-[#00062F] text-white"
-                    style={{
-                      justifyContent: 'center',
-                    }}
-                  >
-                    {btnTitle}
-                  </Button>
-                </AccordionTrigger>
+                      style={{
+                        justifyContent: 'center',
+                      }}
+                    >
+                      {btnTitle}
+                    </Button>
+                  </Link>
+                ) : (
+                  <AccordionTrigger asChild className="text-center">
+                    <Button
+                      variant="outline"
+                      className="flex items-center w-full rounded-[5px] border border-teal-500 border-opacity-20  text-center font-bold font-space_grotesk py-6 hover:bg-teal-500
+                    hover:text-white
+                    bg-[#00062F] text-white"
+                      style={{
+                        justifyContent: 'center',
+                      }}
+                    >
+                      {btnTitle}
+                    </Button>
+                  </AccordionTrigger>
+                )}
               </AccordionItem>
             </Accordion>
           </div>
