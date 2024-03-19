@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 
 export async function GET() {
-  const serverURL = process.env.SERVER_URL;
+  //const serverURL = process.env.SERVER_URL;
+  const serverURL = "http://localhost:8080"; 
   try {
     const res = await fetch(`${serverURL}/properties/`, {
       headers: {

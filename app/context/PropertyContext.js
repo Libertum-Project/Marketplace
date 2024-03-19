@@ -8,6 +8,7 @@ const PropertyContext = createContext({
   reFetchProperties: () => {},
   getPropertyDetails: () => {},
   getFilteredProperties: () => {},
+  sortProperties: () => {},
   isLoading: false,
 });
 

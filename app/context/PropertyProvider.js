@@ -18,12 +18,18 @@ const PropertyProvider = ({ children }) => {
     setIsLoading(true);
 
     const filteredProperties = await fetchFilteredProperties(filters);
-    setProperties(filteredProperties);
+    const properties = filteredProperties
+      .slice()
+      .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+    setProperties(properties);
     setIsLoading(false);
   };
 
   const fetchProperties = async () => {
-    const properties = await fetchAllProperties();
+    const fetchedProperties = await fetchAllProperties();
+    const properties = fetchedProperties
+      .slice()
+      .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
     setProperties(properties);
     setIsLoading(false);
   };
@@ -35,12 +41,31 @@ const PropertyProvider = ({ children }) => {
 
   const getPropertyDetails = (ID) => {};
 
+  const sortProperties = async (order) => {
+    let sortedProperties = [];
+
+    if (order === 'Newest First') {
+      // Sorting in descending order for 'Newest first'
+      sortedProperties = properties
+        .slice()
+        .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+    } else if (order === 'Old First') {
+      // Sorting in ascending order for 'Old first'
+      sortedProperties = properties
+        .slice()
+        .sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+    }
+
+    setProperties(sortedProperties);
+  };
+
   const value = {
     properties,
     reFetchProperties,
     getPropertyDetails,
     isLoading,
     getFilteredProperties,
+    sortProperties,
   };
 
   return (
