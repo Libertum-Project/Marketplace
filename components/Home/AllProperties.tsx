@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Button } from "../ui/button";
 import { fetchProperties } from "@/app/utils/fetchPropertyList";
 import { Property } from "@/types/index";
+import Loading from "../shared/Loading/Loading";
 
 const AllProperties = () => {
   const [viewType, setViewType] = useState("grid");
@@ -50,7 +51,7 @@ const AllProperties = () => {
   }, []);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <Loading />;
   }
 
   if (error) {
