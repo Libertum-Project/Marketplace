@@ -1,67 +1,69 @@
-"use client";
-import { type ReactElement, useState } from "react";
-import { ServerImage } from "@/components/shared/ServerImage";
+'use client';
+import { type ReactElement, useState, useContext } from 'react';
+import PropertyContext from '../../context/PropertyContext';
+import { ServerImage } from '@/components/shared/ServerImage';
 
 export function Filters(): ReactElement {
   const [selectedFilters, setSelectedFilters] = useState({});
 
+  const { getFilteredProperties } = useContext(PropertyContext);
   const selectOptions: {
     imageURL: string;
     label: string;
     options: string[];
   }[] = [
     {
-      imageURL: "/assets/filter1.svg",
-      label: "Property Type",
+      imageURL: '/assets/filter1.svg',
+      label: 'Property Type',
       options: [
-        "All property types",
-        "Commercial",
-        "Residential",
-        "Commercial",
-        "Farm",
-        "Restaurant",
-        "Office",
+        'All property types',
+        'Commercial',
+        'Residential',
+        'Commercial',
+        'Farm',
+        'Restaurant',
+        'Office',
       ],
     },
     {
-      imageURL: "/assets/filter2.svg",
-      label: "Location",
+      imageURL: '/assets/filter2.svg',
+      label: 'Location',
       options: [
-        "Worldwide",
-        "France",
-        "USA",
-        "Spain",
-        "Canada",
-        "Japan",
-        "United Kingdom",
-        "Netherlands",
-        "Brazil",
+        'Worldwide',
+        'France',
+        'USA',
+        'Spain',
+        'Canada',
+        'Japan',
+        'United Kingdom',
+        'Netherlands',
+        'Brazil',
       ],
     },
     {
-      imageURL: "/assets/filter3.svg",
-      label: "Rental Yield",
-      options: ["Up to  5%", "5% to 10%", "10% to 15 %"],
+      imageURL: '/assets/filter3.svg',
+      label: 'Rental Yield',
+      options: ['All', 'Up to  5%', '5% to 10%', '10% to 15 %'],
     },
   ];
   const handleFilterChange = (label: string, value: string) => {
-    if (label === "Rental Yield") {
+    if (label === 'Rental Yield') {
       switch (value) {
-        case "Up to  5%":
-          value = "0-5";
+        case 'Up to  5%':
+          value = '0-5';
           break;
-        case "5% to 10%":
-          value = "5-10";
+        case '5% to 10%':
+          value = '5-10';
           break;
-        case "10% to 15 %":
-          value = "10-15";
+        case '10% to 15 %':
+          value = '10-15';
           break;
         default:
           break;
       }
-      label = "yield";
-    } else if (label === "Property Type") {
-      label = "type";
+      label = 'yield';
+    } else if (label === 'Property Type') {
+      label = 'type';
     } else {
       label = label.toLowerCase();
     }
@@ -74,13 +76,24 @@ export function Filters(): ReactElement {
 
   const handleFilter = () => {
     const queryString = Object.entries(selectedFilters)
-      .map(
-        ([key, value]) =>
-          `${encodeURIComponent(key)}=${encodeURIComponent(value as string)}`,
-      )
-      .join("&");
+      .map(([key, value]) => {
+        // Check if the value is 'All', 'Worldwide', or 'All property types'
+        if (
+          value === 'All' ||
+          value === 'Worldwide' ||
+          value === 'All property types'
+        ) {
+          return `${encodeURIComponent(key)}=`;
+        } else {
+          return `${encodeURIComponent(key)}=${encodeURIComponent(
+            value as string
+          )}`;
+        }
+      })
+      .join('&');
 
-    console.log(queryString);
+    // @ts-ignore
+    getFilteredProperties(queryString);
   };
 
   return (
@@ -113,9 +126,12 @@ export function Filters(): ReactElement {
         </div>
       ))}
 
-      <div className="flex bg-[#00B3B5] rounded-[5px] px-4 justify-center gap-4" onClick={handleFilter}>
+      <div
+        className="flex bg-[#00B3B5] rounded-[5px] px-4 justify-center gap-4"
+        onClick={handleFilter}
+      >
         <p className="md:hidden text-white font-space_grotesk font-bold">
-          Search Properties{" "}
+          Search Properties{' '}
         </p>
         <ServerImage
           src="/assets/magnifying.svg"

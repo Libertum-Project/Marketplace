@@ -1,9 +1,9 @@
 'use client';
 
-import { useState, useEffect, useContext } from 'react';
-import MessageBoxContext from './MessageBoxContext';
+import { useState, useEffect } from 'react';
 import PropertyContext from './PropertyContext';
 import { fetchAllProperties } from '../utils/fetchAllProperties';
+import { fetchFilteredProperties } from '../utils/fetchFilteredProperties';
 
 const PropertyProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -15,9 +15,11 @@ const PropertyProvider = ({ children }) => {
   };
 
   const getFilteredProperties = async (filters) => {
-    console.log(filters);
-    //    const filteredProperties = await fetchFilteredProperties(filters);
-    //   setProperties(filteredProperties);
+    setIsLoading(true);
+
+    const filteredProperties = await fetchFilteredProperties(filters);
+    setProperties(filteredProperties);
+    setIsLoading(false);
   };
 
   const fetchProperties = async () => {

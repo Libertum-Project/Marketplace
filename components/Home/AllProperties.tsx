@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect, useContext } from 'react';
+import { useState, useContext } from 'react';
 import PropertyContext from '../../app/context/PropertyContext.js';
 import PropertyCard from '../shared/PropertyCard';
 import Image from 'next/image';
@@ -36,7 +36,7 @@ const AllProperties = () => {
     return <Loading />;
   }
 
-  return properties ? (
+  return properties.length > 0 ? (
     <div>
       <div className="flex justify-center md:justify-between items-center">
         <select
@@ -87,7 +87,7 @@ const AllProperties = () => {
         })}
       </div>
     </div>
-  ) : null;
+  ) : <p>No properties available</p>;
 };
 
 export default AllProperties;
