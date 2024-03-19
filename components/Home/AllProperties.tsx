@@ -36,7 +36,7 @@ const AllProperties = () => {
     async function fetchAllProperties() {
       try {
         const allProperties: any = await fetchProperties();
-        console.log(allProperties);
+//        console.log(allProperties);
         setProperties(allProperties);
       } catch (error: any) {
         setError(
