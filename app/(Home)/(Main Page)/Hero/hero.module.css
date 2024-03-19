@@ -25,12 +25,12 @@
   }
   
   .heroCommunity {
-    padding: 5rem 1rem;
+    padding: 5rem 0;
     max-width: 75.125rem;
     margin: 0 auto;
     display: flex;
     align-items: center;
-   /* justify-content: center; */
+   justify-content: space-between;
     gap: 3rem;
     position: relative;
     z-index: 99;
@@ -172,6 +172,10 @@
   }
   .paragraphsCommunity{
     padding: 1rem;
+  }
+
+  .featuredProperties{
+    display: none;
   }
 
   }

@@ -3,20 +3,33 @@ import {
   ConnectEmbed,
   lightTheme,
   useShowConnectEmbed,
+  useConnectionStatus,
 } from '@thirdweb-dev/react';
+import Image from 'next/image';
 import { redirect } from 'next/navigation';
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 
 const Page = () => {
   const showConnectEmbed = useShowConnectEmbed();
+  const status = useConnectionStatus();
+
+  useLayoutEffect(() => {
+    if (status == 'connected') redirect('/dashboard');
+  });
   return (
     <>
       {showConnectEmbed ? (
-        <div className="w-full min-h-screen flex justify-center items-center">
+        <div className="w-full min-h-screen flex flex-col justify-center items-center bg-primary-gradient gap-10">
+          <Image
+            src="/horizontal-logo.svg"
+            width={274}
+            height={36}
+            alt="Logo"
+          />
           <ConnectEmbed
             auth={{
               onLogin: () => {
-                redirect('/');
+                redirect('/dashboard');
               },
             }}
             theme={lightTheme({
@@ -28,11 +41,12 @@ const Page = () => {
             showThirdwebBranding={false}
             style={{
               border: 'none',
+              borderRadius: 0,
             }}
           />
         </div>
       ) : (
-        redirect('/')
+        status == 'connected' && redirect('/dashboard')
       )}
     </>
   );
