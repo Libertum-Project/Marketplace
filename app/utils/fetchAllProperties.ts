@@ -1,4 +1,4 @@
-export async function fetchProperties() {
+export async function fetchAllProperties() {
   try {
     const response = await fetch("/api/properties", { method: "GET" });
     if (!response.ok) {

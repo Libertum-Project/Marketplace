@@ -3,12 +3,10 @@
 import { createContext } from "react";
 
 const PropertyContext = createContext({
-  allProperties: [],
-  setAllProperties: () => {},
+  properties: [],
+  setProperties: () => {},
   reFetchProperties: () => {},
   getPropertyDetails: () => {},
-  selectedFilters: {},
-  setSelectedFilters: () => {},
   getFilteredProperties: () => {},
   isLoading: false,
 });

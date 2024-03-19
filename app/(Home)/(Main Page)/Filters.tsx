@@ -1,7 +1,10 @@
-import { type ReactElement } from "react";
+"use client";
+import { type ReactElement, useState } from "react";
 import { ServerImage } from "@/components/shared/ServerImage";
 
 export function Filters(): ReactElement {
+  const [selectedFilters, setSelectedFilters] = useState({});
+
   const selectOptions: {
     imageURL: string;
     label: string;
@@ -41,6 +44,44 @@ export function Filters(): ReactElement {
       options: ["Up to  5%", "5% to 10%", "10% to 15 %"],
     },
   ];
+  const handleFilterChange = (label: string, value: string) => {
+    if (label === "Rental Yield") {
+      switch (value) {
+        case "Up to  5%":
+          value = "0-5";
+          break;
+        case "5% to 10%":
+          value = "5-10";
+          break;
+        case "10% to 15 %":
+          value = "10-15";
+          break;
+        default:
+          break;
+      }
+      label = "yield";
+    } else if (label === "Property Type") {
+      label = "type";
+    } else {
+      label = label.toLowerCase();
+    }
+
+    setSelectedFilters((prevState) => ({
+      ...prevState,
+      [label]: value,
+    }));
+  };
+
+  const handleFilter = () => {
+    const queryString = Object.entries(selectedFilters)
+      .map(
+        ([key, value]) =>
+          `${encodeURIComponent(key)}=${encodeURIComponent(value as string)}`,
+      )
+      .join("&");
+
+    console.log(queryString);
+  };
 
   return (
     <div className="flex flex-col align-start gap-2 self-stretch max-w-[95%] relative top-[-3rem] mb-[-1rem] p-2 z-30 shadow-sm bg-white border md:top-[-1.8rem] md:flex-row md:px-8 md:py-6 justify-between md:align-center md:min-w-[75rem] md:max-w-[75rem] m-auto rounded-[5px]">
@@ -59,7 +100,10 @@ export function Filters(): ReactElement {
             />
             <p className="w-fit">{option.label}</p>
           </div>
-          <select className="flex w-[200px] border rounded-[5px]">
+          <select
+            className="flex w-[200px] border rounded-[5px]"
+            onChange={(e) => handleFilterChange(option.label, e.target.value)}
+          >
             {option.options.map((opt, idx) => (
               <option key={idx} value={opt}>
                 {opt}
@@ -69,7 +113,7 @@ export function Filters(): ReactElement {
         </div>
       ))}
 
-      <div className="flex bg-[#00B3B5] rounded-[5px] px-4 justify-center gap-4">
+      <div className="flex bg-[#00B3B5] rounded-[5px] px-4 justify-center gap-4" onClick={handleFilter}>
         <p className="md:hidden text-white font-space_grotesk font-bold">
           Search Properties{" "}
         </p>

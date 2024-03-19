@@ -3,35 +3,26 @@
 import { useState, useEffect, useContext } from 'react';
 import MessageBoxContext from './MessageBoxContext';
 import PropertyContext from './PropertyContext';
-import {
-  getProperties,
-  fetchFilteredProperties,
-} from '../utils/fetchProperties';
+import { fetchAllProperties } from '../utils/fetchAllProperties';
 
 const PropertyProvider = ({ children }) => {
-  const { isLoading, setIsLoading } = useContext(MessageBoxContext);
-  const [allProperties, setAllProperties] = useState([]);
-  const [selectedFilters, setSelectedFilters] = useState({
-    rentalYield: '',
-    location: '',
-    financeType: '',
-  });
+  const [isLoading, setIsLoading] = useState(true);
+  const [properties, setProperties] = useState([]);
 
   const reFetchProperties = async () => {
-    const newProperties = await getProperties();
-    setAllProperties(newProperties);
+    const newProperties = await fetchAllProperties();
+    setProperties(newProperties);
   };
 
-  const getFilteredProperties = async () => {
-    const { rentalYield, location, financeType } = selectedFilters;
-    const filters = `financeType=${financeType}&rentalYield=${rentalYield}&location=${location}`;
-    const filteredProperties = await fetchFilteredProperties(filters);
-    setAllProperties(filteredProperties);
+  const getFilteredProperties = async (filters) => {
+    console.log(filters);
+    //    const filteredProperties = await fetchFilteredProperties(filters);
+    //   setProperties(filteredProperties);
   };
 
   const fetchProperties = async () => {
-    const properties = await getProperties();
-    setAllProperties(properties);
+    const properties = await fetchAllProperties();
+    setProperties(properties);
     setIsLoading(false);
   };
 
@@ -40,21 +31,13 @@ const PropertyProvider = ({ children }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const getPropertyDetails = (ID) => {
-    const propertyDetails = allProperties.filter(
-      (property) => property.ID_Property === ID
-    );
-
-    return propertyDetails;
-  };
+  const getPropertyDetails = (ID) => {};
 
   const value = {
-    allProperties,
+    properties,
     reFetchProperties,
     getPropertyDetails,
     isLoading,
-    selectedFilters,
-    setSelectedFilters,
     getFilteredProperties,
   };
 
