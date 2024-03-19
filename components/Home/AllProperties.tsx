@@ -1,15 +1,16 @@
-'use client';
-import { useState } from 'react';
-import PropertyCard from '../shared/PropertyCard';
-import Image from 'next/image';
-import { Button } from '../ui/button';
+"use client";
+import { useState, useEffect } from "react";
+import PropertyCard from "../shared/PropertyCard";
+import Image from "next/image";
+import { Button } from "../ui/button";
+import { fetchProperties } from "@/app/utils/fetchPropertyList";
+import { Property } from "@/types/index";
 
-interface Props {
-  properties: {}[];
-}
-
-const AllProperties = ({ properties }: Props) => {
-  const [viewType, setViewType] = useState('grid');
+const AllProperties = () => {
+  const [viewType, setViewType] = useState("grid");
+  const [properties, setProperties] = useState<Property[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   const handleViewType = (type: string) => {
     setViewType(type);
@@ -26,11 +27,37 @@ const AllProperties = ({ properties }: Props) => {
   };
 
   const propertyWrapperClassName =
-    viewType == 'grid'
-      ? 'py-5 px-4 grid md:px-0 grid-cols-1 min-[575px]:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-[1200px] m-auto'
-      : 'flex flex-col py-5 max-w-[75rem] m-auto gap-8';
+    viewType == "grid"
+      ? "py-5 px-4 grid md:px-0 grid-cols-1 min-[575px]:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-[1200px] m-auto"
+      : "flex flex-col py-5 max-w-[75rem] m-auto gap-8";
 
-  return (
+  useEffect(() => {
+    async function fetchAllProperties() {
+      try {
+        const allProperties: any = await fetchProperties();
+        console.log(allProperties);
+        setProperties(allProperties);
+      } catch (error: any) {
+        setError(
+          error.message || "An error occurred while fetching properties",
+        );
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchAllProperties();
+  }, []);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>{error}</p>;
+  }
+
+  return properties ? (
     <div>
       <div className="flex justify-center md:justify-between items-center">
         <select
@@ -42,24 +69,24 @@ const AllProperties = ({ properties }: Props) => {
         </select>
 
         <div className="hidden md:flex items-center bg-neutral-100 rounded-[5px] gap-2 px-2 py-[5px]">
-          <Button className="p-0" onClick={() => handleViewType('grid')}>
+          <Button className="p-0" onClick={() => handleViewType("grid")}>
             <Image
               src={`${
-                viewType == 'grid'
-                  ? '/assets/gridActive.svg'
-                  : '/assets/gridInactive.svg'
+                viewType == "grid"
+                  ? "/assets/gridActive.svg"
+                  : "/assets/gridInactive.svg"
               }`}
               alt="Grid"
               width="32"
               height="32"
             />
           </Button>
-          <Button className="p-0" onClick={() => handleViewType('list')}>
+          <Button className="p-0" onClick={() => handleViewType("list")}>
             <Image
               src={`${
-                viewType == 'list'
-                  ? '/assets/filesActive.svg'
-                  : '/assets/filesInactive.svg'
+                viewType == "list"
+                  ? "/assets/filesActive.svg"
+                  : "/assets/filesInactive.svg"
               }`}
               alt="List"
               width="32"
@@ -82,7 +109,7 @@ const AllProperties = ({ properties }: Props) => {
         })}
       </div>
     </div>
-  );
+  ) : null;
 };
 
 export default AllProperties;

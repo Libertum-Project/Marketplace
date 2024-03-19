@@ -1,14 +1,14 @@
-import { ServerImage } from '@/components/shared/ServerImage';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
+import { ServerImage } from "@/components/shared/ServerImage";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '@/components/ui/accordion';
-import Link from 'next/link';
+} from "@/components/ui/accordion";
+import Link from "next/link";
 
 interface Props {
   property: any;
@@ -20,25 +20,34 @@ interface Props {
 
 const PropertyCard = ({
   property,
-  viewType = 'grid',
-  btnTitle = 'View Property',
+  viewType = "grid",
+  btnTitle = "View Property",
   btnLink,
   handleCardClick,
 }: Props) => {
+  let pricePerToken: number = property.total_valuation / property.total_shares;
+
+  // If the decimal part is .00, remove it
+  if (pricePerToken % 1 === 0) {
+    pricePerToken = parseFloat(pricePerToken.toFixed(0)); // Remove decimal part and convert to number
+  } else {
+    pricePerToken = parseFloat(pricePerToken.toFixed(2)); // Keep two decimal places and convert to number
+  }
+
   return (
     <Card
       className={`bg-white h-fit rounded-[5px] shadow border border-black border-opacity-10 ${
-        viewType === 'grid' && 'min-h-0'
-      } ${viewType !== 'grid' ? 'max-h-[168px]' : ''} overflow-hidden`}
+        viewType === "grid" && "min-h-0"
+      } ${viewType !== "grid" ? "max-h-[168px]" : ""} overflow-hidden`}
     >
-      {viewType == 'grid' ? (
+      {viewType == "grid" ? (
         <CardContent className="p-0 relative">
           <Button className="absolute right-4 top-4 bg-transparent hover:bg-transparent p-0">
             <ServerImage
               src={`${
                 property.favourite
-                  ? '/assets/icons/property-liked.svg'
-                  : '/assets/icons/property-unliked.svg'
+                  ? "/assets/icons/property-liked.svg"
+                  : "/assets/icons/property-unliked.svg"
               }`}
               alt="like"
               width={49}
@@ -47,7 +56,7 @@ const PropertyCard = ({
           </Button>
           <ServerImage
             className="w-full max-h-[255px]"
-            src={property.image}
+            src={property.images[0]}
             alt="like"
             width={310}
             height={250}
@@ -167,7 +176,7 @@ const PropertyCard = ({
                     hover:text-white
                     bg-[#00062F] text-white"
                       style={{
-                        justifyContent: 'center',
+                        justifyContent: "center",
                       }}
                     >
                       {btnTitle}
@@ -181,7 +190,7 @@ const PropertyCard = ({
                     hover:text-white
                     bg-[#00062F] text-white"
                       style={{
-                        justifyContent: 'center',
+                        justifyContent: "center",
                       }}
                     >
                       {btnTitle}
@@ -195,7 +204,7 @@ const PropertyCard = ({
       ) : (
         <CardContent className="p-0 flex w-full max-h-[168px]">
           <ServerImage
-            src={property.image}
+            src={property.images[0]}
             alt={property.location.city}
             width={250}
             height={166}
@@ -217,8 +226,8 @@ const PropertyCard = ({
             <div className="flex flex-col justify-between py-6 pl-8">
               <div className="grid grid-cols-2 gap-2">
                 <p>
-                  <span className="font-semibold">Capital Repayment:</span>{' '}
-                  3.33%{' '}
+                  <span className="font-semibold">Capital Repayment:</span>{" "}
+                  3.33%{" "}
                 </p>
                 <p>
                   <span className="font-semibold"> Repayment Term:</span> 30
@@ -228,7 +237,8 @@ const PropertyCard = ({
                   <span className="font-semibold">Icome per token:</span> $2.75
                 </p>
                 <p>
-                  <span className="font-semibold">Price per Token:</span> $50
+                  <span className="font-semibold">Price per Token:</span> $
+                  {pricePerToken}
                 </p>
               </div>
               <div className="flex justify-between items-end">
@@ -257,7 +267,7 @@ const PropertyCard = ({
                     height={14}
                     alt="image"
                   />
-                  <p className="font-semibold">Yield:</p>{' '}
+                  <p className="font-semibold">Yield:</p>{" "}
                   {property.annual_yield}%
                 </div>
               </div>
@@ -267,8 +277,8 @@ const PropertyCard = ({
                 <ServerImage
                   src={`${
                     property.favourite
-                      ? '/assets/icons/property-liked.svg'
-                      : '/assets/icons/property-unliked.svg'
+                      ? "/assets/icons/property-liked.svg"
+                      : "/assets/icons/property-unliked.svg"
                   }`}
                   alt="like"
                   width={49}
