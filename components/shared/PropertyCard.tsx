@@ -56,7 +56,7 @@ const PropertyCard = ({
           </Button>
           <ServerImage
             className="w-full max-h-[255px]"
-            src={property.images[0]}
+            src={property.highlight_image}
             alt="like"
             width={310}
             height={250}
@@ -204,7 +204,7 @@ const PropertyCard = ({
       ) : (
         <CardContent className="p-0 flex w-full max-h-[168px]">
           <ServerImage
-            src={property.images[0]}
+            src={property.highlight_image}
             alt={property.location.city}
             width={250}
             height={166}
