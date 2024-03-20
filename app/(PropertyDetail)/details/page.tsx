@@ -40,9 +40,11 @@ const page = () => {
 
   return(
     <div className="relative w-full">
-    <div className="absolute inset-0 bg-gradient-to-b from-[#0E0E1E] to-[#000041]" style={{ height: '24.5rem', zIndex: '-1' }} />
+    <div className="hidden md:block absolute inset-0 bg-gradient-to-b from-[#0E0E1E] to-[#000041]" style={{ height: '24.5rem', zIndex: '-1' }} />
+    <div className="md:hidden absolute inset-0 bg-gradient-to-b from-[#0E0E1E] to-[#000041]" style={{ height: '100vh', zIndex: '-1' }} />
     <PropertyDetail property={property} />
-    {/* <SimilarListings /> */}
+    <SimilarListings />
+
   </div>
   )
 };

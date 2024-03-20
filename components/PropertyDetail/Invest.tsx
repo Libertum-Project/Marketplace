@@ -24,7 +24,9 @@ interface InvestProps {
 
 const Invest: React.FC<InvestProps> = ({ title, subtitle, buttonText }) => {
   return (
-    <div className="max-w-lg mx-auto bg-white shadow-md rounded p-6 space-y-4">
+    <div className="max-w-lg mx-auto md:bg-white shadow-md rounded p-2 md:p-6 space-y-4 bg-slate-100">
+
+
       <h2 className="text-3xl font-bold mb-4 font-space_grotesk">Invest in {title}</h2>
 
       <div className="space-y-[2px]"> 
@@ -54,32 +56,13 @@ const Invest: React.FC<InvestProps> = ({ title, subtitle, buttonText }) => {
             placeholder="10"
           />
           <p> = </p>
-          <div className="relative max-w-xs flex items-center border border-solid border-gray-300 rounded-[5px]">
-            <div className="absolute inset-y-0 left-3 my-auto h-6 flex items-center border-r pr-2">
-              <select className="text-sm outline-none rounded-lg h-full">
-                <option>US</option>
-                <option>ES</option>
-                <option>MR</option>
-              </select>
-            </div>
-            <input
-              type="text"
-              className="
-                text-sm
-                pl-[4.5rem]
-                pr-3
-                py-2
-                bg-transparent
-                outline-none
-                border-none
-                focus:border-teal-600
-                focus:shadow-sm
-                rounded-lg
-                flex-1
-              "
-              value="$1000"
-              readOnly
-            />
+          <div className='flex justify-between items-center border rounded-[5px] w-4/5'>      
+              <div className="flex-1">
+                <p className="text-black font-semibold text-sm px-3 py-2 rounded-l-lg h-full">USD</p>
+              </div>
+              <div className="flex-1">
+                <p className="text-gray-700 text-lg px-3 py-2 rounded-r-lg bg-gray-50 ">$600</p>
+              </div>
           </div>
         </div>
       </div>
@@ -110,7 +93,7 @@ const Invest: React.FC<InvestProps> = ({ title, subtitle, buttonText }) => {
         <Checkbox id="terms" />
         <label
           htmlFor="terms"
-          className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-[#00000081]          "
+          className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-[#00000081]"
         >
           I confirm that I have read and agree to the Terms of Use, Risk Disclaimers, and Privacy Notice.      
         </label>
@@ -124,7 +107,7 @@ const Invest: React.FC<InvestProps> = ({ title, subtitle, buttonText }) => {
       <DialogTrigger asChild>
         <Button variant="outline" className='w-full bg-teal-500 text-white px-4 py-4 rounded hover:bg-teal-600 transition duration-300 flex items-center justify-center font-space_grotesk'>Invest Now!</Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md p-6">
         <DialogHeader>
           <DialogTitle>Waitlist! Secure your VIP pass to the pre-launch excitement.</DialogTitle>
           <DialogDescription>
