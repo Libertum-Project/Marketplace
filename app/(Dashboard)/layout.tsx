@@ -5,6 +5,7 @@ import Navbar from '@/components/Dashboard/Navbar/Navbar';
 import MobileNav from '@/components/Dashboard/Navbar/MobileNav';
 import KycBanner from '@/components/shared/KycBanner';
 import withAuth from '@/components/HOC/withAuth';
+import { kycPending } from '@/constants';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -12,7 +13,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       <LeftSidebar />
       <section className="w-full">
         <Navbar />
-        <KycBanner />
+        {kycPending && <KycBanner />}
+
         {children}
         <MobileNav />
       </section>
