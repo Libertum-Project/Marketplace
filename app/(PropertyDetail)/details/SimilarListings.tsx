@@ -1,4 +1,3 @@
-'use client';
 import { properties } from '@/constants';
 import PropertyCard from '@/components/shared/PropertyCard';
 import React from 'react';
