@@ -13,7 +13,7 @@ const Hero = () => {
         </video>
       </div>
 
-      <div className={`${css.heroCommunity} max-sm:bg-primary-gradient`}>
+      <div className={`${css.heroCommunity} max-sm:bg-primary-gradient z-[-1]`}>
         <div className={css.textCommunity}>
           <h1>Unlock the potential for earning by investing</h1>
           <div className={css.paragraphsCommunity}>
