@@ -1,25 +1,23 @@
-import {
-  Accordion,
-  AccordionItem,
-  AccordionContent,
-  AccordionTrigger,
-} from '../ui/accordion';
+import InvestmentDetail from '../Dashboard/InvestmentDetail';
+import { Accordion, AccordionItem, AccordionContent } from '../ui/accordion';
 import { Button } from '../ui/button';
 import { CardContent } from '../ui/card';
-import { TableBody, TableRow, TableCell, Table } from '../ui/table';
+import PropertyCardButton from './PropertyCardButton';
+import PropertyDetailTable from './PropertyDetailTable';
 import { ServerImage } from './ServerImage';
-import Link from 'next/link';
 
 interface Props {
   property: any;
   btnTitle?: string;
   btnLink?: string;
+  investmentDetail?: boolean;
 }
 
 const PropertyGridView = ({
   property,
-  btnTitle = 'View Property',
+  btnTitle,
   btnLink,
+  investmentDetail = false,
 }: Props) => {
   return (
     <CardContent className="p-0 relative">
@@ -88,86 +86,19 @@ const PropertyGridView = ({
           </div>
         </div>
 
-        <Accordion type="single" collapsible className="w-full">
-          <AccordionItem value={`item-${property.id}`}>
-            <AccordionContent>
-              <Table className="border border-slate-500 border-opacity-20">
-                <TableBody>
-                  <TableRow className="odd:bg-[#F5F5F5]">
-                    <TableCell className="font-medium">Token Price:</TableCell>
-                    <TableCell className="text-opacity-80">$50</TableCell>
-                  </TableRow>
-                  <TableRow className="odd:bg-[#F5F5F5]">
-                    <TableCell className="font-medium">Total Tokens:</TableCell>
-                    <TableCell className="text-opacity-80">4500</TableCell>
-                  </TableRow>
-                  <TableRow className="odd:bg-[#F5F5F5]">
-                    <TableCell className="font-medium">Market Value:</TableCell>
-                    <TableCell className="text-opacity-80">$1,500,00</TableCell>
-                  </TableRow>
-                  <TableRow className="odd:bg-[#F5F5F5]">
-                    <TableCell className="font-medium ">
-                      Income per Token:
-                    </TableCell>
-                    <TableCell className="text-opacity-80">$2,50</TableCell>
-                  </TableRow>
-                  <TableRow className="odd:bg-[#F5F5F5]">
-                    <TableCell className="font-medium">
-                      Capital Repayment:
-                    </TableCell>
-                    <TableCell className="text-opacity-80">3.33%</TableCell>
-                  </TableRow>
-                  <TableRow className="odd:bg-[#F5F5F5]">
-                    <TableCell className="font-medium">
-                      Repayment Term:
-                    </TableCell>
-                    <TableCell className="text-opacity-80">30 years</TableCell>
-                  </TableRow>
-                  <TableRow className="odd:bg-[#F5F5F5]">
-                    <TableCell className="font-medium">Rental Yield:</TableCell>
-                    <TableCell className="text-opacity-80">7.58%</TableCell>
-                  </TableRow>
-                  <TableRow className="odd:bg-[#F5F5F5]">
-                    <TableCell className="font-medium">
-                      Annual Return:
-                    </TableCell>
-                    <TableCell className="text-opacity-80">$458</TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </AccordionContent>
+        {investmentDetail ? (
+          <InvestmentDetail property={property} />
+        ) : (
+          <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value={`item-${property.id}`}>
+              <AccordionContent>
+                <PropertyDetailTable />
+              </AccordionContent>
 
-            {btnLink ? (
-              <Link href={btnLink} className="text-center">
-                <Button
-                  variant="outline"
-                  className="flex items-center w-full rounded-[5px] border border-teal-500 border-opacity-20  text-center font-bold font-space_grotesk py-6 hover:bg-teal-500
-                    hover:text-white
-                    bg-[#00062F] text-white"
-                  style={{
-                    justifyContent: 'center',
-                  }}
-                >
-                  {btnTitle}
-                </Button>
-              </Link>
-            ) : (
-              <AccordionTrigger asChild className="text-center">
-                <Button
-                  variant="outline"
-                  className="flex items-center w-full rounded-[5px] border border-teal-500 border-opacity-20  text-center font-bold font-space_grotesk py-6 hover:bg-teal-500
-                    hover:text-white
-                    bg-[#00062F] text-white"
-                  style={{
-                    justifyContent: 'center',
-                  }}
-                >
-                  {btnTitle}
-                </Button>
-              </AccordionTrigger>
-            )}
-          </AccordionItem>
-        </Accordion>
+              <PropertyCardButton btnTitle={btnTitle} btnLink={btnLink} />
+            </AccordionItem>
+          </Accordion>
+        )}
       </div>
     </CardContent>
   );

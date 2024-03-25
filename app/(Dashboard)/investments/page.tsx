@@ -12,6 +12,7 @@ const page = () => {
               property={property}
               key={property.id}
               btnTitle="View Investment Details"
+              investmentDetail={true}
             />
           );
         })}

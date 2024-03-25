@@ -6,9 +6,15 @@ interface Props {
   viewType?: string;
   btnTitle?: string;
   btnLink?: string;
+  investmentDetail?: boolean;
 }
 
-const PropertyCard = ({ property, viewType = 'grid' }: Props) => {
+const PropertyCard = ({
+  property,
+  viewType = 'grid',
+  btnTitle,
+  investmentDetail,
+}: Props) => {
   return (
     <Card
       className={`bg-white h-fit rounded-[5px] shadow border border-black border-opacity-10 ${
@@ -16,7 +22,11 @@ const PropertyCard = ({ property, viewType = 'grid' }: Props) => {
       } ${viewType !== 'grid' ? 'max-h-[168px]' : ''} overflow-hidden`}
     >
       {viewType == 'grid' ? (
-        <PropertyGridView property={property} />
+        <PropertyGridView
+          property={property}
+          btnTitle={btnTitle}
+          investmentDetail={investmentDetail}
+        />
       ) : (
         <PropertyListView property={property} />
       )}
