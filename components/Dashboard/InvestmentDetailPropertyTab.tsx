@@ -13,7 +13,7 @@ const InvestmentDetailPropertyTab = () => {
     <TabsContent value="property">
       <div className="mt-16">
         <div className="flex justify-between gap-9 mb-8">
-          <div className="bg-white rounded-[5px] shadow py-5 px-6 w-[50%]">
+          <div className="bg-white rounded-[5px] shadow py-5 px-6 w-[50%] max-sm:w-full">
             <div className="flex justify-between pb-2 pt-2 border-b-2 border-b-[#ECECEC]">
               <p className="text-neutral-700 text-[15px] font-normal">RIT's</p>
               <p className="text-right text-neutral-700 text-base font-bold font-space_grotesk">
@@ -67,7 +67,7 @@ const InvestmentDetailPropertyTab = () => {
             </div>
           </div>
 
-          <div className="flex-1 bg-white rounded-[5px] shadow py-5 px-6 flex flex-col gap-8 justify-center">
+          <div className="flex-1 bg-white rounded-[5px] shadow py-5 px-6 flex flex-col gap-8 justify-center max-sm:hidden">
             <div className="flex items-center gap-2">
               <ServerImage
                 src="/assets/icons/investment-details/area.svg"

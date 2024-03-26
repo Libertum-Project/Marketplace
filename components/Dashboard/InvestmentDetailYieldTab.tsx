@@ -12,7 +12,7 @@ const InvestmentDetailYieldTab = () => {
         </h3>
 
         <div className="flex gap-10 items-center">
-          <YieldChart />
+          <YieldChart type="PieChart" width="180px" height="180px" />
 
           <div className="flex flex-col gap-6 flex-1">
             <div className="flex gap-7 items-center">

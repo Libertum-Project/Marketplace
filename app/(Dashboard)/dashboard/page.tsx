@@ -42,13 +42,13 @@ const page = () => {
         </div>
 
         <div className="p-5">
-          <div className="rounded-[5px] border border-zinc-200 px-10 py-7">
+          <div className="rounded-[5px] border border-zinc-200 px-10 py-7 max-sm:px-5 max-sm:py-4">
             <TabsContent value="verify">
               <div>Verify</div>
             </TabsContent>
             <TabsContent value="info">
               <div className="flex gap-10">
-                <div>
+                <div className="max-sm:hidden">
                   <ServerImage
                     alt="avatar"
                     src="/assets/icons/avatar.svg"
@@ -165,7 +165,7 @@ const page = () => {
                   </div>
 
                   <div className="flex justify-end">
-                    <Button className="bg-teal-500 rounded-[5px] text-white text-center hover:bg-teal-500 min-w-[164px]">
+                    <Button className="bg-teal-500 rounded-[5px] text-white text-center hover:bg-teal-500 min-w-[164px] max-sm:w-full">
                       Save
                     </Button>
                   </div>
