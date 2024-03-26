@@ -9,8 +9,8 @@ const InvestmentDetailConnectionTab = () => {
   return (
     <TabsContent value="connection">
       <div className="mt-16">
-        <div className="flex justify-between items-center gap-16">
-          <div className="px-8 py-6 bg-wallet-card-gradient rounded-2xl flex flex-col gap-4 flex-1">
+        <div className="flex justify-between items-center gap-16 max-sm:flex-col">
+          <div className="px-8 py-6 bg-wallet-card-gradient rounded-2xl flex flex-col gap-4 flex-1 max-sm:w-[80%]">
             <div className="flex flex-col items-center justify-center">
               <p className="text-neutral-100 text-sm font-medium font-space_grotesk">
                 Wallet
@@ -48,7 +48,7 @@ const InvestmentDetailConnectionTab = () => {
             </div>
           </div>
 
-          <div className="px-8 py-6 bg-wallet-card-gradient rounded-2xl flex flex-col gap-4 flex-1">
+          <div className="px-8 py-6 bg-wallet-card-gradient rounded-2xl flex flex-col gap-4 flex-1 max-sm:w-[80%]">
             <div className="flex flex-col items-center justify-center">
               <p className="text-neutral-100 text-sm font-medium font-space_grotesk">
                 Wallet

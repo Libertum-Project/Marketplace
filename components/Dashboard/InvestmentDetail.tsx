@@ -30,9 +30,11 @@ const InvestmentDetail = ({ property }: Props) => {
         </Button>
       </DialogTrigger>
       <DialogContent className="bg-white p-0 border-0 rounded-[5px] max-w-[1100px]">
-        <div className="flex">
-          <div className="bg-slate-900 py-8 px-6">
-            <DialogClose className="text-white mb-6">Close</DialogClose>
+        <div className="flex max-sm:flex-col">
+          <div className="bg-slate-900 py-8 px-6 max-sm:p-3">
+            <DialogClose className="text-white mb-6 max-sm:hidden">
+              Close
+            </DialogClose>
 
             <div className="flex flex-col">
               <p className="text-zinc-300 text-2xl font-bold font-space_grotesk">
@@ -44,7 +46,7 @@ const InvestmentDetail = ({ property }: Props) => {
               </p>
 
               <ServerImage
-                className="rounded-[5px] mt-[10px]"
+                className="rounded-[5px] mt-[10px] max-sm:hidden"
                 src={property.image}
                 alt="property"
                 width={324}
@@ -52,7 +54,7 @@ const InvestmentDetail = ({ property }: Props) => {
               />
             </div>
 
-            <div className="mt-[30px] flex flex-col gap-2">
+            <div className="mt-[30px] flex flex-col gap-2 max-sm:hidden">
               <div className="p-4 px-16 bg-teal-500 bg-opacity-30 rounded-[5px] border border-teal-500 justify-around items-center flex gap-6">
                 <ServerImage
                   src="/assets/icons/investment-details/marketplace.svg"
@@ -120,7 +122,7 @@ const InvestmentDetail = ({ property }: Props) => {
             </div>
           </div>
 
-          <div className="py-8 px-12 flex-1">
+          <div className="sm:py-8 sm:px-12 flex-1 p-3">
             <InvestmentDetailTabs />
           </div>
         </div>
