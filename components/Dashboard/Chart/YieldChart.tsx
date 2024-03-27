@@ -15,6 +15,7 @@ export const data = [
 
 export const options = {
   title: '',
+  
   pieHole: 0.6,
   is3D: false,
   legend: 'none',

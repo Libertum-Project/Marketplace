@@ -25,14 +25,15 @@ const page = () => {
     contract_address: 'smart_contract_address',
     property_creation_time: '2024-03-07T00:00:00.000Z',
     total_shares: 1000,
-    total_valuation: '1000000',
-    annual_yield: '5.2',
+    total_valuation: 100000,
+    annual_yield: 3,
     token_duration_months: 12,
     listing_duration_months: 6,
     savedBy: null,
     features: 'feat',
-    total_tokens: 1200,
+    total_tokens: 2000,
     tokens_sold: 652,
+    repayment_duration: 24
   };
 
   return (

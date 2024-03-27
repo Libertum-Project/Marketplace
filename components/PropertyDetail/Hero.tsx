@@ -3,8 +3,11 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ServerImage } from '@/components/shared/ServerImage';
 
-const Hero: React.FC<{ location: { country: string; region: string; city: string; address: string; }; category: string; price: string; totalShares: number; annualYield: string;   property: any;
-}> = ({ location, category, price, totalShares, annualYield, property }) => {
+const Hero: React.FC<{ location: { country: string; region: string; city: string; address: string; }; category: string; propertyPrice: number; totalShares: number; annualYield: number;   property: any;
+}> = ({ location, category, propertyPrice, totalShares, annualYield, property }) => {
+
+  const tokenPrice = propertyPrice / totalShares;
+
   return (
         <div className="max-sm:bg-primary-gradient flex flex-col items-center text-center md:text-left md:items-stretch md:w-[39rem] pt-16 md:p-0">
           <div className='flex flex-col text-white gap-4 w-full '>
@@ -13,7 +16,7 @@ const Hero: React.FC<{ location: { country: string; region: string; city: string
               {location.address}
               </h2>
               <h5 className="hidden md:flex px-4 py-1 bg-teal-500 bg-opacity-10 rounded-[50px] border border-teal-500 font-space_grotesk text-teal-500 text-lg font-bold items-center justify-center">
-                $50 per token
+                ${tokenPrice} per token
               </h5>
 
               <Button className="md:hidden  hover:bg-transparent p-0">
@@ -37,7 +40,7 @@ const Hero: React.FC<{ location: { country: string; region: string; city: string
           </div>
           <div className="md:hidden w-full items-start justify-start py-5">
             <h5 className="md:hidden px-4 py-1 bg-teal-500 bg-opacity-10 rounded-[50px] border border-teal-500 font-space_grotesk text-teal-500 text-lg font-bold w-fit">
-              $50 per token
+              ${tokenPrice} per token
             </h5>
           </div>
 
@@ -46,11 +49,11 @@ const Hero: React.FC<{ location: { country: string; region: string; city: string
           {/* Fila 1 */}
           <div className="hidden md:flex items-center justify-between ">
             <p className="text-white text-sm font-bold">Min Invesment: </p>
-            <p className="text-white text-lg font-normal">$50</p>
+            <p className="text-white text-lg font-normal">${tokenPrice}</p>
           </div>
           <div className="flex items-center justify-between">
             <p className="text-white text-sm font-bold">Market Value: </p>
-            <p className="text-white text-lg font-normal">${price}</p>
+            <p className="text-white text-lg font-normal">${propertyPrice}</p>
           </div>
           <div className="flex items-center justify-between">
             <p className="text-white text-sm font-bold">Repayment Term: </p>
@@ -68,7 +71,7 @@ const Hero: React.FC<{ location: { country: string; region: string; city: string
           </div>
           <div className="flex items-center justify-between">
             <p className="text-white text-sm font-bold">Rental Yield: </p>
-            <p className="text-white text-lg font-normal">5%</p>
+            <p className="text-white text-lg font-normal">{annualYield} %</p>
           </div>
 
           {/* Fila 3 */}
