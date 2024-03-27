@@ -95,8 +95,9 @@ const Financials: React.FC<{
         </Table> */}
       </div>
 
-      <div className="w-full">
-        <ColumnChart type="ColumnChart" width="100" height="100" />
+      <div className="w-full flex flex-col justify-center items-center">
+        <ColumnChart type="ColumnChart" width="100" height="100" monthlyIncome={monthlyRentalIncome}/>
+        <p className='text-slate-400'>Accumulative Rental Income per Month</p>
       </div>
 
       <div>
