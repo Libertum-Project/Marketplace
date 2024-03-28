@@ -103,3 +103,7 @@
     @apply bg-background text-foreground;
   }
 } */
+
+.investment-page-width {
+  max-width: calc(100% - 350px);
+}

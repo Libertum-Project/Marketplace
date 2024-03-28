@@ -1,15 +1,15 @@
-import { PropertyCard } from './PropertyCard/PropertyCards';
-import { Hero } from './Hero/hero';
-import { Filters } from './Filters/Filters';
+import Hero from './Hero/hero';
+import AllProperties from '@/components/Home/AllProperties';
 
-const MarketplaceHome = () => {
+const Home = () => {
   return (
     <div>
       <Hero />
-      <Filters />
-      <PropertyCard />
+      <div className="md:max-w-[75rem] m-auto">
+        <AllProperties showFilters={true} />
+      </div>
     </div>
   );
 };
 
-export default MarketplaceHome;
+export default Home;
