@@ -1,8 +1,11 @@
 import React from 'react';
 import PropertyCard from '@/components/shared/PropertyCard';
-import { properties } from '@/constants';
 
-const SimilarListings = () => {
+interface Props {
+  properties: any;
+}
+
+const SimilarListings = ({ properties }: Props) => {
   const propertiesToShow = properties.slice(0, 3);
 
   return (

@@ -18,7 +18,7 @@ interface Property {
   amenities: string[];
   description: string;
   category: string;
-  images: string[];
+  image_gallery: string[];
   owner_id: number;
   contract_address: string;
   property_creation_time: string;
@@ -39,11 +39,10 @@ interface PropertyDetailProps {
 }
 
 const PropertyDetail: React.FC<PropertyDetailProps> = ({ property }) => {
-
   return (
     <div className="md:mx-auto md:flex md:max-w-[75rem] px-3 md:px-0 pt-32 pb-12 md:justify-between gap-20">
       <div className="space-y-4 relative md:order-2">
-        <ImageGallery images={property.images} />
+        <ImageGallery images={property.image_gallery} />
         <div className="hidden md:block sticky top-0 z-10 ">
           <Invest
             title={property.location.address}

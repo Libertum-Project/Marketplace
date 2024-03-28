@@ -2,12 +2,12 @@ const serverURL = process.env.NEXT_PUBLIC_SERVER_URL;
 //const serverURL = 'http://localhost:5432'
 
 export async function getProperties() {
-  const res = await fetch(`/api/properties`);
+  const data = await fetch(
+    'https://libertum--marketplace.azurewebsites.net/properties'
+  );
+  const properties = await data.json();
 
-  if (!res.ok) {
-    throw new Error('Failed to fetch data');
-  }
-  return res.json();
+  return properties;
 }
 
 export async function fetchFilteredProperties(filters: any) {
