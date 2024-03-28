@@ -1,6 +1,6 @@
 import PropertyDetail from '@/components/PropertyDetail/PropertyDetail';
 import SimilarListings from './SimilarListings';
-import { getProperties } from '@/app/utils/fetchProperties';
+import { getProperties, getPropertyDetails } from '@/app/utils/fetchProperties';
 
 interface Params {
   id: number;
@@ -15,12 +15,7 @@ const page = async ({
 }) => {
   const properties = await getProperties();
 
-  let property;
-
-  property =
-    properties &&
-    properties.length > 0 &&
-    properties?.find((obj: any) => obj.id == searchParams.id);
+  const property = await getPropertyDetails(searchParams.id);
 
   return (
     <div className="relative w-full">
