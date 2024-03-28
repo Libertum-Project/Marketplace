@@ -23,8 +23,8 @@ interface Property {
   contract_address: string;
   property_creation_time: string;
   total_shares: number;
-  total_valuation: string;
-  annual_yield: string;
+  total_valuation: number;
+  annual_yield: number;
   token_duration_months: number;
   listing_duration_months: number;
   savedBy: null | any;
@@ -39,11 +39,6 @@ interface PropertyDetailProps {
 }
 
 const PropertyDetail: React.FC<PropertyDetailProps> = ({ property }) => {
-
-  const propertyPrice = parseFloat(property.total_valuation)
-
-  const annualYield = parseFloat(property.annual_yield)
-
   return (
     <div className="md:mx-auto md:flex md:max-w-[75rem] px-3 md:px-0 pt-32 pb-12 md:justify-between gap-20">
       <div className="space-y-4 relative md:order-2">
@@ -60,9 +55,9 @@ const PropertyDetail: React.FC<PropertyDetailProps> = ({ property }) => {
         <Hero
           location={property.location}
           category={property.category}
-          propertyPrice={propertyPrice}
+          propertyPrice={property.total_valuation}
           totalShares={property.total_shares}
-          annualYield={annualYield}
+          annualYield={property.annual_yield}
           property={property}
         />
         <TokenProgress
@@ -71,9 +66,9 @@ const PropertyDetail: React.FC<PropertyDetailProps> = ({ property }) => {
         />
         <Amenities />
         <PropertyFeatures
-          propertyPrice={propertyPrice}
+          propertyPrice={property.total_valuation}
           totalShares={property.total_shares}
-          annualYield={annualYield}
+          annualYield={property.annual_yield}
           repaymentDuration={property.token_duration_months}
         />
 
