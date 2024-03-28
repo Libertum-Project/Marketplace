@@ -46,7 +46,7 @@ components
   card.tsx
 ```
 
-You can do the exact same thing for shared components:
+You can do the same thing for shared components:
 
 ```
 components
