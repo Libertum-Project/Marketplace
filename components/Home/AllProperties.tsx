@@ -1,19 +1,31 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import PropertyCard from '../shared/PropertyCard';
 import Image from 'next/image';
 import { Button } from '../ui/button';
+import { Skeleton } from '@/components/ui/skeleton';
+import { Card, CardContent, CardFooter } from '../ui/card';
 
-interface Props {
-  properties: {}[];
-}
-
-const AllProperties = ({ properties }: Props) => {
+const AllProperties = () => {
   const [viewType, setViewType] = useState('grid');
+  const [properties, setProperties] = useState<any>([]);
 
   const handleViewType = (type: string) => {
     setViewType(type);
   };
+
+  const fetchProperties = async () => {
+    const data = await fetch(
+      'https://libertum--marketplace.azurewebsites.net/properties'
+    );
+    const properties = await data.json();
+
+    setProperties(properties);
+  };
+
+  useEffect(() => {
+    fetchProperties();
+  }, []);
 
   const propertyWrapperClassName =
     viewType == 'grid'
@@ -59,16 +71,62 @@ const AllProperties = ({ properties }: Props) => {
         </div>
       </div>
       <div className={propertyWrapperClassName}>
-        {properties.map((property: any) => {
-          return (
-            <PropertyCard
-              key={property.id}
-              property={property}
-              viewType={viewType}
-              btnLink="/details"
-            />
-          );
-        })}
+        {properties?.length > 0 ? (
+          properties?.map((property: any) => {
+            return (
+              <PropertyCard
+                key={property.id}
+                property={property}
+                viewType={viewType}
+                btnLink="/details"
+              />
+            );
+          })
+        ) : (
+          <>
+            <Card>
+              <CardContent className="h-480 p-0">
+                <div className="flex flex-col space-y-3 w-full">
+                  <Skeleton className="h-[255px] bg-black bg-opacity-5 w-full" />
+                  <div className="space-y-2">
+                    <Skeleton className="h-4 w-[250px] bg-black bg-opacity-5" />
+                    <Skeleton className="h-4 w-[200px] bg-black bg-opacity-5" />
+                    <Skeleton className="h-4 w-[250px] bg-black bg-opacity-5" />
+                    <Skeleton className="h-4 w-[200px] bg-black bg-opacity-5" />
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardContent className="h-480 p-0">
+                <div className="flex flex-col space-y-3 w-full">
+                  <Skeleton className="h-[255px] bg-black bg-opacity-5 w-full" />
+                  <div className="space-y-2">
+                    <Skeleton className="h-4 w-[250px] bg-black bg-opacity-5" />
+                    <Skeleton className="h-4 w-[200px] bg-black bg-opacity-5" />
+                    <Skeleton className="h-4 w-[250px] bg-black bg-opacity-5" />
+                    <Skeleton className="h-4 w-[200px] bg-black bg-opacity-5" />
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardContent className="h-480 p-0">
+                <div className="flex flex-col space-y-3 w-full">
+                  <Skeleton className="h-[255px] bg-black bg-opacity-5 w-full" />
+                  <div className="space-y-2">
+                    <Skeleton className="h-4 w-[250px] bg-black bg-opacity-5" />
+                    <Skeleton className="h-4 w-[200px] bg-black bg-opacity-5" />
+                    <Skeleton className="h-4 w-[250px] bg-black bg-opacity-5" />
+                    <Skeleton className="h-4 w-[200px] bg-black bg-opacity-5" />
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </>
+        )}
       </div>
     </div>
   );

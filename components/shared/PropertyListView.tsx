@@ -11,7 +11,7 @@ const PropertyListView = ({ property }: Props) => {
   return (
     <CardContent className="p-0 flex w-full max-h-[168px]">
       <ServerImage
-        src={property.image}
+        src={property.highlight_image}
         alt={property.location.city}
         width={250}
         height={166}
