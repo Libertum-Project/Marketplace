@@ -1,9 +1,15 @@
-const serverURL = process.env.NEXT_PUBLIC_SERVER_URL;
-//const serverURL = 'http://localhost:5432'
+const secretKey = process.env.SECRET_KEY;
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    Authorization: `Bearer ${secretKey}`
+  }
+};
 
 export async function getProperties() {
   const data = await fetch(
-    'https://libertum--marketplace.azurewebsites.net/properties'
+    'https://libertum--marketplace.azurewebsites.net/properties',
+    requestOptions
   );
   const properties = await data.json();
   return properties;
@@ -11,7 +17,8 @@ export async function getProperties() {
 
 export async function getPropertyDetails(id: number) {
   const data = await fetch(
-    `https://libertum--marketplace.azurewebsites.net/properties/${id}`
+    `https://libertum--marketplace.azurewebsites.net/properties/${id}`,
+    requestOptions
   );
   const property = await data.json();
   return property;
