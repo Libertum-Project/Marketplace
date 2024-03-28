@@ -6,7 +6,8 @@ import { ServerImage } from '@/components/shared/ServerImage';
 const Hero: React.FC<{ location: { country: string; region: string; city: string; address: string; }; category: string; propertyPrice: number; totalShares: number; annualYield: number;   property: any;
 }> = ({ location, category, propertyPrice, totalShares, annualYield, property }) => {
 
-  const tokenPrice = propertyPrice / totalShares;
+  const tokenPrice = (propertyPrice / totalShares).toFixed(2);
+
 
   return (
         <div className="max-sm:bg-primary-gradient flex flex-col items-center text-center md:text-left md:items-stretch md:w-[39rem] pt-16 md:p-0">
@@ -15,8 +16,8 @@ const Hero: React.FC<{ location: { country: string; region: string; city: string
               <h2 className="font-bold font-space_grotesk text-3xl md:text-5xl">
               {location.address}
               </h2>
-              <h5 className="hidden md:flex px-4 py-1 bg-teal-500 bg-opacity-10 rounded-[50px] border border-teal-500 font-space_grotesk text-teal-500 text-lg font-bold items-center justify-center">
-                ${tokenPrice} per token
+              <h5 className="hidden md:flex px-4 py-1 bg-teal-500 bg-opacity-10 rounded-[50px] border border-teal-500 font-space_grotesk text-teal-500 text-lg font-bold items-center justify-center whitespace-nowrap h-10" >
+                ${tokenPrice}/ token
               </h5>
 
               <Button className="md:hidden  hover:bg-transparent p-0">
