@@ -13,7 +13,7 @@ const Hero: React.FC<{ location: { country: string; region: string; city: string
         <div className="max-sm:bg-primary-gradient flex flex-col items-center text-center md:text-left md:items-stretch md:w-[39rem] pt-16 md:p-0">
           <div className='flex flex-col text-white gap-4 w-full '>
             <section className="w-full flex justify-between items-stretch">
-              <h2 className="font-bold font-space_grotesk text-3xl md:text-5xl">
+            <h2 className="font-bold font-space_grotesk text-3xl md:text-5xl overflow-hidden overflow-ellipsis whitespace-nowrap">
               {location.address}
               </h2>
               <h5 className="hidden md:flex px-4 py-1 bg-teal-500 bg-opacity-10 rounded-[50px] border border-teal-500 font-space_grotesk text-teal-500 text-lg font-bold items-center justify-center whitespace-nowrap h-10" >
