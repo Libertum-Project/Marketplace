@@ -67,7 +67,7 @@ const PropertyGridView = ({
                 </p>
               </div>
 
-              <p className="px-4 py-1 bg-teal-500 bg-opacity-10 rounded-[50px] border border-teal-500 font-space_grotesk text-teal-500 text-xs font-bold flex items-center justify-center">
+              <p className="px-4 py-1 bg-teal-500 bg-opacity-10 rounded-[50px] border border-teal-500 font-space_grotesk text-teal-500 text-xs font-bold flex items-center justify-center h-fit whitespace-nowrap">
                 $ {property.total_valuation}
               </p>
             </div>

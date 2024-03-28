@@ -33,6 +33,7 @@ const Financials: React.FC<{
     setSelectedTokens(newValue[0]);
   };
 
+  console.log(repaymentDuration)
 
   return (
     <div className="flex flex-col">
@@ -41,7 +42,7 @@ const Financials: React.FC<{
           <TableBody className="border rounded-[5px]">
             <TableRow className="odd:bg-[#F5F5F5]">
               <TableCell className="font-medium">Token Price:</TableCell>
-              <TableCell className="text-opacity-80">$ {tokenPrice}</TableCell>
+              <TableCell className="text-opacity-80">$ {tokenPrice.toFixed(2)}</TableCell>
             </TableRow>
             <TableRow className="odd:bg-[#F5F5F5]">
               <TableCell className="font-medium">Total Tokens:</TableCell>
@@ -123,20 +124,20 @@ const Financials: React.FC<{
                 <TableCell className="text-opacity-80">${investment.toFixed(2)}</TableCell>
               </TableRow>
               <TableRow className="odd:bg-[#F5F5F5]">
-                <TableCell className="font-medium">Annual Rental Income:</TableCell>
-                <TableCell className="text-opacity-80">$ {annualRentalIncome.toFixed(2)}</TableCell>
+                <TableCell className="font-medium whitespace-nowrap">Annual Rental Income:</TableCell>
+                <TableCell className="text-opacity-80 whitespace-nowrap">$ {annualRentalIncome.toFixed(2)}</TableCell>
               </TableRow>
               <TableRow className="odd:bg-[#F5F5F5]">
-                <TableCell className="font-medium">Monthly Rental Income:</TableCell>
-                <TableCell className="text-opacity-80">
+                <TableCell className="font-medium whitespace-nowrap">Monthly Rental Income:</TableCell>
+                <TableCell className="text-opacity-80 whitespace-nowrap">
                   $ {monthlyRentalIncome.toFixed(2)}
                 </TableCell>
               </TableRow>
               <TableRow className="odd:bg-[#F5F5F5]">
-                <TableCell className="font-medium ">
+                <TableCell className="font-medium whitespace-nowrap">
                   Capital Repatument Duration:
                 </TableCell>
-                <TableCell className="text-opacity-80">
+                <TableCell className="text-opacity-80 whitespace-nowrap">
                   {repaymentDuration}
                 </TableCell>
               </TableRow>
@@ -146,28 +147,28 @@ const Financials: React.FC<{
           <Table className="h-full">
             <TableBody className="border rounded-[5px]">
               <TableRow className="odd:bg-[#F5F5F5]">
-                <TableCell className="font-medium">
+                <TableCell className="font-medium whitespace-nowrap">
                   Monthly Rep. per Token:
                 </TableCell>
-                <TableCell className="text-opacity-80">
+                <TableCell className="text-opacity-80 whitespace-nowrap">
                   {monthlyCapitalRepaymentPerToken.toFixed(2)}
                 </TableCell>
               </TableRow>
               <TableRow className="odd:bg-[#F5F5F5]">
-                <TableCell className="font-medium">Annual Cap Repayment</TableCell>
-                <TableCell className="text-opacity-80">
+                <TableCell className="font-medium whitespace-nowrap">Annual Cap Repayment</TableCell>
+                <TableCell className="text-opacity-80 whitespace-nowrap">
                   {annualCapitalRepayment.toFixed(2)} / year
                 </TableCell>
               </TableRow>
               <TableRow className="odd:bg-[#F5F5F5]">
-                <TableCell className="font-medium">Monthly Repayment:</TableCell>
-                <TableCell className="text-opacity-80">$ {monthlyRepayment.toFixed(2)}</TableCell>
+                <TableCell className="font-medium whitespace-nowrap">Monthly Repayment:</TableCell>
+                <TableCell className="text-opacity-80 whitespace-nowrap">$ {monthlyRepayment.toFixed(2)}</TableCell>
               </TableRow>
               <TableRow className="odd:bg-[#F5F5F5]">
-                <TableCell className="font-medium ">
+                <TableCell className="font-medium whitespace-nowrap">
                   Annual Repayment:
                 </TableCell>
-                <TableCell className="text-opacity-80">
+                <TableCell className="text-opacity-80 whitespace-nowrap">
                   ${annualRepayment.toFixed(2)}
                 </TableCell>
               </TableRow>
