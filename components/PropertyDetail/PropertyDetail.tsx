@@ -61,7 +61,7 @@ const PropertyDetail: React.FC<PropertyDetailProps> = ({ property }) => {
           property={property}
         />
         <TokenProgress
-          total_tokens={property.total_tokens}
+          total_tokens={property.total_shares}
           tokens_sold={property.tokens_sold}
         />
         <Amenities />
