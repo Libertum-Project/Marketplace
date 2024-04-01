@@ -13,11 +13,11 @@ const PropertyCard = ({
   property,
   viewType = 'grid',
   btnTitle,
-  investmentDetail,
+  investmentDetail
 }: Props) => {
   return (
     <Card
-      className={`bg-white h-fit rounded-[5px] shadow border border-black border-opacity-10 ${
+      className={`bg-white h-fit rounded-[5px] shadow-[0_4px_20px_0px_rgba(0, 6, 47, 0.05) border border-opacity-10 hover:border-[#00B3B5] ${
         viewType === 'grid' && 'min-h-0'
       } ${viewType !== 'grid' ? 'max-h-[168px]' : ''} overflow-hidden`}
     >
