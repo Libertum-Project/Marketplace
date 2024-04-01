@@ -70,7 +70,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
         </Dialog>
       </div>
 
-      <div className="grid grid-cols-3 gap-4 md:col-span-2">
+      <div className="grid grid-cols-3 gap-4 md:col-span-2 h-28">
         {firstFourImages.slice(1).map((image, index) => (
           <ServerImage
             key={index}
@@ -78,7 +78,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
             alt={`Image ${index}`}
             width={163}
             height={109}
-            className="w-full h-auto rounded-[5px]"
+            className="w-full h-full rounded-[5px] object-cover overflow-hidden"
           />
         ))}
       </div>
