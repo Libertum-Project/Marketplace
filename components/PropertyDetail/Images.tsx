@@ -2,12 +2,7 @@ import React from 'react';
 import { ServerImage } from '@/components/shared/ServerImage';
 import {
   Dialog,
-  DialogClose,
   DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
 import {
@@ -58,7 +53,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
                       alt={`Image ${index}`}
                       width={509}
                       height={339}
-                      className="w-full h-auto"
+                      className="w-full h-full object-cover overflow-hidden"
                     />
                   </CarouselItem>
                 ))}
