@@ -1,4 +1,5 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
@@ -10,17 +11,39 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
+  DialogTrigger
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 
 interface InvestProps {
   title: string;
+  price: number;
+  annual_yield: number;
   subtitle: string;
   buttonText: string;
 }
 
-const Invest: React.FC<InvestProps> = ({ title, subtitle, buttonText }) => {
+const Invest: React.FC<InvestProps> = ({
+  title,
+  price,
+  annual_yield,
+  subtitle,
+  buttonText
+}) => {
+  const [tokenAmount, setTokenAmount] = useState<number | string>(10);
+
+  const totalPrice = isNaN(Number(tokenAmount))
+    ? ''
+    : (Number(tokenAmount) * price).toFixed(2);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.value.startsWith('-')) {
+      setTokenAmount('');
+    } else {
+      setTokenAmount(event.target.value);
+    }
+  };
+
   return (
     <div className="max-w-lg mx-auto md:bg-white shadow-md rounded p-2 md:p-6 space-y-4 bg-slate-100">
       <h2 className="text-3xl font-bold mb-4 font-space_grotesk">
@@ -28,7 +51,7 @@ const Invest: React.FC<InvestProps> = ({ title, subtitle, buttonText }) => {
       </h2>
 
       <div className="space-y-[2px]">
-        <label className="form-label inline-block mb-2 text-gray-700">
+        <label className="form-label inline-block mb-2 text-gray-700 font-space_grotesk font-bold">
           Enter token amount
         </label>
         <div className="flex gap-2 justify-between items-center">
@@ -51,18 +74,20 @@ const Invest: React.FC<InvestProps> = ({ title, subtitle, buttonText }) => {
               m-0
               focus:text-gray-700 focus:bg-white focus:border-teal-600 focus:outline-none
             "
+            value={tokenAmount}
+            onChange={handleChange}
             placeholder="10"
           />
           <p> = </p>
           <div className="flex justify-between items-center border rounded-[5px] w-4/5">
             <div className="flex-1">
               <p className="text-black font-semibold text-sm px-3 py-2 rounded-l-lg h-full">
-                USD
+                $ USD
               </p>
             </div>
             <div className="flex-1">
-              <p className="text-gray-700 text-lg px-3 py-2 rounded-r-lg bg-gray-50 ">
-                $600
+              <p className="text-black opacity-80 text-lg px-3 py-2 rounded-r-lg bg-gray-50 ">
+                $ {totalPrice}
               </p>
             </div>
           </div>
@@ -77,8 +102,8 @@ const Invest: React.FC<InvestProps> = ({ title, subtitle, buttonText }) => {
             </p>
           </div>
           <div className="flex-1">
-            <p className="text-gray-700 text-lg px-3 py-2 bg-gray-100 rounded-r-lg">
-              6%
+            <p className="text-black opacity-50 text-lg px-3 py-2 bg-gray-100 rounded-r-lg">
+              {annual_yield}%
             </p>
           </div>
         </div>
@@ -92,7 +117,7 @@ const Invest: React.FC<InvestProps> = ({ title, subtitle, buttonText }) => {
             </p>
           </div>
           <div className="flex-1">
-            <p className="text-gray-700 text-lg px-3 py-2 bg-gray-100 rounded-r-lg">
+            <p className="text-black opacity-50 text-lg px-3 py-2 bg-gray-100 rounded-r-lg">
               $5000
             </p>
           </div>
@@ -103,7 +128,7 @@ const Invest: React.FC<InvestProps> = ({ title, subtitle, buttonText }) => {
         <Checkbox id="terms" />
         <label
           htmlFor="terms"
-          className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-[#00000081]"
+          className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-[#00000081] select-none"
         >
           I confirm that I have read and agree to the Terms of Use, Risk
           Disclaimers, and Privacy Notice.
@@ -118,7 +143,7 @@ const Invest: React.FC<InvestProps> = ({ title, subtitle, buttonText }) => {
         <DialogTrigger asChild>
           <Button
             variant="outline"
-            className="w-full bg-teal-500 text-white px-4 py-4 rounded hover:bg-teal-600 transition duration-300 flex items-center justify-center font-space_grotesk"
+            className="w-full bg-teal-500 text-white px-4 py-4 rounded hover:bg-teal-600 transition duration-300 flex items-center justify-center font-space_grotesk select-none"
           >
             Invest Now!
           </Button>

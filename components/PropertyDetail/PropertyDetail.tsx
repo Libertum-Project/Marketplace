@@ -46,6 +46,8 @@ const PropertyDetail: React.FC<PropertyDetailProps> = ({ property }) => {
         <div className="hidden md:block sticky top-0 z-10 ">
           <Invest
             title={property.location.address}
+            price={property.total_valuation / property.total_shares}
+            annual_yield={property.annual_yield}
             subtitle={`Completa los siguientes campos para comenzar tu inversión en ${property.location.city}, ${property.location.region}, ${property.location.country}`}
             buttonText="Invest Now"
           />
@@ -74,6 +76,8 @@ const PropertyDetail: React.FC<PropertyDetailProps> = ({ property }) => {
 
         <div className="md:hidden">
           <Invest
+            price={property.total_valuation / property.total_shares}
+            annual_yield={property.annual_yield}
             title={property.location.address}
             subtitle={`Completa los siguientes campos para comenzar tu inversión en ${property.location.city}, ${property.location.region}, ${property.location.country}`}
             buttonText="Invest Now"
