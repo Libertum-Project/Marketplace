@@ -28,7 +28,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
           alt="Main Image"
           width={509}
           height={339}
-          className="w-full h-auto md:col-span-2 rounded-[5px]"
+          className="w-full h-auto md:col-span-2 rounded-[5px] max-h-[20rem] object-cover"
         />
 
         <Dialog>
