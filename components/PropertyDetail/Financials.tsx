@@ -118,7 +118,7 @@ const Financials: React.FC<{
             onValueChange={handleSliderValueChange}
             onChange={handleSliderChange}
           />
-          <p className="flex-shrink-0 px-4 py-1 bg-teal-200 bg-opacity-10 rounded-[50px] border border-teal-500 items-center justify-center text-teal-500 text-sm">
+          <p className="flex-shrink-0 px-4 py-1 bg-teal-200 bg-opacity-30 rounded-[50px] border border-teal-500 items-center justify-center text-teal-500 text-sm font-semibold">
             {selectedTokens} Tokens
           </p>
         </div>
