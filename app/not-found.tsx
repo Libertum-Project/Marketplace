@@ -1,28 +1,31 @@
 'use client';
-import Image from 'next/image';
+import { NavBar } from '@/components/Navbar/NavBar';
+import Footer from '@/components/Footer/Footer';
 import Link from 'next/link';
 import css from './not-found.module.css';
 
 export default function NotFound() {
   return (
-    <div className={css.container}>
-      <div>
-        <Image src="/404.svg" alt="Not Found" width={300} height={300} />
-      </div>
+    <>
+      <NavBar />
 
-      <div className={css.errorMessagePage}>
-        <div className={css.errorPage}>404</div>
-        <div className={css.message}>Oops. This page has gone missing.</div>
-        <div className={css.message}>
-          You may have mistyped the address or the page may have moved.
+      <div className={css.container}>
+        <div className={css.background}></div>
+        <div className={css.frame}>
+          <h2>
+            {' '}
+            <span className={css.error}>404:</span>Page not found
+          </h2>
+          <p>We don’t seem to be able to find a page at this address.</p>
+
+          <Link href="/">
+            <div className={css.button}>
+              <p>Return to home</p>
+            </div>
+          </Link>
         </div>
       </div>
-
-      <div>
-        <Link href="http://www.libertum.io" passHref>
-          <p className={css.button}>Go Home</p>
-        </Link>
-      </div>
-    </div>
+      <Footer />
+    </>
   );
 }
