@@ -1,6 +1,3 @@
-'use server';
-import { revalidatePath } from 'next/cache';
-
 const secretKey = process.env.NEXT_PUBLIC_SECRET_KEY;
 
 export const likeProperty = async (
@@ -20,6 +17,5 @@ export const likeProperty = async (
         },
       }
     );
-    revalidatePath(pathname);
   }
 };
