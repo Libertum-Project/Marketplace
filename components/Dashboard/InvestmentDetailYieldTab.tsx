@@ -5,7 +5,7 @@ import { ServerImage } from '../shared/ServerImage';
 
 const InvestmentDetailYieldTab = () => {
   return (
-    <TabsContent value="yield" className="sm:max-h-[550px] overflow-auto">
+    <TabsContent value="yield" className="sm:max-h-[640px] overflow-auto">
       <div className="flex flex-col gap-4">
         <h3 className="text-slate-900 text-[32px] font-bold font-space_grotesk">
           RENT

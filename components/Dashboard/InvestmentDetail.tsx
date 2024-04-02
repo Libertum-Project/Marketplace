@@ -47,7 +47,7 @@ const InvestmentDetail = ({ property }: Props) => {
 
               <ServerImage
                 className="rounded-[5px] mt-[10px] max-sm:hidden"
-                src={property.image}
+                src={property.highlight_image}
                 alt="property"
                 width={324}
                 height={124}

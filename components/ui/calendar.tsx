@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { DayPicker } from 'react-day-picker';
+import { DayPicker, useDayPicker, useNavigation } from 'react-day-picker';
 
 import { cn } from '@/lib/utils';
 import { buttonVariants } from '@/components/ui/button';
@@ -68,15 +68,27 @@ function Calendar({
         IconLeft: ({ ...props }) => <ChevronLeft className="h-4 w-4" />,
         IconRight: ({ ...props }) => <ChevronRight className="h-4 w-4" />,
         Dropdown: (props) => {
+          const { fromDate, fromMonth, fromYear, toDate, toMonth, toYear } =
+            useDayPicker();
+
+          const { goToMonth, currentMonth } = useNavigation();
+
           if (props.name === 'months') {
             const selectItems = Array.from({ length: 12 }, (_, i) => ({
               value: i.toString(),
               label: format(setMonth(new Date(), i), 'MMMM'),
             }));
             return (
-              <Select>
+              <Select
+                onValueChange={(newValue) => {
+                  const newDate = new Date(currentMonth);
+                  newDate.setMonth(parseInt(newValue));
+                  goToMonth(newDate);
+                }}
+                value={props.value?.toString()}
+              >
                 <SelectTrigger className="w-full bg-white rounded-[5px] border border-slate-200">
-                  <SelectValue placeholder="Month" />
+                  {format(currentMonth, 'MMMM')}
                 </SelectTrigger>
                 <SelectContent className="bg-white">
                   <SelectGroup>
@@ -84,8 +96,8 @@ function Calendar({
                       return (
                         <SelectItem
                           key={item.label}
-                          value={item.label}
-                          className="hover:bg-slate-200"
+                          value={item.value}
+                          className="hover:bg-slate-200 cursor-pointer"
                         >
                           {item.label}
                         </SelectItem>
@@ -96,6 +108,49 @@ function Calendar({
               </Select>
             );
           } else if (props.name === 'years') {
+            const earliestYear =
+              fromYear || fromMonth?.getFullYear() || fromDate?.getFullYear();
+            const latestYear =
+              toYear || toMonth?.getFullYear() || toDate?.getFullYear();
+            let selectItems: { label: string; value: string }[] = [];
+
+            if (earliestYear && latestYear) {
+              const yearsLength = latestYear - earliestYear + 1;
+              selectItems = Array.from({ length: yearsLength }, (_, i) => ({
+                label: (earliestYear + i).toString(),
+                value: (earliestYear + i).toString(),
+              }));
+
+              return (
+                <Select
+                  onValueChange={(newValue) => {
+                    const newDate = new Date(currentMonth);
+                    newDate.setFullYear(parseInt(newValue));
+                    goToMonth(newDate);
+                  }}
+                  value={props.value?.toString()}
+                >
+                  <SelectTrigger className="w-full bg-white rounded-[5px] border border-slate-200">
+                    {currentMonth.getFullYear()}
+                  </SelectTrigger>
+                  <SelectContent className="bg-white">
+                    <SelectGroup>
+                      {selectItems.map((item) => {
+                        return (
+                          <SelectItem
+                            key={item.label}
+                            value={item.value}
+                            className="hover:bg-slate-200 cursor-pointer"
+                          >
+                            {item.label}
+                          </SelectItem>
+                        );
+                      })}
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+              );
+            }
           }
           return null;
         },
