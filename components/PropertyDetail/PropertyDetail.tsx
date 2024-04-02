@@ -54,7 +54,7 @@ const PropertyDetail: React.FC<PropertyDetailProps> = ({ property }) => {
         </div>
       </div>
       <div className="md:w-5/8 space-y-4 md:order-1">
-        <div className="bg-gradient-to-b from-[#0E0E1E] to-[#000041] md:bg-transparent">
+        <div className="bg-gradient-to-b from-[#0E0E1E] to-[#000041] md:bg-none">
           <div className="px-3 md:px-0">
             <Hero
               location={property.location}
