@@ -64,7 +64,7 @@ export function Filters({ filterFunction }: Props): ReactElement {
   };
 
   return (
-    <div className="flex flex-col align-start gap-2 self-stretch max-w-[95%] relative top-[-3rem] mb-[-1rem] p-2 z-30 shadow-sm bg-white border md:top-[-1.8rem] md:flex-row md:px-8 md:py-6 justify-between md:align-center md:min-w-[75rem] md:max-w-[75rem] m-auto rounded-[5px]">
+    <div className="flex flex-col align-start gap-2 self-stretch max-w-[95%] relative top-[-3rem] mb-[-1rem] p-2 z-[999] shadow-sm bg-white border lg:top-[-1.8rem]lg:flex-row lg:px-8 lg:py-6 justify-between lg:align-center lg:min-w-[75rem] lg:max-w-[75rem] m-auto rounded-[5px]">
       {selectOptions.map((option, index) => (
         <div
           key={index}

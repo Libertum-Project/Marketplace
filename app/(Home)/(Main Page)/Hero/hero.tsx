@@ -24,7 +24,7 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="hidden md:flex items-center justify-end">
+        <div className="hidden lg:flex items-center justify-end">
           <ServerImage
             src="/assets/photoMarket.png"
             alt="N"
