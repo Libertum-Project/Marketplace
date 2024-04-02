@@ -17,8 +17,7 @@ interface Props {
 const PropertyGridView = ({
   property,
   btnTitle,
-  btnLink,
-  investmentDetail = false,
+  investmentDetail = false
 }: Props) => {
   return (
     <>
@@ -26,8 +25,8 @@ const PropertyGridView = ({
         href={{
           pathname: '/details',
           query: {
-            id: property.id,
-          },
+            id: property.id
+          }
         }}
       >
         <CardContent className="p-0 relative">
@@ -51,7 +50,7 @@ const PropertyGridView = ({
               width={310}
               height={250}
               style={{
-                height: '100%',
+                height: '100%'
               }}
             />
           </div>
@@ -115,7 +114,10 @@ const PropertyGridView = ({
                 <PropertyDetailTable />
               </AccordionContent>
 
-              <PropertyCardButton btnTitle={btnTitle} btnLink={btnLink} />
+              <PropertyCardButton
+                btnTitle={btnTitle}
+                propertyId={property.id}
+              />
             </AccordionItem>
           </Accordion>
         )}

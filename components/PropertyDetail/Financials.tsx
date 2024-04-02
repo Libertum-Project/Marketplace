@@ -33,16 +33,16 @@ const Financials: React.FC<{
     setSelectedTokens(newValue[0]);
   };
 
-  console.log(repaymentDuration)
-
   return (
     <div className="flex flex-col">
-      <div className="flex justify-between gap-4">
+      <div className="flex flex-col md:flex-row gap-4">
         <Table className="h-full">
           <TableBody className="border rounded-[5px]">
             <TableRow className="odd:bg-[#F5F5F5]">
               <TableCell className="font-medium">Token Price:</TableCell>
-              <TableCell className="text-opacity-80">$ {tokenPrice.toFixed(2)}</TableCell>
+              <TableCell className="text-opacity-80">
+                $ {tokenPrice.toFixed(2)}
+              </TableCell>
             </TableRow>
             <TableRow className="odd:bg-[#F5F5F5]">
               <TableCell className="font-medium">Total Tokens:</TableCell>
@@ -51,9 +51,9 @@ const Financials: React.FC<{
           </TableBody>
         </Table>
 
-        <Table>
-          <TableBody>
-          <TableRow className="odd:bg-[#F5F5F5]">
+        <Table className="h-full">
+          <TableBody className="border rounded-[5px]">
+            <TableRow className="odd:bg-[#F5F5F5]">
               <TableCell className="font-medium">Market Value:</TableCell>
               <TableCell className="text-opacity-80">
                 ${propertyPrice}
@@ -97,8 +97,15 @@ const Financials: React.FC<{
       </div>
 
       <div className="w-full">
-        <ColumnChart type="ColumnChart" width="400" height="400" monthlyIncome={monthlyRentalIncome}/>
-        <p className='text-slate-400 text-center'>Accumulative Rental Income per Month</p>
+        <ColumnChart
+          type="ColumnChart"
+          width="400"
+          height="400"
+          monthlyIncome={monthlyRentalIncome}
+        />
+        <p className="text-slate-400 text-center">
+          Accumulative Rental Income per Month
+        </p>
       </div>
 
       <div>
@@ -111,24 +118,32 @@ const Financials: React.FC<{
             onValueChange={handleSliderValueChange}
             onChange={handleSliderChange}
           />
-          <p className="flex-shrink-0 px-4 py-1 bg-teal-200 bg-opacity-10 rounded-[50px] border border-teal-500 items-center justify-center text-teal-500 text-sm">
+          <p className="flex-shrink-0 px-4 py-1 bg-teal-200 bg-opacity-30 rounded-[50px] border border-teal-500 items-center justify-center text-teal-500 text-sm font-semibold">
             {selectedTokens} Tokens
           </p>
         </div>
 
-        <div className="flex justify-between gap-4">
+        <div className="flex flex-col md:flex-row gap-4">
           <Table className="h-full">
             <TableBody className="border rounded-[5px]">
               <TableRow className="odd:bg-[#F5F5F5]">
                 <TableCell className="font-medium">Investment:</TableCell>
-                <TableCell className="text-opacity-80">${investment.toFixed(2)}</TableCell>
+                <TableCell className="text-opacity-80">
+                  ${investment.toFixed(2)}
+                </TableCell>
               </TableRow>
               <TableRow className="odd:bg-[#F5F5F5]">
-                <TableCell className="font-medium whitespace-nowrap">Annual Rental Income:</TableCell>
-                <TableCell className="text-opacity-80 whitespace-nowrap">$ {annualRentalIncome.toFixed(2)}</TableCell>
+                <TableCell className="font-medium whitespace-nowrap">
+                  Annual Rental Income:
+                </TableCell>
+                <TableCell className="text-opacity-80 whitespace-nowrap">
+                  $ {annualRentalIncome.toFixed(2)}
+                </TableCell>
               </TableRow>
               <TableRow className="odd:bg-[#F5F5F5]">
-                <TableCell className="font-medium whitespace-nowrap">Monthly Rental Income:</TableCell>
+                <TableCell className="font-medium whitespace-nowrap">
+                  Monthly Rental Income:
+                </TableCell>
                 <TableCell className="text-opacity-80 whitespace-nowrap">
                   $ {monthlyRentalIncome.toFixed(2)}
                 </TableCell>
@@ -155,14 +170,20 @@ const Financials: React.FC<{
                 </TableCell>
               </TableRow>
               <TableRow className="odd:bg-[#F5F5F5]">
-                <TableCell className="font-medium whitespace-nowrap">Annual Cap Repayment</TableCell>
+                <TableCell className="font-medium whitespace-nowrap">
+                  Annual Cap Repayment
+                </TableCell>
                 <TableCell className="text-opacity-80 whitespace-nowrap">
                   {annualCapitalRepayment.toFixed(2)} / year
                 </TableCell>
               </TableRow>
               <TableRow className="odd:bg-[#F5F5F5]">
-                <TableCell className="font-medium whitespace-nowrap">Monthly Repayment:</TableCell>
-                <TableCell className="text-opacity-80 whitespace-nowrap">$ {monthlyRepayment.toFixed(2)}</TableCell>
+                <TableCell className="font-medium whitespace-nowrap">
+                  Monthly Repayment:
+                </TableCell>
+                <TableCell className="text-opacity-80 whitespace-nowrap">
+                  $ {monthlyRepayment.toFixed(2)}
+                </TableCell>
               </TableRow>
               <TableRow className="odd:bg-[#F5F5F5]">
                 <TableCell className="font-medium whitespace-nowrap">

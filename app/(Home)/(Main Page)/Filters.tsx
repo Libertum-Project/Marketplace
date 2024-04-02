@@ -85,7 +85,7 @@ export function Filters({ filterFunction }: Props): ReactElement {
               height="18"
               className="mr-3"
             />
-            <p className="w-fit">{option.label}</p>
+            <p className="w-fit whitespace-nowrap">{option.label}</p>
           </div>
 
           <select
@@ -116,7 +116,7 @@ export function Filters({ filterFunction }: Props): ReactElement {
           alt="N"
           width="30"
           height="30"
-          className="md:w-[60px] cursor-pointer"
+          className="md:w-[60px] md:h-[50px] cursor-pointer"
           onClick={() =>
             filterFunction(categoryFilter, countryFilter, annualYieldFilter)
           }

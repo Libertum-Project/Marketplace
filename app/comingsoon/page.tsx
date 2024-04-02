@@ -1,10 +1,9 @@
-'use client';
+import css from './comingsoon.module.css';
+import Link from 'next/link';
 import { NavBar } from '@/components/Navbar/NavBar';
 import Footer from '@/components/Footer/Footer';
-import Link from 'next/link';
-import css from './not-found.module.css';
 
-export default function NotFound() {
+export default function page() {
   return (
     <>
       <NavBar />
@@ -12,11 +11,11 @@ export default function NotFound() {
       <div className={css.container}>
         <div className={css.background}></div>
         <div className={css.frame}>
-          <h2>
-            {' '}
-            <span className={css.error}>404:</span>Page not found
-          </h2>
-          <p>We don’t seem to be able to find a page at this address.</p>
+          <h2>Coming Soon</h2>
+          <p>
+            The page you’re looking for doesn’t exist yet, but it’s coming soon
+            so be sure to check back.
+          </p>
 
           <Link href="/">
             <div className={css.button}>
@@ -25,6 +24,7 @@ export default function NotFound() {
           </Link>
         </div>
       </div>
+
       <Footer />
     </>
   );
