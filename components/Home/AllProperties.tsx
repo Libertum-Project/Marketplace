@@ -4,7 +4,7 @@ import PropertyCard from '../shared/PropertyCard';
 import Image from 'next/image';
 import { Button } from '../ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Card, CardContent, CardFooter } from '../ui/card';
+import { Card, CardContent } from '../ui/card';
 import { Filters } from '@/app/(Home)/(Main Page)/Filters';
 import { filterProperties } from '@/app/utils/fetchProperties';
 

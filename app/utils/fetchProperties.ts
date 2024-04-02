@@ -15,6 +15,15 @@ export async function getProperties() {
   return properties;
 }
 
+export async function getFavouriteProperties(address: string) {
+  const data = await fetch(
+    `https://libertum--marketplace.azurewebsites.net/users/${address}`,
+    requestOptions
+  );
+  const properties = await data.json();
+  return properties;
+}
+
 export async function getPropertyDetails(id: number) {
   const data = await fetch(
     `https://libertum--marketplace.azurewebsites.net/properties/${id}`,

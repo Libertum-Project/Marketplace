@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Button } from '../ui/button';
 import { CardContent } from '../ui/card';
 import { ServerImage } from './ServerImage';
+import LikeProperty from './LikeProperty';
 
 interface Props {
   property: any;
@@ -14,8 +15,8 @@ const PropertyListView = ({ property }: Props) => {
       href={{
         pathname: '/details',
         query: {
-          id: property.id
-        }
+          id: property.id,
+        },
       }}
     >
       <CardContent className="p-0 flex w-full max-h-[168px]">
@@ -85,18 +86,7 @@ const PropertyListView = ({ property }: Props) => {
             </div>
           </div>
           <div className="flex justify-end items-center pl-8">
-            <Button className="bg-transparent hover:bg-transparent p-0">
-              <ServerImage
-                src={`${
-                  property.favourite
-                    ? '/assets/icons/property-liked.svg'
-                    : '/assets/icons/property-unliked.svg'
-                }`}
-                alt="like"
-                width={49}
-                height={48}
-              />
-            </Button>
+            <LikeProperty property={property} />
           </div>
         </div>
       </CardContent>
