@@ -14,7 +14,7 @@ const Page = () => {
   const status = useConnectionStatus();
 
   useLayoutEffect(() => {
-    if (status == 'connected') redirect('/dashboard');
+    if (status == 'connected') redirect('/profile');
   });
   return (
     <>
@@ -29,7 +29,7 @@ const Page = () => {
           <ConnectEmbed
             auth={{
               onLogin: () => {
-                redirect('/dashboard');
+                redirect('/profile');
               },
             }}
             theme={lightTheme({
@@ -46,7 +46,7 @@ const Page = () => {
           />
         </div>
       ) : (
-        status == 'connected' && redirect('/dashboard')
+        status == 'connected' && redirect('/profile')
       )}
     </>
   );

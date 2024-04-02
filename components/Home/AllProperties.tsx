@@ -25,8 +25,8 @@ const AllProperties = ({ showFilters = false }: Props) => {
   const requestOptions = {
     method: 'GET',
     headers: {
-      authorization: `Bearer ${secretKey}`
-    }
+      authorization: `Bearer ${secretKey}`,
+    },
   };
   const fetchProperties = async () => {
     const data = await fetch(

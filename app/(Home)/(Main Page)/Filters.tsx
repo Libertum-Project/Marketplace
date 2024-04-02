@@ -1,6 +1,13 @@
 'use client';
 import { useState, type ReactElement } from 'react';
 import { ServerImage } from '@/components/shared/ServerImage';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 
 interface Props {
   filterFunction: any;
@@ -64,7 +71,7 @@ export function Filters({ filterFunction }: Props): ReactElement {
   };
 
   return (
-    <div className="flex flex-col align-start gap-2 self-stretch max-w-[95%] relative top-[-3rem] mb-[-1rem] p-2 z-30 shadow-sm bg-white border md:top-[-1.8rem] md:flex-row md:px-8 md:py-6 justify-between md:align-center md:min-w-[75rem] md:max-w-[75rem] m-auto rounded-[5px]">
+    <div className="flex sm:h-24 flex-col align-start gap-2 self-stretch max-w-[95%] relative top-[-3rem] mb-[-1rem] p-2 z-30 shadow-sm bg-white border md:top-[-1.8rem] md:flex-row md:px-4 md:py-6 justify-between md:align-center md:min-w-[75rem] md:max-w-[75rem] m-auto rounded-[5px]">
       {selectOptions.map((option, index) => (
         <div
           key={index}
@@ -80,8 +87,9 @@ export function Filters({ filterFunction }: Props): ReactElement {
             />
             <p className="w-fit">{option.label}</p>
           </div>
+
           <select
-            className="flex w-[200px] border rounded-[5px]"
+            className="flex w-[200px] cursor-pointer px-4 py-3 bg-white rounded-[5px] border border-black border-opacity-10"
             onChange={
               option.label === 'Property Type'
                 ? handleCategoryChange

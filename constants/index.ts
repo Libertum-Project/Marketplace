@@ -5,8 +5,8 @@ export const kycPending: boolean = false;
 export const sidebarLinks: SidebarLink[] = [
   {
     imgURL: '/assets/icons/dashboard.svg',
-    route: '/dashboard',
-    label: 'Dashboard',
+    route: '/profile',
+    label: 'Profile',
   },
   {
     imgURL: '/assets/icons/listings.svg',
