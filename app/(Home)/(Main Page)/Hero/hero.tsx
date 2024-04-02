@@ -15,7 +15,7 @@ const Hero = () => {
 
       <div className={`${css.heroCommunity} max-sm:bg-primary-gradient z-[-1]`}>
         <div className={css.textCommunity}>
-          <h1>Unlock the potential for earning by investing</h1>
+          <h1>The Future of Real Estate Investing is Now</h1>
           <div className={css.paragraphsCommunity}>
             <p>
               From residential havens to commercial hubs, each property presents
