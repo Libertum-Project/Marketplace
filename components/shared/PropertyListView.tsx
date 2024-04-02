@@ -11,22 +11,23 @@ interface Props {
 
 const PropertyListView = ({ property }: Props) => {
   return (
-    <Link
-      href={{
-        pathname: '/details',
-        query: {
-          id: property.id,
-        },
-      }}
-    >
-      <CardContent className="p-0 flex w-full max-h-[168px]">
-        <ServerImage
-          src={property.highlight_image}
-          alt={property.location.city}
-          width={250}
-          height={166}
-        />
-        <div className="py-4 px-16 w-full flex gap-10 justify-between divide-x">
+    <CardContent className="p-0 flex w-full max-h-[168px]">
+      <ServerImage
+        src={property.highlight_image}
+        alt={property.location.city}
+        width={250}
+        height={166}
+      />
+      <div className="py-4 px-16 w-full flex gap-10 justify-between divide-x">
+        <Link
+          className="flex gap-10 justify-between divide-x"
+          href={{
+            pathname: '/details',
+            query: {
+              id: property.id,
+            },
+          }}
+        >
           <div className="flex flex-col py-6 justify-between">
             <div>
               <p className="text-black text-opacity-80 text-lg font-bold font-space_grotesk">
@@ -85,12 +86,12 @@ const PropertyListView = ({ property }: Props) => {
               </div>
             </div>
           </div>
-          <div className="flex justify-end items-center pl-8">
-            <LikeProperty property={property} />
-          </div>
+        </Link>
+        <div className="flex justify-end items-center pl-8">
+          <LikeProperty property={property} position="center" />
         </div>
-      </CardContent>
-    </Link>
+      </div>
+    </CardContent>
   );
 };
 

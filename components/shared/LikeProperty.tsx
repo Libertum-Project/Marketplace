@@ -8,9 +8,10 @@ import { useEffect, useState } from 'react';
 
 interface Props {
   property: any;
+  position?: 'top' | 'center';
 }
 
-const LikeProperty = ({ property }: Props) => {
+const LikeProperty = ({ property, position = 'top' }: Props) => {
   const [isLiked, setIsLiked] = useState(false);
   const [userLiked, setUserLiked] = useState(false);
   const address = useAddress();
@@ -46,7 +47,9 @@ const LikeProperty = ({ property }: Props) => {
 
   return (
     <Button
-      className="absolute right-4 top-4 bg-transparent hover:bg-transparent p-0"
+      className={`${
+        position == 'top' ? 'absolute' : 'static'
+      } right-4 top-4 bg-transparent hover:bg-transparent p-0`}
       onClick={async () => {
         setUserLiked(!userLiked);
         await likeProperty(address as string, pathname, property.id);
