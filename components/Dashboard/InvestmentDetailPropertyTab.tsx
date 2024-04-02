@@ -10,7 +10,7 @@ import { ServerImage } from '../shared/ServerImage';
 
 const InvestmentDetailPropertyTab = () => {
   return (
-    <TabsContent value="property">
+    <TabsContent value="property" className="sm:max-h-[550px] overflow-auto">
       <div className="mt-16">
         <div className="flex justify-between gap-9 mb-8">
           <div className="bg-white rounded-[5px] shadow py-5 px-6 w-[50%] max-sm:w-full">

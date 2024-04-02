@@ -5,7 +5,7 @@ import { ServerImage } from '../shared/ServerImage';
 const RightSidebar = () => {
   return (
     <div className="bg-neutral-100 w-full sm:min-h-screen sm:max-w-[350px] border-l border-black border-opacity-10">
-      <div className="min-w-[350px] sm:min-h-screen bg-neutral-100 p-5 flex flex-col border-l gap-4 sm:fixed top-[58px] right-0 overflow-y-scroll">
+      <div className="max-w-[350px] sm:min-h-screen bg-neutral-100 p-5 flex flex-col border-l gap-4 sm:fixed top-[58px] bottom-0 right-0 overflow-y-scroll">
         <div className="flex flex-col">
           <div className="flex flex-col gap-4">
             <p className="text-black text-opacity-80 text-lg font-bold font-space_grotesk">
@@ -107,7 +107,7 @@ const RightSidebar = () => {
 
               <div className="flex flex-col gap-6 flex-1">
                 <div className="flex gap-3 items-center">
-                  <div className="w-[24px] h-[24px] bg-[#86D8DB] rounded-full"></div>
+                  <div className="w-[24px] h-[24px] bg-[#FFA143] rounded-full"></div>
                   <div className="flex flex-col">
                     <p className="text-slate-400 text-[13px] font-medium">
                       Rent for RIT's Sold
