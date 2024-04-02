@@ -40,8 +40,8 @@ interface PropertyDetailProps {
 
 const PropertyDetail: React.FC<PropertyDetailProps> = ({ property }) => {
   return (
-    <div className="md:mx-auto md:flex md:max-w-[75rem] px-3 md:px-0 pt-32 pb-12 md:justify-between gap-20">
-      <div className="space-y-4 relative md:order-2">
+    <div className="md:mx-auto md:flex md:max-w-[75rem] md:px-0 pt-32 pb-12 md:justify-between gap-20 ">
+      <div className="space-y-4 relative md:order-2 px-3 md:px-0">
         <ImageGallery images={property.image_gallery} />
         <div className="hidden md:block sticky top-0 z-10 ">
           <Invest
@@ -54,14 +54,19 @@ const PropertyDetail: React.FC<PropertyDetailProps> = ({ property }) => {
         </div>
       </div>
       <div className="md:w-5/8 space-y-4 md:order-1">
-        <Hero
-          location={property.location}
-          category={property.category}
-          propertyPrice={property.total_valuation}
-          totalShares={property.total_shares}
-          annualYield={property.annual_yield}
-          property={property}
-        />
+        <div className="bg-gradient-to-b from-[#0E0E1E] to-[#000041] md:bg-transparent">
+          <div className="px-3 md:px-0">
+            <Hero
+              location={property.location}
+              category={property.category}
+              propertyPrice={property.total_valuation}
+              totalShares={property.total_shares}
+              annualYield={property.annual_yield}
+              property={property}
+            />
+          </div>
+        </div>
+        <div className="px-3 md:px-0">
         <TokenProgress
           total_tokens={property.total_shares}
           tokens_sold={property.tokens_sold}
@@ -73,8 +78,11 @@ const PropertyDetail: React.FC<PropertyDetailProps> = ({ property }) => {
           annualYield={property.annual_yield}
           repaymentDuration={property.token_duration_months}
         />
+        </div>
 
-        <div className="md:hidden">
+
+
+        <div className="md:hidden px-3 md:px-0">
           <Invest
             price={property.total_valuation / property.total_shares}
             annual_yield={property.annual_yield}
