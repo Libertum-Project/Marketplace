@@ -164,12 +164,23 @@ const AllProperties = ({ showFilters = false }: Props) => {
               <Card>
                 <CardContent className="h-480 p-0">
                   <div className="flex flex-col space-y-3 w-full">
-                    <Skeleton className="h-[255px] bg-black bg-opacity-5 w-full" />
-                    <div className="space-y-2">
-                      <Skeleton className="h-4 w-[250px] bg-black bg-opacity-5" />
-                      <Skeleton className="h-4 w-[200px] bg-black bg-opacity-5" />
-                      <Skeleton className="h-4 w-[250px] bg-black bg-opacity-5" />
-                      <Skeleton className="h-4 w-[200px] bg-black bg-opacity-5" />
+                    <Skeleton className="h-[255px] bg-black bg-opacity-5 w-ful" />
+                    <div className="space-y-4 p-4">
+                      <Skeleton className="h-10 w-full bg-black bg-opacity-5 rounded-[48px]" />
+
+                      <div className="flex items-center justify-between">
+                        <div className="pr-4 w-full">
+                          <Skeleton className="h-7 w-full bg-black bg-opacity-5 rounded-[48px]" />
+                        </div>
+                        <div className="w-full">
+                          <Skeleton className="h-7 w-full bg-black bg-opacity-5 rounded-[48px]" />
+                        </div>
+                        <div className="pl-4 w-full">
+                          <Skeleton className="h-7 w-full bg-black bg-opacity-5 rounded-[48px]" />
+                        </div>
+                      </div>
+
+                      <Skeleton className="h-10 w-full bg-black bg-opacity-5 rounded-[48px]" />
                     </div>
                   </div>
                 </CardContent>
@@ -178,12 +189,23 @@ const AllProperties = ({ showFilters = false }: Props) => {
               <Card>
                 <CardContent className="h-480 p-0">
                   <div className="flex flex-col space-y-3 w-full">
-                    <Skeleton className="h-[255px] bg-black bg-opacity-5 w-full" />
-                    <div className="space-y-2">
-                      <Skeleton className="h-4 w-[250px] bg-black bg-opacity-5" />
-                      <Skeleton className="h-4 w-[200px] bg-black bg-opacity-5" />
-                      <Skeleton className="h-4 w-[250px] bg-black bg-opacity-5" />
-                      <Skeleton className="h-4 w-[200px] bg-black bg-opacity-5" />
+                    <Skeleton className="h-[255px] bg-black bg-opacity-5 w-ful" />
+                    <div className="space-y-4 p-4">
+                      <Skeleton className="h-10 w-full bg-black bg-opacity-5 rounded-[48px]" />
+
+                      <div className="flex items-center justify-between">
+                        <div className="pr-4 w-full">
+                          <Skeleton className="h-7 w-full bg-black bg-opacity-5 rounded-[48px]" />
+                        </div>
+                        <div className="w-full">
+                          <Skeleton className="h-7 w-full bg-black bg-opacity-5 rounded-[48px]" />
+                        </div>
+                        <div className="pl-4 w-full">
+                          <Skeleton className="h-7 w-full bg-black bg-opacity-5 rounded-[48px]" />
+                        </div>
+                      </div>
+
+                      <Skeleton className="h-10 w-full bg-black bg-opacity-5 rounded-[48px]" />
                     </div>
                   </div>
                 </CardContent>
@@ -192,12 +214,23 @@ const AllProperties = ({ showFilters = false }: Props) => {
               <Card>
                 <CardContent className="h-480 p-0">
                   <div className="flex flex-col space-y-3 w-full">
-                    <Skeleton className="h-[255px] bg-black bg-opacity-5 w-full" />
-                    <div className="space-y-2">
-                      <Skeleton className="h-4 w-[250px] bg-black bg-opacity-5" />
-                      <Skeleton className="h-4 w-[200px] bg-black bg-opacity-5" />
-                      <Skeleton className="h-4 w-[250px] bg-black bg-opacity-5" />
-                      <Skeleton className="h-4 w-[200px] bg-black bg-opacity-5" />
+                    <Skeleton className="h-[255px] bg-black bg-opacity-5 w-ful" />
+                    <div className="space-y-4 p-4">
+                      <Skeleton className="h-10 w-full bg-black bg-opacity-5 rounded-[48px]" />
+
+                      <div className="flex items-center justify-between">
+                        <div className="pr-4 w-full">
+                          <Skeleton className="h-7 w-full bg-black bg-opacity-5 rounded-[48px]" />
+                        </div>
+                        <div className="w-full">
+                          <Skeleton className="h-7 w-full bg-black bg-opacity-5 rounded-[48px]" />
+                        </div>
+                        <div className="pl-4 w-full">
+                          <Skeleton className="h-7 w-full bg-black bg-opacity-5 rounded-[48px]" />
+                        </div>
+                      </div>
+
+                      <Skeleton className="h-10 w-full bg-black bg-opacity-5 rounded-[48px]" />
                     </div>
                   </div>
                 </CardContent>
