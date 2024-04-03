@@ -1,6 +1,8 @@
 import { getProperties } from '@/app/utils/fetchProperties';
 import RightSidebar from '@/components/Dashboard/RightSidebar';
 import PropertyCard from '@/components/shared/PropertyCard';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 const page = async () => {
   const properties = await getProperties();
@@ -18,6 +20,15 @@ const page = async () => {
           );
         })}
       </div>
+      {/* <div className="w-full flex flex-col gap-2 justify-center items-center min-h-screen">
+          <h3 className="text-lg font-bold">No investment at the moment</h3>
+
+          <Link href="/">
+            <Button className="bg-teal-500 rounded-[5px] text-white text-center hover:bg-teal-500 min-w-[164px] max-sm:w-full">
+              Return to marketplace
+            </Button>
+          </Link>
+        </div> */}
       <RightSidebar />
     </div>
   );

@@ -1,14 +1,23 @@
-const secretKey = process.env.SECRET_KEY;
+const secretKey = process.env.NEXT_PUBLIC_SECRET_KEY;
 const requestOptions = {
   method: 'GET',
   headers: {
-    Authorization: `Bearer ${secretKey}`
-  }
+    Authorization: `Bearer ${secretKey}`,
+  },
 };
 
 export async function getProperties() {
   const data = await fetch(
     'https://libertum--marketplace.azurewebsites.net/properties',
+    requestOptions
+  );
+  const properties = await data.json();
+  return properties;
+}
+
+export async function getFavouriteProperties(address: string) {
+  const data = await fetch(
+    `https://libertum--marketplace.azurewebsites.net/users/${address}`,
     requestOptions
   );
   const properties = await data.json();
