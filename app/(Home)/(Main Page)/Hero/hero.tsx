@@ -32,7 +32,7 @@ const Hero = () => {
             priority={true}
           />
 
-          <div className="pl-10 pr-4 py-4 bg-white bg-opacity-5 rounded-xl border border-l-0 rounded-l-none border-teal-500">
+          <div className="pl-10 pr-4 py-4 bg-white bg-opacity-5 rounded-xl border border-l-0 rounded-l-none border-libertumGreen">
             <div className={css.featuredProperties__title}>
               <span>New</span>
               <p>Featured Properties</p>

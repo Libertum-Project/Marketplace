@@ -107,7 +107,7 @@ export function Filters({ filterFunction }: Props): ReactElement {
         </div>
       ))}
 
-      <div className="flex bg-[#00B3B5] rounded-[5px] px-4 justify-center gap-4">
+      <div className="flex bg-libertumGreen rounded-[5px] px-4 justify-center gap-4">
         <p className="md:hidden text-white font-space_grotesk font-bold py-4">
           Search Properties{' '}
         </p>

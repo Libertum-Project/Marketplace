@@ -50,7 +50,7 @@ const Hero: React.FC<{
         </h5>
       </div>
       <div className="md:hidden w-full items-start justify-start py-5">
-        <h5 className="md:hidden px-4 py-1 bg-teal-500 bg-opacity-10 rounded-[50px] border border-teal-500 font-space_grotesk text-teal-500 text-lg font-bold w-fit">
+        <h5 className="md:hidden px-4 py-1 bg-libertumGreen bg-opacity-10 rounded-[50px] border border-libertumGreen font-space_grotesk text-libertumGreen text-lg font-bold w-fit">
           ${tokenPrice} per token
         </h5>
       </div>
