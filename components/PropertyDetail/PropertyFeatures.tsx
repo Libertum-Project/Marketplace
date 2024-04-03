@@ -15,7 +15,8 @@ const PropertyFeatures: React.FC<{
   totalShares: number;
   annualYield: number;
   repaymentDuration: number;
-}> = ({ propertyPrice, totalShares, annualYield, repaymentDuration }) => {
+  description: string
+}> = ({ propertyPrice, totalShares, annualYield, repaymentDuration, description }) => {
   return (
     <div className="property-features">
       <Accordion type="multiple" defaultValue={['item-1']}>
@@ -46,25 +47,7 @@ const PropertyFeatures: React.FC<{
           <AccordionContent>
             <div className="max-w-[624px]">
               <p>
-                At vero eos et iusto odio dignissimos ducimus, qui haec putat,
-                ut ipsi auctori huius disciplinae placet: constituam, quid sit
-                numeranda nec me ab illo inventore veritatis et expedita
-                distinctio nam libero tempore, cum memoriter, tum etiam ac
-                ratione.
-              </p>
-
-              <p>
-                Si sine metu degendae praesidia firmissima filium morte multavit
-                si sine causa? quae fuerit causa, mox videro; interea hoc
-                tenebo, si ob rem voluptas assumenda est, quid sit extremum et
-                inter mediocrem animadversionem atque natum sit, a natura
-                incorrupte.
-              </p>
-
-              <p>
-                Omne animal, simul atque in sanguinem suum tam inportuno tamque
-                crudeli; sin, ut earum motus et accusamus et argumentandum et
-                dolore suo sanciret militaris imperii.
+                {description}
               </p>
             </div>
           </AccordionContent>
