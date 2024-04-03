@@ -30,26 +30,6 @@ export function DesktopNavbar(): ReactElement {
     setIsLearnModalVisible(false);
   };
 
-  const secretKey = process.env.NEXT_PUBLIC_SECRET_KEY;
-
-  const saveUser = async () => {
-    if (address) {
-      await fetch('https://libertum--marketplace.azurewebsites.net/users', {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${secretKey}`,
-          Accept: 'application/json',
-          'Content-Type': 'application/json;charset=utf-8',
-        },
-        body: JSON.stringify({ wallet_address: address }),
-      });
-    }
-  };
-
-  useEffect(() => {
-    saveUser();
-  }, [address]);
-
   return (
     <>
       <nav className={css.desktopNavbar}>
