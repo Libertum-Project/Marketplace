@@ -57,7 +57,7 @@ export function DesktopNavbar(): ReactElement {
             Explore Properties
           </a>
           <a
-            href="/comingsoon"
+            href="#"
             onMouseEnter={handleShowLearnModal}
             onTouchStart={handleShowLearnModal}
           >
@@ -71,7 +71,7 @@ export function DesktopNavbar(): ReactElement {
             Community
           </a>
           <a
-            href="/comingsoon"
+            href="#"
             onMouseEnter={handleShowDocsModal}
             onTouchStart={handleShowDocsModal}
           >
