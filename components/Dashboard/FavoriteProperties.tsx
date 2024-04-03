@@ -48,7 +48,7 @@ const FavoriteProperties = () => {
           <Card>
             <CardContent className="h-480 p-0">
               <div className="flex flex-col space-y-3 w-full">
-                <Skeleton className="h-[255px] bg-black bg-opacity-5 w-ful" />
+                <Skeleton className="h-[255px] bg-[#929191] w-full" />
                 <div className="space-y-4 p-4">
                   <Skeleton className="h-10 w-full bg-black bg-opacity-5 rounded-[48px]" />
 
@@ -69,10 +69,11 @@ const FavoriteProperties = () => {
               </div>
             </CardContent>
           </Card>
+
           <Card>
             <CardContent className="h-480 p-0">
               <div className="flex flex-col space-y-3 w-full">
-                <Skeleton className="h-[255px] bg-black bg-opacity-5 w-ful" />
+                <Skeleton className="h-[255px] bg-[#929191] w-full" />
                 <div className="space-y-4 p-4">
                   <Skeleton className="h-10 w-full bg-black bg-opacity-5 rounded-[48px]" />
 
@@ -93,10 +94,11 @@ const FavoriteProperties = () => {
               </div>
             </CardContent>
           </Card>
+
           <Card>
             <CardContent className="h-480 p-0">
               <div className="flex flex-col space-y-3 w-full">
-                <Skeleton className="h-[255px] bg-black bg-opacity-5 w-ful" />
+                <Skeleton className="h-[255px] bg-[#929191] w-full" />
                 <div className="space-y-4 p-4">
                   <Skeleton className="h-10 w-full bg-black bg-opacity-5 rounded-[48px]" />
 
