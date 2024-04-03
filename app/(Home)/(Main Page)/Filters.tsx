@@ -71,7 +71,7 @@ export function Filters({ filterFunction }: Props): ReactElement {
   };
 
   return (
-    <div className="flex flex-col align-start gap-2 self-stretch max-w-[95%] relative top-[-3rem] mb-[-1rem] p-2 z-[999] shadow-sm bg-white border lg:top-[-1.8rem]lg:flex-row lg:px-8 lg:py-6 justify-between lg:align-center lg:min-w-[75rem] lg:max-w-[75rem] m-auto rounded-[5px]">
+    <div className="flex flex-col align-start gap-2 self-stretch max-w-[95%] relative top-[-3rem] mb-[-1rem] p-2 z-[999] shadow-sm bg-white border lg:top-[-1.8rem] lg:flex-row lg:px-8 lg:py-6 justify-between lg:align-center lg:max-w-[75rem] m-auto rounded-[5px]">
       {selectOptions.map((option, index) => (
         <div
           key={index}
@@ -108,7 +108,7 @@ export function Filters({ filterFunction }: Props): ReactElement {
       ))}
 
       <div className="flex bg-[#00B3B5] rounded-[5px] px-4 justify-center gap-4">
-        <p className="md:hidden text-white font-space_grotesk font-bold">
+        <p className="md:hidden text-white font-space_grotesk font-bold py-4">
           Search Properties{' '}
         </p>
         <ServerImage
