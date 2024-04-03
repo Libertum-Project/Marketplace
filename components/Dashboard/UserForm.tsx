@@ -22,12 +22,14 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover';
 import { useAddress } from '@thirdweb-dev/react';
+import { useToast } from '@/components/ui/use-toast';
 
 const UserForm = () => {
   const [date, setDate] = useState<Date>();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const address = useAddress();
+  const { toast } = useToast();
   const secretKey = process.env.NEXT_PUBLIC_SECRET_KEY;
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -44,11 +46,10 @@ const UserForm = () => {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log('date=', date);
     setIsSubmitting(true);
     try {
       if (address) {
-        await fetch(
+        const response = await fetch(
           `https://libertum--marketplace.azurewebsites.net/users/${address}`,
           {
             method: 'PATCH',
@@ -69,6 +70,15 @@ const UserForm = () => {
             }),
           }
         );
+
+        if (response.ok) {
+          toast({
+            variant: 'default',
+            className:
+              'bg-[#00B3B5] text-white rounded-[5px] [data-state=open]:top-0',
+            title: 'Your profile is updated!',
+          });
+        }
       }
     } catch (error) {
       console.log(error);
