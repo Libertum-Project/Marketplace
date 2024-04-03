@@ -42,11 +42,6 @@ export const mobileMenu: SidebarLink[] = [
     label: 'Listings',
   },
   {
-    imgURL: '/assets/icons/investments.svg',
-    route: '/investments',
-    label: 'Investments',
-  },
-  {
     imgURL: '/assets/icons/properties.svg',
     route: '/properties',
     label: 'Properties',
@@ -55,6 +50,11 @@ export const mobileMenu: SidebarLink[] = [
     imgURL: '/assets/icons/lbm-coin.svg',
     route: '/lbm-coin',
     label: 'LBM Coin',
+  },
+  {
+    imgURL: '/assets/icons/investments.svg',
+    route: '/investments',
+    label: 'Investments',
   },
 ];
 

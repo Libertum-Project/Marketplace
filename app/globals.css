@@ -108,3 +108,7 @@
 .investment-page-width {
   max-width: calc(100% - 350px);
 }
+
+.override-link {
+  display: flex !important;
+}

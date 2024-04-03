@@ -7,27 +7,38 @@ import css from './DesktopNavbar.module.css';
 import logo from '@/public/horizontal-logo.svg';
 import { LearnModal } from './modals/LearnModal';
 import { DocsModal } from './modals/DocsModal';
+import { ProfileModal } from './modals/ProfileModal';
 import ConnectWalletButton from '../WalletComponents/ConnectWalletButton';
 import { useAddress } from '@thirdweb-dev/react';
 
 export function DesktopNavbar(): ReactElement {
   const [isLearnModalVisible, setIsLearnModalVisible] = useState(false);
   const [isDocsModalVisible, setIsDocsModalVisible] = useState(false);
+  const [isProfileModalVisible, setIsProfileModalVisible] = useState(false);
   const address = useAddress();
 
   const handleShowLearnModal = () => {
     setIsLearnModalVisible(true);
     setIsDocsModalVisible(false);
+    setIsProfileModalVisible(false);
   };
 
   const handleShowDocsModal = () => {
     setIsDocsModalVisible(true);
+    setIsLearnModalVisible(false);
+    setIsProfileModalVisible(false);
+  };
+
+  const handleShowProfileModal = () => {
+    setIsProfileModalVisible(true);
+    setIsDocsModalVisible(false);
     setIsLearnModalVisible(false);
   };
 
   const handleHideModals = () => {
     setIsDocsModalVisible(false);
     setIsLearnModalVisible(false);
+    setIsProfileModalVisible(false);
   };
 
   return (
@@ -77,7 +88,15 @@ export function DesktopNavbar(): ReactElement {
           >
             Docs ↓
           </a>
-          {address && <a href="/profile">Profile</a>}
+          {address && (
+            <a
+              href="/profile"
+              onMouseEnter={handleShowProfileModal}
+              onTouchStart={handleShowProfileModal}
+            >
+              Profile ↓
+            </a>
+          )}
           <div onMouseEnter={handleHideModals} onTouchStart={handleHideModals}>
             <ConnectWalletButton />
           </div>
@@ -88,6 +107,9 @@ export function DesktopNavbar(): ReactElement {
       )}
 
       {isDocsModalVisible && <DocsModal handleHideModals={handleHideModals} />}
+      {isProfileModalVisible && (
+        <ProfileModal handleHideModals={handleHideModals} />
+      )}
     </>
   );
 }
