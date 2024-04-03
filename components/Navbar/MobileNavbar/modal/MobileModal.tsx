@@ -43,15 +43,12 @@ export function MobileModal({
             → Pitch Deck
           </Link>
         </div>
-        {address ? (
+        {address && (
           <div>
-            <Link href="/profile" target="_blank">
-              → Token Utility
-            </Link>
+            <Link href="/profile">Profile</Link>
           </div>
-        ) : (
-          <ConnectWalletButton />
         )}
+        <ConnectWalletButton />
       </div>
     </div>
   );
