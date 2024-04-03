@@ -13,7 +13,7 @@ const InvestmentDetailPropertyTab = () => {
     <TabsContent value="property">
       <div className="mt-16">
         <div className="flex justify-between gap-9 mb-8">
-          <div className="bg-white rounded-[5px] shadow py-5 px-6 w-[50%] max-sm:w-full">
+          <div className="bg-white rounded-[5px] shadow-main-shadow py-5 px-6 w-[50%] max-sm:w-full">
             <div className="flex justify-between pb-2 pt-2 border-b-2 border-b-[#ECECEC]">
               <p className="text-neutral-700 text-[15px] font-normal">RIT's</p>
               <p className="text-right text-neutral-700 text-base font-bold font-space_grotesk">
@@ -67,7 +67,7 @@ const InvestmentDetailPropertyTab = () => {
             </div>
           </div>
 
-          <div className="flex-1 bg-white rounded-[5px] shadow py-5 px-6 flex flex-col gap-8 justify-center max-sm:hidden">
+          <div className="flex-1 bg-white rounded-[5px] shadow-main-shadow py-5 px-6 flex flex-col gap-8 justify-center max-sm:hidden">
             <div className="flex items-center gap-2">
               <ServerImage
                 src="/assets/icons/investment-details/area.svg"
@@ -121,7 +121,7 @@ const InvestmentDetailPropertyTab = () => {
         <Accordion
           type="single"
           collapsible
-          className="w-full bg-white rounded-[5px] shadow p-5 py-2"
+          className="w-full bg-white rounded-[5px] shadow-main-shadow p-5 py-2"
         >
           <AccordionItem value="more" className="border-0">
             <AccordionTrigger>

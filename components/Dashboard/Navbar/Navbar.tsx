@@ -25,7 +25,6 @@ const Navbar = () => {
       </div>
 
       <div className="flex gap-5">
-        <Search />
         <User />
       </div>
     </nav>

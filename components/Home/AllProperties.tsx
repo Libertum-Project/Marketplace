@@ -4,9 +4,17 @@ import PropertyCard from '../shared/PropertyCard';
 import Image from 'next/image';
 import { Button } from '../ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Card, CardContent, CardFooter } from '../ui/card';
+import { Card, CardContent } from '../ui/card';
 import { Filters } from '@/app/(Home)/(Main Page)/Filters';
 import { filterProperties } from '@/app/utils/fetchProperties';
+
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 
 interface Props {
   showFilters?: boolean;
@@ -25,8 +33,8 @@ const AllProperties = ({ showFilters = false }: Props) => {
   const requestOptions = {
     method: 'GET',
     headers: {
-      authorization: `Bearer ${secretKey}`
-    }
+      authorization: `Bearer ${secretKey}`,
+    },
   };
   const fetchProperties = async () => {
     const data = await fetch(
@@ -61,19 +69,54 @@ const AllProperties = ({ showFilters = false }: Props) => {
     setFilteredProperties(filteredProperties);
   };
 
+  const sortProperties = (sortOrder: string) => {
+    const sortedProperties = [...properties];
+    sortedProperties.sort((a, b) => {
+      const dateA = new Date(a.createdAt);
+      const dateB = new Date(b.createdAt);
+      if (sortOrder === 'new') {
+        return +dateB - +dateA;
+      } else {
+        return +dateA - +dateB;
+      }
+    });
+
+    setProperties(sortedProperties);
+  };
+
   return (
     <>
       {showFilters && <Filters filterFunction={propertyFilter} />}
 
       <div>
         <div className="flex justify-center md:justify-between items-center">
-          <select
-            defaultValue="Select"
-            className="min-w-[95%] md:min-w-0 px-3 py-2 bg-slate-900 bg-opacity-5 rounded-[5px] border border-black border-opacity-10 cursor-pointer"
+          <Select
+            onValueChange={(newValue) => {
+              sortProperties(newValue);
+            }}
+            value=""
           >
-            <option value="Newest first">Sort by: Newest first</option>
-            <option value="Old First">Sort by: Old first</option>
-          </select>
+            <SelectTrigger className="w-[95%] md:w-[360px] px-3 py-2 bg-slate-900 bg-opacity-5 rounded-[5px] border border-black border-opacity-10 cursor-pointer">
+              <SelectValue
+                placeholder="Sort by: Newest first"
+                className="font-montserrat text-xs"
+              />
+            </SelectTrigger>
+            <SelectContent className="bg-white">
+              <SelectItem value="new" className="cursor-pointer">
+                Sort by:{' '}
+                <span className="font-montserrat text-xs font-bold">
+                  Newest first
+                </span>
+              </SelectItem>
+              <SelectItem value="old" className="cursor-pointer">
+                Sort by:{' '}
+                <span className="font-montserrat text-xs font-bold">
+                  Old first
+                </span>
+              </SelectItem>
+            </SelectContent>
+          </Select>
 
           <div className="hidden md:flex items-center bg-neutral-100 rounded-[5px] gap-2 px-2 py-[5px]">
             <Button className="p-0" onClick={() => handleViewType('grid')}>

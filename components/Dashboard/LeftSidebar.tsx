@@ -36,7 +36,11 @@ const LeftSidebar = () => {
                 height={20}
                 className="group-hover:fill-[#00B3B5]"
               />
-              <p className="text-white group-hover:text-[#00B3B5] text-opacity-70 text-xs font-bold font-ubuntu">
+              <p
+                className={`text-white group-hover:text-[#00B3B5] text-opacity-70 text-xs font-bold font-ubuntu ${
+                  isActive && 'text-[#00B3B5]'
+                }`}
+              >
                 {item.label}
               </p>
             </Link>

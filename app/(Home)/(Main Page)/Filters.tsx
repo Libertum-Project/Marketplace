@@ -1,6 +1,13 @@
 'use client';
 import { useState, type ReactElement } from 'react';
 import { ServerImage } from '@/components/shared/ServerImage';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 
 interface Props {
   filterFunction: any;
@@ -80,8 +87,9 @@ export function Filters({ filterFunction }: Props): ReactElement {
             />
             <p className="w-fit whitespace-nowrap">{option.label}</p>
           </div>
+
           <select
-            className="flex w-[200px] border rounded-[5px]"
+            className="flex w-[200px] cursor-pointer px-4 py-3 bg-white rounded-[5px] border border-black border-opacity-10"
             onChange={
               option.label === 'Property Type'
                 ? handleCategoryChange

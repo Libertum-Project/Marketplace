@@ -1,5 +1,5 @@
 'use client';
-import { type ReactElement } from 'react';
+import { useEffect, type ReactElement } from 'react';
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -8,10 +8,12 @@ import logo from '@/public/horizontal-logo.svg';
 import { LearnModal } from './modals/LearnModal';
 import { DocsModal } from './modals/DocsModal';
 import ConnectWalletButton from '../WalletComponents/ConnectWalletButton';
+import { useAddress } from '@thirdweb-dev/react';
 
 export function DesktopNavbar(): ReactElement {
   const [isLearnModalVisible, setIsLearnModalVisible] = useState(false);
   const [isDocsModalVisible, setIsDocsModalVisible] = useState(false);
+  const address = useAddress();
 
   const handleShowLearnModal = () => {
     setIsLearnModalVisible(true);
@@ -75,6 +77,7 @@ export function DesktopNavbar(): ReactElement {
           >
             Docs ↓
           </a>
+          {address && <a href="/profile">Profile</a>}
           <div onMouseEnter={handleHideModals} onTouchStart={handleHideModals}>
             <ConnectWalletButton />
           </div>
