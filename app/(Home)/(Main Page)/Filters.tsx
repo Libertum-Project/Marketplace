@@ -28,7 +28,6 @@ export function Filters({ filterFunction }: Props): ReactElement {
       label: 'Property Type',
       options: [
         'All',
-        'Commercial',
         'Residential',
         'Commercial',
         'Farm',
@@ -107,7 +106,10 @@ export function Filters({ filterFunction }: Props): ReactElement {
         </div>
       ))}
 
-      <div className="flex bg-[#00B3B5] rounded-[5px] px-4 justify-center gap-4">
+      <button className="flex bg-[#00B3B5] rounded-[5px] px-4 justify-center gap-4 p-[12px] cursor-pointer"
+         onClick={() =>
+            filterFunction(categoryFilter, countryFilter, annualYieldFilter)
+          }>
         <p className="md:hidden text-white font-space_grotesk font-bold">
           Search Properties{' '}
         </p>
@@ -116,12 +118,10 @@ export function Filters({ filterFunction }: Props): ReactElement {
           alt="N"
           width="30"
           height="30"
-          className="md:w-[60px] md:h-[50px] cursor-pointer"
-          onClick={() =>
-            filterFunction(categoryFilter, countryFilter, annualYieldFilter)
-          }
+          className="md:w-[70px] "
+       
         />
-      </div>
+      </button>
     </div>
   );
 }
