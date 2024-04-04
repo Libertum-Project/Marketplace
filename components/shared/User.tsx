@@ -1,11 +1,10 @@
 'use client';
 import { useAddress, useDisconnect } from '@thirdweb-dev/react';
-import Image from 'next/image';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 
 const User = () => {
