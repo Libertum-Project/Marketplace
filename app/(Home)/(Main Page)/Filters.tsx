@@ -25,8 +25,8 @@ export function Filters({ filterFunction }: Props): ReactElement {
         'Commercial',
         'Farm',
         'Restaurant',
-        'Office',
-      ],
+        'Office'
+      ]
     },
     {
       imageURL: '/assets/filter2.svg',
@@ -40,14 +40,14 @@ export function Filters({ filterFunction }: Props): ReactElement {
         'Japan',
         'United Kingdom',
         'Netherlands',
-        'Brazil',
-      ],
+        'Brazil'
+      ]
     },
     {
       imageURL: '/assets/filter3.svg',
       label: 'Rental Yield',
-      options: ['Up to  5%', '5% to 10%', '10% to 15 %'],
-    },
+      options: ['Up to  5%', '5% to 10%', '10% to 15 %']
+    }
   ];
 
   const handleCategoryChange = (event: any) => {
@@ -63,7 +63,7 @@ export function Filters({ filterFunction }: Props): ReactElement {
   };
 
   return (
-    <div className="flex sm:h-24 flex-col align-start gap-2 self-stretch max-w-[95%] relative top-[-3rem] mb-[-1rem] p-2 z-30 shadow-sm bg-white border md:top-[-1.8rem] md:flex-row md:px-4 md:py-6 justify-between md:align-center md:min-w-[75rem] md:max-w-[75rem] m-auto rounded-[5px]">
+    <div className="flex flex-col align-start gap-2 self-stretch max-w-[95%] relative top-[-3rem] mb-[-1rem] p-2 z-[999] shadow-sm bg-white border lg:top-[-1.8rem] lg:flex-row lg:px-8 lg:py-6 justify-between lg:align-center lg:max-w-[75rem] m-auto rounded-[5px]">
       {selectOptions.map((option, index) => (
         <div
           key={index}
@@ -86,8 +86,8 @@ export function Filters({ filterFunction }: Props): ReactElement {
               option.label === 'Property Type'
                 ? handleCategoryChange
                 : option.label === 'Location'
-                ? handleCountryChange
-                : handleAnnualYieldChange
+                  ? handleCountryChange
+                  : handleAnnualYieldChange
             }
           >
             {option.options.map((opt, idx) => (
@@ -99,10 +99,12 @@ export function Filters({ filterFunction }: Props): ReactElement {
         </div>
       ))}
 
-      <button className="flex bg-[#00B3B5] rounded-[5px] px-4 justify-center gap-4 p-[12px] cursor-pointer"
-         onClick={() =>
-            filterFunction(categoryFilter, countryFilter, annualYieldFilter)
-          }>
+      <button
+        className="flex bg-libertumGreen rounded-[5px] px-4 justify-center gap-4 py-4"
+        onClick={() =>
+          filterFunction(categoryFilter, countryFilter, annualYieldFilter)
+        }
+      >
         <p className="md:hidden text-white font-space_grotesk font-bold">
           Search Properties{' '}
         </p>
@@ -111,8 +113,7 @@ export function Filters({ filterFunction }: Props): ReactElement {
           alt="N"
           width="30"
           height="30"
-          className="md:w-[70px] "
-       
+          className="md:w-[70px]"
         />
       </button>
     </div>

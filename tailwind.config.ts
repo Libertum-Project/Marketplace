@@ -24,6 +24,9 @@ const config = {
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+        libertumBlue: '#080915' /* Dark blue */,
+        libertumGreen: '#00b3b5' /* Teal */,
+        libertumOrange: '#ffa143' /* Orange */,
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',

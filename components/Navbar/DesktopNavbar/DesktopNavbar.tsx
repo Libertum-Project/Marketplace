@@ -45,7 +45,7 @@ export function DesktopNavbar(): ReactElement {
     <>
       <nav className={css.desktopNavbar}>
         <Link
-          href={'./'}
+          href={'https://www.libertum.io'}
           onMouseEnter={handleHideModals}
           onTouchStart={handleHideModals}
         >
@@ -54,35 +54,35 @@ export function DesktopNavbar(): ReactElement {
 
         <div className={css.links}>
           <Link
-            href="./ico"
+            href="https://www.libertum.io/ico"
             onMouseEnter={handleHideModals}
             onTouchStart={handleHideModals}
           >
             Buy LBM
           </Link>
           <a
-            href="/comingsoon"
+            href="https://www.libertum.io/comingsoon"
             onMouseEnter={handleHideModals}
             onTouchStart={handleHideModals}
           >
             Explore Properties
           </a>
           <a
-            href="/comingsoon"
+            href="#"
             onMouseEnter={handleShowLearnModal}
             onTouchStart={handleShowLearnModal}
           >
             Learn ↓
           </a>
           <a
-            href="/community"
+            href="https://www.libertum.io/community"
             onMouseEnter={handleHideModals}
             onTouchStart={handleHideModals}
           >
             Community
           </a>
           <a
-            href="/comingsoon"
+            href="#"
             onMouseEnter={handleShowDocsModal}
             onTouchStart={handleShowDocsModal}
           >

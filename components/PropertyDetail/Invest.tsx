@@ -72,7 +72,7 @@ const Invest: React.FC<InvestProps> = ({
               transition
               ease-in-out
               m-0
-              focus:text-gray-700 focus:bg-white focus:border-teal-600 focus:outline-none
+              focus:text-gray-700 focus:bg-white focus:border-libertumGreen  focus:outline-none
             "
             value={tokenAmount}
             onChange={handleChange}
@@ -143,7 +143,7 @@ const Invest: React.FC<InvestProps> = ({
         <DialogTrigger asChild>
           <Button
             variant="outline"
-            className="w-full bg-teal-500 text-white px-4 py-4 rounded hover:bg-teal-600 transition duration-300 flex items-center justify-center font-space_grotesk select-none"
+            className="w-full bg-libertumGreen text-white px-4 py-4 rounded hover:bg-teal-600 transition duration-300 flex items-center justify-center font-space_grotesk select-none"
           >
             Invest Now!
           </Button>
@@ -169,7 +169,7 @@ const Invest: React.FC<InvestProps> = ({
             </div>
             <Button
               type="submit"
-              className="px-3 bg-teal-500 w-fit text-white rounded hover:bg-teal-600 transition duration-300 flex items-center justify-center font-space_grotesk'"
+              className="px-3 bg-libertumGreen w-fit text-white rounded hover:bg-teal-600 transition duration-300 flex items-center justify-center font-space_grotesk'"
             >
               Subscribe
             </Button>

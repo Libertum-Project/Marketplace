@@ -44,7 +44,7 @@ const PropertyGridView = ({
             />
           </div>
 
-          <div className="py-6 px-4">
+          <div className="py-6 px-4 max-h-[167.5px]">
             <div className="flex justify-between">
               <div className="flex flex-col">
                 <p className="text-black text-opacity-80 text-lg font-bold font-space_grotesk">
@@ -55,7 +55,7 @@ const PropertyGridView = ({
                 </p>
               </div>
 
-              <p className="px-4 py-1 bg-teal-500 bg-opacity-10 rounded-[50px] border border-teal-500 font-space_grotesk text-teal-500 text-xs font-bold flex items-center justify-center h-fit whitespace-nowrap">
+              <p className="px-4 py-1 bg-libertumGreen bg-opacity-10 rounded-[50px] border border-libertumGreen font-space_grotesk text-libertumGreen text-xs font-bold flex items-center justify-center h-fit whitespace-nowrap">
                 $ {property.total_valuation}
               </p>
             </div>

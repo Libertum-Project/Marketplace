@@ -36,13 +36,13 @@ export function LearnModal({ handleHideModals }: LearnModalProps): ReactElement 
         </div>
         <div className={css.modalLinks}>
           <div>
-            <Link href="/learn-investors">
+            <Link href="https://www.libertum.io/learn-investors">
               <Image src={investor} alt="Investors" width={20} height={20} />
               Investors
             </Link>
           </div>
           <div>
-            <Link href="/propertyowners">
+            <Link href="https://www.libertum.io/propertyowners">
               <Image
                 src={propertyOwner}
                 alt="Property Owner"
@@ -53,7 +53,7 @@ export function LearnModal({ handleHideModals }: LearnModalProps): ReactElement 
             </Link>
           </div>
           <div>
-            <Link href="/rwa">
+            <Link href="https://www.libertum.io/rwa">
               <Image src={tokenization} alt="Token" width={20} height={20} />
               RWA Tokenization
             </Link>
