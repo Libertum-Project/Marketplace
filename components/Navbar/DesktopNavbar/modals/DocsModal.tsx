@@ -66,7 +66,7 @@ export function DocsModal({ handleHideModals }: DocsModalProps): ReactElement {
             </Link>
           </div>
           <div>
-            <Link href= "/rfp">
+            <Link href= "https://www.libertum.io/rfp">
               <Image src={rfp} alt="Token" width={20} height={20} />
               RFP
             </Link>
