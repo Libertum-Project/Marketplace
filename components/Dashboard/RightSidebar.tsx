@@ -5,7 +5,7 @@ import { ServerImage } from '../shared/ServerImage';
 const RightSidebar = () => {
   return (
     <div className="bg-neutral-100 w-full sm:min-h-screen sm:max-w-[350px] border-l border-black border-opacity-10">
-      <div className="max-w-[350px] sm:min-h-screen bg-neutral-100 p-5 flex flex-col border-l gap-4 sm:fixed top-[58px] bottom-0 right-0 overflow-y-scroll">
+      <div className="max-w-[350px] sm:min-h-screen bg-neutral-100 p-5 flex flex-col border-l gap-4 sm:fixed top-[58px] bottom-0 right-0 overflow-y-scroll max-sm:w-[100%] max-sm:max-w-[100%]">
         <div className="flex flex-col">
           <div className="flex flex-col gap-4">
             <p className="text-black text-opacity-80 text-lg font-bold font-space_grotesk">

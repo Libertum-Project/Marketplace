@@ -14,7 +14,7 @@ const ConnectWalletButton = () => {
       ) : (
         <Link
           href="/login"
-          className="flex justify-between items-center px-4 py-2 bg-libertumGreen bg-opacity-30 rounded-[5px] border border-libertumGreen backdrop-blur-[10px] text-white gap-3"
+          className="flex justify-between items-center px-4 py-2 bg-teal-500 bg-opacity-30 rounded-[5px] border border-teal-500 backdrop-blur-[10px] text-white gap-3 override-link"
         >
           <ServerImage
             alt="Wallet"
