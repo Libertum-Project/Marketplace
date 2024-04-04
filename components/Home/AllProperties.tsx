@@ -13,7 +13,7 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from '@/components/ui/select';
 
 interface Props {
@@ -24,6 +24,8 @@ const AllProperties = ({ showFilters = false }: Props) => {
   const [viewType, setViewType] = useState('grid');
   const [properties, setProperties] = useState<any>([]);
   const [filteredProperties, setFilteredProperties] = useState<any>([]);
+  const [showNoPropertiesMessage, setShowNoPropertiesMessage] =
+    useState<boolean>(false);
 
   const handleViewType = (type: string) => {
     setViewType(type);
@@ -33,8 +35,8 @@ const AllProperties = ({ showFilters = false }: Props) => {
   const requestOptions = {
     method: 'GET',
     headers: {
-      authorization: `Bearer ${secretKey}`,
-    },
+      authorization: `Bearer ${secretKey}`
+    }
   };
   const fetchProperties = async () => {
     const data = await fetch(
@@ -67,6 +69,11 @@ const AllProperties = ({ showFilters = false }: Props) => {
       annualYieldFilter
     );
     setFilteredProperties(filteredProperties);
+    if (filteredProperties.length === 0) {
+      setShowNoPropertiesMessage(true);
+    } else {
+      setShowNoPropertiesMessage(false);
+    }
   };
 
   const sortProperties = (sortOrder: string) => {
@@ -145,20 +152,28 @@ const AllProperties = ({ showFilters = false }: Props) => {
             </Button>
           </div>
         </div>
+
         <div className={propertyWrapperClassName}>
-          {(filteredProperties.length > 0
-            ? filteredProperties
-            : properties
-          )?.map((property: any) => {
-            return (
-              <PropertyCard
-                key={property.id}
-                property={property}
-                viewType={viewType}
-                btnLink="/details"
-              />
-            );
-          })}
+          {showNoPropertiesMessage ? (
+            <p className="bg-[#000041] border border-[#00B3B5] text-white font-space_grotesk font-bold text-xl px-6 py-3 rounded-md flex justify-center items-center">
+              No properties to show.
+            </p>
+          ) : (
+            (filteredProperties.length > 0
+              ? filteredProperties
+              : properties
+            )?.map((property: any) => {
+              return (
+                <PropertyCard
+                  key={property.id}
+                  property={property}
+                  viewType={viewType}
+                  btnLink="/details"
+                />
+              );
+            })
+          )}
+
           {!properties?.length && !filteredProperties?.length && (
             <>
               <Card>

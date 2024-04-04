@@ -1,13 +1,6 @@
 'use client';
 import { useState, type ReactElement } from 'react';
 import { ServerImage } from '@/components/shared/ServerImage';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
 
 interface Props {
   filterFunction: any;
