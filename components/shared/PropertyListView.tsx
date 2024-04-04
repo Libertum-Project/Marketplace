@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import { Button } from '../ui/button';
 import { CardContent } from '../ui/card';
 import { ServerImage } from './ServerImage';
 import LikeProperty from './LikeProperty';
@@ -12,20 +11,30 @@ interface Props {
 const PropertyListView = ({ property }: Props) => {
   return (
     <CardContent className="p-0 flex w-full max-h-[168px]">
-      <ServerImage
-        src={property.highlight_image}
-        alt={property.location.city}
-        width={250}
-        height={166}
-      />
+      <Link
+        className="flex gap-10 justify-between divide-x"
+        href={{
+          pathname: '/details',
+          query: {
+            id: property.id
+          }
+        }}
+      >
+        <ServerImage
+          src={property.highlight_image}
+          alt={property.location.city}
+          width={250}
+          height={166}
+        />
+      </Link>
       <div className="py-4 px-16 w-full flex gap-10 justify-between divide-x">
         <Link
           className="flex gap-10 justify-between divide-x"
           href={{
             pathname: '/details',
             query: {
-              id: property.id,
-            },
+              id: property.id
+            }
           }}
         >
           <div className="flex flex-col py-6 justify-between">

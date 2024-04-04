@@ -1,13 +1,6 @@
 'use client';
 import { useState, type ReactElement } from 'react';
 import { ServerImage } from '@/components/shared/ServerImage';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
 
 interface Props {
   filterFunction: any;
@@ -28,13 +21,12 @@ export function Filters({ filterFunction }: Props): ReactElement {
       label: 'Property Type',
       options: [
         'All',
-        'Commercial',
         'Residential',
         'Commercial',
         'Farm',
         'Restaurant',
-        'Office',
-      ],
+        'Office'
+      ]
     },
     {
       imageURL: '/assets/filter2.svg',
@@ -48,14 +40,14 @@ export function Filters({ filterFunction }: Props): ReactElement {
         'Japan',
         'United Kingdom',
         'Netherlands',
-        'Brazil',
-      ],
+        'Brazil'
+      ]
     },
     {
       imageURL: '/assets/filter3.svg',
       label: 'Rental Yield',
-      options: ['Up to  5%', '5% to 10%', '10% to 15 %'],
-    },
+      options: ['Up to  5%', '5% to 10%', '10% to 15 %']
+    }
   ];
 
   const handleCategoryChange = (event: any) => {
@@ -94,8 +86,8 @@ export function Filters({ filterFunction }: Props): ReactElement {
               option.label === 'Property Type'
                 ? handleCategoryChange
                 : option.label === 'Location'
-                ? handleCountryChange
-                : handleAnnualYieldChange
+                  ? handleCountryChange
+                  : handleAnnualYieldChange
             }
           >
             {option.options.map((opt, idx) => (
@@ -107,8 +99,13 @@ export function Filters({ filterFunction }: Props): ReactElement {
         </div>
       ))}
 
-      <div className="flex bg-libertumGreen rounded-[5px] px-4 justify-center gap-4">
-        <p className="md:hidden text-white font-space_grotesk font-bold py-4">
+      <button
+        className="flex bg-libertumGreen rounded-[5px] px-4 justify-center gap-4 py-4"
+        onClick={() =>
+          filterFunction(categoryFilter, countryFilter, annualYieldFilter)
+        }
+      >
+        <p className="md:hidden text-white font-space_grotesk font-bold">
           Search Properties{' '}
         </p>
         <ServerImage
@@ -116,12 +113,9 @@ export function Filters({ filterFunction }: Props): ReactElement {
           alt="N"
           width="30"
           height="30"
-          className="md:w-[60px] md:h-[50px] cursor-pointer"
-          onClick={() =>
-            filterFunction(categoryFilter, countryFilter, annualYieldFilter)
-          }
+          className="md:w-[70px]"
         />
-      </div>
+      </button>
     </div>
   );
 }
