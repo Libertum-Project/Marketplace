@@ -31,15 +31,6 @@ const UserForm = () => {
   const address = useAddress();
   const { toast } = useToast();
   const secretKey = process.env.NEXT_PUBLIC_SECRET_KEY;
-  const [userData, setUserData] = useState<any>({
-    fname: '',
-    lname: '',
-    email: '',
-    address: '',
-    city: '',
-    postal: '',
-    country: '',
-  });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -113,16 +104,7 @@ const UserForm = () => {
           );
           if (response.ok) {
             const userData = await response.json();
-
-            setUserData({
-              fname: userData.first_name,
-              lname: userData.last_name,
-              email: userData.email,
-              address: userData.present_address,
-              city: userData.city,
-              postal: userData.postal_code,
-              country: userData.country,
-            });
+       
             form.reset({
               fname: userData.first_name,
               lname: userData.last_name,
