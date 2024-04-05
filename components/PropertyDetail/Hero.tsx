@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ServerImage } from '@/components/shared/ServerImage';
+import LikeProperty from '../shared/LikeProperty';
 
 const Hero: React.FC<{
   location: { country: string; region: string; city: string; address: string };
@@ -130,6 +131,7 @@ const Hero: React.FC<{
           {/* {property.annual_yield}% */}
           Rental Yield:3 %
         </div>
+        <LikeProperty property={property} position="center" />
       </div>
     </div>
   );
