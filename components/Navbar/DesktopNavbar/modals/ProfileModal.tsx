@@ -17,7 +17,7 @@ export function ProfileModal({
       onMouseLeave={handleHideModals}
       onTouchEnd={handleHideModals}
     >
-      <div className="w-full flex justify-center items-center gap-[10%]">
+      <div className="w-full flex justify-center items-center gap-[10%] max-w-[1202px]">
         <div className={css.modalHeader}>
           <p>Profile</p>
           <svg
@@ -39,7 +39,7 @@ export function ProfileModal({
             return (
               <Link
                 href={item.route}
-                className={`text-white flex gap-[10px] group py-[10px] px-5 items-center`}
+                className={`text-white flex gap-[10px] group px-5 items-center`}
                 key={item.route}
               >
                 <Image
