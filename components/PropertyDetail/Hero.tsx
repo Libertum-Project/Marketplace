@@ -17,7 +17,7 @@ const Hero: React.FC<{
   propertyPrice,
   totalShares,
   annualYield,
-  property
+  property,
 }) => {
   const tokenPrice = (propertyPrice / totalShares).toFixed(2);
 
@@ -32,18 +32,9 @@ const Hero: React.FC<{
             ${tokenPrice}/ token
           </h5>
 
-          <Button className="md:hidden  hover:bg-transparent p-0">
-            <ServerImage
-              src={`${
-                property.favourite
-                  ? '/assets/icons/property-liked.svg'
-                  : '/assets/icons/property-unliked.svg'
-              }`}
-              alt="like"
-              width={49}
-              height={48}
-            />
-          </Button>
+          <div className="md:hidden  hover:bg-transparent p-0 flex">
+            <LikeProperty property={property} position="center" />
+          </div>
         </section>
 
         <h5 className="font-ubuntu text-base text-left">
@@ -131,7 +122,9 @@ const Hero: React.FC<{
           {/* {property.annual_yield}% */}
           Rental Yield:3 %
         </div>
-        <LikeProperty property={property} position="center" />
+        <div className="hidden md:flex">
+          <LikeProperty property={property} position="center" />
+        </div>
       </div>
     </div>
   );
