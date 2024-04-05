@@ -21,7 +21,7 @@ const page = async ({
     <div className="relative w-full">
       <div
         className="hidden md:block absolute inset-0 bg-gradient-to-b from-[#0E0E1E] to-[#000041]"
-        style={{ height: '24.5rem', zIndex: '-1' }}
+        style={{ height: '25.5rem', zIndex: '-1' }}
       />
       <div
         className="md:hidden absolute inset-0 bg-gradient-to-b from-[#0E0E1E] to-[#000041]"
