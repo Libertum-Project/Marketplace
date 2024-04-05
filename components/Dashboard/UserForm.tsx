@@ -129,7 +129,7 @@ const UserForm = () => {
   return (
     <Form {...form}>
       <form
-        className="flex flex-1 flex-col gap-7"
+        className="flex flex-1 flex-col gap-7 max-w-screen-md m-0 m-auto "
         onSubmit={form.handleSubmit(onSubmit)}
       >
         <div className="flex gap-7">
@@ -219,7 +219,7 @@ const UserForm = () => {
                           value={
                             date ? format(date, 'yyyy-MM-dd') : 'Date of Birth'
                           }
-                          className="bg-white rounded-[5px] border border-slate-200 placeholder:text-slate-400"
+                          className="bg-white rounded-[5px] border border-slate-200 placeholder:text-slate-400 cursor-pointer"
                         />
                       </PopoverTrigger>
                       <PopoverContent className="w-auto p-0 bg-white">
