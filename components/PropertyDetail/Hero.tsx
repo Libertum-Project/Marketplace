@@ -34,7 +34,6 @@ const Hero: React.FC<{
   const annualRepayment = annualCapitalRepayment + annualRentalIncome;
   const monthlyRepayment = annualRepayment / 12;
 
-
   return (
     <div className="max-sm:bg-primary-gradient flex flex-col items-center text-center md:text-left md:items-stretch md:w-[39rem] pt-16 md:p-0">
       <div className="flex flex-col text-white gap-4 w-full ">
@@ -43,9 +42,13 @@ const Hero: React.FC<{
             {location.address}
           </h2>
           <h5 className="hidden md:flex px-4 py-1 bg-teal-500 bg-opacity-10 rounded-[50px] border border-teal-500 font-space_grotesk text-teal-500 text-lg font-bold items-center justify-center whitespace-nowrap h-10">
-            ${tokenPrice}/ token
+            $
+            {tokenPrice.toLocaleString('en-US', {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}
+            / token
           </h5>
-
           <div className="md:hidden  hover:bg-transparent p-0 flex">
             <LikeProperty property={property} position="center" />
           </div>
@@ -57,51 +60,105 @@ const Hero: React.FC<{
       </div>
       <div className="md:hidden w-full items-start justify-start py-5">
         <h5 className="md:hidden px-4 py-1 bg-libertumGreen bg-opacity-10 rounded-[50px] border border-libertumGreen font-space_grotesk text-libertumGreen text-lg font-bold w-fit">
-          ${tokenPrice} per token
+          $
+          {tokenPrice.toLocaleString('en-US', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          })}{' '}
+          per token
         </h5>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 mt-4 w-full gap-y-1"> 
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 mt-4 w-full gap-y-1">
         {/* Fila 1 */}
-        <div className="hidden md:flex justify-between ">
-          <p className="text-white text-sm font-bold text-left">Min Invesment: </p>
-          <p className="text-white text-sm font-normal">${tokenPrice}</p>
+        <div className="hidden md:flex items-end justify-between ">
+          <p className="text-white text-sm font-bold text-left">
+            Min Invesment:{' '}
+          </p>
+          <p className="text-white text-sm font-normal">
+            {' '}
+            $
+            {tokenPrice.toLocaleString('en-US', {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}
+          </p>
         </div>
-        <div className="flex justify-between">
-          <p className="text-white text-sm font-bold text-left">Market Value: </p>
-          <p className="text-white text-sm font-normal">${propertyPrice}</p>
+        <div className="flex items-end justify-between">
+          <p className="text-white text-sm font-bold text-left">
+            Market Value:{' '}
+          </p>
+          <p className="text-white text-sm font-normal">
+            ${propertyPrice.toLocaleString('en-US')}
+          </p>
         </div>
-        <div className="flex justify-between">
-          <p className="text-white text-sm font-bold text-left">Repayment Term: </p>
-          <p className="text-white text-sm font-normal">{repaymentDuration} months</p>
+        <div className="flex items-end justify-between">
+          <p className="text-white text-sm font-bold text-left">
+            Repayment Term:{' '}
+          </p>
+          <p className="text-white text-sm font-normal">
+            {repaymentDuration} months
+          </p>
         </div>
 
         {/* Fila 2 */}
-        <div className="flex justify-between">
-          <p className="text-white text-sm font-bold text-left">Total Tokens: </p>
+        <div className="flex items-end justify-between">
+          <p className="text-white text-sm font-bold text-left">
+            Total Tokens:{' '}
+          </p>
           <p className="text-white text-sm font-normal">{totalShares}</p>
         </div>
-        <div className="flex justify-between">
-          <p className="text-white text-sm font-bold text-left">Income per Token: </p>
-          <p className="text-white text-sm font-normal">$ {rentalIncomePerToken}</p>
+        <div className="flex items-end justify-between">
+          <p className="text-white text-sm font-bold text-left">
+            Income per Token:{' '}
+          </p>
+          <p className="text-white text-sm font-normal">
+            $
+            {rentalIncomePerToken.toLocaleString('en-US', {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}
+          </p>
         </div>
-        <div className="flex justify-between">
-          <p className="text-white text-sm font-bold text-left">Rental Yield: </p>
-          <p className="text-white text-sm font-normal">{annualYield} %</p>
+        <div className="flex items-end justify-between">
+          <p className="text-white text-sm font-bold text-left">
+            Rental Yield:{' '}
+          </p>
+          <p className="text-white text-sm font-normal">
+            {annualYield.toFixed(2)} %
+          </p>
         </div>
 
         {/* Fila 3 */}
-        <div className="flex justify-between">
-          <p className="text-white text-sm font-bold text-left">Tokens Available: </p>
+        <div className="flex items-end justify-between">
+          <p className="text-white text-sm font-bold text-left">
+            Tokens Available:{' '}
+          </p>
           <p className="text-white text-sm font-normal">{totalShares}</p>
         </div>
-        <div className="flex justify-between">
-          <p className="text-white text-sm font-bold text-left">Monthly Capital Repayment: </p>
-          <p className="text-white text-sm font-normal">${monthlyCapitalRepayment}</p>
+        <div className="flex items-end justify-between">
+          <p className="text-white text-sm font-bold text-left">
+            Monthly Capital Repayment:{' '}
+          </p>
+          <p className="text-white text-sm font-normal">
+            $
+            {monthlyCapitalRepayment.toLocaleString('en-US', {
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0,
+            })}
+          </p>
         </div>
-        <div className="flex justify-between">
-          <p className="text-white text-sm font-bold text-left">Annual Repayment: </p>
-          <p className="text-white text-sm font-normal">${annualRepayment}</p>
+        <div className="flex items-end justify-between">
+          <p className="text-white text-sm font-bold text-left">
+            Annual Repayment:{' '}
+          </p>
+          <p className="text-white text-sm font-normal">
+            $
+            {annualRepayment.toLocaleString('en-US', {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}
+          </p>
         </div>
       </div>
 

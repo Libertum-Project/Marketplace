@@ -41,7 +41,11 @@ const Financials: React.FC<{
             <TableRow className="odd:bg-[#F5F5F5]">
               <TableCell className="font-medium">Token Price:</TableCell>
               <TableCell className="text-opacity-80">
-                $ {tokenPrice.toFixed(2)}
+                $
+                {tokenPrice.toLocaleString('en-US', {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}
               </TableCell>
             </TableRow>
             <TableRow className="odd:bg-[#F5F5F5]">
@@ -56,44 +60,21 @@ const Financials: React.FC<{
             <TableRow className="odd:bg-[#F5F5F5]">
               <TableCell className="font-medium">Market Value:</TableCell>
               <TableCell className="text-opacity-80">
-                ${propertyPrice}
+                ${propertyPrice.toLocaleString('en-US')}
               </TableCell>
             </TableRow>
             <TableRow className="odd:bg-[#F5F5F5]">
               <TableCell className="font-medium ">Income per Token:</TableCell>
               <TableCell className="text-opacity-80">
-                ${rentalIncomePerToken.toFixed(2)}
+                $
+                {rentalIncomePerToken.toLocaleString('en-US', {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}
               </TableCell>
             </TableRow>
           </TableBody>
         </Table>
-
-        {/* <Table className="h-full">
-          <TableBody className="border rounded-[5px]">
-            <TableRow className="odd:bg-[#F5F5F5]">
-              <TableCell className="font-medium">Capital Repayment:</TableCell>
-              <TableCell className="text-opacity-80">
-                {annualCapitalRepayment}%
-              </TableCell>
-            </TableRow>
-            <TableRow className="odd:bg-[#F5F5F5]">
-              <TableCell className="font-medium">Repayment Term:</TableCell>
-              <TableCell className="text-opacity-80">
-                {repaymentDuration} months
-              </TableCell>
-            </TableRow>
-            <TableRow className="odd:bg-[#F5F5F5]">
-              <TableCell className="font-medium">Monthly Capital Repayment:</TableCell>
-              <TableCell className="text-opacity-80">$ {monthlyCapitalRepaymentPerToken} per token</TableCell>
-            </TableRow>
-            <TableRow className="odd:bg-[#F5F5F5]">
-              <TableCell className="font-medium ">Annual Repayment:</TableCell>
-              <TableCell className="text-opacity-80">
-                ${annualRepayment} 
-              </TableCell>
-            </TableRow>
-          </TableBody>
-        </Table> */}
       </div>
 
       <div className="w-full">
@@ -129,30 +110,42 @@ const Financials: React.FC<{
               <TableRow className="odd:bg-[#F5F5F5]">
                 <TableCell className="font-medium">Investment:</TableCell>
                 <TableCell className="text-opacity-80">
-                  ${investment.toFixed(2)}
+                  $
+                  {investment.toLocaleString('en-US', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  })}
                 </TableCell>
               </TableRow>
               <TableRow className="odd:bg-[#F5F5F5]">
-                <TableCell className="font-medium whitespace-nowrap">
+                <TableCell className="font-medium">
                   Annual Rental Income:
                 </TableCell>
-                <TableCell className="text-opacity-80 whitespace-nowrap">
-                  $ {annualRentalIncome.toFixed(2)}
+                <TableCell className="text-opacity-80">
+                  $
+                  {annualRentalIncome.toLocaleString('en-US', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  })}
                 </TableCell>
               </TableRow>
               <TableRow className="odd:bg-[#F5F5F5]">
-                <TableCell className="font-medium whitespace-nowrap">
+                <TableCell className="font-medium">
                   Monthly Rental Income:
                 </TableCell>
-                <TableCell className="text-opacity-80 whitespace-nowrap">
-                  $ {monthlyRentalIncome.toFixed(2)}
+                <TableCell className="text-opacity-80">
+                  $
+                  {monthlyRentalIncome.toLocaleString('en-US', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  })}
                 </TableCell>
               </TableRow>
               <TableRow className="odd:bg-[#F5F5F5]">
                 <TableCell className="font-medium whitespace-nowrap">
-                  Capital Repatument Duration:
+                  Capital Repayment Duration:
                 </TableCell>
-                <TableCell className="text-opacity-80 whitespace-nowrap">
+                <TableCell className="text-opacity-80">
                   {repaymentDuration}
                 </TableCell>
               </TableRow>
@@ -162,35 +155,50 @@ const Financials: React.FC<{
           <Table className="h-full">
             <TableBody className="border rounded-[5px]">
               <TableRow className="odd:bg-[#F5F5F5]">
-                <TableCell className="font-medium whitespace-nowrap">
+                <TableCell className="font-medium">
                   Monthly Rep. per Token:
                 </TableCell>
-                <TableCell className="text-opacity-80 whitespace-nowrap">
-                  {monthlyCapitalRepaymentPerToken.toFixed(2)}
+                <TableCell className="text-opacity-80">
+                  $
+                  {monthlyCapitalRepaymentPerToken.toLocaleString('en-US', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  })}
                 </TableCell>
               </TableRow>
               <TableRow className="odd:bg-[#F5F5F5]">
-                <TableCell className="font-medium whitespace-nowrap">
-                  Annual Cap Repayment
+                <TableCell className="font-medium">
+                  Annual Cap Repayment:
                 </TableCell>
-                <TableCell className="text-opacity-80 whitespace-nowrap">
-                  {annualCapitalRepayment.toFixed(2)} / year
+                <TableCell className="text-opacity-80">
+                  $
+                  {annualCapitalRepayment.toLocaleString('en-US', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  })}{' '}
+                  / year
                 </TableCell>
               </TableRow>
               <TableRow className="odd:bg-[#F5F5F5]">
-                <TableCell className="font-medium whitespace-nowrap">
+                <TableCell className="font-medium">
                   Monthly Repayment:
                 </TableCell>
-                <TableCell className="text-opacity-80 whitespace-nowrap">
-                  $ {monthlyRepayment.toFixed(2)}
+                <TableCell className="text-opacity-80">
+                  $
+                  {monthlyRepayment.toLocaleString('en-US', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  })}
                 </TableCell>
               </TableRow>
               <TableRow className="odd:bg-[#F5F5F5]">
-                <TableCell className="font-medium whitespace-nowrap">
-                  Annual Repayment:
-                </TableCell>
-                <TableCell className="text-opacity-80 whitespace-nowrap">
-                  ${annualRepayment.toFixed(2)}
+                <TableCell className="font-medium">Annual Repayment:</TableCell>
+                <TableCell className="text-opacity-80">
+                  $
+                  {annualRepayment.toLocaleString('en-US', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  })}
                 </TableCell>
               </TableRow>
             </TableBody>

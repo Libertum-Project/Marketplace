@@ -13,11 +13,10 @@ interface Props {
   btnLink?: string;
   investmentDetail?: boolean;
 }
-
 const PropertyGridView = ({
   property,
   btnTitle,
-  investmentDetail = false
+  investmentDetail = false,
 }: Props) => {
   return (
     <>
@@ -27,8 +26,8 @@ const PropertyGridView = ({
           href={{
             pathname: '/details',
             query: {
-              id: property.id
-            }
+              id: property.id,
+            },
           }}
         >
           <div className="h-[255px]">
@@ -39,7 +38,7 @@ const PropertyGridView = ({
               width={310}
               height={250}
               style={{
-                height: '100%'
+                height: '100%',
               }}
             />
           </div>
@@ -56,7 +55,11 @@ const PropertyGridView = ({
               </div>
 
               <p className="px-4 py-1 bg-libertumGreen bg-opacity-10 rounded-[50px] border border-libertumGreen font-space_grotesk text-libertumGreen text-xs font-bold flex items-center justify-center h-fit whitespace-nowrap">
-                $ {property.total_valuation}
+                $
+                {property.total_valuation.toLocaleString('en-US', {
+                  minimumFractionDigits: 0,
+                  maximumFractionDigits: 0,
+                })}{' '}
               </p>
             </div>
 
@@ -100,7 +103,12 @@ const PropertyGridView = ({
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value={`item-${property.id}`}>
               <AccordionContent>
-                <PropertyDetailTable />
+                <PropertyDetailTable
+                  totalShares={property.total_shares}
+                  propertyPrice={property.total_valuation}
+                  annualYield={property.annual_yield}
+                  repaymentDuration={property.token_duration_months}
+                  />
               </AccordionContent>
 
               <PropertyCardButton

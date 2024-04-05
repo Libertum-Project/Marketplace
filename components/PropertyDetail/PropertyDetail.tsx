@@ -40,7 +40,7 @@ interface PropertyDetailProps {
 
 const PropertyDetail: React.FC<PropertyDetailProps> = ({ property }) => {
   return (
-    <div className="md:mx-auto md:flex md:max-w-[75rem] md:px-0 pt-32 pb-12 md:justify-between gap-20 ">
+    <div className="md:mx-auto md:flex md:max-w-[75rem] md:px-0 pt-36 pb-12 md:justify-between gap-20 ">
       <div className="space-y-4 relative md:order-2 px-3 md:px-0">
         <ImageGallery images={property.image_gallery} />
         <div className="hidden md:block sticky top-0 z-10 ">
