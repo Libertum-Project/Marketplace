@@ -11,15 +11,29 @@ const Hero: React.FC<{
   totalShares: number;
   annualYield: number;
   property: any;
+  repaymentDuration: number;
 }> = ({
   location,
   category,
   propertyPrice,
   totalShares,
   annualYield,
+  repaymentDuration,
   property,
 }) => {
-  const tokenPrice = (propertyPrice / totalShares).toFixed(2);
+  const proyectedRentalYield = annualYield / 100;
+  const tokenPrice = propertyPrice / totalShares;
+  const investment = 1 * tokenPrice;
+  const rentalIncomePerToken = tokenPrice * proyectedRentalYield;
+  const annualRentalIncome = investment * rentalIncomePerToken;
+  const monthlyRentalIncome = annualRentalIncome / 12;
+  const annualCapitalRepayment = investment / (repaymentDuration / 12);
+  const monthlyCapitalRepaymentPerToken =
+    investment / totalShares / repaymentDuration;
+  const monthlyCapitalRepayment = annualCapitalRepayment / 12;
+  const annualRepayment = annualCapitalRepayment + annualRentalIncome;
+  const monthlyRepayment = annualRepayment / 12;
+
 
   return (
     <div className="max-sm:bg-primary-gradient flex flex-col items-center text-center md:text-left md:items-stretch md:w-[39rem] pt-16 md:p-0">
@@ -47,47 +61,47 @@ const Hero: React.FC<{
         </h5>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 mt-6 w-full">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 mt-4 w-full gap-y-1"> 
         {/* Fila 1 */}
-        <div className="hidden md:flex items-center justify-between ">
-          <p className="text-white text-sm font-bold">Min Invesment: </p>
-          <p className="text-white text-lg font-normal">${tokenPrice}</p>
+        <div className="hidden md:flex justify-between ">
+          <p className="text-white text-sm font-bold text-left">Min Invesment: </p>
+          <p className="text-white text-sm font-normal">${tokenPrice}</p>
         </div>
-        <div className="flex items-center justify-between">
-          <p className="text-white text-sm font-bold">Market Value: </p>
-          <p className="text-white text-lg font-normal">${propertyPrice}</p>
+        <div className="flex justify-between">
+          <p className="text-white text-sm font-bold text-left">Market Value: </p>
+          <p className="text-white text-sm font-normal">${propertyPrice}</p>
         </div>
-        <div className="flex items-center justify-between">
-          <p className="text-white text-sm font-bold">Repayment Term: </p>
-          <p className="text-white text-lg font-normal">5 years</p>
+        <div className="flex justify-between">
+          <p className="text-white text-sm font-bold text-left">Repayment Term: </p>
+          <p className="text-white text-sm font-normal">{repaymentDuration} months</p>
         </div>
 
         {/* Fila 2 */}
-        <div className="flex items-center justify-between">
-          <p className="text-white text-sm font-bold">Total Tokens: </p>
-          <p className="text-white text-lg font-normal">{totalShares}</p>
+        <div className="flex justify-between">
+          <p className="text-white text-sm font-bold text-left">Total Tokens: </p>
+          <p className="text-white text-sm font-normal">{totalShares}</p>
         </div>
-        <div className="flex items-center justify-between">
-          <p className="text-white text-sm font-bold">Income per Token: </p>
-          <p className="text-white text-lg font-normal">0.5</p>
+        <div className="flex justify-between">
+          <p className="text-white text-sm font-bold text-left">Income per Token: </p>
+          <p className="text-white text-sm font-normal">$ {rentalIncomePerToken}</p>
         </div>
-        <div className="flex items-center justify-between">
-          <p className="text-white text-sm font-bold">Rental Yield: </p>
-          <p className="text-white text-lg font-normal">{annualYield} %</p>
+        <div className="flex justify-between">
+          <p className="text-white text-sm font-bold text-left">Rental Yield: </p>
+          <p className="text-white text-sm font-normal">{annualYield} %</p>
         </div>
 
         {/* Fila 3 */}
-        <div className="flex items-center justify-between">
-          <p className="text-white text-sm font-bold">Tokens Available: </p>
-          <p className="text-white text-lg font-normal">{totalShares}</p>
+        <div className="flex justify-between">
+          <p className="text-white text-sm font-bold text-left">Tokens Available: </p>
+          <p className="text-white text-sm font-normal">{totalShares}</p>
         </div>
-        <div className="flex items-center justify-between">
-          <p className="text-white text-sm font-bold">Capital Repayment: </p>
-          <p className="text-white text-lg font-normal">250</p>
+        <div className="flex justify-between">
+          <p className="text-white text-sm font-bold text-left">Monthly Capital Repayment: </p>
+          <p className="text-white text-sm font-normal">{monthlyCapitalRepayment}</p>
         </div>
-        <div className="flex items-center justify-between">
-          <p className="text-white text-sm font-bold">Annual Return: </p>
-          <p className="text-white text-lg font-normal">2%</p>
+        <div className="flex justify-between">
+          <p className="text-white text-sm font-bold text-left">Annual Repayment: </p>
+          <p className="text-white text-sm font-normal">{annualRepayment}</p>
         </div>
       </div>
 

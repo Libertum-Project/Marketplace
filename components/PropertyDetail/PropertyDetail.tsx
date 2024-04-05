@@ -63,6 +63,8 @@ const PropertyDetail: React.FC<PropertyDetailProps> = ({ property }) => {
               totalShares={property.total_shares}
               annualYield={property.annual_yield}
               property={property}
+              repaymentDuration={property.token_duration_months}
+              description = {property.description}
             />
           </div>
         </div>
