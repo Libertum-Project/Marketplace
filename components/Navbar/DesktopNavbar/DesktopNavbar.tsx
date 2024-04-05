@@ -90,7 +90,7 @@ export function DesktopNavbar(): ReactElement {
           </a>
           {address && (
             <a
-              href="/profile"
+              href="#"
               onMouseEnter={handleShowProfileModal}
               onTouchStart={handleShowProfileModal}
             >
