@@ -97,11 +97,11 @@ const Hero: React.FC<{
         </div>
         <div className="flex justify-between">
           <p className="text-white text-sm font-bold text-left">Monthly Capital Repayment: </p>
-          <p className="text-white text-sm font-normal">{monthlyCapitalRepayment}</p>
+          <p className="text-white text-sm font-normal">${monthlyCapitalRepayment}</p>
         </div>
         <div className="flex justify-between">
           <p className="text-white text-sm font-bold text-left">Annual Repayment: </p>
-          <p className="text-white text-sm font-normal">{annualRepayment}</p>
+          <p className="text-white text-sm font-normal">${annualRepayment}</p>
         </div>
       </div>
 
