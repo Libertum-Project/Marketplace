@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
@@ -9,7 +9,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
+  FormMessage
 } from '@/components/ui/form';
 import { formSchema } from '@/lib/validations';
 import { Input } from '@/components/ui/input';
@@ -19,7 +19,7 @@ import { Calendar } from '@/components/ui/calendar';
 import {
   Popover,
   PopoverContent,
-  PopoverTrigger,
+  PopoverTrigger
 } from '@/components/ui/popover';
 import { useAddress } from '@thirdweb-dev/react';
 import { useToast } from '@/components/ui/use-toast';
@@ -42,7 +42,7 @@ const UserForm = () => {
       city: '',
       postal: '',
       country: '',
-    },
+    }
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
@@ -56,7 +56,7 @@ const UserForm = () => {
             headers: {
               Authorization: `Bearer ${secretKey}`,
               Accept: 'application/json',
-              'Content-Type': 'application/json;charset=utf-8',
+              'Content-Type': 'application/json;charset=utf-8'
             },
             body: JSON.stringify({
               first_name: values.fname,
@@ -66,8 +66,8 @@ const UserForm = () => {
               present_address: values.address,
               city: values.city,
               country: values.country,
-              postal_code: values.postal,
-            }),
+              postal_code: values.postal
+            })
           }
         );
 
@@ -76,7 +76,7 @@ const UserForm = () => {
             variant: 'default',
             className:
               'bg-[#00B3B5] text-white rounded-[5px] [data-state=open]:top-0',
-            title: 'Your profile is updated!',
+            title: 'Your profile is updated!'
           });
         }
       }
@@ -86,10 +86,50 @@ const UserForm = () => {
       setIsSubmitting(false);
     }
   }
+  useEffect(() => {
+    // Fetch user data when component mounts if address exists
+    const fetchUserData = async () => {
+      try {
+        if (address) {
+          const response = await fetch(
+            `https://libertum--marketplace.azurewebsites.net/users/${address}`,
+            {
+              method: 'GET',
+              headers: {
+                Authorization: `Bearer ${secretKey}`,
+                Accept: 'application/json',
+                'Content-Type': 'application/json;charset=utf-8'
+              }
+            }
+          );
+          if (response.ok) {
+            const userData = await response.json();
+       
+            form.reset({
+              fname: userData.first_name,
+              lname: userData.last_name,
+              email: userData.email,
+              address: userData.present_address,
+              city: userData.city,
+              postal: userData.postal_code,
+              country: userData.country,
+            });
+            const date = userData.dob
+            setDate(date)
+          }
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchUserData();
+  }, [address, secretKey]);
+
   return (
     <Form {...form}>
       <form
-        className="flex flex-1 flex-col gap-7"
+        className="flex flex-1 flex-col gap-7 max-w-screen-md m-0 m-auto "
         onSubmit={form.handleSubmit(onSubmit)}
       >
         <div className="flex gap-7">
@@ -179,7 +219,7 @@ const UserForm = () => {
                           value={
                             date ? format(date, 'yyyy-MM-dd') : 'Date of Birth'
                           }
-                          className="bg-white rounded-[5px] border border-slate-200 placeholder:text-slate-400"
+                          className="bg-white rounded-[5px] border border-slate-200 placeholder:text-slate-400 cursor-pointer"
                         />
                       </PopoverTrigger>
                       <PopoverContent className="w-auto p-0 bg-white">
@@ -295,7 +335,7 @@ const UserForm = () => {
 
         <div className="flex justify-end">
           <Button
-            className="bg-teal-500 rounded-[5px] text-white text-center hover:bg-teal-500 min-w-[164px] max-sm:w-full"
+            className="bg-libertumGreen rounded-[5px] text-white text-center hover:bg-teal-500 min-w-[164px] max-sm:w-full"
             type="submit"
             disabled={isSubmitting}
           >

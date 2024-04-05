@@ -20,8 +20,8 @@ export const sidebarLinks: SidebarLink[] = [
   },
   {
     imgURL: '/assets/icons/properties.svg',
-    route: '/properties',
-    label: 'My Properties',
+    route: '/saved',
+    label: 'Saved',
   },
   {
     imgURL: '/assets/icons/lbm-coin.svg',
@@ -33,8 +33,8 @@ export const sidebarLinks: SidebarLink[] = [
 export const mobileMenu: SidebarLink[] = [
   {
     imgURL: '/assets/icons/dashboard.svg',
-    route: '/dashboard',
-    label: 'Dashboard',
+    route: '/profile',
+    label: 'Profile',
   },
   {
     imgURL: '/assets/icons/listings.svg',
@@ -43,8 +43,8 @@ export const mobileMenu: SidebarLink[] = [
   },
   {
     imgURL: '/assets/icons/properties.svg',
-    route: '/properties',
-    label: 'Properties',
+    route: '/saved',
+    label: 'Saved',
   },
   {
     imgURL: '/assets/icons/lbm-coin.svg',

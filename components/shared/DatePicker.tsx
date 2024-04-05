@@ -21,7 +21,7 @@ const DatePicker = () => {
         <Button
           variant={'outline'}
           className={cn(
-            'w-full justify-start text-left font-normal bg-white rounded-[5px] border border-slate-200 placeholder:text-slate-400',
+            'w-full justify-start text-left font-normal bg-white rounded-[5px] border border-slate-200 placeholder:text-slate-400 cursor-pointer',
             !date && 'text-muted-foreground'
           )}
         >
