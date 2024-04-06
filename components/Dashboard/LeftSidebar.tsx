@@ -21,6 +21,7 @@ const LeftSidebar = () => {
           const isActive =
             (pathname.includes(item.route) && item.route.length > 1) ||
             pathname === item.route;
+
           return (
             <Link
               href={item.route}
