@@ -17,8 +17,8 @@ const FavoriteProperties = () => {
   const requestOptions = {
     method: 'GET',
     headers: {
-      authorization: `Bearer ${secretKey}`,
-    },
+      authorization: `Bearer ${secretKey}`
+    }
   };
 
   const fetchProperties = async () => {
@@ -38,9 +38,13 @@ const FavoriteProperties = () => {
   return (
     <>
       {properties.length > 0 ? (
-        <div className="p-5 grid grid-cols-1 min-[575px]:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-full">
+        <div className="flex flex-row flex-wrap justify-center justify-items-center gap-6 max-w-full p-6 mb-32 md:mb-0 ">
           {properties.map((property: any) => {
-            return <PropertyCard property={property} key={property.id} />;
+            return (
+              <div className="w-[382px]" key={property.id}>
+                <PropertyCard property={property} key={property.id} />
+              </div>
+            );
           })}
         </div>
       ) : isLoading ? (
