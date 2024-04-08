@@ -16,7 +16,7 @@ const MobileNav = () => {
           <Link
             href={item.route}
             className={`text-white flex flex-col gap-[10px] group py-[10px] px-[10px] items-center ${
-              isActive && 'text-white'
+                isActive && 'bg-white bg-opacity-5 rounded-[5px]'
             }`}
             key={item.route}
           >

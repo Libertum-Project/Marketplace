@@ -7,7 +7,11 @@ import { usePathname } from 'next/navigation';
 const Navbar = () => {
   const pathname = usePathname();
 
-  const title = pathname === '/saved' || pathname === '/lbm-coin' ? pathname.replace('/', '') : `My ${pathname.replace('/', '')}`;
+  const title =
+    pathname === '/saved' || pathname === '/lbm-coin'
+      ? pathname.replace('/', '')
+      : `My ${pathname.replace('/', '')}`;
+
   return (
     <nav className="flex justify-between bg-white py-2 px-5 border-b border-black border-opacity-5 w-full items-center max-sm:bg-[#080915]">
       <div>

@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation';
 const LeftSidebar = () => {
   const pathname = usePathname();
   return (
-    <div className="sticky left-0 top-0 flex h-screen flex-col justify-between overflow-y-auto max-sm:hidden lg:w-[252px] bg-[#080915] p-5">
+    <div className="sticky left-0 top-0 flex h-screen flex-col justify-between overflow-y-auto max-sm:hidden lg:w-[252px] bg-[#080915] p-5 min-w-max  ">
       <div className="flex flex-1 flex-col gap-[30px]">
         <Link href="/" className="px-5">
           <Image
@@ -21,6 +21,7 @@ const LeftSidebar = () => {
           const isActive =
             (pathname.includes(item.route) && item.route.length > 1) ||
             pathname === item.route;
+
           return (
             <Link
               href={item.route}
