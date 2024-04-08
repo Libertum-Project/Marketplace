@@ -17,7 +17,7 @@ export function ProfileModal({
       onMouseLeave={handleHideModals}
       onTouchEnd={handleHideModals}
     >
-      <div className="w-full flex justify-center items-center gap-[10%] max-w-[1202px]">
+      <div className="w-full flex justify-center items-center gap-[10%] max-w-[1202px] m-auto">
         <div className={css.modalHeader}>
           <p>Profile</p>
           <svg
@@ -50,7 +50,7 @@ export function ProfileModal({
                   className="group-hover:fill-[#00B3B5]"
                 />
                 <p
-                  className={`group-hover:text-[#00B3B5] text-opacity-70 text-xs font-bold font-ubuntu`}
+                  className={`group-hover:text-[#00B3B5] text-opacity-70 text-xs font-bold whitespace-nowrap font-ubuntu`}
                 >
                   {item.label}
                 </p>
