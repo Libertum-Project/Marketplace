@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Loading from '@/components/MessageBox/Loading.jsx';
+import PendingMessage from '@/components/MessageBox/PendingMessage';
 import { Button } from '@/components/ui/button';
 import {
   useContractWrite,
@@ -22,7 +23,7 @@ const MintButton = ({ contractAddress, amount, price }: any) => {
     'paymentToken'
   );
 
-  const { mutateAsync: mint, error } = useContractWrite(
+  const { mutateAsync: mint, isLoading: isMintInProgress } = useContractWrite(
     propertyContract,
     'mint'
   );
@@ -38,11 +39,22 @@ const MintButton = ({ contractAddress, amount, price }: any) => {
     setShowIsLoadingUi(true);
     if (!isLoading) {
       try {
-        const approveAmount =
-          (BigInt(amount) * BigInt(price) * BigInt(10 ** 18) * BigInt(105)) /
-          BigInt(100);
+        //todo: Check user USDT and BNB.
+
+        const amountBigInt = BigInt(amount);
+        const priceBigInt = BigInt(price);
+
+        // Calculate the total amount in BigInt.
+        const totalAmountBigInt = amountBigInt * priceBigInt * BigInt(10 ** 18);
+
+        // Calculate the additional 5% fee.
+        const fee = (totalAmountBigInt * BigInt(5)) / BigInt(100);
+
+        const approveAmount = totalAmountBigInt + fee;
         await approve({ args: [contractAddress, approveAmount] });
+
         await mint({ args: [amount] });
+        console.log('hola');
         setShowIsLoadingUi(false);
       } catch (error) {
         setShowIsLoadingUi(false);
@@ -54,6 +66,10 @@ const MintButton = ({ contractAddress, amount, price }: any) => {
   return (
     <>
       {showIsLoadingUi && <Loading />}
+      {isMintInProgress && (
+        <PendingMessage message="Almost there! Your mint transaction is in progress." />
+      )}
+
       <Button
         variant="outline"
         className="w-full bg-libertumGreen text-white px-4 py-4 rounded hover:bg-teal-600 transition duration-300 flex items-center justify-center font-space_grotesk select-none"
