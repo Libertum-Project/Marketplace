@@ -24,9 +24,14 @@ export const sidebarLinks: SidebarLink[] = [
     label: 'Saved',
   },
   {
-    imgURL: '/assets/icons/lbm-coin.svg',
+    imgURL: '/assets/icons/earn.svg',
     route: '/lbm-coin',
-    label: 'LBM Coin',
+    label: 'Earn',
+  },
+  {
+    imgURL: '/assets/icons/market.svg',
+    route: '/',
+    label: 'Marketplace',
   },
 ];
 
@@ -47,14 +52,19 @@ export const mobileMenu: SidebarLink[] = [
     label: 'Saved',
   },
   {
-    imgURL: '/assets/icons/lbm-coin.svg',
+    imgURL: '/assets/icons/earn.svg',
     route: '/lbm-coin',
-    label: 'LBM Coin',
+    label: 'Earn',
   },
   {
     imgURL: '/assets/icons/investments.svg',
     route: '/investments',
     label: 'Investments',
+  },
+  {
+    imgURL: '/assets/icons/market.svg',
+    route: '/',
+    label: 'Marketplace',
   },
 ];
 
