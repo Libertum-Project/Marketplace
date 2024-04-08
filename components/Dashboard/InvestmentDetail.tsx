@@ -5,9 +5,9 @@ import {
   DialogContent,
   DialogTrigger,
 } from '@/components/ui/dialog';
-
 import { ServerImage } from '../shared/ServerImage';
 import InvestmentDetailTabs from './InvestmentDetailTabs';
+import Link from 'next/link';
 
 interface Props {
   property: any;
@@ -60,22 +60,24 @@ const InvestmentDetail = ({ property }: Props) => {
             </div>
 
             <div className="mt-[30px] flex flex-col gap-2 max-sm:hidden">
-              <div className="p-4 px-16 bg-teal-500 bg-opacity-30 rounded-[5px] border border-teal-500 justify-around items-center flex gap-6">
-                <ServerImage
-                  src="/assets/icons/investment-details/marketplace.svg"
-                  alt="marketplace"
-                  width={24}
-                  height={24}
-                />
-                <div className="flex flex-col justify-center items-center">
-                  <p className="text-center text-slate-400 text-[11px] font-medium">
-                    See property on
-                  </p>
-                  <p className="text-white text-base font-bold font-space_grotesk uppercase">
-                    Marketplace
-                  </p>
+              <Link href="/details?id=1">                
+                <div className="p-4 px-16 bg-teal-500 bg-opacity-30 rounded-[5px] border border-teal-500 justify-around items-center flex gap-6">
+                  <ServerImage
+                    src="/assets/icons/investment-details/marketplace.svg"
+                    alt="marketplace"
+                    width={24}
+                    height={24}
+                  />
+                  <div className="flex flex-col justify-center items-center">
+                    <p className="text-center text-slate-400 text-[11px] font-medium">
+                      See property on
+                    </p>
+                    <p className="text-white text-base font-bold font-space_grotesk uppercase">
+                      Marketplace
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </Link>
 
               <div className="p-4 px-16 bg-teal-500 bg-opacity-30 rounded-[5px] border border-teal-500 justify-around items-center flex gap-6">
                 <ServerImage
@@ -127,9 +129,9 @@ const InvestmentDetail = ({ property }: Props) => {
             </div>
           </div>
 
-            <div className="sm:py-8 sm:px-12 flex-1 p-3 sm:pb-0">
-              <InvestmentDetailTabs />
-            </div>
+          <div className="sm:py-8 sm:px-12 flex-1 p-3 sm:pb-0">
+            <InvestmentDetailTabs />
+          </div>
         </div>
       </DialogContent>
     </Dialog>
