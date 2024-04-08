@@ -35,6 +35,7 @@ const Invest: React.FC<InvestProps> = ({
   contractAddress
 }) => {
   const [tokenAmount, setTokenAmount] = useState<number | string>(10);
+  const allowBuy: boolean = true;
 
   const totalPrice = isNaN(Number(tokenAmount))
     ? ''
@@ -140,11 +141,20 @@ const Invest: React.FC<InvestProps> = ({
       </div>
       <Dialog>
         <DialogTrigger asChild>
-          <MintButton
-            contractAddress={contractAddress}
-            amount={tokenAmount}
-            price={price}
-          />
+          {allowBuy ? (
+            <MintButton
+              contractAddress={contractAddress}
+              amount={tokenAmount}
+              price={price}
+            />
+          ) : (
+            <Button
+              variant="outline"
+              className="w-full bg-libertumGreen text-white px-4 py-4 rounded hover:bg-teal-600 transition duration-300 flex items-center justify-center font-space_grotesk select-none"
+            >
+              Invest Now!
+            </Button>
+          )}
         </DialogTrigger>
         <DialogContent className="sm:max-w-md p-6 bg-white">
           <DialogHeader>
