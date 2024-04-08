@@ -7,10 +7,8 @@ import MintButton from './MintButton';
 
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger
@@ -140,21 +138,13 @@ const Invest: React.FC<InvestProps> = ({
           Disclaimers, and Privacy Notice.
         </label>
       </div>
-
-      {/* <button className="bg-teal-500 text-white px-4 py-4 rounded hover:bg-teal-600 transition duration-300 flex w-full items-center justify-center font-space_grotesk">
-        {buttonText}
-      </button> */}
-
       <Dialog>
         <DialogTrigger asChild>
-          {/*<Button
-            variant="outline"
-            className="w-full bg-libertumGreen text-white px-4 py-4 rounded hover:bg-teal-600 transition duration-300 flex items-center justify-center font-space_grotesk select-none"
-          >
-            Invest Now!
-          </Button>
-            */}
-          <MintButton contractAddress={contractAddress} amount={tokenAmount}/>
+          <MintButton
+            contractAddress={contractAddress}
+            amount={tokenAmount}
+            price={price}
+          />
         </DialogTrigger>
         <DialogContent className="sm:max-w-md p-6 bg-white">
           <DialogHeader>

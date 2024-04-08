@@ -8,7 +8,7 @@ import {
 import PROPERTY_ABI from '@/constants/Property.json';
 import USDT_ABI from '@/constants/USDT.json';
 
-const MintButton = ({ contractAddress, amount }: any) => {
+const MintButton = ({ contractAddress, amount, price }: any) => {
   const { contract: propertyContract, isLoading } = useContract(
     contractAddress,
     PROPERTY_ABI.abi
@@ -29,15 +29,13 @@ const MintButton = ({ contractAddress, amount }: any) => {
     USDT_ABI.abi
   );
 
-  const { mutateAsync: approve } = useContractWrite(
-    usdtContract,
-    'mint'
-  );
+  const { mutateAsync: approve } = useContractWrite(usdtContract, 'approve');
 
-  const handleMint = () => {
+  const handleMint = async () => {
     if (!isLoading) {
-      //      mint({ args: [10] });
-      console.log(paymentTokenAddress)
+      const approveAmount = BigInt(amount) * BigInt(price) * BigInt(10 ** 18) * BigInt(105) / BigInt(100);
+      await approve({ args: [contractAddress, approveAmount] });
+      await mint({ args: [amount] });
     }
   };
 
