@@ -1,4 +1,6 @@
 'use client';
+import { useState } from 'react';
+import Loading from '@/components/MessageBox/Loading.jsx';
 import { Button } from '@/components/ui/button';
 import {
   useContractWrite,
@@ -9,6 +11,7 @@ import PROPERTY_ABI from '@/constants/Property.json';
 import USDT_ABI from '@/constants/USDT.json';
 
 const MintButton = ({ contractAddress, amount, price }: any) => {
+  const [showIsLoadingUi, setShowIsLoadingUi] = useState(false);
   const { contract: propertyContract, isLoading } = useContract(
     contractAddress,
     PROPERTY_ABI.abi
@@ -32,21 +35,33 @@ const MintButton = ({ contractAddress, amount, price }: any) => {
   const { mutateAsync: approve } = useContractWrite(usdtContract, 'approve');
 
   const handleMint = async () => {
+    setShowIsLoadingUi(true);
     if (!isLoading) {
-      const approveAmount = BigInt(amount) * BigInt(price) * BigInt(10 ** 18) * BigInt(105) / BigInt(100);
-      await approve({ args: [contractAddress, approveAmount] });
-      await mint({ args: [amount] });
+      try {
+        const approveAmount =
+          (BigInt(amount) * BigInt(price) * BigInt(10 ** 18) * BigInt(105)) /
+          BigInt(100);
+        await approve({ args: [contractAddress, approveAmount] });
+        await mint({ args: [amount] });
+        setShowIsLoadingUi(false);
+      } catch (error) {
+        setShowIsLoadingUi(false);
+        console.log(error);
+      }
     }
   };
 
   return (
-    <Button
-      variant="outline"
-      className="w-full bg-libertumGreen text-white px-4 py-4 rounded hover:bg-teal-600 transition duration-300 flex items-center justify-center font-space_grotesk select-none"
-      onClick={handleMint}
-    >
-      Invest Now!
-    </Button>
+    <>
+      {showIsLoadingUi && <Loading />}
+      <Button
+        variant="outline"
+        className="w-full bg-libertumGreen text-white px-4 py-4 rounded hover:bg-teal-600 transition duration-300 flex items-center justify-center font-space_grotesk select-none"
+        onClick={handleMint}
+      >
+        Invest Now!
+      </Button>
+    </>
   );
 };
 
