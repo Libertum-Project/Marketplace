@@ -1,6 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
 import { ServerImage } from '@/components/shared/ServerImage';
 import LikeProperty from '../shared/LikeProperty';
 
@@ -12,14 +10,15 @@ const Hero: React.FC<{
   annualYield: number;
   property: any;
   repaymentDuration: number;
+  remainingTokens: number;
 }> = ({
   location,
-  category,
   propertyPrice,
   totalShares,
   annualYield,
   repaymentDuration,
   property,
+  remainingTokens
 }) => {
   const proyectedRentalYield = annualYield / 100;
   const tokenPrice = propertyPrice / totalShares;
@@ -134,7 +133,7 @@ const Hero: React.FC<{
           <p className="text-white text-sm font-bold text-left">
             Tokens Available:{' '}
           </p>
-          <p className="text-white text-sm font-normal">{totalShares}</p>
+          <p className="text-white text-sm font-normal">{remainingTokens}</p>
         </div>
         <div className="flex items-end justify-between">
           <p className="text-white text-sm font-bold text-left">

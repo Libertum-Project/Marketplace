@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
+import MintButton from './MintButton';
+
 import {
   Dialog,
   DialogClose,
@@ -21,6 +23,8 @@ interface InvestProps {
   annual_yield: number;
   subtitle: string;
   buttonText: string;
+  remainingTokens: number;
+  contractAddress: string;
 }
 
 const Invest: React.FC<InvestProps> = ({
@@ -28,7 +32,9 @@ const Invest: React.FC<InvestProps> = ({
   price,
   annual_yield,
   subtitle,
-  buttonText
+  buttonText,
+  remainingTokens,
+  contractAddress
 }) => {
   const [tokenAmount, setTokenAmount] = useState<number | string>(10);
 
@@ -141,12 +147,14 @@ const Invest: React.FC<InvestProps> = ({
 
       <Dialog>
         <DialogTrigger asChild>
-          <Button
+          {/*<Button
             variant="outline"
             className="w-full bg-libertumGreen text-white px-4 py-4 rounded hover:bg-teal-600 transition duration-300 flex items-center justify-center font-space_grotesk select-none"
           >
             Invest Now!
           </Button>
+            */}
+          <MintButton contractAddress={contractAddress} amount={tokenAmount}/>
         </DialogTrigger>
         <DialogContent className="sm:max-w-md p-6 bg-white">
           <DialogHeader>
