@@ -33,7 +33,12 @@ const InvestmentDetail = ({ property }: Props) => {
         <div className="flex max-sm:flex-col">
           <div className="bg-slate-900 py-8 px-6 max-sm:p-3">
             <DialogClose className="text-white mb-6 max-sm:hidden">
-              Close
+              <ServerImage
+                src="/assets/back.svg"
+                alt="back"
+                width={10}
+                height={10}
+              />
             </DialogClose>
 
             <div className="flex flex-col">
@@ -122,9 +127,9 @@ const InvestmentDetail = ({ property }: Props) => {
             </div>
           </div>
 
-          <div className="sm:py-8 sm:px-12 flex-1 p-3 sm:pb-0">
-            <InvestmentDetailTabs />
-          </div>
+            <div className="sm:py-8 sm:px-12 flex-1 p-3 sm:pb-0">
+              <InvestmentDetailTabs />
+            </div>
         </div>
       </DialogContent>
     </Dialog>
