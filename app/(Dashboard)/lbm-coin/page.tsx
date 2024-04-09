@@ -4,7 +4,7 @@ import { ServerImage } from '@/components/shared/ServerImage';
 
 const page = () => {
   return (
-    <div>
+    <div className='bg-gradient-to-br from-[#000041] to-[#0E0E1E]'>
       <div className="flex w-full p-5 justify-center items-center bg-libertumOrange shadow-sm">
         <p className="text-white ">
           This page is under construction. Thanks for your patience
