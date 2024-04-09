@@ -1,6 +1,10 @@
 import { getProperties } from '@/app/utils/fetchProperties';
 import RightSidebar from '@/components/Dashboard/RightSidebar';
 import PropertyCard from '@/components/shared/PropertyCard';
+import { CardContent } from '@/components/ui/card';
+import { Skeleton } from '@/components/ui/skeleton';
+import { Card } from '@/components/ui/card';
+
 import {
   Tooltip,
   TooltipContent,
