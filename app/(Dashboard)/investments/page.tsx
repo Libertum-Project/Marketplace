@@ -17,7 +17,7 @@ const page = async () => {
   const properties = await getProperties();
   return (
     <div className="flex w-full max-sm:flex-col-reverse">
-      <div className="p-5 grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-6 w-full sm:investment-page-width">
+      <div className="p-5 grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-6 w-full sm:investment-page-width justify-start items-start">
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger>
@@ -36,7 +36,7 @@ const page = async () => {
           </Tooltip>
         </TooltipProvider>
 
-        {[...Array(3)].map((_, index) => (
+        {/* {[...Array(3)].map((_, index) => (
           <Card key={`skeleton-${index}`}>
             <CardContent className="h-480 p-0">
               <div className="flex flex-col space-y-3 w-full">
@@ -61,7 +61,7 @@ const page = async () => {
               </div>
             </CardContent>
           </Card>
-        ))}
+        ))} */}
       </div>
 
       {/* <div className="w-full flex flex-col gap-2 justify-center items-center min-h-screen">
