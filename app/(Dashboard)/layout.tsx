@@ -12,10 +12,13 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     <main className="flex">
       <LeftSidebar />
       <section className="w-full">
+        <div className="pb-20 sm:pb-0">
         <Navbar />
         {kycPending && <KycBanner />}
 
         {children}
+        </div>
+
         <MobileNav />
       </section>
     </main>
