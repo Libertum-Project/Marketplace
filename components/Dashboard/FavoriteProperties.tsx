@@ -38,7 +38,7 @@ const FavoriteProperties = () => {
   return (
     <>
       {properties.length > 0 ? (
-        <div className="flex flex-row flex-wrap justify-center justify-items-center gap-6 max-w-full p-6 mb-32 md:mb-0 ">
+        <div className="flex flex-row flex-wrap justify-start items-center gap-6 max-w-full p-6 mb-32 md:mb-0 ">
           {properties.map((property: any) => {
             return (
               <div className="w-[382px]" key={property.id}>
