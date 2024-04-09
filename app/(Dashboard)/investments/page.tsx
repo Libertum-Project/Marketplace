@@ -6,21 +6,35 @@ import Link from 'next/link';
 import { Card } from '@/components/ui/card';
 import { CardContent } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 
 const page = async () => {
   const properties = await getProperties();
   return (
     <div className="flex w-full max-sm:flex-col-reverse">
       <div className="p-5 grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-6 w-full sm:investment-page-width">
-       
-        {properties.slice(0, 1).map((property: any) => (
-          <PropertyCard
-            property={property}
-            key={property.id}
-            btnTitle="View Investment Details"
-            investmentDetail={true}
-          />
-        ))}
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger>
+              {properties.slice(0, 1).map((property: any) => (
+                <PropertyCard
+                  property={property}
+                  key={property.id}
+                  btnTitle="View Investment Details"
+                  investmentDetail={true}
+                />
+              ))}
+            </TooltipTrigger>
+            <TooltipContent>
+              <p className='text-libertumOrange font-space_grotesk font-semibold text-sm'>This is an example of how you will see your investments.</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
 
         {[...Array(3)].map((_, index) => (
           <Card key={`skeleton-${index}`}>
