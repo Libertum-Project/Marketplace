@@ -22,7 +22,7 @@ const config = {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
-        background: 'hsl(var(--background))',
+        background: '#FFFF',
         foreground: 'hsl(var(--foreground))',
         libertumBlue: '#080915' /* Dark blue */,
         libertumGreen: '#00b3b5' /* Teal */,

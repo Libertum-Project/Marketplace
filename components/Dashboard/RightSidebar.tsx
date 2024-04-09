@@ -17,7 +17,7 @@ const RightSidebar = () => {
                   Total Investments:
                 </p>
                 <p className="text-black text-opacity-50 text-sm font-normal">
-                  20
+                  0
                 </p>
               </div>
 
@@ -26,7 +26,7 @@ const RightSidebar = () => {
                   Total Properties:
                 </p>
                 <p className="text-black text-opacity-50 text-sm font-normal">
-                  17
+                  0
                 </p>
               </div>
 
@@ -35,7 +35,7 @@ const RightSidebar = () => {
                   Current Total Value:
                 </p>
                 <p className="text-black text-opacity-50 text-sm font-normal">
-                  $350,000
+                  $0
                 </p>
               </div>
 
@@ -43,7 +43,7 @@ const RightSidebar = () => {
                 <p className="text-black text-opacity-80 text-sm font-bold">
                   Total Profit To Date:
                 </p>
-                <p className="text-[#21AF2F] text-sm font-bold">+$15,800</p>
+                <p className="text-[#21AF2F] text-sm font-bold">+$0</p>
               </div>
             </div>
 

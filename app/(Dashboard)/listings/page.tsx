@@ -3,7 +3,12 @@ import Link from 'next/link';
 
 const page = () => {
   return (
-    <>
+    <div>
+      <div className="flex w-full p-5 justify-center items-center bg-libertumOrange shadow-sm">
+        <p className="text-white ">
+          This page is under construction. Thanks for your patience
+        </p>
+      </div>
       <div className={css.container}>
         <div className={css.background}></div>
         <div className={css.frame}>
@@ -20,7 +25,7 @@ const page = () => {
           </Link>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
