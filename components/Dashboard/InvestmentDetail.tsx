@@ -5,9 +5,9 @@ import {
   DialogContent,
   DialogTrigger,
 } from '@/components/ui/dialog';
-
 import { ServerImage } from '../shared/ServerImage';
 import InvestmentDetailTabs from './InvestmentDetailTabs';
+import Link from 'next/link';
 
 interface Props {
   property: any;
@@ -33,7 +33,12 @@ const InvestmentDetail = ({ property }: Props) => {
         <div className="flex max-sm:flex-col">
           <div className="bg-slate-900 py-8 px-6 max-sm:p-3">
             <DialogClose className="text-white mb-6 max-sm:hidden">
-              Close
+              <ServerImage
+                src="/assets/back.svg"
+                alt="back"
+                width={10}
+                height={10}
+              />
             </DialogClose>
 
             <div className="flex flex-col">
@@ -55,56 +60,104 @@ const InvestmentDetail = ({ property }: Props) => {
             </div>
 
             <div className="mt-[30px] flex flex-col gap-2 max-sm:hidden">
-              <div className="p-4 px-16 bg-teal-500 bg-opacity-30 rounded-[5px] border border-teal-500 justify-around items-center flex gap-6">
-                <ServerImage
-                  src="/assets/icons/investment-details/marketplace.svg"
-                  alt="marketplace"
-                  width={24}
-                  height={24}
-                />
-                <div className="flex flex-col justify-center items-center">
-                  <p className="text-center text-slate-400 text-[11px] font-medium">
-                    See property on
-                  </p>
-                  <p className="text-white text-base font-bold font-space_grotesk uppercase">
-                    Marketplace
-                  </p>
+              <Link href="/details?id=1">
+                <div className="p-4 px-16 bg-teal-500 bg-opacity-30 rounded-[5px] border border-teal-500 justify-around items-center flex gap-6">
+                  <ServerImage
+                    src="/assets/icons/market.svg"
+                    alt="marketplace"
+                    width={30}
+                    height={30}
+                  />
+                  <div className="flex flex-col justify-center items-center">
+                    <p className="text-center text-slate-400 text-[11px] font-medium">
+                      See property on
+                    </p>
+                    <p className="text-white text-base font-bold font-space_grotesk uppercase">
+                      Marketplace
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </Link>
 
-              <div className="p-4 px-16 bg-teal-500 bg-opacity-30 rounded-[5px] border border-teal-500 justify-around items-center flex gap-6">
-                <ServerImage
-                  src="/assets/icons/investment-details/p2p.svg"
-                  alt="marketplace"
-                  width={30}
-                  height={30}
-                />
-                <div className="flex flex-col justify-center items-center">
-                  <p className="text-center text-slate-400 text-[11px] font-medium">
-                    Sell your tokens in
-                  </p>
-                  <p className="text-white text-base font-bold font-space_grotesk uppercase">
-                    p2p Market
-                  </p>
-                </div>
-              </div>
+              <Dialog>
+                <DialogTrigger>
+                  <div className="p-4 px-16 bg-teal-500 bg-opacity-30 rounded-[5px] border border-teal-500 justify-around items-center flex gap-6">
+                    <ServerImage
+                      src="/assets/icons/trade.svg"
+                      alt="marketplace"
+                      width={30}
+                      height={30}
+                    />
+                    <div className="flex flex-col justify-center items-center">
+                      <p className="text-center text-slate-400 text-[11px] font-medium">
+                        Sell your tokens in
+                      </p>
+                      <p className="text-white text-base font-bold font-space_grotesk uppercase">
+                        p2p Market
+                      </p>
+                    </div>
+                  </div>
+                </DialogTrigger>
+                <DialogContent>
+                  <div className=" p-0 border-0 rounded-[5px] max-w-[1100px]">
+                    <div className="">
+                      <h2 className=" font-space_grotesk text-[26px] font-semibold ">
+                        Coming Soon:{' '}
+                      </h2>
+                      <ServerImage
+                        src="/assets/tradeLIGHT.svg"
+                        alt="trade image logo"
+                        width={400}
+                        height={200}
+                      />
+                      <p className=" font-montserrat text-[16px]">
+                        A secondary marketplace providing additional financial
+                        opportunities for investors
+                      </p>
+                    </div>
+                  </div>
+                </DialogContent>
+              </Dialog>
 
-              <div className="p-4 px-16 bg-teal-500 bg-opacity-30 rounded-[5px] border border-teal-500 justify-around items-center flex gap-6">
-                <ServerImage
-                  src="/assets/icons/investment-details/pools.svg"
-                  alt="marketplace"
-                  width={24}
-                  height={24}
-                />
-                <div className="flex flex-col justify-center items-center">
-                  <p className="text-center text-slate-400 text-[11px] font-medium">
-                    Borrow / Lend
-                  </p>
-                  <p className="text-white text-base font-bold font-space_grotesk uppercase">
-                    pools
-                  </p>
-                </div>
-              </div>
+              <Dialog>
+                <DialogTrigger>
+                  <div className="p-4 px-16 bg-teal-500 bg-opacity-30 rounded-[5px] border border-teal-500 justify-around items-center flex gap-6">
+                    <ServerImage
+                      src="/assets/icons/borrow.svg"
+                      alt="marketplace"
+                      width={35}
+                      height={35}
+                    />
+                    <div className="flex flex-col justify-center items-center">
+                      <p className="text-center text-slate-400 text-[11px] font-medium">
+                        Borrow / Lend
+                      </p>
+                      <p className="text-white text-base font-bold font-space_grotesk uppercase">
+                        pools
+                      </p>
+                    </div>
+                  </div>
+                </DialogTrigger>
+                <DialogContent>
+                  <div className=" p-0 border-0 rounded-[5px] max-w-[1100px]">
+                    <div className="">
+                      <h2 className=" font-space_grotesk text-[26px] font-semibold ">
+                        Coming Soon:{' '}
+                      </h2>
+                      <ServerImage
+                        src="/assets/borrowLIGHT.svg"
+                        alt="trade image logo"
+                        width={400}
+                        height={200}
+                      />
+                      <p className=" font-montserrat text-[16px]">
+                        Lending protocol with brick and mortar real estate as
+                        collateral
+                      </p>
+                    </div>
+                  </div>
+                </DialogContent>
+              </Dialog>
 
               <div className="p-4 px-16 bg-teal-500 bg-opacity-30 rounded-[5px] border border-teal-500 justify-around items-center flex gap-6">
                 <ServerImage

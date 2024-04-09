@@ -3,23 +3,67 @@ import RightSidebar from '@/components/Dashboard/RightSidebar';
 import PropertyCard from '@/components/shared/PropertyCard';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { Card } from '@/components/ui/card';
+import { CardContent } from '@/components/ui/card';
+import { Skeleton } from '@/components/ui/skeleton';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 
 const page = async () => {
   const properties = await getProperties();
   return (
     <div className="flex w-full max-sm:flex-col-reverse">
-      <div className="p-5 grid grid-cols-1 min-[575px]:grid-cols-2 md:grid-cols-2 gap-6 w-full sm:investment-page-width">
-        {properties.map((property: any) => {
-          return (
-            <PropertyCard
-              property={property}
-              key={property.id}
-              btnTitle="View Investment Details"
-              investmentDetail={true}
-            />
-          );
-        })}
+      <div className="p-5 grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-6 w-full sm:investment-page-width">
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger>
+              {properties.slice(0, 1).map((property: any) => (
+                <PropertyCard
+                  property={property}
+                  key={property.id}
+                  btnTitle="View Investment Details"
+                  investmentDetail={true}
+                />
+              ))}
+            </TooltipTrigger>
+            <TooltipContent>
+              <p className='text-libertumOrange font-space_grotesk font-semibold text-sm'>This is an example of how you will see your investments.</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+
+        {[...Array(3)].map((_, index) => (
+          <Card key={`skeleton-${index}`}>
+            <CardContent className="h-480 p-0">
+              <div className="flex flex-col space-y-3 w-full">
+                <Skeleton className="h-[255px] bg-[#929191] w-full" />
+                <div className="space-y-4 p-4">
+                  <Skeleton className="h-10 w-full bg-black bg-opacity-5 rounded-[48px]" />
+
+                  <div className="flex items-center justify-between">
+                    <div className="pr-4 w-full">
+                      <Skeleton className="h-7 w-full bg-black bg-opacity-5 rounded-[48px]" />
+                    </div>
+                    <div className="w-full">
+                      <Skeleton className="h-7 w-full bg-black bg-opacity-5 rounded-[48px]" />
+                    </div>
+                    <div className="pl-4 w-full">
+                      <Skeleton className="h-7 w-full bg-black bg-opacity-5 rounded-[48px]" />
+                    </div>
+                  </div>
+
+                  <Skeleton className="h-10 w-full bg-black bg-opacity-5 rounded-[48px]" />
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
       </div>
+
       {/* <div className="w-full flex flex-col gap-2 justify-center items-center min-h-screen">
           <h3 className="text-lg font-bold">No investment at the moment</h3>
 
