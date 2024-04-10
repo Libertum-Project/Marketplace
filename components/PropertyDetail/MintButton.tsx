@@ -60,6 +60,13 @@ const MintButton = ({
     setShowIsLoadingUi(true);
     if (!isLoading) {
       try {
+        if (amount > remainingTokens) {
+          setErrorText(
+            "You've requested more tokens than are currently available."
+          );
+          throw new Error();
+        }
+
         if (
           !isLoadingUserNativeTokenBalance &&
           userNativeTokenBalance!.value.isZero()
@@ -84,6 +91,7 @@ const MintButton = ({
         const approveAmount = totalAmountBigInt + fee;
 
         const approveAmountBigNumber = BigInt(approveAmount);
+
         if (
           !isLoadingUsdtBalance &&
           userUsdtBalance!.value.toBigInt() < approveAmountBigNumber
