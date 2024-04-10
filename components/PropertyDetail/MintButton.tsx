@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Loading from '@/components/MessageBox/Loading.jsx';
 import PendingMessage from '@/components/MessageBox/PendingMessage';
 import ErrorMessage from '@/components/MessageBox/ErrorMessage';
+import SuccessMessage from '@/components/MessageBox/SuccessMessage';
 import {
   useContract,
   useContractRead,
@@ -22,6 +23,7 @@ const MintButton = ({
 }: any) => {
   const [showIsLoadingUi, setShowIsLoadingUi] = useState(false);
   const [showErrorMessage, setShowErrorMessage] = useState(false);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [errorText, setErrorText] = useState('');
   const [errorUrl, setErrorUrl] = useState('');
 
@@ -92,14 +94,14 @@ const MintButton = ({
         }
 
         await approve({ args: [propertyContractAddress, approveAmount] });
-
         await mint({ args: [amount] });
-        console.log('success');
+
+        setShowSuccessMessage(true);
         setShowIsLoadingUi(false);
       } catch (error: any) {
         setShowIsLoadingUi(false);
         setShowErrorMessage(true);
-        console.error(error.message)
+        console.error(error.message);
 
         if (error.message === 'Not enough remaining tokens') {
           setErrorText(
@@ -138,6 +140,14 @@ const MintButton = ({
           setShowErrorMessage={setShowErrorMessage}
           message={errorText}
           url={errorUrl}
+        />
+      )}
+
+      {showSuccessMessage && (
+        <SuccessMessage
+          setShowSuccessMessage={setShowSuccessMessage}
+          message="Success! Your investment has been processed. Exciting times ahead!"
+          textBtn="continue"
         />
       )}
 

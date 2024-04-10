@@ -1,9 +1,9 @@
-import css from "./MessageBox.module.css";
-import Image from "next/image";
-import success from "./checkIcon.svg";
+import css from './MessageBox.module.css';
+import Image from 'next/image';
+import success from './checkIcon.svg';
 
-const SuccessMessage = ({ setShowSuccessMessage, messagge, textBtn }) => {
-  const handleContinue = (event) => {
+const SuccessMessage = ({ setShowSuccessMessage, message, textBtn }: any) => {
+  const handleContinue = (event: any) => {
     event.preventDefault();
     setShowSuccessMessage(false);
   };
@@ -20,7 +20,7 @@ const SuccessMessage = ({ setShowSuccessMessage, messagge, textBtn }) => {
           <h2>Success!</h2>
         </div>
         <div>
-          <p>{messagge}</p>
+          <p>{message}</p>
         </div>
         <button>{textBtn}</button>
       </div>
