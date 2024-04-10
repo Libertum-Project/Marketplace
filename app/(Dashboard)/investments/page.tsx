@@ -1,11 +1,10 @@
 import { getProperties } from '@/app/utils/fetchProperties';
 import RightSidebar from '@/components/Dashboard/RightSidebar';
 import PropertyCard from '@/components/shared/PropertyCard';
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
-import { Card } from '@/components/ui/card';
 import { CardContent } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
+import { Card } from '@/components/ui/card';
+
 import {
   Tooltip,
   TooltipContent,
@@ -17,7 +16,7 @@ const page = async () => {
   const properties = await getProperties();
   return (
     <div className="flex w-full max-sm:flex-col-reverse">
-      <div className="p-5 grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-6 w-full sm:investment-page-width">
+      <div className="p-5 grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-6 w-full sm:investment-page-width justify-start items-start">
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger>
@@ -30,13 +29,13 @@ const page = async () => {
                 />
               ))}
             </TooltipTrigger>
-            <TooltipContent>
-              <p className='text-libertumOrange font-space_grotesk font-semibold text-sm'>This is an example of how you will see your investments.</p>
+            <TooltipContent side='bottom' className='bg-libertumOrange rounded-[5px] '>
+              <p className='text-white font-space_grotesk font-semibold text-sm py-2'>This is an example of how you will see your investments.</p>
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
 
-        {[...Array(3)].map((_, index) => (
+        {/* {[...Array(3)].map((_, index) => (
           <Card key={`skeleton-${index}`}>
             <CardContent className="h-480 p-0">
               <div className="flex flex-col space-y-3 w-full">
@@ -61,7 +60,7 @@ const page = async () => {
               </div>
             </CardContent>
           </Card>
-        ))}
+        ))} */}
       </div>
 
       {/* <div className="w-full flex flex-col gap-2 justify-center items-center min-h-screen">
