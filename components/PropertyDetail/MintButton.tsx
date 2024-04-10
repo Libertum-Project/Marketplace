@@ -2,17 +2,38 @@
 import { useState } from 'react';
 import Loading from '@/components/MessageBox/Loading.jsx';
 import PendingMessage from '@/components/MessageBox/PendingMessage';
+import ErrorMessage from '@/components/MessageBox/ErrorMessage';
 import { Button } from '@/components/ui/button';
 import {
-  useContractWrite,
   useContract,
-  useContractRead
+  useContractRead,
+  useContractWrite,
+  useBalance
 } from '@thirdweb-dev/react';
 import PROPERTY_ABI from '@/constants/Property.json';
 import USDT_ABI from '@/constants/USDT.json';
 
-const MintButton = ({ contractAddress, amount, price }: any) => {
+const MintButton = ({
+  contractAddress,
+  amount,
+  price,
+  remainingTokens
+}: any) => {
   const [showIsLoadingUi, setShowIsLoadingUi] = useState(false);
+  const [showErrorMessage, setShowErrorMessage] = useState(false);
+  const [errorText, setErrorText] = useState(
+    'Unable to process your request. Please try again later.'
+  );
+  const [errorUrl, setErrorUrl] = useState('');
+
+  const {
+    data: userNativeTokenBalance,
+    isLoading: isLoadingUserNativeTokenBalance
+  } = useBalance();
+  const { data: userUsdtBalance, isLoading: isLoadingUsdtBalance } = useBalance(
+    '0x53057dE112fd5ED7594Da6F858D908dA9D3d685f'
+  );
+
   const { contract: propertyContract, isLoading } = useContract(
     contractAddress,
     PROPERTY_ABI.abi
@@ -39,7 +60,17 @@ const MintButton = ({ contractAddress, amount, price }: any) => {
     setShowIsLoadingUi(true);
     if (!isLoading) {
       try {
-        //todo: Check user USDT and BNB.
+        if (
+          !isLoadingUserNativeTokenBalance &&
+          userNativeTokenBalance!.value.isZero()
+        ) {
+          setErrorText(
+            `Not enough funds to cover gas fees. Please deposit additional ${
+              userNativeTokenBalance!.symbol
+            } into your account to complete the transaction.`
+          );
+          throw new Error();
+        }
 
         const amountBigInt = BigInt(amount);
         const priceBigInt = BigInt(price);
@@ -51,13 +82,28 @@ const MintButton = ({ contractAddress, amount, price }: any) => {
         const fee = (totalAmountBigInt * BigInt(5)) / BigInt(100);
 
         const approveAmount = totalAmountBigInt + fee;
+
+        const approveAmountBigNumber = BigInt(approveAmount);
+        if (
+          !isLoadingUsdtBalance &&
+          userUsdtBalance!.value.toBigInt() < approveAmountBigNumber
+        ) {
+          setErrorText(
+            `Not enough funds. Please deposit additional ${
+              userUsdtBalance!.symbol
+            } into your account to complete the transaction.`
+          );
+          throw new Error();
+        }
+
         await approve({ args: [contractAddress, approveAmount] });
 
         await mint({ args: [amount] });
-        console.log('hola');
+        console.log('success');
         setShowIsLoadingUi(false);
       } catch (error) {
         setShowIsLoadingUi(false);
+        setShowErrorMessage(true);
         console.log(error);
       }
     }
@@ -68,6 +114,14 @@ const MintButton = ({ contractAddress, amount, price }: any) => {
       {showIsLoadingUi && <Loading />}
       {isMintInProgress && (
         <PendingMessage message="Almost there! Your mint transaction is in progress." />
+      )}
+
+      {showErrorMessage && (
+        <ErrorMessage
+          setShowErrorMessage={setShowErrorMessage}
+          message={errorText}
+          url={errorUrl}
+        />
       )}
 
       <Button

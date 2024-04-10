@@ -146,6 +146,7 @@ const Invest: React.FC<InvestProps> = ({
               contractAddress={contractAddress}
               amount={tokenAmount}
               price={price}
+              remainingTokens={remainingTokens}
             />
           ) : (
             <Button

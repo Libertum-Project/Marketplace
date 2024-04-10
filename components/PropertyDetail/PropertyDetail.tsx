@@ -101,6 +101,7 @@ const PropertyDetail: React.FC<PropertyDetailProps> = ({ property }) => {
             subtitle={`Completa los siguientes campos para comenzar tu inversión en ${property.location.city}, ${property.location.region}, ${property.location.country}`}
             buttonText="Invest Now"
             remainingTokens={remainingTokens}
+            contractAddress={property.contract_address}
           />
         </div>
       </div>

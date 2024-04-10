@@ -2,13 +2,13 @@ import css from './MessageBox.module.css';
 import error from './alertIcon.svg';
 import Image from 'next/image';
 
-const FailMessage = ({ setShowFailMessage, message, url }) => {
-  const handleContinue = (event) => {
+const ErrorMessage = ({ setShowErrorMessage, message, url }:any) => {
+  const handleContinue = (event:any) => {
     event.preventDefault();
-    setShowFailMessage(false);
+    setShowErrorMessage(false);
   };
 
-  const handleErrorBoxClick = (event) => {
+  const handleErrorBoxClick = (event:any) => {
     event.stopPropagation();
   };
 
@@ -21,7 +21,7 @@ const FailMessage = ({ setShowFailMessage, message, url }) => {
     >
       <div className={css.errorBox} onClick={handleErrorBoxClick}>
         <div className={css.header}>
-          <Image src={error} alt="error" />
+          <Image src={error} alt="error" width={32} height={32} />
           <h2>Error</h2>
         </div>
         <div>
@@ -46,4 +46,4 @@ const FailMessage = ({ setShowFailMessage, message, url }) => {
   );
 };
 
-export default FailMessage;
+export default ErrorMessage;
