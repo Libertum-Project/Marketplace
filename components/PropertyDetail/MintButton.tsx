@@ -1,29 +1,28 @@
 'use client';
+import css from './MintButton.module.css';
 import { useState } from 'react';
 import Loading from '@/components/MessageBox/Loading.jsx';
 import PendingMessage from '@/components/MessageBox/PendingMessage';
 import ErrorMessage from '@/components/MessageBox/ErrorMessage';
-import { Button } from '@/components/ui/button';
 import {
   useContract,
   useContractRead,
   useContractWrite,
+  Web3Button,
   useBalance
 } from '@thirdweb-dev/react';
 import PROPERTY_ABI from '@/constants/Property.json';
 import USDT_ABI from '@/constants/USDT.json';
 
 const MintButton = ({
-  contractAddress,
+  contractAddress: propertyContractAddress,
   amount,
   price,
   remainingTokens
 }: any) => {
   const [showIsLoadingUi, setShowIsLoadingUi] = useState(false);
   const [showErrorMessage, setShowErrorMessage] = useState(false);
-  const [errorText, setErrorText] = useState(
-    'Unable to process your request. Please try again later.'
-  );
+  const [errorText, setErrorText] = useState('');
   const [errorUrl, setErrorUrl] = useState('');
 
   const {
@@ -35,7 +34,7 @@ const MintButton = ({
   );
 
   const { contract: propertyContract, isLoading } = useContract(
-    contractAddress,
+    propertyContractAddress,
     PROPERTY_ABI.abi
   );
 
@@ -58,25 +57,18 @@ const MintButton = ({
 
   const handleMint = async () => {
     setShowIsLoadingUi(true);
+
     if (!isLoading) {
       try {
         if (amount > remainingTokens) {
-          setErrorText(
-            "You've requested more tokens than are currently available."
-          );
-          throw new Error();
+          throw new Error('Not enough remaining tokens');
         }
 
         if (
           !isLoadingUserNativeTokenBalance &&
           userNativeTokenBalance!.value.isZero()
         ) {
-          setErrorText(
-            `Not enough funds to cover gas fees. Please deposit additional ${
-              userNativeTokenBalance!.symbol
-            } into your account to complete the transaction.`
-          );
-          throw new Error();
+          throw new Error('Not enough native token');
         }
 
         const amountBigInt = BigInt(amount);
@@ -96,23 +88,40 @@ const MintButton = ({
           !isLoadingUsdtBalance &&
           userUsdtBalance!.value.toBigInt() < approveAmountBigNumber
         ) {
+          throw new Error('Not enough payment token');
+        }
+
+        await approve({ args: [propertyContractAddress, approveAmount] });
+
+        await mint({ args: [amount] });
+        console.log('success');
+        setShowIsLoadingUi(false);
+      } catch (error: any) {
+        setShowIsLoadingUi(false);
+        setShowErrorMessage(true);
+        console.error(error.message)
+
+        if (error.message === 'Not enough remaining tokens') {
+          setErrorText(
+            "You've requested more tokens than are currently available."
+          );
+        } else if (error.message === 'Not enough payment token') {
           setErrorText(
             `Not enough funds. Please deposit additional ${
               userUsdtBalance!.symbol
             } into your account to complete the transaction.`
           );
-          throw new Error();
+        } else if (error.message === 'Not enough native token') {
+          setErrorText(
+            `Not enough funds to cover gas fees. Please deposit additional ${
+              userNativeTokenBalance!.symbol
+            } into your account to complete the transaction.`
+          );
+        } else {
+          setErrorText(
+            'Unable to process your request. Please try again later.'
+          );
         }
-
-        await approve({ args: [contractAddress, approveAmount] });
-
-        await mint({ args: [amount] });
-        console.log('success');
-        setShowIsLoadingUi(false);
-      } catch (error) {
-        setShowIsLoadingUi(false);
-        setShowErrorMessage(true);
-        console.log(error);
       }
     }
   };
@@ -132,13 +141,14 @@ const MintButton = ({
         />
       )}
 
-      <Button
-        variant="outline"
-        className="w-full bg-libertumGreen text-white px-4 py-4 rounded hover:bg-teal-600 transition duration-300 flex items-center justify-center font-space_grotesk select-none"
-        onClick={handleMint}
+      <Web3Button
+        contractAddress={propertyContractAddress}
+        contractAbi={PROPERTY_ABI.abi}
+        action={handleMint}
+        className={css.mintBtn}
       >
         Invest Now!
-      </Button>
+      </Web3Button>
     </>
   );
 };
