@@ -10,6 +10,7 @@ import {
   useContractRead,
   useContractWrite,
   Web3Button,
+  useAddress,
   useBalance
 } from '@thirdweb-dev/react';
 import PROPERTY_ABI from '@/constants/Property.json';
@@ -26,6 +27,7 @@ const MintButton = ({
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [errorText, setErrorText] = useState('');
   const [errorUrl, setErrorUrl] = useState('');
+  const userWalletAddress = useAddress();
 
   const {
     data: userNativeTokenBalance,
@@ -74,7 +76,7 @@ const MintButton = ({
         }
 
         const amountBigInt = BigInt(amount);
-        const priceBigInt = BigInt(price);
+        const priceBigInt = BigInt(Math.round(price));
 
         // Calculate the total amount in BigInt.
         const totalAmountBigInt = amountBigInt * priceBigInt * BigInt(10 ** 18);
@@ -95,6 +97,18 @@ const MintButton = ({
 
         await approve({ args: [propertyContractAddress, approveAmount] });
         await mint({ args: [amount] });
+
+        const response = await fetch(
+          `/api/users/investments?userWalletAddress=${userWalletAddress}&propertyContractAddress=${propertyContractAddress}`,
+          {
+            method: 'POST',
+            cache: 'no-store'
+          }
+        );
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        console.log(response)
 
         setShowSuccessMessage(true);
         setShowIsLoadingUi(false);
