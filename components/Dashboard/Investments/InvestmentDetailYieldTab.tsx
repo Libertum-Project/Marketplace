@@ -1,7 +1,7 @@
 import { TabsContent } from '@/components/ui/tabs';
-import YieldChart from './Chart/YieldChart';
-import { Button } from '../ui/button';
-import { ServerImage } from '../shared/ServerImage';
+import YieldChart from '../Chart/YieldChart';
+import { Button } from '../../ui/button';
+import { ServerImage } from '../../shared/ServerImage';
 
 const InvestmentDetailYieldTab = () => {
   return (

@@ -5,7 +5,7 @@ import {
   DialogContent,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import { ServerImage } from '../shared/ServerImage';
+import { ServerImage } from '../../shared/ServerImage';
 import InvestmentDetailTabs from './InvestmentDetailTabs';
 import Link from 'next/link';
 

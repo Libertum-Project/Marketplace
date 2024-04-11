@@ -6,7 +6,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
-import { ServerImage } from '../shared/ServerImage';
+import { ServerImage } from '../../shared/ServerImage';
 
 const InvestmentDetailPropertyTab = () => {
   return (

@@ -21,3 +21,30 @@ export async function POST(req: NextRequest) {
   );
   return Response.json({ response });
 }
+
+export async function GET(req: NextRequest) {
+  try {
+    const searchParams = req.nextUrl.searchParams;
+    const userWalletAddress: string = searchParams.get('userWalletAddress')!;
+
+    const response = await fetch(`${serverURL}/users/${userWalletAddress}/investment`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${secretKey}`,
+        Accept: 'application/json',
+        'Content-Type': 'application/json;charset=utf-8'
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch user investments. Status: ${response.status}`);
+    }
+
+    const responseData = await response.json();
+
+    return Response.json({ responseData });
+  } catch (error) {
+    console.error('Error fetching user investments:', error);
+    return new Response('Internal server error', { status: 500 });
+  }
+}
