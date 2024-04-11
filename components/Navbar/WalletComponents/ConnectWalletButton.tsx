@@ -10,7 +10,26 @@ const ConnectWalletButton = () => {
   return (
     <div>
       {address ? (
-        <ConnectWallet className={css.connectWalletButton} />
+        <ConnectWallet
+          className={css.connectWalletButton}
+          detailsBtn={() => {
+            return (
+              <button className="flex justify-between items-center px-4 py-2 bg-libertumGreen bg-opacity-30 rounded-[5px] border border-libertumGreen backdrop-blur-[10px] text-white gap-3 override-link text-sm">
+                {`${address?.substring(0, 4)}....${address?.substring(
+                  address?.length - 4
+                )}`}
+                <span>
+                  <ServerImage
+                    alt="left arrow"
+                    src={leftArrow}
+                    width={9.207}
+                    height={4.708}
+                  />
+                </span>
+              </button>
+            );
+          }}
+        />
       ) : (
         <Link
           href="/login"
