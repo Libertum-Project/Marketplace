@@ -10,7 +10,6 @@ const TokenProgress: React.FC<TokenProgressProps> = ({
   total_tokens,
   tokens_sold
 }) => {
-  tokens_sold = 0;
   const percentageSold = (tokens_sold / total_tokens) * 100;
 
   return (

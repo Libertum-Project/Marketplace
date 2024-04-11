@@ -1,6 +1,6 @@
 import React from 'react';
-import YieldChart from './Chart/YieldChart';
-import { ServerImage } from '../shared/ServerImage';
+import YieldChart from '../Chart/YieldChart';
+import { ServerImage } from '../../shared/ServerImage';
 
 const RightSidebar = () => {
   return (

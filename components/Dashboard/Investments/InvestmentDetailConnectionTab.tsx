@@ -1,7 +1,7 @@
 'use client';
 import { TabsContent } from '@/components/ui/tabs';
 import { useAddress } from '@thirdweb-dev/react';
-import { Button } from '../ui/button';
+import { Button } from '../../ui/button';
 import Image from 'next/image';
 
 const InvestmentDetailConnectionTab = () => {

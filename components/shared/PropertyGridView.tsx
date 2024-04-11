@@ -1,4 +1,4 @@
-import InvestmentDetail from '../Dashboard/InvestmentDetail';
+import InvestmentDetail from '../Dashboard/Investments/InvestmentDetail';
 import { Accordion, AccordionItem, AccordionContent } from '../ui/accordion';
 import { CardContent, CardFooter } from '../ui/card';
 import LikeProperty from './LikeProperty';

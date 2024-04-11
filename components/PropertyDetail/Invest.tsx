@@ -3,12 +3,12 @@ import React, { useState } from 'react';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
+import MintButton from './MintButton';
+
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger
@@ -21,6 +21,8 @@ interface InvestProps {
   annual_yield: number;
   subtitle: string;
   buttonText: string;
+  remainingTokens: number;
+  contractAddress: string;
 }
 
 const Invest: React.FC<InvestProps> = ({
@@ -28,9 +30,12 @@ const Invest: React.FC<InvestProps> = ({
   price,
   annual_yield,
   subtitle,
-  buttonText
+  buttonText,
+  remainingTokens,
+  contractAddress
 }) => {
   const [tokenAmount, setTokenAmount] = useState<number | string>(10);
+  const allowBuy: boolean = true;
 
   const totalPrice = isNaN(Number(tokenAmount))
     ? ''
@@ -134,19 +139,23 @@ const Invest: React.FC<InvestProps> = ({
           Disclaimers, and Privacy Notice.
         </label>
       </div>
-
-      {/* <button className="bg-teal-500 text-white px-4 py-4 rounded hover:bg-teal-600 transition duration-300 flex w-full items-center justify-center font-space_grotesk">
-        {buttonText}
-      </button> */}
-
       <Dialog>
         <DialogTrigger asChild>
-          <Button
-            variant="outline"
-            className="w-full bg-libertumGreen text-white px-4 py-4 rounded hover:bg-teal-600 transition duration-300 flex items-center justify-center font-space_grotesk select-none"
-          >
-            Invest Now!
-          </Button>
+          {allowBuy ? (
+            <MintButton
+              contractAddress={contractAddress}
+              amount={tokenAmount}
+              price={price}
+              remainingTokens={remainingTokens}
+            />
+          ) : (
+            <Button
+              variant="outline"
+              className="w-full bg-libertumGreen text-white px-4 py-4 rounded hover:bg-teal-600 transition duration-300 flex items-center justify-center font-space_grotesk select-none"
+            >
+              Invest Now!
+            </Button>
+          )}
         </DialogTrigger>
         <DialogContent className="sm:max-w-md p-6 bg-white">
           <DialogHeader>
