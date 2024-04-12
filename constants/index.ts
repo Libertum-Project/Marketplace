@@ -7,31 +7,49 @@ export const sidebarLinks: SidebarLink[] = [
     imgURL: '/assets/icons/dashboard.svg',
     route: '/profile',
     label: 'Profile',
+    info: 'Your personal info'
   },
   {
     imgURL: '/assets/icons/listings.svg',
     route: '/listings',
     label: 'My Listings',
+    info: 'Your properties'
+
   },
   {
     imgURL: '/assets/icons/investments.svg',
     route: '/investments',
     label: 'My Investments',
+    info: 'Properties you invested in'
+
   },
   {
     imgURL: '/assets/icons/properties.svg',
     route: '/saved',
     label: 'Saved',
+    info: 'Saved properties'
+
   },
   {
     imgURL: '/assets/icons/earn.svg',
     route: '/lbm-coin',
     label: 'Earn',
+    info: 'Token analytics and staking tool'
+
   },
   {
     imgURL: '/assets/icons/market.svg',
     route: '/',
     label: 'Marketplace',
+    info: 'A gamified primary marketplace full of premium properties to choose from'
+
+  },
+  {
+    imgURL: '/assets/icons/get.svg',
+    route: '/get',
+    label: 'Get',
+    info: 'Liquidity tool enabling cross-chain swapping of your tokens'
+
   },
 ];
 
@@ -40,31 +58,44 @@ export const mobileMenu: SidebarLink[] = [
     imgURL: '/assets/icons/dashboard.svg',
     route: '/profile',
     label: 'Profile',
+    info: ''
+
   },
   {
     imgURL: '/assets/icons/listings.svg',
     route: '/listings',
     label: 'Listings',
+    info: ''
   },
   {
     imgURL: '/assets/icons/properties.svg',
     route: '/saved',
     label: 'Saved',
+    info: ''
   },
   {
     imgURL: '/assets/icons/earn.svg',
     route: '/lbm-coin',
     label: 'Earn',
+    info: ''
   },
   {
     imgURL: '/assets/icons/investments.svg',
     route: '/investments',
     label: 'Investments',
+    info: ''
   },
   {
     imgURL: '/assets/icons/market.svg',
     route: '/',
     label: 'Marketplace',
+    info: ''
+  },
+  {
+    imgURL: '/assets/icons/get.svg',
+    route: '/get',
+    label: 'Get',
+    info: ''
   },
 ];
 

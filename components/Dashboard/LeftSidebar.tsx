@@ -3,6 +3,12 @@ import { sidebarLinks } from '@/constants';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 
 const LeftSidebar = () => {
   const pathname = usePathname();
@@ -43,6 +49,21 @@ const LeftSidebar = () => {
                 }`}
               >
                 {item.label}
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <Image
+                        src="/assets/icons/info.svg"
+                        alt="more info"
+                        width={12}
+                        height={12}
+                      />
+                    </TooltipTrigger>
+                    <TooltipContent className="bg-libertumOrange rounded-[5px]" >
+                      <p className="text-white font-space_grotesk font-semibold text-xs">{item.info}</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
               </p>
             </Link>
           );
