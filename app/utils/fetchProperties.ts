@@ -1,9 +1,10 @@
 const secretKey = process.env.NEXT_PUBLIC_SECRET_KEY;
-const requestOptions = {
+const requestOptions:any = {
   method: 'GET',
+  cache: 'no-store',
   headers: {
-    Authorization: `Bearer ${secretKey}`,
-  },
+    Authorization: `Bearer ${secretKey}`
+  }
 };
 
 export async function getProperties() {

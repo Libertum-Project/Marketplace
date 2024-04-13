@@ -29,6 +29,7 @@ const MintButton = ({
   const [errorUrl, setErrorUrl] = useState('');
   const userWalletAddress = useAddress();
 
+  console.log(propertyContractAddress)
   const {
     data: userNativeTokenBalance,
     isLoading: isLoadingUserNativeTokenBalance
@@ -108,7 +109,6 @@ const MintButton = ({
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
-        console.log(response)
 
         setShowSuccessMessage(true);
         setShowIsLoadingUi(false);
