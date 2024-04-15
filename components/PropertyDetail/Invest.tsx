@@ -42,8 +42,12 @@ const Invest: React.FC<InvestProps> = ({
     : (Number(tokenAmount) * price).toFixed(2);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.value.startsWith('-')) {
-      setTokenAmount('');
+    if (
+      event.target.value === '' ||
+      event.target.value === '0' ||
+      event.target.value.startsWith('-')
+    ) {
+      setTokenAmount(1);
     } else {
       setTokenAmount(event.target.value);
     }
