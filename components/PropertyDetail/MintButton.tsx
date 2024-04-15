@@ -20,7 +20,8 @@ const MintButton = ({
   contractAddress: propertyContractAddress,
   amount,
   price,
-  remainingTokens
+  remainingTokens,
+  areTermsAccepted
 }: any) => {
   const [showIsLoadingUi, setShowIsLoadingUi] = useState(false);
   const [showErrorMessage, setShowErrorMessage] = useState(false);
@@ -28,8 +29,9 @@ const MintButton = ({
   const [errorText, setErrorText] = useState('');
   const [errorUrl, setErrorUrl] = useState('');
   const userWalletAddress = useAddress();
+  const isDisabled = !areTermsAccepted;
 
-  console.log(propertyContractAddress)
+  console.log(propertyContractAddress);
   const {
     data: userNativeTokenBalance,
     isLoading: isLoadingUserNativeTokenBalance
@@ -170,6 +172,7 @@ const MintButton = ({
         contractAbi={PROPERTY_ABI.abi}
         action={handleMint}
         className={css.mintBtn}
+        isDisabled={isDisabled}
       >
         Invest Now!
       </Web3Button>

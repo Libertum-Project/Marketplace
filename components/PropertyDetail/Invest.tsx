@@ -162,6 +162,7 @@ const Invest: React.FC<InvestProps> = ({
               amount={tokenAmount}
               price={price}
               remainingTokens={remainingTokens}
+              areTermsAccepted={areTermsAccepted}
             />
           ) : (
             <Button
