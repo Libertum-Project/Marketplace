@@ -32,18 +32,19 @@ const AllProperties = ({ showFilters = false }: Props) => {
   };
   const secretKey = process.env.NEXT_PUBLIC_SECRET_KEY;
 
-  const requestOptions = {
-    method: 'GET',
-    headers: {
-      authorization: `Bearer ${secretKey}`
-    }
-  };
   const fetchProperties = async () => {
     const data = await fetch(
       'https://libertum--marketplace.azurewebsites.net/properties',
-      requestOptions
+      {
+        method: 'GET',
+        cache: 'no-store',
+        headers: {
+          authorization: `Bearer ${secretKey}`
+        }
+      }
     );
     const properties = await data.json();
+    console.log(properties)
 
     setProperties(properties);
   };
