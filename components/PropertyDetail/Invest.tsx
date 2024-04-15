@@ -1,7 +1,6 @@
 'use client';
 import React, { useState } from 'react';
 import { Label } from '@/components/ui/label';
-import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import MintButton from './MintButton';
 
@@ -35,6 +34,7 @@ const Invest: React.FC<InvestProps> = ({
   contractAddress
 }) => {
   const [tokenAmount, setTokenAmount] = useState<number | string>(10);
+  const [areTermsAccepted, setAreTermsAccepted] = useState<boolean>(false);
   const allowBuy: boolean = true;
 
   const totalPrice = isNaN(Number(tokenAmount))
@@ -47,6 +47,10 @@ const Invest: React.FC<InvestProps> = ({
     } else {
       setTokenAmount(event.target.value);
     }
+  };
+
+  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setAreTermsAccepted(event.target.checked);
   };
 
   return (
@@ -130,7 +134,14 @@ const Invest: React.FC<InvestProps> = ({
       </div>
 
       <div className="flex items-center space-x-2">
-        <Checkbox id="terms" />
+        <input
+          type="checkbox"
+          name="terms"
+          id="terms"
+          checked={areTermsAccepted}
+          onChange={handleCheckboxChange}
+          className="w-6 h-6  border rounded-md border-gray-300 bg-white"
+        />
         <label
           htmlFor="terms"
           className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-[#00000081] select-none"
