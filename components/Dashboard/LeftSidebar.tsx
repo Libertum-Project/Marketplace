@@ -33,7 +33,7 @@ const LeftSidebar = () => {
               href={item.route}
               className={`text-white flex gap-[10px] group py-[10px] px-5 items-center ${
                 isActive && 'bg-white bg-opacity-5 rounded-[5px]'
-              }`}
+              }  ${item.label === 'Get' ? 'pl-[11px]' : ''}`}
               key={item.route}
             >
               <Image
@@ -41,7 +41,7 @@ const LeftSidebar = () => {
                 alt={item.label}
                 width={20}
                 height={20}
-                className="group-hover:fill-[#00B3B5]"
+                className={`group-hover:fill-[#00B3B5]  ${item.label === 'Get' ? 'w-[36px]' : ''}`}
               />
               <p
                 className={`group-hover:text-[#00B3B5] text-opacity-70 text-xs font-bold font-ubuntu ${
