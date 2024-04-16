@@ -47,7 +47,7 @@ export function ProfileModal({
                   alt={item.label}
                   width={20}
                   height={20}
-                  className="group-hover:fill-[#00B3B5]"
+                  className={`group-hover:fill-[#00B3B5] ${item.label === 'Get' ? 'w-[36px]' : ''}`}
                 />
                 <p
                   className={`group-hover:text-[#00B3B5] text-opacity-70 text-xs font-bold whitespace-nowrap font-ubuntu`}
