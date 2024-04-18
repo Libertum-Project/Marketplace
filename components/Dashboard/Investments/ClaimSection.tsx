@@ -5,6 +5,7 @@ import getTokensIds from '@/app/utils/propertyContract/claimInvestmentFunctions/
 import getClaimableAmount from '@/app/utils/propertyContract/claimInvestmentFunctions/getClaimableAmount';
 import getMonthsToClaim from '@/app/utils/propertyContract/claimInvestmentFunctions/getMonthsToClaim';
 import getMintTime from '@/app/utils/propertyContract/claimInvestmentFunctions/getMintTime';
+import createGroups from '@/app/utils/propertyContract/claimInvestmentFunctions/createGroups';
 
 import {
   useContract,
@@ -44,8 +45,8 @@ const ClaimSection = ({ propertyAddress: propertyContractAddress }: any) => {
           userWalletAddress,
           propertyContractAddress
         );
-        console.log(await getMintTime(propertyContractAddress, tokenIds[1]));
-        console.log(await getMintTime(propertyContractAddress, tokenIds[2]));
+        await  createGroups(propertyContractAddress, tokenIds)
+//        console.log(await getMintTime(propertyContractAddress, tokenIds[2]));
 
         let claimableAmount: number = await getClaimableAmount(
           propertyContractAddress,
