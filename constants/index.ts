@@ -373,3 +373,36 @@ export const properties: {}[] = [
 export const MAX_ALLOWANCE =
   115792089237316195423570985008687907853269984665640564039457584007913129639935n;
 export const exchangeProxy = '0x4F68248ecB782647D1E5981a181bBe1bfFee1040';
+
+export const stakingCards = [
+  {
+    name: 'stake',
+    lockingPeriod: 0,
+    apr: 5,
+    icon: '/assets/logo-dark.svg',
+  },
+  {
+    name: 'stake',
+    lockingPeriod: 30,
+    apr: 8,
+    icon: '/assets/logo-dark.svg',
+  },
+  {
+    name: 'stake',
+    lockingPeriod: 90,
+    apr: 10,
+    icon: '/assets/logo-dark.svg',
+  },
+  {
+    name: 'stake',
+    lockingPeriod: 180,
+    apr: 20,
+    icon: '/assets/logo-dark.svg',
+  },
+  {
+    name: 'stake',
+    lockingPeriod: 360,
+    apr: 40,
+    icon: '/assets/logo-dark.svg',
+  },
+];
