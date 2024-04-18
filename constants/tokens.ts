@@ -1,0 +1,60 @@
+import { Token } from '@/types';
+
+export const tokens: Token[] = [
+  // {
+  //   chainId: 8453,
+  //   address: '0x0000000000000000000000000000000000000000',
+  //   name: 'Ethereum',
+  //   symbol: 'ETH',
+  //   decimals: 18,
+  //   logo: '/assets/coins/eth.png',
+  // },
+  {
+    chainId: 8453,
+    address: '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913',
+    name: 'USDC',
+    symbol: 'USDC',
+    decimals: 6,
+    logo: '/assets/coins/usdc.png',
+  },
+  {
+    chainId: 8453,
+    address: '0x50c5725949a6f0c72e6c4a641f24049a917db0cb',
+    name: 'Dai',
+    symbol: 'DAI',
+    decimals: 18,
+    logo: '/assets/coins/dai.png',
+  },
+  {
+    chainId: 8453,
+    address: '0x3055913c90Fcc1A6CE9a358911721eEb942013A1',
+    name: 'PanCake Swap',
+    symbol: 'CAKE',
+    decimals: 18,
+    logo: '/assets/coins/cake.png',
+  },
+  {
+    chainId: 8453,
+    address: '0xfA980cEd6895AC314E7dE34Ef1bFAE90a5AdD21b',
+    name: 'Echelon Prime',
+    symbol: 'PRIME',
+    decimals: 18,
+    logo: '/assets/coins/prime.png',
+  },
+  {
+    chainId: 8453,
+    address: '0x23ee2343B892b1BB63503a4FAbc840E0e2C6810f',
+    name: 'Axelar',
+    symbol: 'AXL',
+    decimals: 18,
+    logo: '/assets/coins/axl.png',
+  },
+  {
+    chainId: 8453,
+    address: '0x56A38E7216304108E841579041249fEb236C887b',
+    name: 'Libertum',
+    symbol: 'LBM',
+    decimals: 18,
+    logo: '/assets/coins/lbm.png',
+  },
+];
