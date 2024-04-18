@@ -1,4 +1,5 @@
 import getPropertyContract from './getPropertyContract';
+
 async function getTokensIds(
   tokenQuantity: number,
   userWalletAddress: string | undefined,
@@ -10,10 +11,12 @@ async function getTokensIds(
   );
 
   for (let i = 0; i < tokenQuantity; i++) {
-    let tokenId = await propertyContract.tokenOfOwnerByIndex(
+    let tokenIdHex = await propertyContract.tokenOfOwnerByIndex(
       userWalletAddress,
       i
     );
+
+    const tokenId = parseInt(tokenIdHex._hex, 16);
     tokenIds.push(tokenId);
   }
 

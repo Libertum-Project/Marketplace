@@ -1,7 +1,8 @@
 'use client';
 import { useState, useEffect } from 'react';
 import PROPERTY_ABI from '@/constants/Property.json';
-import getTokensIds from '@/lib/investments/getTokensIds';
+import getTokensIds from '@/app/utils/propertyContract/claimInvestmentFunctions/getTokensIds';
+import getClaimableAmount from '@/app/utils/propertyContract/claimInvestmentFunctions/getClaimableAmount';
 import {
   useContract,
   useContractRead,
@@ -18,7 +19,6 @@ const ClaimSection = ({ propertyAddress: propertyContractAddress }: any) => {
   const [nextClaimTime, setNextClaimTime] = useState<Date | null>(null);
   const [totalClaimedCapitalRepayment, setTotalClaimedCapitalRepayment] = useState<number>(0);
   const [totalEarnedYield, setTotalEarnedYield] = useState<number>(0);
-  const [tokenIds, setTokenIds] = useState<string[]>([]);
 
   const { contract: propertyContract, isLoading: isPropertyContractLoading } =
     useContract(propertyContractAddress, PROPERTY_ABI.abi);
@@ -38,14 +38,14 @@ const ClaimSection = ({ propertyAddress: propertyContractAddress }: any) => {
           propertyContractAddress
         );
 
+        let claimableAmount:number = await getClaimableAmount(propertyContractAddress, tokenIds);
 
-        setTokenIds(tokenIds);
+        setClaimableAmount(claimableAmount)
       }
     }
     fetchTokenIds();
   }, [userBalance, isUserBalanceLoading]);
 
-  console.log(tokenIds);
   return (
     <section>
       <p>You have: {tokenQuantity} Tokens total</p>
