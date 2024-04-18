@@ -4,6 +4,7 @@ import PROPERTY_ABI from '@/constants/Property.json';
 import getTokensIds from '@/app/utils/propertyContract/claimInvestmentFunctions/getTokensIds';
 import getClaimableAmount from '@/app/utils/propertyContract/claimInvestmentFunctions/getClaimableAmount';
 import getMonthsToClaim from '@/app/utils/propertyContract/claimInvestmentFunctions/getMonthsToClaim';
+import getMintTime from '@/app/utils/propertyContract/claimInvestmentFunctions/getMintTime';
 
 import {
   useContract,
@@ -18,7 +19,7 @@ const ClaimSection = ({ propertyAddress: propertyContractAddress }: any) => {
   const userWalletAddress = useAddress();
   const [tokenQuantity, setTokenQuantity] = useState<number>(0);
   const [claimableAmount, setClaimableAmount] = useState<number>(0);
-  const [monthsToClaim, setMonthsToClaim] = useState<number>(0)
+  const [monthsToClaim, setMonthsToClaim] = useState<number>(0);
 
   const [nextClaimTime, setNextClaimTime] = useState<Date | null>(null);
 
@@ -43,6 +44,8 @@ const ClaimSection = ({ propertyAddress: propertyContractAddress }: any) => {
           userWalletAddress,
           propertyContractAddress
         );
+        console.log(await getMintTime(propertyContractAddress, tokenIds[1]));
+        console.log(await getMintTime(propertyContractAddress, tokenIds[2]));
 
         let claimableAmount: number = await getClaimableAmount(
           propertyContractAddress,
@@ -53,9 +56,8 @@ const ClaimSection = ({ propertyAddress: propertyContractAddress }: any) => {
           propertyContractAddress,
           tokenIds
         );
-
         setClaimableAmount(claimableAmount);
-        setMonthsToClaim(monthsToClaim)
+        setMonthsToClaim(monthsToClaim);
       }
     }
     fetchTokenIds();
