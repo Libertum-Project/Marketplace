@@ -176,7 +176,7 @@ const InvestmentDetail = ({ property }: Props) => {
           </div>
 
           <div className="sm:py-8 sm:px-12 flex-1 p-3 sm:pb-0">
-            <InvestmentDetailTabs />
+            <InvestmentDetailTabs propertyAddress={property.contract_address}/>
           </div>
         </div>
       </DialogContent>

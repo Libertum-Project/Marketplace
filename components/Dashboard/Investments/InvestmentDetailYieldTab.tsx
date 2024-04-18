@@ -1,11 +1,11 @@
 import { TabsContent } from '@/components/ui/tabs';
 import YieldChart from '../Chart/YieldChart';
-import { Button } from '../../ui/button';
-import { ServerImage } from '../../shared/ServerImage';
+import ClaimSection from './ClaimSection';
 
-const InvestmentDetailYieldTab = () => {
+const InvestmentDetailYieldTab = ({propertyAddress} :any) => {
   return (
     <TabsContent value="yield" className="sm:max-h-[640px] overflow-auto">
+      <ClaimSection propertyAddress={propertyAddress}/>
       <div className="flex flex-col gap-4">
         <h3 className="text-slate-900 text-[32px] font-bold font-space_grotesk">
           RENT
@@ -60,16 +60,6 @@ const InvestmentDetailYieldTab = () => {
             <p className="uppercase opacity-50 text-center text-neutral-800 text-xs font-black">
               rent in last 30 days
             </p>
-
-            <Button className="flex justify-between items-center px-4 py-2 bg-teal-500 bg-opacity-40 rounded-[5px] border border-teal-500 backdrop-blur-[10px] text-white gap-3 mt-3 hover:bg-teal-500 hover:text-white">
-              Clain
-              <ServerImage
-                alt="icon"
-                src="/assets/icons/investment-details/right-arrow.svg"
-                width={14}
-                height={8}
-              />
-            </Button>
           </div>
         </div>
       </div>
@@ -133,16 +123,6 @@ const InvestmentDetailYieldTab = () => {
             <p className="uppercase opacity-50 text-center text-neutral-800 text-xs font-black">
               rent in last 30 days
             </p>
-
-            <Button className="flex justify-between items-center px-4 py-2 bg-teal-500 bg-opacity-40 rounded-[5px] border border-teal-500 backdrop-blur-[10px] text-white gap-3 mt-3 hover:bg-teal-500 hover:text-white">
-              Clain
-              <ServerImage
-                alt="icon"
-                src="/assets/icons/investment-details/right-arrow.svg"
-                width={14}
-                height={8}
-              />
-            </Button>
           </div>
         </div>
       </div>
