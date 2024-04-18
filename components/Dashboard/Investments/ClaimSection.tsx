@@ -45,18 +45,22 @@ const ClaimSection = ({ propertyAddress: propertyContractAddress }: any) => {
           userWalletAddress,
           propertyContractAddress
         );
-        await  createGroups(propertyContractAddress, tokenIds)
-//        console.log(await getMintTime(propertyContractAddress, tokenIds[2]));
+
+        const groups = await createGroups(propertyContractAddress, tokenIds);
+        //        console.log(await getMintTime(propertyContractAddress, tokenIds[2]));
+
+        const firstTokenIds = groups.map((group: any) => group[0]);
 
         let claimableAmount: number = await getClaimableAmount(
           propertyContractAddress,
-          tokenIds
+          firstTokenIds
         );
 
         let monthsToClaim: number = await getMonthsToClaim(
           propertyContractAddress,
-          tokenIds
+          firstTokenIds
         );
+
         setClaimableAmount(claimableAmount);
         setMonthsToClaim(monthsToClaim);
       }
