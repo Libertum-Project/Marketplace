@@ -16,7 +16,7 @@ const ClaimSection = ({ propertyAddress: propertyContractAddress }: any) => {
   const [tokenQuantity, setTokenQuantity] = useState<number>(0);
   const [claimableAmount, setClaimableAmount] = useState<number>(0);
   const [nextClaimTime, setNextClaimTime] = useState<Date | null>(null);
-  const [totalClaimedAmount, setTotalClaimedAmount] = useState<number>(0);
+  const [totalClaimedCapitalRepayment, setTotalClaimedCapitalRepayment] = useState<number>(0);
   const [totalEarnedYield, setTotalEarnedYield] = useState<number>(0);
   const [tokenIds, setTokenIds] = useState<string[]>([]);
 
@@ -38,6 +38,7 @@ const ClaimSection = ({ propertyAddress: propertyContractAddress }: any) => {
           propertyContractAddress
         );
 
+
         setTokenIds(tokenIds);
       }
     }
@@ -50,7 +51,7 @@ const ClaimSection = ({ propertyAddress: propertyContractAddress }: any) => {
       <p>You have: {tokenQuantity} Tokens total</p>
       <p>You can claim: {claimableAmount} $</p>
       <p>Next Claim Time: {nextClaimTime?.toLocaleString()}</p>
-      <p>Total Claimed Amount: {totalClaimedAmount} $</p>
+      <p>Total Claimed Capital Repayment: {totalClaimedCapitalRepayment} $</p>
       <p>Total Earned Yield: {totalEarnedYield} $</p>
     </section>
   );
