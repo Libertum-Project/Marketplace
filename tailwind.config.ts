@@ -22,8 +22,11 @@ const config = {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
-        background: 'hsl(var(--background))',
+        background: '#FFFF',
         foreground: 'hsl(var(--foreground))',
+        libertumBlue: '#080915' /* Dark blue */,
+        libertumGreen: '#00b3b5' /* Teal */,
+        libertumOrange: '#ffa143' /* Orange */,
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
@@ -75,12 +78,17 @@ const config = {
       fontFamily: {
         ubuntu: ['Ubuntu', 'system-ui', 'sans-serif'],
         space_grotesk: ['Space Grotesk', 'system-ui', 'sans-serif'],
+        montserrat: ['Montserrat', 'system-ui', 'sans-serif'],
       },
       backgroundImage: {
         'primary-gradient':
           'radial-gradient(80.5% 80.5% at 50% 103.87%, #000041 0%, #0E0E1E 100%)',
         'wallet-card-gradient':
           'linear-gradient(230deg, #00062F -0.79%, rgba(0, 6, 47, 0.75) 73%)',
+      },
+      boxShadow: {
+        'main-shadow':
+          '0px 16px 24px 0px rgba(0, 0, 0, 0.06), 0px 2px 6px 0px rgba(0, 0, 0, 0.04), 0px 0px 1px 0px rgba(0, 0, 0, 0.04)',
       },
     },
   },

@@ -1,7 +1,9 @@
+'use client';
 import { type ReactElement } from 'react';
 import Link from 'next/link';
 import css from './MobileModal.module.css';
 import ConnectWalletButton from '../../WalletComponents/ConnectWalletButton';
+import { useAddress } from '@thirdweb-dev/react';
 
 interface MobileModalProp {
   handleToggleOpenMenu: () => void;
@@ -10,22 +12,23 @@ interface MobileModalProp {
 export function MobileModal({
   handleToggleOpenMenu,
 }: MobileModalProp): ReactElement {
+  const address = useAddress();
   return (
     <div className={css.mobileModalContainer} onClick={handleToggleOpenMenu}>
       <div className={css.mobileModal}>
-        <Link href="./ico" className={css.border}>
+        <Link href="https://www.libertum.io/ico" className={css.border}>
           Buy LBM
         </Link>
-        <Link href="/comingsoon" className={css.border}>
+        <Link href="https://www.libertum.io/comingsoon" className={css.border}>
           Explore Properties
         </Link>
         <div className={css.border}>
           <p>Learn</p>
-          <Link href="/learn-investors">→ Investors</Link>
-          <Link href="/propertyowners">→ Property Owners</Link>
-          <Link href="/rwa">→ RWA Tokenisation</Link>
+          <Link href="https://www.libertum.io/learn-investors">→ Investors</Link>
+          <Link href="https://www.libertum.io/propertyowners">→ Property Owners</Link>
+          <Link href="https://www.libertum.io/rwa">→ RWA Tokenisation</Link>
         </div>
-        <Link href="/community" className={css.border}>
+        <Link href="https://www.libertum.io/community" className={css.border}>
           Community
         </Link>
         <div>
@@ -39,7 +42,18 @@ export function MobileModal({
           <Link href="/Libertum_Pitch.pdf" target="_blank">
             → Pitch Deck
           </Link>
+          <Link href="https://www.libertum.io/rfp" target="_blank">
+            → RFP
+          </Link>
+          <Link href="https://blog.libertum.io/" target="_blank">
+            → Blog
+          </Link>
         </div>
+        {address && (
+          <div>
+            <Link href="/profile">Profile</Link>
+          </div>
+        )}
         <ConnectWalletButton />
       </div>
     </div>

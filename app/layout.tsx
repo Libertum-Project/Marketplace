@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { ThirdwebContextProvider } from './providers/ThirdWebContextProvider';
+import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
   title: 'Marketplace - Libertum',
@@ -22,6 +23,7 @@ export default function RootLayout({
 
       <body>
         <ThirdwebContextProvider>{children}</ThirdwebContextProvider>
+        <Toaster />
       </body>
     </html>
   );

@@ -1,5 +1,4 @@
 'use client';
-
 import React, { createContext } from 'react';
 import {
   ThirdwebProvider,
@@ -10,7 +9,7 @@ import {
   walletConnect,
 } from '@thirdweb-dev/react';
 
-import { Polygon } from '@thirdweb-dev/chains';
+import { Base } from '@thirdweb-dev/chains';
 
 const ThirdwebContext = createContext<any>(undefined);
 
@@ -24,9 +23,9 @@ export function ThirdwebContextProvider({
     <ThirdwebContext.Provider value={{}}>
       <ThirdwebProvider
         theme="light"
-        activeChain="polygon"
+        activeChain={Base}
         clientId={clientId}
-        supportedChains={[Polygon]}
+        supportedChains={[Base]}
         supportedWallets={[
           metamaskWallet({ recommended: true }),
           coinbaseWallet(),

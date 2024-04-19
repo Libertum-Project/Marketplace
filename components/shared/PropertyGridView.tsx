@@ -1,11 +1,11 @@
-import Link from 'next/link';
-import InvestmentDetail from '../Dashboard/InvestmentDetail';
+import InvestmentDetail from '../Dashboard/Investments/InvestmentDetail';
 import { Accordion, AccordionItem, AccordionContent } from '../ui/accordion';
-import { Button } from '../ui/button';
 import { CardContent, CardFooter } from '../ui/card';
+import LikeProperty from './LikeProperty';
 import PropertyCardButton from './PropertyCardButton';
 import PropertyDetailTable from './PropertyDetailTable';
 import { ServerImage } from './ServerImage';
+import Link from 'next/link';
 
 interface Props {
   property: any;
@@ -13,36 +13,23 @@ interface Props {
   btnLink?: string;
   investmentDetail?: boolean;
 }
-
 const PropertyGridView = ({
   property,
   btnTitle,
-  btnLink,
   investmentDetail = false,
 }: Props) => {
   return (
     <>
-      <Link
-        href={{
-          pathname: '/details',
-          query: {
-            id: property.id,
-          },
-        }}
-      >
-        <CardContent className="p-0 relative">
-          <Button className="absolute right-4 top-4 bg-transparent hover:bg-transparent p-0">
-            <ServerImage
-              src={`${
-                property.favourite
-                  ? '/assets/icons/property-liked.svg'
-                  : '/assets/icons/property-unliked.svg'
-              }`}
-              alt="like"
-              width={49}
-              height={48}
-            />
-          </Button>
+      <CardContent className="p-0 relative">
+        <LikeProperty property={property} />
+        <Link
+          href={{
+            pathname: '/details',
+            query: {
+              id: property.id,
+            },
+          }}
+        >
           <div className="h-[255px]">
             <ServerImage
               className="w-full"
@@ -56,7 +43,7 @@ const PropertyGridView = ({
             />
           </div>
 
-          <div className="py-6 px-4">
+          <div className="py-6 px-4 max-h-[167.5px]">
             <div className="flex justify-between">
               <div className="flex flex-col">
                 <p className="text-black text-opacity-80 text-lg font-bold font-space_grotesk">
@@ -67,8 +54,12 @@ const PropertyGridView = ({
                 </p>
               </div>
 
-              <p className="px-4 py-1 bg-teal-500 bg-opacity-10 rounded-[50px] border border-teal-500 font-space_grotesk text-teal-500 text-xs font-bold flex items-center justify-center h-fit whitespace-nowrap">
-                $ {property.total_valuation}
+              <p className="px-4 py-1 bg-libertumGreen bg-opacity-10 rounded-[50px] border border-libertumGreen font-space_grotesk text-libertumGreen text-xs font-bold flex items-center justify-center h-fit whitespace-nowrap">
+                $
+                {property.total_valuation.toLocaleString('en-US', {
+                  minimumFractionDigits: 0,
+                  maximumFractionDigits: 0,
+                })}{' '}
               </p>
             </div>
 
@@ -102,8 +93,8 @@ const PropertyGridView = ({
               </div>
             </div>
           </div>
-        </CardContent>
-      </Link>
+        </Link>
+      </CardContent>
 
       <CardFooter className="w-full px-4">
         {investmentDetail ? (
@@ -112,10 +103,18 @@ const PropertyGridView = ({
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value={`item-${property.id}`}>
               <AccordionContent>
-                <PropertyDetailTable />
+                <PropertyDetailTable
+                  totalShares={property.total_shares}
+                  propertyPrice={property.total_valuation}
+                  annualYield={property.annual_yield}
+                  repaymentDuration={property.token_duration_months}
+                  />
               </AccordionContent>
 
-              <PropertyCardButton btnTitle={btnTitle} btnLink={btnLink} />
+              <PropertyCardButton
+                btnTitle={btnTitle}
+                propertyId={property.id}
+              />
             </AccordionItem>
           </Accordion>
         )}

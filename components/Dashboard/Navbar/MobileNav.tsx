@@ -16,8 +16,8 @@ const MobileNav = () => {
           <Link
             href={item.route}
             className={`text-white flex flex-col gap-[10px] group py-[10px] px-[10px] items-center ${
-              isActive && 'text-white'
-            }`}
+              isActive && 'bg-white bg-opacity-5 rounded-[5px]'
+            } ${item.label === 'Get' ? 'gap-0' : ''}`}
             key={item.route}
           >
             <Image
@@ -25,7 +25,9 @@ const MobileNav = () => {
               alt={item.label}
               width={20}
               height={20}
-              className="group-hover:fill-[#00B3B5]"
+              className={`group-hover:fill-[#00B3B5]  ${
+                item.label === 'Get' ? 'w-[36px]' : ''
+              }`}
             />
             <p className="text-white group-hover:text-[#00B3B5] text-opacity-70 text-xs font-bold font-ubuntu">
               {item.label}

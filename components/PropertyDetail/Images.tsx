@@ -2,12 +2,7 @@ import React from 'react';
 import { ServerImage } from '@/components/shared/ServerImage';
 import {
   Dialog,
-  DialogClose,
   DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
 import {
@@ -33,7 +28,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
           alt="Main Image"
           width={509}
           height={339}
-          className="w-full h-auto md:col-span-2 rounded-[5px]"
+          className="w-full h-auto md:col-span-2 rounded-[5px] max-h-[20rem] object-cover"
         />
 
         <Dialog>
@@ -58,7 +53,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
                       alt={`Image ${index}`}
                       width={509}
                       height={339}
-                      className="w-full h-auto"
+                      className="w-full h-full object-cover overflow-hidden"
                     />
                   </CarouselItem>
                 ))}
@@ -70,7 +65,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
         </Dialog>
       </div>
 
-      <div className="grid grid-cols-3 gap-4 md:col-span-2">
+      <div className="grid grid-cols-3 gap-4 md:col-span-2 h-28">
         {firstFourImages.slice(1).map((image, index) => (
           <ServerImage
             key={index}
@@ -78,7 +73,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
             alt={`Image ${index}`}
             width={163}
             height={109}
-            className="w-full h-auto rounded-[5px]"
+            className="w-full h-full rounded-[5px] object-cover overflow-hidden"
           />
         ))}
       </div>

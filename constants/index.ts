@@ -5,56 +5,90 @@ export const kycPending: boolean = false;
 export const sidebarLinks: SidebarLink[] = [
   {
     imgURL: '/assets/icons/dashboard.svg',
-    route: '/dashboard',
-    label: 'Dashboard',
+    route: '/profile',
+    label: 'Profile',
+    info: 'Your personal info',
   },
   {
     imgURL: '/assets/icons/listings.svg',
     route: '/listings',
     label: 'My Listings',
+    info: 'Your properties',
   },
   {
     imgURL: '/assets/icons/investments.svg',
     route: '/investments',
     label: 'My Investments',
+    info: 'Properties you invested in',
   },
   {
     imgURL: '/assets/icons/properties.svg',
-    route: '/properties',
-    label: 'My Properties',
+    route: '/saved',
+    label: 'Saved',
+    info: 'Saved properties',
   },
   {
-    imgURL: '/assets/icons/lbm-coin.svg',
+    imgURL: '/assets/icons/earn.svg',
     route: '/lbm-coin',
-    label: 'LBM Coin',
+    label: 'Earn',
+    info: 'Token analytics and staking tool',
+  },
+  {
+    imgURL: '/assets/icons/market.svg',
+    route: '/',
+    label: 'Marketplace',
+    info: 'A gamified primary marketplace full of premium properties to choose from',
+  },
+  {
+    imgURL: '/assets/icons/get.svg',
+    route: '/get',
+    label: 'Get',
+    info: 'Liquidity tool enabling cross-chain swapping of your tokens',
   },
 ];
 
 export const mobileMenu: SidebarLink[] = [
   {
     imgURL: '/assets/icons/dashboard.svg',
-    route: '/dashboard',
-    label: 'Dashboard',
+    route: '/profile',
+    label: 'Profile',
+    info: '',
   },
   {
     imgURL: '/assets/icons/listings.svg',
     route: '/listings',
     label: 'Listings',
+    info: '',
+  },
+  {
+    imgURL: '/assets/icons/properties.svg',
+    route: '/saved',
+    label: 'Saved',
+    info: '',
+  },
+  {
+    imgURL: '/assets/icons/earn.svg',
+    route: '/lbm-coin',
+    label: 'Earn',
+    info: '',
   },
   {
     imgURL: '/assets/icons/investments.svg',
     route: '/investments',
     label: 'Investments',
+    info: '',
   },
   {
-    imgURL: '/assets/icons/properties.svg',
-    route: '/properties',
-    label: 'Properties',
+    imgURL: '/assets/icons/market.svg',
+    route: '/',
+    label: 'Marketplace',
+    info: '',
   },
   {
-    imgURL: '/assets/icons/lbm-coin.svg',
-    route: '/lbm-coin',
-    label: 'LBM Coin',
+    imgURL: '/assets/icons/get.svg',
+    route: '/get',
+    label: 'Get',
+    info: '',
   },
 ];
 
@@ -333,5 +367,42 @@ export const properties: {}[] = [
     token_duration_months: 12,
     listing_duration_months: 6,
     savedBy: null,
+  },
+];
+
+export const MAX_ALLOWANCE =
+  115792089237316195423570985008687907853269984665640564039457584007913129639935n;
+export const exchangeProxy = '0x4F68248ecB782647D1E5981a181bBe1bfFee1040';
+
+export const stakingCards = [
+  {
+    name: 'stake',
+    lockingPeriod: 0,
+    apr: 5,
+    icon: '/assets/logo-dark.svg',
+  },
+  {
+    name: 'stake',
+    lockingPeriod: 30,
+    apr: 8,
+    icon: '/assets/logo-dark.svg',
+  },
+  {
+    name: 'stake',
+    lockingPeriod: 90,
+    apr: 10,
+    icon: '/assets/logo-dark.svg',
+  },
+  {
+    name: 'stake',
+    lockingPeriod: 180,
+    apr: 20,
+    icon: '/assets/logo-dark.svg',
+  },
+  {
+    name: 'stake',
+    lockingPeriod: 360,
+    apr: 40,
+    icon: '/assets/logo-dark.svg',
   },
 ];
