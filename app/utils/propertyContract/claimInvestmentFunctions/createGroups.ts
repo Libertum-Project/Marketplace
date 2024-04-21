@@ -12,7 +12,7 @@ async function createGroups(propertyContractAddress: string, tokenIds: any) {
     }
   }
 
-  const groups = Object.values(mintTimeMap).filter((group) => group.length > 1);
+  const groups = Object.values(mintTimeMap).filter((group) => group.length >= 1);
 
   return groups;
 }

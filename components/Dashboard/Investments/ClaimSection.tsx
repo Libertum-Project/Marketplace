@@ -6,6 +6,7 @@ import getClaimableAmount from '@/app/utils/propertyContract/claimInvestmentFunc
 import getMonthsToClaim from '@/app/utils/propertyContract/claimInvestmentFunctions/getMonthsToClaim';
 import getMintTime from '@/app/utils/propertyContract/claimInvestmentFunctions/getMintTime';
 import createGroups from '@/app/utils/propertyContract/claimInvestmentFunctions/createGroups';
+import getNextClaimableTime from '@/app/utils/propertyContract/claimInvestmentFunctions/getNextClaimableTime';
 
 import {
   useContract,
@@ -27,6 +28,7 @@ const ClaimSection = ({ propertyAddress: propertyContractAddress }: any) => {
   const [totalClaimedCapitalRepayment, setTotalClaimedCapitalRepayment] =
     useState<number>(0);
   const [totalEarnedYield, setTotalEarnedYield] = useState<number>(0);
+  const [groups, setGroups] = useState<any>();
 
   const { contract: propertyContract, isLoading: isPropertyContractLoading } =
     useContract(propertyContractAddress, PROPERTY_ABI.abi);
@@ -40,6 +42,7 @@ const ClaimSection = ({ propertyAddress: propertyContractAddress }: any) => {
         const tokenQuantity = userBalance.toNumber();
         setTokenQuantity(tokenQuantity);
 
+        //This is taking so much time!!!
         let tokenIds: any = await getTokensIds(
           tokenQuantity,
           userWalletAddress,
@@ -47,22 +50,41 @@ const ClaimSection = ({ propertyAddress: propertyContractAddress }: any) => {
         );
 
         const groups = await createGroups(propertyContractAddress, tokenIds);
-        //        console.log(await getMintTime(propertyContractAddress, tokenIds[2]));
+        setGroups(groups);
+        console.log(groups);
 
-        const firstTokenIds = groups.map((group: any) => group[0]);
+        const firstTokenIdsForEachGroup = groups.map((group: any) => group[0]);
 
         let claimableAmount: number = await getClaimableAmount(
           propertyContractAddress,
-          firstTokenIds
+          firstTokenIdsForEachGroup
         );
+        setClaimableAmount(claimableAmount);
 
         let monthsToClaim: number = await getMonthsToClaim(
           propertyContractAddress,
-          firstTokenIds
+          firstTokenIdsForEachGroup
+        );
+        setMonthsToClaim(monthsToClaim);
+
+        let nextClaimTimes: Date[] = [];
+        for (let tokenId of firstTokenIdsForEachGroup) {
+          const nextClaimTime = await getNextClaimableTime(
+            propertyContractAddress,
+            tokenId
+          );
+          nextClaimTimes.push(new Date(nextClaimTime));
+        }
+
+        // Find the closest time among all the groups
+        let closestTime = nextClaimTimes.reduce((prev, curr) =>
+          Math.abs(curr.getTime() - new Date().getTime()) <
+          Math.abs(prev.getTime() - new Date().getTime())
+            ? curr
+            : prev
         );
 
-        setClaimableAmount(claimableAmount);
-        setMonthsToClaim(monthsToClaim);
+        setNextClaimTime(closestTime);
       }
     }
     fetchTokenIds();
@@ -76,6 +98,15 @@ const ClaimSection = ({ propertyAddress: propertyContractAddress }: any) => {
       <p>Next Claim Time: {nextClaimTime?.toLocaleString()}</p>
       <p>Total Claimed Capital Repayment: {totalClaimedCapitalRepayment} $</p>
       <p>Total Earned Yield: {totalEarnedYield} $</p>
+      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Claim
+      </button>
+      {groups &&
+        groups.map((group: number[], index: number) => (
+          <div key={index} className="border p-4 my-2">
+            <p>{group.length} tokens</p>
+          </div>
+        ))}
     </section>
   );
 };
