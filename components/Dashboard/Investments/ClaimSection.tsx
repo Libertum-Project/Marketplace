@@ -51,7 +51,6 @@ const ClaimSection = ({ propertyAddress: propertyContractAddress }: any) => {
 
         const groups = await createGroups(propertyContractAddress, tokenIds);
         setGroups(groups);
-        console.log(groups);
 
         const firstTokenIdsForEachGroup = groups.map((group: any) => group[0]);
 
@@ -90,12 +89,31 @@ const ClaimSection = ({ propertyAddress: propertyContractAddress }: any) => {
     fetchTokenIds();
   }, [userBalance, isUserBalanceLoading]);
 
+  function formatTimeDifference(nextClaimTime: Date | null): string {
+    if (!nextClaimTime) {
+      return 'Loading ...';
+    }
+    const now = new Date();
+    const difference = nextClaimTime.getTime() - now.getTime();
+    const days = Math.ceil(difference / (1000 * 60 * 60 * 24));
+
+    if (days === 0) {
+      return 'Today';
+    } else if (days === 1) {
+      return 'Tomorrow';
+    } else if (days > 1) {
+      return `${days} days left`;
+    } else {
+      return 'Expired';
+    }
+  }
+
   return (
     <section>
       <p>You have: {tokenQuantity} Tokens total</p>
       <p>You can claim: {claimableAmount} $</p>
       <p>Your months to claim: {monthsToClaim}</p>
-      <p>Next Claim Time: {nextClaimTime?.toLocaleString()}</p>
+      <p>Next Claim Time: {formatTimeDifference(nextClaimTime)}</p>
       <p>Total Claimed Capital Repayment: {totalClaimedCapitalRepayment} $</p>
       <p>Total Earned Yield: {totalEarnedYield} $</p>
       <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
