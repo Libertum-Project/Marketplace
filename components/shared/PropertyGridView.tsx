@@ -16,7 +16,7 @@ interface Props {
 const PropertyGridView = ({
   property,
   btnTitle,
-  investmentDetail = false,
+  investmentDetail = false
 }: Props) => {
   return (
     <>
@@ -26,8 +26,8 @@ const PropertyGridView = ({
           href={{
             pathname: '/details',
             query: {
-              id: property.id,
-            },
+              id: property.id
+            }
           }}
         >
           <div className="h-[255px]">
@@ -38,7 +38,7 @@ const PropertyGridView = ({
               width={310}
               height={250}
               style={{
-                height: '100%',
+                height: '100%'
               }}
             />
           </div>
@@ -58,7 +58,7 @@ const PropertyGridView = ({
                 $
                 {property.total_valuation.toLocaleString('en-US', {
                   minimumFractionDigits: 0,
-                  maximumFractionDigits: 0,
+                  maximumFractionDigits: 0
                 })}{' '}
               </p>
             </div>
@@ -108,7 +108,7 @@ const PropertyGridView = ({
                   propertyPrice={property.total_valuation}
                   annualYield={property.annual_yield}
                   repaymentDuration={property.token_duration_months}
-                  />
+                />
               </AccordionContent>
 
               <PropertyCardButton

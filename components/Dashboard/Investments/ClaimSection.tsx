@@ -16,7 +16,10 @@ import {
   useBalance
 } from '@thirdweb-dev/react';
 
-const ClaimSection = ({ propertyAddress: propertyContractAddress }: any) => {
+const ClaimSection = ({
+  propertyAddress: propertyContractAddress,
+  durationInMonths
+}: any) => {
   const userWalletAddress = useAddress();
   const [tokenQuantity, setTokenQuantity] = useState<number>(0);
   const [claimableAmount, setClaimableAmount] = useState<number>(0);
@@ -122,6 +125,10 @@ const ClaimSection = ({ propertyAddress: propertyContractAddress }: any) => {
             <p>{group.tokens} tokens</p>
             <p>Mint Time: {group.mintTime.toLocaleDateString()}</p>
             <p>You claimed: {group.numberOfClaims} months</p>
+            <p>
+              Remaining moths to claim:{' '}
+              {durationInMonths - group.numberOfClaims}
+            </p>
           </div>
         ))}
     </section>
