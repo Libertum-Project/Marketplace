@@ -9,12 +9,10 @@ async function getMonthsToClaim(
     propertyContractAddress
   );
 
-  for (let i = 0; i < tokensIds.length; i++) {
-    const tokenId = tokensIds[i];
+    const tokenId = tokensIds[0];
     let claimableMonths =
       await propertyContract.calculateClaimableMonths(tokenId);
-    totalMonthsToClaim += claimableMonths;
-  }
+    totalMonthsToClaim = claimableMonths * tokensIds.length;
 
   return totalMonthsToClaim;
 }

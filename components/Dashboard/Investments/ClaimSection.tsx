@@ -55,27 +55,32 @@ const ClaimSection = ({
         const groupTokenIds = groups.map((group: any) => group.tokens);
 
         let claimableAmountArray: number[] = [];
+        let monthsToClaimArray: number[] = [];
         for (tokenIds of groupTokenIds) {
           let groupClaimableAmount: number = await getClaimableAmount(
             propertyContractAddress,
             tokenIds
           );
           claimableAmountArray.push(groupClaimableAmount);
+
+          let monthsToClaim: number = await getMonthsToClaim(
+            propertyContractAddress,
+            groupTokenIds
+          );
+          monthsToClaimArray.push(monthsToClaim);
         }
 
         const totalClaimableAmount = claimableAmountArray.reduce(
           (total, amount) => total + amount,
           0
         );
-        setClaimableAmount(totalClaimableAmount);
-
-        
-        //fix
-        let monthsToClaim: number = await getMonthsToClaim(
-          propertyContractAddress,
-          groupTokenIds
+        const totalMonthsToClaim = monthsToClaimArray.reduce(
+          (total, amount) => total + amount,
+          0
         );
-        setMonthsToClaim(monthsToClaim);
+
+        setClaimableAmount(totalClaimableAmount);
+        setMonthsToClaim(totalMonthsToClaim);
 
         let nextClaimTimes: Date[] = [];
         for (let tokenId of groupTokenIds) {
