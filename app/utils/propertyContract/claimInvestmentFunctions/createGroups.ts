@@ -1,6 +1,7 @@
 import getMintTime from './getMintTime';
 import getNumberOfClaims from './getNumberOfClaims';
 import getClaimableAmount from './getClaimableAmount';
+import getNextClaimableTime from './getNextClaimableTime';
 
 async function createGroups(propertyContractAddress: string, tokenIds: any) {
   const mintTimeMap: { [key: string]: number[] } = {};
@@ -27,11 +28,17 @@ async function createGroups(propertyContractAddress: string, tokenIds: any) {
         tokenIds
       );
 
+      const nextClaimTime = await getNextClaimableTime(
+        propertyContractAddress,
+        tokenIds
+      );
+
       return {
         tokens: tokenIds,
         mintTime,
         numberOfClaims,
-        claimableAmount
+        claimableAmount,
+        nextClaimTime
       };
     })
   );

@@ -56,6 +56,7 @@ const ClaimSection = ({
 
         let claimableAmountArray: number[] = [];
         let monthsToClaimArray: number[] = [];
+
         for (tokenIds of groupTokenIds) {
           let groupClaimableAmount: number = await getClaimableAmount(
             propertyContractAddress,
@@ -65,7 +66,7 @@ const ClaimSection = ({
 
           let monthsToClaim: number = await getMonthsToClaim(
             propertyContractAddress,
-            groupTokenIds
+            tokenIds
           );
           monthsToClaimArray.push(monthsToClaim);
         }
@@ -83,14 +84,13 @@ const ClaimSection = ({
         setMonthsToClaim(totalMonthsToClaim);
 
         let nextClaimTimes: Date[] = [];
-        for (let tokenId of groupTokenIds) {
+        for (let tokenIds of groupTokenIds) {
           const nextClaimTime = await getNextClaimableTime(
             propertyContractAddress,
-            tokenId
+            tokenIds
           );
           nextClaimTimes.push(new Date(nextClaimTime));
         }
-
         let closestTime = nextClaimTimes.reduce((prev, curr) =>
           Math.abs(curr.getTime() - new Date().getTime()) <
           Math.abs(prev.getTime() - new Date().getTime())
@@ -144,6 +144,9 @@ const ClaimSection = ({
               {durationInMonths - group.numberOfClaims}
             </p>
             <p>Claimable amount: {group.claimableAmount}</p>
+            <p>
+              Next claimable time: {group.nextClaimTime.toLocaleDateString()}
+            </p>
           </div>
         ))}
     </section>
