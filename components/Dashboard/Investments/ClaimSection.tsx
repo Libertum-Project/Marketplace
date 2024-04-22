@@ -4,7 +4,6 @@ import PROPERTY_ABI from '@/constants/Property.json';
 import getTokensIds from '@/app/utils/propertyContract/claimInvestmentFunctions/getTokensIds';
 import getClaimableAmount from '@/app/utils/propertyContract/claimInvestmentFunctions/getClaimableAmount';
 import getMonthsToClaim from '@/app/utils/propertyContract/claimInvestmentFunctions/getMonthsToClaim';
-import getMintTime from '@/app/utils/propertyContract/claimInvestmentFunctions/getMintTime';
 import createGroups from '@/app/utils/propertyContract/claimInvestmentFunctions/createGroups';
 import getNextClaimableTime from '@/app/utils/propertyContract/claimInvestmentFunctions/getNextClaimableTime';
 
@@ -27,7 +26,6 @@ const ClaimSection = ({ propertyAddress: propertyContractAddress }: any) => {
 
   const [totalClaimedCapitalRepayment, setTotalClaimedCapitalRepayment] =
     useState<number>(0);
-  const [totalEarnedYield, setTotalEarnedYield] = useState<number>(0);
   const [groups, setGroups] = useState<any>();
 
   const { contract: propertyContract, isLoading: isPropertyContractLoading } =
@@ -115,7 +113,6 @@ const ClaimSection = ({ propertyAddress: propertyContractAddress }: any) => {
       <p>Your months to claim: {monthsToClaim}</p>
       <p>Next Claim Time: {formatTimeDifference(nextClaimTime)}</p>
       <p>Total Claimed Capital Repayment: {totalClaimedCapitalRepayment} $</p>
-      <p>Total Earned Yield: {totalEarnedYield} $</p>
       <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
         Claim
       </button>
@@ -124,6 +121,7 @@ const ClaimSection = ({ propertyAddress: propertyContractAddress }: any) => {
           <div key={index} className="border p-4 my-2">
             <p>{group.tokens} tokens</p>
             <p>Mint Time: {group.mintTime.toLocaleDateString()}</p>
+            <p>You claimed: {group.numberOfClaims} months</p>
           </div>
         ))}
     </section>
