@@ -52,8 +52,9 @@ const ClaimSection = ({ propertyAddress: propertyContractAddress }: any) => {
         const groups = await createGroups(propertyContractAddress, tokenIds);
         setGroups(groups);
 
-        const firstTokenIdsForEachGroup = groups.map((group: any) => group[0]);
-
+        const firstTokenIdsForEachGroup = groups.map(
+          (group: any) => group.tokens
+        );
         let claimableAmount: number = await getClaimableAmount(
           propertyContractAddress,
           firstTokenIdsForEachGroup
@@ -75,7 +76,6 @@ const ClaimSection = ({ propertyAddress: propertyContractAddress }: any) => {
           nextClaimTimes.push(new Date(nextClaimTime));
         }
 
-        // Find the closest time among all the groups
         let closestTime = nextClaimTimes.reduce((prev, curr) =>
           Math.abs(curr.getTime() - new Date().getTime()) <
           Math.abs(prev.getTime() - new Date().getTime())
@@ -120,9 +120,10 @@ const ClaimSection = ({ propertyAddress: propertyContractAddress }: any) => {
         Claim
       </button>
       {groups &&
-        groups.map((group: number[], index: number) => (
+        groups.map((group: any, index: number) => (
           <div key={index} className="border p-4 my-2">
-            <p>{group.length} tokens</p>
+            <p>{group.tokens} tokens</p>
+            <p>Mint Time: {group.mintTime.toLocaleDateString()}</p>
           </div>
         ))}
     </section>

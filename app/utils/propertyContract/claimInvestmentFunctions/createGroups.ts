@@ -12,7 +12,15 @@ async function createGroups(propertyContractAddress: string, tokenIds: any) {
     }
   }
 
-  const groups = Object.values(mintTimeMap).filter((group) => group.length >= 1);
+  const groups = await Promise.all(
+    Object.entries(mintTimeMap).map(async ([mintTimeString, tokenIds]) => {
+      const mintTime = new Date(mintTimeString);
+      return {
+        tokens: tokenIds.length,
+        mintTime
+      };
+    })
+  );
 
   return groups;
 }
