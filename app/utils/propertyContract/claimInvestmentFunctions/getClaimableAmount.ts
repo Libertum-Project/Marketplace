@@ -9,12 +9,10 @@ async function getClaimableAmount(
     propertyContractAddress
   );
 
-  for (let i = 0; i < tokensIds.length; i++) {
-    const tokenId = tokensIds[i];
-    let claimableAmountHex = await propertyContract.calculateClaimable(tokenId);
-    const claimableAmount = parseInt(claimableAmountHex._hex, 16);
-    totalClaimableAmount += claimableAmount;
-  }
+  const tokenId = tokensIds[0];
+  let claimableAmountHex = await propertyContract.calculateClaimable(tokenId);
+  const claimableAmount = parseInt(claimableAmountHex._hex, 16);
+  totalClaimableAmount = claimableAmount * tokensIds.length;
 
   return totalClaimableAmount;
 }

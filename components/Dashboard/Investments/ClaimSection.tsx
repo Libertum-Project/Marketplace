@@ -2,9 +2,9 @@
 import { useState, useEffect } from 'react';
 import PROPERTY_ABI from '@/constants/Property.json';
 import getTokensIds from '@/app/utils/propertyContract/claimInvestmentFunctions/getTokensIds';
+import createGroups from '@/app/utils/propertyContract/claimInvestmentFunctions/createGroups';
 import getClaimableAmount from '@/app/utils/propertyContract/claimInvestmentFunctions/getClaimableAmount';
 import getMonthsToClaim from '@/app/utils/propertyContract/claimInvestmentFunctions/getMonthsToClaim';
-import createGroups from '@/app/utils/propertyContract/claimInvestmentFunctions/createGroups';
 import getNextClaimableTime from '@/app/utils/propertyContract/claimInvestmentFunctions/getNextClaimableTime';
 
 import {
@@ -43,7 +43,6 @@ const ClaimSection = ({
         const tokenQuantity = userBalance.toNumber();
         setTokenQuantity(tokenQuantity);
 
-        //This is taking so much time!!!
         let tokenIds: any = await getTokensIds(
           tokenQuantity,
           userWalletAddress,
@@ -53,23 +52,33 @@ const ClaimSection = ({
         const groups = await createGroups(propertyContractAddress, tokenIds);
         setGroups(groups);
 
-        const firstTokenIdsForEachGroup = groups.map(
-          (group: any) => group.tokens
-        );
-        let claimableAmount: number = await getClaimableAmount(
-          propertyContractAddress,
-          firstTokenIdsForEachGroup
-        );
-        setClaimableAmount(claimableAmount);
+        const groupTokenIds = groups.map((group: any) => group.tokens);
 
+        let claimableAmountArray: number[] = [];
+        for (tokenIds of groupTokenIds) {
+          let groupClaimableAmount: number = await getClaimableAmount(
+            propertyContractAddress,
+            tokenIds
+          );
+          claimableAmountArray.push(groupClaimableAmount);
+        }
+
+        const totalClaimableAmount = claimableAmountArray.reduce(
+          (total, amount) => total + amount,
+          0
+        );
+        setClaimableAmount(totalClaimableAmount);
+
+        
+        //fix
         let monthsToClaim: number = await getMonthsToClaim(
           propertyContractAddress,
-          firstTokenIdsForEachGroup
+          groupTokenIds
         );
         setMonthsToClaim(monthsToClaim);
 
         let nextClaimTimes: Date[] = [];
-        for (let tokenId of firstTokenIdsForEachGroup) {
+        for (let tokenId of groupTokenIds) {
           const nextClaimTime = await getNextClaimableTime(
             propertyContractAddress,
             tokenId
@@ -122,13 +131,14 @@ const ClaimSection = ({
       {groups &&
         groups.map((group: any, index: number) => (
           <div key={index} className="border p-4 my-2">
-            <p>{group.tokens} tokens</p>
+            <p>{group.tokens.length} tokens</p>
             <p>Mint Time: {group.mintTime.toLocaleDateString()}</p>
             <p>You claimed: {group.numberOfClaims} months</p>
             <p>
               Remaining moths to claim:{' '}
               {durationInMonths - group.numberOfClaims}
             </p>
+            <p>Claimable amount: {group.claimableAmount}</p>
           </div>
         ))}
     </section>
