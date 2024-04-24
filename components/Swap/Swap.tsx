@@ -59,6 +59,8 @@ const Swap = () => {
       );
       const data = await response.json();
 
+      console.log('data=', data);
+
       if (data.status == 500 || data.length == 0) {
         toast({
           title: 'Error',
