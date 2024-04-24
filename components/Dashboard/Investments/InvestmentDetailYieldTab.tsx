@@ -2,7 +2,7 @@ import { TabsContent } from '@/components/ui/tabs';
 //import ClaimSection from './ClaimSection';
 import YieldChart from '../Chart/YieldChart';
 import { ServerImage } from '../../shared/ServerImage';
-import UserTokenBalance from "./UserTokenBalance"
+import UserTokenBalance from './UserTokenBalance';
 
 const InvestmentDetailYieldTab = ({
   propertyAddress,
@@ -14,8 +14,9 @@ const InvestmentDetailYieldTab = ({
       value="yield"
       className="sm:max-h-[640px] overflow-auto py-20 flex gap-10 flex-col"
     >
-      <div className='flex justify-between items-center'>
-        <UserTokenBalance propertyAddress={propertyAddress} /> 
+      <div className="flex justify-between items-center">
+        <UserTokenBalance propertyAddress={propertyAddress} />
+
         <button className="flex justify-between items-center px-4 py-2 bg-[#00B3B5] bg-opacity-70 rounded-[5px] border border-[#00B3B5] backdrop-blur-[10px] text-white gap-3 mx-4 cursor-not-allowed w-[200px]">
           Claim
           <ServerImage
@@ -26,6 +27,16 @@ const InvestmentDetailYieldTab = ({
           />
         </button>
       </div>
+
+      <div className="flex justify-between items-center">
+        <p className="flex-shrink-0 px-4 py-1 bg-libertumGreen bg-opacity-20 rounded-[50px] border border-libertumGreen items-center justify-center text-libertumGreen text-sm font-semibold mx-4 w-[300px] text-center">
+          Next claim time: <b>37 days left.</b>
+        </p>
+        <p className="flex-shrink-0 px-4 py-1 bg-libertumGreen bg-opacity-20 rounded-[50px] border border-libertumGreen items-center justify-center text-libertumGreen text-sm font-semibold mx-4 w-[300px] text-center">
+          Remaining months to claim: <b>{durationInMonths}</b>
+        </p>
+      </div>
+
       <div className="flex flex-col gap-4 shadow-xl  m-4 p-10">
         <h3 className="text-slate-900 text-[32px] font-bold font-space_grotesk">
           RENT
