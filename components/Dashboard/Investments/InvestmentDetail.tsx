@@ -31,7 +31,7 @@ const InvestmentDetail = ({ property }: Props) => {
       </DialogTrigger>
       <DialogContent className="bg-white p-0 border-0 rounded-[5px] max-w-[1100px]">
         <div className="flex max-sm:flex-col">
-          <div className="bg-slate-900 py-8 px-6 max-sm:p-3">
+          <div className="bg-slate-900 py-8 px-6 max-sm:p-3 max-w-[372px]">
             <DialogClose className="text-white mb-6 max-sm:hidden">
               <ServerImage
                 src="/assets/back.svg"

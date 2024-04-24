@@ -24,7 +24,7 @@ const UserTokenBalance = ({
 
   return (
     <p className="flex-shrink-0 px-4 py-1 bg-libertumGreen bg-opacity-20 rounded-[50px] border border-libertumGreen items-center justify-center text-libertumGreen text-sm font-semibold ml-4 w-[200px] text-center">
-      Owned tokens: {isUserBalanceLoading ? '...' : tokenQuantity}
+      Owned tokens: <b> {isUserBalanceLoading ? '...' : tokenQuantity}</b>
     </p>
   );
 };
