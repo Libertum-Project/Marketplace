@@ -85,6 +85,8 @@ const config = {
           'radial-gradient(80.5% 80.5% at 50% 103.87%, #000041 0%, #0E0E1E 100%)',
         'wallet-card-gradient':
           'linear-gradient(230deg, #00062F -0.79%, rgba(0, 6, 47, 0.75) 73%)',
+        'blue-gradient':
+          'radial-gradient(80.5% 80.5% at 50% 103.87%, #000041 0%, #0E0E1E 100%)',
       },
       boxShadow: {
         'main-shadow':
