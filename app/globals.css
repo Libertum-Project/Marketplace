@@ -112,3 +112,7 @@
 .override-link {
   display: flex !important;
 }
+
+.connetWalletButton > button {
+  background-color: #00b3b5;
+}
