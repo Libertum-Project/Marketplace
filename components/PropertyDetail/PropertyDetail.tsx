@@ -1,6 +1,6 @@
 'use client';
+import { useState } from 'react';
 import { useContract, useContractRead } from '@thirdweb-dev/react';
-import React from 'react';
 import Hero from './Hero';
 import TokenProgress from './TokenProgress';
 import Amenities from './Amenities';
@@ -43,9 +43,13 @@ interface PropertyDetailProps {
 const PropertyDetail: React.FC<PropertyDetailProps> = ({ property }) => {
   const contractAddress = property.contract_address;
   const { contract } = useContract(contractAddress);
-  const { data: mintedTokens, isLoading } = useContractRead(contract, 'totalSupply');
+  const { data: mintedTokens, isLoading } = useContractRead(
+    contract,
+    'totalSupply'
+  );
   const tokens_sold = isLoading ? 0 : mintedTokens.toNumber();
   const remainingTokens = property.total_shares - tokens_sold;
+  const [selectedTokens, setSelectedTokens] = useState<number>(10);
 
   return (
     <div className="md:mx-auto md:flex md:max-w-[75rem] md:px-0 pt-36 pb-12 md:justify-between gap-20 ">
@@ -60,6 +64,8 @@ const PropertyDetail: React.FC<PropertyDetailProps> = ({ property }) => {
             buttonText="Invest Now"
             remainingTokens={remainingTokens}
             contractAddress={contractAddress}
+            selectedTokens={selectedTokens}
+            setSelectedTokens={setSelectedTokens}
           />
         </div>
       </div>
@@ -90,6 +96,8 @@ const PropertyDetail: React.FC<PropertyDetailProps> = ({ property }) => {
             annualYield={property.annual_yield}
             repaymentDuration={property.token_duration_months}
             description={property.description}
+            selectedTokens={selectedTokens}
+            setSelectedTokens={setSelectedTokens}
           />
         </div>
 
@@ -102,6 +110,8 @@ const PropertyDetail: React.FC<PropertyDetailProps> = ({ property }) => {
             buttonText="Invest Now"
             remainingTokens={remainingTokens}
             contractAddress={property.contract_address}
+            selectedTokens={selectedTokens}
+            setSelectedTokens={setSelectedTokens}
           />
         </div>
       </div>

@@ -22,6 +22,8 @@ interface InvestProps {
   buttonText: string;
   remainingTokens: number;
   contractAddress: string;
+  selectedTokens: number;
+  setSelectedTokens: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const Invest: React.FC<InvestProps> = ({
@@ -31,15 +33,16 @@ const Invest: React.FC<InvestProps> = ({
   subtitle,
   buttonText,
   remainingTokens,
-  contractAddress
+  contractAddress,
+  selectedTokens,
+  setSelectedTokens
 }) => {
-  const [tokenAmount, setTokenAmount] = useState<number | string>(10);
   const [areTermsAccepted, setAreTermsAccepted] = useState<boolean>(false);
   const allowBuy: boolean = true;
 
-  const totalPrice = isNaN(Number(tokenAmount))
+  const totalPrice = isNaN(Number(selectedTokens))
     ? ''
-    : (Number(tokenAmount) * price).toFixed(2);
+    : (Number(selectedTokens) * price).toFixed(2);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (
@@ -47,9 +50,10 @@ const Invest: React.FC<InvestProps> = ({
       event.target.value === '0' ||
       event.target.value.startsWith('-')
     ) {
-      setTokenAmount(1);
+      setSelectedTokens(1);
     } else {
-      setTokenAmount(event.target.value);
+      const newValue = Number(event.target.value)
+      setSelectedTokens(newValue);
     }
   };
 
@@ -87,7 +91,7 @@ const Invest: React.FC<InvestProps> = ({
               m-0
               focus:text-gray-700 focus:bg-white focus:border-libertumGreen  focus:outline-none
             "
-            value={tokenAmount}
+            value={selectedTokens}
             onChange={handleChange}
             placeholder="10"
           />
@@ -159,7 +163,7 @@ const Invest: React.FC<InvestProps> = ({
           {allowBuy ? (
             <MintButton
               contractAddress={contractAddress}
-              amount={tokenAmount}
+              amount={selectedTokens}
               price={price}
               remainingTokens={remainingTokens}
               areTermsAccepted={areTermsAccepted}
