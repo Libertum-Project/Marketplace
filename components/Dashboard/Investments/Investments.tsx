@@ -22,7 +22,7 @@ const Investments = () => {
   useEffect(() => {
     async function fetchProperties() {
       const demoProperties = await getProperties();
-      setDemoProperties(demoProperties)
+      setDemoProperties(demoProperties);
       const response = await fetch(
         `/api/users/investments?userWalletAddress=${userWalletAddress}`,
         {
@@ -84,28 +84,28 @@ const Investments = () => {
           ))
         ) : (
           // Show test property when user does not have any properties
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger>
-                  {demoProperties.slice(0, 1).map((property: any) => (
-                    <PropertyCard
-                      property={property}
-                      key={property.id}
-                      btnTitle="View Investment Details"
-                      investmentDetail={true}
-                    />
-                  ))}
-                </TooltipTrigger>
-                <TooltipContent
-                  side="bottom"
-                  className="bg-libertumOrange rounded-[5px] "
-                >
-                  <p className="text-white font-space_grotesk font-semibold text-sm py-2">
-                    This is an example of how you will see your investments.
-                  </p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger>
+                {demoProperties.slice(0, 1).map((property: any) => (
+                  <PropertyCard
+                    property={property}
+                    key={property.id}
+                    btnTitle="View Investment Details"
+                    investmentDetail={true}
+                  />
+                ))}
+              </TooltipTrigger>
+              <TooltipContent
+                side="bottom"
+                className="bg-libertumOrange rounded-[5px] "
+              >
+                <p className="text-white font-space_grotesk font-semibold text-sm py-2">
+                  This is an example of how you will see your investments.
+                </p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         )}
       </div>
     </>
