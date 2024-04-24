@@ -21,7 +21,7 @@ const PropertyGridView = ({
   return (
     <>
       <CardContent className="p-0 relative">
-        <LikeProperty property={property} />
+        {!investmentDetail ? <LikeProperty property={property} /> : null}
         <Link
           href={{
             pathname: '/details',
