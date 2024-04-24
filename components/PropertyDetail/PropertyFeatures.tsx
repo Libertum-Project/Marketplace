@@ -6,7 +6,7 @@ import {
   Accordion,
   AccordionContent,
   AccordionItem,
-  AccordionTrigger,
+  AccordionTrigger
 } from '@/components/ui/accordion';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
 
@@ -15,8 +15,18 @@ const PropertyFeatures: React.FC<{
   totalShares: number;
   annualYield: number;
   repaymentDuration: number;
-  description: string
-}> = ({ propertyPrice, totalShares, annualYield, repaymentDuration, description }) => {
+  description: string;
+  selectedTokens: number;
+  setSelectedTokens: React.Dispatch<React.SetStateAction<number>>;
+}> = ({
+  propertyPrice,
+  totalShares,
+  annualYield,
+  repaymentDuration,
+  description,
+  selectedTokens,
+  setSelectedTokens
+}) => {
   return (
     <div className="property-features">
       <Accordion type="multiple" defaultValue={['item-1']}>
@@ -33,6 +43,8 @@ const PropertyFeatures: React.FC<{
                 totalShares={totalShares}
                 annualYield={annualYield}
                 repaymentDuration={repaymentDuration}
+                selectedTokens={selectedTokens}
+                setSelectedTokens={setSelectedTokens}
               />
             </div>
           </AccordionContent>
@@ -46,9 +58,7 @@ const PropertyFeatures: React.FC<{
           </AccordionTrigger>
           <AccordionContent>
             <div className="max-w-[624px]">
-              <p>
-                {description}
-              </p>
+              <p>{description}</p>
             </div>
           </AccordionContent>
         </AccordionItem>

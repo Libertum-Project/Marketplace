@@ -6,11 +6,18 @@ import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
   const pathname = usePathname();
-
   const title =
-    pathname === '/saved' || pathname === '/lbm-coin'
+    pathname === '/saved'
       ? pathname.replace('/', '')
       : `My ${pathname.replace('/', '')}`;
+
+  if (pathname === '/get' || pathname === '/lbm-coin') {
+    return (
+      <div className="flex gap-5 absolute top-2 right-5">
+        <User />
+      </div>
+    );
+  }
 
   return (
     <nav className="flex justify-between bg-white py-2 px-5 border-b border-black border-opacity-5 w-full items-center max-sm:bg-[#080915]">

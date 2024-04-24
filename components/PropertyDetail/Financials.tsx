@@ -9,9 +9,16 @@ const Financials: React.FC<{
   totalShares: number;
   annualYield: number;
   repaymentDuration: number;
-}> = ({ propertyPrice, totalShares, annualYield, repaymentDuration }) => {
-  const [selectedTokens, setSelectedTokens] = useState<number>(20);
-
+  selectedTokens: number;
+  setSelectedTokens: React.Dispatch<React.SetStateAction<number>>;
+}> = ({
+  propertyPrice,
+  totalShares,
+  annualYield,
+  repaymentDuration,
+  selectedTokens,
+  setSelectedTokens
+}) => {
   const proyectedRentalYield = annualYield / 100;
   const tokenPrice = propertyPrice / totalShares;
   const investment = tokenPrice * selectedTokens;
@@ -44,7 +51,7 @@ const Financials: React.FC<{
                 $
                 {tokenPrice.toLocaleString('en-US', {
                   minimumFractionDigits: 2,
-                  maximumFractionDigits: 2,
+                  maximumFractionDigits: 2
                 })}
               </TableCell>
             </TableRow>
@@ -69,7 +76,7 @@ const Financials: React.FC<{
                 $
                 {rentalIncomePerToken.toLocaleString('en-US', {
                   minimumFractionDigits: 2,
-                  maximumFractionDigits: 2,
+                  maximumFractionDigits: 2
                 })}
               </TableCell>
             </TableRow>
@@ -92,9 +99,10 @@ const Financials: React.FC<{
       <div>
         <div className="flex gap-6 items-center justify-between mt-6 mb-6">
           <Slider
-            defaultValue={[20]}
+            defaultValue={[10]}
             value={[selectedTokens]}
             max={totalShares}
+            min={1}
             step={1}
             onValueChange={handleSliderValueChange}
             onChange={handleSliderChange}
@@ -113,7 +121,7 @@ const Financials: React.FC<{
                   $
                   {investment.toLocaleString('en-US', {
                     minimumFractionDigits: 2,
-                    maximumFractionDigits: 2,
+                    maximumFractionDigits: 2
                   })}
                 </TableCell>
               </TableRow>
@@ -125,7 +133,7 @@ const Financials: React.FC<{
                   $
                   {annualRentalIncome.toLocaleString('en-US', {
                     minimumFractionDigits: 2,
-                    maximumFractionDigits: 2,
+                    maximumFractionDigits: 2
                   })}
                 </TableCell>
               </TableRow>
@@ -137,7 +145,7 @@ const Financials: React.FC<{
                   $
                   {monthlyRentalIncome.toLocaleString('en-US', {
                     minimumFractionDigits: 2,
-                    maximumFractionDigits: 2,
+                    maximumFractionDigits: 2
                   })}
                 </TableCell>
               </TableRow>
@@ -162,7 +170,7 @@ const Financials: React.FC<{
                   $
                   {monthlyCapitalRepaymentPerToken.toLocaleString('en-US', {
                     minimumFractionDigits: 2,
-                    maximumFractionDigits: 2,
+                    maximumFractionDigits: 2
                   })}
                 </TableCell>
               </TableRow>
@@ -174,7 +182,7 @@ const Financials: React.FC<{
                   $
                   {annualCapitalRepayment.toLocaleString('en-US', {
                     minimumFractionDigits: 2,
-                    maximumFractionDigits: 2,
+                    maximumFractionDigits: 2
                   })}{' '}
                   / year
                 </TableCell>
@@ -187,7 +195,7 @@ const Financials: React.FC<{
                   $
                   {monthlyRepayment.toLocaleString('en-US', {
                     minimumFractionDigits: 2,
-                    maximumFractionDigits: 2,
+                    maximumFractionDigits: 2
                   })}
                 </TableCell>
               </TableRow>
@@ -197,7 +205,7 @@ const Financials: React.FC<{
                   $
                   {annualRepayment.toLocaleString('en-US', {
                     minimumFractionDigits: 2,
-                    maximumFractionDigits: 2,
+                    maximumFractionDigits: 2
                   })}
                 </TableCell>
               </TableRow>

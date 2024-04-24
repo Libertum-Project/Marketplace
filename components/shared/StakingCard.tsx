@@ -12,7 +12,7 @@ const StakingCard = () => {
         return (
           <Card
             key={stake.apr}
-            className="rounded-[5px] shadow-emerald-100 shadow-md"
+            className="rounded-[5px] shadow-emerald-100 shadow-sm bg-white max-h-[340px]"
           >
             <CardHeader className="p-3">
               <ServerImage
