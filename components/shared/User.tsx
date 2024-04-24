@@ -14,7 +14,7 @@ const User = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <div className="bg-gray-950 bg-opacity-5 rounded-[48px] border border-black border-opacity-10 flex justify-between gap-3 p-2 items-center cursor-pointer max-sm:bg-white">
+        <div className="bg-gray-950 bg-opacity-5 rounded-[48px] border border-black border-opacity-10 flex justify-between gap-3 p-2 items-center cursor-pointer max-sm:bg-white" style={{background: 'white'}}>
           <p className="text-black text-opacity-80 text-[13px]">
             {address &&
               `${address.slice(0, 5)}....${address.slice(address.length - 5)}`}
