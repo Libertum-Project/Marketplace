@@ -6,15 +6,15 @@ import {
   embeddedWallet,
   localWallet,
   metamaskWallet,
-  walletConnect,
+  walletConnect
 } from '@thirdweb-dev/react';
 
-import { Base } from '@thirdweb-dev/chains';
+import { Base, BinanceTestnet } from '@thirdweb-dev/chains';
 
 const ThirdwebContext = createContext<any>(undefined);
 
 export function ThirdwebContextProvider({
-  children,
+  children
 }: {
   children: React.ReactNode;
 }) {
@@ -23,9 +23,9 @@ export function ThirdwebContextProvider({
     <ThirdwebContext.Provider value={{}}>
       <ThirdwebProvider
         theme="light"
-        activeChain={Base}
+        activeChain={BinanceTestnet}
         clientId={clientId}
-        supportedChains={[Base]}
+        supportedChains={[Base, BinanceTestnet]}
         supportedWallets={[
           metamaskWallet({ recommended: true }),
           coinbaseWallet(),
@@ -33,9 +33,9 @@ export function ThirdwebContextProvider({
           localWallet(),
           embeddedWallet({
             auth: {
-              options: ['email', 'google', 'apple', 'facebook'],
-            },
-          }),
+              options: ['email', 'google', 'apple', 'facebook']
+            }
+          })
         ]}
       >
         {children}
