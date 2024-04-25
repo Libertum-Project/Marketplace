@@ -3,12 +3,6 @@ import { sidebarLinks } from '@/constants';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '@/components/ui/tooltip';
 
 const LeftSidebar = () => {
   const pathname = usePathname();
@@ -31,39 +25,36 @@ const LeftSidebar = () => {
           return (
             <Link
               href={item.route}
-              className={`text-white flex gap-[10px] group py-[10px] px-5 items-center ${
+              className={`text-white flex flex-col gap-2 group py-[10px] px-5 ${
                 isActive && 'bg-white bg-opacity-5 rounded-[5px]'
-              }  ${item.label === 'Get' ? 'pl-[11px]' : ''}`}
+              }  `}
               key={item.route}
             >
-              <Image
-                src={item.imgURL}
-                alt={item.label}
-                width={20}
-                height={20}
-                className={`group-hover:fill-[#00B3B5]  ${item.label === 'Get' ? 'w-[36px]' : ''}`}
-              />
-              <p
-                className={`group-hover:text-[#00B3B5] text-opacity-70 text-xs font-bold font-ubuntu ${
-                  isActive ? 'text-[#00B3B5]' : ''
-                }`}
-              >
-                {item.label}
-                <TooltipProvider>
-                  <Tooltip>
-                    <TooltipTrigger>
-                      <Image
-                        src="/assets/icons/info.svg"
-                        alt="more info"
-                        width={12}
-                        height={12}
-                      />
-                    </TooltipTrigger>
-                    <TooltipContent className="bg-libertumOrange rounded-[5px]" >
-                      <p className="text-white font-space_grotesk font-semibold text-xs">{item.info}</p>
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
+              <div className="flex gap-[10px] items-center ">
+                <Image
+                  src={item.imgURL}
+                  alt={item.label}
+                  width={20}
+                  height={20}
+                  className={`group-hover:fill-[#00B3B5]  ${
+                    item.label === 'Get'
+                      ? 'w-[36px] transform translate-x-[-10px]'
+                      : ''
+                  }`}
+                />
+                <p
+                  className={`group-hover:text-[#00B3B5] text-base font-bold font-space_grotesk ${
+                    isActive ? 'text-[#00B3B5]' : ''
+                  }${
+                    item.label === 'Get' ? ' transform translate-x-[-16px]' : ''
+                  }
+                  `}
+                >
+                  {item.label}
+                </p>
+              </div>
+              <p className="max-w-[200px] text-xs font-montserrat text-white/85">
+                {item.info}
               </p>
             </Link>
           );
