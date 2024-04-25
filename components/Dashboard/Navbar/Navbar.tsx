@@ -1,5 +1,5 @@
 'use client';
-import User from '@/components/shared/User';
+import ConnectWalletButton from '@/components/Navbar/WalletComponents/ConnectWalletButton';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -13,16 +13,26 @@ const Navbar = () => {
 
   if (pathname === '/get' || pathname === '/lbm-coin') {
     return (
-      <div className="flex gap-5 absolute top-2 right-5">
-        <User />
+      <div className="flex justify-between bg-[#080915] py-2 px-5 border-b border-black border-opacity-5 w-full items-center max-sm:bg-[#080915] h-[82.8667px] sm:h-[55px]">
+        <Link href="/" className="sm:hidden ">
+          <Image
+            src="/horizontal-logo.svg"
+            alt="Logo"
+            width={140}
+            height={20}
+          />
+        </Link>
+        <div className="absolute top-[1.35rem] md:top-2 right-5 ">
+          <ConnectWalletButton />
+        </div>
       </div>
     );
   }
 
   return (
-    <nav className="flex justify-between bg-white py-2 px-5 border-b border-black border-opacity-5 w-full items-center max-sm:bg-[#080915]">
+    <nav className="flex justify-between bg-[#080915] py-2 px-5 border-b border-black border-opacity-5 w-full items-center max-sm:bg-[#080915]">
       <div>
-        <p className="text-black text-opacity-80 text-lg font-bold font-space_grotesk max-sm:hidden capitalize">
+        <p className="text-white text-opacity-80 text-lg font-bold font-space_grotesk max-sm:hidden capitalize">
           {title}
         </p>
         <Link href="/" className="px-5 sm:hidden">
@@ -35,9 +45,7 @@ const Navbar = () => {
         </Link>
       </div>
 
-      <div className="flex gap-5">
-        <User />
-      </div>
+      <ConnectWalletButton />
     </nav>
   );
 };

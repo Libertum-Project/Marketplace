@@ -49,7 +49,7 @@ export function DocsModal({ handleHideModals }: DocsModalProps): ReactElement {
             </Link>
           </div>
           <div>
-            <Link href="/whitepaperLibertum.pdf" target="_blank">
+            <Link href="https://www.libertum.io/whitepaperLibertum.pdf" target="_blank">
               <Image
                 src={whitePaper}
                 alt="Property Owner"
@@ -60,7 +60,7 @@ export function DocsModal({ handleHideModals }: DocsModalProps): ReactElement {
             </Link>
           </div>
           <div>
-            <Link href="/Libertum_Pitch.pdf" target="_blank">
+            <Link href="https://www.libertum.io/Libertum_Pitch.pdf" target="_blank">
               <Image src={pitchDeck} alt="Token" width={20} height={20} />
               Pitch Deck
             </Link>

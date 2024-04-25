@@ -4,7 +4,10 @@ import { ServerImage } from '@/components/shared/ServerImage';
 
 const page = () => {
   return (
-    <div className="flex w-full min-h-screen justify-center bg-blue-gradient p-20 gap-8 items-center">
+    <div
+      className="flex w-full min-h-screen justify-center bg-blue-gradient p-20 gap-8 items-center"
+      style={{ minHeight: 'calc(100vh - 55px)' }}
+    >
       <div className={css.hero}>
         <ServerImage
           src="/assets/dark-mode-get.png"
