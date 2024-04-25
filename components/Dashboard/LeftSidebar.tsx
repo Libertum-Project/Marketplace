@@ -63,14 +63,14 @@ const LeftSidebar = () => {
 
       <div className="flex flex-col gap-2">
         <Link
-          href="/Libertum_Tokenomics.pdf"
+          href="https://www.libertum.io/Libertum_Pitch.pdf"
           target="_blank"
           className="bg-teal-500 bg-opacity-30 rounded-[5px] border border-teal-500 text-white text-base font-bold font-space_grotesk leading-normal text-center p-4"
         >
           Tokenomics
         </Link>
         <Link
-          href="/whitepaperLibertum.pdf"
+          href="https://www.libertum.io/whitepaperLibertum.pdf"
           target="_blank"
           className="bg-teal-500 bg-opacity-30 rounded-[5px] border border-teal-500 text-base font-bold font-space_grotesk leading-normal text-white p-4 text-center"
         >
