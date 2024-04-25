@@ -7,7 +7,7 @@ export const sidebarLinks: SidebarLink[] = [
     imgURL: '/assets/icons/dashboard.svg',
     route: '/profile',
     label: 'Profile',
-    info: 'Your personal info'
+    info: 'Manage personal information'
   },
   {
     imgURL: '/assets/icons/listings.svg',
@@ -25,7 +25,7 @@ export const sidebarLinks: SidebarLink[] = [
     imgURL: '/assets/icons/properties.svg',
     route: '/saved',
     label: 'Saved',
-    info: 'Saved properties'
+    info: 'View saved properties'
   },
   {
     imgURL: '/assets/icons/earn.svg',
