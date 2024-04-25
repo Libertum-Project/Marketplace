@@ -9,6 +9,7 @@
   left: 0;
   z-index: 9999;
   background-color: rgba(255, 255, 255, 0.5);
+  margin-top: 0 !important;
 }
 
 .three-body {
@@ -29,7 +30,7 @@
 }
 
 .three-body__dot:after {
-  content: "";
+  content: '';
   position: absolute;
   height: 0%;
   width: 100%;

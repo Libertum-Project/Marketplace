@@ -163,7 +163,7 @@ const MintButton = ({
         <SuccessMessage
           setShowSuccessMessage={setShowSuccessMessage}
           message="Success! Your investment has been processed. Exciting times ahead!"
-          textBtn="continue"
+          textBtn="Continue"
         />
       )}
 
