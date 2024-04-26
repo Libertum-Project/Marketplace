@@ -57,7 +57,7 @@
     max-width: 1202px;
   }
 
-  .desktopNavbar a img {
+  .desktopNavbar .logoImage {
     width: 225px;
   }
 }
