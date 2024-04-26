@@ -13,6 +13,7 @@
   left: 0;
   z-index: 9999;
   background-color: rgba(8, 9, 21, 0.3);
+  margin-top: 0 !important;
 }
 
 .errorBox,
@@ -92,6 +93,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: bold;
 }
 
 .errorBox button:hover,

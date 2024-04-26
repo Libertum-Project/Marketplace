@@ -49,7 +49,7 @@ export function DesktopNavbar(): ReactElement {
           onMouseEnter={handleHideModals}
           onTouchStart={handleHideModals}
         >
-          <Image src={logo} alt="libertum logo" width="140.727" height="18" />
+          <Image className={css.logoImage} src={logo} alt="libertum logo" width="225.6" height="28.8" />
         </Link>
 
         <div className={css.links}>

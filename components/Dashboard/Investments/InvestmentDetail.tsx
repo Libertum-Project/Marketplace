@@ -3,7 +3,7 @@ import {
   Dialog,
   DialogClose,
   DialogContent,
-  DialogTrigger,
+  DialogTrigger
 } from '@/components/ui/dialog';
 import { ServerImage } from '../../shared/ServerImage';
 import InvestmentDetailTabs from './InvestmentDetailTabs';
@@ -23,7 +23,7 @@ const InvestmentDetail = ({ property }: Props) => {
                     hover:text-white
                     bg-[#00062F] text-white"
           style={{
-            justifyContent: 'center',
+            justifyContent: 'center'
           }}
         >
           View Investment Details
@@ -31,7 +31,7 @@ const InvestmentDetail = ({ property }: Props) => {
       </DialogTrigger>
       <DialogContent className="bg-white p-0 border-0 rounded-[5px] max-w-[1100px]">
         <div className="flex max-sm:flex-col">
-          <div className="bg-slate-900 py-8 px-6 max-sm:p-3">
+          <div className="bg-slate-900 py-8 px-6 max-sm:p-3 max-w-[372px]">
             <DialogClose className="text-white mb-6 max-sm:hidden">
               <ServerImage
                 src="/assets/back.svg"
@@ -176,7 +176,10 @@ const InvestmentDetail = ({ property }: Props) => {
           </div>
 
           <div className="sm:py-8 sm:px-12 flex-1 p-3 sm:pb-0">
-            <InvestmentDetailTabs />
+            <InvestmentDetailTabs
+              propertyAddress={property.contract_address}
+              durationInMonths={property.listing_duration_months}
+            />
           </div>
         </div>
       </DialogContent>
