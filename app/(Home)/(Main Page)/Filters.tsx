@@ -46,7 +46,7 @@ export function Filters({ filterFunction }: Props): ReactElement {
     {
       imageURL: '/assets/filter3.svg',
       label: 'Rental Yield',
-      options: ['Up to  5%', '5% to 10%', '10% to 15 %']
+      options: ['Up to  5%', '5% to 10%', '10% to 15%', '15% to 30%']
     }
   ];
 
