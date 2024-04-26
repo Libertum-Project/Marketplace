@@ -158,20 +158,23 @@ const InvestmentDetail = ({ property }: Props) => {
                   </div>
                 </DialogContent>
               </Dialog>
-
-              <div className="p-4 px-16 bg-teal-500 bg-opacity-30 rounded-[5px] border border-teal-500 justify-around items-center flex gap-6">
-                <ServerImage
-                  src="/assets/icons/investment-details/contract.svg"
-                  alt="marketplace"
-                  width={24}
-                  height={24}
-                />
-                <div className="flex flex-col justify-center items-center">
-                  <p className="text-white text-base font-bold font-space_grotesk uppercase">
+              <a
+                href={`https://testnet.bscscan.com/token/${property.contract_address}`}
+                target="_blank"
+                className="text-white text-base font-bold font-space_grotesk uppercase"
+              >
+                <div className="p-4 px-16 bg-teal-500 bg-opacity-30 rounded-[5px] border border-teal-500 justify-around items-center flex gap-6">
+                  <ServerImage
+                    src="/assets/icons/investment-details/contract.svg"
+                    alt="marketplace"
+                    width={24}
+                    height={24}
+                  />
+                  <div className="flex flex-col justify-center items-center">
                     contract
-                  </p>
+                  </div>
                 </div>
-              </div>
+              </a>
             </div>
           </div>
 
