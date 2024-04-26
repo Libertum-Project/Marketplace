@@ -38,7 +38,7 @@ export function DocsModal({ handleHideModals }: DocsModalProps): ReactElement {
         </div>
         <div className={css.modalLinks}>
           <div>
-            <Link href="/Libertum_Tokenomics.pdf" target="_blank">
+            <Link href="https://www.libertum.io/Libertum_Pitch.pdf" target="_blank">
               <Image
                 src={tokenUtility}
                 alt="Investors"
