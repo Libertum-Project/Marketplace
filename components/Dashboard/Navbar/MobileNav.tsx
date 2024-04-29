@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation';
 const MobileNav = () => {
   const pathname = usePathname();
   return (
-    <div className="sm:hidden w-full fixed bottom-0 bg-gray-950 bg-opacity-95 justify-between items-center flex px-[10px] py-[12px]">
+    <div className="md:hidden w-full fixed bottom-0 bg-gray-950 bg-opacity-95 justify-between items-center flex px-[10px] py-[12px]">
       {mobileMenu.map((item) => {
         const isActive =
           (pathname.includes(item.route) && item.route.length > 1) ||
