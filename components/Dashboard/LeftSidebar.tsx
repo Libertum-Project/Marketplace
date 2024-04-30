@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation';
 const LeftSidebar = () => {
   const pathname = usePathname();
   return (
-    <div className="sticky left-0 top-0 flex h-screen flex-col justify-between overflow-y-auto max-sm:hidden lg:w-[252px] bg-[#080915] p-5 min-w-max  ">
+    <div className="sticky left-0 top-0 flex h-screen flex-col justify-between overflow-y-auto max-md:hidden lg:w-[252px] bg-[#080915] p-5 min-w-max  ">
       <div className="flex flex-1 flex-col gap-[30px]">
         <Link href="/" className="px-5">
           <Image

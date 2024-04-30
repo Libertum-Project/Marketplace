@@ -1,12 +1,11 @@
 'use client';
-
 import React, { useEffect, useState } from 'react';
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import Image from 'next/image';
@@ -24,7 +23,7 @@ import {
   useContractRead,
   useContractWrite,
   useTokenBalance,
-  useSigner,
+  useSigner
 } from '@thirdweb-dev/react';
 
 import { ChevronDownIcon } from '@radix-ui/react-icons';
@@ -67,7 +66,7 @@ const Swap = () => {
           description: 'Currently, no quotes availbable for this pair',
           className: cn(
             'top-[50px] right-0 flex fixed md:max-w-[420px] md:top-[120px] md:right-4 border-0 bg-[#ff5252] sm:top-0 text-white rounded-[5px]'
-          ),
+          )
         });
         setSellTokenAmount('');
         setBuyTokenAmount('');
@@ -97,7 +96,7 @@ const Swap = () => {
   const { data: tokenAllowance, isLoading: contractReadLoading } =
     useContractRead(sellTokenContract as any, 'allowance', [
       walletAddress,
-      exchangeProxy,
+      exchangeProxy
     ]);
 
   const executeSwap = async () => {
@@ -107,15 +106,15 @@ const Swap = () => {
         method: 'POST',
         headers: {
           Accept: 'application/json',
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           transactionData: quote?.transactionData,
           nativeValue: quote?.nativeValue,
           account: walletAddress,
           receiver: walletAddress,
-          tradeType: quote?.tradeType,
-        }),
+          tradeType: quote?.tradeType
+        })
       });
       const data = await response.json();
 
@@ -123,7 +122,7 @@ const Swap = () => {
         from: walletAddress,
         to: exchangeProxy,
         data: data.data,
-        gasPrice: data.gasPrice,
+        gasPrice: data.gasPrice
       });
       const transaction = await tx?.wait();
 
@@ -134,7 +133,7 @@ const Swap = () => {
           description: 'Your transaction was successful',
           className: cn(
             'top-[50px] right-0 flex fixed md:max-w-[420px] md:top-[120px] md:right-4 border-0 bg-[#00b3b5] sm:top-0 text-white rounded-[5px]'
-          ),
+          )
         });
       }
     } catch (error) {
@@ -143,7 +142,7 @@ const Swap = () => {
         description: 'Something went wrong, please try again',
         className: cn(
           'top-[50px] right-0 flex fixed md:max-w-[420px] md:top-[120px] md:right-4 border-0 bg-[#ff5252] sm:top-0 text-white rounded-[5px]'
-        ),
+        )
       });
     } finally {
       setLoading(false);
@@ -218,7 +217,7 @@ const Swap = () => {
   const handleAction = () => {
     if (action === 'Approve ' + sellToken.symbol + ' Allowance') {
       return approveTokenSpending({
-        args: [sellToken.address, MAX_ALLOWANCE],
+        args: [sellToken.address, MAX_ALLOWANCE]
       });
     } else if (action === 'Swap') {
       return executeSwap();
@@ -228,7 +227,7 @@ const Swap = () => {
   return (
     <>
       <section className="relative">
-        <Card className="w-[480px] bg-[#fff] border-black border-opacity-5 shadow-md">
+        <Card className="w-auto lg:w-[480px] bg-[#fff] border-black rounded border-opacity-5 shadow-md">
           <CardHeader className="border-b-2 mb-2 p-2">
             <CardTitle className="text-black flex justify-between">
               <Image
@@ -260,7 +259,7 @@ const Swap = () => {
                   <DialogContent
                     className="bg-white max-h-72 overflow-auto rounded-[5px]"
                     style={{
-                      zIndex: 99,
+                      zIndex: 99
                     }}
                     onEscapeKeyDown={() => setOpenSell(false)}
                   >
@@ -321,7 +320,7 @@ const Swap = () => {
               style={{
                 border: '1px solid rgba(0, 0, 0, 0.2)',
                 zIndex: 10,
-                transform: 'translateY(-100%)',
+                transform: 'translateY(-100%)'
               }}
               onClick={switchTokens}
             >
@@ -355,7 +354,7 @@ const Swap = () => {
                   <DialogContent
                     className="bg-white max-h-72 overflow-auto rounded-[5px]"
                     style={{
-                      zIndex: 99,
+                      zIndex: 99
                     }}
                     onEscapeKeyDown={() => setOpenBuy(false)}
                   >

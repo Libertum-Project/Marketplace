@@ -5,7 +5,20 @@ import { ServerImage } from '@/components/shared/ServerImage';
 const page = () => {
   return (
     <div
-      className="flex w-full min-h-screen justify-center bg-blue-gradient p-20 gap-8 items-center"
+      className="
+      flex
+      flex-col
+      xl:flex-row
+      w-full
+      min-h-screen
+      justify-center
+      bg-blue-gradient
+      p-4
+      pb-20
+      md:pb-0
+      lg:p-20
+      gap-8
+      items-center"
       style={{ minHeight: 'calc(100vh - 55px)' }}
     >
       <div className={css.hero}>
