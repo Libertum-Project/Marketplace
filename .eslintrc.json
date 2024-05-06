@@ -1,7 +1,71 @@
 {
-  "extends": "next/core-web-vitals",
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "project": true
+  },
+  "extends": ["next/core-web-vitals", "plugin:prettier/recommended", "plugin:@typescript-eslint/recommended"],
   "rules": {
-    "react/no-unescaped-entities": "off",
-    "@next/next/no-page-custom-font": "off"
+    "@next/next/no-page-custom-font": "off",
+    "prefer-const": "error",
+    "no-use-before-define": "error",
+    "no-nested-ternary": "error",
+    "sonarjs/no-duplicate-string": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/no-non-null-asserted-optional-chain": "error",
+    "@typescript-eslint/no-extra-non-null-assertion": "error",
+    "@typescript-eslint/no-unnecessary-condition": "warn",
+    "@typescript-eslint/no-unsafe-return": "error",
+    "@typescript-eslint/no-unsafe-call": "error",
+    "@typescript-eslint/no-unsafe-member-access": "error",
+    "@typescript-eslint/no-unsafe-assignment": "error",
+
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "variable",
+        "types": ["boolean"],
+        "format": ["PascalCase"],
+        "prefix": ["is", "should", "has", "can", "did", "will", "are"]
+      }
+    ],
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "caughtErrorsIgnorePattern": "^_"
+      }
+    ],
+    "@typescript-eslint/ban-types": [
+      "error",
+      {
+        "types": {
+          "Array": {
+            "message": "Use yourType[] instead. So for Array<string> you need to use string[]"
+          }
+        }
+      }
+    ],
+    "no-duplicate-imports": ["error"],
+    "import/no-cycle": ["off"],
+    "import/namespace": ["off"],
+    "import/no-named-as-default": ["off"],
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          ["external", "builtin"],
+          ["parent", "internal"],
+          ["index", "sibling"]
+        ],
+        "newlines-between": "always"
+      }
+    ]
   }
 }
