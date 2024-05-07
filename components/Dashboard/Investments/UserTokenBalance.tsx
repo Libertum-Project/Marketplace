@@ -1,19 +1,20 @@
 'use client';
 import { useState, useEffect } from 'react';
-
-import PROPERTY_ABI from '@/constants/Property.json';
 import { useContract, useContractRead, useAddress } from '@thirdweb-dev/react';
 
-const UserTokenBalance = ({
-  propertyAddress: propertyContractAddress
-}: any) => {
+import PROPERTY_ABI from '@/constants/Property.json';
+
+const UserTokenBalance = ({ propertyAddress: propertyContractAddress }: any) => {
   const userWalletAddress = useAddress();
   const [tokenQuantity, setTokenQuantity] = useState<number>(0);
-  const { contract: propertyContract, isLoading: isPropertyContractLoading } =
-    useContract(propertyContractAddress, PROPERTY_ABI.abi);
+  const { contract: propertyContract, isLoading: isPropertyContractLoading } = useContract(
+    propertyContractAddress,
+    PROPERTY_ABI.abi,
+  );
 
-  const { data: userBalance, isLoading: isUserBalanceLoading } =
-    useContractRead(propertyContract, 'balanceOf', [userWalletAddress]);
+  const { data: userBalance, isLoading: isUserBalanceLoading } = useContractRead(propertyContract, 'balanceOf', [
+    userWalletAddress,
+  ]);
 
   useEffect(() => {
     if (!isUserBalanceLoading && userBalance) {

@@ -11,7 +11,6 @@ const PropertyDetailTable: React.FC<PropertyDetailTableProps> = ({
   annualYield,
   repaymentDuration,
 }) => {
-
   const proyectedRentalYield = annualYield / 100;
   const tokenPrice = propertyPrice / totalShares;
   const investment = 1 * tokenPrice;
@@ -81,9 +80,7 @@ const PropertyDetailTable: React.FC<PropertyDetailTableProps> = ({
         </TableRow>
         <TableRow className="odd:bg-[#F5F5F5]">
           <TableCell className="font-medium">Repayment Term:</TableCell>
-          <TableCell className="text-opacity-80">
-            {repaymentDuration} months
-          </TableCell>
+          <TableCell className="text-opacity-80">{repaymentDuration} months</TableCell>
         </TableRow>
         <TableRow className="odd:bg-[#F5F5F5]">
           <TableCell className="font-medium">Rental Income:</TableCell>

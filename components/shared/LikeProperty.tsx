@@ -1,10 +1,11 @@
 'use client';
 import { useAddress } from '@thirdweb-dev/react';
-import { Button } from '../ui/button';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { likeProperty } from '@/lib/user';
 import { useEffect, useState } from 'react';
+
+import { likeProperty } from '@/lib/user';
+import { Button } from '../ui/button';
 
 interface Props {
   property: any;
@@ -26,15 +27,10 @@ const LikeProperty = ({ property, position = 'top' }: Props) => {
 
   const fetchProperties = async () => {
     if (address) {
-      const data = await fetch(
-        `https://libertum--marketplace.azurewebsites.net/users/${address}`,
-        requestOptions
-      );
+      const data = await fetch(`https://libertum--marketplace.azurewebsites.net/users/${address}`, requestOptions);
       const info = await data.json();
 
-      const propertiesIndex = new Map(
-        info.favoriteProperties.map((property: any) => [property.id, property])
-      );
+      const propertiesIndex = new Map(info.favoriteProperties.map((property: any) => [property.id, property]));
 
       const isFavorite = propertiesIndex.has(property.id);
       setIsLiked(isFavorite);
@@ -47,9 +43,7 @@ const LikeProperty = ({ property, position = 'top' }: Props) => {
 
   return (
     <Button
-      className={`${
-        position == 'top' ? 'absolute' : 'static'
-      } right-4 top-4 bg-transparent hover:bg-transparent p-0`}
+      className={`${position == 'top' ? 'absolute' : 'static'} right-4 top-4 bg-transparent hover:bg-transparent p-0`}
       onClick={async () => {
         setUserLiked(!userLiked);
         await likeProperty(address as string, pathname, property.id);
@@ -57,11 +51,7 @@ const LikeProperty = ({ property, position = 'top' }: Props) => {
       }}
     >
       <Image
-        src={`${
-          userLiked || isLiked
-            ? '/assets/icons/property-liked.svg'
-            : '/assets/icons/property-unliked.svg'
-        }`}
+        src={`${userLiked || isLiked ? '/assets/icons/property-liked.svg' : '/assets/icons/property-unliked.svg'}`}
         alt="like"
         width={49}
         height={48}

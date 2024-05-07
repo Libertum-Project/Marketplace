@@ -28,15 +28,7 @@ const YieldChart = ({ height, width, type = 'PieChart', pieColor }: Props) => {
     },
     backgroundColor: 'transparent',
   };
-  return (
-    <Chart
-      chartType={type as any}
-      width={width}
-      height={height}
-      data={data}
-      options={options}
-    />
-  );
+  return <Chart chartType={type as any} width={width} height={height} data={data} options={options} />;
 };
 
 export default YieldChart;

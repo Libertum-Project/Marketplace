@@ -1,14 +1,15 @@
-import css from './MessageBox.module.css';
-import error from './alertIcon.svg';
 import Image from 'next/image';
 
-const ErrorMessage = ({ setShowErrorMessage, message, url }:any) => {
-  const handleContinue = (event:any) => {
+import css from './MessageBox.module.css';
+import error from './alertIcon.svg';
+
+const ErrorMessage = ({ setShowErrorMessage, message, url }: any) => {
+  const handleContinue = (event: any) => {
     event.preventDefault();
     setShowErrorMessage(false);
   };
 
-  const handleErrorBoxClick = (event:any) => {
+  const handleErrorBoxClick = (event: any) => {
     event.stopPropagation();
   };
 

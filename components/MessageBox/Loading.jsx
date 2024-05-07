@@ -1,5 +1,6 @@
 import React from 'react';
-import css from './Loading.module.css'
+
+import css from './Loading.module.css';
 
 const Loading = () => {
   return (
@@ -13,4 +14,4 @@ const Loading = () => {
   );
 };
 
-export default Loading
+export default Loading;

@@ -1,18 +1,18 @@
 import React from 'react';
-import { ServerImage } from '../shared/ServerImage';
-import downloadIcon from '../../public/assets/icons/download.svg';
 import Link from 'next/link';
 
-const Documents: React.FC = () => {
+import { ServerImage } from '../shared/ServerImage';
+import downloadIcon from '../../public/assets/icons/download.svg';
 
+const Documents: React.FC = () => {
   const documents = [
     {
-      name: "Floorplan",
-      href: "linkdocument.com"
+      name: 'Floorplan',
+      href: 'linkdocument.com',
     },
     {
-      name: "Smart Contract",
-      href: "linkdocument.com"
+      name: 'Smart Contract',
+      href: 'linkdocument.com',
     },
   ];
 

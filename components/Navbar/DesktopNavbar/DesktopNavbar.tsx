@@ -1,15 +1,17 @@
 'use client';
-import {type ReactElement } from 'react';
+import { type ReactElement } from 'react';
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import css from './DesktopNavbar.module.css';
+import { useAddress } from '@thirdweb-dev/react';
+
 import logo from '@/public/horizontal-logo.svg';
+import ConnectWalletButton from '../WalletComponents/ConnectWalletButton';
+
+import css from './DesktopNavbar.module.css';
 import { LearnModal } from './modals/LearnModal';
 import { DocsModal } from './modals/DocsModal';
 import { ProfileModal } from './modals/ProfileModal';
-import ConnectWalletButton from '../WalletComponents/ConnectWalletButton';
-import { useAddress } from '@thirdweb-dev/react';
 
 export function DesktopNavbar(): ReactElement {
   const [isLearnModalVisible, setIsLearnModalVisible] = useState(false);
@@ -44,56 +46,28 @@ export function DesktopNavbar(): ReactElement {
   return (
     <>
       <nav className={css.desktopNavbar}>
-        <Link
-          href={'https://www.libertum.io'}
-          onMouseEnter={handleHideModals}
-          onTouchStart={handleHideModals}
-        >
+        <Link href={'https://www.libertum.io'} onMouseEnter={handleHideModals} onTouchStart={handleHideModals}>
           <Image className={css.logoImage} src={logo} alt="libertum logo" width="225.6" height="28.8" />
         </Link>
 
         <div className={css.links}>
-          <Link
-            href="https://www.libertum.io/ico"
-            onMouseEnter={handleHideModals}
-            onTouchStart={handleHideModals}
-          >
+          <Link href="https://www.libertum.io/ico" onMouseEnter={handleHideModals} onTouchStart={handleHideModals}>
             Buy LBM
           </Link>
-          <a
-            href="https://www.libertum.io/comingsoon"
-            onMouseEnter={handleHideModals}
-            onTouchStart={handleHideModals}
-          >
+          <a href="https://www.libertum.io/comingsoon" onMouseEnter={handleHideModals} onTouchStart={handleHideModals}>
             Explore Properties
           </a>
-          <a
-            href="#"
-            onMouseEnter={handleShowLearnModal}
-            onTouchStart={handleShowLearnModal}
-          >
+          <a href="#" onMouseEnter={handleShowLearnModal} onTouchStart={handleShowLearnModal}>
             Learn ↓
           </a>
-          <a
-            href="https://www.libertum.io/community"
-            onMouseEnter={handleHideModals}
-            onTouchStart={handleHideModals}
-          >
+          <a href="https://www.libertum.io/community" onMouseEnter={handleHideModals} onTouchStart={handleHideModals}>
             Community
           </a>
-          <a
-            href="#"
-            onMouseEnter={handleShowDocsModal}
-            onTouchStart={handleShowDocsModal}
-          >
+          <a href="#" onMouseEnter={handleShowDocsModal} onTouchStart={handleShowDocsModal}>
             Docs ↓
           </a>
           {address && (
-            <a
-              href="#"
-              onMouseEnter={handleShowProfileModal}
-              onTouchStart={handleShowProfileModal}
-            >
+            <a href="#" onMouseEnter={handleShowProfileModal} onTouchStart={handleShowProfileModal}>
               Profile ↓
             </a>
           )}
@@ -102,14 +76,10 @@ export function DesktopNavbar(): ReactElement {
           </div>
         </div>
       </nav>
-      {isLearnModalVisible && (
-        <LearnModal handleHideModals={handleHideModals} />
-      )}
+      {isLearnModalVisible && <LearnModal handleHideModals={handleHideModals} />}
 
       {isDocsModalVisible && <DocsModal handleHideModals={handleHideModals} />}
-      {isProfileModalVisible && (
-        <ProfileModal handleHideModals={handleHideModals} />
-      )}
+      {isProfileModalVisible && <ProfileModal handleHideModals={handleHideModals} />}
     </>
   );
 }

@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+
 import LeftSidebar from '@/components/Dashboard/LeftSidebar';
 import Navbar from '@/components/Dashboard/Navbar/Navbar';
 import MobileNav from '@/components/Dashboard/Navbar/MobileNav';
@@ -13,10 +14,10 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       <LeftSidebar />
       <section className="w-full">
         <div className="pb-20 sm:pb-0">
-        <Navbar />
-        {kycPending && <KycBanner />}
+          <Navbar />
+          {kycPending && <KycBanner />}
 
-        {children}
+          {children}
         </div>
 
         <MobileNav />

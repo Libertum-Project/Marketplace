@@ -2,6 +2,7 @@
 import { useAddress, useConnectionStatus } from '@thirdweb-dev/react';
 import { redirect } from 'next/navigation';
 import { useEffect, useState } from 'react';
+
 import LoadingPage from '@/components/shared/Loading/Loading';
 
 function withAuth(Component: any) {
