@@ -13,4 +13,5 @@ then
     exit 1
 fi
 
-# npm run lint
+npx lint-staged
+npm run type-check
