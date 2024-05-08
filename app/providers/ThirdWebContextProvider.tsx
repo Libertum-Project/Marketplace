@@ -9,7 +9,7 @@ import {
   walletConnect
 } from '@thirdweb-dev/react';
 
-import { Base, BinanceTestnet } from '@thirdweb-dev/chains';
+import { Base, BaseSepoliaTestnet} from '@thirdweb-dev/chains';
 
 const ThirdwebContext = createContext<any>(undefined);
 
@@ -23,9 +23,9 @@ export function ThirdwebContextProvider({
     <ThirdwebContext.Provider value={{}}>
       <ThirdwebProvider
         theme="light"
-        activeChain={BinanceTestnet}
+        activeChain={BaseSepoliaTestnet}
         clientId={clientId}
-        supportedChains={[Base, BinanceTestnet]}
+        supportedChains={[Base, BaseSepoliaTestnet]}
         supportedWallets={[
           metamaskWallet({ recommended: true }),
           coinbaseWallet(),
