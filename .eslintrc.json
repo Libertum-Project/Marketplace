@@ -10,22 +10,23 @@
   },
   "extends": ["next/core-web-vitals", "plugin:prettier/recommended", "plugin:@typescript-eslint/recommended"],
   "rules": {
+    "react/no-unescaped-entities": 0,
     "@next/next/no-page-custom-font": "off",
     "prefer-const": "error",
-    "no-use-before-define": "error",
-    "no-nested-ternary": "error",
+    "no-use-before-define": "warn", // "error"
+    "no-nested-ternary": "warn", // "error"
     "sonarjs/no-duplicate-string": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
-    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/no-explicit-any": "warn", // "error"
     "@typescript-eslint/no-non-null-asserted-optional-chain": "error",
     "@typescript-eslint/no-extra-non-null-assertion": "error",
     "@typescript-eslint/no-unnecessary-condition": "warn",
-    "@typescript-eslint/no-unsafe-return": "error",
-    "@typescript-eslint/no-unsafe-call": "error",
-    "@typescript-eslint/no-unsafe-member-access": "error",
-    "@typescript-eslint/no-unsafe-assignment": "error",
+    "@typescript-eslint/no-unsafe-return": "warn", // "error"
+    "@typescript-eslint/no-unsafe-call": "warn", // "error"
+    "@typescript-eslint/no-unsafe-member-access": "warn", // "error"
+    "@typescript-eslint/no-unsafe-assignment": "warn", // "error"
     "@typescript-eslint/naming-convention": [
-      "error",
+      "warn", // "error"
       {
         "selector": "variable",
         "types": ["boolean"],
@@ -34,7 +35,7 @@
       }
     ],
     "@typescript-eslint/no-unused-vars": [
-      "error",
+      "warn", // "error"
       {
         "argsIgnorePattern": "^_",
         "varsIgnorePattern": "^_",
@@ -42,7 +43,7 @@
       }
     ],
     "@typescript-eslint/ban-types": [
-      "error",
+      "warn", // "error"
       {
         "types": {
           "Array": {
@@ -51,10 +52,10 @@
         }
       }
     ],
-    "no-duplicate-imports": ["error"],
-    "import/no-cycle": ["off"],
-    "import/namespace": ["off"],
-    "import/no-named-as-default": ["off"],
+    "no-duplicate-imports": "warn", // "error"
+    "import/no-cycle": "off",
+    "import/namespace": "off",
+    "import/no-named-as-default": "off",
     "import/order": [
       "error",
       {

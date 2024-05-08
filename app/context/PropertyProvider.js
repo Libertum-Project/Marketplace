@@ -1,9 +1,11 @@
 'use client';
 
 import { useState, useEffect, useContext } from 'react';
+
+import { getProperties, fetchFilteredProperties } from '../utils/fetchProperties';
+
 import MessageBoxContext from './MessageBoxContext';
 import PropertyContext from './PropertyContext';
-import { getProperties, fetchFilteredProperties } from '../utils/fetchProperties';
 
 const PropertyProvider = ({ children }) => {
   const { isLoading, setIsLoading } = useContext(MessageBoxContext);
