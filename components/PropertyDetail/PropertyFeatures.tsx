@@ -15,7 +15,7 @@ const PropertyFeatures: React.FC<{
   totalShares: number;
   annualYield: number;
   repaymentDuration: number;
-  description: string;
+  description: string[];
   selectedTokens: number;
   setSelectedTokens: React.Dispatch<React.SetStateAction<number>>;
 }> = ({
@@ -58,7 +58,9 @@ const PropertyFeatures: React.FC<{
           </AccordionTrigger>
           <AccordionContent>
             <div className="max-w-[624px]">
-              <p>{description}</p>
+              {description.map((item, index) => (
+                <p className='py-2' key={index}>{item}</p>
+              ))}
             </div>
           </AccordionContent>
         </AccordionItem>
