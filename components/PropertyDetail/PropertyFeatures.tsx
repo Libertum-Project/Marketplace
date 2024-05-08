@@ -16,6 +16,7 @@ const PropertyFeatures: React.FC<{
   annualYield: number;
   repaymentDuration: number;
   description: string[];
+  documents: string[];
   selectedTokens: number;
   setSelectedTokens: React.Dispatch<React.SetStateAction<number>>;
 }> = ({
@@ -24,6 +25,7 @@ const PropertyFeatures: React.FC<{
   annualYield,
   repaymentDuration,
   description,
+  documents,
   selectedTokens,
   setSelectedTokens
 }) => {
@@ -73,7 +75,7 @@ const PropertyFeatures: React.FC<{
           </AccordionTrigger>
           <AccordionContent>
             <div className="max-w-[624px]">
-              <Documents />
+              <Documents documents={documents}/>
             </div>
           </AccordionContent>
         </AccordionItem>
