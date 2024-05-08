@@ -18,7 +18,7 @@ interface Property {
     postal_code: string;
   };
   amenities: string[];
-  description: string;
+  description: string[];
   category: string;
   image_gallery: string[];
   owner_id: number;
