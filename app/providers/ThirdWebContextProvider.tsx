@@ -19,13 +19,15 @@ export function ThirdwebContextProvider({
   children: React.ReactNode;
 }) {
   const clientId = process.env.NEXT_PUBLIC_THIRD_WEB_CLIENT_ID;
+  const activeChain = process.env.NEXT_PUBLIC_ACTIVE_CHAIN === 'production' ? Base : BaseSepoliaTestnet;
+
   return (
     <ThirdwebContext.Provider value={{}}>
       <ThirdwebProvider
         theme="light"
-        activeChain={BaseSepoliaTestnet}
+        activeChain={activeChain}
         clientId={clientId}
-        supportedChains={[Base, BaseSepoliaTestnet]}
+        supportedChains={[activeChain]}
         supportedWallets={[
           metamaskWallet({ recommended: true }),
           coinbaseWallet(),
