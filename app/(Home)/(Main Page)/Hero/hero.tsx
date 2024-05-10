@@ -1,6 +1,8 @@
-import css from './hero.module.css';
 import Link from 'next/link';
+
 import { ServerImage } from '@/components/shared/ServerImage';
+
+import css from './hero.module.css';
 
 const Hero = () => {
   return (
@@ -16,8 +18,8 @@ const Hero = () => {
           <h1>The Future of Real Estate Investing is Now</h1>
           <div className={css.paragraphsCommunity}>
             <p>
-              From residential havens to commercial hubs, each property presents
-              unique opportunities for growth and prosperity.
+              From residential havens to commercial hubs, each property presents unique opportunities for growth and
+              prosperity.
             </p>
           </div>
         </div>
@@ -38,10 +40,7 @@ const Hero = () => {
               <p>Featured Properties</p>
             </div>
 
-            <Link
-              href="/allFeatured"
-              className={css.featuredProperties__button}
-            >
+            <Link href="/allFeatured" className={css.featuredProperties__button}>
               See all featured
             </Link>
           </div>

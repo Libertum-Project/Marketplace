@@ -1,11 +1,13 @@
+import Link from 'next/link';
+
 import InvestmentDetail from '../Dashboard/Investments/InvestmentDetail';
 import { Accordion, AccordionItem, AccordionContent } from '../ui/accordion';
 import { CardContent, CardFooter } from '../ui/card';
+
 import LikeProperty from './LikeProperty';
 import PropertyCardButton from './PropertyCardButton';
 import PropertyDetailTable from './PropertyDetailTable';
 import { ServerImage } from './ServerImage';
-import Link from 'next/link';
 
 interface Props {
   property: any;
@@ -13,11 +15,7 @@ interface Props {
   btnLink?: string;
   investmentDetail?: boolean;
 }
-const PropertyGridView = ({
-  property,
-  btnTitle,
-  investmentDetail = false
-}: Props) => {
+const PropertyGridView = ({ property, btnTitle, investmentDetail = false }: Props) => {
   return (
     <>
       <CardContent className="p-0 relative">
@@ -26,8 +24,8 @@ const PropertyGridView = ({
           href={{
             pathname: '/details',
             query: {
-              id: property.id
-            }
+              id: property.id,
+            },
           }}
         >
           <div className="h-[255px]">
@@ -38,7 +36,7 @@ const PropertyGridView = ({
               width={310}
               height={250}
               style={{
-                height: '100%'
+                height: '100%',
               }}
             />
           </div>
@@ -58,37 +56,22 @@ const PropertyGridView = ({
                 $
                 {property.total_valuation.toLocaleString('en-US', {
                   minimumFractionDigits: 0,
-                  maximumFractionDigits: 0
+                  maximumFractionDigits: 0,
                 })}{' '}
               </p>
             </div>
 
             <div className="flex justify-between py-4">
               <div className="bg-neutral-100 rounded-[48px] text-black text-opacity-50 text-xs font-light capitalize p-3 flex items-center gap-[6px]">
-                <ServerImage
-                  src="/assets/hotel.svg"
-                  width={14}
-                  height={14}
-                  alt="image"
-                />
+                <ServerImage src="/assets/hotel.svg" width={14} height={14} alt="image" />
                 {property.category}
               </div>
               <div className="bg-neutral-100 rounded-[48px] text-black text-opacity-50 text-xs font-light capitalize p-3 flex items-center gap-[6px]">
-                <ServerImage
-                  src="/assets/filter2.svg"
-                  width={14}
-                  height={14}
-                  alt="image"
-                />
+                <ServerImage src="/assets/filter2.svg" width={14} height={14} alt="image" />
                 {property.location.country}
               </div>
               <div className="bg-neutral-100 rounded-[48px] text-black text-opacity-50 text-xs font-light capitalize p-3 flex items-center gap-[6px]">
-                <ServerImage
-                  src="/assets/filter3.svg"
-                  width={14}
-                  height={14}
-                  alt="image"
-                />
+                <ServerImage src="/assets/filter3.svg" width={14} height={14} alt="image" />
                 {property.annual_yield}%
               </div>
             </div>
@@ -111,10 +94,7 @@ const PropertyGridView = ({
                 />
               </AccordionContent>
 
-              <PropertyCardButton
-                btnTitle={btnTitle}
-                propertyId={property.id}
-              />
+              <PropertyCardButton btnTitle={btnTitle} propertyId={property.id} />
             </AccordionItem>
           </Accordion>
         )}

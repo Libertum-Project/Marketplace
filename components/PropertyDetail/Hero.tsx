@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { ServerImage } from '@/components/shared/ServerImage';
 import LikeProperty from '../shared/LikeProperty';
 
@@ -11,15 +12,7 @@ const Hero: React.FC<{
   property: any;
   repaymentDuration: number;
   remainingTokens: number;
-}> = ({
-  location,
-  propertyPrice,
-  totalShares,
-  annualYield,
-  repaymentDuration,
-  property,
-  remainingTokens
-}) => {
+}> = ({ location, propertyPrice, totalShares, annualYield, repaymentDuration, property, remainingTokens }) => {
   const proyectedRentalYield = annualYield / 100;
   const tokenPrice = propertyPrice / totalShares;
   const investment = 1 * tokenPrice;
@@ -27,8 +20,7 @@ const Hero: React.FC<{
   const annualRentalIncome = investment * rentalIncomePerToken;
   const monthlyRentalIncome = annualRentalIncome / 12;
   const annualCapitalRepayment = investment / (repaymentDuration / 12);
-  const monthlyCapitalRepaymentPerToken =
-    investment / totalShares / repaymentDuration;
+  const monthlyCapitalRepaymentPerToken = investment / totalShares / repaymentDuration;
   const monthlyCapitalRepayment = annualCapitalRepayment / 12;
   const annualRepayment = annualCapitalRepayment + annualRentalIncome;
   const monthlyRepayment = annualRepayment / 12;
@@ -71,9 +63,7 @@ const Hero: React.FC<{
       <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 mt-4 w-full gap-y-1">
         {/* Fila 1 */}
         <div className="hidden md:flex items-end justify-between ">
-          <p className="text-white text-sm font-bold text-left">
-            Min Invesment:{' '}
-          </p>
+          <p className="text-white text-sm font-bold text-left">Min Invesment: </p>
           <p className="text-white text-sm font-normal">
             {' '}
             $
@@ -84,33 +74,21 @@ const Hero: React.FC<{
           </p>
         </div>
         <div className="flex items-end justify-between">
-          <p className="text-white text-sm font-bold text-left">
-            Market Value:{' '}
-          </p>
-          <p className="text-white text-sm font-normal">
-            ${propertyPrice.toLocaleString('en-US')}
-          </p>
+          <p className="text-white text-sm font-bold text-left">Market Value: </p>
+          <p className="text-white text-sm font-normal">${propertyPrice.toLocaleString('en-US')}</p>
         </div>
         <div className="flex items-end justify-between">
-          <p className="text-white text-sm font-bold text-left">
-            Repayment Term:{' '}
-          </p>
-          <p className="text-white text-sm font-normal">
-            {repaymentDuration} months
-          </p>
+          <p className="text-white text-sm font-bold text-left">Repayment Term: </p>
+          <p className="text-white text-sm font-normal">{repaymentDuration} months</p>
         </div>
 
         {/* Fila 2 */}
         <div className="flex items-end justify-between">
-          <p className="text-white text-sm font-bold text-left">
-            Total Tokens:{' '}
-          </p>
+          <p className="text-white text-sm font-bold text-left">Total Tokens: </p>
           <p className="text-white text-sm font-normal">{totalShares}</p>
         </div>
         <div className="flex items-end justify-between">
-          <p className="text-white text-sm font-bold text-left">
-            Income per Token:{' '}
-          </p>
+          <p className="text-white text-sm font-bold text-left">Income per Token: </p>
           <p className="text-white text-sm font-normal">
             $
             {rentalIncomePerToken.toLocaleString('en-US', {
@@ -120,25 +98,17 @@ const Hero: React.FC<{
           </p>
         </div>
         <div className="flex items-end justify-between">
-          <p className="text-white text-sm font-bold text-left">
-            Rental Yield:{' '}
-          </p>
-          <p className="text-white text-sm font-normal">
-            {annualYield.toFixed(2)} %
-          </p>
+          <p className="text-white text-sm font-bold text-left">Rental Yield: </p>
+          <p className="text-white text-sm font-normal">{annualYield.toFixed(2)} %</p>
         </div>
 
         {/* Fila 3 */}
         <div className="flex items-end justify-between">
-          <p className="text-white text-sm font-bold text-left">
-            Tokens Available:{' '}
-          </p>
+          <p className="text-white text-sm font-bold text-left">Tokens Available: </p>
           <p className="text-white text-sm font-normal">{remainingTokens}</p>
         </div>
         <div className="flex items-end justify-between">
-          <p className="text-white text-sm font-bold text-left">
-            Monthly Capital Repayment:{' '}
-          </p>
+          <p className="text-white text-sm font-bold text-left">Monthly Capital Repayment: </p>
           <p className="text-white text-sm font-normal">
             $
             {monthlyCapitalRepayment.toLocaleString('en-US', {
@@ -148,9 +118,7 @@ const Hero: React.FC<{
           </p>
         </div>
         <div className="flex items-end justify-between">
-          <p className="text-white text-sm font-bold text-left">
-            Annual Repayment:{' '}
-          </p>
+          <p className="text-white text-sm font-bold text-left">Annual Repayment: </p>
           <p className="text-white text-sm font-normal">
             $
             {annualRepayment.toLocaleString('en-US', {
@@ -163,32 +131,17 @@ const Hero: React.FC<{
 
       <div className="flex justify-between md:justify-start py-4 gap-6 w-full">
         <div className="bg-neutral-100 rounded-[48px] text-black text-opacity-50 text-xs font-light capitalize p-3 flex items-center gap-[6px]">
-          <ServerImage
-            src="/assets/hotel.svg"
-            width={14}
-            height={14}
-            alt="image"
-          />
+          <ServerImage src="/assets/hotel.svg" width={14} height={14} alt="image" />
           {/* {property.category} */}
           <span className="hidden md:block"> Property:</span>Residential
         </div>
         <div className="bg-neutral-100 rounded-[48px] text-black text-opacity-50 text-xs font-light capitalize p-3 flex items-center gap-[6px]">
-          <ServerImage
-            src="/assets/filter2.svg"
-            width={14}
-            height={14}
-            alt="image"
-          />
+          <ServerImage src="/assets/filter2.svg" width={14} height={14} alt="image" />
           {/* {property.location.country} */}
           United States
         </div>
         <div className="bg-neutral-100 rounded-[48px] text-black text-opacity-50 text-xs font-light capitalize p-3 flex items-center gap-[6px]">
-          <ServerImage
-            src="/assets/filter3.svg"
-            width={14}
-            height={14}
-            alt="image"
-          />
+          <ServerImage src="/assets/filter3.svg" width={14} height={14} alt="image" />
           {/* {property.annual_yield}% */}
           Rental Yield:3 %
         </div>

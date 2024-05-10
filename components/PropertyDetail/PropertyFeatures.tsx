@@ -1,14 +1,11 @@
 // PropertyFeatures.tsx
 import React from 'react';
+import { ChevronDownIcon } from '@radix-ui/react-icons';
+
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+
 import Documents from './Documents';
 import Financials from './Financials';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger
-} from '@/components/ui/accordion';
-import { ChevronDownIcon } from '@radix-ui/react-icons';
 
 const PropertyFeatures: React.FC<{
   propertyPrice: number;
@@ -25,7 +22,7 @@ const PropertyFeatures: React.FC<{
   repaymentDuration,
   description,
   selectedTokens,
-  setSelectedTokens
+  setSelectedTokens,
 }) => {
   return (
     <div className="property-features">

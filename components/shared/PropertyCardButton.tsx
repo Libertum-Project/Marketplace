@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
 import React, { useState } from 'react';
+
 import { Button } from '../ui/button';
 import { AccordionTrigger } from '../ui/accordion';
 
@@ -22,8 +23,8 @@ const PropertyCardButton = ({ propertyId }: Props) => {
           href={{
             pathname: '/details',
             query: {
-              id: propertyId
-            }
+              id: propertyId,
+            },
           }}
           className="text-center"
         >
@@ -33,7 +34,7 @@ const PropertyCardButton = ({ propertyId }: Props) => {
                     hover:text-white
                     bg-[#00062F] text-white"
             style={{
-              justifyContent: 'center'
+              justifyContent: 'center',
             }}
           >
             View Property
@@ -48,7 +49,7 @@ const PropertyCardButton = ({ propertyId }: Props) => {
                     hover:text-white
                     bg-[#00062F] text-white"
             style={{
-              justifyContent: 'center'
+              justifyContent: 'center',
             }}
           >
             Quick View

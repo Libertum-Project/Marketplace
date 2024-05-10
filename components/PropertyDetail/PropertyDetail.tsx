@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { useContract, useContractRead } from '@thirdweb-dev/react';
+
 import Hero from './Hero';
 import TokenProgress from './TokenProgress';
 import Amenities from './Amenities';
@@ -43,10 +44,7 @@ interface PropertyDetailProps {
 const PropertyDetail: React.FC<PropertyDetailProps> = ({ property }) => {
   const contractAddress = property.contract_address;
   const { contract } = useContract(contractAddress);
-  const { data: mintedTokens, isLoading } = useContractRead(
-    contract,
-    'totalSupply'
-  );
+  const { data: mintedTokens, isLoading } = useContractRead(contract, 'totalSupply');
   const tokens_sold = isLoading ? 0 : mintedTokens.toNumber();
   const remainingTokens = property.total_shares - tokens_sold;
   const [selectedTokens, setSelectedTokens] = useState<number>(10);
@@ -85,10 +83,7 @@ const PropertyDetail: React.FC<PropertyDetailProps> = ({ property }) => {
           </div>
         </div>
         <div className="px-3 md:px-0">
-          <TokenProgress
-            total_tokens={property.total_shares}
-            tokens_sold={tokens_sold}
-          />
+          <TokenProgress total_tokens={property.total_shares} tokens_sold={tokens_sold} />
           <Amenities />
           <PropertyFeatures
             propertyPrice={property.total_valuation}

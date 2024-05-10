@@ -1,21 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle
-} from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
 import Image from 'next/image';
-
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
-
-import { tokens } from '../../constants/tokens';
-import { exchangeProxy, MAX_ALLOWANCE } from '@/constants';
 import { ethers } from 'ethers';
-import { createLookup } from '@/utils';
 import {
   Web3Button,
   useAddress,
@@ -23,14 +9,20 @@ import {
   useContractRead,
   useContractWrite,
   useTokenBalance,
-  useSigner
+  useSigner,
 } from '@thirdweb-dev/react';
-
 import { ChevronDownIcon } from '@radix-ui/react-icons';
+import Link from 'next/link';
+
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import { tokens } from '../../constants/tokens';
+import { exchangeProxy, MAX_ALLOWANCE } from '@/constants';
+import { createLookup } from '@/utils';
 import { toast } from '@/components/ui/use-toast';
 import { cn } from '@/lib/utils';
 import { Skeleton } from '@/components/ui/skeleton';
-import Link from 'next/link';
 
 const Swap = () => {
   const walletAddress = useAddress();
@@ -49,12 +41,10 @@ const Swap = () => {
   const fetchPriceData = async () => {
     setLoading(true);
     try {
-      const formattedAmount = ethers.utils
-        .parseUnits(sellTokenAmount, sellToken.decimals)
-        .toString();
+      const formattedAmount = ethers.utils.parseUnits(sellTokenAmount, sellToken.decimals).toString();
 
       const response = await fetch(
-        `/api/quote?srcToken=${sellToken.address}&destToken=${buyToken.address}&sellAmount=${formattedAmount}`
+        `/api/quote?srcToken=${sellToken.address}&destToken=${buyToken.address}&sellAmount=${formattedAmount}`,
       );
       const data = await response.json();
 
@@ -65,17 +55,15 @@ const Swap = () => {
           title: 'Error',
           description: 'Currently, no quotes availbable for this pair',
           className: cn(
-            'top-[50px] right-0 flex fixed md:max-w-[420px] md:top-[120px] md:right-4 border-0 bg-[#ff5252] sm:top-0 text-white rounded-[5px]'
-          )
+            'top-[50px] right-0 flex fixed md:max-w-[420px] md:top-[120px] md:right-4 border-0 bg-[#ff5252] sm:top-0 text-white rounded-[5px]',
+          ),
         });
         setSellTokenAmount('');
         setBuyTokenAmount('');
       }
 
       if (data.length > 0) {
-        setBuyTokenAmount(
-          ethers.utils.formatUnits(data[0].toTokenAmount, buyToken.decimals)
-        );
+        setBuyTokenAmount(ethers.utils.formatUnits(data[0].toTokenAmount, buyToken.decimals));
 
         setQuote(data[0]);
       }
@@ -89,15 +77,16 @@ const Swap = () => {
   const { contract: sellTokenContract } = useContract(sellToken.address);
   const { contract: buyTokenContract } = useContract(buyToken.address);
   const { contract: dexContract } = useContract(exchangeProxy);
-  const { data: sellTokenBalance, isLoading: sellTokenBalanceLoading } =
-    useTokenBalance(sellTokenContract, walletAddress);
-  const { data: buyTokenBalance, isLoading: buyTokenBalanceLoading } =
-    useTokenBalance(buyTokenContract, walletAddress);
-  const { data: tokenAllowance, isLoading: contractReadLoading } =
-    useContractRead(sellTokenContract as any, 'allowance', [
-      walletAddress,
-      exchangeProxy
-    ]);
+  const { data: sellTokenBalance, isLoading: sellTokenBalanceLoading } = useTokenBalance(
+    sellTokenContract,
+    walletAddress,
+  );
+  const { data: buyTokenBalance, isLoading: buyTokenBalanceLoading } = useTokenBalance(buyTokenContract, walletAddress);
+  const { data: tokenAllowance, isLoading: contractReadLoading } = useContractRead(
+    sellTokenContract as any,
+    'allowance',
+    [walletAddress, exchangeProxy],
+  );
 
   const executeSwap = async () => {
     setLoading(true);
@@ -106,15 +95,15 @@ const Swap = () => {
         method: 'POST',
         headers: {
           Accept: 'application/json',
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           transactionData: quote?.transactionData,
           nativeValue: quote?.nativeValue,
           account: walletAddress,
           receiver: walletAddress,
-          tradeType: quote?.tradeType
-        })
+          tradeType: quote?.tradeType,
+        }),
       });
       const data = await response.json();
 
@@ -122,18 +111,18 @@ const Swap = () => {
         from: walletAddress,
         to: exchangeProxy,
         data: data.data,
-        gasPrice: data.gasPrice
+        gasPrice: data.gasPrice,
       });
       const transaction = await tx?.wait();
 
       if (transaction?.transactionHash) {
-        setHash(transaction?.transactionHash);
+        setHash(transaction.transactionHash);
         toast({
           title: 'Success',
           description: 'Your transaction was successful',
           className: cn(
-            'top-[50px] right-0 flex fixed md:max-w-[420px] md:top-[120px] md:right-4 border-0 bg-[#00b3b5] sm:top-0 text-white rounded-[5px]'
-          )
+            'top-[50px] right-0 flex fixed md:max-w-[420px] md:top-[120px] md:right-4 border-0 bg-[#00b3b5] sm:top-0 text-white rounded-[5px]',
+          ),
         });
       }
     } catch (error) {
@@ -141,8 +130,8 @@ const Swap = () => {
         title: 'Error',
         description: 'Something went wrong, please try again',
         className: cn(
-          'top-[50px] right-0 flex fixed md:max-w-[420px] md:top-[120px] md:right-4 border-0 bg-[#ff5252] sm:top-0 text-white rounded-[5px]'
-        )
+          'top-[50px] right-0 flex fixed md:max-w-[420px] md:top-[120px] md:right-4 border-0 bg-[#ff5252] sm:top-0 text-white rounded-[5px]',
+        ),
       });
     } finally {
       setLoading(false);
@@ -174,17 +163,14 @@ const Swap = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sellToken, buyToken, sellTokenAmount]);
 
-  const { mutateAsync: approveTokenSpending } = useContractWrite(
-    sellTokenContract,
-    'approve'
-  );
+  const { mutateAsync: approveTokenSpending } = useContractWrite(sellTokenContract, 'approve');
 
   function determineButtonState(
     sellToken: any,
     sellTokenAmount: any,
     sellTokenBalance: any,
     tokenAllowance: any,
-    contractReadLoading: any
+    contractReadLoading: any,
   ) {
     let action = '';
     let isDisabled = true;
@@ -211,13 +197,13 @@ const Swap = () => {
     sellTokenAmount,
     sellTokenBalance,
     tokenAllowance,
-    contractReadLoading
+    contractReadLoading,
   );
 
   const handleAction = () => {
     if (action === 'Approve ' + sellToken.symbol + ' Allowance') {
       return approveTokenSpending({
-        args: [sellToken.address, MAX_ALLOWANCE]
+        args: [sellToken.address, MAX_ALLOWANCE],
       });
     } else if (action === 'Swap') {
       return executeSwap();
@@ -230,12 +216,7 @@ const Swap = () => {
         <Card className="w-auto lg:w-[480px] bg-[#fff] border-black rounded border-opacity-5 shadow-md">
           <CardHeader className="border-b-2 mb-2 p-2">
             <CardTitle className="text-black flex justify-between">
-              <Image
-                src="/assets/get-icon.png"
-                alt="Get"
-                width={150}
-                height={150}
-              />
+              <Image src="/assets/get-icon.png" alt="Get" width={150} height={150} />
             </CardTitle>
           </CardHeader>
           <CardContent className="relative">
@@ -245,12 +226,7 @@ const Swap = () => {
                 <Dialog open={openSell} onOpenChange={setOpenSell}>
                   <DialogTrigger asChild>
                     <div className="assetOne text-white bg-[#00b3b5] cursor-pointer text-sm assetTwo p-2 rounded-full shadow flex gap-3 items-center font-semibold">
-                      <Image
-                        src={sellToken.logo}
-                        width={20}
-                        height={20}
-                        alt="Token image"
-                      />
+                      <Image src={sellToken.logo} width={20} height={20} alt="Token image" />
                       {sellToken.symbol}
 
                       <ChevronDownIcon className="font-semibold" />
@@ -259,7 +235,7 @@ const Swap = () => {
                   <DialogContent
                     className="bg-white max-h-72 overflow-auto rounded-[5px]"
                     style={{
-                      zIndex: 99
+                      zIndex: 99,
                     }}
                     onEscapeKeyDown={() => setOpenSell(false)}
                   >
@@ -271,17 +247,12 @@ const Swap = () => {
                             key={token.name}
                             className="border-b border-b-[#000] text-black p-2 cursor-pointer text-left flex items-center gap-2 hover:bg-[#e4e7eb] rounded-[5px]"
                             onClick={() => {
-                              setSellToken(
-                                TOKENS_BY_SYMBOL[token.symbol.toLowerCase()]
-                              );
+                              setSellToken(TOKENS_BY_SYMBOL[token.symbol.toLowerCase()]);
                               setOpenSell(false);
                             }}
                           >
                             <Image
-                              src={
-                                TOKENS_BY_SYMBOL[token.symbol.toLowerCase()]
-                                  .logo
-                              }
+                              src={TOKENS_BY_SYMBOL[token.symbol.toLowerCase()].logo}
                               width={20}
                               height={20}
                               alt="Token"
@@ -320,16 +291,11 @@ const Swap = () => {
               style={{
                 border: '1px solid rgba(0, 0, 0, 0.2)',
                 zIndex: 10,
-                transform: 'translateY(-100%)'
+                transform: 'translateY(-100%)',
               }}
               onClick={switchTokens}
             >
-              <Image
-                src="/assets/arrow-down-black.svg"
-                width={20}
-                height={20}
-                alt="Token image"
-              />
+              <Image src="/assets/arrow-down-black.svg" width={20} height={20} alt="Token image" />
             </button>
 
             <hr />
@@ -340,12 +306,7 @@ const Swap = () => {
                 <Dialog open={openBuy} onOpenChange={setOpenBuy}>
                   <DialogTrigger asChild>
                     <div className="assetOne text-white bg-[#00b3b5] cursor-pointer text-sm assetTwo p-2 rounded-full shadow flex gap-3 items-center font-semibold">
-                      <Image
-                        src={buyToken.logo}
-                        width={20}
-                        height={20}
-                        alt="Token image"
-                      />
+                      <Image src={buyToken.logo} width={20} height={20} alt="Token image" />
                       {buyToken.symbol}
 
                       <ChevronDownIcon className="font-semibold" />
@@ -354,7 +315,7 @@ const Swap = () => {
                   <DialogContent
                     className="bg-white max-h-72 overflow-auto rounded-[5px]"
                     style={{
-                      zIndex: 99
+                      zIndex: 99,
                     }}
                     onEscapeKeyDown={() => setOpenBuy(false)}
                   >
@@ -366,17 +327,12 @@ const Swap = () => {
                             key={token.name}
                             className="border-b border-b-[#000] text-black p-2 cursor-pointer text-left flex items-center gap-2 hover:bg-[#e4e7eb] rounded-[5px]"
                             onClick={() => {
-                              setBuyToken(
-                                TOKENS_BY_SYMBOL[token.symbol.toLowerCase()]
-                              );
+                              setBuyToken(TOKENS_BY_SYMBOL[token.symbol.toLowerCase()]);
                               setOpenBuy(false);
                             }}
                           >
                             <Image
-                              src={
-                                TOKENS_BY_SYMBOL[token.symbol.toLowerCase()]
-                                  .logo
-                              }
+                              src={TOKENS_BY_SYMBOL[token.symbol.toLowerCase()].logo}
                               width={20}
                               height={20}
                               alt="Token"

@@ -1,10 +1,10 @@
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+
 import InvestmentDetailConnectionTab from './InvestmentDetailConnectionTab';
 import InvestmentDetailPropertyTab from './InvestmentDetailPropertyTab';
 import InvestmentDetailYieldTab from './InvestmentDetailYieldTab';
 
-const InvestmentDetailTabs = ({propertyAddress, durationInMonths} : any) => {
-
+const InvestmentDetailTabs = ({ propertyAddress, durationInMonths }: any) => {
   return (
     <div className="w-full items-center">
       <Tabs defaultValue="yield">

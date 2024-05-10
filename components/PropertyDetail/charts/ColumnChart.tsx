@@ -11,7 +11,7 @@ interface Props {
 
 const barColor = 'Ffa500';
 
-var options = {
+const options = {
   legend: 'none',
   chart: {
     title: 'Accumulative Passive Income per Month',
@@ -26,12 +26,7 @@ var options = {
   },
 };
 
-const ColumnChart = ({
-  height,
-  width,
-  type = 'ColumnChart',
-  monthlyIncome,
-}: Props) => {
+const ColumnChart = ({ height, width, type = 'ColumnChart', monthlyIncome }: Props) => {
   const [chartData, setChartData] = useState<any[]>([]);
 
   useEffect(() => {
@@ -48,26 +43,14 @@ const ColumnChart = ({
         month: 'short',
       });
       const previousIncome = newData[newData.length - 1]?.[1] ?? 0;
-      const income =
-        month === currentMonth ? monthlyIncome : previousIncome + monthlyIncome;
+      const income = month === currentMonth ? monthlyIncome : previousIncome + monthlyIncome;
       newData.push([monthName, income, barColor]);
     }
 
-    setChartData([
-      ['', 'Accumulative Passive Income per Month', { role: 'style' }],
-      ...newData,
-    ]);
+    setChartData([['', 'Accumulative Passive Income per Month', { role: 'style' }], ...newData]);
   }, [monthlyIncome]);
 
-  return (
-    <Chart
-      chartType={type as any}
-      width={width}
-      height={height}
-      data={chartData}
-      options={options}
-    />
-  );
+  return <Chart chartType={type as any} width={width} height={height} data={chartData} options={options} />;
 };
 
 export default ColumnChart;

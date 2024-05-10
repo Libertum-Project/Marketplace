@@ -1,6 +1,7 @@
 import PropertyDetail from '@/components/PropertyDetail/PropertyDetail';
-import SimilarListings from './SimilarListings';
 import { getProperties, getPropertyDetails } from '@/app/utils/fetchProperties';
+
+import SimilarListings from './SimilarListings';
 
 interface Params {
   id: number;

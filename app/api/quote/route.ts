@@ -13,7 +13,7 @@ export async function GET(req: NextRequest) {
         headers: {
           'X-Api-Key': process.env.NEXT_PUBLIC_UNIZEN_API_KEY as string,
         },
-      }
+      },
     );
     const data = await response.json();
 

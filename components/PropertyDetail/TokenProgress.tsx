@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Progress } from '@/components/ui/progress';
 
 interface TokenProgressProps {
@@ -6,10 +7,7 @@ interface TokenProgressProps {
   tokens_sold: number;
 }
 
-const TokenProgress: React.FC<TokenProgressProps> = ({
-  total_tokens,
-  tokens_sold
-}) => {
+const TokenProgress: React.FC<TokenProgressProps> = ({ total_tokens, tokens_sold }) => {
   const percentageSold = (tokens_sold / total_tokens) * 100;
 
   return (

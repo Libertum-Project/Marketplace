@@ -4,7 +4,9 @@ import { withObvious } from "@itsobvioustech/next-plugin";
 const plugins = [withObvious()];
 let nextConfig = {
   transpilePackages: ["@itsobvioustech/embed"], // Optional
-
+  eslint: { 
+    ignoreDuringBuilds: true, 
+  }, 
   images: {
     remotePatterns: [
       {

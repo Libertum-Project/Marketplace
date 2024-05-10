@@ -1,6 +1,8 @@
-import css from "./MessageBox.module.css";
-import USDT from "@/public/assets/USDT.png";
-import Image from "next/image";
+import Image from 'next/image';
+
+import USDT from '@/public/assets/USDT.png';
+
+import css from './MessageBox.module.css';
 
 const NotEnoughUSDT = ({ setShowNotEnoughUSDT }: any) => {
   const handleContinue = (event: any) => {

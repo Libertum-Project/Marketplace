@@ -1,10 +1,5 @@
 'use client';
-import {
-  ConnectEmbed,
-  lightTheme,
-  useShowConnectEmbed,
-  useConnectionStatus,
-} from '@thirdweb-dev/react';
+import { ConnectEmbed, lightTheme, useShowConnectEmbed, useConnectionStatus } from '@thirdweb-dev/react';
 import Image from 'next/image';
 import { redirect } from 'next/navigation';
 import React, { useLayoutEffect } from 'react';
@@ -20,12 +15,7 @@ const Page = () => {
     <>
       {showConnectEmbed ? (
         <div className="w-full min-h-screen flex flex-col justify-center items-center bg-primary-gradient gap-10">
-          <Image
-            src="/horizontal-logo.svg"
-            width={274}
-            height={36}
-            alt="Logo"
-          />
+          <Image src="/horizontal-logo.svg" width={274} height={36} alt="Logo" />
           <ConnectEmbed
             auth={{
               onLogin: () => {

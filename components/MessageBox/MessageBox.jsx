@@ -1,13 +1,15 @@
-"use client";
-import { useContext } from "react";
-import MessageBoxContext from "../../../context/MessageBoxContext";
-import Loading from "./Loading";
-import PendingMessage from "./PendingMessage";
-import FailMessage from "./FailMessage";
-import SuccessMessage from "./SuccessMessage";
-import ConnectToNetworkMessage from "./ConnectToNetworkMessage.jsx";
-import NotEnoughUSDT from "./NotEnoughUSDT";
-import ConnectWallet from "./ConnectWallet";
+'use client';
+import { useContext } from 'react';
+
+import MessageBoxContext from '../../../context/MessageBoxContext';
+
+import Loading from './Loading';
+import PendingMessage from './PendingMessage';
+import FailMessage from './FailMessage';
+import SuccessMessage from './SuccessMessage';
+import ConnectToNetworkMessage from './ConnectToNetworkMessage.jsx';
+import NotEnoughUSDT from './NotEnoughUSDT';
+import ConnectWallet from './ConnectWallet';
 
 const MessageBox = () => {
   const {
@@ -30,30 +32,18 @@ const MessageBox = () => {
   return (
     <>
       {isLoading ? <Loading /> : null}
-      {showNotEnoughUSDT ? (
-        <NotEnoughUSDT setShowNotEnoughUSDT={setShowNotEnoughUSDT} />
-      ) : null}
+      {showNotEnoughUSDT ? <NotEnoughUSDT setShowNotEnoughUSDT={setShowNotEnoughUSDT} /> : null}
 
-      {showConnectWallet ? (
-        <ConnectWallet setShowConnectWallet={setShowConnectWallet} />
-      ) : null}
+      {showConnectWallet ? <ConnectWallet setShowConnectWallet={setShowConnectWallet} /> : null}
       {showFailMessage ? (
-        <FailMessage
-          setShowFailMessage={setShowFailMessage}
-          message={errorMessage}
-          url={networkScanURL}
-        />
+        <FailMessage setShowFailMessage={setShowFailMessage} message={errorMessage} url={networkScanURL} />
       ) : null}
 
       {showConnectToNetworkMessage ? (
-        <ConnectToNetworkMessage
-          setShowConnectToNetworkMessage={setShowConnectToNetworkMessage}
-        />
+        <ConnectToNetworkMessage setShowConnectToNetworkMessage={setShowConnectToNetworkMessage} />
       ) : null}
 
-      {showPendingMessage ? (
-        <PendingMessage messagge="Processing your investment..." />
-      ) : null}
+      {showPendingMessage ? <PendingMessage messagge="Processing your investment..." /> : null}
       {showSuccessMessage ? (
         <SuccessMessage
           setShowSuccessMessage={setShowSuccessMessage}

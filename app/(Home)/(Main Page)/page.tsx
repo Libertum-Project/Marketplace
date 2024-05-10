@@ -1,5 +1,6 @@
-import Hero from './Hero/hero';
 import AllProperties from '@/components/Home/AllProperties';
+
+import Hero from './Hero/hero';
 
 const Home = () => {
   return (

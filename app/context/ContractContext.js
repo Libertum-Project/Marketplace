@@ -1,5 +1,5 @@
-'use client'
-import { createContext } from "react";
+'use client';
+import { createContext } from 'react';
 
 const ContractContext = createContext({
   updateContractInfo: false,
