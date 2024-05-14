@@ -1,12 +1,13 @@
-import Hero from './Hero/Hero';
 import FeaturedProperties from '@/components/Featured/FeaturedProperties';
+
+import Hero from './Hero/Hero';
 
 const AllFeatured = () => {
   return (
     <div>
       <Hero />
       <div className="md:max-w-[75rem] m-auto">
-        <FeaturedProperties showFilters={false} /> 
+        <FeaturedProperties showFilters={false} />
       </div>
     </div>
   );

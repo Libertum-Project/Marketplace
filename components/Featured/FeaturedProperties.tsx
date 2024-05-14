@@ -1,6 +1,7 @@
-'use client'
+'use client';
 
 import { useEffect, useState } from 'react';
+
 import PropertyCard from '../shared/PropertyCard';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Card, CardContent } from '../ui/card';
@@ -19,8 +20,8 @@ const FeaturedProperties = ({ showFilters = false }: Props) => {
     const requestOptions = {
       method: 'GET',
       headers: {
-        authorization: `Bearer ${secretKey}`
-      }
+        authorization: `Bearer ${secretKey}`,
+      },
     };
 
     try {
@@ -47,12 +48,7 @@ const FeaturedProperties = ({ showFilters = false }: Props) => {
         </p>
       ) : (
         properties.map((property: any) => (
-          <PropertyCard
-            key={property.id}
-            property={property}
-            viewType="grid"
-            btnLink="/details"
-          />
+          <PropertyCard key={property.id} property={property} viewType="grid" btnLink="/details" />
         ))
       )}
 

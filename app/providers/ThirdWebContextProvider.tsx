@@ -6,18 +6,14 @@ import {
   embeddedWallet,
   localWallet,
   metamaskWallet,
-  walletConnect
+  walletConnect,
 } from '@thirdweb-dev/react';
 
 import { Base, BaseSepoliaTestnet} from '@thirdweb-dev/chains';
 
 const ThirdwebContext = createContext<any>(undefined);
 
-export function ThirdwebContextProvider({
-  children
-}: {
-  children: React.ReactNode;
-}) {
+export function ThirdwebContextProvider({ children }: { children: React.ReactNode }) {
   const clientId = process.env.NEXT_PUBLIC_THIRD_WEB_CLIENT_ID;
   const activeChain = process.env.NEXT_PUBLIC_ACTIVE_CHAIN === 'production' ? Base : BaseSepoliaTestnet;
 
@@ -35,9 +31,9 @@ export function ThirdwebContextProvider({
           localWallet(),
           embeddedWallet({
             auth: {
-              options: ['email', 'google', 'apple', 'facebook']
-            }
-          })
+              options: ['email', 'google', 'apple', 'facebook'],
+            },
+          }),
         ]}
       >
         {children}

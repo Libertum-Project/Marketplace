@@ -1,17 +1,8 @@
 import React from 'react';
+
 import { ServerImage } from '@/components/shared/ServerImage';
-import {
-  Dialog,
-  DialogContent,
-  DialogTrigger,
-} from '@/components/ui/dialog';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from '@/components/ui/carrousel';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carrousel';
 
 interface ImageGalleryProps {
   images: string[];
@@ -34,12 +25,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
         <Dialog>
           <DialogTrigger>
             <div className="absolute bottom-9 right-4 flex items-center gap-2 z-30 bg-white rounded-[56px] p-2 backdrop-blur-[5px]">
-              <ServerImage
-                src="/assets/icons/gallery.svg"
-                alt="gallery"
-                width={16}
-                height={16}
-              />
+              <ServerImage src="/assets/icons/gallery.svg" alt="gallery" width={16} height={16} />
               <p>View photo gallery</p>
             </div>
           </DialogTrigger>

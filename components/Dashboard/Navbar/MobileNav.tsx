@@ -1,17 +1,16 @@
 'use client';
-import { mobileMenu } from '@/constants';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+
+import { mobileMenu } from '@/constants';
 
 const MobileNav = () => {
   const pathname = usePathname();
   return (
     <div className="md:hidden w-full fixed bottom-0 bg-gray-950 bg-opacity-95 justify-between items-center flex px-[10px] py-[12px]">
       {mobileMenu.map((item) => {
-        const isActive =
-          (pathname.includes(item.route) && item.route.length > 1) ||
-          pathname === item.route;
+        const isActive = (pathname.includes(item.route) && item.route.length > 1) || pathname === item.route;
         return (
           <Link
             href={item.route}
@@ -25,9 +24,7 @@ const MobileNav = () => {
               alt={item.label}
               width={20}
               height={20}
-              className={`group-hover:fill-[#00B3B5]  ${
-                item.label === 'Get' ? 'w-[36px]' : ''
-              }`}
+              className={`group-hover:fill-[#00B3B5]  ${item.label === 'Get' ? 'w-[36px]' : ''}`}
             />
             <p className="text-white group-hover:text-[#00B3B5] text-opacity-70 text-xs font-bold font-ubuntu">
               {item.label}

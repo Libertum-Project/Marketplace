@@ -1,27 +1,29 @@
 'use client';
-import css from './MintButton.module.css';
 import { useState } from 'react';
-import Loading from '@/components/MessageBox/Loading.jsx';
-import PendingMessage from '@/components/MessageBox/PendingMessage';
-import ErrorMessage from '@/components/MessageBox/ErrorMessage';
-import SuccessMessage from '@/components/MessageBox/SuccessMessage';
 import {
   useContract,
   useContractRead,
   useContractWrite,
   Web3Button,
   useAddress,
-  useBalance
+  useBalance,
 } from '@thirdweb-dev/react';
+
+import Loading from '@/components/MessageBox/Loading.jsx';
+import PendingMessage from '@/components/MessageBox/PendingMessage';
+import ErrorMessage from '@/components/MessageBox/ErrorMessage';
+import SuccessMessage from '@/components/MessageBox/SuccessMessage';
 import PROPERTY_ABI from '@/constants/Property.json';
 import USDT_ABI from '@/constants/USDT.json';
+
+import css from './MintButton.module.css';
 
 const MintButton = ({
   contractAddress: propertyContractAddress,
   amount,
   price,
   remainingTokens,
-  areTermsAccepted
+  areTermsAccepted,
 }: any) => {
   const [showIsLoadingUi, setShowIsLoadingUi] = useState(false);
   const [showErrorMessage, setShowErrorMessage] = useState(false);
@@ -32,33 +34,18 @@ const MintButton = ({
   const isDisabled = !areTermsAccepted;
 
   console.log(propertyContractAddress);
-  const {
-    data: userNativeTokenBalance,
-    isLoading: isLoadingUserNativeTokenBalance
-  } = useBalance();
+  const { data: userNativeTokenBalance, isLoading: isLoadingUserNativeTokenBalance } = useBalance();
   const { data: userUsdtBalance, isLoading: isLoadingUsdtBalance } = useBalance(
-    '0x53057dE112fd5ED7594Da6F858D908dA9D3d685f'
+    '0x53057dE112fd5ED7594Da6F858D908dA9D3d685f',
   );
 
-  const { contract: propertyContract, isLoading } = useContract(
-    propertyContractAddress,
-    PROPERTY_ABI.abi
-  );
+  const { contract: propertyContract, isLoading } = useContract(propertyContractAddress, PROPERTY_ABI.abi);
 
-  const { data: paymentTokenAddress } = useContractRead(
-    propertyContract,
-    'paymentToken'
-  );
+  const { data: paymentTokenAddress } = useContractRead(propertyContract, 'paymentToken');
 
-  const { mutateAsync: mint, isLoading: isMintInProgress } = useContractWrite(
-    propertyContract,
-    'mint'
-  );
+  const { mutateAsync: mint, isLoading: isMintInProgress } = useContractWrite(propertyContract, 'mint');
 
-  const { contract: usdtContract } = useContract(
-    paymentTokenAddress,
-    USDT_ABI.abi
-  );
+  const { contract: usdtContract } = useContract(paymentTokenAddress, USDT_ABI.abi);
 
   const { mutateAsync: approve } = useContractWrite(usdtContract, 'approve');
 
@@ -71,10 +58,7 @@ const MintButton = ({
           throw new Error('Not enough remaining tokens');
         }
 
-        if (
-          !isLoadingUserNativeTokenBalance &&
-          userNativeTokenBalance!.value.isZero()
-        ) {
+        if (!isLoadingUserNativeTokenBalance && userNativeTokenBalance!.value.isZero()) {
           throw new Error('Not enough native token');
         }
 
@@ -91,10 +75,7 @@ const MintButton = ({
 
         const approveAmountBigNumber = BigInt(approveAmount);
 
-        if (
-          !isLoadingUsdtBalance &&
-          userUsdtBalance!.value.toBigInt() < approveAmountBigNumber
-        ) {
+        if (!isLoadingUsdtBalance && userUsdtBalance!.value.toBigInt() < approveAmountBigNumber) {
           throw new Error('Not enough payment token');
         }
 
@@ -105,8 +86,8 @@ const MintButton = ({
           `/api/users/investments?userWalletAddress=${userWalletAddress}&propertyContractAddress=${propertyContractAddress}`,
           {
             method: 'POST',
-            cache: 'no-store'
-          }
+            cache: 'no-store',
+          },
         );
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -120,25 +101,21 @@ const MintButton = ({
         console.error(error.message);
 
         if (error.message === 'Not enough remaining tokens') {
-          setErrorText(
-            "You've requested more tokens than are currently available."
-          );
+          setErrorText("You've requested more tokens than are currently available.");
         } else if (error.message === 'Not enough payment token') {
           setErrorText(
             `Not enough funds. Please deposit additional ${
               userUsdtBalance!.symbol
-            } into your account to complete the transaction.`
+            } into your account to complete the transaction.`,
           );
         } else if (error.message === 'Not enough native token') {
           setErrorText(
             `Not enough funds to cover gas fees. Please deposit additional ${
               userNativeTokenBalance!.symbol
-            } into your account to complete the transaction.`
+            } into your account to complete the transaction.`,
           );
         } else {
-          setErrorText(
-            'Unable to process your request. Please try again later.'
-          );
+          setErrorText('Unable to process your request. Please try again later.');
         }
       }
     }
@@ -147,16 +124,10 @@ const MintButton = ({
   return (
     <>
       {showIsLoadingUi && <Loading />}
-      {isMintInProgress && (
-        <PendingMessage message="Almost there! Your mint transaction is in progress." />
-      )}
+      {isMintInProgress && <PendingMessage message="Almost there! Your mint transaction is in progress." />}
 
       {showErrorMessage && (
-        <ErrorMessage
-          setShowErrorMessage={setShowErrorMessage}
-          message={errorText}
-          url={errorUrl}
-        />
+        <ErrorMessage setShowErrorMessage={setShowErrorMessage} message={errorText} url={errorUrl} />
       )}
 
       {showSuccessMessage && (

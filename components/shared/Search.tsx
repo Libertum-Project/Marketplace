@@ -1,6 +1,7 @@
 'use client';
-import { Input } from '@/components/ui/input';
 import Image from 'next/image';
+
+import { Input } from '@/components/ui/input';
 
 const Search = () => {
   return (
@@ -12,13 +13,7 @@ const Search = () => {
         onChange={() => {}}
         className="paragraph-regular no-focus placeholder border-none shadow-none outline-none text-black text-opacity-60 text-[13px]"
       />
-      <Image
-        src="/assets/icons/search.svg"
-        alt="search"
-        width={24}
-        height={24}
-        className="cursor-pointer"
-      />
+      <Image src="/assets/icons/search.svg" alt="search" width={24} height={24} className="cursor-pointer" />
     </div>
   );
 };

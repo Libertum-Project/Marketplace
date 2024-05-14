@@ -1,6 +1,7 @@
-import css from './MessageBox.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
+
+import css from './MessageBox.module.css';
 import success from './checkIcon.svg';
 
 const SuccessMessage = ({ setShowSuccessMessage, message, textBtn }: any) => {
@@ -23,7 +24,9 @@ const SuccessMessage = ({ setShowSuccessMessage, message, textBtn }: any) => {
         <div>
           <p>{message}</p>
         </div>
-        <Link className={css.continueBtn} href="/investments">{textBtn}</Link>
+        <Link className={css.continueBtn} href="/investments">
+          {textBtn}
+        </Link>
       </div>
     </div>
   );

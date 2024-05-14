@@ -8,17 +8,14 @@ export async function POST(req: NextRequest) {
 
   const userWalletAddress: string = searchParams.get('userWalletAddress')!;
   const propertyContractAddress: string = searchParams.get('propertyContractAddress')!;
-  const response = await fetch(
-    `${serverURL}/users/${userWalletAddress}/investment/${propertyContractAddress}`,
-    {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${secretKey}`,
-        Accept: 'application/json',
-        'Content-Type': 'application/json;charset=utf-8'
-      }
-    }
-  );
+  const response = await fetch(`${serverURL}/users/${userWalletAddress}/investment/${propertyContractAddress}`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${secretKey}`,
+      Accept: 'application/json',
+      'Content-Type': 'application/json;charset=utf-8',
+    },
+  });
   return Response.json({ response });
 }
 
@@ -32,8 +29,8 @@ export async function GET(req: NextRequest) {
       headers: {
         Authorization: `Bearer ${secretKey}`,
         Accept: 'application/json',
-        'Content-Type': 'application/json;charset=utf-8'
-      }
+        'Content-Type': 'application/json;charset=utf-8',
+      },
     });
 
     if (!response.ok) {

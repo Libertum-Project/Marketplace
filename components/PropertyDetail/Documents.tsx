@@ -1,7 +1,8 @@
 import React from 'react';
+import Link from 'next/link';
+
 import { ServerImage } from '../shared/ServerImage';
 import downloadIcon from '../../public/assets/icons/download.svg';
-import Link from 'next/link';
 
 const Documents: React.FC<{ documents: string[] }> = ({ documents }) => {
   if (documents.length === 0) {

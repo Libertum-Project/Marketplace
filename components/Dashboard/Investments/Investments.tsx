@@ -1,17 +1,13 @@
 'use client';
-import { getProperties } from '@/app/utils/fetchProperties';
 import { useAddress } from '@thirdweb-dev/react';
 import { useState, useEffect } from 'react';
+
+import { getProperties } from '@/app/utils/fetchProperties';
 import PropertyCard from '@/components/shared/PropertyCard';
 import { CardContent } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Card } from '@/components/ui/card';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger
-} from '@/components/ui/tooltip';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 const Investments = () => {
   const userWalletAddress: string | undefined = useAddress();
@@ -23,12 +19,9 @@ const Investments = () => {
     async function fetchProperties() {
       const demoProperties = await getProperties();
       setDemoProperties(demoProperties);
-      const response = await fetch(
-        `/api/users/investments?userWalletAddress=${userWalletAddress}`,
-        {
-          method: 'GET'
-        }
-      );
+      const response = await fetch(`/api/users/investments?userWalletAddress=${userWalletAddress}`, {
+        method: 'GET',
+      });
       if (!response.ok) {
         console.error('Failed to fetch properties');
         return null;
@@ -96,10 +89,7 @@ const Investments = () => {
                   />
                 ))}
               </TooltipTrigger>
-              <TooltipContent
-                side="bottom"
-                className="bg-libertumOrange rounded-[5px] "
-              >
+              <TooltipContent side="bottom" className="bg-libertumOrange rounded-[5px] ">
                 <p className="text-white font-space_grotesk font-semibold text-sm py-2">
                   This is an example of how you will see your investments.
                 </p>
