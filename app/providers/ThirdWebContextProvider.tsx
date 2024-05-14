@@ -8,19 +8,22 @@ import {
   metamaskWallet,
   walletConnect,
 } from '@thirdweb-dev/react';
-import { Base, BinanceTestnet } from '@thirdweb-dev/chains';
+
+import { Base, BaseSepoliaTestnet} from '@thirdweb-dev/chains';
 
 const ThirdwebContext = createContext<any>(undefined);
 
 export function ThirdwebContextProvider({ children }: { children: React.ReactNode }) {
   const clientId = process.env.NEXT_PUBLIC_THIRD_WEB_CLIENT_ID;
+  const activeChain = process.env.NEXT_PUBLIC_ACTIVE_CHAIN === 'production' ? Base : BaseSepoliaTestnet;
+
   return (
     <ThirdwebContext.Provider value={{}}>
       <ThirdwebProvider
         theme="light"
-        activeChain={BinanceTestnet}
+        activeChain={activeChain}
         clientId={clientId}
-        supportedChains={[Base, BinanceTestnet]}
+        supportedChains={[activeChain]}
         supportedWallets={[
           metamaskWallet({ recommended: true }),
           coinbaseWallet(),

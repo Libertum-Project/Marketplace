@@ -19,7 +19,8 @@ interface Property {
     postal_code: string;
   };
   amenities: string[];
-  description: string;
+  description: string[];
+  documents: string[];
   category: string;
   image_gallery: string[];
   owner_id: number;
@@ -91,6 +92,7 @@ const PropertyDetail: React.FC<PropertyDetailProps> = ({ property }) => {
             annualYield={property.annual_yield}
             repaymentDuration={property.token_duration_months}
             description={property.description}
+            documents={property.documents}
             selectedTokens={selectedTokens}
             setSelectedTokens={setSelectedTokens}
           />
