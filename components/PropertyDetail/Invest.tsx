@@ -140,6 +140,15 @@ const Invest: React.FC<InvestProps> = ({
       </div>
       <Dialog>
         <DialogTrigger asChild>
+          <Button
+            variant="outline"
+            className="w-full bg-libertumGreen text-white px-4 py-4 rounded hover:bg-teal-600 transition duration-300 flex items-center justify-center font-space_grotesk select-none"
+          >
+            Invest Now!
+          </Button>
+          {/*          
+          I DIDNT DELETE IT BECAUSE WE WILL PROBABLY NEED THIS LINES IN THE FUTURE
+
           {allowBuy ? (
             <MintButton
               contractAddress={contractAddress}
@@ -155,7 +164,7 @@ const Invest: React.FC<InvestProps> = ({
             >
               Invest Now!
             </Button>
-          )}
+          )} */}
         </DialogTrigger>
         <DialogContent className="sm:max-w-md p-6 bg-white">
           <DialogHeader>
