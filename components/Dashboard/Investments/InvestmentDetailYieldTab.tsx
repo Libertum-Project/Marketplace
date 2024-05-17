@@ -8,7 +8,7 @@ import UserTokenBalance from './UserTokenBalance';
 const InvestmentDetailYieldTab = ({ propertyAddress, durationInMonths }: any) => {
   //  <ClaimSection propertyAddress={propertyAddress} durationInMonths={durationInMonths}/>
   return (
-    <TabsContent value="yield" className="sm:max-h-[640px] overflow-auto ">
+    <TabsContent value="yield" className="sm:max-h-[860px] overflow-auto">
       <div
         className="
 

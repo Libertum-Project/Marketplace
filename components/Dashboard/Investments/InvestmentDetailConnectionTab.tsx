@@ -8,7 +8,7 @@ import { Button } from '../../ui/button';
 const InvestmentDetailConnectionTab = () => {
   const address = useAddress();
   return (
-    <TabsContent value="connection" className="sm:max-h-[640px] overflow-auto">
+    <TabsContent value="connection" className="sm:max-h-[860px] overflow-auto">
       <div className="mt-16">
         <div className="flex justify-between items-center gap-16 max-sm:flex-col">
           <div className="px-8 py-6 bg-wallet-card-gradient rounded-2xl flex flex-col gap-4 flex-1 max-sm:w-[80%] sm:max-w-[50%]">
