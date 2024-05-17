@@ -84,11 +84,12 @@ const Financials: React.FC<{
       <div>
         <div className="flex gap-6 items-center justify-between mt-6 mb-6">
           <Slider
+            className="cursor-pointer"
             defaultValue={[10]}
             value={[selectedTokens]}
             max={totalShares}
             min={1}
-            step={1}
+            step={10}
             onValueChange={handleSliderValueChange}
             onChange={handleSliderChange}
           />
