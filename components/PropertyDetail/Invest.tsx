@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
+import Subscribe from './Subscribe';
+
 import {
   Dialog,
   DialogContent,
@@ -14,6 +16,7 @@ import {
 import { Button } from '@/components/ui/button';
 
 import MintButton from './MintButton';
+import { DialogClose } from '@radix-ui/react-dialog';
 
 interface InvestProps {
   title: string;
@@ -142,7 +145,7 @@ const Invest: React.FC<InvestProps> = ({
         <DialogTrigger asChild>
           <Button
             variant="outline"
-            className="w-full bg-libertumGreen text-white px-4 py-4 rounded hover:bg-teal-600 transition duration-300 flex items-center justify-center font-space_grotesk select-none"
+            className="w-full bg-libertumGreen text-white px-4 py-4 rounded hover:bg-teal-600 transition duration-300 flex items-center justify-center font-space_grotesk select-none hover:border-white hover:text-white"
           >
             Invest Now!
           </Button>
@@ -177,18 +180,19 @@ const Invest: React.FC<InvestProps> = ({
           </DialogHeader>
           <div className="flex items-center space-x-2">
             <div className="grid flex-1 gap-2">
-              <Label htmlFor="link" className="sr-only">
-                Link
-              </Label>
-              <Input id="link" defaultValue="Write your email here" readOnly />
+              <Label htmlFor="link" className="sr-only"></Label>
+              <Input id="link" placeholder="Write your email here" />
             </div>
-            <Button
-              type="submit"
-              className="px-3 bg-libertumGreen w-fit text-white rounded hover:bg-teal-600 transition duration-300 flex items-center justify-center font-space_grotesk'"
-            >
-              Subscribe
-            </Button>
+            <DialogClose>
+              <Button
+                type="submit"
+                className="px-3 bg-libertumGreen w-fit text-white rounded hover:bg-teal-600 transition duration-300 flex items-center justify-center font-space_grotesk'"
+              >
+                Subscribe
+              </Button>
+            </DialogClose>
           </div>
+          {/* <Subscribe /> */}
         </DialogContent>
       </Dialog>
     </div>
