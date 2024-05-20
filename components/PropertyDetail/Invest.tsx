@@ -1,8 +1,8 @@
 'use client';
 import React, { useState } from 'react';
 
-import { Label } from '@/components/ui/label';
-import { Input } from '@/components/ui/input';
+import Subscribe from './Subscribe';
+
 import {
   Dialog,
   DialogContent,
@@ -12,8 +12,6 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-
-import MintButton from './MintButton';
 
 interface InvestProps {
   title: string;
@@ -39,6 +37,7 @@ const Invest: React.FC<InvestProps> = ({
   setSelectedTokens,
 }) => {
   const [areTermsAccepted, setAreTermsAccepted] = useState<boolean>(false);
+
   const allowBuy: boolean = true;
 
   const totalPrice = isNaN(Number(selectedTokens)) ? '' : (Number(selectedTokens) * price).toFixed(2);
@@ -140,22 +139,12 @@ const Invest: React.FC<InvestProps> = ({
       </div>
       <Dialog>
         <DialogTrigger asChild>
-          {allowBuy ? (
-            <MintButton
-              contractAddress={contractAddress}
-              amount={selectedTokens}
-              price={price}
-              remainingTokens={remainingTokens}
-              areTermsAccepted={areTermsAccepted}
-            />
-          ) : (
-            <Button
-              variant="outline"
-              className="w-full bg-libertumGreen text-white px-4 py-4 rounded hover:bg-teal-600 transition duration-300 flex items-center justify-center font-space_grotesk select-none"
-            >
-              Invest Now!
-            </Button>
-          )}
+          <Button
+            variant="outline"
+            className="w-full bg-libertumGreen text-white px-4 py-4 rounded hover:bg-teal-600 transition duration-300 flex items-center justify-center font-space_grotesk select-none hover:border-white hover:text-white"
+          >
+            Invest Now!
+          </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-md p-6 bg-white">
           <DialogHeader>
@@ -166,20 +155,7 @@ const Invest: React.FC<InvestProps> = ({
               platform when it is unveiled!
             </DialogDescription>
           </DialogHeader>
-          <div className="flex items-center space-x-2">
-            <div className="grid flex-1 gap-2">
-              <Label htmlFor="link" className="sr-only">
-                Link
-              </Label>
-              <Input id="link" defaultValue="Write your email here" readOnly />
-            </div>
-            <Button
-              type="submit"
-              className="px-3 bg-libertumGreen w-fit text-white rounded hover:bg-teal-600 transition duration-300 flex items-center justify-center font-space_grotesk'"
-            >
-              Subscribe
-            </Button>
-          </div>
+          <Subscribe />
         </DialogContent>
       </Dialog>
     </div>
