@@ -46,10 +46,11 @@ const Subscribe: React.FC = () => {
     setEmail(e.target.value);
   };
 
-  let buttonSubscribeText: string;
-  if (loading) buttonSubscribeText = 'Sending...';
-  if (subscribeSuccess) buttonSubscribeText = 'Subscribed ✔️';
-  else buttonSubscribeText = 'Subscribe';
+  const getButtonSubscribeText = () => {
+    if (loading) return 'Sending...';
+    if (subscribeSuccess) return 'Subscribed ✔️';
+    return 'Subscribe';
+  };
 
   return (
     <form onSubmit={handleSubmit} className="flex items-center space-x-2">
@@ -60,7 +61,7 @@ const Subscribe: React.FC = () => {
           value={email}
           onChange={handleEmailChange}
           required
-          className="border rounded-sm focus:border-libertumGreen h-full p-2"
+          className="border rounded-md focus:border-libertumGreen focus:outline-none  h-full p-2"
         />
       </div>
       <Button
@@ -68,7 +69,7 @@ const Subscribe: React.FC = () => {
         disabled={loading}
         className="px-3 bg-libertumGreen w-fit text-white rounded hover:bg-teal-600 transition duration-300 flex items-center justify-center font-space_grotesk"
       >
-        {buttonSubscribeText}
+        {getButtonSubscribeText()}
       </Button>
     </form>
   );
