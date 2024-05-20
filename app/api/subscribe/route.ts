@@ -5,14 +5,14 @@ interface Props {
   email: string;
   firstName?: string;
   lastName?: string;
-  unsubscribe: false;
+  unsubscribed: false;
   audienceId: string;
 }
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
 
-  const { email, firstName, lastName, unsubscribe, audienceId }: Props = body;
+  const { email, firstName, lastName, unsubscribed, audienceId }: Props = body;
 
   if (!email) {
     return NextResponse.json({
@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
       email,
       firstName,
       lastName,
-      unsubscribe,
+      unsubscribed,
       audienceId,
     });
     return NextResponse.json({ status: 200, response });
