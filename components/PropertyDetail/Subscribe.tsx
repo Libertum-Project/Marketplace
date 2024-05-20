@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, FormEvent } from 'react';
 import { Button } from '@/components/ui/button';
 
-const Subscribe = () => {
-  const [email, setEmail] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [subscribeSuccess, setSubscribeSuccess] = useState(false);
+const Subscribe: React.FC = () => {
+  const [email, setEmail] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
+  const [subscribeSuccess, setSubscribeSuccess] = useState<boolean>(false);
 
-  const audience = process.env.NEXT_PUBLIC_RESEND_AUDIENCE_ID;
+  const audience: string | undefined = process.env.NEXT_PUBLIC_RESEND_AUDIENCE_ID;
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
 
