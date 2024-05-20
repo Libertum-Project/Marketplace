@@ -1,10 +1,11 @@
-import React, { useState, FormEvent } from 'react';
+'use client';
+import React, { useState, FormEvent, ChangeEvent } from 'react';
 import { Button } from '@/components/ui/button';
 
 const Subscribe: React.FC = () => {
-  const [email, setEmail] = useState<string>('');
-  const [loading, setLoading] = useState<boolean>(false);
-  const [subscribeSuccess, setSubscribeSuccess] = useState<boolean>(false);
+  const [email, setEmail] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [subscribeSuccess, setSubscribeSuccess] = useState(false);
 
   const audience: string | undefined = process.env.NEXT_PUBLIC_RESEND_AUDIENCE_ID;
 
@@ -41,28 +42,35 @@ const Subscribe: React.FC = () => {
     }
   };
 
+  const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+
+  let buttonSubscribeText: string;
+  if (loading) buttonSubscribeText = 'Sending...';
+  if (subscribeSuccess) buttonSubscribeText = 'Subscribed ✔️';
+  else buttonSubscribeText = 'Subscribe';
+
   return (
-    <>
-      <form onSubmit={handleSubmit} className="flex items-center space-x-2">
-        <div className="grid flex-1 gap-2">
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            className="border rounded-sm focus:border-libertumGreen h-full p-2"
-          />
-        </div>
-        <Button
-          type="submit"
-          disabled={loading}
-          className="px-3 bg-libertumGreen w-fit text-white rounded hover:bg-teal-600 transition duration-300 flex items-center justify-center font-space_grotesk"
-        >
-          {loading ? 'Sending...' : subscribeSuccess ? 'Subscribed ✅' : 'Subscribe'}
-        </Button>
-      </form>
-    </>
+    <form onSubmit={handleSubmit} className="flex items-center space-x-2">
+      <div className="grid flex-1 gap-2">
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={handleEmailChange}
+          required
+          className="border rounded-sm focus:border-libertumGreen h-full p-2"
+        />
+      </div>
+      <Button
+        type="submit"
+        disabled={loading}
+        className="px-3 bg-libertumGreen w-fit text-white rounded hover:bg-teal-600 transition duration-300 flex items-center justify-center font-space_grotesk"
+      >
+        {buttonSubscribeText}
+      </Button>
+    </form>
   );
 };
 
