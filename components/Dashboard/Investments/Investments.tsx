@@ -80,12 +80,13 @@ const Investments = () => {
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger>
-                {demoProperties.slice(0, 1).map((property: any) => (
+                {demoProperties.slice(0, 2).map((property: any) => (
                   <PropertyCard
                     property={property}
                     key={property.id}
                     btnTitle="View Investment Details"
                     investmentDetail={true}
+                    isTest={true}
                   />
                 ))}
               </TooltipTrigger>

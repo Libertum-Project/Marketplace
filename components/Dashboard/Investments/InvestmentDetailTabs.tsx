@@ -4,7 +4,7 @@ import InvestmentDetailConnectionTab from './InvestmentDetailConnectionTab';
 import InvestmentDetailPropertyTab from './InvestmentDetailPropertyTab';
 import InvestmentDetailYieldTab from './InvestmentDetailYieldTab';
 
-const InvestmentDetailTabs = ({ propertyAddress, durationInMonths }: any) => {
+const InvestmentDetailTabs = ({ propertyAddress, durationInMonths, isTest }: any) => {
   return (
     <div className="w-full items-center">
       <Tabs defaultValue="yield">
@@ -31,7 +31,7 @@ const InvestmentDetailTabs = ({ propertyAddress, durationInMonths }: any) => {
           </TabsList>
         </div>
 
-        <InvestmentDetailYieldTab propertyAddress={propertyAddress} durationInMonths={durationInMonths} />
+        <InvestmentDetailYieldTab propertyAddress={propertyAddress} durationInMonths={durationInMonths} isTest={isTest}/>
         <InvestmentDetailConnectionTab />
         <InvestmentDetailPropertyTab />
       </Tabs>

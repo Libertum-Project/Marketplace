@@ -14,8 +14,9 @@ interface Props {
   btnTitle?: string;
   btnLink?: string;
   investmentDetail?: boolean;
+  isTest?: boolean;
 }
-const PropertyGridView = ({ property, btnTitle, investmentDetail = false }: Props) => {
+const PropertyGridView = ({ property, btnTitle, investmentDetail = false, isTest }: Props) => {
   return (
     <>
       <CardContent className="p-0 relative">
@@ -81,7 +82,7 @@ const PropertyGridView = ({ property, btnTitle, investmentDetail = false }: Prop
 
       <CardFooter className="w-full px-4">
         {investmentDetail ? (
-          <InvestmentDetail property={property} />
+          <InvestmentDetail property={property} isTest={isTest}/>
         ) : (
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value={`item-${property.id}`}>
