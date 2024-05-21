@@ -25,7 +25,7 @@ const YieldChart = ({ height, width, type = 'PieChart', pieColor }: Props) => {
     pieSliceText: 'none',
     slices: {
       0: { color: '#9BB0C9' },
-      1: { color: pieColor ? pieColor : '#86D8DB' }
+      1: { color: pieColor ?? '#86D8DB' }
     },
     backgroundColor: 'transparent'
   };
