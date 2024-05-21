@@ -1,10 +1,11 @@
 'use client';
 import { Chart } from 'react-google-charts';
+type GoogleChartWrapperChartType = 'LineChart' | 'PieChart';
 
 interface Props {
   height: string;
   width: string;
-  type: string;
+  type: GoogleChartWrapperChartType;
   pieColor?: string;
 }
 
@@ -37,7 +38,7 @@ const YieldChart = ({ height, width, type = 'PieChart', pieColor }: Props) => {
     ];
     return (
       <Chart
-        chartType={type as any}
+        chartType={type as GoogleChartWrapperChartType}
         width={width}
         height={height}
         data={data}
@@ -48,7 +49,7 @@ const YieldChart = ({ height, width, type = 'PieChart', pieColor }: Props) => {
 
   return (
     <Chart
-      chartType={type as any}
+      chartType={type as GoogleChartWrapperChartType}
       width={width}
       height={height}
       data={data}
