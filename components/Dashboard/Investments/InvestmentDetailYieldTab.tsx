@@ -6,11 +6,17 @@ import MockProperty1 from './mockProperties/MockProperty1';
 import MockProperty2 from './mockProperties/MockProperty2';
 import UserTokenBalance from './UserTokenBalance';
 
+interface props {
+  propertyAddress: string;
+  durationInMonths: number;
+  isTest: boolean;
+}
+
 const InvestmentDetailYieldTab = ({
   propertyAddress,
   durationInMonths,
   isTest
-}: any) => {
+}: props) => {
   //  <ClaimSection propertyAddress={propertyAddress} durationInMonths={durationInMonths}/>
   if (
     isTest &&
