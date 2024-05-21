@@ -1,7 +1,7 @@
 "use client"
 import { TabsContent } from '@/components/ui/tabs';
 import { Chart } from 'react-google-charts';
-import { ServerImage } from '../../../shared/ServerImage';
+import { ServerImage } from '@/components/shared/ServerImage';
 
 const MockProperty2 = () => {
   const data = [
