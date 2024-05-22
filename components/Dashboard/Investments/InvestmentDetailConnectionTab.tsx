@@ -26,8 +26,8 @@ const InvestmentDetailConnectionTab = () => {
               </Button>
 
               <div className="flex flex-col gap-2 items-center justify-center">
-                <Image src="/assets/icons/binance.svg" alt="copy" width={16} height={16} />
-                <p className="text-neutral-100 text-sm font-medium font-space_grotesk">BNB Smart Chain</p>
+                <Image src="/assets/icons/base.svg" alt="copy" width={14} height={14} />
+                <p className="text-neutral-100 text-sm font-medium font-space_grotesk">Base</p>
               </div>
             </div>
           </div>

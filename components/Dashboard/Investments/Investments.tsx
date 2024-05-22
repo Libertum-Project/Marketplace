@@ -7,7 +7,13 @@ import PropertyCard from '@/components/shared/PropertyCard';
 import { CardContent } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Card } from '@/components/ui/card';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger
+} from '@/components/ui/tooltip';
+import { Property } from '@/types/index';
 
 const Investments = () => {
   const userWalletAddress: string | undefined = useAddress();
@@ -19,9 +25,12 @@ const Investments = () => {
     async function fetchProperties() {
       const demoProperties = await getProperties();
       setDemoProperties(demoProperties);
-      const response = await fetch(`/api/users/investments?userWalletAddress=${userWalletAddress}`, {
-        method: 'GET',
-      });
+      const response = await fetch(
+        `/api/users/investments?userWalletAddress=${userWalletAddress}`,
+        {
+          method: 'GET'
+        }
+      );
       if (!response.ok) {
         console.error('Failed to fetch properties');
         return null;
@@ -67,7 +76,7 @@ const Investments = () => {
           ))
         ) : // Render property cards when properties are available
         properties.length > 0 ? (
-          properties.map((property: any) => (
+          properties.map((property: Property) => (
             <PropertyCard
               property={property}
               key={property.id}
@@ -76,20 +85,24 @@ const Investments = () => {
             />
           ))
         ) : (
-          // Show test property when user does not have any properties
+          // Show example properties when the user has no properties
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger>
-                {demoProperties.slice(0, 1).map((property: any) => (
+                {demoProperties.slice(0, 2).map((property: Property) => (
                   <PropertyCard
                     property={property}
                     key={property.id}
                     btnTitle="View Investment Details"
                     investmentDetail={true}
+                    isTest={true}
                   />
                 ))}
               </TooltipTrigger>
-              <TooltipContent side="bottom" className="bg-libertumOrange rounded-[5px] ">
+              <TooltipContent
+                side="bottom"
+                className="bg-libertumOrange rounded-[5px]"
+              >
                 <p className="text-white font-space_grotesk font-semibold text-sm py-2">
                   This is an example of how you will see your investments.
                 </p>
