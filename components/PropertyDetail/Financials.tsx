@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useRef } from 'react';
 
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import { Slider } from '@/components/ui/slider';
@@ -34,6 +34,8 @@ const Financials: React.FC<{
   const annualRepayment = annualRentalIncome + annualCapitalRepayment;
   const monthlyRepayment = annualRepayment / 12;
 
+  const inputRef = useRef<HTMLInputElement>(null);
+
   const handleSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = parseInt(event.target.value, 10);
     setSelectedTokens(newValue);
@@ -41,10 +43,19 @@ const Financials: React.FC<{
 
   const handleSliderValueChange = (newValue: number[]) => {
     setSelectedTokens(newValue[0]);
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
   };
 
-  const handletokenValue = (value: number) => {
-    setSelectedTokens(value);
+  const handleTokenValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    if (value === '' || value === '0' || value.startsWith('-')) {
+      setSelectedTokens(1);
+    } else {
+      const newValue = Number(value);
+      setSelectedTokens(newValue);
+    }
   };
 
   return (
@@ -107,12 +118,13 @@ const Financials: React.FC<{
             onValueChange={handleSliderValueChange}
             onChange={handleSliderChange}
           />
-          <div className="flex gap-2 px-4 py-1 bg-libertumGreen bg-opacity-20 rounded-[50px] border border-libertumGreen items-center justify-center text-libertumGreen text-sm font-semibold">
+          <div className="flex px-4 py-1 bg-libertumGreen bg-opacity-20 rounded-[50px] border border-libertumGreen focus-within:border-libertumOrange items-center justify-center transition text-libertumGreen text-sm font-semibold">
             <Input
               value={selectedTokens}
-              type="text"
-              className="min-w-0 p-3 h-0 max-w-[80px] text-center"
-              onChange={(e) => handletokenValue(+e.target.value)}
+              type="number"
+              className="bg-transparent border-none text-center outline-none h-0 max-w-[4.5rem] w-20 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+              onChange={handleTokenValueChange}
+              ref={inputRef}
             />
             Tokens
           </div>
