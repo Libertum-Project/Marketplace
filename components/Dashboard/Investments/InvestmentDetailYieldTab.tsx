@@ -8,14 +8,9 @@ import UserTokenBalance from './UserTokenBalance';
 const InvestmentDetailYieldTab = ({ propertyAddress, durationInMonths }: any) => {
   //  <ClaimSection propertyAddress={propertyAddress} durationInMonths={durationInMonths}/>
   return (
-    <TabsContent value="yield" className="sm:max-h-[860px] overflow-auto">
-      <div
-        className="
-
-py-20 flex gap-10 flex-col
-        "
-      >
-        <div className="flex justify-between items-center">
+    <TabsContent value="yield" className="max-h-[860px] overflow-auto pb-52">
+      <div className="py-20 max-sm:py-10 flex gap-10 flex-col">
+        <div className="flex justify-between items-center max-sm:flex-col max-sm:items-start max-sm:gap-3">
           <UserTokenBalance propertyAddress={propertyAddress} />
 
           <button className="flex justify-between items-center px-4 py-2 bg-[#00B3B5] bg-opacity-70 rounded-[5px] border border-[#00B3B5] backdrop-blur-[10px] text-white gap-3 mx-4 cursor-not-allowed w-[200px]">
@@ -24,7 +19,7 @@ py-20 flex gap-10 flex-col
           </button>
         </div>
 
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center max-sm:flex-col max-sm:items-start max-sm:gap-3">
           <p className="flex-shrink-0 px-4 py-1 bg-libertumGreen bg-opacity-20 rounded-[50px] border border-libertumGreen items-center justify-center text-libertumGreen text-sm font-semibold mx-4 w-[300px] text-center">
             Next claim time: <b>37 days left.</b>
           </p>
@@ -33,10 +28,10 @@ py-20 flex gap-10 flex-col
           </p>
         </div>
 
-        <div className="flex flex-col gap-4 shadow-xl  m-4 p-10">
+        <div className="flex flex-col gap-4 shadow-xl m-4 p-10 max-sm:p-5">
           <h3 className="text-slate-900 text-[32px] font-bold font-space_grotesk">RENT</h3>
 
-          <div className="flex gap-10 items-center">
+          <div className="flex gap-10 items-center max-sm:flex-col max-sm:items-start">
             <YieldChart type="PieChart" width="180px" height="180px" />
 
             <div className="flex flex-col gap-6 flex-1">
@@ -54,7 +49,7 @@ py-20 flex gap-10 flex-col
             </div>
           </div>
 
-          <div className="flex items-center justify-evenly">
+          <div className="flex items-center justify-evenly max-sm:justify-start max-sm:gap-7">
             <div className="flex flex-col">
               <p className="text-black text-opacity-60 text-[40px] font-extrabold">
                 $ 0<span className="text-black text-opacity-60 text-[32px] font-extrabold">.0</span>
@@ -73,10 +68,10 @@ py-20 flex gap-10 flex-col
           </div>
         </div>
 
-        <div className="flex flex-col gap-4 shadow-xl  m-4 p-10">
+        <div className="flex flex-col gap-4 shadow-xl m-4 p-10 max-sm:p-5">
           <h3 className="text-slate-900 text-[32px] font-bold font-space_grotesk">CAPITAL REPAYMENT</h3>
 
-          <div className="flex gap-10 items-center">
+          <div className="flex gap-10 items-center max-sm:flex-col max-sm:items-start">
             <YieldChart type="PieChart" width="180px" height="180px" pieColor="#FFA143" />
 
             <div className="flex flex-col gap-6 flex-1">

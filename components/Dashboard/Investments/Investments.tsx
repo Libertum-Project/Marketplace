@@ -36,7 +36,7 @@ const Investments = () => {
 
   return (
     <>
-      <div className="p-5 grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-6 w-full sm:investment-page-width justify-start items-start">
+      <div className="p-5 grid  max-[768px]:grid-cols-1 max-[1200px]:grid-cols-1 min-[1201px]:grid-cols-2 max-[1499px]:grid-cols-2 min-[1500px]:grid-cols-3 gap-6 w-full sm:investment-page-width justify-start items-start">
         {loading ? (
           // Show skeleton cards when loading
           [...Array(3)].map((_, index) => (
