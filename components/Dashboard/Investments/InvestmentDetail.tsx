@@ -27,10 +27,10 @@ const InvestmentDetail = ({ property, isTest }: Props) => {
           View Investment Details
         </Button>
       </DialogTrigger>
-      <DialogContent className="bg-white p-0 border-0 rounded-[5px] max-w-[1100px]">
+      <DialogContent className="bg-white p-0 border-0 rounded-[5px] max-w-[1100px] max-sm:h-screen max-h-[90%]">
         <div className="flex max-sm:flex-col">
-          <div className="bg-slate-900 py-8 px-6 max-sm:p-3 max-w-[372px]">
-            <DialogClose className="text-white mb-6 max-sm:hidden">
+          <div className="bg-slate-900 py-8 px-6 max-sm:p-3 max-sm:w-full">
+            <DialogClose className="text-white mb-6">
               <ServerImage src="/assets/back.svg" alt="back" width={10} height={10} />
             </DialogClose>
 
@@ -123,7 +123,7 @@ const InvestmentDetail = ({ property, isTest }: Props) => {
             </div>
           </div>
 
-          <div className="sm:py-8 sm:px-12 flex-1 p-3 sm:pb-0">
+          <div className="sm:py-8 sm:px-12 flex-1 p-3 sm:pb-0 bg-white">
             <InvestmentDetailTabs
               propertyAddress={property.contract_address}
               durationInMonths={property.listing_duration_months}

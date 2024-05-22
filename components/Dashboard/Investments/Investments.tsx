@@ -7,12 +7,7 @@ import PropertyCard from '@/components/shared/PropertyCard';
 import { CardContent } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Card } from '@/components/ui/card';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger
-} from '@/components/ui/tooltip';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { Property } from '@/types/index';
 
 const Investments = () => {
@@ -25,12 +20,9 @@ const Investments = () => {
     async function fetchProperties() {
       const demoProperties = await getProperties();
       setDemoProperties(demoProperties);
-      const response = await fetch(
-        `/api/users/investments?userWalletAddress=${userWalletAddress}`,
-        {
-          method: 'GET'
-        }
-      );
+      const response = await fetch(`/api/users/investments?userWalletAddress=${userWalletAddress}`, {
+        method: 'GET',
+      });
       if (!response.ok) {
         console.error('Failed to fetch properties');
         return null;
@@ -45,7 +37,7 @@ const Investments = () => {
 
   return (
     <>
-      <div className="p-5 grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-6 w-full sm:investment-page-width justify-start items-start">
+      <div className="p-5 grid max-[768px]:grid-cols-1 max-[1200px]:grid-cols-1 min-[1201px]:grid-cols-2 max-[1499px]:grid-cols-2 min-[1500px]:grid-cols-3 gap-6 w-full sm:investment-page-width justify-start items-start">
         {loading ? (
           // Show skeleton cards when loading
           [...Array(3)].map((_, index) => (
@@ -87,9 +79,9 @@ const Investments = () => {
         ) : (
           // Show example properties when the user has no properties
           <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger>
-                {demoProperties.slice(0, 2).map((property: Property) => (
+            {demoProperties.slice(0, 2).map((property: Property) => (
+              <Tooltip>
+                <TooltipTrigger>
                   <PropertyCard
                     property={property}
                     key={property.id}
@@ -97,17 +89,14 @@ const Investments = () => {
                     investmentDetail={true}
                     isTest={true}
                   />
-                ))}
-              </TooltipTrigger>
-              <TooltipContent
-                side="bottom"
-                className="bg-libertumOrange rounded-[5px]"
-              >
-                <p className="text-white font-space_grotesk font-semibold text-sm py-2">
-                  This is an example of how you will see your investments.
-                </p>
-              </TooltipContent>
-            </Tooltip>
+                </TooltipTrigger>
+                <TooltipContent side="bottom" className="bg-libertumOrange rounded-[5px]">
+                  <p className="text-white font-space_grotesk font-semibold text-sm py-2">
+                    This is an example of how you will see your investments.
+                  </p>
+                </TooltipContent>
+              </Tooltip>
+            ))}
           </TooltipProvider>
         )}
       </div>
