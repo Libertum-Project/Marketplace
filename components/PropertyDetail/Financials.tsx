@@ -122,7 +122,7 @@ const Financials: React.FC<{
             <Input
               value={selectedTokens}
               type="number"
-              className="bg-transparent border-none text-center outline-none h-0 max-w-[4.5rem] w-20 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+              className="bg-transparent border-none text-center outline-none h-0 max-w-[4.5rem] w-20 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none caret-libertumOrange"
               onChange={handleTokenValueChange}
               ref={inputRef}
             />
