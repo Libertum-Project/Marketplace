@@ -79,9 +79,9 @@ const Investments = () => {
         ) : (
           // Show example properties when the user has no properties
           <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger>
-                {demoProperties.slice(0, 2).map((property: Property) => (
+            {demoProperties.slice(0, 2).map((property: Property) => (
+              <Tooltip>
+                <TooltipTrigger>
                   <PropertyCard
                     property={property}
                     key={property.id}
@@ -89,14 +89,14 @@ const Investments = () => {
                     investmentDetail={true}
                     isTest={true}
                   />
-                ))}
-              </TooltipTrigger>
-              <TooltipContent side="bottom" className="bg-libertumOrange rounded-[5px]">
-                <p className="text-white font-space_grotesk font-semibold text-sm py-2">
-                  This is an example of how you will see your investments.
-                </p>
-              </TooltipContent>
-            </Tooltip>
+                </TooltipTrigger>
+                <TooltipContent side="bottom" className="bg-libertumOrange rounded-[5px]">
+                  <p className="text-white font-space_grotesk font-semibold text-sm py-2">
+                    This is an example of how you will see your investments.
+                  </p>
+                </TooltipContent>
+              </Tooltip>
+            ))}
           </TooltipProvider>
         )}
       </div>
