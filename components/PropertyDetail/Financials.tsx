@@ -5,6 +5,7 @@ import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import { Slider } from '@/components/ui/slider';
 
 import ColumnChart from './charts/ColumnChart';
+import { Input } from '../ui/input';
 
 const Financials: React.FC<{
   propertyPrice: number;
@@ -32,6 +33,10 @@ const Financials: React.FC<{
   };
   const handleSliderValueChange: (newValue: number[]) => void = (newValue) => {
     setSelectedTokens(newValue[0]);
+  };
+
+  const handletokenValue = (value: number) => {
+    setSelectedTokens(value);
   };
 
   return (
@@ -93,9 +98,15 @@ const Financials: React.FC<{
             onValueChange={handleSliderValueChange}
             onChange={handleSliderChange}
           />
-          <p className="flex-shrink-0 px-4 py-1 bg-libertumGreen bg-opacity-20 rounded-[50px] border border-libertumGreen items-center justify-center text-libertumGreen text-sm font-semibold">
-            {selectedTokens} Tokens
-          </p>
+          <div className="flex gap-2 px-4 py-1 bg-libertumGreen bg-opacity-20 rounded-[50px] border border-libertumGreen items-center justify-center text-libertumGreen text-sm font-semibold">
+            <Input
+              value={selectedTokens}
+              type="text"
+              className="min-w-0 p-3 h-0 max-w-[80px] text-center"
+              onChange={(e) => handletokenValue(+e.target.value)}
+            />
+            Tokens
+          </div>
         </div>
 
         <div className="flex flex-col md:flex-row gap-4">
