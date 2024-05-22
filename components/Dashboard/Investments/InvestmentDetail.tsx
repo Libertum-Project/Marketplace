@@ -8,9 +8,10 @@ import InvestmentDetailTabs from './InvestmentDetailTabs';
 
 interface Props {
   property: any;
+  isTest?: boolean;
 }
 
-const InvestmentDetail = ({ property }: Props) => {
+const InvestmentDetail = ({ property, isTest }: Props) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -105,7 +106,7 @@ const InvestmentDetail = ({ property }: Props) => {
                 </DialogContent>
               </Dialog>
               <a
-                href={`https://testnet.bscscan.com/token/${property.contract_address}`}
+                href={`https://base-sepolia.blockscout.com/address/${property.contract_address}`}
                 target="_blank"
                 className="text-white text-base font-bold font-space_grotesk uppercase"
               >
@@ -126,6 +127,7 @@ const InvestmentDetail = ({ property }: Props) => {
             <InvestmentDetailTabs
               propertyAddress={property.contract_address}
               durationInMonths={property.listing_duration_months}
+              isTest={isTest}
             />
           </div>
         </div>

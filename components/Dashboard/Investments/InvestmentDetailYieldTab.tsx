@@ -2,11 +2,26 @@ import { TabsContent } from '@/components/ui/tabs';
 //import ClaimSection from './ClaimSection';
 import YieldChart from '../Chart/YieldChart';
 import { ServerImage } from '../../shared/ServerImage';
-
+import MockProperty1 from './mockProperties/MockProperty1';
+import MockProperty2 from './mockProperties/MockProperty2';
 import UserTokenBalance from './UserTokenBalance';
 
-const InvestmentDetailYieldTab = ({ propertyAddress, durationInMonths }: any) => {
+interface props {
+  propertyAddress: string;
+  durationInMonths: number;
+  isTest: boolean;
+}
+
+const InvestmentDetailYieldTab = ({ propertyAddress, durationInMonths, isTest }: props) => {
   //  <ClaimSection propertyAddress={propertyAddress} durationInMonths={durationInMonths}/>
+  if (isTest && propertyAddress === '0xeD6FD3abaF74ef1d84ff675511Dd7f3893F4bc5E') {
+    return <MockProperty1 />;
+  }
+
+  if (isTest && propertyAddress === '0x430706a6FE06a09B8608C3CB34C2e21816C1A15e') {
+    return <MockProperty2 />;
+  }
+
   return (
     <TabsContent value="yield" className="max-h-[860px] overflow-auto pb-52">
       <div className="py-20 max-sm:py-10 flex gap-10 flex-col">
