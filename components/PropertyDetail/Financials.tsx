@@ -43,15 +43,13 @@ const Financials: React.FC<{
     }
   };
 
-  const handleTokenValueChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const value = event.target.value;
-    if (value === '' || value === '0' || value.startsWith('-')) {
+  const handleTokenValueChange = (value: number) => {
+    if (isNaN(value) || value <= 0) {
       setSelectedTokens(1);
+    } else if (value > totalShares) {
+      setSelectedTokens(totalShares);
     } else {
-      const newValue = Number(value);
-      setSelectedTokens(newValue);
+      setSelectedTokens(value);
     }
   };
 
@@ -119,7 +117,7 @@ const Financials: React.FC<{
               value={selectedTokens}
               type="number"
               className="p-3 text-center outline-none h-0 max-w-[4.5rem] w-20 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none caret-libertumGreen"
-              onChange={handleTokenValueChange}
+              onChange={(e) => handleTokenValueChange(+e.target.value)}
               ref={inputRef}
             />
             Tokens
