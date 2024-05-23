@@ -118,11 +118,11 @@ const Financials: React.FC<{
             onValueChange={handleSliderValueChange}
             onChange={handleSliderChange}
           />
-          <div className="flex px-4 py-1 bg-libertumGreen bg-opacity-20 rounded-[50px] border border-libertumGreen focus-within:border-libertumOrange items-center justify-center transition text-libertumGreen text-sm font-semibold">
+          <div className="flex gap-2 px-4 py-1 bg-libertumGreen bg-opacity-20 rounded-[50px] border border-libertumGreen items-center justify-center text-libertumGreen text-sm font-semibold">
             <Input
               value={selectedTokens}
               type="number"
-              className="bg-transparent border-none text-center outline-none h-0 max-w-[4.5rem] w-20 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none caret-libertumOrange"
+              className="p-3 text-center outline-none h-0 max-w-[4.5rem] w-20 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none caret-libertumGreen"
               onChange={handleTokenValueChange}
               ref={inputRef}
             />
