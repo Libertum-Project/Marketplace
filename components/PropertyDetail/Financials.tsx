@@ -36,11 +36,6 @@ const Financials: React.FC<{
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = parseInt(event.target.value, 10);
-    setSelectedTokens(newValue);
-  };
-
   const handleSliderValueChange = (newValue: number[]) => {
     setSelectedTokens(newValue[0]);
     if (inputRef.current) {
@@ -48,7 +43,9 @@ const Financials: React.FC<{
     }
   };
 
-  const handleTokenValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleTokenValueChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const value = event.target.value;
     if (value === '' || value === '0' || value.startsWith('-')) {
       setSelectedTokens(1);
@@ -116,7 +113,6 @@ const Financials: React.FC<{
             min={1}
             step={10}
             onValueChange={handleSliderValueChange}
-            onChange={handleSliderChange}
           />
           <div className="flex gap-2 px-4 py-1 bg-libertumGreen bg-opacity-20 rounded-[50px] border border-libertumGreen items-center justify-center text-libertumGreen text-sm font-semibold">
             <Input
