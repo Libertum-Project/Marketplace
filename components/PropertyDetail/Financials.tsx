@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useRef } from 'react';
 
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import { Slider } from '@/components/ui/slider';
@@ -34,17 +34,23 @@ const Financials: React.FC<{
   const annualRepayment = annualRentalIncome + annualCapitalRepayment;
   const monthlyRepayment = annualRepayment / 12;
 
-  const handleSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = parseInt(event.target.value, 10);
-    setSelectedTokens(newValue);
-  };
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSliderValueChange = (newValue: number[]) => {
     setSelectedTokens(newValue[0]);
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
   };
 
-  const handletokenValue = (value: number) => {
-    setSelectedTokens(value);
+  const handleTokenValueChange = (value: number) => {
+    if (isNaN(value) || value <= 0) {
+      setSelectedTokens(1);
+    } else if (value > totalShares) {
+      setSelectedTokens(totalShares);
+    } else {
+      setSelectedTokens(value);
+    }
   };
 
   return (
@@ -105,14 +111,14 @@ const Financials: React.FC<{
             min={1}
             step={10}
             onValueChange={handleSliderValueChange}
-            onChange={handleSliderChange}
           />
           <div className="flex gap-2 px-4 py-1 bg-libertumGreen bg-opacity-20 rounded-[50px] border border-libertumGreen items-center justify-center text-libertumGreen text-sm font-semibold">
             <Input
               value={selectedTokens}
-              type="text"
-              className="min-w-0 p-3 h-0 max-w-[80px] text-center"
-              onChange={(e) => handletokenValue(+e.target.value)}
+              type="number"
+              className="p-3 text-center outline-none h-0 max-w-[4.5rem] w-20 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none caret-libertumGreen"
+              onChange={(e) => handleTokenValueChange(+e.target.valueAsNumber)}
+              ref={inputRef}
             />
             Tokens
           </div>
