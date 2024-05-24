@@ -117,7 +117,7 @@ const Financials: React.FC<{
               value={selectedTokens}
               type="number"
               className="p-3 text-center outline-none h-0 max-w-[4.5rem] w-20 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none caret-libertumGreen"
-              onChange={(e) => handleTokenValueChange(+e.target.value)}
+              onChange={(e) => handleTokenValueChange(+e.target.valueAsNumber)}
               ref={inputRef}
             />
             Tokens
