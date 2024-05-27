@@ -22,7 +22,7 @@ const PropertyListView = ({ property }: Props) => {
           },
         }}
       >
-        <ServerImage src={property.highlight_image} alt={property.location.city} width={250} height={166} />
+        <ServerImage src={property.highlightImage} alt={property.location.city} width={250} height={166} />
       </Link>
       <div className="py-4 px-16 w-full flex gap-10 justify-between divide-x">
         <Link
@@ -44,7 +44,7 @@ const PropertyListView = ({ property }: Props) => {
               </p>
             </div>
             <p className="px-4 py-1 bg-teal-500 bg-opacity-10 rounded-[50px] border border-teal-500 font-space_grotesk text-teal-500 text-xs font-bold flex items-center justify-center w-fit">
-              $ {property.total_valuation}
+              $ {property.totalValuation}
             </p>
           </div>
           <div className="flex flex-col justify-between py-6 pl-8">
@@ -73,7 +73,7 @@ const PropertyListView = ({ property }: Props) => {
               </div>
               <div className="bg-neutral-100 rounded-[48px] text-black text-opacity-50 text-xs font-light capitalize p-3 flex items-center gap-[6px]">
                 <ServerImage src="/assets/hotel.svg" width={14} height={14} alt="image" />
-                <p className="font-semibold">Yield:</p> {property.annual_yield}%
+                <p className="font-semibold">Yield:</p> {property.annualYield}%
               </div>
             </div>
           </div>

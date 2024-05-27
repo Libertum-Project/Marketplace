@@ -6,15 +6,27 @@ import * as z from 'zod';
 import { format } from 'date-fns';
 import { useAddress } from '@thirdweb-dev/react';
 
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage
+} from '@/components/ui/form';
 import { formSchema } from '@/lib/validations';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger
+} from '@/components/ui/popover';
 import { useToast } from '@/components/ui/use-toast';
 
 const UserForm = () => {
+  const serverURL = process.env.NEXT_PUBLIC_SERVER_URL;
   const [date, setDate] = useState<Date>();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -31,38 +43,39 @@ const UserForm = () => {
       address: '',
       city: '',
       postal: '',
-      country: '',
-    },
+      country: ''
+    }
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
     try {
       if (address) {
-        const response = await fetch(`https://libertum--marketplace.azurewebsites.net/users/${address}`, {
+        const response = await fetch(`${serverURL}/users/${address}`, {
           method: 'PATCH',
           headers: {
             Authorization: `Bearer ${secretKey}`,
             Accept: 'application/json',
-            'Content-Type': 'application/json;charset=utf-8',
+            'Content-Type': 'application/json;charset=utf-8'
           },
           body: JSON.stringify({
-            first_name: values.fname,
-            last_name: values.lname,
+            firstName: values.fname,
+            lastName: values.lname,
             email: values.email,
             dob: date,
-            present_address: values.address,
+            residentialAddress: values.address,
             city: values.city,
             country: values.country,
-            postal_code: values.postal,
-          }),
+            postalCode: values.postal
+          })
         });
 
         if (response.ok) {
           toast({
             variant: 'default',
-            className: 'bg-[#00B3B5] text-white rounded-[5px] [data-state=open]:top-0',
-            title: 'Your profile is updated!',
+            className:
+              'bg-[#00B3B5] text-white rounded-[5px] [data-state=open]:top-0',
+            title: 'Your profile is updated!'
           });
         }
       }
@@ -75,25 +88,25 @@ const UserForm = () => {
   const fetchUserData = async () => {
     try {
       if (address) {
-        const response = await fetch(`https://libertum--marketplace.azurewebsites.net/users/${address}`, {
+        const response = await fetch(`${serverURL}/users/${address}`, {
           method: 'GET',
           headers: {
             Authorization: `Bearer ${secretKey}`,
             Accept: 'application/json',
-            'Content-Type': 'application/json;charset=utf-8',
-          },
+            'Content-Type': 'application/json;charset=utf-8'
+          }
         });
         if (response.ok) {
           const userData = await response.json();
 
           form.reset({
-            fname: userData.first_name,
-            lname: userData.last_name,
+            fname: userData.firstName,
+            lname: userData.lastName,
             email: userData.email,
-            address: userData.present_address,
+            address: userData.residentialAddress,
             city: userData.city,
-            postal: userData.postal_code,
-            country: userData.country,
+            postal: userData.postalCode,
+            country: userData.country
           });
           const date = userData.dob;
           setDate(date);
@@ -110,7 +123,10 @@ const UserForm = () => {
 
   return (
     <Form {...form}>
-      <form className="flex flex-1 flex-col gap-7 max-w-screen-md m-0 m-auto " onSubmit={form.handleSubmit(onSubmit)}>
+      <form
+        className="flex flex-1 flex-col gap-7 max-w-screen-md m-0 m-auto "
+        onSubmit={form.handleSubmit(onSubmit)}
+      >
         <div className="flex gap-7">
           <div className="w-[50%] flex flex-col gap-2">
             <FormField
@@ -118,7 +134,9 @@ const UserForm = () => {
               name="fname"
               render={({ field }) => (
                 <FormItem className="flex w-full flex-col">
-                  <FormLabel className="paragraph-semibold text-dark400_light800">First Name</FormLabel>
+                  <FormLabel className="paragraph-semibold text-dark400_light800">
+                    First Name
+                  </FormLabel>
                   <FormControl className="mt-3.5">
                     <Input
                       placeholder="First Name"
@@ -137,7 +155,9 @@ const UserForm = () => {
               name="lname"
               render={({ field }) => (
                 <FormItem className="flex w-full flex-col">
-                  <FormLabel className="paragraph-semibold text-dark400_light800">Last Name</FormLabel>
+                  <FormLabel className="paragraph-semibold text-dark400_light800">
+                    Last Name
+                  </FormLabel>
                   <FormControl className="mt-3.5">
                     <Input
                       placeholder="Last Name"
@@ -159,7 +179,9 @@ const UserForm = () => {
               name="email"
               render={({ field }) => (
                 <FormItem className="flex w-full flex-col">
-                  <FormLabel className="paragraph-semibold text-dark400_light800">Email</FormLabel>
+                  <FormLabel className="paragraph-semibold text-dark400_light800">
+                    Email
+                  </FormLabel>
                   <FormControl className="mt-3.5">
                     <Input
                       type="email"
@@ -178,14 +200,20 @@ const UserForm = () => {
               name={''}
               render={() => (
                 <FormItem className="flex w-full flex-col">
-                  <FormLabel className="paragraph-semibold text-dark400_light800">Date of Birth</FormLabel>
+                  <FormLabel className="paragraph-semibold text-dark400_light800">
+                    Date of Birth
+                  </FormLabel>
                   <FormControl className="mt-3.5">
                     <Popover>
                       <PopoverTrigger asChild>
                         <Input
                           type="text"
-                          placeholder={date ? format(date, 'yyyy-MM-dd') : 'Date of Birth'}
-                          value={date ? format(date, 'yyyy-MM-dd') : 'Date of Birth'}
+                          placeholder={
+                            date ? format(date, 'yyyy-MM-dd') : 'Date of Birth'
+                          }
+                          value={
+                            date ? format(date, 'yyyy-MM-dd') : 'Date of Birth'
+                          }
                           className="bg-white rounded-[5px] border border-slate-200 placeholder:text-slate-400 cursor-pointer"
                         />
                       </PopoverTrigger>
@@ -216,7 +244,9 @@ const UserForm = () => {
               name="address"
               render={({ field }) => (
                 <FormItem className="flex w-full flex-col">
-                  <FormLabel className="paragraph-semibold text-dark400_light800">Address</FormLabel>
+                  <FormLabel className="paragraph-semibold text-dark400_light800">
+                    Address
+                  </FormLabel>
                   <FormControl className="mt-3.5">
                     <Input
                       placeholder="Address"
@@ -236,7 +266,9 @@ const UserForm = () => {
               name="city"
               render={({ field }) => (
                 <FormItem className="flex w-full flex-col">
-                  <FormLabel className="paragraph-semibold text-dark400_light800">City</FormLabel>
+                  <FormLabel className="paragraph-semibold text-dark400_light800">
+                    City
+                  </FormLabel>
                   <FormControl className="mt-3.5">
                     <Input
                       placeholder="City"
@@ -258,7 +290,9 @@ const UserForm = () => {
               name="postal"
               render={({ field }) => (
                 <FormItem className="flex w-full flex-col">
-                  <FormLabel className="paragraph-semibold text-dark400_light800">Postal Code</FormLabel>
+                  <FormLabel className="paragraph-semibold text-dark400_light800">
+                    Postal Code
+                  </FormLabel>
                   <FormControl className="mt-3.5">
                     <Input
                       placeholder="Postal Code"
@@ -277,7 +311,9 @@ const UserForm = () => {
               name="country"
               render={({ field }) => (
                 <FormItem className="flex w-full flex-col">
-                  <FormLabel className="paragraph-semibold text-dark400_light800">Country</FormLabel>
+                  <FormLabel className="paragraph-semibold text-dark400_light800">
+                    Country
+                  </FormLabel>
                   <FormControl className="mt-3.5">
                     <Input
                       placeholder="Country"

@@ -1,8 +1,13 @@
 export async function fetchInvestments(userWalletAddress: string | undefined) {
-  const response = await fetch(`http://localhost:3000/api/users/investments?userWalletAddress=${userWalletAddress}`, {
-    method: 'GET',
-    cache: 'no-store',
-  });
+  const serverURL = process.env.NEXT_PUBLIC_SERVER_URL;
+
+  const response = await fetch(
+    `${serverURL}/api/users/investments?userWalletAddress=${userWalletAddress}`,
+    {
+      method: 'GET',
+      cache: 'no-store'
+    }
+  );
   if (!response.ok) {
     console.error('Failed to fetch properties');
     return null;

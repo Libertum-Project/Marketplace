@@ -16,28 +16,28 @@ export interface Token {
 
 export interface Property {
   amenities: string[];
-  annual_yield: number;
+  annualYield: number;
   category: string;
-  contract_address: string;
+  contractAddress: string;
   createdAt: string;
   description: string[];
   documents: string[];
-  highlight_image: string;
+  highlightImage: string;
   id: number;
-  image_gallery: string[];
+  imageGallery: string[];
   investedBy: null | string; 
-  listing_duration_months: number;
+  listingDurationMonths: number;
   location: {
     country: string;
     region: string;
     city: string;
     address: string;
-    postal_code: string;
+    postalCode: string;
   };
-  owner_id: number;
+  ownerId: number;
   savedBy: number;
-  token_duration_months: number;
-  total_shares: number;
-  total_valuation: number;
+  tokenDurationMonths: number;
+  totalShares: number;
+  totalValuation: number;
 }
 

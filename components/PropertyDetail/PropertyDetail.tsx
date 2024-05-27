@@ -16,26 +16,26 @@ interface Property {
     region: string;
     city: string;
     address: string;
-    postal_code: string;
+    postalCode: string;
   };
   amenities: string[];
   description: string[];
   documents: string[];
   category: string;
-  image_gallery: string[];
-  owner_id: number;
-  contract_address: string;
-  property_creation_time: string;
-  total_shares: number;
-  total_valuation: number;
-  annual_yield: number;
-  token_duration_months: number;
-  listing_duration_months: number;
+  imageGallery: string[];
+  ownerId: number;
+  contractAddress: string;
+  propertyCreationTime: string;
+  totalShares: number;
+  totalValuation: number;
+  annualYield: number;
+  tokenDurationMonths: number;
+  listingDurationMonths: number;
   savedBy: null | any;
   features: string;
-  total_tokens: number;
-  tokens_sold: number;
-  repayment_duration: number;
+  totalTokens: number;
+  tokensSold: number;
+  repaymentDuration: number;
 }
 
 interface PropertyDetailProps {
@@ -43,22 +43,22 @@ interface PropertyDetailProps {
 }
 
 const PropertyDetail: React.FC<PropertyDetailProps> = ({ property }) => {
-  const contractAddress = property.contract_address;
+  const contractAddress = property.contractAddress;
   const { contract } = useContract(contractAddress);
   const { data: mintedTokens, isLoading } = useContractRead(contract, 'totalSupply');
-  const tokens_sold = isLoading ? 0 : mintedTokens.toNumber();
-  const remainingTokens = property.total_shares - tokens_sold;
+  const tokensSold = isLoading ? 0 : mintedTokens.toNumber();
+  const remainingTokens = property.totalShares - tokensSold;
   const [selectedTokens, setSelectedTokens] = useState<number>(10);
 
   return (
     <div className="md:mx-auto md:flex md:max-w-[75rem] md:px-0 pt-36 pb-12 md:justify-between gap-20 ">
       <div className="space-y-4 relative md:order-2 px-3 md:px-0">
-        <ImageGallery images={property.image_gallery} />
+        <ImageGallery images={property.imageGallery} />
         <div className="hidden md:block sticky top-0 z-10 ">
           <Invest
             title={property.location.address}
-            price={property.total_valuation / property.total_shares}
-            annual_yield={property.annual_yield}
+            price={property.totalValuation / property.totalShares}
+            annualYield={property.annualYield}
             subtitle={`Completa los siguientes campos para comenzar tu inversión en ${property.location.city}, ${property.location.region}, ${property.location.country}`}
             buttonText="Invest Now"
             remainingTokens={remainingTokens}
@@ -74,23 +74,23 @@ const PropertyDetail: React.FC<PropertyDetailProps> = ({ property }) => {
             <Hero
               location={property.location}
               category={property.category}
-              propertyPrice={property.total_valuation}
-              totalShares={property.total_shares}
-              annualYield={property.annual_yield}
+              propertyPrice={property.totalValuation}
+              totalShares={property.totalShares}
+              annualYield={property.annualYield}
               property={property}
-              repaymentDuration={property.token_duration_months}
+              repaymentDuration={property.tokenDurationMonths}
               remainingTokens={remainingTokens}
             />
           </div>
         </div>
         <div className="px-3 md:px-0">
-          <TokenProgress total_tokens={property.total_shares} tokens_sold={tokens_sold} />
+          <TokenProgress totalTokens={property.totalShares} tokensSold={tokensSold} />
           <Amenities />
           <PropertyFeatures
-            propertyPrice={property.total_valuation}
-            totalShares={property.total_shares}
-            annualYield={property.annual_yield}
-            repaymentDuration={property.token_duration_months}
+            propertyPrice={property.totalValuation}
+            totalShares={property.totalShares}
+            annualYield={property.annualYield}
+            repaymentDuration={property.tokenDurationMonths}
             description={property.description}
             documents={property.documents}
             selectedTokens={selectedTokens}
@@ -100,13 +100,13 @@ const PropertyDetail: React.FC<PropertyDetailProps> = ({ property }) => {
 
         <div className="md:hidden px-3 md:px-0">
           <Invest
-            price={property.total_valuation / property.total_shares}
-            annual_yield={property.annual_yield}
+            price={property.totalValuation / property.totalShares}
+            annualYield={property.annualYield}
             title={property.location.address}
             subtitle={`Completa los siguientes campos para comenzar tu inversión en ${property.location.city}, ${property.location.region}, ${property.location.country}`}
             buttonText="Invest Now"
             remainingTokens={remainingTokens}
-            contractAddress={property.contract_address}
+            contractAddress={property.contractAddress}
             selectedTokens={selectedTokens}
             setSelectedTokens={setSelectedTokens}
           />

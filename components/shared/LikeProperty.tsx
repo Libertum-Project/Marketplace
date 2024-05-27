@@ -18,6 +18,7 @@ const LikeProperty = ({ property, position = 'top' }: Props) => {
   const address = useAddress();
   const pathname = usePathname();
   const secretKey = process.env.NEXT_PUBLIC_SECRET_KEY;
+  const serverURL = process.env.NEXT_PUBLIC_SERVER_URL;
   const requestOptions = {
     method: 'GET',
     headers: {
@@ -27,7 +28,7 @@ const LikeProperty = ({ property, position = 'top' }: Props) => {
 
   const fetchProperties = async () => {
     if (address) {
-      const data = await fetch(`https://libertum--marketplace.azurewebsites.net/users/${address}`, requestOptions);
+      const data = await fetch(`${serverURL}/users/${address}`, requestOptions);
       const info = await data.json();
 
       const propertiesIndex = new Map(info.favoriteProperties.map((property: any) => [property.id, property]));
