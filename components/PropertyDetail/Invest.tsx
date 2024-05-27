@@ -16,7 +16,7 @@ import { Button } from '@/components/ui/button';
 interface InvestProps {
   title: string;
   price: number;
-  annual_yield: number;
+  annualYield: number;
   subtitle: string;
   buttonText: string;
   remainingTokens: number;
@@ -28,7 +28,7 @@ interface InvestProps {
 const Invest: React.FC<InvestProps> = ({
   title,
   price,
-  annual_yield,
+  annualYield,
   subtitle,
   buttonText,
   remainingTokens,
@@ -105,7 +105,7 @@ const Invest: React.FC<InvestProps> = ({
             <p className="text-black font-semibold text-sm px-3 py-2 rounded-l-lg h-full">Proyect annual Yield</p>
           </div>
           <div className="flex-1">
-            <p className="text-black opacity-50 text-lg px-3 py-2 bg-gray-100 rounded-r-lg">{annual_yield}%</p>
+            <p className="text-black opacity-50 text-lg px-3 py-2 bg-gray-100 rounded-r-lg">{annualYield}%</p>
           </div>
         </div>
       </div>
