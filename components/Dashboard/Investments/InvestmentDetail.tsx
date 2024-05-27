@@ -42,7 +42,7 @@ const InvestmentDetail = ({ property, isTest }: Props) => {
 
               <ServerImage
                 className="rounded-[5px] mt-[10px] max-sm:hidden"
-                src={property.highlight_image}
+                src={property.highlightImage}
                 alt="property"
                 width={324}
                 height={124}
@@ -106,7 +106,7 @@ const InvestmentDetail = ({ property, isTest }: Props) => {
                 </DialogContent>
               </Dialog>
               <a
-                href={`https://base-sepolia.blockscout.com/address/${property.contract_address}`}
+                href={`https://base-sepolia.blockscout.com/address/${property.contractAddress}`}
                 target="_blank"
                 className="text-white text-base font-bold font-space_grotesk uppercase"
               >
@@ -125,8 +125,8 @@ const InvestmentDetail = ({ property, isTest }: Props) => {
 
           <div className="sm:py-8 sm:px-12 flex-1 p-3 sm:pb-0 bg-white">
             <InvestmentDetailTabs
-              propertyAddress={property.contract_address}
-              durationInMonths={property.listing_duration_months}
+              propertyAddress={property.contractAddress}
+              durationInMonths={property.listingDurationMonths}
               isTest={isTest}
             />
           </div>

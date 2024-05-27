@@ -10,18 +10,19 @@ function withAuth(Component: any) {
     const status = useConnectionStatus();
     const address = useAddress();
 
+    const serverURL = process.env.NEXT_PUBLIC_SERVER_URL;
     const secretKey = process.env.NEXT_PUBLIC_SECRET_KEY;
 
     const saveUser = async () => {
       if (address) {
-        await fetch('https://libertum--marketplace.azurewebsites.net/users', {
+        await fetch(`${serverURL}/users`, {
           method: 'POST',
           headers: {
             Authorization: `Bearer ${secretKey}`,
             Accept: 'application/json',
-            'Content-Type': 'application/json;charset=utf-8',
+            'Content-Type': 'application/json;charset=utf-8'
           },
-          body: JSON.stringify({ wallet_address: address }),
+          body: JSON.stringify({ walletAddress: address })
         });
       }
     };

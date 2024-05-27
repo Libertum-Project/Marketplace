@@ -32,7 +32,7 @@ const PropertyGridView = ({ property, btnTitle, investmentDetail = false, isTest
           <div className="h-[255px]">
             <ServerImage
               className="w-full"
-              src={property.highlight_image}
+              src={property.highlightImage}
               alt="like"
               width={310}
               height={250}
@@ -55,10 +55,7 @@ const PropertyGridView = ({ property, btnTitle, investmentDetail = false, isTest
 
               <p className="px-4 py-1 bg-libertumGreen bg-opacity-10 rounded-[50px] border border-libertumGreen font-space_grotesk text-libertumGreen text-xs font-bold flex items-center justify-center h-fit whitespace-nowrap">
                 $
-                {property.total_valuation.toLocaleString('en-US', {
-                  minimumFractionDigits: 0,
-                  maximumFractionDigits: 0,
-                })}{' '}
+                {property.totalValuation}
               </p>
             </div>
 
@@ -73,7 +70,7 @@ const PropertyGridView = ({ property, btnTitle, investmentDetail = false, isTest
               </div>
               <div className="bg-neutral-100 rounded-[48px] text-black text-opacity-50 text-xs font-light capitalize p-3 flex items-center gap-[6px]">
                 <ServerImage src="/assets/filter3.svg" width={14} height={14} alt="image" />
-                {property.annual_yield}%
+                {property.annualYield}%
               </div>
             </div>
           </div>
@@ -88,10 +85,10 @@ const PropertyGridView = ({ property, btnTitle, investmentDetail = false, isTest
             <AccordionItem value={`item-${property.id}`}>
               <AccordionContent>
                 <PropertyDetailTable
-                  totalShares={property.total_shares}
-                  propertyPrice={property.total_valuation}
-                  annualYield={property.annual_yield}
-                  repaymentDuration={property.token_duration_months}
+                  totalShares={property.totalShares}
+                  propertyPrice={property.totalValuation}
+                  annualYield={property.annualYield}
+                  repaymentDuration={property.tokenDurationMonths}
                 />
               </AccordionContent>
 
