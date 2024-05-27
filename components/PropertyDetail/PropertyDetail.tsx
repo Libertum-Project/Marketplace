@@ -58,7 +58,7 @@ const PropertyDetail: React.FC<PropertyDetailProps> = ({ property }) => {
           <Invest
             title={property.location.address}
             price={property.totalValuation / property.totalShares}
-            annual_yield={property.annualYield}
+            annualYield={property.annualYield}
             subtitle={`Completa los siguientes campos para comenzar tu inversión en ${property.location.city}, ${property.location.region}, ${property.location.country}`}
             buttonText="Invest Now"
             remainingTokens={remainingTokens}
