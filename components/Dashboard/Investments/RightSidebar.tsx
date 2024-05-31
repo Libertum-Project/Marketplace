@@ -33,7 +33,7 @@ const RightSidebar = () => {
 
                     <div className="flex justify-between items-center py-2 px-2 bg-green-500 bg-opacity-10 text-right">
                       <p className="text-black text-opacity-80 text-sm font-bold">
-                        Total Profit To Date:
+                        Total Return:
                       </p>
                       <p className="text-[#21AF2F] text-sm font-bold">+$3750</p>
                     </div>
