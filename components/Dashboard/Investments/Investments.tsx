@@ -7,7 +7,12 @@ import PropertyCard from '@/components/shared/PropertyCard';
 import { CardContent } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Card } from '@/components/ui/card';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger
+} from '@/components/ui/tooltip';
 import { Property } from '@/types/index';
 
 const Investments = () => {
@@ -20,9 +25,12 @@ const Investments = () => {
     async function fetchProperties() {
       const demoProperties = await getProperties();
       setDemoProperties(demoProperties);
-      const response = await fetch(`/api/users/investments?userWalletAddress=${userWalletAddress}`, {
-        method: 'GET',
-      });
+      const response = await fetch(
+        `/api/users/investments?userWalletAddress=${userWalletAddress}`,
+        {
+          method: 'GET'
+        }
+      );
       if (!response.ok) {
         console.error('Failed to fetch properties');
         return null;
@@ -77,26 +85,31 @@ const Investments = () => {
             />
           ))
         ) : (
-          // Show example properties when the user has no properties
           <TooltipProvider>
-            {demoProperties.slice(0, 2).map((property: Property) => (
-              <Tooltip>
-                <TooltipTrigger>
-                  <PropertyCard
-                    property={property}
-                    key={property.id}
-                    btnTitle="View Investment Details"
-                    investmentDetail={true}
-                    isTest={true}
-                  />
-                </TooltipTrigger>
-                <TooltipContent side="bottom" className="bg-libertumOrange rounded-[5px]">
-                  <p className="text-white font-space_grotesk font-semibold text-sm py-2">
-                    This is an example of how you will see your investments.
-                  </p>
-                </TooltipContent>
-              </Tooltip>
-            ))}
+            {demoProperties
+              .filter(
+                (property: Property) => property.id === 1 || property.id === 2
+              )
+              .map((property: Property) => (
+                <Tooltip key={property.id}>
+                  <TooltipTrigger>
+                    <PropertyCard
+                      property={property}
+                      btnTitle="View Investment Details"
+                      investmentDetail={true}
+                      isTest={true}
+                    />
+                  </TooltipTrigger>
+                  <TooltipContent
+                    side="bottom"
+                    className="bg-libertumOrange rounded-[5px]"
+                  >
+                    <p className="text-white font-space_grotesk font-semibold text-sm py-2">
+                      This is an example of how you will see your investments.
+                    </p>
+                  </TooltipContent>
+                </Tooltip>
+              ))}
           </TooltipProvider>
         )}
       </div>

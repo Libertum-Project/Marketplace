@@ -18,7 +18,7 @@ const InvestmentDetailYieldTab = ({ propertyAddress, durationInMonths, isTest }:
     return <MockProperty1 />;
   }
 
-  if (isTest && propertyAddress === '0x88918Fdc0Fd0D47195db1c892491bBa3FD204e30') {
+  if (isTest && propertyAddress === '0xD386cfb82d45a9a177eE5B5F1a19504fd2822Bc7') {
     return <MockProperty2 />;
   }
 
