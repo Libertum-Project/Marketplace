@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import { ServerImage } from '@/components/shared/ServerImage';
+import VideoBackground from './VideoBackground';
 
 import css from './hero.module.css';
 
@@ -8,9 +9,7 @@ const Hero = () => {
   return (
     <div className={css.heroContainer}>
       <div className="max-lg:hidden">
-        <video autoPlay muted loop className={css.video}>
-          <source src="./bg-video-1.mp4" type="video/mp4" />
-        </video>
+        <VideoBackground />
       </div>
 
       <div className={`${css.heroCommunity} max-lg:bg-primary-gradient z-[-1]`}>
@@ -18,8 +17,8 @@ const Hero = () => {
           <h1>The Future of Real Estate Investing is Now</h1>
           <div className={css.paragraphsCommunity}>
             <p>
-              From residential havens to commercial hubs, each property presents unique opportunities for growth and
-              prosperity.
+              From residential havens to commercial hubs, each property presents
+              unique opportunities for growth and prosperity.
             </p>
           </div>
         </div>
@@ -40,7 +39,10 @@ const Hero = () => {
               <p>Featured Properties</p>
             </div>
 
-            <Link href="/allFeatured" className={css.featuredProperties__button}>
+            <Link
+              href="/allFeatured"
+              className={css.featuredProperties__button}
+            >
               See all featured
             </Link>
           </div>
