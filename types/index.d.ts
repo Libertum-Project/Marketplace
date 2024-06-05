@@ -25,7 +25,7 @@ export interface Property {
   highlightImage: string;
   id: number;
   imageGallery: string[];
-  investedBy: null | string; 
+  investedBy: null | string;
   listingDurationMonths: number;
   location: {
     country: string;
@@ -42,3 +42,20 @@ export interface Property {
   repaymentDuration: number;
 }
 
+export interface User {
+  id: number;
+  walletAddress: string;
+  firstName: string | null;
+  lastName: string | null;
+  email: string | null;
+  dob: string | null;
+  residentialAddress: string | null;
+  city: string | null;
+  country: string | null;
+  postalCode: string | null;
+  isAuthenticated: boolean;
+  createdAt: string;
+  favoriteProperties: Property[];
+  publishedProperties: Property[];
+  investedProperties: Property[];
+}

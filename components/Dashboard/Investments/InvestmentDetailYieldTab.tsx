@@ -14,11 +14,11 @@ interface props {
 
 const InvestmentDetailYieldTab = ({ propertyAddress, durationInMonths, isTest }: props) => {
   //  <ClaimSection propertyAddress={propertyAddress} durationInMonths={durationInMonths}/>
-  if (isTest && propertyAddress === '0xfd3847AbdE0B5FEe3c442798301e10A1eeF83594') {
+  if (isTest && propertyAddress === '0xd2a9dbBf8A4E1E5b8Ccd205FF8b84dB82b78FE44') {
     return <MockProperty1 />;
   }
 
-  if (isTest && propertyAddress === '0xD386cfb82d45a9a177eE5B5F1a19504fd2822Bc7') {
+  if (isTest && propertyAddress === '0x04401e20DbF805DAe2f5Dc5C4217815f7149b24D') {
     return <MockProperty2 />;
   }
 
