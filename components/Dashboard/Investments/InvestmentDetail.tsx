@@ -27,7 +27,7 @@ const InvestmentDetail = ({ property, isTest }: Props) => {
           View Investment Details
         </Button>
       </DialogTrigger>
-      <DialogContent className="bg-white p-0 border-0 rounded-[5px] max-w-[1100px] max-sm:h-screen max-h-[90%]">
+      <DialogContent className="bg-white p-0 border-0 rounded-[5px] max-w-[1100px] max-sm:h-screen max-h-[90%] overflow-y-scroll">
         <div className="flex max-sm:flex-col">
           <div className="bg-slate-900 py-8 px-6 max-sm:p-3 max-sm:w-full">
             <DialogClose className="text-white mb-6">
