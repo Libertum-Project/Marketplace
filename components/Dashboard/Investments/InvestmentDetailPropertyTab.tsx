@@ -3,9 +3,9 @@ import { ChevronDownIcon } from '@radix-ui/react-icons';
 import { TabsContent } from '@/components/ui/tabs';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { ServerImage } from '../../shared/ServerImage';
-
+import { Property } from '@/types';
 interface props {
-  property: any;
+  property: Property;
 }
 
 const InvestmentDetailPropertyTab = ({ property }: props) => {

@@ -35,7 +35,7 @@ const RightSidebar = () => {
                       <div className="flex gap-3 items-center">
                         <div className="w-[24px] h-[24px] bg-[#86D8DB] rounded-full"></div>
                         <div className="flex flex-col">
-                          <p className="text-slate-800 text-[13px] font-medium">Zijlsterried 39</p>
+                          <p className="text-slate-800 text-[13px] font-medium">21 & 23 High Street</p>
                           <p className="text-neutral-700 text-xl font-bold font-space_grotesk">$2600</p>
                         </div>
                       </div>
@@ -43,7 +43,7 @@ const RightSidebar = () => {
                       <div className="flex gap-3 items-center">
                         <div className="w-[24px] h-[24px] bg-slate-300 rounded-full"></div>
                         <div className="flex flex-col">
-                          <p className="text-slate-800 text-[13px] font-medium">21 & 23 High Street</p>
+                          <p className="text-slate-800 text-[13px] font-medium">Zijlsterried 39</p>
                           <p className="text-neutral-700 text-xl font-bold font-space_grotesk">$1150</p>
                         </div>
                       </div>
