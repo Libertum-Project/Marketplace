@@ -2,11 +2,7 @@
 import React, { createContext } from 'react';
 import {
   ThirdwebProvider,
-  coinbaseWallet,
   embeddedWallet,
-  localWallet,
-  metamaskWallet,
-  walletConnect,
 } from '@thirdweb-dev/react';
 
 import { Base, BaseSepoliaTestnet} from '@thirdweb-dev/chains';
@@ -25,10 +21,6 @@ export function ThirdwebContextProvider({ children }: { children: React.ReactNod
         clientId={clientId}
         supportedChains={[activeChain]}
         supportedWallets={[
-          metamaskWallet({ recommended: true }),
-          coinbaseWallet(),
-          walletConnect(),
-          localWallet(),
           embeddedWallet({
             auth: {
               options: ['email', 'google', 'apple', 'facebook'],
