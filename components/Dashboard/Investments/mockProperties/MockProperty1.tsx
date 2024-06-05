@@ -68,21 +68,21 @@ const MockProperty1 = () => {
 
           <div className="flex items-center justify-evenly">
             <div className="flex flex-col">
-              <p className="text-black text-opacity-60 text-[40px] font-extrabold">
-                $83
-                <span className="text-black text-opacity-60 text-[32px] font-extrabold">.33</span>
+            <p className="text-black text-opacity-60 text-[40px] font-extrabold">
+                $133
+                <span className="text-black text-opacity-60 text-[32px] font-extrabold">.34</span>
               </p>
               <p className="uppercase opacity-50 text-center text-neutral-800 text-xs font-black">
-                Capital repayment in last 30 days
+                Return in last 30 days
               </p>
             </div>
             <div className="flex flex-col">
               <p className="text-black text-opacity-60 text-[40px] font-extrabold">
-                $12
-                <span className="text-black text-opacity-60 text-[32px] font-extrabold">.50</span>
+                $50
+                <span className="text-black text-opacity-60 text-[32px] font-extrabold">.67</span>
               </p>
               <p className="uppercase opacity-50 text-center text-neutral-800 text-xs font-black">
-                Yield in last 30 days
+                Income in last 30 days
               </p>
             </div>
           </div>

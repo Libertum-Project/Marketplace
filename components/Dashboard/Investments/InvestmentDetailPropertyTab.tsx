@@ -36,7 +36,7 @@ const InvestmentDetailPropertyTab = ({ property }: props) => {
 
             <div className="flex justify-between pb-2 pt-2 border-b-2 border-b-[#ECECEC]">
               <p className="text-neutral-700 text-[15px] font-normal">Ammount of Tokens</p>
-              <p className="text-right text-neutral-700 text-base font-bold font-space_grotesk">-</p>
+              <p className="text-right text-neutral-700 text-base font-bold font-space_grotesk">100</p>
             </div>
 
             <div className="flex justify-between pb-2 pt-2 border-b-2 border-b-[#ECECEC]">

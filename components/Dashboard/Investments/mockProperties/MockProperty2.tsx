@@ -29,7 +29,7 @@ const MockProperty1 = () => {
       <div className="py-20 max-sm:py-10 flex gap-10 flex-col">
         <div className="flex justify-between items-center max-sm:flex-col max-sm:items-start max-sm:gap-3">
           <p className="flex-shrink-0 px-4 py-1 bg-libertumGreen bg-opacity-20 rounded-[50px] border border-libertumGreen items-center justify-center text-libertumGreen text-sm font-semibold ml-4 w-[200px] text-center">
-            Owned tokens: <b>200</b>
+            Owned tokens: <b>100</b>
           </p>
           <button className="flex justify-between items-center px-4 py-2 bg-[#00B3B5] bg-opacity-70 rounded-[5px] border border-[#00B3B5] backdrop-blur-[10px] text-white gap-3 mx-4 cursor-not-allowed w-[200px]">
             Claim
@@ -68,21 +68,21 @@ const MockProperty1 = () => {
 
           <div className="flex items-center justify-evenly">
             <div className="flex flex-col">
-              <p className="text-black text-opacity-60 text-[40px] font-extrabold">
-                $166
-                <span className="text-black text-opacity-60 text-[32px] font-extrabold">.67</span>
+            <p className="text-black text-opacity-60 text-[40px] font-extrabold">
+                $133
+                <span className="text-black text-opacity-60 text-[32px] font-extrabold">.34</span>
               </p>
               <p className="uppercase opacity-50 text-center text-neutral-800 text-xs font-black">
-                Capital repayment in last 30 days
+                Return in last 30 days
               </p>
             </div>
             <div className="flex flex-col">
               <p className="text-black text-opacity-60 text-[40px] font-extrabold">
                 $50
-                <span className="text-black text-opacity-60 text-[32px] font-extrabold">.00</span>
+                <span className="text-black text-opacity-60 text-[32px] font-extrabold">.67</span>
               </p>
               <p className="uppercase opacity-50 text-center text-neutral-800 text-xs font-black">
-                Yield in last 30 days
+                Income in last 30 days
               </p>
             </div>
           </div>
