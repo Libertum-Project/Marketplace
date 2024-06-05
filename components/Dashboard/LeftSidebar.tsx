@@ -30,14 +30,11 @@ const LeftSidebar = () => {
                   alt={item.label}
                   width={20}
                   height={20}
-                  className={`group-hover:fill-[#00B3B5]  ${
-                    item.label === 'Get' ? 'w-[36px] transform translate-x-[-10px]' : ''
-                  }`}
+                  className={'group-hover:fill-[#00B3B5]'}
                 />
                 <p
                   className={`group-hover:text-[#00B3B5] text-base font-bold font-space_grotesk ${
-                    isActive ? 'text-[#00B3B5]' : ''
-                  }${item.label === 'Get' ? ' transform translate-x-[-16px]' : ''}
+                    isActive ? 'text-[#00B3B5]' : ''}
                   `}
                 >
                   {item.label}
