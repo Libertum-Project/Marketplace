@@ -26,9 +26,17 @@ const MockProperty1 = () => {
 
   return (
     <TabsContent value="yield" className="max-h-[860px] overflow-auto pb-52">
-      <div className="py-20 max-sm:py-10 flex gap-10 flex-col">
-        <div className="flex justify-between items-center max-sm:flex-col max-sm:items-start max-sm:gap-3">
-          <p className="flex-shrink-0 px-4 py-1 bg-libertumGreen bg-opacity-20 rounded-[50px] border border-libertumGreen items-center justify-center text-libertumGreen text-sm font-semibold ml-4 w-[200px] text-center">
+      <div className="py-10 max-sm:py-10 flex gap-10 flex-col">
+        <div className="flex justify-between flex-col items-start gap-3">
+          <p className="flex-shrink-0 p-4 w-fit bg-libertumGreen bg-opacity-20 rounded-[.5rem] border border-libertumGreen items-center justify-center text-libertumGreen text-sm font-semibold mx-4 text-center">
+            Next claim time: <b>37 days left.</b>
+          </p>
+          <p className="flex-shrink-0 items-start justify-start text-slate-600 text-sm font-semibold mx-4 w-[300px] text-start">
+            Remaining months to claim: <b>58 months</b>
+          </p>
+        </div>
+        <div className='flex items-center justify-center max-sm:flex-col gap-6 max-sm:items-start max-sm:gap-3'>
+          <p className="flex items-center justify-center max-sm:flex-col gap-6 max-sm:items-start max-sm:gap-3">
             Owned tokens: <b>100</b>
           </p>
           <button className="flex justify-between items-center px-4 py-2 bg-[#00B3B5] bg-opacity-70 rounded-[5px] border border-[#00B3B5] backdrop-blur-[10px] text-white gap-3 mx-4 cursor-not-allowed w-[200px]">
@@ -36,16 +44,6 @@ const MockProperty1 = () => {
             <ServerImage alt="icon" src="/assets/icons/investment-details/right-arrow.svg" width={14} height={8} />
           </button>
         </div>
-
-        <div className="flex justify-between items-center max-sm:flex-col max-sm:items-start max-sm:gap-3">
-          <p className="flex-shrink-0 px-4 py-1 bg-libertumGreen bg-opacity-20 rounded-[50px] border border-libertumGreen items-center justify-center text-libertumGreen text-sm font-semibold mx-4 w-[300px] text-center">
-            Next claim time: <b>29 days left.</b>
-          </p>
-          <p className="flex-shrink-0 px-4 py-1 bg-libertumGreen bg-opacity-20 rounded-[50px] border border-libertumGreen items-center justify-center text-libertumGreen text-sm font-semibold mx-4 w-[300px] text-center">
-            Remaining months to claim: <b>58</b>
-          </p>
-        </div>
-
         <div className="flex flex-col gap-4 shadow-xl m-4 p-10 max-sm:p-5">
           <h3 className="text-slate-900 text-[32px] font-bold font-space_grotesk">PROFIT OVERVIEW</h3>
 
@@ -54,21 +52,21 @@ const MockProperty1 = () => {
             <div className="flex flex-col gap-6 flex-1">
               <div className="flex gap-7 items-center">
                 <div className="w-[24px] h-[24px] bg-[#86D8DB] rounded-full"></div>
-                <p className="text-slate-400 text-[13px] font-medium">TOTAL CAPITAL REPAYMENT</p>
-                <p className="text-neutral-500 text-xl font-bold font-space_grotesk">$1000</p>
+                <p className="text-slate-400 text-[13px] font-medium">TOTAL RETURN</p>
+                <p className="text-neutral-500 text-xl font-bold font-space_grotesk">$533.36</p>
               </div>
 
               <div className="flex gap-7 items-center">
                 <div className="w-[24px] h-[24px] bg-slate-300 rounded-full"></div>
-                <p className="text-slate-400 text-[13px] font-medium">TOTAL YIELD</p>
-                <p className="text-neutral-500 text-xl font-bold font-space_grotesk">$150</p>
+                <p className="text-slate-400 text-[13px] font-medium">TOTAL INCOME</p>
+                <p className="text-neutral-500 text-xl font-bold font-space_grotesk">$202.68</p>
               </div>
             </div>
           </div>
 
           <div className="flex items-center justify-evenly">
             <div className="flex flex-col">
-            <p className="text-black text-opacity-60 text-[40px] font-extrabold">
+              <p className="text-black text-opacity-60 text-[40px] font-extrabold">
                 $133
                 <span className="text-black text-opacity-60 text-[32px] font-extrabold">.34</span>
               </p>

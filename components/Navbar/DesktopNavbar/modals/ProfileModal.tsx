@@ -33,7 +33,7 @@ export function ProfileModal({ handleHideModals }: DocsModalProps): ReactElement
                   alt={item.label}
                   width={20}
                   height={20}
-                  className={`group-hover:fill-[#00B3B5] ${item.label === 'Get' ? 'w-[36px]' : ''}`}
+                  className='group-hover:fill-[#00B3B5]'
                 />
                 <p
                   className={`group-hover:text-[#00B3B5] text-opacity-70 text-xs font-bold whitespace-nowrap font-ubuntu`}
