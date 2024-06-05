@@ -8,7 +8,7 @@ import { mobileMenu } from '@/constants';
 const MobileNav = () => {
   const pathname = usePathname();
   return (
-    <div className="md:hidden w-full fixed bottom-0 bg-gray-950 bg-opacity-95 justify-between items-center flex px-[10px] py-[12px]">
+    <div className="md:hidden w-full fixed bottom-0 bg-gray-950 bg-opacity-95 justify-between items-center flex px-[10px] py-[12px] overflow-x-scroll">
       {mobileMenu.map((item) => {
         const isActive = (pathname.includes(item.route) && item.route.length > 1) || pathname === item.route;
         return (

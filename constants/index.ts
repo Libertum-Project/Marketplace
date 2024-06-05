@@ -73,21 +73,21 @@ export const mobileMenu: SidebarLink[] = [
     info: '',
   },
   {
-    imgURL: '/assets/icons/investments.svg',
-    route: '/investments',
-    label: 'Investments',
-    info: '',
-  },
-  {
     imgURL: '/assets/icons/market.svg',
     route: '/',
-    label: 'Marketplace',
+    label: 'Market',
     info: '',
   },
   {
     imgURL: '/assets/icons/get.svg',
     route: '/get',
     label: 'Get',
+    info: '',
+  },
+  {
+    imgURL: '/assets/icons/investments.svg',
+    route: '/investments',
+    label: 'Investments',
     info: '',
   },
 ];
