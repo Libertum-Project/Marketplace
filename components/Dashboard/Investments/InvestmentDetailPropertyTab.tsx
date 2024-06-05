@@ -18,8 +18,6 @@ const InvestmentDetailPropertyTab = ({ property }: props) => {
   const monthlyCapitalRepayment = annualCapitalRepaymentPerToken / 12;
   const monthlyReturnPerToken = monthlyIncomePerToken + monthlyCapitalRepayment;
   const annualReturnPerToken = annualIncomePerToken + annualCapitalRepaymentPerToken;
-
-  console.log(property)
   return (
     <TabsContent value="property">
       <div className="mt-16">
