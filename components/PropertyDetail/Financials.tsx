@@ -17,7 +17,7 @@ const Financials: React.FC<{
 }> = ({ propertyPrice, totalShares, annualYield, repaymentDuration, selectedTokens, setSelectedTokens }) => {
   const projectedRentalYield = annualYield / 100;
   const tokenPrice = 50;
-  const investment = 1 * tokenPrice;
+  const investment = selectedTokens * tokenPrice;
   const annualIncomePerToken = tokenPrice * projectedRentalYield;
   const monthlyIncomePerToken = annualIncomePerToken / 12;
   const annualCapitalRepaymentPerToken = ((propertyPrice / repaymentDuration) * 12) / totalShares;
