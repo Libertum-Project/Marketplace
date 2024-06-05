@@ -128,6 +128,7 @@ const InvestmentDetail = ({ property, isTest }: Props) => {
               propertyAddress={property.contractAddress}
               durationInMonths={property.listingDurationMonths}
               isTest={isTest}
+              property={property}
             />
           </div>
         </div>
