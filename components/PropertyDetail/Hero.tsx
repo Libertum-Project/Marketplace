@@ -13,18 +13,15 @@ const Hero: React.FC<{
   repaymentDuration: number;
   remainingTokens: number;
 }> = ({ location, propertyPrice, totalShares, annualYield, repaymentDuration, property, remainingTokens }) => {
-  const proyectedRentalYield = annualYield / 100;
-  const tokenPrice = propertyPrice / totalShares;
+  const projectedRentalYield = annualYield / 100;
+  const tokenPrice = 50;
   const investment = 1 * tokenPrice;
-  const rentalIncomePerToken = tokenPrice * proyectedRentalYield;
-  const annualRentalIncome = investment * rentalIncomePerToken;
-  const monthlyRentalIncome = annualRentalIncome / 12;
-  const annualCapitalRepayment = investment / (repaymentDuration / 12);
-  const monthlyCapitalRepaymentPerToken = investment / totalShares / repaymentDuration;
-  const monthlyCapitalRepayment = annualCapitalRepayment / 12;
-  const annualRepayment = annualCapitalRepayment + annualRentalIncome;
-  const monthlyRepayment = annualRepayment / 12;
-
+  const annualIncomePerToken = tokenPrice * projectedRentalYield;
+  const monthlyIncomePerToken = annualIncomePerToken / 12;
+  const annualCapitalRepaymentPerToken = ((propertyPrice / repaymentDuration) * 12) / totalShares;
+  const monthlyCapitalRepayment = annualCapitalRepaymentPerToken / 12;
+  const monthlyReturnPerToken = monthlyIncomePerToken + monthlyCapitalRepayment;
+  const annualReturnPerToken = annualIncomePerToken + annualCapitalRepaymentPerToken;
   return (
     <div className="max-sm:bg-primary-gradient flex flex-col items-center text-center md:text-left md:items-stretch md:w-[39rem] pt-16 md:p-0">
       <div className="flex flex-col text-white gap-4 w-full ">
@@ -88,10 +85,12 @@ const Hero: React.FC<{
           <p className="text-white text-sm font-normal">{totalShares}</p>
         </div>
         <div className="flex items-end justify-between">
-          <p className="text-white text-sm font-bold text-left">Income per Token: </p>
+          <p className="text-white text-sm font-bold text-left">
+            Annual Income <span className="text-xs font-semibold">/ token:</span>
+          </p>
           <p className="text-white text-sm font-normal">
             $
-            {rentalIncomePerToken.toLocaleString('en-US', {
+            {annualIncomePerToken.toLocaleString('en-US', {
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
             })}
@@ -99,7 +98,7 @@ const Hero: React.FC<{
         </div>
         <div className="flex items-end justify-between">
           <p className="text-white text-sm font-bold text-left">Rental Yield: </p>
-          <p className="text-white text-sm font-normal">{annualYield.toFixed(2)} %</p>
+          <p className="text-white text-sm font-normal">{annualYield.toFixed(0)} %</p>
         </div>
 
         {/* Fila 3 */}
@@ -108,20 +107,24 @@ const Hero: React.FC<{
           <p className="text-white text-sm font-normal">{remainingTokens}</p>
         </div>
         <div className="flex items-end justify-between">
-          <p className="text-white text-sm font-bold text-left">Monthly Capital Repayment: </p>
+          <p className="text-white text-sm font-bold text-left">
+            Monthly Income <span className="text-xs font-semibold">/ token:</span>
+          </p>
           <p className="text-white text-sm font-normal">
             $
-            {monthlyCapitalRepayment.toLocaleString('en-US', {
-              minimumFractionDigits: 0,
-              maximumFractionDigits: 0,
+            {monthlyIncomePerToken.toLocaleString('en-US', {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
             })}
           </p>
         </div>
         <div className="flex items-end justify-between">
-          <p className="text-white text-sm font-bold text-left">Annual Repayment: </p>
+          <p className="text-white text-sm font-bold text-left">
+            Annual Capital Repayment <span className="text-xs font-semibold">/ token:</span>
+          </p>
           <p className="text-white text-sm font-normal">
             $
-            {annualRepayment.toLocaleString('en-US', {
+            {annualCapitalRepaymentPerToken.toLocaleString('en-US', {
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
             })}
@@ -132,18 +135,15 @@ const Hero: React.FC<{
       <div className="flex justify-between md:justify-start py-4 gap-6 w-full">
         <div className="bg-neutral-100 rounded-[48px] text-black text-opacity-50 text-xs font-light capitalize p-3 flex items-center gap-[6px]">
           <ServerImage src="/assets/hotel.svg" width={14} height={14} alt="image" />
-          {/* {property.category} */}
-          <span className="hidden md:block"> Property:</span>Residential
+          {property.category}
         </div>
         <div className="bg-neutral-100 rounded-[48px] text-black text-opacity-50 text-xs font-light capitalize p-3 flex items-center gap-[6px]">
           <ServerImage src="/assets/filter2.svg" width={14} height={14} alt="image" />
-          {/* {property.location.country} */}
-          United States
+          {property.location.country}
         </div>
         <div className="bg-neutral-100 rounded-[48px] text-black text-opacity-50 text-xs font-light capitalize p-3 flex items-center gap-[6px]">
           <ServerImage src="/assets/filter3.svg" width={14} height={14} alt="image" />
-          {/* {property.annual_yield}% */}
-          Rental Yield:3 %
+          {property.annualYield}%
         </div>
         <div className="hidden md:flex">
           <LikeProperty property={property} position="center" />

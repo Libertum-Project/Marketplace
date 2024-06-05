@@ -65,6 +65,9 @@ const PropertyDetail: React.FC<PropertyDetailProps> = ({ property }) => {
             contractAddress={contractAddress}
             selectedTokens={selectedTokens}
             setSelectedTokens={setSelectedTokens}
+            propertyPrice={property.totalValuation}
+            totalShares={property.totalShares}
+            repaymentDuration={property.tokenDurationMonths}
           />
         </div>
       </div>
@@ -109,6 +112,9 @@ const PropertyDetail: React.FC<PropertyDetailProps> = ({ property }) => {
             contractAddress={property.contractAddress}
             selectedTokens={selectedTokens}
             setSelectedTokens={setSelectedTokens}
+            propertyPrice={property.totalValuation}
+            totalShares={property.totalShares}
+            repaymentDuration={property.tokenDurationMonths}
           />
         </div>
       </div>
