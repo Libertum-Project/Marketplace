@@ -17,6 +17,8 @@ export default function TwoFactorAuthForm() {
   const serverURL = process.env.NEXT_PUBLIC_SERVER_URL;
   const secretKey = process.env.NEXT_PUBLIC_SECRET_KEY;
   const router = useRouter();
+  const audience: string | undefined =
+    process.env.NEXT_PUBLIC_RESEND_AUDIENCE_ID;
 
   const generateCode = () =>
     Math.floor(100000 + Math.random() * 900000).toString();
@@ -33,30 +35,72 @@ export default function TwoFactorAuthForm() {
   };
 
   const handleVerifyCode = async () => {
-    if (code.join('') === generatedCode) {
-      try {
-        if (address) {
-          const response = await fetch(`${serverURL}/users/${address}`, {
-            method: 'PATCH',
-            headers: {
-              Authorization: `Bearer ${secretKey}`,
-              Accept: 'application/json',
-              'Content-Type': 'application/json;charset=utf-8'
-            },
-            body: JSON.stringify({
-              isAuthenticated: true
-            })
-          });
-
-          if (response.ok) {
-            router.push('/profile');
-          }
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    } else {
+    if (code.join('') !== generatedCode) {
       setError('Invalid verification code');
+      return;
+    }
+
+    const updateUserAuth = async () => {
+      const url = `${serverURL}/users/${address}`;
+      const options = {
+        method: 'PATCH',
+        headers: {
+          Authorization: `Bearer ${secretKey}`,
+          Accept: 'application/json',
+          'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify({ isAuthenticated: true })
+      };
+
+      try {
+        const response = await fetch(url, options);
+        if (!response.ok) {
+          throw new Error(
+            `Failed to authenticate user. Status: ${response.status}`
+          );
+        }
+        return response;
+      } catch (error) {
+        console.error('Error updating user authentication:', error);
+        throw error;
+      }
+    };
+
+    const subscribeUser = async () => {
+      const url = '/api/subscribe';
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email,
+          unsubscribed: false,
+          audienceId: audience
+        })
+      };
+
+      try {
+        const response = await fetch(url, options);
+        if (!response.ok) {
+          throw new Error(
+            `Failed to subscribe user. Status: ${response.status}`
+          );
+        }
+        return response;
+      } catch (error) {
+        console.error('Error subscribing user:', error);
+        throw error;
+      }
+    };
+
+    try {
+      await updateUserAuth();
+      await subscribeUser();
+      router.push('/profile');
+    } catch (error) {
+      console.error(error)
+      setError('An error occurred. Please try again.');
     }
   };
 
