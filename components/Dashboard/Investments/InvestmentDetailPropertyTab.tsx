@@ -3,41 +3,68 @@ import { ChevronDownIcon } from '@radix-ui/react-icons';
 import { TabsContent } from '@/components/ui/tabs';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { ServerImage } from '../../shared/ServerImage';
+import { Property } from '@/types';
+interface props {
+  property: Property;
+}
 
-const InvestmentDetailPropertyTab = () => {
+const InvestmentDetailPropertyTab = ({ property }: props) => {
+  const projectedRentalYield = property.annualYield / 100;
+  const tokenPrice = 50;
+  const annualIncomePerToken = tokenPrice * projectedRentalYield;
+  const monthlyIncomePerToken = annualIncomePerToken / 12;
+  const annualCapitalRepaymentPerToken =
+    ((property.totalValuation / property.listingDurationMonths) * 12) / property.totalShares;
+  const monthlyCapitalRepayment = annualCapitalRepaymentPerToken / 12;
+  const monthlyReturnPerToken = monthlyIncomePerToken + monthlyCapitalRepayment;
+  const annualReturnPerToken = annualIncomePerToken + annualCapitalRepaymentPerToken;
   return (
     <TabsContent value="property">
       <div className="mt-16">
         <div className="flex justify-between gap-9 mb-8">
           <div className="bg-white rounded-[5px] shadow-main-shadow py-5 px-6 w-[50%] max-sm:w-full">
             <div className="flex justify-between pb-2 pt-2 border-b-2 border-b-[#ECECEC]">
-              <p className="text-neutral-700 text-[15px] font-normal">RIT's</p>
-              <p className="text-right text-neutral-700 text-base font-bold font-space_grotesk">5</p>
+              <p className="text-neutral-700 text-[15px] font-normal">Token Price</p>
+              <p className="text-right text-neutral-700 text-base font-bold font-space_grotesk">
+                $
+                {tokenPrice.toLocaleString('en-US', {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}
+              </p>
             </div>
 
             <div className="flex justify-between pb-2 pt-2 border-b-2 border-b-[#ECECEC]">
-              <p className="text-neutral-700 text-[15px] font-normal">Rent Earned</p>
-              <p className="text-right text-neutral-700 text-base font-bold font-space_grotesk">$0.5</p>
+              <p className="text-neutral-700 text-[15px] font-normal">Ammount of Tokens</p>
+              <p className="text-right text-neutral-700 text-base font-bold font-space_grotesk">-</p>
             </div>
 
             <div className="flex justify-between pb-2 pt-2 border-b-2 border-b-[#ECECEC]">
-              <p className="text-neutral-700 text-[15px] font-normal">Total Price</p>
-              <p className="text-right text-neutral-700 text-base font-bold font-space_grotesk">$3.4560390</p>
+              <p className="text-neutral-700 text-[15px] font-normal">Property Price:</p>
+              <p className="text-right text-neutral-700 text-base font-bold font-space_grotesk">
+                ${(property.totalValuation).toLocaleString('en-US')}
+              </p>
             </div>
 
             <div className="flex justify-between pb-2 pt-2 border-b-2 border-b-[#ECECEC]">
-              <p className="text-neutral-700 text-[15px] font-normal">Value Held</p>
-              <p className="text-right text-neutral-700 text-base font-bold font-space_grotesk">$4.01</p>
+              <p className="text-neutral-700 text-[15px] font-normal">Yield</p>
+              <p className="text-right text-neutral-700 text-base font-bold font-space_grotesk">
+                {property.annualYield} %
+              </p>
             </div>
 
             <div className="flex justify-between pb-2 pt-2 border-b-2 border-b-[#ECECEC]">
-              <p className="text-neutral-700 text-[15px] font-normal">Rent / Year</p>
-              <p className="text-right text-neutral-700 text-base font-bold font-space_grotesk">$50</p>
+              <p className="text-neutral-700 text-[15px] font-normal">Total Tokens</p>
+              <p className="text-right text-neutral-700 text-base font-bold font-space_grotesk">
+                {property.totalShares.toLocaleString('en-US')}
+              </p>
             </div>
 
             <div className="flex justify-between pb-2 pt-2 border-b-2 border-b-[#ECECEC]">
-              <p className="text-neutral-700 text-[15px] font-normal">Proportion</p>
-              <p className="text-right text-neutral-700 text-base font-bold font-space_grotesk">$0.045%</p>
+              <p className="text-neutral-700 text-[15px] font-normal">Repayment Term:</p>
+              <p className="text-right text-neutral-700 text-base font-bold font-space_grotesk">
+                {property.listingDurationMonths} months
+              </p>
             </div>
           </div>
 
@@ -78,35 +105,47 @@ const InvestmentDetailPropertyTab = () => {
             <AccordionContent className="flex justify-between gap-7">
               <div className="bg-white rounded-[5px] py-5 px-6 w-[50%]">
                 <div className="flex justify-between pb-2 pt-2 border-b-2 border-b-[#ECECEC]">
-                  <p className="text-neutral-700 text-[15px] font-normal">RITs Issues</p>
-                  <p className="text-right text-neutral-700 text-base font-bold font-space_grotesk">5</p>
+                  <p className="text-neutral-700 text-[15px] font-normal">Monthly Income per Token</p>
+                  <p className="text-right text-neutral-700 text-base font-bold font-space_grotesk">
+                    ${monthlyIncomePerToken}
+                  </p>
                 </div>
 
                 <div className="flex justify-between pb-2 pt-2 border-b-2 border-b-[#ECECEC]">
-                  <p className="text-neutral-700 text-[15px] font-normal">Price / RIT</p>
-                  <p className="text-right text-neutral-700 text-base font-bold font-space_grotesk">$0.34</p>
+                  <p className="text-neutral-700 text-[15px] font-normal">Annual Income per Token</p>
+                  <p className="text-right text-neutral-700 text-base font-bold font-space_grotesk">
+                    $ {annualIncomePerToken}
+                  </p>
                 </div>
 
                 <div className="flex justify-between pb-2 pt-2 border-b-2 border-b-[#ECECEC]">
-                  <p className="text-neutral-700 text-[15px] font-normal">Rent / RIT</p>
-                  <p className="text-right text-neutral-700 text-base font-bold font-space_grotesk">$0.34</p>
+                  <p className="text-neutral-700 text-[15px] font-normal">Annual Capital Repayment per Token</p>
+                  <p className="text-right text-neutral-700 text-base font-bold font-space_grotesk">
+                    ${annualCapitalRepaymentPerToken.toLocaleString('en-US')}
+                  </p>
                 </div>
               </div>
 
               <div className="bg-white rounded-[5px] py-5 px-6 w-[50%]">
                 <div className="flex justify-between pb-2 pt-2 border-b-2 border-b-[#ECECEC]">
-                  <p className="text-neutral-700 text-[15px] font-normal">Gross Rent</p>
-                  <p className="text-right text-neutral-700 text-base font-bold font-space_grotesk">5</p>
+                  <p className="text-neutral-700 text-[15px] font-normal">Monthly Capital Repayment</p>
+                  <p className="text-right text-neutral-700 text-base font-bold font-space_grotesk">
+                    ${monthlyCapitalRepayment.toLocaleString('en-US')}
+                  </p>
                 </div>
 
                 <div className="flex justify-between pb-2 pt-2 border-b-2 border-b-[#ECECEC]">
-                  <p className="text-neutral-700 text-[15px] font-normal">Net Rent</p>
-                  <p className="text-right text-neutral-700 text-base font-bold font-space_grotesk">$0.34</p>
+                  <p className="text-neutral-700 text-[15px] font-normal">Monthly Return per Token</p>
+                  <p className="text-right text-neutral-700 text-base font-bold font-space_grotesk">
+                    ${monthlyReturnPerToken.toLocaleString('en-US')}
+                  </p>
                 </div>
 
                 <div className="flex justify-between pb-2 pt-2 border-b-2 border-b-[#ECECEC]">
-                  <p className="text-neutral-700 text-[15px] font-normal">Expected Yield</p>
-                  <p className="text-right text-neutral-700 text-base font-bold font-space_grotesk">$0.34</p>
+                  <p className="text-neutral-700 text-[15px] font-normal">Annual Return per Token</p>
+                  <p className="text-right text-neutral-700 text-base font-bold font-space_grotesk">
+                    ${annualReturnPerToken}
+                  </p>
                 </div>
               </div>
             </AccordionContent>

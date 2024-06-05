@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger
-} from '@/components/ui/tooltip';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 import YieldChart from '../Chart/YieldChart';
 import { ServerImage } from '../../shared/ServerImage';
@@ -23,18 +18,12 @@ const RightSidebar = () => {
                   </p>
                   <div className="bg-white rounded-[5px] border border-black border-opacity-10 w-full">
                     <div className="flex justify-between items-center py-2 px-2 border-b border-black border-opacity-10 bg-white text-right">
-                      <p className="text-black text-opacity-80 text-sm font-bold">
-                        Total Properties:
-                      </p>
-                      <p className="text-black text-opacity-50 text-sm font-normal">
-                        2
-                      </p>
+                      <p className="text-black text-opacity-80 text-sm font-bold">Total Properties:</p>
+                      <p className="text-black text-opacity-50 text-sm font-normal">2</p>
                     </div>
 
                     <div className="flex justify-between items-center py-2 px-2 bg-green-500 bg-opacity-10 text-right">
-                      <p className="text-black text-opacity-80 text-sm font-bold">
-                        Total Return:
-                      </p>
+                      <p className="text-black text-opacity-80 text-sm font-bold">Total Return:</p>
                       <p className="text-[#21AF2F] text-sm font-bold">+$3750</p>
                     </div>
                   </div>
@@ -69,25 +58,36 @@ const RightSidebar = () => {
                     </div>
                   </div>
 
-                  <div className="flex justify-between items-center px-2 py-1 bg-white rounded-[5px]">
-                    <div className="flex gap-1">
-                      <ServerImage
-                        src="/assets/icons/investment-details/history.svg"
-                        alt="history"
-                        width={15}
-                        height={15}
-                      />
-                      <p className="text-black text-opacity-80 text-sm font-bold font-space_grotesk">
-                        Download Rent History
-                      </p>
-                    </div>
-                    <ServerImage
-                      src="/assets/icons/investment-details/download.svg"
-                      alt="history"
-                      width={15}
-                      height={15}
-                    />
-                  </div>
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger>
+                        <div className="flex justify-between items-center px-2 py-1 bg-white rounded-[5px]">
+                          <div className="flex gap-1">
+                            <ServerImage
+                              src="/assets/icons/investment-details/history.svg"
+                              alt="history"
+                              width={15}
+                              height={15}
+                            />
+                            <p className="text-black text-opacity-80 text-sm font-bold font-space_grotesk">
+                              Download Rent History
+                            </p>
+                          </div>
+                          <ServerImage
+                            src="/assets/icons/investment-details/download.svg"
+                            alt="history"
+                            width={15}
+                            height={15}
+                          />
+                        </div>
+                      </TooltipTrigger>
+                      <TooltipContent side="bottom" className="bg-gray-300">
+                        <p className="text-gray-600 font-space_grotesk font-semibold text-xs">
+                          Soon you will be able to download rent history
+                        </p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
 
                   <div className="bg-white rounded-[5px] border border-black border-opacity-10 w-full flex justify-between items-center text-center">
                     <div className="w-full">
@@ -98,10 +98,7 @@ const RightSidebar = () => {
               </div>
             </div>
           </TooltipTrigger>
-          <TooltipContent
-            side="bottom"
-            className="bg-libertumOrange rounded-[5px] "
-          >
+          <TooltipContent side="bottom" className="bg-libertumOrange rounded-[5px] ">
             <p className="text-white font-space_grotesk font-semibold text-sm py-2">
               This is an example of how you will see your investments.
             </p>

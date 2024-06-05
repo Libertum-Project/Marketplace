@@ -39,6 +39,7 @@ export interface Property {
   tokenDurationMonths: number;
   totalShares: number;
   totalValuation: number;
+  repaymentDuration: number;
 }
 
 export interface User {

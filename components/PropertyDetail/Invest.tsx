@@ -22,18 +22,24 @@ interface InvestProps {
   remainingTokens: number;
   contractAddress: string;
   selectedTokens: number;
+  propertyPrice: number;
+  repaymentDuration: number;
+  totalShares: number;
   setSelectedTokens: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const Invest: React.FC<InvestProps> = ({
   title,
   price,
+  propertyPrice,
   annualYield,
   subtitle,
   buttonText,
   remainingTokens,
   contractAddress,
   selectedTokens,
+  repaymentDuration,
+  totalShares,
   setSelectedTokens,
 }) => {
   const [areTermsAccepted, setAreTermsAccepted] = useState<boolean>(false);
@@ -50,6 +56,9 @@ const Invest: React.FC<InvestProps> = ({
       setSelectedTokens(newValue);
     }
   };
+
+  const annualReturnPerToken = 50 * (annualYield / 100) + ((propertyPrice / repaymentDuration) * 12) / totalShares;
+  const projectedAnnualReturn = selectedTokens * annualReturnPerToken;
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setAreTermsAccepted(event.target.checked);
@@ -102,7 +111,7 @@ const Invest: React.FC<InvestProps> = ({
       <div className="flex gap-2 justify-between items-center border rounded-[5px]">
         <div className="flex flex-1">
           <div className="flex-1 bg-gray-200">
-            <p className="text-black font-semibold text-sm px-3 py-2 rounded-l-lg h-full">Proyect annual Yield</p>
+            <p className="text-black font-semibold text-sm px-3 py-2 rounded-l-lg h-full">Projected Annual Yield</p>
           </div>
           <div className="flex-1">
             <p className="text-black opacity-50 text-lg px-3 py-2 bg-gray-100 rounded-r-lg">{annualYield}%</p>
@@ -113,10 +122,10 @@ const Invest: React.FC<InvestProps> = ({
       <div className="flex gap-2 justify-between items-center border rounded-[5px]">
         <div className="flex flex-1">
           <div className="flex-1 bg-gray-200">
-            <p className="text-black font-semibold text-sm px-3 py-2 rounded-l-lg h-full">Proyect annual Return</p>
+            <p className="text-black font-semibold text-sm px-3 py-2 rounded-l-lg h-full">Projected Annual Return</p>
           </div>
           <div className="flex-1">
-            <p className="text-black opacity-50 text-lg px-3 py-2 bg-gray-100 rounded-r-lg">$5000</p>
+            <p className="text-black opacity-50 text-lg px-3 py-2 bg-gray-100 rounded-r-lg">${projectedAnnualReturn}</p>
           </div>
         </div>
       </div>
