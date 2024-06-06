@@ -1,8 +1,7 @@
 import { NextRequest } from 'next/server';
 import {
   EmailClient,
-  KnownEmailSendStatus,
-  EmailSendResult
+  KnownEmailSendStatus
 } from '@azure/communication-email';
 
 const connectionString: string | undefined = process.env.AZURE_EMAIL_CONNECTION_STRING;
@@ -35,7 +34,7 @@ export async function POST(req: NextRequest) {
   try {
     const client = new EmailClient(connectionString as string);
     const poller = await client.beginSend(message);
-    const result = (await poller.pollUntilDone()) as EmailSendResult;
+    const result = (await poller.pollUntilDone());
 
     if (result.status === KnownEmailSendStatus.Succeeded) {
       console.log(`Successfully sent the email (operation id: ${result.id})`);
