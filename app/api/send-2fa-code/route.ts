@@ -46,7 +46,7 @@ export async function POST(req: NextRequest) {
     console.error(error);
     return new Response(
       JSON.stringify({ error: 'Failed to send verification code' }),
-      { status: 500 }
+      { status: 422 }
     );
   }
 }
