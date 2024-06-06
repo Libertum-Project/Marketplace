@@ -1,11 +1,8 @@
 import { NextRequest } from 'next/server';
-import {
-  EmailClient,
-  KnownEmailSendStatus
-} from '@azure/communication-email';
+import { EmailClient, KnownEmailSendStatus } from '@azure/communication-email';
 
-const connectionString: string | undefined = process.env.AZURE_EMAIL_CONNECTION_STRING;
-const senderAddress: string | undefined = process.env.AZURE_SENDER_EMAIL_ADDRESS;
+const connectionString = process.env.AZURE_EMAIL_CONNECTION_STRING;
+const senderAddress = process.env.AZURE_SENDER_EMAIL_ADDRESS;
 
 if (!connectionString) {
   throw new Error('Azure email connection string is not defined.');
@@ -34,7 +31,7 @@ export async function POST(req: NextRequest) {
   try {
     const client = new EmailClient(connectionString as string);
     const poller = await client.beginSend(message);
-    const result = (await poller.pollUntilDone());
+    const result = await poller.pollUntilDone();
 
     if (result.status === KnownEmailSendStatus.Succeeded) {
       console.log(`Successfully sent the email (operation id: ${result.id})`);
