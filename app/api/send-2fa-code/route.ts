@@ -1,30 +1,52 @@
 import { NextRequest } from 'next/server';
+import { EmailClient, KnownEmailSendStatus } from '@azure/communication-email';
 
-import nodemailer from 'nodemailer';
+const connectionString = process.env.AZURE_EMAIL_CONNECTION_STRING;
+const senderAddress = process.env.AZURE_SENDER_EMAIL_ADDRESS;
 
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
-  }
-});
+if (!connectionString) {
+  throw new Error('Azure email connection string is not defined.');
+}
+
+if (!senderAddress) {
+  throw new Error('Sender email address is not defined.');
+}
 
 export async function POST(req: NextRequest) {
   const reqBody = await req.json();
   const { email, code } = reqBody;
+  const recipientAddress = email;
 
-  const mailOptions = {
-    from: process.env.EMAIL_USER,
-    to: email,
-    subject: 'Your Verification Code',
-    text: `Your verification code is ${code}`
+  const message = {
+    senderAddress: senderAddress as string,
+    recipients: {
+      to: [{ address: recipientAddress }]
+    },
+    content: {
+      subject: 'Your Verification Code',
+      plainText: `Your verification code is ${code}`
+    }
   };
 
   try {
-    await transporter.sendMail(mailOptions);
-    return Response.json({ message: 'Verification code sent' });
+    const client = new EmailClient(connectionString as string);
+    const poller = await client.beginSend(message);
+    const result = await poller.pollUntilDone();
+
+    if (result.status === KnownEmailSendStatus.Succeeded) {
+      console.log(`Successfully sent the email (operation id: ${result.id})`);
+      return new Response(
+        JSON.stringify({ message: 'Verification code sent' }),
+        { status: 200 }
+      );
+    } else {
+      throw result.error;
+    }
   } catch (error) {
-    return Response.json({ error: 'Failed to send verification code' });
+    console.error(error);
+    return new Response(
+      JSON.stringify({ error: 'Failed to send verification code' }),
+      { status: 422 }
+    );
   }
 }
