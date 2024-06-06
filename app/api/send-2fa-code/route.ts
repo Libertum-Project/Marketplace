@@ -5,8 +5,16 @@ import {
   EmailSendResult
 } from '@azure/communication-email';
 
-const connectionString: string = process.env.AZURE_EMAIL_CONNECTION_STRING!;
-const senderAddress: string = process.env.AZURE_SENDER_EMAIL_ADDRESS!;
+const connectionString: string | undefined = process.env.AZURE_EMAIL_CONNECTION_STRING;
+const senderAddress: string | undefined = process.env.AZURE_SENDER_EMAIL_ADDRESS;
+
+if (!connectionString) {
+  throw new Error('Azure email connection string is not defined.');
+}
+
+if (!senderAddress) {
+  throw new Error('Sender email address is not defined.');
+}
 
 export async function POST(req: NextRequest) {
   const reqBody = await req.json();
@@ -14,7 +22,7 @@ export async function POST(req: NextRequest) {
   const recipientAddress = email;
 
   const message = {
-    senderAddress: senderAddress,
+    senderAddress: senderAddress as string,
     recipients: {
       to: [{ address: recipientAddress }]
     },
@@ -25,7 +33,7 @@ export async function POST(req: NextRequest) {
   };
 
   try {
-    const client = new EmailClient(connectionString);
+    const client = new EmailClient(connectionString as string);
     const poller = await client.beginSend(message);
     const result = (await poller.pollUntilDone()) as EmailSendResult;
 
