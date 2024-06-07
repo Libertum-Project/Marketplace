@@ -3,18 +3,15 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
 import PropertyCard from '../shared/PropertyCard';
+import GemsCard from  '../shared/GemsCard'; 
 import { Button } from '../ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Card, CardContent } from '../ui/card';
 import { Filters } from '@/app/(Home)/(Main Page)/Filters';
 import { filterProperties } from '@/app/utils/fetchProperties';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue
-} from '@/components/ui/select';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+
+import { gems } from "./gems"
 
 interface Props {
   showFilters?: boolean;
@@ -26,8 +23,7 @@ const AllProperties = ({ showFilters = false }: Props) => {
   const [viewType, setViewType] = useState('grid');
   const [properties, setProperties] = useState<any>([]);
   const [filteredProperties, setFilteredProperties] = useState<any>([]);
-  const [showNoPropertiesMessage, setShowNoPropertiesMessage] =
-    useState<boolean>(false);
+  const [showNoPropertiesMessage, setShowNoPropertiesMessage] = useState<boolean>(false);
 
   const handleViewType = (type: string) => {
     setViewType(type);
@@ -39,8 +35,8 @@ const AllProperties = ({ showFilters = false }: Props) => {
       method: 'GET',
       cache: 'no-store',
       headers: {
-        authorization: `Bearer ${secretKey}`
-      }
+        authorization: `Bearer ${secretKey}`,
+      },
     });
     const properties = await data.json();
     setProperties(properties);
@@ -55,17 +51,8 @@ const AllProperties = ({ showFilters = false }: Props) => {
       ? 'py-5 px-4 grid md:px-0 grid-cols-1 min-[575px]:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-[1200px] m-auto'
       : 'flex flex-col py-5 max-w-[75rem] m-auto gap-8';
 
-  const propertyFilter = (
-    categoryFilter: string,
-    countryFilter: string,
-    annualYieldFilter: string
-  ) => {
-    const filteredProperties = filterProperties(
-      properties,
-      categoryFilter,
-      countryFilter,
-      annualYieldFilter
-    );
+  const propertyFilter = (categoryFilter: string, countryFilter: string, annualYieldFilter: string) => {
+    const filteredProperties = filterProperties(properties, categoryFilter, countryFilter, annualYieldFilter);
     setFilteredProperties(filteredProperties);
     if (filteredProperties.length === 0) {
       setShowNoPropertiesMessage(true);
@@ -102,23 +89,14 @@ const AllProperties = ({ showFilters = false }: Props) => {
             value=""
           >
             <SelectTrigger className="w-[95%] md:w-[360px] px-3 py-2 bg-slate-900 bg-opacity-5 rounded-[5px] border border-black border-opacity-10 cursor-pointer">
-              <SelectValue
-                placeholder="Sort by: Newest first"
-                className="font-montserrat text-xs"
-              />
+              <SelectValue placeholder="Sort by: Newest first" className="font-montserrat text-xs" />
             </SelectTrigger>
             <SelectContent className="bg-white">
               <SelectItem value="new" className="cursor-pointer">
-                Sort by:{' '}
-                <span className="font-montserrat text-xs font-bold">
-                  Newest first
-                </span>
+                Sort by: <span className="font-montserrat text-xs font-bold">Newest first</span>
               </SelectItem>
               <SelectItem value="old" className="cursor-pointer">
-                Sort by:{' '}
-                <span className="font-montserrat text-xs font-bold">
-                  Old first
-                </span>
+                Sort by: <span className="font-montserrat text-xs font-bold">Old first</span>
               </SelectItem>
             </SelectContent>
           </Select>
@@ -126,11 +104,7 @@ const AllProperties = ({ showFilters = false }: Props) => {
           <div className="hidden md:flex items-center bg-neutral-100 rounded-[5px] gap-2 px-2 py-[5px]">
             <Button className="p-0" onClick={() => handleViewType('grid')}>
               <Image
-                src={`${
-                  viewType == 'grid'
-                    ? '/assets/gridActive.svg'
-                    : '/assets/gridInactive.svg'
-                }`}
+                src={`${viewType == 'grid' ? '/assets/gridActive.svg' : '/assets/gridInactive.svg'}`}
                 alt="Grid"
                 width="32"
                 height="32"
@@ -138,11 +112,7 @@ const AllProperties = ({ showFilters = false }: Props) => {
             </Button>
             <Button className="p-0" onClick={() => handleViewType('list')}>
               <Image
-                src={`${
-                  viewType == 'list'
-                    ? '/assets/filesActive.svg'
-                    : '/assets/filesInactive.svg'
-                }`}
+                src={`${viewType == 'list' ? '/assets/filesActive.svg' : '/assets/filesInactive.svg'}`}
                 alt="List"
                 width="32"
                 height="32"
@@ -157,21 +127,15 @@ const AllProperties = ({ showFilters = false }: Props) => {
               No properties to show.
             </p>
           ) : (
-            (filteredProperties.length > 0
-              ? filteredProperties
-              : properties
-            )?.map((property: any) => {
-              return (
-                <PropertyCard
-                  key={property.id}
-                  property={property}
-                  viewType={viewType}
-                  btnLink="/details"
-                />
-              );
+            (filteredProperties.length > 0 ? filteredProperties : properties)?.map((property: any) => {
+              return <PropertyCard key={property.id} property={property} viewType={viewType} btnLink="/details" />;
             })
           )}
-
+          {gems.map((gem: any) => (
+            <GemsCard key={gem.id} viewType={viewType} investmentDetail={false} 
+            gem={gem}
+            />
+          ))}
           {!properties?.length && !filteredProperties?.length && (
             <>
               <Card>

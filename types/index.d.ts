@@ -59,3 +59,17 @@ export interface User {
   publishedProperties: Property[];
   investedProperties: Property[];
 }
+
+export type Gem = {
+  id: number;
+  name: string;
+  image: string;
+  pricePerGram: number;
+  tokenGrams: number;
+  description: string;
+};
+
+export interface GemsCardProps {
+  gem: any;
+  investmentDetail?: boolean;
+}
