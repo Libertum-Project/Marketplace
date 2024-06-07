@@ -14,10 +14,20 @@ interface Props {
 
 const GemsListCard: React.FC<Props> = ({ gem, investmentDetail }) => {
   const [quantity, setQuantity] = useState<number>(1);
+  const [unit, setUnit] = useState<'gr' | 'oz'>('gr');
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = Number(e.target.value);
     setQuantity(value);
+  };
+
+  const handleUnitChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    const value = e.target.value as 'gr' | 'oz';
+    setUnit(value);
+  };
+
+  const getConversionFactor = () => {
+    return unit === 'gr' ? 1 : 0.035274; // 1 gr = 0.035274 oz
   };
 
   return (
@@ -30,32 +40,37 @@ const GemsListCard: React.FC<Props> = ({ gem, investmentDetail }) => {
             ${gem.pricePerGram} /gr
           </p>
         </div>
-        <div className="flex flex-col justify-between pl-8">
-          <p>{gem.description}</p>
-          <section className="flex justify-between items-end py-4 gap-1">
-            <div className="flex flex-col justify-between w-24">
-              <label className="ml-2 text-xs text-slate-400">tokens</label>
+        <div className="flex flex-col justify-between py-1 pl-8">
+          <p className="text-slate-600 text-sm">{gem.description}</p>
+          <section className="flex justify-between items-end gap-1">
+            <article className="flex justify-between border rounded-[.5rem] font-space_grotesk w-36 h-10 items-center overflow-hidden">
               <input
                 type="number"
                 min="1"
                 value={quantity}
                 onChange={handleChange}
-                className="w-full focus:outline-none flex flex-col justify-between border rounded-[.5rem] px-2 font-space_grotesk h-10 items-center"
+                className="w-full focus:outline-none flex flex-col justify-between px-2 font-space_grotesk h-10 items-center text-sm"
               />
-            </div>
+              <p className="h-full flex items-center">
+                <span className="px-1 text-xs">tokens</span>
+              </p>
+            </article>
             <p className="mb-3">=</p>
-            <article className="flex justify-between border rounded-[.5rem] font-space_grotesk w-24 h-10 items-center">
+            <article className="flex justify-between border rounded-[.5rem] font-space_grotesk w-36 h-10 items-center text-sm overflow-hidden">
               <p className="bg-gray-200 h-full flex items-center">
                 <span className="px-2">$ </span>
               </p>
-              <p>{(quantity * 50).toFixed(2)}</p>
+              <p className="px-2">{(quantity * 50).toFixed(2)}</p>
             </article>
             <p className="mb-3">=</p>
-            <article className="flex justify-between border rounded-[.5rem] font-space_grotesk w-24 px-1 h-10 items-center">
-              <p>{(quantity * gem.tokenGrams).toFixed(4)} gr.</p>
+            <article className="flex justify-between border rounded-[.5rem] font-space_grotesk w-36 h-10 items-center text-sm overflow-hidden">
+              <p className='px-1'>{(quantity * gem.tokenGrams * getConversionFactor()).toFixed(4)}</p>
+              <select value={unit} onChange={handleUnitChange} className="bg-gray-200 h-full flex items-center">
+              <option value="gr">gr</option>
+              <option value="oz">oz</option>
+            </select>
             </article>
           </section>
-
           <div className="flex justify-between items-end"></div>
         </div>
         <div className="flex justify-end items-center pl-8 max-w-32">
@@ -63,7 +78,7 @@ const GemsListCard: React.FC<Props> = ({ gem, investmentDetail }) => {
             variant="outline"
             className="flex items-center w-full rounded-[5px] border border-teal-500 border-opacity-20  text-center font-bold font-space_grotesk py-6 hover:bg-teal-500
                     hover:text-white
-                    bg-[#00062F] text-white"
+                    bg-[#00062F] text-white cursor-not-allowed"
             style={{
               justifyContent: 'center',
             }}

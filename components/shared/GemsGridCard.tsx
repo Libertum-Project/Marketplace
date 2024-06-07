@@ -9,6 +9,7 @@ import { ServerImage } from './ServerImage';
 
 const GemsGridCard: React.FC<GemsCardProps> = ({ gem }) => {
   const [quantity, setQuantity] = useState<number>(1);
+  const [unit, setUnit] = useState<'gr' | 'oz'>('gr');
   const [isExpanded, setIsExpanded] = useState(false);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -18,6 +19,15 @@ const GemsGridCard: React.FC<GemsCardProps> = ({ gem }) => {
 
   const handleToggle = () => {
     setIsExpanded(!isExpanded);
+  };
+
+  const handleUnitChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    const value = e.target.value as 'gr' | 'oz';
+    setUnit(value);
+  };
+
+  const getConversionFactor = () => {
+    return unit === 'gr' ? 1 : 0.035274; // 1 gr = 0.035274 oz
   };
 
   return (
@@ -46,26 +56,32 @@ const GemsGridCard: React.FC<GemsCardProps> = ({ gem }) => {
           </section>
 
           <section className="flex justify-between items-end py-4 gap-1">
-            <div className="flex flex-col justify-between w-24">
-              <label className="ml-2 text-xs text-slate-400">tokens</label>
+            <article className="flex justify-between border rounded-[.5rem] font-space_grotesk w-24 h-10 items-center overflow-hidden">
               <input
                 type="number"
                 min="1"
                 value={quantity}
                 onChange={handleChange}
-                className="w-full focus:outline-none flex flex-col justify-between border rounded-[.5rem] px-2 font-space_grotesk h-10 items-center"
+                className="w-full focus:outline-none flex flex-col justify-between px-2 font-space_grotesk h-10 items-center text-sm"
               />
-            </div>
-            <p className='mb-3'>=</p>
-            <article className="flex justify-between border rounded-[.5rem] font-space_grotesk w-24 h-10 items-center">
+              <p className="h-full flex items-center">
+                <span className="px-1 text-xs">tokens</span>
+              </p>
+            </article>
+            <p className="mb-3">=</p>
+            <article className="flex justify-between border rounded-[.5rem] font-space_grotesk w-24 h-10 items-center text-sm overflow-hidden">
               <p className="bg-gray-200 h-full flex items-center">
                 <span className="px-2">$ </span>
               </p>
-              <p>{(quantity * 50).toFixed(2)}</p>
+              <p className="px-2">{(quantity * 50).toFixed(2)}</p>
             </article>
-            <p className='mb-3'>=</p>
-            <article className="flex justify-between border rounded-[.5rem] font-space_grotesk w-24 px-1 h-10 items-center">
-              <p>{(quantity * gem.tokenGrams).toFixed(4)} gr.</p>
+            <p className="mb-3">=</p>
+            <article className="flex justify-between border rounded-[.5rem] font-space_grotesk w-24 h-10 items-center text-sm overflow-hidden">
+              <p className='px-1'>{(quantity * gem.tokenGrams * getConversionFactor()).toFixed(4)}</p>
+              <select value={unit} onChange={handleUnitChange} className="bg-gray-200 h-full flex items-center">
+              <option value="gr">gr</option>
+              <option value="oz">oz</option>
+            </select>
             </article>
           </section>
         </div>
@@ -86,7 +102,7 @@ const GemsGridCard: React.FC<GemsCardProps> = ({ gem }) => {
           <Accordion type="single" collapsible className="w-full" value={`item-${gem.id}`}>
             <AccordionItem value={`item-${gem.id}`}>
               <AccordionContent>
-                <p>{gem.description}</p>
+                <p className="text-slate-600 text-sm">{gem.description}</p>
                 <Table className="border border-slate-500 border-opacity-20 mt-2">
                   <TableBody>
                     <TableRow className="odd:bg-[#F5F5F5]">
@@ -97,6 +113,7 @@ const GemsGridCard: React.FC<GemsCardProps> = ({ gem }) => {
                           alt="download document"
                           width={18}
                           height={18}
+                          className="cursor-pointer"
                         />
                       </TableCell>
                     </TableRow>
@@ -108,6 +125,7 @@ const GemsGridCard: React.FC<GemsCardProps> = ({ gem }) => {
                           alt="download document"
                           width={18}
                           height={18}
+                          className="cursor-pointer"
                         />
                       </TableCell>
                     </TableRow>
@@ -119,6 +137,7 @@ const GemsGridCard: React.FC<GemsCardProps> = ({ gem }) => {
                           alt="download document"
                           width={18}
                           height={18}
+                          className="cursor-pointer"
                         />
                       </TableCell>
                     </TableRow>
@@ -129,7 +148,7 @@ const GemsGridCard: React.FC<GemsCardProps> = ({ gem }) => {
                 variant="outline"
                 className="flex items-center w-full rounded-[5px] border border-teal-500 border-opacity-20  text-center font-bold font-space_grotesk py-6 hover:bg-teal-500
                     hover:text-white
-                    bg-[#00062F] text-white"
+                    bg-[#00062F] text-white cursor-not-allowed"
                 style={{
                   justifyContent: 'center',
                 }}
