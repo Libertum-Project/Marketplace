@@ -46,7 +46,7 @@ const GemsGridCard: React.FC<GemsCardProps> = ({ gem }) => {
           />
         </div>
 
-        <div className="py-6 px-4 max-h-[167.5px]">
+        <div className="py-6 px-4 h-[167.5px]">
           <section className="flex justify-between">
             <p className="text-black text-opacity-80 text-lg font-bold font-space_grotesk">{gem.name}</p>
 

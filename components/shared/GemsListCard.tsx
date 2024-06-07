@@ -31,7 +31,7 @@ const GemsListCard: React.FC<Props> = ({ gem, investmentDetail }) => {
   };
 
   return (
-    <CardContent className="p-0 flex w-full max-h-[186px]">
+    <CardContent className="p-0 flex w-full max-h-[176px]">
       <ServerImage src={gem.image} alt={gem.name} width={250} height={166} />
       <div className="py-4 px-12 w-full flex gap-8 justify-between divide-x">
         <div className="flex flex-col py-6 justify-center items-center">
@@ -40,7 +40,7 @@ const GemsListCard: React.FC<Props> = ({ gem, investmentDetail }) => {
             ${gem.pricePerGram} /gr
           </p>
         </div>
-        <div className="flex flex-col justify-between py-1 pl-8">
+        <div className="flex flex-col justify-between py-4 pl-8">
           <p className="text-slate-600 text-sm">{gem.description}</p>
           <section className="flex justify-between items-end gap-1">
             <article className="flex justify-between border rounded-[.5rem] font-space_grotesk w-36 h-10 items-center overflow-hidden">
@@ -71,7 +71,6 @@ const GemsListCard: React.FC<Props> = ({ gem, investmentDetail }) => {
             </select>
             </article>
           </section>
-          <div className="flex justify-between items-end"></div>
         </div>
         <div className="flex justify-end items-center pl-8 max-w-32">
           <Button
