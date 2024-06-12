@@ -14,18 +14,18 @@ const Hero = () => {
 
       <div className={`${css.heroCommunity} max-lg:bg-primary-gradient z-[-1]`}>
         <div className={css.textCommunity}>
-          <h1>The Future of Real Estate Investing is Now</h1>
+          <h1>The Future of Real-World Asset Investing is Now</h1>
           <div className={css.paragraphsCommunity}>
             <p>
-              From residential havens to commercial hubs, each property presents
-              unique opportunities for growth and prosperity.
+              An all-encompassing, scalable, and licensed infrastructure tailored for real-world assets with access to
+              new financial opportunities.
             </p>
           </div>
         </div>
 
         <div className="hidden lg:flex items-center justify-end">
           <ServerImage
-            src="/assets/photoMarket.png"
+            src="/assets/photoMarketHero.png"
             alt="N"
             width="336"
             height="336"
@@ -39,10 +39,7 @@ const Hero = () => {
               <p>Featured Properties</p>
             </div>
 
-            <Link
-              href="/allFeatured"
-              className={css.featuredProperties__button}
-            >
+            <Link href="/allFeatured" className={css.featuredProperties__button}>
               See all featured
             </Link>
           </div>
