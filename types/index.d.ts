@@ -73,3 +73,5 @@ export type GemsCardProps = {
   gem: any;
   investmentDetail?: boolean;
 }
+
+export type WeightUnitType = 'gr' | 'oz';

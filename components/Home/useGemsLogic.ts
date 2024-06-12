@@ -1,9 +1,9 @@
 import { useState, ChangeEvent } from 'react';
-import { Gem } from '@/types/index';
+import { Gem, WeightUnitType } from '@/types/index';
 
 export const useGemLogic = (gem: Gem) => {
-  const [quantity, setQuantity] = useState<number>(1);
-  const [unit, setUnit] = useState<'gr' | 'oz'>('gr');
+  const [quantity, setQuantity] = useState(1);
+  const [unit, setUnit] = useState<WeightUnitType>('gr');
   const [isExpanded, setIsExpanded] = useState(false);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -12,7 +12,7 @@ export const useGemLogic = (gem: Gem) => {
   };
 
   const handleUnitChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    const value = e.target.value as 'gr' | 'oz';
+    const value = e.target.value as WeightUnitType;
     setUnit(value);
   };
 

@@ -1,4 +1,3 @@
-'use client'
 import { Card } from '@/components/ui/card';
 import GemsGridCard from './GemsGridCard';
 import GemsListCard from './GemsListCard';
