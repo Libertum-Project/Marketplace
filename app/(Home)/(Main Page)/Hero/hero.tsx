@@ -25,7 +25,7 @@ const Hero = () => {
 
         <div className="hidden lg:flex items-center justify-end">
           <ServerImage
-            src="/assets/photoMarketHero.svg"
+            src="/assets/photoMarketHero.png"
             alt="N"
             width="336"
             height="336"
