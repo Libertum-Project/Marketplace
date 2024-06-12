@@ -1,8 +1,3 @@
-import gold from '../../public/assets/gems/gold.png';
-import diamond from '../../public/assets/gems/diamond.png';
-import jade from '../../public/assets/gems/jade.png';
-import emerald from '../../public/assets/gems/emerald.png';
-
 import { Gem } from '@/types/index';
 
 

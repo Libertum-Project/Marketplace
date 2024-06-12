@@ -70,7 +70,7 @@ export type Gem = {
 };
 
 export type GemsCardProps = {
-  gem: any;
+  gem: Gem;
   investmentDetail?: boolean;
 }
 
