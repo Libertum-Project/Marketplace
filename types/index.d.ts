@@ -69,7 +69,7 @@ export type Gem = {
   description: string;
 };
 
-export interface GemsCardProps {
+export type GemsCardProps = {
   gem: any;
   investmentDetail?: boolean;
 }

@@ -4,7 +4,7 @@ import GemsGridCard from './GemsGridCard';
 import GemsListCard from './GemsListCard';
 import { Gem } from '@/types/index';
 
-interface Props {
+type Props = {
   viewType?: string;
   investmentDetail?: boolean;
   gem: Gem;

@@ -23,7 +23,7 @@ const AllProperties = ({ showFilters = false }: Props) => {
   const [viewType, setViewType] = useState('grid');
   const [properties, setProperties] = useState<any>([]);
   const [filteredProperties, setFilteredProperties] = useState<any>([]);
-  const [showNoPropertiesMessage, setShowNoPropertiesMessage] = useState<boolean>(false);
+  const [showNoPropertiesMessage, setShowNoPropertiesMessage] = useState(false);
 
   const handleViewType = (type: string) => {
     setViewType(type);
@@ -131,7 +131,7 @@ const AllProperties = ({ showFilters = false }: Props) => {
               return <PropertyCard key={property.id} property={property} viewType={viewType} btnLink="/details" />;
             })
           )}
-          {gems.map((gem: any) => (
+          {gems.map((gem) => (
             <GemsCard key={gem.id} viewType={viewType} investmentDetail={false} 
             gem={gem}
             />

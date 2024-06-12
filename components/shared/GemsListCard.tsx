@@ -1,34 +1,19 @@
 'use client';
-import { useState, ChangeEvent } from 'react';
-
-import { Gem } from '@/types/index';
-
-import { Card, CardContent, CardFooter } from '@/components/ui/card';
-import { ServerImage } from './ServerImage';
+import { useGemLogic } from '@/components/Home/useGemsLogic';
+import { GemsCardProps } from '@/types/index';
+import { CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { ServerImage } from './ServerImage';
 
-interface Props {
-  gem: Gem;
-  investmentDetail?: boolean;
-}
-
-const GemsListCard: React.FC<Props> = ({ gem, investmentDetail }) => {
-  const [quantity, setQuantity] = useState<number>(1);
-  const [unit, setUnit] = useState<'gr' | 'oz'>('gr');
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = Number(e.target.value);
-    setQuantity(value);
-  };
-
-  const handleUnitChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    const value = e.target.value as 'gr' | 'oz';
-    setUnit(value);
-  };
-
-  const getConversionFactor = () => {
-    return unit === 'gr' ? 1 : 0.035274; // 1 gr = 0.035274 oz
-  };
+const GemsListCard: React.FC<GemsCardProps> = ({ gem }) => {
+  const {
+    quantity,
+    unit,
+    handleChange,
+    handleUnitChange,
+    calculatedPrice,
+    calculatedWeight
+  } = useGemLogic(gem);
 
   return (
     <CardContent className="p-0 flex w-full max-h-[176px]">
@@ -45,27 +30,24 @@ const GemsListCard: React.FC<Props> = ({ gem, investmentDetail }) => {
           <section className="flex justify-between items-end gap-1">
             <article className="flex justify-between border rounded-[.5rem] font-space_grotesk w-36 h-10 items-center overflow-hidden">
               <input
-                type="number"
+                type="text"
                 min="1"
                 value={quantity}
                 onChange={handleChange}
-                className="w-full focus:outline-none flex flex-col justify-between px-2 font-space_grotesk h-10 items-center text-sm"
+                className="w-full focus:outline-none flex flex-col justify-between text-right px-2 font-space_grotesk h-10 items-center text-sm"
               />
               <p className="h-full flex items-center">
-                <span className="px-1 text-xs">tokens</span>
+                <span className="px-1 text-xs text-start">tokens</span>
               </p>
             </article>
             <p className="mb-3">=</p>
-            <article className="flex justify-between border rounded-[.5rem] font-space_grotesk w-36 h-10 items-center text-sm overflow-hidden">
-              <p className="bg-gray-200 h-full flex items-center">
-                <span className="px-2">$ </span>
-              </p>
-              <p className="px-2">{(quantity * 50).toFixed(2)}</p>
+            <article className="flex justify-between border rounded-[.5rem] font-space_grotesk w-32 h-10 items-center text-sm overflow-hidden bg-gray-200">
+              <p className="px-2 w-full text-center"> $ {calculatedPrice}</p>
             </article>
             <p className="mb-3">=</p>
             <article className="flex justify-between border rounded-[.5rem] font-space_grotesk w-36 h-10 items-center text-sm overflow-hidden">
-              <p className='px-1'>{(quantity * gem.tokenGrams * getConversionFactor()).toFixed(4)}</p>
-              <select value={unit} onChange={handleUnitChange} className="bg-gray-200 h-full flex items-center">
+              <p className='px-1'>{calculatedWeight}</p>
+              <select value={unit} onChange={handleUnitChange} className="bg-gray-200 h-full flex items-center px-1">
               <option value="gr">gr</option>
               <option value="oz">oz</option>
             </select>
