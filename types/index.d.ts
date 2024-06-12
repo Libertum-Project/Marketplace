@@ -59,3 +59,19 @@ export interface User {
   publishedProperties: Property[];
   investedProperties: Property[];
 }
+
+export type Gem = {
+  id: number;
+  name: string;
+  image: string;
+  pricePerGram: number;
+  tokenGrams: number;
+  description: string;
+};
+
+export type GemsCardProps = {
+  gem: Gem;
+  investmentDetail?: boolean;
+}
+
+export type WeightUnitType = 'gr' | 'oz';

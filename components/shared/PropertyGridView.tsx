@@ -1,8 +1,9 @@
 import Link from 'next/link';
 
 import InvestmentDetail from '../Dashboard/Investments/InvestmentDetail';
-import { Accordion, AccordionItem, AccordionContent } from '../ui/accordion';
+import { Accordion, AccordionItem, AccordionContent, AccordionTrigger } from '../ui/accordion';
 import { CardContent, CardFooter } from '../ui/card';
+import { Button } from '@/components/ui/button';
 
 import LikeProperty from './LikeProperty';
 import PropertyCardButton from './PropertyCardButton';
@@ -54,8 +55,7 @@ const PropertyGridView = ({ property, btnTitle, investmentDetail = false, isTest
               </div>
 
               <p className="px-4 py-1 bg-libertumGreen bg-opacity-10 rounded-[50px] border border-libertumGreen font-space_grotesk text-libertumGreen text-xs font-bold flex items-center justify-center h-fit whitespace-nowrap">
-                $
-                {property.totalValuation}
+                ${property.totalValuation}
               </p>
             </div>
 
@@ -79,7 +79,7 @@ const PropertyGridView = ({ property, btnTitle, investmentDetail = false, isTest
 
       <CardFooter className="w-full px-4">
         {investmentDetail ? (
-          <InvestmentDetail property={property} isTest={isTest}/>
+          <InvestmentDetail property={property} isTest={isTest} />
         ) : (
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value={`item-${property.id}`}>
@@ -90,6 +90,11 @@ const PropertyGridView = ({ property, btnTitle, investmentDetail = false, isTest
                   annualYield={property.annualYield}
                   repaymentDuration={property.tokenDurationMonths}
                 />
+                <AccordionTrigger>
+                  <Button className="w-full items-center justify-center h-fit font-bold hover:text-libertumGreen text-xl cursor-pointer">
+                  ︿
+                  </Button>
+                </AccordionTrigger>
               </AccordionContent>
 
               <PropertyCardButton btnTitle={btnTitle} propertyId={property.id} />
