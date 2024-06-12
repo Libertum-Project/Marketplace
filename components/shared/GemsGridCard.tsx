@@ -16,8 +16,12 @@ const GemsGridCard: React.FC<GemsCardProps> = ({ gem }) => {
     handleUnitChange,
     handleToggle,
     calculatedPrice,
-    calculatedWeight
+    calculatedWeight,
   } = useGemLogic(gem);
+
+  const handleCloseAccordion = () => {
+    handleToggle();
+  };
 
   return (
     <>
@@ -63,11 +67,11 @@ const GemsGridCard: React.FC<GemsCardProps> = ({ gem }) => {
             </article>
             <p className="mb-3">=</p>
             <article className="flex justify-between border rounded-[.5rem] font-space_grotesk w-28 h-10 items-center text-sm overflow-hidden">
-              <p className='px-1'>{calculatedWeight}</p>
+              <p className="px-1">{calculatedWeight}</p>
               <select value={unit} onChange={handleUnitChange} className="bg-gray-200 h-full flex items-center">
-              <option value="gr">gr</option>
-              <option value="oz">oz</option>
-            </select>
+                <option value="gr">gr</option>
+                <option value="oz">oz</option>
+              </select>
             </article>
           </section>
         </div>
@@ -93,7 +97,7 @@ const GemsGridCard: React.FC<GemsCardProps> = ({ gem }) => {
                   <TableBody>
                     <TableRow className="odd:bg-[#F5F5F5]">
                       <TableCell className="font-medium">Insurance Report:</TableCell>
-                      <TableCell className="text-opacity-80 flex">
+                      <TableCell className="flex text-opacity-80 justify-end">
                         <ServerImage
                           src="/assets/icons/download.svg"
                           alt="download document"
@@ -105,7 +109,7 @@ const GemsGridCard: React.FC<GemsCardProps> = ({ gem }) => {
                     </TableRow>
                     <TableRow className="odd:bg-[#F5F5F5]">
                       <TableCell className="font-medium">Custodial Report:</TableCell>
-                      <TableCell className="text-opacity-80">
+                      <TableCell className="flex text-opacity-80 justify-end">
                         <ServerImage
                           src="/assets/icons/download.svg"
                           alt="download document"
@@ -117,7 +121,7 @@ const GemsGridCard: React.FC<GemsCardProps> = ({ gem }) => {
                     </TableRow>
                     <TableRow className="odd:bg-[#F5F5F5]">
                       <TableCell className="font-medium">Insurance Document:</TableCell>
-                      <TableCell className="text-opacity-80">
+                      <TableCell className="flex text-opacity-80 justify-end">
                         <ServerImage
                           src="/assets/icons/download.svg"
                           alt="download document"
@@ -129,6 +133,14 @@ const GemsGridCard: React.FC<GemsCardProps> = ({ gem }) => {
                     </TableRow>
                   </TableBody>
                 </Table>
+                <AccordionTrigger>
+                  <Button
+                    onClick={handleCloseAccordion}
+                    className="w-full items-center justify-center font-bold hover:text-libertumGreen text-xl cursor-pointer"
+                  >
+                    ︿
+                  </Button>
+                </AccordionTrigger>
               </AccordionContent>
               <Button
                 variant="outline"
