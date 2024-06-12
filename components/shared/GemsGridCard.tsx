@@ -26,16 +26,13 @@ const GemsGridCard: React.FC<GemsCardProps> = ({ gem }) => {
   return (
     <>
       <CardContent className="p-0 relative">
-        <div className="h-[255px]">
+        <div className="h-[255px] flex justify-center">
           <ServerImage
-            className="w-full"
             src={gem.image}
             alt={gem.name}
             width={310}
             height={250}
-            style={{
-              height: '100%',
-            }}
+            className='h-auto'
           />
         </div>
 
