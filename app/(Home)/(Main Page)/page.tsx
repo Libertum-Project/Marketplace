@@ -1,4 +1,4 @@
-import AllProperties from '@/components/Home/AllProperties';
+import { AllItems } from '@/components/Home/AllItems'; 
 
 import Hero from './Hero/hero';
 
@@ -7,7 +7,7 @@ const Home = () => {
     <div>
       <Hero />
       <div className="md:max-w-[75rem] m-auto">
-        <AllProperties showFilters={true} />
+        <AllItems showFilters={true} />
       </div>
     </div>
   );
