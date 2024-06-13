@@ -1,7 +1,9 @@
 'use client';
+import Link from 'next/link';
+
 import { NavBar } from '@/components/Navbar/NavBar';
 import Footer from '@/components/Footer/Footer';
-import Link from 'next/link';
+
 import css from './not-found.module.css';
 
 export default function NotFound() {

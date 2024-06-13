@@ -7,11 +7,7 @@ import { Calendar as CalendarIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 
 const DatePicker = () => {
   const [date, setDate] = React.useState<Date>();
@@ -22,7 +18,7 @@ const DatePicker = () => {
           variant={'outline'}
           className={cn(
             'w-full justify-start text-left font-normal bg-white rounded-[5px] border border-slate-200 placeholder:text-slate-400 cursor-pointer',
-            !date && 'text-muted-foreground'
+            !date && 'text-muted-foreground',
           )}
         >
           <CalendarIcon className="mr-2 h-4 w-4" />

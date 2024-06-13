@@ -18,29 +18,20 @@ async function createGroups(propertyContractAddress: string, tokenIds: any) {
   const groups = await Promise.all(
     Object.entries(mintTimeMap).map(async ([mintTimeString, tokenIds]) => {
       const mintTime = new Date(mintTimeString);
-      const numberOfClaims = await getNumberOfClaims(
-        propertyContractAddress,
-        tokenIds[0]
-      );
+      const numberOfClaims = await getNumberOfClaims(propertyContractAddress, tokenIds[0]);
 
-      const claimableAmount = await getClaimableAmount(
-        propertyContractAddress,
-        tokenIds
-      );
+      const claimableAmount = await getClaimableAmount(propertyContractAddress, tokenIds);
 
-      const nextClaimTime = await getNextClaimableTime(
-        propertyContractAddress,
-        tokenIds
-      );
+      const nextClaimTime = await getNextClaimableTime(propertyContractAddress, tokenIds);
 
       return {
         tokens: tokenIds,
         mintTime,
         numberOfClaims,
         claimableAmount,
-        nextClaimTime
+        nextClaimTime,
       };
-    })
+    }),
   );
 
   return groups;

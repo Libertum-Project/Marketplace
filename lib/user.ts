@@ -1,4 +1,5 @@
 const secretKey = process.env.NEXT_PUBLIC_SECRET_KEY;
+const serverURL = process.env.NEXT_PUBLIC_SERVER_URL;
 
 export const likeProperty = async (
   address: string,
@@ -7,14 +8,14 @@ export const likeProperty = async (
 ) => {
   if (address) {
     await fetch(
-      ` https://libertum--marketplace.azurewebsites.net/users/${address}/favorite-properties/${id}`,
+      `${serverURL}/users/${address}/favorite-properties/${id}`,
       {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${secretKey}`,
           Accept: 'application/json',
-          'Content-Type': 'application/json;charset=utf-8',
-        },
+          'Content-Type': 'application/json;charset=utf-8'
+        }
       }
     );
   }

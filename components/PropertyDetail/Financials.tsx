@@ -1,8 +1,11 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useRef } from 'react';
+
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import { Slider } from '@/components/ui/slider';
+
 import ColumnChart from './charts/ColumnChart';
+import { Input } from '../ui/input';
 
 const Financials: React.FC<{
   propertyPrice: number;
@@ -11,33 +14,34 @@ const Financials: React.FC<{
   repaymentDuration: number;
   selectedTokens: number;
   setSelectedTokens: React.Dispatch<React.SetStateAction<number>>;
-}> = ({
-  propertyPrice,
-  totalShares,
-  annualYield,
-  repaymentDuration,
-  selectedTokens,
-  setSelectedTokens
-}) => {
-  const proyectedRentalYield = annualYield / 100;
-  const tokenPrice = propertyPrice / totalShares;
-  const investment = tokenPrice * selectedTokens;
-  const rentalIncomePerToken = tokenPrice * proyectedRentalYield;
-  const annualRentalIncome = investment * rentalIncomePerToken;
-  const monthlyRentalIncome = annualRentalIncome / 12;
-  const annualCapitalRepayment = investment / (repaymentDuration / 12);
-  const monthlyCapitalRepaymentPerToken =
-    investment / totalShares / repaymentDuration;
-  const monthlyCapitalRepayment = annualCapitalRepayment / 12;
-  const annualRepayment = annualCapitalRepayment + annualRentalIncome;
-  const monthlyRepayment = annualRepayment / 12;
+}> = ({ propertyPrice, totalShares, annualYield, repaymentDuration, selectedTokens, setSelectedTokens }) => {
+  const projectedRentalYield = annualYield / 100;
+  const tokenPrice = 50;
+  const investment = selectedTokens * tokenPrice;
+  const annualIncomePerToken = tokenPrice * projectedRentalYield;
+  const monthlyIncomePerToken = annualIncomePerToken / 12;
+  const annualCapitalRepaymentPerToken = ((propertyPrice / repaymentDuration) * 12) / totalShares;
+  const monthlyCapitalRepayment = annualCapitalRepaymentPerToken / 12;
+  const monthlyReturnPerToken = monthlyIncomePerToken + monthlyCapitalRepayment;
+  const annualReturnPerToken = annualIncomePerToken + annualCapitalRepaymentPerToken;
 
-  const handleSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = parseInt(event.target.value, 10);
-    setSelectedTokens(newValue);
-  };
-  const handleSliderValueChange: (newValue: number[]) => void = (newValue) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleSliderValueChange = (newValue: number[]) => {
     setSelectedTokens(newValue[0]);
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+
+  const handleTokenValueChange = (value: number) => {
+    if (isNaN(value) || value <= 0) {
+      setSelectedTokens(1);
+    } else if (value > totalShares) {
+      setSelectedTokens(totalShares);
+    } else {
+      setSelectedTokens(value);
+    }
   };
 
   return (
@@ -47,13 +51,7 @@ const Financials: React.FC<{
           <TableBody className="border rounded-[5px]">
             <TableRow className="odd:bg-[#F5F5F5]">
               <TableCell className="font-medium">Token Price:</TableCell>
-              <TableCell className="text-opacity-80">
-                $
-                {tokenPrice.toLocaleString('en-US', {
-                  minimumFractionDigits: 2,
-                  maximumFractionDigits: 2
-                })}
-              </TableCell>
+              <TableCell className="text-opacity-80">${tokenPrice.toLocaleString('en-US')}</TableCell>
             </TableRow>
             <TableRow className="odd:bg-[#F5F5F5]">
               <TableCell className="font-medium">Total Tokens:</TableCell>
@@ -66,50 +64,42 @@ const Financials: React.FC<{
           <TableBody className="border rounded-[5px]">
             <TableRow className="odd:bg-[#F5F5F5]">
               <TableCell className="font-medium">Market Value:</TableCell>
-              <TableCell className="text-opacity-80">
-                ${propertyPrice.toLocaleString('en-US')}
-              </TableCell>
+              <TableCell className="text-opacity-80">${propertyPrice.toLocaleString('en-US')}</TableCell>
             </TableRow>
             <TableRow className="odd:bg-[#F5F5F5]">
-              <TableCell className="font-medium ">Income per Token:</TableCell>
-              <TableCell className="text-opacity-80">
-                $
-                {rentalIncomePerToken.toLocaleString('en-US', {
-                  minimumFractionDigits: 2,
-                  maximumFractionDigits: 2
-                })}
-              </TableCell>
+              <TableCell className="font-medium ">Rental Yield:</TableCell>
+              <TableCell className="text-opacity-80">{annualYield.toLocaleString('en-US')}%</TableCell>
             </TableRow>
           </TableBody>
         </Table>
       </div>
 
       <div className="w-full">
-        <ColumnChart
-          type="ColumnChart"
-          width="400"
-          height="400"
-          monthlyIncome={monthlyRentalIncome}
-        />
-        <p className="text-slate-400 text-center">
-          Accumulative Rental Income per Month
-        </p>
+        <ColumnChart type="ColumnChart" width="400" height="400" monthlyIncome={monthlyIncomePerToken} />
+        <p className="text-slate-400 text-center">Accumulative Rental Income per Month</p>
       </div>
 
       <div>
         <div className="flex gap-6 items-center justify-between mt-6 mb-6">
           <Slider
+            className="cursor-pointer"
             defaultValue={[10]}
             value={[selectedTokens]}
             max={totalShares}
             min={1}
-            step={1}
+            step={10}
             onValueChange={handleSliderValueChange}
-            onChange={handleSliderChange}
           />
-          <p className="flex-shrink-0 px-4 py-1 bg-libertumGreen bg-opacity-20 rounded-[50px] border border-libertumGreen items-center justify-center text-libertumGreen text-sm font-semibold">
-            {selectedTokens} Tokens
-          </p>
+          <div className="flex gap-2 px-4 py-1 bg-libertumGreen bg-opacity-20 rounded-[50px] border border-libertumGreen items-center justify-center text-libertumGreen text-sm font-semibold">
+            <Input
+              value={selectedTokens}
+              type="number"
+              className="p-3 text-center outline-none h-0 max-w-[4.5rem] w-20 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none caret-libertumGreen"
+              onChange={(e) => handleTokenValueChange(+e.target.valueAsNumber)}
+              ref={inputRef}
+            />
+            Tokens
+          </div>
         </div>
 
         <div className="flex flex-col md:flex-row gap-4">
@@ -117,45 +107,23 @@ const Financials: React.FC<{
             <TableBody className="border rounded-[5px]">
               <TableRow className="odd:bg-[#F5F5F5]">
                 <TableCell className="font-medium">Investment:</TableCell>
+                <TableCell className="text-opacity-80">${investment.toLocaleString('en-US')}</TableCell>
+              </TableRow>
+              <TableRow className="odd:bg-[#F5F5F5]">
+                <TableCell className="font-medium">Annual Income:</TableCell>
                 <TableCell className="text-opacity-80">
-                  $
-                  {investment.toLocaleString('en-US', {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                  })}
+                  ${(annualIncomePerToken * selectedTokens).toLocaleString('en-US')}
                 </TableCell>
               </TableRow>
               <TableRow className="odd:bg-[#F5F5F5]">
-                <TableCell className="font-medium">
-                  Annual Rental Income:
-                </TableCell>
+                <TableCell className="font-medium">Monthly Income:</TableCell>
                 <TableCell className="text-opacity-80">
-                  $
-                  {annualRentalIncome.toLocaleString('en-US', {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                  })}
+                  ${(monthlyIncomePerToken * selectedTokens).toLocaleString('en-US')}
                 </TableCell>
               </TableRow>
               <TableRow className="odd:bg-[#F5F5F5]">
-                <TableCell className="font-medium">
-                  Monthly Rental Income:
-                </TableCell>
-                <TableCell className="text-opacity-80">
-                  $
-                  {monthlyRentalIncome.toLocaleString('en-US', {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                  })}
-                </TableCell>
-              </TableRow>
-              <TableRow className="odd:bg-[#F5F5F5]">
-                <TableCell className="font-medium whitespace-nowrap">
-                  Capital Repayment Duration:
-                </TableCell>
-                <TableCell className="text-opacity-80">
-                  {repaymentDuration}
-                </TableCell>
+                <TableCell className="font-medium whitespace-nowrap">Capital Repayment Duration:</TableCell>
+                <TableCell className="text-opacity-80">{repaymentDuration} months</TableCell>
               </TableRow>
             </TableBody>
           </Table>
@@ -163,50 +131,25 @@ const Financials: React.FC<{
           <Table className="h-full">
             <TableBody className="border rounded-[5px]">
               <TableRow className="odd:bg-[#F5F5F5]">
-                <TableCell className="font-medium">
-                  Monthly Rep. per Token:
-                </TableCell>
+                <TableCell className="font-medium">Monthly Rep. per Token:</TableCell>
+                <TableCell className="text-opacity-80">${monthlyCapitalRepayment.toLocaleString('en-US')}</TableCell>
+              </TableRow>
+              <TableRow className="odd:bg-[#F5F5F5]">
+                <TableCell className="font-medium">Annual Cap Repayment:</TableCell>
                 <TableCell className="text-opacity-80">
-                  $
-                  {monthlyCapitalRepaymentPerToken.toLocaleString('en-US', {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                  })}
+                  ${(annualCapitalRepaymentPerToken * selectedTokens).toLocaleString('en-US')} / year
                 </TableCell>
               </TableRow>
               <TableRow className="odd:bg-[#F5F5F5]">
-                <TableCell className="font-medium">
-                  Annual Cap Repayment:
-                </TableCell>
+                <TableCell className="font-medium">Monthly Return:</TableCell>
                 <TableCell className="text-opacity-80">
-                  $
-                  {annualCapitalRepayment.toLocaleString('en-US', {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                  })}{' '}
-                  / year
+                  ${(monthlyReturnPerToken * selectedTokens).toLocaleString('en-US')}
                 </TableCell>
               </TableRow>
               <TableRow className="odd:bg-[#F5F5F5]">
-                <TableCell className="font-medium">
-                  Monthly Repayment:
-                </TableCell>
+                <TableCell className="font-medium">Annual Return:</TableCell>
                 <TableCell className="text-opacity-80">
-                  $
-                  {monthlyRepayment.toLocaleString('en-US', {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                  })}
-                </TableCell>
-              </TableRow>
-              <TableRow className="odd:bg-[#F5F5F5]">
-                <TableCell className="font-medium">Annual Repayment:</TableCell>
-                <TableCell className="text-opacity-80">
-                  $
-                  {annualRepayment.toLocaleString('en-US', {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                  })}
+                  ${(annualReturnPerToken * selectedTokens).toLocaleString('en-US')}
                 </TableCell>
               </TableRow>
             </TableBody>

@@ -1,30 +1,31 @@
-import css from './hero.module.css';
 import Link from 'next/link';
+
 import { ServerImage } from '@/components/shared/ServerImage';
+import VideoBackground from './VideoBackground';
+
+import css from './hero.module.css';
 
 const Hero = () => {
   return (
     <div className={css.heroContainer}>
       <div className="max-lg:hidden">
-        <video autoPlay muted loop className={css.video}>
-          <source src="./bg-video-1.mp4" type="video/mp4" />
-        </video>
+        <VideoBackground />
       </div>
 
       <div className={`${css.heroCommunity} max-lg:bg-primary-gradient z-[-1]`}>
         <div className={css.textCommunity}>
-          <h1>The Future of Real Estate Investing is Now</h1>
+          <h1>The Future of Real-World Asset Investing is Now</h1>
           <div className={css.paragraphsCommunity}>
             <p>
-              From residential havens to commercial hubs, each property presents
-              unique opportunities for growth and prosperity.
+              An all-encompassing, scalable, and licensed infrastructure tailored for real-world assets with access to
+              new financial opportunities.
             </p>
           </div>
         </div>
 
         <div className="hidden lg:flex items-center justify-end">
           <ServerImage
-            src="/assets/photoMarket.png"
+            src="/assets/photoMarketHero.png"
             alt="N"
             width="336"
             height="336"
@@ -38,10 +39,7 @@ const Hero = () => {
               <p>Featured Properties</p>
             </div>
 
-            <Link
-              href="/allFeatured"
-              className={css.featuredProperties__button}
-            >
+            <Link href="/allFeatured" className={css.featuredProperties__button}>
               See all featured
             </Link>
           </div>

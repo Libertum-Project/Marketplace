@@ -1,14 +1,7 @@
 import React from 'react';
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger
-} from '@/components/ui/tooltip';
-
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import UserForm from '@/components/Dashboard/UserForm';
 
 const page = () => {
@@ -17,7 +10,7 @@ const page = () => {
       <Tabs defaultValue="info">
         <div className="flex justify-center mt-10">
           <div className="w-auto">
-            <TabsList className="grid w-full grid-cols-3 bg-gray-950 bg-opacity-5 rounded-[58px]">
+            <TabsList className="grid w-full grid-cols-2 bg-gray-950 bg-opacity-5 rounded-[58px]">
               <TooltipProvider>
                 <Tooltip delayDuration={0}>
                   <TooltipTrigger>
@@ -41,23 +34,6 @@ const page = () => {
               >
                 Basic Information
               </TabsTrigger>
-
-              <TooltipProvider>
-                <Tooltip delayDuration={0}>
-                  <TooltipTrigger>
-                    <TabsTrigger
-                      disabled
-                      value="auth"
-                      className="border-0 data-[state=active]:rounded-[80px] data-[state=active]:shadow data-[state=active]:border-black data-[state=active]:border-opacity-10 data-[state=active]:bg-white"
-                    >
-                      2-Factor Auth
-                    </TabsTrigger>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>Coming Soon..</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
             </TabsList>
           </div>
         </div>

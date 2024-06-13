@@ -1,7 +1,8 @@
 'use client';
-import { getProperties } from '@/app/utils/fetchProperties';
 import { useAddress } from '@thirdweb-dev/react';
 import { useState, useEffect } from 'react';
+
+import { getProperties } from '@/app/utils/fetchProperties';
 import PropertyCard from '@/components/shared/PropertyCard';
 import { CardContent } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -12,6 +13,7 @@ import {
   TooltipProvider,
   TooltipTrigger
 } from '@/components/ui/tooltip';
+import { Property } from '@/types/index';
 
 const Investments = () => {
   const userWalletAddress: string | undefined = useAddress();
@@ -43,7 +45,7 @@ const Investments = () => {
 
   return (
     <>
-      <div className="p-5 grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-6 w-full sm:investment-page-width justify-start items-start">
+      <div className="p-5 grid max-[768px]:grid-cols-1 max-[1200px]:grid-cols-1 min-[1201px]:grid-cols-2 max-[1499px]:grid-cols-2 min-[1500px]:grid-cols-3 gap-6 w-full sm:investment-page-width justify-start items-start">
         {loading ? (
           // Show skeleton cards when loading
           [...Array(3)].map((_, index) => (
@@ -74,7 +76,7 @@ const Investments = () => {
           ))
         ) : // Render property cards when properties are available
         properties.length > 0 ? (
-          properties.map((property: any) => (
+          properties.map((property: Property) => (
             <PropertyCard
               property={property}
               key={property.id}
@@ -83,28 +85,31 @@ const Investments = () => {
             />
           ))
         ) : (
-          // Show test property when user does not have any properties
           <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger>
-                {demoProperties.slice(0, 1).map((property: any) => (
-                  <PropertyCard
-                    property={property}
-                    key={property.id}
-                    btnTitle="View Investment Details"
-                    investmentDetail={true}
-                  />
-                ))}
-              </TooltipTrigger>
-              <TooltipContent
-                side="bottom"
-                className="bg-libertumOrange rounded-[5px] "
-              >
-                <p className="text-white font-space_grotesk font-semibold text-sm py-2">
-                  This is an example of how you will see your investments.
-                </p>
-              </TooltipContent>
-            </Tooltip>
+            {demoProperties
+              .filter(
+                (property: Property) => property.id === 1 || property.id === 2
+              )
+              .map((property: Property) => (
+                <Tooltip key={property.id}>
+                  <TooltipTrigger>
+                    <PropertyCard
+                      property={property}
+                      btnTitle="View Investment Details"
+                      investmentDetail={true}
+                      isTest={true}
+                    />
+                  </TooltipTrigger>
+                  <TooltipContent
+                    side="bottom"
+                    className="bg-libertumOrange rounded-[5px]"
+                  >
+                    <p className="text-white font-space_grotesk font-semibold text-sm py-2">
+                      This is an example of how you will see your investments.
+                    </p>
+                  </TooltipContent>
+                </Tooltip>
+              ))}
           </TooltipProvider>
         )}
       </div>

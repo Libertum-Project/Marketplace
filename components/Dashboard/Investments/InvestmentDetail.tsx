@@ -1,19 +1,17 @@
-import { Button } from '@/components/ui/button';
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogTrigger
-} from '@/components/ui/dialog';
-import { ServerImage } from '../../shared/ServerImage';
-import InvestmentDetailTabs from './InvestmentDetailTabs';
 import Link from 'next/link';
+
+import { Button } from '@/components/ui/button';
+import { Dialog, DialogClose, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import { ServerImage } from '../../shared/ServerImage';
+
+import InvestmentDetailTabs from './InvestmentDetailTabs';
 
 interface Props {
   property: any;
+  isTest?: boolean;
 }
 
-const InvestmentDetail = ({ property }: Props) => {
+const InvestmentDetail = ({ property, isTest }: Props) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -23,36 +21,28 @@ const InvestmentDetail = ({ property }: Props) => {
                     hover:text-white
                     bg-[#00062F] text-white"
           style={{
-            justifyContent: 'center'
+            justifyContent: 'center',
           }}
         >
           View Investment Details
         </Button>
       </DialogTrigger>
-      <DialogContent className="bg-white p-0 border-0 rounded-[5px] max-w-[1100px]">
+      <DialogContent className="bg-white p-0 border-0 rounded-[5px] max-w-[1100px] max-sm:h-screen max-h-[90%] overflow-y-scroll">
         <div className="flex max-sm:flex-col">
-          <div className="bg-slate-900 py-8 px-6 max-sm:p-3 max-w-[372px]">
-            <DialogClose className="text-white mb-6 max-sm:hidden">
-              <ServerImage
-                src="/assets/back.svg"
-                alt="back"
-                width={10}
-                height={10}
-              />
+          <div className="bg-slate-900 py-8 px-6 max-sm:p-3 max-sm:w-full">
+            <DialogClose className="text-white mb-6">
+              <ServerImage src="/assets/back.svg" alt="back" width={10} height={10} />
             </DialogClose>
 
             <div className="flex flex-col">
-              <p className="text-zinc-300 text-2xl font-bold font-space_grotesk">
-                {property.location.address}
-              </p>
+              <p className="text-zinc-300 text-2xl font-bold font-space_grotesk">{property.location.address}</p>
               <p className="text-zinc-300 text-base font-normal font-space_grotesk">
-                {property.location.city},{property.location.region},
-                {property.location.country}
+                {property.location.city},{property.location.region},{property.location.country}
               </p>
 
               <ServerImage
                 className="rounded-[5px] mt-[10px] max-sm:hidden"
-                src={property.highlight_image}
+                src={property.highlightImage}
                 alt="property"
                 width={324}
                 height={124}
@@ -62,19 +52,10 @@ const InvestmentDetail = ({ property }: Props) => {
             <div className="mt-[30px] flex flex-col gap-2 max-sm:hidden">
               <Link href="/details?id=1">
                 <div className="p-4 px-16 bg-teal-500 bg-opacity-30 rounded-[5px] border border-teal-500 justify-around items-center flex gap-6">
-                  <ServerImage
-                    src="/assets/icons/market.svg"
-                    alt="marketplace"
-                    width={30}
-                    height={30}
-                  />
+                  <ServerImage src="/assets/icons/market.svg" alt="marketplace" width={30} height={30} />
                   <div className="flex flex-col justify-center items-center">
-                    <p className="text-center text-slate-400 text-[11px] font-medium">
-                      See property on
-                    </p>
-                    <p className="text-white text-base font-bold font-space_grotesk uppercase">
-                      Marketplace
-                    </p>
+                    <p className="text-center text-slate-400 text-[11px] font-medium">See property on</p>
+                    <p className="text-white text-base font-bold font-space_grotesk uppercase">Marketplace</p>
                   </div>
                 </div>
               </Link>
@@ -82,37 +63,20 @@ const InvestmentDetail = ({ property }: Props) => {
               <Dialog>
                 <DialogTrigger>
                   <div className="p-4 px-16 bg-teal-500 bg-opacity-30 rounded-[5px] border border-teal-500 justify-around items-center flex gap-6">
-                    <ServerImage
-                      src="/assets/icons/trade.svg"
-                      alt="marketplace"
-                      width={30}
-                      height={30}
-                    />
+                    <ServerImage src="/assets/icons/trade.svg" alt="marketplace" width={30} height={30} />
                     <div className="flex flex-col justify-center items-center">
-                      <p className="text-center text-slate-400 text-[11px] font-medium">
-                        Sell your tokens in
-                      </p>
-                      <p className="text-white text-base font-bold font-space_grotesk uppercase">
-                        p2p Market
-                      </p>
+                      <p className="text-center text-slate-400 text-[11px] font-medium">Sell your tokens in</p>
+                      <p className="text-white text-base font-bold font-space_grotesk uppercase">p2p Market</p>
                     </div>
                   </div>
                 </DialogTrigger>
                 <DialogContent>
                   <div className=" p-0 border-0 rounded-[5px] max-w-[1100px]">
                     <div className="">
-                      <h2 className=" font-space_grotesk text-[26px] font-semibold ">
-                        Coming Soon:{' '}
-                      </h2>
-                      <ServerImage
-                        src="/assets/tradeLIGHT.svg"
-                        alt="trade image logo"
-                        width={400}
-                        height={200}
-                      />
+                      <h2 className=" font-space_grotesk text-[26px] font-semibold ">Coming Soon: </h2>
+                      <ServerImage src="/assets/tradeLIGHT.svg" alt="trade image logo" width={400} height={200} />
                       <p className=" font-montserrat text-[16px]">
-                        A secondary marketplace providing additional financial
-                        opportunities for investors
+                        A secondary marketplace providing additional financial opportunities for investors
                       </p>
                     </div>
                   </div>
@@ -122,44 +86,27 @@ const InvestmentDetail = ({ property }: Props) => {
               <Dialog>
                 <DialogTrigger>
                   <div className="p-4 px-16 bg-teal-500 bg-opacity-30 rounded-[5px] border border-teal-500 justify-around items-center flex gap-6">
-                    <ServerImage
-                      src="/assets/icons/borrow.svg"
-                      alt="marketplace"
-                      width={35}
-                      height={35}
-                    />
+                    <ServerImage src="/assets/icons/borrow.svg" alt="marketplace" width={35} height={35} />
                     <div className="flex flex-col justify-center items-center">
-                      <p className="text-center text-slate-400 text-[11px] font-medium">
-                        Borrow / Lend
-                      </p>
-                      <p className="text-white text-base font-bold font-space_grotesk uppercase">
-                        pools
-                      </p>
+                      <p className="text-center text-slate-400 text-[11px] font-medium">Borrow / Lend</p>
+                      <p className="text-white text-base font-bold font-space_grotesk uppercase">pools</p>
                     </div>
                   </div>
                 </DialogTrigger>
                 <DialogContent>
                   <div className=" p-0 border-0 rounded-[5px] max-w-[1100px]">
                     <div className="">
-                      <h2 className=" font-space_grotesk text-[26px] font-semibold ">
-                        Coming Soon:{' '}
-                      </h2>
-                      <ServerImage
-                        src="/assets/borrowLIGHT.svg"
-                        alt="trade image logo"
-                        width={400}
-                        height={200}
-                      />
+                      <h2 className=" font-space_grotesk text-[26px] font-semibold ">Coming Soon: </h2>
+                      <ServerImage src="/assets/borrowLIGHT.svg" alt="trade image logo" width={400} height={200} />
                       <p className=" font-montserrat text-[16px]">
-                        Lending protocol with brick and mortar real estate as
-                        collateral
+                        Lending protocol with brick and mortar real estate as collateral
                       </p>
                     </div>
                   </div>
                 </DialogContent>
               </Dialog>
               <a
-                href={`https://testnet.bscscan.com/token/${property.contract_address}`}
+                href={`https://base-sepolia.blockscout.com/address/${property.contractAddress}`}
                 target="_blank"
                 className="text-white text-base font-bold font-space_grotesk uppercase"
               >
@@ -170,18 +117,18 @@ const InvestmentDetail = ({ property }: Props) => {
                     width={24}
                     height={24}
                   />
-                  <div className="flex flex-col justify-center items-center">
-                    contract
-                  </div>
+                  <div className="flex flex-col justify-center items-center">contract</div>
                 </div>
               </a>
             </div>
           </div>
 
-          <div className="sm:py-8 sm:px-12 flex-1 p-3 sm:pb-0">
+          <div className="sm:py-8 sm:px-12 flex-1 p-3 sm:pb-0 bg-white">
             <InvestmentDetailTabs
-              propertyAddress={property.contract_address}
-              durationInMonths={property.listing_duration_months}
+              propertyAddress={property.contractAddress}
+              durationInMonths={property.listingDurationMonths}
+              isTest={isTest}
+              property={property}
             />
           </div>
         </div>

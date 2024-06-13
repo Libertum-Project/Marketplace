@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { createContext } from "react";
+import { createContext } from 'react';
 
 interface MessageBoxContextProps {
   showFailMessage: boolean;
@@ -26,9 +26,9 @@ interface MessageBoxContextProps {
 const MessageBoxContext = createContext<MessageBoxContextProps>({
   showFailMessage: false,
   setShowFailMessage: () => {},
-  errorMessage: "",
+  errorMessage: '',
   setErrorMessage: () => {},
-  networkScanURL: "",
+  networkScanURL: '',
   setNetworkScanURL: () => {},
   showPendingMessage: false,
   setShowPendingMessage: () => {},

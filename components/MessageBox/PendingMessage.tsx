@@ -1,5 +1,6 @@
-import css from './MessageBox.module.css';
 import Image from 'next/image';
+
+import css from './MessageBox.module.css';
 import pending from './timeIcon.svg';
 
 interface PendingMessageProps {

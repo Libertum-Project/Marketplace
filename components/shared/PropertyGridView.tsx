@@ -1,23 +1,23 @@
+import Link from 'next/link';
+
 import InvestmentDetail from '../Dashboard/Investments/InvestmentDetail';
-import { Accordion, AccordionItem, AccordionContent } from '../ui/accordion';
+import { Accordion, AccordionItem, AccordionContent, AccordionTrigger } from '../ui/accordion';
 import { CardContent, CardFooter } from '../ui/card';
+import { Button } from '@/components/ui/button';
+
 import LikeProperty from './LikeProperty';
 import PropertyCardButton from './PropertyCardButton';
 import PropertyDetailTable from './PropertyDetailTable';
 import { ServerImage } from './ServerImage';
-import Link from 'next/link';
 
 interface Props {
   property: any;
   btnTitle?: string;
   btnLink?: string;
   investmentDetail?: boolean;
+  isTest?: boolean;
 }
-const PropertyGridView = ({
-  property,
-  btnTitle,
-  investmentDetail = false
-}: Props) => {
+const PropertyGridView = ({ property, btnTitle, investmentDetail = false, isTest }: Props) => {
   return (
     <>
       <CardContent className="p-0 relative">
@@ -26,19 +26,19 @@ const PropertyGridView = ({
           href={{
             pathname: '/details',
             query: {
-              id: property.id
-            }
+              id: property.id,
+            },
           }}
         >
           <div className="h-[255px]">
             <ServerImage
               className="w-full"
-              src={property.highlight_image}
+              src={property.highlightImage}
               alt="like"
               width={310}
               height={250}
               style={{
-                height: '100%'
+                height: '100%',
               }}
             />
           </div>
@@ -55,41 +55,22 @@ const PropertyGridView = ({
               </div>
 
               <p className="px-4 py-1 bg-libertumGreen bg-opacity-10 rounded-[50px] border border-libertumGreen font-space_grotesk text-libertumGreen text-xs font-bold flex items-center justify-center h-fit whitespace-nowrap">
-                $
-                {property.total_valuation.toLocaleString('en-US', {
-                  minimumFractionDigits: 0,
-                  maximumFractionDigits: 0
-                })}{' '}
+                ${property.totalValuation}
               </p>
             </div>
 
             <div className="flex justify-between py-4">
               <div className="bg-neutral-100 rounded-[48px] text-black text-opacity-50 text-xs font-light capitalize p-3 flex items-center gap-[6px]">
-                <ServerImage
-                  src="/assets/hotel.svg"
-                  width={14}
-                  height={14}
-                  alt="image"
-                />
+                <ServerImage src="/assets/hotel.svg" width={14} height={14} alt="image" />
                 {property.category}
               </div>
               <div className="bg-neutral-100 rounded-[48px] text-black text-opacity-50 text-xs font-light capitalize p-3 flex items-center gap-[6px]">
-                <ServerImage
-                  src="/assets/filter2.svg"
-                  width={14}
-                  height={14}
-                  alt="image"
-                />
+                <ServerImage src="/assets/filter2.svg" width={14} height={14} alt="image" />
                 {property.location.country}
               </div>
               <div className="bg-neutral-100 rounded-[48px] text-black text-opacity-50 text-xs font-light capitalize p-3 flex items-center gap-[6px]">
-                <ServerImage
-                  src="/assets/filter3.svg"
-                  width={14}
-                  height={14}
-                  alt="image"
-                />
-                {property.annual_yield}%
+                <ServerImage src="/assets/filter3.svg" width={14} height={14} alt="image" />
+                {property.annualYield}%
               </div>
             </div>
           </div>
@@ -98,23 +79,25 @@ const PropertyGridView = ({
 
       <CardFooter className="w-full px-4">
         {investmentDetail ? (
-          <InvestmentDetail property={property} />
+          <InvestmentDetail property={property} isTest={isTest} />
         ) : (
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value={`item-${property.id}`}>
               <AccordionContent>
                 <PropertyDetailTable
-                  totalShares={property.total_shares}
-                  propertyPrice={property.total_valuation}
-                  annualYield={property.annual_yield}
-                  repaymentDuration={property.token_duration_months}
+                  totalShares={property.totalShares}
+                  propertyPrice={property.totalValuation}
+                  annualYield={property.annualYield}
+                  repaymentDuration={property.tokenDurationMonths}
                 />
+                <AccordionTrigger>
+                  <Button className="w-full items-center justify-center h-fit font-bold hover:text-libertumGreen text-xl cursor-pointer">
+                  ︿
+                  </Button>
+                </AccordionTrigger>
               </AccordionContent>
 
-              <PropertyCardButton
-                btnTitle={btnTitle}
-                propertyId={property.id}
-              />
+              <PropertyCardButton btnTitle={btnTitle} propertyId={property.id} />
             </AccordionItem>
           </Accordion>
         )}

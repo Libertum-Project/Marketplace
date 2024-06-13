@@ -1,6 +1,8 @@
-import css from './hero.module.css';
 import Link from 'next/link';
+
 import { ServerImage } from '@/components/shared/ServerImage';
+
+import css from './hero.module.css';
 
 const Hero = () => {
   return (
@@ -16,7 +18,8 @@ const Hero = () => {
           <h1>Featured Properties</h1>
           <div className={css.paragraphsCommunity}>
             <p>
-            Discover our latest featured properties offering unique opportunities for growth and prosperity, from residential havens to commercial hubs.
+              Discover our latest featured properties offering unique opportunities for growth and prosperity, from
+              residential havens to commercial hubs.
             </p>
           </div>
         </div>
@@ -30,7 +33,6 @@ const Hero = () => {
             className="cover mr-[-2rem] z-10"
             priority={true}
           /> */}
-
         </div>
       </div>
     </div>

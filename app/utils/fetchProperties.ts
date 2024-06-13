@@ -1,5 +1,6 @@
 const secretKey = process.env.NEXT_PUBLIC_SECRET_KEY;
-const requestOptions:any = {
+const serverURL = process.env.NEXT_PUBLIC_SERVER_URL;
+const requestOptions: any = {
   method: 'GET',
   cache: 'no-store',
   headers: {
@@ -8,17 +9,14 @@ const requestOptions:any = {
 };
 
 export async function getProperties() {
-  const data = await fetch(
-    'https://libertum--marketplace.azurewebsites.net/properties',
-    requestOptions
-  );
+  const data = await fetch(`${serverURL}/properties/`, requestOptions);
   const properties = await data.json();
   return properties;
 }
 
 export async function getFavouriteProperties(address: string) {
   const data = await fetch(
-    `https://libertum--marketplace.azurewebsites.net/users/${address}`,
+    `${serverURL}/users/${address}`,
     requestOptions
   );
   const properties = await data.json();
@@ -27,7 +25,7 @@ export async function getFavouriteProperties(address: string) {
 
 export async function getPropertyDetails(id: number) {
   const data = await fetch(
-    `https://libertum--marketplace.azurewebsites.net/properties/${id}`,
+    `${serverURL}/properties/${id}`,
     requestOptions
   );
   const property = await data.json();
@@ -51,7 +49,7 @@ export const filterProperties = (
       countryFilter.toLowerCase() === 'worldwide';
     const annualYieldMatch =
       annualYieldFilter === '' ||
-      parseFloat(property.annual_yield) >= parseFloat(annualYieldFilter);
+      parseFloat(property.annualYield) >= parseFloat(annualYieldFilter);
 
     return categoryMatch && countryMatch && annualYieldMatch;
   });

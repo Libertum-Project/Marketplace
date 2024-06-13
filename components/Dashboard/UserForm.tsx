@@ -3,28 +3,30 @@ import React, { useState, useEffect } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
+import { format } from 'date-fns';
+import { useAddress } from '@thirdweb-dev/react';
+
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
+  FormMessage
 } from '@/components/ui/form';
 import { formSchema } from '@/lib/validations';
 import { Input } from '@/components/ui/input';
-import { format } from 'date-fns';
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
 import {
   Popover,
   PopoverContent,
-  PopoverTrigger,
+  PopoverTrigger
 } from '@/components/ui/popover';
-import { useAddress } from '@thirdweb-dev/react';
 import { useToast } from '@/components/ui/use-toast';
 
 const UserForm = () => {
+  const serverURL = process.env.NEXT_PUBLIC_SERVER_URL;
   const [date, setDate] = useState<Date>();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -41,42 +43,39 @@ const UserForm = () => {
       address: '',
       city: '',
       postal: '',
-      country: '',
-    },
+      country: ''
+    }
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
     try {
       if (address) {
-        const response = await fetch(
-          `https://libertum--marketplace.azurewebsites.net/users/${address}`,
-          {
-            method: 'PATCH',
-            headers: {
-              Authorization: `Bearer ${secretKey}`,
-              Accept: 'application/json',
-              'Content-Type': 'application/json;charset=utf-8',
-            },
-            body: JSON.stringify({
-              first_name: values.fname,
-              last_name: values.lname,
-              email: values.email,
-              dob: date,
-              present_address: values.address,
-              city: values.city,
-              country: values.country,
-              postal_code: values.postal,
-            }),
-          }
-        );
+        const response = await fetch(`${serverURL}/users/${address}`, {
+          method: 'PATCH',
+          headers: {
+            Authorization: `Bearer ${secretKey}`,
+            Accept: 'application/json',
+            'Content-Type': 'application/json;charset=utf-8'
+          },
+          body: JSON.stringify({
+            firstName: values.fname,
+            lastName: values.lname,
+            email: values.email,
+            dob: date,
+            residentialAddress: values.address,
+            city: values.city,
+            country: values.country,
+            postalCode: values.postal
+          })
+        });
 
         if (response.ok) {
           toast({
             variant: 'default',
             className:
               'bg-[#00B3B5] text-white rounded-[5px] [data-state=open]:top-0',
-            title: 'Your profile is updated!',
+            title: 'Your profile is updated!'
           });
         }
       }
@@ -89,28 +88,25 @@ const UserForm = () => {
   const fetchUserData = async () => {
     try {
       if (address) {
-        const response = await fetch(
-          `https://libertum--marketplace.azurewebsites.net/users/${address}`,
-          {
-            method: 'GET',
-            headers: {
-              Authorization: `Bearer ${secretKey}`,
-              Accept: 'application/json',
-              'Content-Type': 'application/json;charset=utf-8',
-            },
+        const response = await fetch(`${serverURL}/users/${address}`, {
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${secretKey}`,
+            Accept: 'application/json',
+            'Content-Type': 'application/json;charset=utf-8'
           }
-        );
+        });
         if (response.ok) {
           const userData = await response.json();
 
           form.reset({
-            fname: userData.first_name,
-            lname: userData.last_name,
+            fname: userData.firstName,
+            lname: userData.lastName,
             email: userData.email,
-            address: userData.present_address,
+            address: userData.residentialAddress,
             city: userData.city,
-            postal: userData.postal_code,
-            country: userData.country,
+            postal: userData.postalCode,
+            country: userData.country
           });
           const date = userData.dob;
           setDate(date);

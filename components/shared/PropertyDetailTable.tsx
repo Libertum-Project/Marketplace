@@ -11,25 +11,15 @@ const PropertyDetailTable: React.FC<PropertyDetailTableProps> = ({
   annualYield,
   repaymentDuration,
 }) => {
-
-  const proyectedRentalYield = annualYield / 100;
-  const tokenPrice = propertyPrice / totalShares;
+  const projectedRentalYield = annualYield / 100;
+  const tokenPrice = 50;
   const investment = 1 * tokenPrice;
-  const rentalIncomePerToken = tokenPrice * proyectedRentalYield;
-  const annualRentalIncome = investment * rentalIncomePerToken;
-  const monthlyRentalIncome = annualRentalIncome / 12;
-  const annualCapitalRepayment = investment / (repaymentDuration / 12);
-  const monthlyCapitalRepaymentPerToken = investment / totalShares / repaymentDuration;
-  const monthlyCapitalRepayment = annualCapitalRepayment / 12;
-  const annualRepayment = annualCapitalRepayment + annualRentalIncome;
-  const monthlyRepayment = annualRepayment / 12;
-
-  const numberFormatOptions = {
-    style: 'decimal',
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-    useGrouping: true,
-  };
+  const annualIncomePerToken = tokenPrice * projectedRentalYield;
+  const monthlyIncomePerToken = annualIncomePerToken / 12;
+  const annualCapitalRepaymentPerToken = ((propertyPrice / repaymentDuration) * 12) / totalShares;
+  const monthlyCapitalRepayment = annualCapitalRepaymentPerToken / 12;
+  const monthlyReturnPerToken = monthlyIncomePerToken + monthlyCapitalRepayment;
+  const annualReturnPerToken = annualIncomePerToken + annualCapitalRepaymentPerToken;
 
   return (
     <Table className="border border-slate-500 border-opacity-20">
@@ -62,18 +52,20 @@ const PropertyDetailTable: React.FC<PropertyDetailTableProps> = ({
           </TableCell>
         </TableRow>
         <TableRow className="odd:bg-[#F5F5F5]">
-          <TableCell className="font-medium">Income per Token:</TableCell>
+          <TableCell className="font-medium">Annual Income per Token:</TableCell>
           <TableCell className="text-opacity-80">
-            {rentalIncomePerToken.toLocaleString('en-US', {
+            ${' '}
+            {annualIncomePerToken.toLocaleString('en-US', {
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
             })}
           </TableCell>
         </TableRow>
         <TableRow className="odd:bg-[#F5F5F5]">
-          <TableCell className="font-medium">Capital Repayment:</TableCell>
+          <TableCell className="font-medium">Monthly Income Per Token:</TableCell>
           <TableCell className="text-opacity-80">
-            {monthlyCapitalRepaymentPerToken.toLocaleString('en-US', {
+            ${' '}
+            {monthlyIncomePerToken.toLocaleString('en-US', {
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
             })}
@@ -81,23 +73,44 @@ const PropertyDetailTable: React.FC<PropertyDetailTableProps> = ({
         </TableRow>
         <TableRow className="odd:bg-[#F5F5F5]">
           <TableCell className="font-medium">Repayment Term:</TableCell>
-          <TableCell className="text-opacity-80">
-            {repaymentDuration} months
-          </TableCell>
+          <TableCell className="text-opacity-80">{repaymentDuration} months</TableCell>
         </TableRow>
         <TableRow className="odd:bg-[#F5F5F5]">
-          <TableCell className="font-medium">Rental Income:</TableCell>
+          <TableCell className="font-medium">Annual Capital Repayment Per Token:</TableCell>
           <TableCell className="text-opacity-80">
-            {rentalIncomePerToken.toLocaleString('en-US', {
+            ${' '}
+            {annualCapitalRepaymentPerToken.toLocaleString('en-US', {
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
             })}
           </TableCell>
         </TableRow>
         <TableRow className="odd:bg-[#F5F5F5]">
-          <TableCell className="font-medium">Annual Return:</TableCell>
+          <TableCell className="font-medium">Monthly Capital Repayment:</TableCell>
           <TableCell className="text-opacity-80">
-            {annualRentalIncome.toLocaleString('en-US', {
+            {monthlyCapitalRepayment.toLocaleString('en-US', {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}
+          </TableCell>
+        </TableRow>
+
+        <TableRow className="odd:bg-[#F5F5F5]">
+          <TableCell className="font-medium">Monthly Return Per Token:</TableCell>
+          <TableCell className="text-opacity-80">
+            ${' '}
+            {monthlyReturnPerToken.toLocaleString('en-US', {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}
+          </TableCell>
+        </TableRow>
+
+        <TableRow className="odd:bg-[#F5F5F5]">
+          <TableCell className="font-medium">Annual Return Per Token:</TableCell>
+          <TableCell className="text-opacity-80">
+            ${' '}
+            {annualReturnPerToken.toLocaleString('en-US', {
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
             })}

@@ -1,8 +1,9 @@
 'use client';
 import { useLayoutEffect, useState } from 'react';
-import PropertyCard from '../shared/PropertyCard';
 import { useAddress } from '@thirdweb-dev/react';
 import Link from 'next/link';
+
+import PropertyCard from '../shared/PropertyCard';
 import { Button } from '../ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Card, CardContent } from '../ui/card';
@@ -13,6 +14,7 @@ const FavoriteProperties = () => {
   const address = useAddress();
 
   const secretKey = process.env.NEXT_PUBLIC_SECRET_KEY;
+  const serverURL = process.env.NEXT_PUBLIC_SERVER_URL;
 
   const requestOptions = {
     method: 'GET',
@@ -24,7 +26,7 @@ const FavoriteProperties = () => {
   const fetchProperties = async () => {
     setLoading(true);
     const data = await fetch(
-      `https://libertum--marketplace.azurewebsites.net/users/${address}`,
+      `${serverURL}/users/${address}`,
       requestOptions
     );
     const info = await data.json();

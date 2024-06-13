@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
 import Image from 'next/image';
+
 import SocialMedia from './SocialMedia';
 import css from './Footer.module.css';
 import background from './background.svg';
@@ -54,9 +55,7 @@ const Footer = () => {
     },
   ];
 
-  const navigationSection1 = navigation
-    .filter((item) => item.section === 'Navigation')
-    .slice(0, 5);
+  const navigationSection1 = navigation.filter((item) => item.section === 'Navigation').slice(0, 5);
   const navigationSection2 = navigation
     .filter((item) => item.section === 'Support' || item.section === 'Contact')
     .slice(0, 4);
@@ -68,13 +67,7 @@ const Footer = () => {
         <div className={css.footerContainer}>
           <div className={css.footerFirstCol}>
             <Link href="/">
-              <Image
-                src="/assets/horizontalLogo.svg"
-                alt="N"
-                width="200"
-                height="80"
-                className={css.logo}
-              />
+              <Image src="/assets/horizontalLogo.svg" alt="N" width="200" height="80" className={css.logo} />
             </Link>
             <p className={css.firstColInformation}>
               {/* 15 Crammavill Street<br />
@@ -109,9 +102,7 @@ const Footer = () => {
               </div>
             </section>
             <Link href="/subscribe">
-              <div className={css.footerButton}>
-                Explore More Investment Opportunities Now
-              </div>
+              <div className={css.footerButton}>Explore More Investment Opportunities Now</div>
             </Link>
           </div>
         </div>

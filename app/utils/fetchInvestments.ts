@@ -1,6 +1,8 @@
 export async function fetchInvestments(userWalletAddress: string | undefined) {
+  const serverURL = process.env.NEXT_PUBLIC_SERVER_URL;
+
   const response = await fetch(
-    `http://localhost:3000/api/users/investments?userWalletAddress=${userWalletAddress}`,
+    `${serverURL}/api/users/investments?userWalletAddress=${userWalletAddress}`,
     {
       method: 'GET',
       cache: 'no-store'

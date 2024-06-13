@@ -1,21 +1,19 @@
 // PropertyFeatures.tsx
 import React from 'react';
+import { ChevronDownIcon } from '@radix-ui/react-icons';
+
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+
 import Documents from './Documents';
 import Financials from './Financials';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger
-} from '@/components/ui/accordion';
-import { ChevronDownIcon } from '@radix-ui/react-icons';
 
 const PropertyFeatures: React.FC<{
   propertyPrice: number;
   totalShares: number;
   annualYield: number;
   repaymentDuration: number;
-  description: string;
+  description: string[];
+  documents: string[];
   selectedTokens: number;
   setSelectedTokens: React.Dispatch<React.SetStateAction<number>>;
 }> = ({
@@ -24,8 +22,9 @@ const PropertyFeatures: React.FC<{
   annualYield,
   repaymentDuration,
   description,
+  documents,
   selectedTokens,
-  setSelectedTokens
+  setSelectedTokens,
 }) => {
   return (
     <div className="property-features">
@@ -58,7 +57,9 @@ const PropertyFeatures: React.FC<{
           </AccordionTrigger>
           <AccordionContent>
             <div className="max-w-[624px]">
-              <p>{description}</p>
+              {description.map((item, index) => (
+                <p className='py-2' key={index}>{item}</p>
+              ))}
             </div>
           </AccordionContent>
         </AccordionItem>
@@ -71,7 +72,7 @@ const PropertyFeatures: React.FC<{
           </AccordionTrigger>
           <AccordionContent>
             <div className="max-w-[624px]">
-              <Documents />
+              <Documents documents={documents}/>
             </div>
           </AccordionContent>
         </AccordionItem>

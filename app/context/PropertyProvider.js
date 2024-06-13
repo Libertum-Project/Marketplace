@@ -1,12 +1,11 @@
 'use client';
 
 import { useState, useEffect, useContext } from 'react';
+
+import { getProperties, fetchFilteredProperties } from '../utils/fetchProperties';
+
 import MessageBoxContext from './MessageBoxContext';
 import PropertyContext from './PropertyContext';
-import {
-  getProperties,
-  fetchFilteredProperties,
-} from '../utils/fetchProperties';
 
 const PropertyProvider = ({ children }) => {
   const { isLoading, setIsLoading } = useContext(MessageBoxContext);
@@ -41,9 +40,7 @@ const PropertyProvider = ({ children }) => {
   }, []);
 
   const getPropertyDetails = (ID) => {
-    const propertyDetails = allProperties.filter(
-      (property) => property.ID_Property === ID
-    );
+    const propertyDetails = allProperties.filter((property) => property.ID_Property === ID);
 
     return propertyDetails;
   };
@@ -58,11 +55,7 @@ const PropertyProvider = ({ children }) => {
     getFilteredProperties,
   };
 
-  return (
-    <PropertyContext.Provider value={value}>
-      {children}
-    </PropertyContext.Provider>
-  );
+  return <PropertyContext.Provider value={value}>{children}</PropertyContext.Provider>;
 };
 
 export default PropertyProvider;

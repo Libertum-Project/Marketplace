@@ -1,10 +1,10 @@
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+
 import InvestmentDetailConnectionTab from './InvestmentDetailConnectionTab';
 import InvestmentDetailPropertyTab from './InvestmentDetailPropertyTab';
 import InvestmentDetailYieldTab from './InvestmentDetailYieldTab';
 
-const InvestmentDetailTabs = ({propertyAddress, durationInMonths} : any) => {
-
+const InvestmentDetailTabs = ({ propertyAddress, durationInMonths, isTest, property }: any) => {
   return (
     <div className="w-full items-center">
       <Tabs defaultValue="yield">
@@ -14,7 +14,7 @@ const InvestmentDetailTabs = ({propertyAddress, durationInMonths} : any) => {
               value="yield"
               className="border-0 data-[state=active]:rounded-[5px] data-[state=active]:shadow data-[state=active]:border-black data-[state=active]:border-opacity-10 data-[state=active]:bg-slate-900 data-[state=active]:text-white"
             >
-              Yield
+              Summary
             </TabsTrigger>
             <TabsTrigger
               value="connection"
@@ -26,14 +26,16 @@ const InvestmentDetailTabs = ({propertyAddress, durationInMonths} : any) => {
               value="property"
               className="border-0 data-[state=active]:rounded-[5px] data-[state=active]:shadow data-[state=active]:border-black data-[state=active]:border-opacity-10 data-[state=active]:bg-slate-900 data-[state=active]:text-white"
             >
-              Property
+              ROI
             </TabsTrigger>
           </TabsList>
         </div>
 
-        <InvestmentDetailYieldTab propertyAddress={propertyAddress} durationInMonths={durationInMonths} />
+        <InvestmentDetailYieldTab propertyAddress={propertyAddress} durationInMonths={durationInMonths} isTest={isTest}/>
         <InvestmentDetailConnectionTab />
-        <InvestmentDetailPropertyTab />
+        <InvestmentDetailPropertyTab
+        property={property}
+        />
       </Tabs>
     </div>
   );
