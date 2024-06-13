@@ -72,6 +72,22 @@ export type Gem = {
 export type GemsCardProps = {
   gem: Gem;
   investmentDetail?: boolean;
-}
+};
 
 export type WeightUnitType = 'gr' | 'oz';
+
+export type Art = {
+  id: number;
+  name: string;
+  image: string;
+  description: string[];
+  valuation: number;
+  tokenPrice: number;
+  totalTokens: number;
+  guaranteed: number;
+};
+
+export type ArtCardProps = {
+  artPiece: Art;
+  investmentDetail?: boolean;
+};
