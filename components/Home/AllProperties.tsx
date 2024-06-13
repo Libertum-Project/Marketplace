@@ -3,8 +3,10 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
 import PropertyCard from '../shared/PropertyCard';
-import GemsCard from '../shared/GemsCard';
+import { GemsCard } from '../shared/GemsCards/GemsCard';
+import { SecurityCard } from '../shared/SecurityCards/SecurityCard';
 import ArtCard from '../shared/ArtCards/ArtCard';
+
 import { Button } from '../ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Card, CardContent } from '../ui/card';
@@ -13,7 +15,9 @@ import { filterProperties } from '@/app/utils/fetchProperties';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 import { gems } from './gems';
+import { securityListings } from './security';
 import { artPieces } from './art';
+
 
 interface Props {
   showFilters?: boolean;
@@ -136,7 +140,10 @@ const AllProperties = ({ showFilters = false }: Props) => {
           {gems.map((gem) => (
             <GemsCard key={gem.id} viewType={viewType} investmentDetail={false} gem={gem} />
           ))}
-
+          {securityListings.map((security) => (
+            <SecurityCard key={security.id} viewType={viewType} investmentDetail={false} security={security} />
+          ))}
+          
           {artPieces.map((artPiece) => (
             <ArtCard key={artPiece.id} viewType={viewType} investmentDetail={false} artPiece={artPiece} />
           ))}
