@@ -1,23 +1,17 @@
 'use client';
-import { useGemLogic } from '@/components/Home/useGemsLogic';
-import { GemsCardProps } from '@/types/index';
+
 import { CardContent, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Table, TableBody, TableRow, TableCell } from '../ui/table';
-import { Accordion, AccordionItem, AccordionContent, AccordionTrigger } from '../ui/accordion';
-import { ServerImage } from './ServerImage';
+import { Table, TableBody, TableRow, TableCell } from '@/components/ui/table';
+import { Accordion, AccordionItem, AccordionContent, AccordionTrigger } from '@/components/ui/accordion';
+import { ServerImage } from '../ServerImage';
 
-const GemsGridCard: React.FC<GemsCardProps> = ({ gem }) => {
-  const {
-    quantity,
-    unit,
-    isExpanded,
-    handleChange,
-    handleUnitChange,
-    handleToggle,
-    calculatedPrice,
-    calculatedWeight,
-  } = useGemLogic(gem);
+import { SecurityCardProps } from '@/types';
+import { useSecurityLogic } from './useSecurityLogic';
+
+export const SecurityGridCard: React.FC<SecurityCardProps> = ({ security }) => {
+  const { quantity, isExpanded, handleChange, handleToggle, calculatedPrice, calculatedGuarantee } =
+    useSecurityLogic(security);
 
   const handleCloseAccordion = () => {
     handleToggle();
@@ -28,25 +22,25 @@ const GemsGridCard: React.FC<GemsCardProps> = ({ gem }) => {
       <CardContent className="p-0 relative">
         <div className="h-[255px] flex justify-center">
           <ServerImage
-            src={gem.image}
-            alt={gem.name}
-            width={310}
+            src={security.image}
+            alt={security.name}
+            width={200}
             height={250}
-            className='h-auto'
+            className="h-full w-auto p-1"
           />
         </div>
 
         <div className="py-6 px-4 h-[167.5px]">
           <section className="flex justify-between">
-            <p className="text-black text-opacity-80 text-lg font-bold font-space_grotesk">{gem.name}</p>
+            <p className="text-black text-opacity-80 text-lg font-bold font-space_grotesk">{security.name}</p>
 
             <p className="px-4 py-1 bg-libertumGreen bg-opacity-10 rounded-[50px] border border-libertumGreen font-space_grotesk text-libertumGreen text-xs font-bold flex items-center justify-center h-fit whitespace-nowrap">
-              ${gem.pricePerGram} /gr
+              ${security.valuation.toLocaleString('en-US')}
             </p>
           </section>
 
-          <section className="flex justify-between items-end py-4 gap-1">
-            <article className="flex justify-center border rounded-[.5rem] font-space_grotesk w-24 h-10 items-center overflow-hidden">
+          <section className="flex justify-between items-end py-2 gap-4">
+            <article className="flex justify-center border rounded-[.5rem] font-space_grotesk w-full h-10 items-center overflow-hidden">
               <input
                 type="text"
                 min="1"
@@ -59,17 +53,13 @@ const GemsGridCard: React.FC<GemsCardProps> = ({ gem }) => {
               </p>
             </article>
             <p className="mb-3">=</p>
-            <article className="flex justify-between border rounded-[.5rem] font-space_grotesk w-20 h-10 items-center text-sm overflow-hidden bg-gray-200">
-              <p className="px-2 w-full text-center"> $ {calculatedPrice}</p>
+            <article className="flex justify-between border rounded-[.5rem] font-space_grotesk w-full h-10 items-center text-sm overflow-hidden bg-gray-200">
+              <p className="px-4 w-full text-end"> $ {calculatedPrice}</p>
             </article>
-            <p className="mb-3">=</p>
-            <article className="flex justify-between border rounded-[.5rem] font-space_grotesk w-28 h-10 items-center text-sm overflow-hidden">
-              <p className="px-1">{calculatedWeight}</p>
-              <select value={unit} onChange={handleUnitChange} className="bg-gray-200 h-full flex items-center">
-                <option value="gr">gr</option>
-                <option value="oz">oz</option>
-              </select>
-            </article>
+          </section>
+          <section className="flex justify-between border rounded-[.5rem] font-space_grotesk w-full h-10 items-center text-sm overflow-hidden bg-gray-200 px-4">
+            <p className="text-sm">Guaranteed Buyback Price:</p>
+            <p>$ {calculatedGuarantee}</p>
           </section>
         </div>
       </CardContent>
@@ -86,12 +76,22 @@ const GemsGridCard: React.FC<GemsCardProps> = ({ gem }) => {
             More
           </Button>
         ) : (
-          <Accordion type="single" collapsible className="w-full" value={`item-${gem.id}`}>
-            <AccordionItem value={`item-${gem.id}`}>
+          <Accordion type="single" collapsible className="w-full" value={`item-${security.id}`}>
+            <AccordionItem value={`item-${security.id}`}>
               <AccordionContent>
-                <p className="text-slate-600 text-sm">{gem.description}</p>
+                {security.description.map((desc, index) => (
+                  <p key={index} className="text-slate-600 text-sm mb-1">
+                    {desc}
+                  </p>
+                ))}
                 <Table className="border border-slate-500 border-opacity-20 mt-2">
                   <TableBody>
+                    <TableRow className="odd:bg-[#F5F5F5]">
+                      <TableCell className="font-medium">Guaranteed Token Buyback Price:</TableCell>
+                      <TableCell className="flex text-opacity-80 justify-end">
+                        <p>$ {security.guaranteed}</p>
+                      </TableCell>
+                    </TableRow>
                     <TableRow className="odd:bg-[#F5F5F5]">
                       <TableCell className="font-medium">Insurance Report:</TableCell>
                       <TableCell className="flex text-opacity-80 justify-end">
@@ -142,13 +142,13 @@ const GemsGridCard: React.FC<GemsCardProps> = ({ gem }) => {
               <Button
                 variant="outline"
                 className="flex items-center w-full rounded-[5px] border border-teal-500 border-opacity-20  text-center font-bold font-space_grotesk py-6 hover:bg-teal-500
-                    hover:text-white
-                    bg-[#00062F] text-white cursor-not-allowed"
+                  hover:text-white
+                  bg-[#00062F] text-white cursor-not-allowed"
                 style={{
                   justifyContent: 'center',
                 }}
               >
-                Buy {gem.name}
+                Buy {security.name}
               </Button>
             </AccordionItem>
           </Accordion>
@@ -157,5 +157,3 @@ const GemsGridCard: React.FC<GemsCardProps> = ({ gem }) => {
     </>
   );
 };
-
-export default GemsGridCard;

@@ -75,3 +75,19 @@ export type GemsCardProps = {
 }
 
 export type WeightUnitType = 'gr' | 'oz';
+
+export type SecurityListing = {
+  id: number;
+  name: string;
+  image: string;
+  description: string[];
+  valuation: number;
+  tokenPrice: number;
+  totalTokens: number;
+  guaranteed: number;
+};
+
+export type SecurityCardProps = {
+  security: SecurityListing;
+  investmentDetail?: boolean;
+};

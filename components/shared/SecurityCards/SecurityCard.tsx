@@ -1,15 +1,16 @@
 import { Card } from '@/components/ui/card';
-import GemsGridCard from './GemsGridCard';
-import GemsListCard from './GemsListCard';
-import { Gem } from '@/types/index';
+import { SecurityListing } from '@/types/index';
+
+import { SecurityListCard } from './SecurityListCard';
+import { SecurityGridCard } from './SecurityGridCard';
 
 type Props = {
   viewType?: string;
   investmentDetail?: boolean;
-  gem: Gem;
-}
+  security: SecurityListing;
+};
 
-const GemsCard: React.FC<Props> = ({ gem, viewType = 'grid', investmentDetail }) => {
+export const SecurityCard: React.FC<Props> = ({ security, viewType = 'grid', investmentDetail }) => {
   return (
     <Card
       className={`bg-white h-fit rounded-[5px] shadow-[0_4px_20px_0px_rgba(0, 6, 47, 0.05) border border-opacity-10 hover:border-[#00B3B5] ${
@@ -17,12 +18,10 @@ const GemsCard: React.FC<Props> = ({ gem, viewType = 'grid', investmentDetail })
       } ${viewType !== 'grid' ? 'max-h-[168px]' : ''} overflow-hidden`}
     >
       {viewType === 'grid' ? (
-        <GemsGridCard gem={gem} investmentDetail={investmentDetail} />
+        <SecurityGridCard security={security} investmentDetail={investmentDetail} />
       ) : (
-        <GemsListCard gem={gem} investmentDetail={investmentDetail} />
+        <SecurityListCard security={security} investmentDetail={investmentDetail} />
       )}
     </Card>
   );
 };
-
-export default GemsCard;
