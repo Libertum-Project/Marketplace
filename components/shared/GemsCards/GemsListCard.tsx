@@ -3,17 +3,10 @@ import { useGemLogic } from '@/components/Home/useGemsLogic';
 import { GemsCardProps } from '@/types/index';
 import { CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ServerImage } from './ServerImage';
+import { ServerImage } from '../ServerImage';
 
-const GemsListCard: React.FC<GemsCardProps> = ({ gem }) => {
-  const {
-    quantity,
-    unit,
-    handleChange,
-    handleUnitChange,
-    calculatedPrice,
-    calculatedWeight
-  } = useGemLogic(gem);
+export const GemsListCard: React.FC<GemsCardProps> = ({ gem }) => {
+  const { quantity, unit, handleChange, handleUnitChange, calculatedPrice, calculatedWeight } = useGemLogic(gem);
 
   return (
     <CardContent className="p-0 flex w-full max-h-[176px]">
@@ -46,11 +39,11 @@ const GemsListCard: React.FC<GemsCardProps> = ({ gem }) => {
             </article>
             <p className="mb-3">=</p>
             <article className="flex justify-between border rounded-[.5rem] font-space_grotesk w-36 h-10 items-center text-sm overflow-hidden">
-              <p className='px-1'>{calculatedWeight}</p>
+              <p className="px-1">{calculatedWeight}</p>
               <select value={unit} onChange={handleUnitChange} className="bg-gray-200 h-full flex items-center px-1">
-              <option value="gr">gr</option>
-              <option value="oz">oz</option>
-            </select>
+                <option value="gr">gr</option>
+                <option value="oz">oz</option>
+              </select>
             </article>
           </section>
         </div>
@@ -71,5 +64,3 @@ const GemsListCard: React.FC<GemsCardProps> = ({ gem }) => {
     </CardContent>
   );
 };
-
-export default GemsListCard;

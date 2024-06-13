@@ -3,11 +3,11 @@ import { useGemLogic } from '@/components/Home/useGemsLogic';
 import { GemsCardProps } from '@/types/index';
 import { CardContent, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Table, TableBody, TableRow, TableCell } from '../ui/table';
-import { Accordion, AccordionItem, AccordionContent, AccordionTrigger } from '../ui/accordion';
-import { ServerImage } from './ServerImage';
+import { Table, TableBody, TableRow, TableCell } from '../../ui/table';
+import { Accordion, AccordionItem, AccordionContent, AccordionTrigger } from '../../ui/accordion';
+import { ServerImage } from '../ServerImage';
 
-const GemsGridCard: React.FC<GemsCardProps> = ({ gem }) => {
+export const GemsGridCard: React.FC<GemsCardProps> = ({ gem }) => {
   const {
     quantity,
     unit,
@@ -27,13 +27,7 @@ const GemsGridCard: React.FC<GemsCardProps> = ({ gem }) => {
     <>
       <CardContent className="p-0 relative">
         <div className="h-[255px] flex justify-center">
-          <ServerImage
-            src={gem.image}
-            alt={gem.name}
-            width={310}
-            height={250}
-            className='h-auto'
-          />
+          <ServerImage src={gem.image} alt={gem.name} width={310} height={250} className="h-auto" />
         </div>
 
         <div className="py-6 px-4 h-[167.5px]">
@@ -157,5 +151,3 @@ const GemsGridCard: React.FC<GemsCardProps> = ({ gem }) => {
     </>
   );
 };
-
-export default GemsGridCard;

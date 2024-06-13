@@ -9,7 +9,7 @@ import { ServerImage } from '../ServerImage';
 import { SecurityCardProps } from '@/types';
 import { useSecurityLogic } from './useSecurityLogic';
 
-const SecurityGridCard: React.FC<SecurityCardProps> = ({ security }) => {
+export const SecurityGridCard: React.FC<SecurityCardProps> = ({ security }) => {
   const { quantity, isExpanded, handleChange, handleToggle, calculatedPrice, calculatedGuarantee } =
     useSecurityLogic(security);
 
@@ -157,5 +157,3 @@ const SecurityGridCard: React.FC<SecurityCardProps> = ({ security }) => {
     </>
   );
 };
-
-export default SecurityGridCard;

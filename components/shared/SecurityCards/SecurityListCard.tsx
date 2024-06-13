@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { ServerImage } from '../ServerImage';
 import React from 'react';
 
-const SecurityListCard: React.FC<SecurityCardProps> = ({ security }) => {
+export const SecurityListCard: React.FC<SecurityCardProps> = ({ security }) => {
   const { quantity, isExpanded, handleChange, handleToggle, calculatedPrice, calculatedGuarantee } =
     useSecurityLogic(security);
 
@@ -68,5 +68,3 @@ const SecurityListCard: React.FC<SecurityCardProps> = ({ security }) => {
     </CardContent>
   );
 };
-
-export default SecurityListCard;

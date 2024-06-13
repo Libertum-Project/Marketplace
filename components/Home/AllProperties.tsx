@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
 import PropertyCard from '../shared/PropertyCard';
-import GemsCard from '../shared/GemsCard';
-import SecurityCard from '../shared/SecurityCards/SecurityCard';
+import { GemsCard } from '../shared/GemsCards/GemsCard';
+import { SecurityCard } from '../shared/SecurityCards/SecurityCard';
 import { Button } from '../ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Card, CardContent } from '../ui/card';
