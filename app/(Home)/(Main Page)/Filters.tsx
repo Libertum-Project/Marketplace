@@ -5,10 +5,9 @@ import { ServerImage } from '@/components/shared/ServerImage';
 
 interface Props {
   filterFunction: any;
-  activeFilter: string;
 }
 
-export function Filters({ filterFunction, activeFilter  }: Props): ReactElement {
+export function Filters({ filterFunction }: Props): ReactElement {
   const [categoryFilter, setCategoryFilter] = useState('All');
   const [subCategoryFilter, setSubCategoryFilter] = useState('All');
 
@@ -19,15 +18,15 @@ export function Filters({ filterFunction, activeFilter  }: Props): ReactElement 
     },
     'Gems and Metals': {
       label: 'Gems and Metals',
-      subcategories: ['All', 'Gold', 'Emeralds', 'Diamonds'],
+      subcategories: ['All'],
     },
     'Security': {
       label: 'Security',
-      subcategories: ['All', 'Subcategory1', 'Subcategory2'], // Ajusta las subcategorías según necesites
+      subcategories: ['All'],
     },
     'Art': {
       label: 'Art',
-      subcategories: ['All', 'SubcategoryA', 'SubcategoryB'], // Ajusta las subcategorías según necesites
+      subcategories: ['All'],
     },
   };
 
@@ -35,17 +34,11 @@ export function Filters({ filterFunction, activeFilter  }: Props): ReactElement 
     filterFunction(categoryFilter, subCategoryFilter);
   }, [categoryFilter, subCategoryFilter]);
 
-  useEffect(() => {
-    if (activeFilter !== 'All' && filterOptions[activeFilter]) {
-      setCategoryFilter(activeFilter);
-      setSubCategoryFilter('All');
-    }
-  }, [activeFilter, filterOptions]);
-
   const handleCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedCategory = event.target.value;
     setCategoryFilter(selectedCategory);
-    setSubCategoryFilter('All');
+    // Reset subcategory filter when category changes
+    setSubCategoryFilter('All'); 
   };
 
   const handleSubCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -56,7 +49,6 @@ export function Filters({ filterFunction, activeFilter  }: Props): ReactElement 
   const resetFilters = () => {
     setCategoryFilter('All');
     setSubCategoryFilter('All');
-    filterFunction('All', 'All');
   };
 
   return (
@@ -80,25 +72,24 @@ export function Filters({ filterFunction, activeFilter  }: Props): ReactElement 
         </select>
       </div>
 
-      {categoryFilter !== 'All' && (
-        <div className="w-full justify-between flex align-center md:gap-4 md:justify-center md:w-none">
-                  <div className="flex font-space_grotesk text-base font-bold justify-center items-center">
+      <div className="w-full justify-between flex align-center md:gap-4 md:justify-center md:w-none">
+        <div className="flex font-space_grotesk text-base font-bold justify-center items-center">
             {/* <ServerImage src={option.imageURL} alt="N" width="18" height="18" className="mr-3" /> */}
             <p className="w-fit whitespace-nowrap">Subcategory</p>
           </div>
-          <select
-            className="flex w-full cursor-pointer px-4 py-3 bg-white rounded-[5px] border border-black border-opacity-10"
-            onChange={handleSubCategoryChange}
-            value={subCategoryFilter}
-          >
-            {filterOptions[categoryFilter].subcategories.map((subCategory, index) => (
-              <option key={index} value={subCategory}>
-                {subCategory}
-              </option>
-            ))}
-          </select>
-        </div>
-      )}
+        <select
+          className="flex w-full cursor-pointer px-4 py-3 bg-white rounded-[5px] border border-black border-opacity-10"
+          onChange={handleSubCategoryChange}
+          value={subCategoryFilter}
+          disabled={categoryFilter === 'All'}
+        >
+          {filterOptions[categoryFilter]?.subcategories.map((subCategory, index) => (
+            <option key={index} value={subCategory}>
+              {subCategory}
+            </option>
+          ))}
+        </select>
+      </div>
 
       <button className="flex bg-libertumGreen rounded-[5px] px-4 justify-center gap-4 py-4" onClick={resetFilters}>
         <p className="md:hidden text-white font-space_grotesk font-bold">Reset Filters</p>
