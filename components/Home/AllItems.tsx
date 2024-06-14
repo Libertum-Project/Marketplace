@@ -29,7 +29,9 @@ export const AllItems = ({ showFilters = false }: Props) => {
   const [properties, setProperties] = useState<any>([]);
   const [filteredProperties, setFilteredProperties] = useState<any>([]);
   const [showNoPropertiesMessage, setShowNoPropertiesMessage] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedSubCategory, setSelectedSubCategory] = useState('All');
+
 
   const handleViewType = (type: string) => {
     setViewType(type);
@@ -59,30 +61,29 @@ export const AllItems = ({ showFilters = false }: Props) => {
       ? 'py-5 px-4 grid md:px-0 grid-cols-1 min-[575px]:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-[1200px] m-auto'
       : 'flex flex-col py-5 max-w-[75rem] m-auto gap-8';
 
-  const propertyFilter = (categoryFilter: string, countryFilter: string, annualYieldFilter: string) => {
-    setSelectedCategory(categoryFilter); // Set selected category
-    if (categoryFilter === 'Real Estate') {
-      const filteredProperties = filterProperties(properties, categoryFilter, countryFilter, annualYieldFilter);
-      setFilteredProperties(filteredProperties);
-      if (filteredProperties.length === 0) {
-        setShowNoPropertiesMessage(true);
-      } else {
-        setShowNoPropertiesMessage(false);
-      }
-    } else if (categoryFilter === 'Gems and Metals') {
-      setFilteredProperties(gems);
-      setShowNoPropertiesMessage(gems.length === 0);
-    } else if (categoryFilter === 'Security') {
-      setFilteredProperties(securityListings);
-      setShowNoPropertiesMessage(securityListings.length === 0);
-    } else if (categoryFilter === 'Art') {
-      setFilteredProperties(artPieces);
-      setShowNoPropertiesMessage(artPieces.length === 0);
-    } else {
-      setFilteredProperties([...properties, ...gems, ...securityListings, ...artPieces]); // Reset filtered properties if category is "All"
-      setShowNoPropertiesMessage(false);
-    }
-  };
+      const propertyFilter = (categoryFilter: string, subCategoryFilter: string) => {
+        setSelectedCategory(categoryFilter); 
+        setSelectedSubCategory(subCategoryFilter); 
+    
+        if (categoryFilter === 'Real Estate') {
+          const filteredProperties = filterProperties(properties, subCategoryFilter);
+          setFilteredProperties(filteredProperties);
+          setShowNoPropertiesMessage(filteredProperties.length === 0);
+        } else if (categoryFilter === 'Gems and Metals') {
+          setFilteredProperties(gems); 
+          setShowNoPropertiesMessage(gems.length === 0);
+        } else if (categoryFilter === 'Security') {
+          setFilteredProperties(securityListings);
+          setShowNoPropertiesMessage(securityListings.length === 0);
+        } else if (categoryFilter === 'Art') {
+          setFilteredProperties(artPieces);
+          setShowNoPropertiesMessage(artPieces.length === 0);
+        } else {          
+          setFilteredProperties([...properties, ...gems, ...securityListings, ...artPieces]);
+          setShowNoPropertiesMessage(false);
+        }
+      };
+    
 
   // const sortProperties = (sortOrder: string) => {
   //   const sortedProperties = [...properties];
@@ -119,9 +120,17 @@ export const AllItems = ({ showFilters = false }: Props) => {
       );
     }
     if (selectedCategory === 'Real Estate') {
-      return (filteredProperties.length > 0 ? filteredProperties : properties).map((property: any) => (
-        <PropertyCard key={property.id} property={property} viewType={viewType} btnLink="/details" />
-      ));
+      const filteredPropertiesToShow = selectedSubCategory === 'All'
+      ? properties
+      : filterProperties(properties, selectedSubCategory);
+
+    return (
+      <>
+        {filteredPropertiesToShow.map((property: any) => (
+          <PropertyCard key={property.id} property={property} viewType="grid" btnLink="/details" />
+        ))}
+      </>
+    );
     }
     if (selectedCategory === 'Gems and Metals') {
       return gems.map((gem) => <GemsCard key={gem.id} viewType={viewType} investmentDetail={false} gem={gem} />);
