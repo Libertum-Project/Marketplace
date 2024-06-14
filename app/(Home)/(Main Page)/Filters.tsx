@@ -5,9 +5,10 @@ import { ServerImage } from '@/components/shared/ServerImage';
 
 interface Props {
   filterFunction: any;
+  activeFilter: string;
 }
 
-export function Filters({ filterFunction }: Props): ReactElement {
+export function Filters({ filterFunction, activeFilter  }: Props): ReactElement {
   const [categoryFilter, setCategoryFilter] = useState('All');
   const [subCategoryFilter, setSubCategoryFilter] = useState('All');
 
@@ -34,10 +35,17 @@ export function Filters({ filterFunction }: Props): ReactElement {
     filterFunction(categoryFilter, subCategoryFilter);
   }, [categoryFilter, subCategoryFilter]);
 
+  useEffect(() => {
+    if (activeFilter !== 'All' && filterOptions[activeFilter]) {
+      setCategoryFilter(activeFilter);
+      setSubCategoryFilter('All');
+    }
+  }, [activeFilter, filterOptions]);
+
   const handleCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedCategory = event.target.value;
     setCategoryFilter(selectedCategory);
-    setSubCategoryFilter('All'); // Reinicia las subcategorías al cambiar la categoría principal
+    setSubCategoryFilter('All');
   };
 
   const handleSubCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -48,6 +56,7 @@ export function Filters({ filterFunction }: Props): ReactElement {
   const resetFilters = () => {
     setCategoryFilter('All');
     setSubCategoryFilter('All');
+    filterFunction('All', 'All');
   };
 
   return (

@@ -12,7 +12,6 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Card, CardContent } from '../ui/card';
 import { Filters } from '@/app/(Home)/(Main Page)/Filters';
 import { filterProperties } from '@/app/utils/fetchProperties';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 import { gems } from './gems';
 import { securityListings } from './security';
@@ -31,7 +30,7 @@ export const AllItems = ({ showFilters = false }: Props) => {
   const [showNoPropertiesMessage, setShowNoPropertiesMessage] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedSubCategory, setSelectedSubCategory] = useState('All');
-
+  const [activeFilter, setActiveFilter] = useState('All');
 
   const handleViewType = (type: string) => {
     setViewType(type);
@@ -61,44 +60,29 @@ export const AllItems = ({ showFilters = false }: Props) => {
       ? 'py-5 px-4 grid md:px-0 grid-cols-1 min-[575px]:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-[1200px] m-auto'
       : 'flex flex-col py-5 max-w-[75rem] m-auto gap-8';
 
-      const propertyFilter = (categoryFilter: string, subCategoryFilter: string) => {
-        setSelectedCategory(categoryFilter); 
-        setSelectedSubCategory(subCategoryFilter); 
-    
-        if (categoryFilter === 'Real Estate') {
-          const filteredProperties = filterProperties(properties, subCategoryFilter);
-          setFilteredProperties(filteredProperties);
-          setShowNoPropertiesMessage(filteredProperties.length === 0);
-        } else if (categoryFilter === 'Gems and Metals') {
-          setFilteredProperties(gems); 
-          setShowNoPropertiesMessage(gems.length === 0);
-        } else if (categoryFilter === 'Security') {
-          setFilteredProperties(securityListings);
-          setShowNoPropertiesMessage(securityListings.length === 0);
-        } else if (categoryFilter === 'Art') {
-          setFilteredProperties(artPieces);
-          setShowNoPropertiesMessage(artPieces.length === 0);
-        } else {          
-          setFilteredProperties([...properties, ...gems, ...securityListings, ...artPieces]);
-          setShowNoPropertiesMessage(false);
-        }
-      };
-    
+  const propertyFilter = (categoryFilter: string, subCategoryFilter: string) => {
+    setSelectedCategory(categoryFilter);
+    setSelectedSubCategory(subCategoryFilter);
+    setActiveFilter(categoryFilter);
 
-  // const sortProperties = (sortOrder: string) => {
-  //   const sortedProperties = [...properties];
-  //   sortedProperties.sort((a, b) => {
-  //     const dateA = new Date(a.createdAt);
-  //     const dateB = new Date(b.createdAt);
-  //     if (sortOrder === 'new') {
-  //       return +dateB - +dateA;
-  //     } else {
-  //       return +dateA - +dateB;
-  //     }
-  //   });
-
-  //   setProperties(sortedProperties);
-  // };
+    if (categoryFilter === 'Real Estate') {
+      const filteredProperties = filterProperties(properties, subCategoryFilter);
+      setFilteredProperties(filteredProperties);
+      setShowNoPropertiesMessage(filteredProperties.length === 0);
+    } else if (categoryFilter === 'Gems and Metals') {
+      setFilteredProperties(gems);
+      setShowNoPropertiesMessage(gems.length === 0);
+    } else if (categoryFilter === 'Security') {
+      setFilteredProperties(securityListings);
+      setShowNoPropertiesMessage(securityListings.length === 0);
+    } else if (categoryFilter === 'Art') {
+      setFilteredProperties(artPieces);
+      setShowNoPropertiesMessage(artPieces.length === 0);
+    } else {
+      setFilteredProperties([...properties, ...gems, ...securityListings, ...artPieces]);
+      setShowNoPropertiesMessage(false);
+    }
+  };
 
   const getCards = () => {
     if (selectedCategory === 'All') {
@@ -120,26 +104,29 @@ export const AllItems = ({ showFilters = false }: Props) => {
       );
     }
     if (selectedCategory === 'Real Estate') {
-      const filteredPropertiesToShow = selectedSubCategory === 'All'
-      ? properties
-      : filterProperties(properties, selectedSubCategory);
+      const filteredPropertiesToShow =
+        selectedSubCategory === 'All' ? properties : filterProperties(properties, selectedSubCategory);
 
-    return (
-      <>
-        {filteredPropertiesToShow.map((property: any) => (
-          <PropertyCard key={property.id} property={property} viewType="grid" btnLink="/details" />
-        ))}
-      </>
-    );
+      return (
+        <>
+          {filteredPropertiesToShow.map((property: any) => (
+            <PropertyCard key={property.id} property={property} viewType="grid" btnLink="/details" />
+          ))}
+        </>
+      );
     }
     if (selectedCategory === 'Gems and Metals') {
       return gems.map((gem) => <GemsCard key={gem.id} viewType={viewType} investmentDetail={false} gem={gem} />);
     }
     if (selectedCategory === 'Security') {
-      return securityListings.map((security) => <SecurityCard key={security.id} viewType={viewType} investmentDetail={false} security={security} />);
+      return securityListings.map((security) => (
+        <SecurityCard key={security.id} viewType={viewType} investmentDetail={false} security={security} />
+      ));
     }
     if (selectedCategory === 'Art') {
-      return artPieces.map((artPiece) => <ArtCard key={artPiece.id} viewType={viewType} investmentDetail={false} artPiece={artPiece} />);
+      return artPieces.map((artPiece) => (
+        <ArtCard key={artPiece.id} viewType={viewType} investmentDetail={false} artPiece={artPiece} />
+      ));
     }
     if (showNoPropertiesMessage) {
       return (
@@ -224,27 +211,50 @@ export const AllItems = ({ showFilters = false }: Props) => {
 
   return (
     <>
-      {showFilters && <Filters filterFunction={propertyFilter} />}
+      {showFilters && <Filters filterFunction={propertyFilter}  activeFilter={activeFilter}/>}
       <div>
         <div className="flex justify-center md:justify-between items-center">
-          {/* <Select
-            onValueChange={(newValue) => {
-              // sortProperties(newValue);
-            }}
-            value=""
+        <div className="flex justify-between items-center mt-8 mb-4">
+        <h2 className="text-2xl font-bold text-gray-900">All Items</h2>
+        <div className="flex gap-4">
+          <Button
+            variant="outline"
+            onClick={() => propertyFilter('All', 'All')}
+            className={activeFilter === 'All' ? 'active' : ''}
           >
-            <SelectTrigger className="w-[95%] md:w-[360px] px-3 py-2 bg-slate-900 bg-opacity-5 rounded-[5px] border border-black border-opacity-10 cursor-pointer">
-              <SelectValue placeholder="Sort by: Newest first" className="font-montserrat text-xs" />
-            </SelectTrigger>
-            <SelectContent className="bg-white">
-              <SelectItem value="new" className="cursor-pointer">
-                Sort by: <span className="font-montserrat text-xs font-bold">Newest first</span>
-              </SelectItem>
-              <SelectItem value="old" className="cursor-pointer">
-                Sort by: <span className="font-montserrat text-xs font-bold">Old first</span>
-              </SelectItem>
-            </SelectContent>
-          </Select> */}
+            All
+          </Button>
+          <Button
+            variant="outline"
+            onClick={() => propertyFilter('Real Estate', 'All')}
+            className={activeFilter === 'Real Estate' ? 'active' : ''}
+          >
+            Real Estate
+          </Button>
+          <Button
+            variant="outline"
+            onClick={() => propertyFilter('Gems and Metals', 'All')}
+            className={activeFilter === 'Gems and Metals' ? 'active' : ''}
+          >
+            Gems and Metals
+          </Button>
+          <Button
+            variant="outline"
+            onClick={() => propertyFilter('Security', 'All')}
+            className={activeFilter === 'Security' ? 'active' : ''}
+          >
+            Security
+          </Button>
+          <Button
+            variant="outline"
+            onClick={() => propertyFilter('Art', 'All')}
+            className={activeFilter === 'Art' ? 'active' : ''}
+          >
+            Art
+          </Button>
+        </div>
+      </div>
+
           <div className="hidden md:flex items-center bg-neutral-100 rounded-[5px] gap-2 px-2 py-[5px]">
             <Button className="p-0" onClick={() => handleViewType('grid')}>
               <Image
@@ -264,9 +274,7 @@ export const AllItems = ({ showFilters = false }: Props) => {
             </Button>
           </div>
         </div>
-        <div className={propertyWrapperClassName}>
-          {getCards()}
-        </div>
+        <div className={propertyWrapperClassName}>{getCards()}</div>
       </div>
     </>
   );
