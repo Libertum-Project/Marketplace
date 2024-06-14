@@ -12,7 +12,6 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Card, CardContent } from '../ui/card';
 import { Filters } from '@/app/(Home)/(Main Page)/Filters';
 import { filterProperties } from '@/app/utils/fetchProperties';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 import { gems } from './gems';
 import { securityListings } from './security';
@@ -32,7 +31,6 @@ export const AllItems = ({ showFilters = false }: Props) => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedSubCategory, setSelectedSubCategory] = useState('All');
 
-
   const handleViewType = (type: string) => {
     setViewType(type);
   };
@@ -49,7 +47,7 @@ export const AllItems = ({ showFilters = false }: Props) => {
     });
     const properties = await data.json();
     setProperties(properties);
-    setFilteredProperties([...properties, ...gems, ...securityListings, ...artPieces]); // Mostrar todo inicialmente
+    setFilteredProperties([...properties, ...gems, ...securityListings, ...artPieces]);
   };
 
   useEffect(() => {
@@ -61,44 +59,28 @@ export const AllItems = ({ showFilters = false }: Props) => {
       ? 'py-5 px-4 grid md:px-0 grid-cols-1 min-[575px]:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-[1200px] m-auto'
       : 'flex flex-col py-5 max-w-[75rem] m-auto gap-8';
 
-      const propertyFilter = (categoryFilter: string, subCategoryFilter: string) => {
-        setSelectedCategory(categoryFilter); 
-        setSelectedSubCategory(subCategoryFilter); 
-    
-        if (categoryFilter === 'Real Estate') {
-          const filteredProperties = filterProperties(properties, subCategoryFilter);
-          setFilteredProperties(filteredProperties);
-          setShowNoPropertiesMessage(filteredProperties.length === 0);
-        } else if (categoryFilter === 'Gems and Metals') {
-          setFilteredProperties(gems); 
-          setShowNoPropertiesMessage(gems.length === 0);
-        } else if (categoryFilter === 'Security') {
-          setFilteredProperties(securityListings);
-          setShowNoPropertiesMessage(securityListings.length === 0);
-        } else if (categoryFilter === 'Art') {
-          setFilteredProperties(artPieces);
-          setShowNoPropertiesMessage(artPieces.length === 0);
-        } else {          
-          setFilteredProperties([...properties, ...gems, ...securityListings, ...artPieces]);
-          setShowNoPropertiesMessage(false);
-        }
-      };
-    
+  const cardFilter = (categoryFilter: string, subCategoryFilter: string) => {
+    setSelectedCategory(categoryFilter);
+    setSelectedSubCategory(subCategoryFilter);
 
-  // const sortProperties = (sortOrder: string) => {
-  //   const sortedProperties = [...properties];
-  //   sortedProperties.sort((a, b) => {
-  //     const dateA = new Date(a.createdAt);
-  //     const dateB = new Date(b.createdAt);
-  //     if (sortOrder === 'new') {
-  //       return +dateB - +dateA;
-  //     } else {
-  //       return +dateA - +dateB;
-  //     }
-  //   });
-
-  //   setProperties(sortedProperties);
-  // };
+    if (categoryFilter === 'Real Estate') {
+      const filteredProperties = filterProperties(properties, subCategoryFilter);
+      setFilteredProperties(filteredProperties);
+      setShowNoPropertiesMessage(filteredProperties.length === 0);
+    } else if (categoryFilter === 'Gems and Metals') {
+      setFilteredProperties(gems);
+      setShowNoPropertiesMessage(gems.length === 0);
+    } else if (categoryFilter === 'Security') {
+      setFilteredProperties(securityListings);
+      setShowNoPropertiesMessage(securityListings.length === 0);
+    } else if (categoryFilter === 'Art') {
+      setFilteredProperties(artPieces);
+      setShowNoPropertiesMessage(artPieces.length === 0);
+    } else {
+      setFilteredProperties([...properties, ...gems, ...securityListings, ...artPieces]);
+      setShowNoPropertiesMessage(false);
+    }
+  };
 
   const getCards = () => {
     if (selectedCategory === 'All') {
@@ -120,26 +102,35 @@ export const AllItems = ({ showFilters = false }: Props) => {
       );
     }
     if (selectedCategory === 'Real Estate') {
-      const filteredPropertiesToShow = selectedSubCategory === 'All'
-      ? properties
-      : filterProperties(properties, selectedSubCategory);
+      const filteredPropertiesToShow =
+        selectedSubCategory === 'All' ? properties : filterProperties(properties, selectedSubCategory);
 
-    return (
-      <>
-        {filteredPropertiesToShow.map((property: any) => (
-          <PropertyCard key={property.id} property={property} viewType="grid" btnLink="/details" />
-        ))}
-      </>
-    );
+      return (
+        <>
+          {filteredPropertiesToShow.length === 0 ? (
+            <p className="bg-[#000041] border border-[#00B3B5] text-white font-space_grotesk font-bold text-xl px-6 py-3 rounded-md flex justify-center items-center">
+              No properties match your search
+            </p>
+          ) : (
+            filteredPropertiesToShow.map((property: any) => (
+              <PropertyCard key={property.id} property={property} viewType="grid" btnLink="/details" />
+            ))
+          )}
+        </>
+      );
     }
     if (selectedCategory === 'Gems and Metals') {
       return gems.map((gem) => <GemsCard key={gem.id} viewType={viewType} investmentDetail={false} gem={gem} />);
     }
     if (selectedCategory === 'Security') {
-      return securityListings.map((security) => <SecurityCard key={security.id} viewType={viewType} investmentDetail={false} security={security} />);
+      return securityListings.map((security) => (
+        <SecurityCard key={security.id} viewType={viewType} investmentDetail={false} security={security} />
+      ));
     }
     if (selectedCategory === 'Art') {
-      return artPieces.map((artPiece) => <ArtCard key={artPiece.id} viewType={viewType} investmentDetail={false} artPiece={artPiece} />);
+      return artPieces.map((artPiece) => (
+        <ArtCard key={artPiece.id} viewType={viewType} investmentDetail={false} artPiece={artPiece} />
+      ));
     }
     if (showNoPropertiesMessage) {
       return (
@@ -224,28 +215,37 @@ export const AllItems = ({ showFilters = false }: Props) => {
 
   return (
     <>
-      {showFilters && <Filters filterFunction={propertyFilter} />}
+      {showFilters && <Filters filterFunction={cardFilter} />}
       <div>
         <div className="flex justify-center md:justify-between items-center">
-          {/* <Select
-            onValueChange={(newValue) => {
-              // sortProperties(newValue);
-            }}
-            value=""
-          >
-            <SelectTrigger className="w-[95%] md:w-[360px] px-3 py-2 bg-slate-900 bg-opacity-5 rounded-[5px] border border-black border-opacity-10 cursor-pointer">
-              <SelectValue placeholder="Sort by: Newest first" className="font-montserrat text-xs" />
-            </SelectTrigger>
-            <SelectContent className="bg-white">
-              <SelectItem value="new" className="cursor-pointer">
-                Sort by: <span className="font-montserrat text-xs font-bold">Newest first</span>
-              </SelectItem>
-              <SelectItem value="old" className="cursor-pointer">
-                Sort by: <span className="font-montserrat text-xs font-bold">Old first</span>
-              </SelectItem>
-            </SelectContent>
-          </Select> */}
-          <div className="hidden md:flex items-center bg-neutral-100 rounded-[5px] gap-2 px-2 py-[5px]">
+          <section className="flex gap-3 w-1/2 ">
+            <button
+              onClick={() => cardFilter('Real Estate', 'All')}
+              className="w-full bg-libertumGreen text-white px-2 py-2 rounded hover:bg-teal-600 transition duration-300 flex items-center justify-center font-space_grotesk hover:border-white hover:text-white h-12 text-sm whitespace-nowrap"
+            >
+              Real Estate
+            </button>
+            <button
+              onClick={() => cardFilter('Gems and Metals', 'All')}
+              className="w-full bg-libertumGreen text-white px-2 py-2 rounded hover:bg-teal-600 transition duration-300 flex items-center justify-center font-space_grotesk hover:border-white hover:text-white h-12 text-sm whitespace-nowrap"
+            >
+              Gems & Metals
+            </button>
+            <button
+              onClick={() => cardFilter('Art', 'All')}
+              className="w-full bg-libertumGreen text-white px-2 py-2 rounded hover:bg-teal-600 transition duration-300 flex items-center justify-center font-space_grotesk hover:border-white hover:text-white h-12 text-sm whitespace-nowrap"
+            >
+              Art
+            </button>
+            <button
+              onClick={() => cardFilter('Security', 'All')}
+              className="w-full bg-libertumGreen text-white px-2 py-2 rounded hover:bg-teal-600 transition duration-300 flex items-center justify-center font-space_grotesk hover:border-white hover:text-white h-12 text-sm whitespace-nowrap"
+            >
+              Security Listing
+            </button>
+          </section>
+
+          <section className="hidden md:flex items-center bg-neutral-100 rounded-[5px] gap-2 px-2 py-[5px]">
             <Button className="p-0" onClick={() => handleViewType('grid')}>
               <Image
                 src={`${viewType == 'grid' ? '/assets/gridActive.svg' : '/assets/gridInactive.svg'}`}
@@ -262,11 +262,9 @@ export const AllItems = ({ showFilters = false }: Props) => {
                 height="32"
               />
             </Button>
-          </div>
+          </section>
         </div>
-        <div className={propertyWrapperClassName}>
-          {getCards()}
-        </div>
+        <div className={propertyWrapperClassName}>{getCards()}</div>
       </div>
     </>
   );
