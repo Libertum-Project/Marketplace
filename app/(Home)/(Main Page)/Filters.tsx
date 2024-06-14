@@ -77,7 +77,7 @@ export function Filters({ filterFunction }: Props): ReactElement {
 
       <button className="flex bg-libertumGreen rounded-[5px] px-4 justify-center gap-4 py-4" onClick={resetFilters}>
         <p className="md:hidden text-white font-space_grotesk font-bold">Reset Filters</p>
-        <ServerImage src="/assets/reset.svg" alt="Reset" width="30" height="30" className="md:w-[70px]" />
+        <ServerImage src="/assets/reset.svg" alt="Reset" width="30" height="30"/>
       </button>
     </div>
   );
