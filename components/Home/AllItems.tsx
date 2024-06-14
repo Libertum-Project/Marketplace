@@ -221,26 +221,54 @@ export const AllItems = ({ showFilters = false }: Props) => {
           <section className="flex gap-3 w-1/2 ">
             <button
               onClick={() => cardFilter('Real Estate', 'All')}
-              className="w-full bg-libertumGreen text-white px-2 py-2 rounded hover:bg-teal-600 transition duration-300 flex items-center justify-center font-space_grotesk hover:border-white hover:text-white h-12 text-sm whitespace-nowrap"
+              className="flex gap-2 w-full bg-libertumGreen text-white px-2 py-2 rounded hover:bg-teal-600 transition duration-300 items-center justify-center font-space_grotesk hover:border-white hover:text-white h-12 text-sm whitespace-nowrap"
             >
+              <Image
+                src="/assets/icons/filterButtons/realestate.svg"
+                width={10}
+                height={10}
+                alt="real estate"
+                className="h-4 w-auto"
+              />
               Real Estate
             </button>
             <button
               onClick={() => cardFilter('Gems and Metals', 'All')}
-              className="w-full bg-libertumGreen text-white px-2 py-2 rounded hover:bg-teal-600 transition duration-300 flex items-center justify-center font-space_grotesk hover:border-white hover:text-white h-12 text-sm whitespace-nowrap"
+              className="w-full bg-libertumGreen text-white px-2 py-2 rounded hover:bg-teal-600 transition duration-300 flex gap-2 items-center justify-center font-space_grotesk hover:border-white hover:text-white h-12 text-sm whitespace-nowrap"
             >
+              <Image
+                src="/assets/icons/filterButtons/gems.svg"
+                width={10}
+                height={10}
+                alt="Gems and Metals"
+                className="h-4 w-auto"
+              />
               Gems & Metals
             </button>
             <button
               onClick={() => cardFilter('Art', 'All')}
-              className="w-full bg-libertumGreen text-white px-2 py-2 rounded hover:bg-teal-600 transition duration-300 flex items-center justify-center font-space_grotesk hover:border-white hover:text-white h-12 text-sm whitespace-nowrap"
+              className="w-full bg-libertumGreen text-white px-2 py-2 rounded hover:bg-teal-600 transition duration-300 flex gap-2 items-center justify-center font-space_grotesk hover:border-white hover:text-white h-12 text-sm whitespace-nowrap"
             >
+              <Image
+                src="/assets/icons/filterButtons/art.svg"
+                width={10}
+                height={10}
+                alt="art"
+                className="h-4 w-auto"
+              />
               Art
             </button>
             <button
               onClick={() => cardFilter('Security', 'All')}
-              className="w-full bg-libertumGreen text-white px-2 py-2 rounded hover:bg-teal-600 transition duration-300 flex items-center justify-center font-space_grotesk hover:border-white hover:text-white h-12 text-sm whitespace-nowrap"
+              className="w-full bg-libertumGreen text-white px-2 py-2 rounded hover:bg-teal-600 transition duration-300 flex gap-2 items-center justify-center font-space_grotesk hover:border-white hover:text-white h-12 text-sm whitespace-nowrap"
             >
+              <Image
+                src="/assets/icons/filterButtons/security.svg"
+                width={10}
+                height={10}
+                alt="security"
+                className="h-4 w-auto"
+              />
               Security Listing
             </button>
           </section>

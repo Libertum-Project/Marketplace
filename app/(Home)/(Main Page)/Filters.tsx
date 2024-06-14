@@ -55,7 +55,7 @@ export function Filters({ filterFunction }: Props): ReactElement {
     <div className="flex flex-col align-start gap-8 self-stretch max-w-[95%] relative top-[-3rem] mb-[-1rem] p-2 z-[999] shadow-sm bg-white border lg:top-[-1.8rem] lg:flex-row lg:px-8 lg:py-6 justify-between lg:align-center lg:max-w-[75rem] m-auto rounded-[5px]">
       <div className="w-full justify-between flex align-center md:gap-4 md:justify-center md:w-none">
         <div className="flex font-space_grotesk text-base font-bold justify-center items-center">
-            {/* <ServerImage src={option.imageURL} alt="N" width="18" height="18" className="mr-3" /> */}
+            <ServerImage src='/assets/icons/filterButtons/category.svg' alt="Category" width="18" height="18" className="mr-3" />
             <p className="w-fit whitespace-nowrap">Select Category</p>
           </div>
         <select
@@ -74,8 +74,8 @@ export function Filters({ filterFunction }: Props): ReactElement {
 
       <div className="w-full justify-between flex align-center md:gap-4 md:justify-center md:w-none">
         <div className="flex font-space_grotesk text-base font-bold justify-center items-center">
-            {/* <ServerImage src={option.imageURL} alt="N" width="18" height="18" className="mr-3" /> */}
-            <p className="w-fit whitespace-nowrap">Subcategory</p>
+        <ServerImage src='/assets/icons/filterButtons/subcategory.svg' alt="Subcategory" width="18" height="18" className="mr-3" />
+        <p className="w-fit whitespace-nowrap">Subcategory</p>
           </div>
         <select
           className="flex w-full cursor-pointer px-4 py-3 bg-white rounded-[5px] border border-black border-opacity-10"
