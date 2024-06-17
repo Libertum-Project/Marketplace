@@ -11,7 +11,7 @@ const ArtListCard: React.FC<ArtCardProps> = ({ artPiece }) => {
 
   return (
     <CardContent className="p-0 flex w-full max-h-[176px]">
-      <ServerImage src={artPiece.image} alt={artPiece.name} width={250} height={166} />
+      <ServerImage src={artPiece.image} alt={artPiece.name} width={250} height={166} className='w-auto'/>
       <div className="py-4 px-12 w-full flex gap-8 justify-between divide-x">
         <div className="flex flex-col py-6 justify-center items-center">
           <p className="text-black text-opacity-80 text-lg font-bold font-space_grotesk">{artPiece.name}</p>

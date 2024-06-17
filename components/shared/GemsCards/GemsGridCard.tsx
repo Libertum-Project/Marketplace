@@ -27,7 +27,7 @@ export const GemsGridCard: React.FC<GemsCardProps> = ({ gem }) => {
     <>
       <CardContent className="p-0 relative">
         <div className="h-[255px] flex justify-center">
-          <ServerImage src={gem.image} alt={gem.name} width={310} height={250} className="h-auto" />
+          <ServerImage src={gem.image} alt={gem.name} width={250} height={250} className="w-auto" />
         </div>
 
         <div className="py-6 px-4 h-[167.5px]">
