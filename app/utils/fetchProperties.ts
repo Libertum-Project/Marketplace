@@ -34,23 +34,16 @@ export async function getPropertyDetails(id: number) {
 
 export const filterProperties = (
   properties: any,
-  categoryFilter: string,
-  countryFilter: string,
-  annualYieldFilter: string
+  subCategoryFilter: string,
+
 ) => {
   return properties.filter((property: any) => {
-    const categoryMatch =
-      categoryFilter === '' ||
-      property.category.toLowerCase() === categoryFilter.toLowerCase() ||
-      categoryFilter.toLowerCase() === 'all';
-    const countryMatch =
-      countryFilter === '' ||
-      property.location.country.toLowerCase() === countryFilter.toLowerCase() ||
-      countryFilter.toLowerCase() === 'worldwide';
-    const annualYieldMatch =
-      annualYieldFilter === '' ||
-      parseFloat(property.annualYield) >= parseFloat(annualYieldFilter);
+    const SubCategoryMatch =
+    subCategoryFilter === '' ||
+      property.category.toLowerCase() === subCategoryFilter.toLowerCase() ||
+      subCategoryFilter.toLowerCase() === 'all';
+   
 
-    return categoryMatch && countryMatch && annualYieldMatch;
+    return SubCategoryMatch;
   });
 };
