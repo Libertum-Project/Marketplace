@@ -80,8 +80,14 @@ export const AllItems = ({ showFilters = false }: Props) => {
     } else if (categoryFilter === 'Art') {
       setFilteredProperties(artPieces);
       setShowNoPropertiesMessage(artPieces.length === 0);
+    } else if (categoryFilter === 'Oil') {
+      setFilteredProperties(oils);
+      setShowNoPropertiesMessage(oils.length === 0);
+    } else if (categoryFilter === 'Farms') {
+      setFilteredProperties(farms);
+      setShowNoPropertiesMessage(farms.length === 0);
     } else {
-      setFilteredProperties([...properties, ...gems, ...securityListings, ...artPieces]);
+      setFilteredProperties([...properties, ...gems, ...securityListings, ...artPieces, ...oils, ...farms]);
       setShowNoPropertiesMessage(false);
     }
   };
@@ -141,6 +147,12 @@ export const AllItems = ({ showFilters = false }: Props) => {
       return artPieces.map((artPiece) => (
         <ArtCard key={artPiece.id} viewType={viewType} investmentDetail={false} artPiece={artPiece} />
       ));
+    }
+    if (selectedCategory === 'Farms') {
+      return farms.map((farm) => <FarmCard key={farm.id} viewType={viewType} investmentDetail={false} farm={farm} />);
+    }
+    if (selectedCategory === 'Oil') {
+      return oils.map((oil) => <OilCard key={oil.id} viewType={viewType} investmentDetail={false} oil={oil} />);
     }
     if (showNoPropertiesMessage) {
       return (
@@ -228,7 +240,7 @@ export const AllItems = ({ showFilters = false }: Props) => {
       {showFilters && <Filters filterFunction={cardFilter} />}
       <div>
         <div className="flex justify-center md:justify-between items-center">
-          <section className="flex gap-3 w-1/2 ">
+          <section className="flex gap-3 w-4/5 ">
             <button
               onClick={() => cardFilter('Real Estate', 'All')}
               className="flex gap-2 w-full bg-libertumGreen text-white px-2 py-2 rounded hover:bg-teal-600 transition duration-300 items-center justify-center font-space_grotesk hover:border-white hover:text-white h-12 text-sm whitespace-nowrap"
@@ -266,7 +278,7 @@ export const AllItems = ({ showFilters = false }: Props) => {
                 alt="art"
                 className="h-4 w-auto"
               />
-              Art
+              Art & Collectables
             </button>
             <button
               onClick={() => cardFilter('Security', 'All')}
@@ -279,10 +291,35 @@ export const AllItems = ({ showFilters = false }: Props) => {
                 alt="security"
                 className="h-4 w-auto"
               />
-              Security Listing
+              Securities
+            </button>
+            <button
+              onClick={() => cardFilter('Oil', 'All')}
+              className="w-full bg-libertumGreen text-white px-2 py-2 rounded hover:bg-teal-600 transition duration-300 flex gap-2 items-center justify-center font-space_grotesk hover:border-white hover:text-white h-12 text-sm whitespace-nowrap"
+            >
+              <Image
+                src="/assets/icons/filterButtons/security.svg"
+                width={10}
+                height={10}
+                alt="security"
+                className="h-4 w-auto"
+              />
+              Commodities
+            </button>
+            <button
+              onClick={() => cardFilter('Farms', 'All')}
+              className="w-full bg-libertumGreen text-white px-2 py-2 rounded hover:bg-teal-600 transition duration-300 flex gap-2 items-center justify-center font-space_grotesk hover:border-white hover:text-white h-12 text-sm whitespace-nowrap"
+            >
+              <Image
+                src="/assets/icons/filterButtons/security.svg"
+                width={10}
+                height={10}
+                alt="security"
+                className="h-4 w-auto"
+              />
+              Farms / Local Produce
             </button>
           </section>
-
           <section className="hidden md:flex items-center bg-neutral-100 rounded-[5px] gap-2 px-2 py-[5px]">
             <Button className="p-0" onClick={() => handleViewType('grid')}>
               <Image
