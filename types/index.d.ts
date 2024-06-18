@@ -106,3 +106,49 @@ export type ArtCardProps = {
   artPiece: Art;
   investmentDetail?: boolean;
 };
+
+export type Farm = {
+  id: number;
+  name: string;
+  image: string;
+  description: string[];
+  valuation: number;
+  tokenPrice: number;
+  totalTokens: number;
+  tokensAvailables: number;
+  freeFloatFarmToken: number;
+  tokenHoldbyOwner: number;
+  guaranteed: number;
+  farmNetProfit: number;
+  expectedAnnualDividendPerToken: number;
+  annualReturn: number;
+  guaranteed: number;
+};
+
+export type FarmCardProps = {
+  farm: Farm;
+  investmentDetail?: boolean;
+};
+
+export type Oil = {
+  id: number;
+  name: string;
+  image: string;
+  description: string[];
+  valuation: number;
+  tokenPrice: number;
+  totalTokens: number;
+  tokensAvailables: number;
+  freeFloatOilToken: number;
+  tokenHoldbyOwner: number;
+  guaranteed: number;
+  oilFieldNetProfit: number;
+  expectedAnnualDividendPerToken: number;
+  annualReturn: number;
+  guaranteed: number;
+};
+
+export type OilCardProps = {
+  oil: Oil;
+  investmentDetail?: boolean;
+};
