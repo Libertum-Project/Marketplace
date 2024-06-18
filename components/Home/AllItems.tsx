@@ -6,6 +6,7 @@ import PropertyCard from '../shared/PropertyCard';
 import { GemsCard } from '../shared/GemsCards/GemsCard';
 import { SecurityCard } from '../shared/SecurityCards/SecurityCard';
 import ArtCard from '../shared/ArtCards/ArtCard';
+import { FarmCard } from '../shared/FarmCards/FarmCard';
 
 import { Button } from '../ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -16,6 +17,7 @@ import { filterProperties } from '@/app/utils/fetchProperties';
 import { gems } from './gems';
 import { securityListings } from './security';
 import { artPieces } from './art';
+import { farms } from './farms';
 
 interface Props {
   showFilters?: boolean;
@@ -97,6 +99,9 @@ export const AllItems = ({ showFilters = false }: Props) => {
           ))}
           {artPieces.map((artPiece) => (
             <ArtCard key={artPiece.id} viewType={viewType} investmentDetail={false} artPiece={artPiece} />
+          ))}
+        {farms.map((farm) => (
+            <FarmCard key={farm.id} viewType={viewType} investmentDetail={false} farm={farm} />
           ))}
         </>
       );
