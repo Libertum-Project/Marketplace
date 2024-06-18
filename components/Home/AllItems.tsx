@@ -298,10 +298,10 @@ export const AllItems = ({ showFilters = false }: Props) => {
               className="w-full bg-libertumGreen text-white px-2 py-2 rounded hover:bg-teal-600 transition duration-300 flex gap-2 items-center justify-center font-space_grotesk hover:border-white hover:text-white h-12 text-sm whitespace-nowrap"
             >
               <Image
-                src="/assets/icons/filterButtons/security.svg"
+                src="/assets/icons/filterButtons/commodities.svg"
                 width={10}
                 height={10}
-                alt="security"
+                alt="comodities"
                 className="h-4 w-auto"
               />
               Commodities
@@ -311,13 +311,13 @@ export const AllItems = ({ showFilters = false }: Props) => {
               className="w-full bg-libertumGreen text-white px-2 py-2 rounded hover:bg-teal-600 transition duration-300 flex gap-2 items-center justify-center font-space_grotesk hover:border-white hover:text-white h-12 text-sm whitespace-nowrap"
             >
               <Image
-                src="/assets/icons/filterButtons/security.svg"
+                src="/assets/icons/filterButtons/farms.svg"
                 width={10}
                 height={10}
-                alt="security"
+                alt="farms"
                 className="h-4 w-auto"
               />
-              Farms / Local Produce
+              Farms
             </button>
           </section>
           <section className="hidden md:flex items-center bg-neutral-100 rounded-[5px] gap-2 px-2 py-[5px]">
