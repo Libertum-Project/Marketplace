@@ -5,8 +5,9 @@ import Image from 'next/image';
 import PropertyCard from '../shared/PropertyCard';
 import { GemsCard } from '../shared/GemsCards/GemsCard';
 import { SecurityCard } from '../shared/SecurityCards/SecurityCard';
-import ArtCard from '../shared/ArtCards/ArtCard';
+import { ArtCard } from '../shared/ArtCards/ArtCard';
 import { FarmCard } from '../shared/FarmCards/FarmCard';
+import { OilCard } from '../shared/OilListing/OilCard';
 
 import { Button } from '../ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -18,6 +19,7 @@ import { gems } from './gems';
 import { securityListings } from './security';
 import { artPieces } from './art';
 import { farms } from './farms';
+import { oils } from './oils';
 
 interface Props {
   showFilters?: boolean;
@@ -100,8 +102,11 @@ export const AllItems = ({ showFilters = false }: Props) => {
           {artPieces.map((artPiece) => (
             <ArtCard key={artPiece.id} viewType={viewType} investmentDetail={false} artPiece={artPiece} />
           ))}
-        {farms.map((farm) => (
+          {farms.map((farm) => (
             <FarmCard key={farm.id} viewType={viewType} investmentDetail={false} farm={farm} />
+          ))}
+          {oils.map((oil) => (
+            <OilCard key={oil.id} viewType={viewType} investmentDetail={false} oil={oil} />
           ))}
         </>
       );
