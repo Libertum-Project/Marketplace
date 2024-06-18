@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableRow, TableCell } from '@/components/ui/table';
 import { Accordion, AccordionItem, AccordionContent, AccordionTrigger } from '@/components/ui/accordion';
 import { ServerImage } from '../ServerImage';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@radix-ui/react-tooltip';
 
 import { FarmCardProps } from '@/types';
 import { useFarmLogic } from './useFarmLogic';
@@ -47,12 +48,30 @@ export const FarmGridCard: React.FC<FarmCardProps> = ({ farm }) => {
             </article>
             <p className="mb-3">=</p>
             <article className="flex justify-between border rounded-[.5rem] font-space_grotesk w-full h-10 items-center text-sm overflow-hidden bg-gray-200">
-              <p className="px-4 w-full text-end"> $ {calculatedPrice}</p>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <p className="whitespace-nowrap overflow-x-clip px-2">$ {calculatedPrice}</p>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p className="whitespace-nowrap bg-white rounded-[.5px] p-2">$ {calculatedPrice}</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
             </article>
           </section>
-          <section className="flex justify-between border rounded-[.5rem] font-space_grotesk w-full h-10 items-center text-sm overflow-hidden bg-gray-200 px-4">
-            <p className="text-sm">Guaranteed Buyback Price:</p>
-            <p>$ {calculatedGuarantee}</p>
+          <section className="flex justify-between border rounded-[.5rem] font-space_grotesk w-full h-10 items-center text-sm overflow-hidden bg-gray-200 px-4 gap-2">
+            <p className="text-sm whitespace-nowrap">Guaranteed Buyback Price:</p>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <p className="whitespace-nowrap overflow-x-clip">$ {calculatedGuarantee}</p>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p className="whitespace-nowrap bg-white rounded-[.5px] p-2">$ {calculatedGuarantee}</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           </section>
         </div>
       </CardContent>

@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { Farm } from '@/types/index';
 
 export const useFarmLogic = (farm: Farm) => {
-  const [quantity, setQuantity] = useState<number>(1);
-  const [isExpanded, setIsExpanded] = useState<boolean>(false);
+  const [quantity, setQuantity] = useState(1);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseInt(event.target.value, 10);
