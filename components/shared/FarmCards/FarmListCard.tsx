@@ -18,33 +18,44 @@ export const FarmListCard: React.FC<FarmCardProps> = ({ farm }) => {
           ${farm.valuation.toLocaleString('en-US')}
           </p>
         </div>
-        <div className="flex flex-col justify-between py-4 px-2">
-          <div className="flex gap-4 justify-between items-end w-full">
-            <div className="flex flex-col w-full h-fit">
-              <article className="flex justify-center border rounded-[.5rem] font-space_grotesk w-full h-10 items-center overflow-hidden">
-                <input
-                  type="text"
-                  min="1"
-                  value={quantity}
-                  onChange={handleChange}
-                  className="w-full focus:outline-none flex flex-col justify-end text-center px-2 font-space_grotesk h-10 items-center text-sm"
-                />
-                <p className="h-full flex items-center">
-                  <span className="px-1 text-xs">tokens</span>
-                </p>
-              </article>
-              <p className="text-right text-xs py-1">Guaranteed Buyback Price:</p>
-            </div>
-            <p className="mb-3">=</p>
-            <article className="flex justify-between border rounded-[.5rem] font-space_grotesk w-full h-10 items-center text-sm overflow-hidden bg-gray-200">
-              <p className="px-4 w-full text-end">$ {calculatedPrice}</p>
+        <div className="flex flex-col justify-between py-4 pl-8 gap-2">
+          <section className="max-h-14 overflow-y-scroll">
+            {farm.description.map((desc, index) => (
+              <p key={index} className="text-slate-600 text-sm mb-1">
+                {desc}
+              </p>
+            ))}
+          </section>
+          <section className="flex justify-between items-end gap-1">
+            <article className="flex justify-between border rounded-[.5rem] font-space_grotesk h-10 items-center overflow-hidden w-full">
+              <input
+                type="text"
+                min="1"
+                value={quantity}
+                onChange={handleChange}
+                className="w-full focus:outline-none flex flex-col justify-between text-right px-2 font-space_grotesk h-10 items-center text-sm"
+              />
+              <p className="h-full flex items-center">
+                <span className="px-1 text-xs text-start">tokens</span>
+              </p>
             </article>
-          </div>
-          <p className='text-right text-sm'>$ {calculatedGuarantee}</p>
+            <p className="mb-3">=</p>
+            <article className="flex justify-between border rounded-[.5rem] font-space_grotesk h-10 items-center text-sm overflow-hidden bg-gray-200 w-full">
+              <p className="px-2 w-full text-center"> $ {calculatedPrice}</p>
+            </article>
+          </section>
         </div>
-        <div className='py-8 px-4'>
-          <Button className='border border-teal-500 text-teal-500 font-space_grotesk font-bold px-10'>
-            Invest
+        <div className="flex justify-end items-center pl-8 max-w-32">
+          <Button
+            variant="outline"
+            className="flex items-center w-full rounded-[5px] border border-teal-500 border-opacity-20  text-center font-bold font-space_grotesk py-6 hover:bg-teal-500
+                    hover:text-white
+                    bg-[#00062F] text-white cursor-not-allowed"
+            style={{
+              justifyContent: 'center',
+            }}
+          >
+            Buy {farm.name}
           </Button>
         </div>
       </div>
