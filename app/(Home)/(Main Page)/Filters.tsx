@@ -5,9 +5,10 @@ import { ServerImage } from '@/components/shared/ServerImage';
 
 interface Props {
   filterFunction: any;
+  resetFilters: any;
 }
 
-export function Filters({ filterFunction }: Props): ReactElement {
+export function Filters({ filterFunction, resetFilters }: Props): ReactElement {
   const [categoryFilter, setCategoryFilter] = useState('All');
   const [subCategoryFilter, setSubCategoryFilter] = useState('All');
 
@@ -54,9 +55,8 @@ export function Filters({ filterFunction }: Props): ReactElement {
     setSubCategoryFilter(selectedSubCategory);
   };
 
-  const resetFilters = () => {
-    setCategoryFilter('All');
-    setSubCategoryFilter('All');
+  const handleResetFilters = () => {
+    resetFilters(); 
   };
 
   return (
@@ -111,7 +111,7 @@ export function Filters({ filterFunction }: Props): ReactElement {
         </select>
       </div>
 
-      <button className="flex bg-libertumGreen rounded-[5px] px-4 justify-center gap-4 py-4" onClick={resetFilters}>
+      <button className="flex bg-libertumGreen rounded-[5px] px-4 justify-center gap-4 py-4" onClick={handleResetFilters}>
         <p className="md:hidden text-white font-space_grotesk font-bold">Reset Filters</p>
         <ServerImage src="/assets/reset.svg" alt="Reset" width="30" height="30" />
       </button>

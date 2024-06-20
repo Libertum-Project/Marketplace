@@ -92,6 +92,13 @@ export const AllItems = ({ showFilters = false }: Props) => {
     }
   };
 
+  const resetFilters = () => {
+    setSelectedCategory('All');
+    setSelectedSubCategory('All');
+    setFilteredProperties([...properties, ...gems, ...securityListings, ...artPieces, ...oils, ...farms]);
+    setShowNoPropertiesMessage(false);
+  };
+
   const getCards = () => {
     if (selectedCategory === 'All') {
       return (
@@ -237,7 +244,7 @@ export const AllItems = ({ showFilters = false }: Props) => {
 
   return (
     <>
-      {showFilters && <Filters filterFunction={cardFilter} />}
+      {showFilters && <Filters filterFunction={cardFilter} resetFilters={resetFilters} />}
       <div>
         <div className="flex justify-center md:justify-between items-center">
           <section className="flex gap-3 w-4/5 ">
