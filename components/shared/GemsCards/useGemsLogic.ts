@@ -8,7 +8,8 @@ export const useGemLogic = (gem: Gem) => {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = Number(e.target.value);
-    setQuantity(value);
+    if (!isNaN(value) && value >= 0 && value <= gem.totalTokens) setQuantity(value);
+    else alert(`Maximum available tokens: ${gem.totalTokens}`);
   };
 
   const handleUnitChange = (e: ChangeEvent<HTMLSelectElement>) => {

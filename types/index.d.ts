@@ -65,6 +65,7 @@ export type Gem = {
   name: string;
   image: string;
   pricePerGram: number;
+  totalTokens: number;
   tokenGrams: number;
   description: string;
 };

@@ -21,18 +21,19 @@ export const OilListCard: React.FC<OilCardProps> = ({ oil }) => {
           </p>
         </div>
         <div className="flex flex-col justify-between py-4 pl-8">
-        <section className="max-h-14 overflow-y-scroll">
+          <section className="max-h-14 overflow-y-scroll">
             {oil.description.map((desc, index) => (
               <p key={index} className="text-slate-600 text-sm mb-1">
                 {desc}
               </p>
             ))}
-          </section>         
+          </section>
           <section className="flex justify-between items-end gap-1">
             <article className="flex justify-between border rounded-[.5rem] font-space_grotesk h-10 items-center overflow-hidden w-full">
               <input
-                type="text"
-                min="1"
+                type="number"
+                min={1}
+                max={oil.totalTokens}
                 value={quantity}
                 onChange={handleChange}
                 className="w-full focus:outline-none flex flex-col justify-between text-right px-2 font-space_grotesk h-10 items-center text-sm"

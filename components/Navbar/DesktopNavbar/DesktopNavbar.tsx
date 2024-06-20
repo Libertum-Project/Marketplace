@@ -51,8 +51,8 @@ export function DesktopNavbar(): ReactElement {
         </Link>
 
         <div className={css.links}>
-          <Link href="https://www.libertum.io/ico" onMouseEnter={handleHideModals} onTouchStart={handleHideModals}>
-            Buy LBM
+          <Link href="https://www.libertum.io/get" onMouseEnter={handleHideModals} onTouchStart={handleHideModals}>
+            Get LBM
           </Link>
           <a href="https://www.libertum.io/comingsoon" onMouseEnter={handleHideModals} onTouchStart={handleHideModals}>
             Explore Properties

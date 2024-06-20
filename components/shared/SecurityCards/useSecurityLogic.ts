@@ -11,7 +11,8 @@ export const useSecurityLogic = (security: SecurityListing) => {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = Number(e.target.value);
-    setQuantity(value);
+    if (!isNaN(value) && value >= 0 && value <= security.totalTokens) setQuantity(value);
+    else alert(`Maximum available tokens: ${security.totalTokens}`);
   };
 
   const calculatedPrice = (quantity * security.tokenPrice).toFixed(0); 

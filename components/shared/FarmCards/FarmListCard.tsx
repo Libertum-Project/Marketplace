@@ -10,12 +10,12 @@ export const FarmListCard: React.FC<FarmCardProps> = ({ farm }) => {
 
   return (
     <CardContent className="p-0 flex w-full max-h-[176px]">
-      <ServerImage src={farm.image} alt={farm.name} width={250} height={166} className='w-auto'/>
+      <ServerImage src={farm.image} alt={farm.name} width={250} height={166} className="w-auto" />
       <div className="py-4 px-12 w-full flex gap-8 justify-between divide-x">
         <div className="flex flex-col py-6 justify-center items-center">
           <p className="text-black text-opacity-80 text-lg font-bold font-space_grotesk">{farm.name}</p>
           <p className="px-4 py-1 bg-teal-500 bg-opacity-10 rounded-[50px] border border-teal-500 font-space_grotesk text-teal-500 text-xs font-bold flex items-center justify-center w-fit whitespace-nowrap">
-          ${farm.valuation.toLocaleString('en-US')}
+            ${farm.valuation.toLocaleString('en-US')}
           </p>
         </div>
         <div className="flex flex-col justify-between py-4 pl-8 gap-2">
@@ -29,8 +29,9 @@ export const FarmListCard: React.FC<FarmCardProps> = ({ farm }) => {
           <section className="flex justify-between items-end gap-1">
             <article className="flex justify-between border rounded-[.5rem] font-space_grotesk h-10 items-center overflow-hidden w-full">
               <input
-                type="text"
-                min="1"
+                type="number"
+                min={1}
+                max={farm.totalTokens}
                 value={quantity}
                 onChange={handleChange}
                 className="w-full focus:outline-none flex flex-col justify-between text-right px-2 font-space_grotesk h-10 items-center text-sm"

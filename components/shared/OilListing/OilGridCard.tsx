@@ -7,6 +7,8 @@ import { Accordion, AccordionItem, AccordionContent, AccordionTrigger } from '@/
 import { ServerImage } from '../ServerImage';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@radix-ui/react-tooltip';
 
+import { LikeButton } from '../LikeButton';
+
 import { OilCardProps } from '@/types';
 import { useOilLogic } from './useOilLogic';
 
@@ -20,6 +22,7 @@ export const OilGridCard: React.FC<OilCardProps> = ({ oil }) => {
   return (
     <>
       <CardContent className="p-0 relative">
+        <LikeButton />
         <div className="h-[255px] flex justify-center">
           <ServerImage src={oil.image} alt={oil.name} width={200} height={250} className="h-full w-auto p-1" />
         </div>
@@ -36,8 +39,9 @@ export const OilGridCard: React.FC<OilCardProps> = ({ oil }) => {
           <section className="flex justify-between items-end py-2 gap-4">
             <article className="flex justify-center border rounded-[.5rem] font-space_grotesk w-full h-10 items-center overflow-hidden">
               <input
-                type="text"
-                min="1"
+                 type="number"
+                 min={1}
+                 max={oil.totalTokens}
                 value={quantity}
                 onChange={handleChange}
                 className="w-full focus:outline-none flex flex-col justify-end text-center px-2 font-space_grotesk h-10 items-center text-sm"
