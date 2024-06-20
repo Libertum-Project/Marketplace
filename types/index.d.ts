@@ -65,6 +65,7 @@ export type Gem = {
   name: string;
   image: string;
   pricePerGram: number;
+  totalTokens: number;
   tokenGrams: number;
   description: string;
 };
@@ -72,7 +73,7 @@ export type Gem = {
 export type GemsCardProps = {
   gem: Gem;
   investmentDetail?: boolean;
-}
+};
 
 export type WeightUnitType = 'gr' | 'oz';
 
@@ -89,5 +90,66 @@ export type SecurityListing = {
 
 export type SecurityCardProps = {
   security: SecurityListing;
+  investmentDetail?: boolean;
+};
+export type Art = {
+  id: number;
+  name: string;
+  image: string;
+  description: string[];
+  valuation: number;
+  tokenPrice: number;
+  totalTokens: number;
+  guaranteed: number;
+};
+
+export type ArtCardProps = {
+  artPiece: Art;
+  investmentDetail?: boolean;
+};
+
+export type Farm = {
+  id: number;
+  name: string;
+  image: string;
+  description: string[];
+  valuation: number;
+  tokenPrice: number;
+  totalTokens: number;
+  tokensAvailables: number;
+  freeFloatFarmToken: number;
+  tokenHoldbyOwner: number;
+  guaranteed: number;
+  farmNetProfit: number;
+  expectedAnnualDividendPerToken: number;
+  annualReturn: number;
+  guaranteed: number;
+};
+
+export type FarmCardProps = {
+  farm: Farm;
+  investmentDetail?: boolean;
+};
+
+export type Oil = {
+  id: number;
+  name: string;
+  image: string;
+  description: string[];
+  valuation: number;
+  tokenPrice: number;
+  totalTokens: number;
+  tokensAvailables: number;
+  freeFloatOilToken: number;
+  tokenHoldbyOwner: number;
+  guaranteed: number;
+  oilFieldNetProfit: number;
+  expectedAnnualDividendPerToken: number;
+  annualReturn: number;
+  guaranteed: number;
+};
+
+export type OilCardProps = {
+  oil: Oil;
   investmentDetail?: boolean;
 };

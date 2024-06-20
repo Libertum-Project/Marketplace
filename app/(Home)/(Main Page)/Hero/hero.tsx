@@ -29,7 +29,7 @@ const Hero = () => {
             alt="N"
             width="336"
             height="336"
-            className="cover mr-[-2rem] z-10"
+            className="cover mr-[-2rem] z-10 w-auto"
             priority={true}
           />
 

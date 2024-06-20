@@ -1,85 +1,119 @@
 'use client';
-import { useState, type ReactElement } from 'react';
+import { useState, useEffect, type ReactElement } from 'react';
 
 import { ServerImage } from '@/components/shared/ServerImage';
 
 interface Props {
   filterFunction: any;
+  resetFilters: any;
 }
 
-export function Filters({ filterFunction }: Props): ReactElement {
-  const [categoryFilter, setCategoryFilter] = useState('');
-  const [countryFilter, setCountryFilter] = useState('');
-  const [annualYieldFilter, setAnnualYieldFilter] = useState('');
+export function Filters({ filterFunction, resetFilters }: Props): ReactElement {
+  const [categoryFilter, setCategoryFilter] = useState('All');
+  const [subCategoryFilter, setSubCategoryFilter] = useState('All');
 
-  const selectOptions: {
-    imageURL: string;
-    label: string;
-    options: string[];
-  }[] = [
-    {
-      imageURL: '/assets/filter1.svg',
-      label: 'Property Type',
-      options: ['All', 'Residential', 'Commercial', 'Farm', 'Restaurant', 'Office'],
+  const filterOptions: { [key: string]: { label: string; subcategories: string[] } } = {
+    'Real Estate': {
+      label: 'Real Estate',
+      subcategories: ['All', 'Residential', 'Commercial', 'Farm', 'Restaurant', 'Office'],
     },
-    {
-      imageURL: '/assets/filter2.svg',
-      label: 'Location',
-      options: ['Worldwide', 'France', 'USA', 'Spain', 'Canada', 'Japan', 'United Kingdom', 'Netherlands', 'Brazil'],
+    'Gems and Metals': {
+      label: 'Gems and Metals',
+      subcategories: ['All'],
     },
-    {
-      imageURL: '/assets/filter3.svg',
-      label: 'Rental Yield',
-      options: ['Up to  5%', '5% to 10%', '10% to 15%', '15% to 30%'],
+    Security: {
+      label: 'Securities',
+      subcategories: ['All'],
     },
-  ];
-
-  const handleCategoryChange = (event: any) => {
-    setCategoryFilter(event.target.value);
+    Art: {
+      label: 'Art & Collectables',
+      subcategories: ['All'],
+    },
+    Oil: {
+      label: 'Commodities - Oil',
+      subcategories: ['All'],
+    },
+    Farms: {
+      label: 'Farms / Local Produce',
+      subcategories: ['All'],
+    },
   };
 
-  const handleCountryChange = (event: any) => {
-    setCountryFilter(event.target.value);
+  useEffect(() => {
+    filterFunction(categoryFilter, subCategoryFilter);
+  }, [categoryFilter, subCategoryFilter]);
+
+  const handleCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedCategory = event.target.value;
+    setCategoryFilter(selectedCategory);
+    // Reset subcategory filter when category changes
+    setSubCategoryFilter('All');
   };
 
-  const handleAnnualYieldChange = (event: any) => {
-    setAnnualYieldFilter(event.target.value);
+  const handleSubCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedSubCategory = event.target.value;
+    setSubCategoryFilter(selectedSubCategory);
+  };
+
+  const handleResetFilters = () => {
+    resetFilters(); 
   };
 
   return (
-    <div className="flex flex-col align-start gap-2 self-stretch max-w-[95%] relative top-[-3rem] mb-[-1rem] p-2 z-[999] shadow-sm bg-white border lg:top-[-1.8rem] lg:flex-row lg:px-8 lg:py-6 justify-between lg:align-center lg:max-w-[75rem] m-auto rounded-[5px]">
-      {selectOptions.map((option, index) => (
-        <div key={index} className="w-full justify-between flex align-center md:gap-4 md:justify-center md:w-none">
-          <div className="flex font-space_grotesk text-base font-bold justify-center items-center">
-            <ServerImage src={option.imageURL} alt="N" width="18" height="18" className="mr-3" />
-            <p className="w-fit whitespace-nowrap">{option.label}</p>
-          </div>
-
-          <select
-            className="flex w-[200px] cursor-pointer px-4 py-3 bg-white rounded-[5px] border border-black border-opacity-10"
-            onChange={
-              option.label === 'Property Type'
-                ? handleCategoryChange
-                : option.label === 'Location'
-                  ? handleCountryChange
-                  : handleAnnualYieldChange
-            }
-          >
-            {option.options.map((opt, idx) => (
-              <option key={idx} value={opt}>
-                {opt}
-              </option>
-            ))}
-          </select>
+    <div className="flex flex-col align-start gap-8 self-stretch max-w-[95%] relative top-[-3rem] mb-[-1rem] p-2 z-[999] shadow-sm bg-white border lg:top-[-1.8rem] lg:flex-row lg:px-8 lg:py-6 justify-between lg:align-center lg:max-w-[75rem] m-auto rounded-[5px]">
+      <div className="w-full justify-between flex align-center md:gap-4 md:justify-center md:w-none">
+        <div className="flex font-space_grotesk text-base font-bold justify-center items-center">
+          <ServerImage
+            src="/assets/icons/filterButtons/category.svg"
+            alt="Category"
+            width="18"
+            height="18"
+            className="mr-3"
+          />
+          <p className="w-fit whitespace-nowrap">Select Category</p>
         </div>
-      ))}
+        <select
+          className="flex w-full cursor-pointer px-4 py-3 bg-white rounded-[5px] border border-black border-opacity-10"
+          onChange={handleCategoryChange}
+          value={categoryFilter}
+        >
+          <option value="All">All</option>
+          {Object.keys(filterOptions).map((category, index) => (
+            <option key={index} value={category}>
+              {filterOptions[category].label}
+            </option>
+          ))}
+        </select>
+      </div>
 
-      <button
-        className="flex bg-libertumGreen rounded-[5px] px-4 justify-center gap-4 py-4"
-        onClick={() => filterFunction(categoryFilter, countryFilter, annualYieldFilter)}
-      >
-        <p className="md:hidden text-white font-space_grotesk font-bold">Search Properties </p>
-        <ServerImage src="/assets/magnifying.svg" alt="N" width="30" height="30" className="md:w-[70px]" />
+      <div className="w-full justify-between flex align-center md:gap-4 md:justify-center md:w-none">
+        <div className="flex font-space_grotesk text-base font-bold justify-center items-center">
+          <ServerImage
+            src="/assets/icons/filterButtons/subcategory.svg"
+            alt="Subcategory"
+            width="18"
+            height="18"
+            className="mr-3"
+          />
+          <p className="w-fit whitespace-nowrap">Subcategory</p>
+        </div>
+        <select
+          className="flex w-full cursor-pointer px-4 py-3 bg-white rounded-[5px] border border-black border-opacity-10"
+          onChange={handleSubCategoryChange}
+          value={subCategoryFilter}
+          disabled={categoryFilter === 'All'}
+        >
+          {filterOptions[categoryFilter]?.subcategories.map((subCategory, index) => (
+            <option key={index} value={subCategory}>
+              {subCategory}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <button className="flex bg-libertumGreen rounded-[5px] px-4 justify-center gap-4 py-4" onClick={handleResetFilters}>
+        <p className="md:hidden text-white font-space_grotesk font-bold">Reset Filters</p>
+        <ServerImage src="/assets/reset.svg" alt="Reset" width="30" height="30" />
       </button>
     </div>
   );
