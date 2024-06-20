@@ -2,6 +2,7 @@
 import { useGemLogic } from '@/components/shared/GemsCards/useGemsLogic';
 import { GemsCardProps } from '@/types/index';
 import { CardContent, CardFooter } from '@/components/ui/card';
+import { LikeButton } from '../LikeButton';
 import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableRow, TableCell } from '../../ui/table';
 import { Accordion, AccordionItem, AccordionContent, AccordionTrigger } from '../../ui/accordion';
@@ -27,6 +28,7 @@ export const GemsGridCard: React.FC<GemsCardProps> = ({ gem }) => {
   return (
     <>
       <CardContent className="p-0 relative">
+        <LikeButton />
         <div className="h-[255px] flex justify-center">
           <ServerImage src={gem.image} alt={gem.name} width={250} height={250} className="w-auto" />
         </div>

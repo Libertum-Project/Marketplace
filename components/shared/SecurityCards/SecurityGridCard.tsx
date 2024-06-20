@@ -6,6 +6,8 @@ import { Table, TableBody, TableRow, TableCell } from '@/components/ui/table';
 import { Accordion, AccordionItem, AccordionContent, AccordionTrigger } from '@/components/ui/accordion';
 import { ServerImage } from '../ServerImage';
 
+import { LikeButton } from '../LikeButton';
+
 import { SecurityCardProps } from '@/types';
 import { useSecurityLogic } from './useSecurityLogic';
 
@@ -20,6 +22,7 @@ export const SecurityGridCard: React.FC<SecurityCardProps> = ({ security }) => {
   return (
     <>
       <CardContent className="p-0 relative">
+        <LikeButton />
         <div className="h-[255px] flex justify-center">
           <ServerImage
             src={security.image}

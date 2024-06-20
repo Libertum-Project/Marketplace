@@ -7,6 +7,8 @@ import { Accordion, AccordionItem, AccordionContent, AccordionTrigger } from '@/
 import { ServerImage } from '../ServerImage';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@radix-ui/react-tooltip';
 
+import { LikeButton } from '../LikeButton';
+
 import { FarmCardProps } from '@/types';
 import { useFarmLogic } from './useFarmLogic';
 
@@ -20,6 +22,7 @@ export const FarmGridCard: React.FC<FarmCardProps> = ({ farm }) => {
   return (
     <>
       <CardContent className="p-0 relative">
+        <LikeButton />
         <div className="h-[255px] flex justify-center">
           <ServerImage src={farm.image} alt={farm.name} width={200} height={250} className="h-full w-auto p-1" />
         </div>

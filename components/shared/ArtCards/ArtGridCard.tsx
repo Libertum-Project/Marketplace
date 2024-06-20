@@ -2,6 +2,7 @@
 
 import { CardContent, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { LikeButton } from '../LikeButton';
 import { Table, TableBody, TableRow, TableCell } from '@/components/ui/table';
 import { Accordion, AccordionItem, AccordionContent, AccordionTrigger } from '@/components/ui/accordion';
 import { ServerImage } from '../ServerImage';
@@ -20,6 +21,7 @@ const ArtGridCard: React.FC<ArtCardProps> = ({ artPiece }) => {
   return (
     <>
       <CardContent className="p-0 relative">
+        <LikeButton />
         <div className="h-[255px] flex justify-center">
           <ServerImage src={artPiece.image} alt={artPiece.name} width={200} height={250} className="h-full w-auto p-1" />
         </div>
