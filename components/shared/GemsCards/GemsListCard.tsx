@@ -1,5 +1,5 @@
 'use client';
-import { useGemLogic } from '@/components/Home/useGemsLogic';
+import { useGemLogic } from '@/components/shared/GemsCards/useGemsLogic';
 import { GemsCardProps } from '@/types/index';
 import { CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -10,7 +10,7 @@ export const GemsListCard: React.FC<GemsCardProps> = ({ gem }) => {
 
   return (
     <CardContent className="p-0 flex w-full max-h-[176px]">
-      <ServerImage src={gem.image} alt={gem.name} width={250} height={166} className="w-auto"/>
+      <ServerImage src={gem.image} alt={gem.name} width={250} height={166} className="w-auto" />
       <div className="py-4 px-12 w-full flex gap-8 justify-between divide-x">
         <div className="flex flex-col py-6 justify-center items-center">
           <p className="text-black text-opacity-80 text-lg font-bold font-space_grotesk">{gem.name}</p>
@@ -23,8 +23,9 @@ export const GemsListCard: React.FC<GemsCardProps> = ({ gem }) => {
           <section className="flex justify-between items-end gap-1">
             <article className="flex justify-between border rounded-[.5rem] font-space_grotesk w-36 h-10 items-center overflow-hidden">
               <input
-                type="text"
-                min="1"
+                type="number"
+                min={1}
+                max={gem.totalTokens}
                 value={quantity}
                 onChange={handleChange}
                 className="w-full focus:outline-none flex flex-col justify-between text-right px-2 font-space_grotesk h-10 items-center text-sm"

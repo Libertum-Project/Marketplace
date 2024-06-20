@@ -30,8 +30,9 @@ export const SecurityListCard: React.FC<SecurityCardProps> = ({ security }) => {
           <section className="flex justify-between items-end gap-1">
             <article className="flex justify-between border rounded-[.5rem] font-space_grotesk w-28 h-10 items-center overflow-hidden">
               <input
-                type="text"
-                min="1"
+                type="number"
+                min={1}
+                max={security.totalTokens}
                 value={quantity}
                 onChange={handleChange}
                 className="w-full focus:outline-none flex flex-col justify-between text-right px-2 font-space_grotesk h-10 items-center text-sm"

@@ -1,13 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, ChangeEvent } from 'react';
 import { Oil } from '@/types/index';
 
 export const useOilLogic = (oil: Oil) => {
   const [quantity, setQuantity] = useState(1);
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = parseInt(event.target.value, 10);
-    setQuantity(isNaN(value) || value <= 0 ? 1 : value);
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = Number(e.target.value);
+    if (!isNaN(value) && value >= 0 && value <= oil.totalTokens) setQuantity(value);
+    else alert(`Maximum available tokens: ${oil.totalTokens}`);
   };
 
   const handleToggle = () => {

@@ -1,10 +1,11 @@
 'use client';
-import { useGemLogic } from '@/components/Home/useGemsLogic';
+import { useGemLogic } from '@/components/shared/GemsCards/useGemsLogic';
 import { GemsCardProps } from '@/types/index';
 import { CardContent, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableRow, TableCell } from '../../ui/table';
 import { Accordion, AccordionItem, AccordionContent, AccordionTrigger } from '../../ui/accordion';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@radix-ui/react-tooltip';
 import { ServerImage } from '../ServerImage';
 
 export const GemsGridCard: React.FC<GemsCardProps> = ({ gem }) => {
@@ -39,11 +40,12 @@ export const GemsGridCard: React.FC<GemsCardProps> = ({ gem }) => {
             </p>
           </section>
 
-          <section className="flex justify-between items-end py-4 gap-1">
-            <article className="flex justify-center border rounded-[.5rem] font-space_grotesk w-24 h-10 items-center overflow-hidden">
+          <section className="flex justify-between items-end py-4 gap-1 w-full">
+            <article className="flex justify-center border rounded-[.5rem] font-space_grotesk w-full h-10 items-center overflow-hidden">
               <input
-                type="text"
-                min="1"
+                type="number"
+                min={1}
+                max={gem.totalTokens}
                 value={quantity}
                 onChange={handleChange}
                 className="w-full focus:outline-none flex flex-col justify-end text-center px-2 font-space_grotesk h-10 items-center text-sm"
@@ -53,16 +55,17 @@ export const GemsGridCard: React.FC<GemsCardProps> = ({ gem }) => {
               </p>
             </article>
             <p className="mb-3">=</p>
-            <article className="flex justify-between border rounded-[.5rem] font-space_grotesk w-20 h-10 items-center text-sm overflow-hidden bg-gray-200">
-              <p className="px-2 w-full text-center"> $ {calculatedPrice}</p>
-            </article>
-            <p className="mb-3">=</p>
-            <article className="flex justify-between border rounded-[.5rem] font-space_grotesk w-28 h-10 items-center text-sm overflow-hidden">
+            <article className="flex justify-between border rounded-[.5rem] font-space_grotesk w-full h-10 items-center text-sm overflow-hidden">
               <p className="px-1">{calculatedWeight}</p>
               <select value={unit} onChange={handleUnitChange} className="bg-gray-200 h-full flex items-center">
                 <option value="gr">gr</option>
                 <option value="oz">oz</option>
               </select>
+            </article>
+
+            <p className="mb-3">=</p>
+            <article className="flex justify-between border rounded-[.5rem] font-space_grotesk h-10 items-center min-w-fit text-sm overflow-hidden bg-gray-200  whitespace-nowrap">
+              <p className="px-2 text-center"> $ {calculatedPrice}</p>
             </article>
           </section>
         </div>

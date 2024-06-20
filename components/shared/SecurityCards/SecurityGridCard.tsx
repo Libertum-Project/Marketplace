@@ -42,8 +42,9 @@ export const SecurityGridCard: React.FC<SecurityCardProps> = ({ security }) => {
           <section className="flex justify-between items-end py-2 gap-4">
             <article className="flex justify-center border rounded-[.5rem] font-space_grotesk w-full h-10 items-center overflow-hidden">
               <input
-                type="text"
-                min="1"
+                type="number"
+                min={1}
+                max={security.totalTokens}
                 value={quantity}
                 onChange={handleChange}
                 className="w-full focus:outline-none flex flex-col justify-end text-center px-2 font-space_grotesk h-10 items-center text-sm"
