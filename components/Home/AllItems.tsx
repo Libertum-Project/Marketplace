@@ -246,7 +246,7 @@ export const AllItems = ({ showFilters = false }: Props) => {
     <>
       {showFilters && <Filters filterFunction={cardFilter} resetFilters={resetFilters} />}
       <div>
-        <div className="flex justify-center md:justify-between items-center">
+        <div className="hidden lg:flex justify-center md:justify-between items-center">
           <section className="flex gap-3 w-4/5 ">
             <button
               onClick={() => cardFilter('Real Estate', 'All')}
